@@ -1,0 +1,63 @@
+.appointmentcontainer{
+    margin-top: 20px;
+}
+.appointmentcontent{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.appointmentcontent p:nth-child(1){
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+}
+.appointmentcontent p:nth-child(2){
+    color: #1A9FB2;
+    border-bottom: 1px solid #1A9FB2;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.appointmentCard{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Responsive styles for screen size 867px and below */
+@media only screen and (max-width: 867px) {
+    .appointmentcontainer {
+        margin-top: 10px; /* Adjust margin for smaller screens */
+    }
+
+    .appointmentcontent {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .appointmentcontent p:nth-child(1) {
+        font-size: 18px; /* Adjust font size for smaller screens */
+    }
+
+    .appointmentcontent p:nth-child(2) {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+
+/* Responsive styles for screen size 568px and below */
+@media only screen and (max-width: 568px) {
+    .appointmentcontainer {
+        margin-top: 5px; /* Adjust margin for even smaller screens */
+    }
+
+    .appointmentcontent p:nth-child(1) {
+        font-size: 16px; /* Further adjust font size for smaller screens */
+    }
+
+    .appointmentcontent p:nth-child(2) {
+        font-size: 12px; /* Further adjust font size for smaller screens */
+    }
+    .appointmentCard{
+        display: block;
+        justify-content: space-between;
+    }
+}

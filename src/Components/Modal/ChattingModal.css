@@ -1,0 +1,115 @@
+.chattingmodal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.chattingmodal-content{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #EEEEEE;
+    padding: 20px;
+    width: 400px;
+    height: 1024px;
+    text-align: start;
+}
+/* Modal.css */
+
+  
+  /* Style for the back arrow icon */
+  .chatting-modal svg {
+    margin-right: 10px;
+  }
+  
+  /* Add additional styling as needed */
+
+
+.chatting p:nth-child(1){
+    color: #0C5C75;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+
+.chatting input{
+    border: 1px solid #1E1E1E99;
+    border-radius: 9px;
+   
+    
+}
+
+.chatting input::placeholder{
+    color: #00000099;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 30px;
+
+}
+.searchicon{
+    position: relative;
+    bottom: 40px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    color: #1E1E1E99;
+
+}
+
+.chattingdiv{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 465px;
+    height: 79px;
+    background: #ffff;
+    border: 1px solid;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    margin-top: 20px
+}
+
+.chattingdiv p{
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+    position: relative;
+    left: 20px;
+}
+.chattingdiv span{
+    font-weight: 500;
+    font-size: 12px;
+    color: #1E1E1E99;
+    position: relative;
+    top: 20px;
+    right: 50px;
+}
+
+.chattingdiv img{
+    width: 52px;
+    height: 52px;
+}
+  .chattingdiv p{
+    color: #000000;
+  }
+
+
+
+
+  @media(max-width: 868px) {
+    .chattingmodal-content{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100%;
+    }
+}
+

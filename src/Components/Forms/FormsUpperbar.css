@@ -1,0 +1,45 @@
+
+.formheading1 {
+    /* display: flex; */
+    /* align-items: center; */
+  }
+  .formsheading2 {
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 1px solid #ffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add your preferred box shadow */
+    border-radius: 10px;
+    background: #ffff;
+  }
+  .formsheading2 h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  
+  /* Add any additional styling as needed */
+  
+
+  @media(max-width: 900px) {
+    .formsheading2 {
+      width: 100%;
+      height: auto;
+    }
+}
+
+@media(max-width: 568px) {
+  .formsheading2 {
+    width: 100%;
+    height: auto;
+  }
+  .formsheading2 h1 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+  }
+}

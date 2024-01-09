@@ -35,6 +35,14 @@ const TreatmentPlan = () => {
   const [BHealth, setBHealth] = useState("");
   const [Btext, setBtext] = useState("");
 
+  //handle check box
+  const handleCheckboxChangeMentalHealth = (value) => {
+    setMentelHealth(value);
+  };
+  const handleCheckboxChangeMind = (value) => {
+    setMind(value);
+  };
+
   return (
     <>
       <div className="backbutton">
@@ -211,20 +219,42 @@ const TreatmentPlan = () => {
             <label htmlFor="">Mental Status:</label>
             <div className="yeschechbox2">
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
-                <span>☒ Oriented</span>
+                <input
+                  type="checkbox"
+                  id="oriented"
+                  checked={mendelHealth === "oriented"}
+                  onChange={() => handleCheckboxChangeMentalHealth("oriented")}
+                />
+                <label htmlFor="oriented">☒ Oriented</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Disoriented</span>
+                <input
+                  type="checkbox"
+                  id="disoriented"
+                  checked={mendelHealth === "disoriented"}
+                  onChange={() =>
+                    handleCheckboxChangeMentalHealth("disoriented")
+                  }
+                />
+                <label htmlFor="disoriented">Disoriented</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Unstable</span>
+                <input
+                  type="checkbox"
+                  id="unstable"
+                  checked={mendelHealth === "unstable"}
+                  onChange={() => handleCheckboxChangeMentalHealth("unstable")}
+                />
+                <label htmlFor="unstable">Unstable</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Other (Specify)</span>
+                <input
+                  type="checkbox"
+                  id="other"
+                  checked={mendelHealth === "other"}
+                  onChange={() => handleCheckboxChangeMentalHealth("other")}
+                />
+                <label htmlFor="other">Other (Specify)</label>
               </div>
             </div>
             <div className="form-field">
@@ -241,24 +271,49 @@ const TreatmentPlan = () => {
             <label htmlFor="">Mood Level:</label>
             <div className="yeschechbox2">
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
-                <span>☒ Normal</span>
+                <input
+                  type="checkbox"
+                  id="normal"
+                  checked={mind === "normal"}
+                  onChange={() => handleCheckboxChangeMind("normal")}
+                />
+                <label htmlFor="normal">Normal</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Elevated</span>
+                <input
+                  type="checkbox"
+                  id="elevated"
+                  checked={mind === "elevated"}
+                  onChange={() => handleCheckboxChangeMind("elevated")}
+                />
+                <label htmlFor="elevated">Elevated</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Depressed</span>
+                <input
+                  type="checkbox"
+                  id="depressed"
+                  checked={mind === "depressed"}
+                  onChange={() => handleCheckboxChangeMind("depressed")}
+                />
+                <label htmlFor="depressed">Depressed</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Anxious</span>
+                <input
+                  type="checkbox"
+                  id="anxious"
+                  checked={mind === "anxious"}
+                  onChange={() => handleCheckboxChangeMind("anxious")}
+                />
+                <label htmlFor="anxious">Anxious</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Other (Specify):</span>
+                <input
+                  type="checkbox"
+                  id="other"
+                  checked={mind === "other"}
+                  onChange={() => handleCheckboxChangeMind("other")}
+                />
+                <label htmlFor="other">Other (Specify):</label>
               </div>
             </div>
             <div className="form-field">

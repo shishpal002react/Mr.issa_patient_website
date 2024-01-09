@@ -43,9 +43,35 @@ const SafetyPlan = () => {
     user_detail(setUserDetail);
   }, []);
 
+  const initial_value = () => {
+    setUserDetail("");
+    setUser("");
+    setUserId("");
+    setDate("");
+    setWarning("");
+    setInernalCopy("");
+    setSocialName("");
+    setSocialPhone("");
+    setSocialPhone("");
+    setSocialRelationship("");
+    setSocialArray([]);
+    setAdress("");
+    setPlace("");
+    setHelpName("");
+    setHelpPhone("");
+    setHelpRelationship("");
+    setHelpArray([]);
+    setCrisisName("");
+    setCrisisPhone("");
+    setCrisisRelationship("");
+    setCrisisArray([]);
+    setEnviromentAdress("");
+  };
+
   const handlePost = () => {
     const data = {
       patientId: userId,
+      date: date,
       warningSigns: warning,
       internalCopingStrategies: internalCopy,
       internalCopyinternalCopy: socialArray,
@@ -55,36 +81,38 @@ const SafetyPlan = () => {
       professionals: crisisArray,
       environmentSafetyMedications: enviromentAdress,
     };
-    const reply = safety_form(data);
-    console.log(reply, "setData information");
+    safety_form(data);
+    initial_value();
   };
 
   const handleSocialArray = (e) => {
     e.preventDefault();
-    setSocialArray((prev) => ({
-      ...prev,
+    const newContact = {
       name: socialName,
       phone: socialPhone,
       relationship: socialRelationship,
-    }));
-
+    };
+    setSocialArray((prev) => [...prev, newContact]);
     setSocialName("");
     setSocialPhone("");
     setSocialRelationship("");
   };
-  const handleHelpArray = () => {
+  const handleHelpArray = (e) => {
+    e.preventDefault();
     setHelpArray((prev) => ({
       ...prev,
       name: helpName,
       phone: helpPhone,
       relationship: helpRelationship,
     }));
-
+    console.log("add help");
     setHelpName("");
     setHelpPhone("");
     setHelpRelationship("");
   };
-  const handleCrisisArray = () => {
+
+  const handleCrisisArray = (e) => {
+    e.preventDefault();
     setCrisisArray((prev) => ({
       ...prev,
       clinicianName: crisisName,
@@ -331,7 +359,7 @@ const SafetyPlan = () => {
                 <button
                   type="button"
                   className="safetybutton"
-                  onclick={handleHelpArray}
+                  onClick={handleHelpArray}
                 >
                   SAVE
                 </button>
@@ -428,10 +456,10 @@ const SafetyPlan = () => {
                 />
               </div>
               <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
+                <button className="upload-button1" onclick="">
                   SAVED AS DRAFT
                 </button>
-                <button className="upload-button" onclick="uploadFile()">
+                <button className="upload-button" onclick="">
                   SAVED AND SIGNED
                 </button>
               </div>

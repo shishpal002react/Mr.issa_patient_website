@@ -25,11 +25,12 @@ export const show_notification = (title, message, type) => {
   });
 };
 
-export const login_user = async (payLoad) => {
+export const login_user = async (payLoad, navigate) => {
   try {
     const res = await axios.post(`${BaseUrl}Patient/signin`, payLoad);
-    show_notification("Success !", "Singin Successfully", "success");
     localStorage.setItem("token", res?.data?.accessToken);
+    show_notification("Success !", "Singin Successfully", "success");
+    navigate("/patient_panel");
   } catch (e) {
     show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }

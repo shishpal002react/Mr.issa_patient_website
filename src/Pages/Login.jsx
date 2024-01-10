@@ -15,14 +15,7 @@ const Login = () => {
       email,
       password,
     };
-    login_user(data)
-      .then(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-          navigate("/patient_panel");
-        }
-      })
-      .catch(() => navigate("/patient_panel"));
+    login_user(data, navigate);
   };
   return (
     <div className="main-div-login">

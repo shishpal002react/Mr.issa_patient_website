@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css"; // Import the CSS file
 import { Link } from "react-router-dom";
-
+import { user_detail } from "../../Api_Collection/Api";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+
 
   return (
     <>

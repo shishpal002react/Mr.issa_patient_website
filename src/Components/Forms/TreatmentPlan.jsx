@@ -34,6 +34,40 @@ const TreatmentPlan = () => {
   //Behavioral Health Services:
   const [BHealth, setBHealth] = useState("");
   const [Btext, setBtext] = useState("");
+  //Primary Care Provider:
+  const [primaryCare, setPrimaryCare] = useState("");
+  //Resident Goals
+  const [allergies, setAllergies] = useState("");
+  const [Triggers, setTriggers] = useState("");
+  const [goalAllergies, setGoalAllergies] = useState("");
+  const [strengths, setStrengths] = useState("");
+  const [limitation, setLimitation] = useState("");
+  const [Barriers, setBarriers] = useState("");
+  // Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
+  const [behaviorSymptoms, setBehaviorSymptoms] = useState("");
+  const [physicalSymptoms, setPhysicalSymptoms] = useState("");
+  const [consnotiveSymptoms, setConsnotiveSymptoms] = useState("");
+  const [psychosocialSymptoms, setPsychosocialSymptoms] = useState("");
+  const [interventionsImplemented, setInterventionsImplemented] = useState("");
+  //Goals for Changes in the Resident Phychorial Interaction or Behaviour
+  const [maintainSobriety, setMaintainSobriety] = useState("");
+  const [livingSkills, setLivingSkills] = useState("");
+  const [employment, setEmployment] = useState("");
+  const [adlsSelect, setAdlsSelect] = useState("");
+  const [safity, setSafity] = useState("");
+  const [managingMentailHealth, setManagingMentailHealth] = useState("");
+  const [legal, setLegal] = useState("");
+  //Resident overall participation in treatment:
+  const [percentage, setPersentage] = useState("");
+  const [residentAttitute, setResidentAttitute] = useState("");
+  const [residentProgress, setResidentProgress] = useState("");
+  const [supportSystem, setSupportSystem] = useState("");
+  const [religiousPreference, setreligiousPreference] = useState("");
+  const [dischargeValue, setDischargeValue] = useState("");
+  const [programDischarge, setProgramDischarge] = useState("");
+  //Clinical Summary/Recommendations/Intervention:
+  const [recommendations, setRecommendations] = useState("");
+  const [treatment, setTreatment] = useState("");
 
   //handle check box
   const handleCheckboxChangeMentalHealth = (value) => {

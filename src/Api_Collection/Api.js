@@ -58,3 +58,17 @@ export const safety_form = async (payLoad) => {
     show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };
+
+export const patient_form = async (payLoad) => {
+  try {
+    const res = await axios.post(
+      `${BaseUrl}Patient/createTreatmentPlan`,
+      payLoad,
+      Token
+    );
+    show_notification("Success !", "Form Submit Successfully", "success");
+    return res;
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};

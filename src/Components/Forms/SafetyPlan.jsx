@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
 import { CiCirclePlus } from "react-icons/ci";
 import { user_detail, safety_form } from "../../Api_Collection/Api";
+import SingInModel from "../Modal/SingInModel";
 
 const SafetyPlan = () => {
+  //singIn model state
+  const [showSingIn, setShowSingIn] = useState(false);
   const [userDetail, setUserDetail] = useState("");
   const navigate = useNavigate();
   const [user, setUser] = useState("");
@@ -33,6 +36,8 @@ const SafetyPlan = () => {
   const [crisisArray, setCrisisArray] = useState([]);
   //environmentSafetyMedications
   const [enviromentAdress, setEnviromentAdress] = useState("");
+  //singin
+  const [singin, setSingIn] = useState("");
 
   useEffect(() => {
     setUserId(userDetail?._id);
@@ -66,6 +71,7 @@ const SafetyPlan = () => {
     setCrisisRelationship("");
     setCrisisArray([]);
     setEnviromentAdress("");
+    setSingIn("");
   };
 
   const handlePost = () => {
@@ -80,6 +86,7 @@ const SafetyPlan = () => {
       helpContactsPeople: helpArray,
       professionals: crisisArray,
       environmentSafetyMedications: enviromentAdress,
+      signature: singin,
     };
     safety_form(data);
     initial_value();
@@ -447,12 +454,11 @@ const SafetyPlan = () => {
               />
             </div>
             <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
+              <div class="upload-icon" onClick={() => setShowSingIn(true)}>
                 <img
                   src={formupload}
                   alt=""
-                  style={{ width: "100px", height: "100px" }}
+                  style={{ width: "100px", height: "100px", cursor: "pointer" }}
                 />
               </div>
               <div style={{ display: "block" }}>
@@ -472,6 +478,25 @@ const SafetyPlan = () => {
           </div>
         </form>
       </div>
+      {showSingIn && (
+        <SingInModel onClose={() => setShowSingIn(false)}>
+          <div className="input_singin_button">
+            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
+            <input
+              type="text"
+              placeholder="Enter Sing in Signature"
+              value={singin}
+              onChange={(e) => setSingIn(e.target.value)}
+            />
+          </div>
+
+          <div className="sing_in_submit_button">
+            <button type="button" onClick={() => setShowSingIn(false)}>
+              Submit
+            </button>
+          </div>
+        </SingInModel>
+      )}
     </>
   );
 };

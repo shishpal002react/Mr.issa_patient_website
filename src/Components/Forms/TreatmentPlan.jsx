@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
-import { user_detail } from "../../Api_Collection/Api";
+import { user_detail, patient_form } from "../../Api_Collection/Api";
 
 const TreatmentPlan = () => {
+  //user Detail
+  const [user, setUser] = useState("");
+  const [userId, setUserId] = useState("");
   const [userDetails, setUserDetails] = useState("");
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -14,14 +17,15 @@ const TreatmentPlan = () => {
   const [intial, setInitial] = useState("");
   const [update, setUpdate] = useState("");
   //restdent detail
+  const [residentName, setResidentName] = useState("");
   const [dob, setDof] = useState("");
   const [date, setDate] = useState("");
   const [admitDate, setAdminDate] = useState("");
   const [care, setCare] = useState("");
   // care services
-  const [physicalService, setPhysicalService] = useState("");
-  const [behavior, setBehavior] = useState("");
-  const [presentingPrice, setPresentingPrice] = useState("");
+  const [physicalService, setPhysicalService] = useState(false);
+  const [behavior, setBehavior] = useState(false);
+  const [presentingPrice, setPresentingPrice] = useState([]);
   // Mental Status
   const [mendelHealth, setMentelHealth] = useState("");
   const [mentelText, setMentelText] = useState("");
@@ -40,12 +44,12 @@ const TreatmentPlan = () => {
   const [allergies, setAllergies] = useState("");
   const [Triggers, setTriggers] = useState("");
   const [goalAllergies, setGoalAllergies] = useState("");
-  const [strengths, setStrengths] = useState("");
+  const [strengths, setStrengths] = useState([]);
   const [limitation, setLimitation] = useState("");
-  const [Barriers, setBarriers] = useState("");
+  const [Barriers, setBarriers] = useState([]);
   // Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
-  const [behaviorSymptoms, setBehaviorSymptoms] = useState("");
-  const [physicalSymptoms, setPhysicalSymptoms] = useState("");
+  const [behavioralSymptoms, setBehavioralSymptoms] = useState([]);
+  const [physicalSymptoms, setPhysicalSymptoms] = useState([]);
   const [consnotiveSymptoms, setConsnotiveSymptoms] = useState("");
   const [psychosocialSymptoms, setPsychosocialSymptoms] = useState("");
   const [interventionsImplemented, setInterventionsImplemented] = useState("");
@@ -68,15 +72,100 @@ const TreatmentPlan = () => {
   //Clinical Summary/Recommendations/Intervention:
   const [recommendations, setRecommendations] = useState("");
   const [treatment, setTreatment] = useState("");
+  const [discharge, setDischarge] = useState("");
+  //Individual Participating in Developing the Service Plan
+  const [residentPlan, setResidentPlan] = useState("");
+  // Signature indicates participation and informed consent for treatment services.
+  const [signatureName, setSignatureName] = useState("");
+  const [singnatureAdress, setSignatureAdress] = useState("");
+  const [signature1, setSignature1] = useState("");
+  const [singatureDate, setSignatureDate] = useState("");
+  const [signatureBehavioure, setSignatureBehavioure] = useState("");
+  const [signature2, setSignature2] = useState("");
+  const [singatureDate1, setSignatureDate1] = useState("");
+
+  useEffect(() => {
+    setUserId(user?._id);
+    setName(user?.fullName);
+  }, [user]);
+
+  useEffect(() => {
+    user_detail(setUser);
+  }, []);
+
+  const handlePost = (e) => {
+    e.preventDefault();
+    const data = {
+      patientId: userId,
+      residentName: address,
+      dateOfBirth: dob,
+      date: date,
+      admitDate: admitDate,
+      care: {
+        physicalServices: physicalService,
+        behavioralServices: behavior,
+      },
+
+      presentingProblems: presentingPrice,
+      mentalStatus: mind,
+      moodLevel: mind,
+      adls: adlsText,
+      behavioralHealthServices: Btext,
+      primaryCareProvider: primaryCare,
+
+      allergies: allergies,
+      triggers: Triggers,
+      strengths: strengths,
+      barriers: Barriers,
+      riskAssessment: {
+        behavioralSymptoms: behavioralSymptoms,
+        physicalSymptoms: physicalSymptoms,
+      },
+      // miss the api paremeter
+      signaturesFacilityRep: {
+        name: "Facility Rep Name",
+        credentials: "Credentials",
+        signature: "Signature Image URL",
+        date: "2024-01-03",
+      },
+      signaturesBhp: {
+        name: "BHP Name",
+        credentials: "Credentials",
+        signature: "Signature Image URL",
+        date: "2024-01-03",
+      },
+    };
+    patient_form(data);
+  };
 
   //handle check box
   const handleCheckboxChangeMentalHealth = (value) => {
     setMentelHealth(value);
   };
+
   const handleCheckboxChangeMind = (value) => {
     setMind(value);
   };
 
+  //set the answer
+  const handleCheckboxChangeBehavioral = (symptom) => {
+    setBehavioralSymptoms((prevSelectedSymptoms) => {
+      if (prevSelectedSymptoms.includes(symptom)) {
+        return prevSelectedSymptoms.filter((selected) => selected !== symptom);
+      } else {
+        return [...prevSelectedSymptoms, symptom];
+      }
+    });
+  };
+  const handleCheckboxChangePhysical = (symptom) => {
+    setPhysicalSymptoms((prevSelectedSymptoms) => {
+      if (prevSelectedSymptoms.includes(symptom)) {
+        return prevSelectedSymptoms.filter((selected) => selected !== symptom);
+      } else {
+        return [...prevSelectedSymptoms, symptom];
+      }
+    });
+  };
   return (
     <>
       <div className="backbutton">
@@ -96,7 +185,7 @@ const TreatmentPlan = () => {
             <h1>TREATMENT PLAN</h1>
           </div>
         </div>
-        <form action="">
+        <form>
           <div className="form-section">
             <div className="form-field">
               <label htmlFor="admissionDate">Name:</label>
@@ -113,7 +202,8 @@ const TreatmentPlan = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 placeholder="Enter address"
                 required
               />
@@ -123,14 +213,15 @@ const TreatmentPlan = () => {
               <input
                 type="text"
                 id="admissionDate"
-                value=""
+                value={number}
                 placeholder="Enter number"
                 required
+                onChange={(e) => setNumber(e.target.value)}
               />
             </div>
-            <h2>Choose your Option</h2>
+            {/* <h2>Choose your Option</h2>
             <div className="form-field">
-              <div className="genderdiv">
+              <div className="genderdiv" onChange={(e)=>}>
                 <div className="genderbox">
                   <input
                     type="radio"
@@ -150,16 +241,17 @@ const TreatmentPlan = () => {
                   <label htmlFor="femaleRadio">Update</label>
                 </div>
               </div>
-            </div>
+            </div> */}
             <h2>Resident Details</h2>
             <div className="form-field">
               <label htmlFor="AHCCCS">Resident Name:</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={residentName}
                 placeholder="Enter age"
                 required
+                onChange={(e) => setResidentName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -168,9 +260,10 @@ const TreatmentPlan = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={dob}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setDof(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -179,9 +272,10 @@ const TreatmentPlan = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={date}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -190,9 +284,10 @@ const TreatmentPlan = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={admitDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setAdminDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -200,32 +295,35 @@ const TreatmentPlan = () => {
               <textarea
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={care}
                 rows={5}
                 cols={130}
                 placeholder="Enter text."
                 required
+                onChange={(e) => setCare(e.target.value)}
               />
             </div>
             <div className="form-field">
               <div className="genderdiv">
                 <div className="genderbox">
                   <input
-                    type="radio"
-                    id="maleRadio"
-                    name="gender"
-                    className="custom-radio"
+                    type="checkbox"
+                    checked={physicalService}
+                    onChange={() => setPhysicalService(!physicalService)}
+                    id="behavioralCheckbox"
                   />
-                  <label htmlFor="maleRadio">Physical Services</label>
+                  <label htmlFor="behavioralCheckbox">Physical Services</label>
                 </div>
                 <div className="genderbox">
                   <input
-                    type="radio"
-                    id="femaleRadio"
-                    name="gender"
-                    className="custom-radio"
+                    type="checkbox"
+                    checked={behavior}
+                    onChange={() => setBehavior(!behavior)}
+                    id="behavioralCheckbox"
                   />
-                  <label htmlFor="femaleRadio">Behavioral Services</label>
+                  <label htmlFor="behavioralCheckbox">
+                    Behavioral Services
+                  </label>
                 </div>
               </div>
             </div>
@@ -234,17 +332,22 @@ const TreatmentPlan = () => {
               <select
                 style={{ color: "#1A9FB2" }}
                 id="gender"
-                value=""
+                value={presentingPrice}
                 required
+                onChange={(e) => setPresentingPrice(e.target.value)}
               >
                 <option value="">Select</option>
-                <option value="Male">Depression</option>
-                <option value="Female">Mood Changes</option>
-                <option value="Male">Trouble Falling / staying Asleep</option>
-                <option value="Female">Mood Swings</option>
-                <option value="Male">Social Withdrawals</option>
-                <option value="Female">Changes in Eating habits</option>
-                <option value="Female">Feeling of anger</option>
+                <option value="Depression">Depression</option>
+                <option value="Mood Changes">Mood Changes</option>
+                <option value="Trouble Falling / staying Asleep">
+                  Trouble Falling / staying Asleep
+                </option>
+                <option value="Mood Swings">Mood Swings</option>
+                <option value="Social Withdrawals">Social Withdrawals</option>
+                <option value="Changes in Eating habits">
+                  Changes in Eating habits
+                </option>
+                <option value="Feeling of anger">Feeling of anger</option>
               </select>
             </div>
             <div className="formsheading">
@@ -259,7 +362,7 @@ const TreatmentPlan = () => {
                   checked={mendelHealth === "oriented"}
                   onChange={() => handleCheckboxChangeMentalHealth("oriented")}
                 />
-                <label htmlFor="oriented">☒ Oriented</label>
+                <label htmlFor="oriented">Oriented</label>
               </div>
               <div>
                 <input
@@ -291,17 +394,21 @@ const TreatmentPlan = () => {
                 <label htmlFor="other">Other (Specify)</label>
               </div>
             </div>
-            <div className="form-field">
-              <textarea
-                type="text"
-                id="AHCCCS"
-                value=""
-                rows={5}
-                cols={130}
-                placeholder="Enter text."
-                required
-              />
-            </div>
+            {mendelHealth === "other" && (
+              <div className="form-field">
+                <textarea
+                  type="text"
+                  id="AHCCCS"
+                  value={mentelText}
+                  rows={5}
+                  cols={130}
+                  placeholder="Enter text."
+                  required
+                  onChange={(e) => setMentelText(e.target.value)}
+                />
+              </div>
+            )}
+
             <label htmlFor="">Mood Level:</label>
             <div className="yeschechbox2">
               <div>
@@ -350,17 +457,21 @@ const TreatmentPlan = () => {
                 <label htmlFor="other">Other (Specify):</label>
               </div>
             </div>
-            <div className="form-field">
-              <textarea
-                type="text"
-                id="AHCCCS"
-                value=""
-                rows={5}
-                cols={130}
-                placeholder="Enter text."
-                required
-              />
-            </div>
+            {mind === "other" && (
+              <div className="form-field">
+                <textarea
+                  type="text"
+                  id="AHCCCS"
+                  value={mindText}
+                  rows={5}
+                  cols={130}
+                  placeholder="Enter text."
+                  required
+                  onChange={(e) => setMindText(e.target.value)}
+                />
+              </div>
+            )}
+
             <label htmlFor="">ADLS:</label>
             <div className="yeschechbox2">
               <div>
@@ -379,11 +490,12 @@ const TreatmentPlan = () => {
               <textarea
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={adlsText}
                 rows={5}
                 cols={130}
                 placeholder="Enter text."
                 required
+                onChange={(e) => setAldsText(e.target.value)}
               />
             </div>
             <label htmlFor="">Behavioral Health Services:</label>
@@ -405,16 +517,23 @@ const TreatmentPlan = () => {
               <textarea
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={Btext}
                 rows={5}
                 cols={130}
                 placeholder="Enter text."
                 required
+                onChange={(e) => setBtext(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="admissionDate">Primary Care Provider:</label>
-              <input type="text" id="admissionDate" value="" required />
+              <input
+                type="text"
+                id="admissionDate"
+                value={primaryCare}
+                required
+                onChange={(e) => setPrimaryCare(e.target.value)}
+              />
             </div>
             <div className="form-field">
               <label htmlFor="gender">Psychiatric Provider:</label>
@@ -433,10 +552,11 @@ const TreatmentPlan = () => {
               <textarea
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={allergies}
                 rows={5}
                 cols={130}
                 required
+                onChange={(e) => setAllergies(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -444,50 +564,56 @@ const TreatmentPlan = () => {
               <textarea
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={Triggers}
                 rows={5}
                 cols={130}
                 required
+                onChange={(e) => setTriggers(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">Allergies:</label>
-              <input type="text" id="AHCCCS" value="" required />
+              <input
+                type="text"
+                id="AHCCCS"
+                value={goalAllergies}
+                required
+                onChange={(e) => setGoalAllergies(e.target.value)}
+              />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Allergies:</label>
-              <input type="text" id="AHCCCS" value="" required />
-            </div>
+
             <div className="form-field">
               <label htmlFor="gender">Strengths</label>
               <select
                 style={{ color: "#1A9FB2" }}
                 id="gender"
-                value=""
+                value={strengths}
                 required
+                onChange={(e) => setStrengths(e.target.value)}
               >
                 <option value="">Selecte</option>
-                <option value="Male">Self Motivated</option>
-                <option value="Female">Loving</option>
-                <option value="Female">Honest</option>
-                <option value="Female">Helping Others</option>
-                <option value="Female">Communication</option>
-                <option value="Female">Creative</option>
-                <option value="Female">Patient</option>
-                <option value="Female">Dedication</option>
-                <option value="Female">Coloring</option>
-                <option value="Female">Decision Making</option>
-                <option value="Female">Team Work</option>
+                <option value="Self Motivated">Self Motivated</option>
+                <option value="Loving">Loving</option>
+                <option value="Honest">Honest</option>
+                <option value="Helping Others">Helping Others</option>
+                <option value="Communication">Communication</option>
+                <option value="Creative">Creative</option>
+                <option value="Patient">Patient</option>
+                <option value="Dedication">Dedication</option>
+                <option value="Coloring">Coloring</option>
+                <option value="Decision Making">Decision Making</option>
+                <option value="Team Work">Team Work</option>
               </select>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address">Limitation</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={limitation}
                 rows={5}
                 cols={82}
                 required
+                onChange={(e) => setLimitation(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -495,17 +621,20 @@ const TreatmentPlan = () => {
               <select
                 style={{ color: "#1A9FB2" }}
                 id="gender"
-                value=""
+                value={Barriers}
                 required
+                onChange={(e) => setBarriers(e.target.value)}
               >
                 <option value="">Selecte</option>
-                <option value="Male">Cognitive</option>
-                <option value="Female">Lack of Insight</option>
-                <option value="Male">Financial</option>
-                <option value="Male">Refusal of Treatment</option>
-                <option value="Male">Social Stigma</option>
-                <option value="Male">Racial</option>
-                <option value="Male">
+                <option value="Cognitive">Cognitive</option>
+                <option value="Lack of Insight">Lack of Insight</option>
+                <option value="Financial">Financial</option>
+                <option value="Refusal of Treatment">
+                  Refusal of Treatment
+                </option>
+                <option value="Social Stigma">Social Stigma</option>
+                <option value="Racial">Racial</option>
+                <option value="Limited availibility to Mental Health awareness & Education">
                   Limited availibility to Mental Health awareness & Education
                 </option>
                 <option value="Male">
@@ -519,59 +648,105 @@ const TreatmentPlan = () => {
               </h6>
             </div>
             <div className="yeschechbox2">
-              {/* <input type="checkbox" name="" id="" /> */}
               <label htmlFor="">Behavioral Symptoms:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span> Self-injuring</span>
+                <input
+                  type="checkbox"
+                  id="selfInjuring"
+                  checked={behavioralSymptoms.includes("selfInjuring")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("selfInjuring")
+                  }
+                />
+                <span>Self-injuring</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span> reckless behavior</span>
+                <input
+                  type="checkbox"
+                  id="recklessBehavior"
+                  checked={behavioralSymptoms.includes("recklessBehavior")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("recklessBehavior")
+                  }
+                />
+                <span>Reckless behavior</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>impulsive behaviors</span>
+                <input
+                  type="checkbox"
+                  id="impulsiveBehaviors"
+                  checked={behavioralSymptoms.includes("impulsiveBehaviors")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("impulsiveBehaviors")
+                  }
+                />
+                <span>Impulsive behaviors</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>social isolation</span>
+                <input
+                  type="checkbox"
+                  id="socialIsolation"
+                  checked={behavioralSymptoms.includes("socialIsolation")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("socialIsolation")
+                  }
+                />
+                <span>Social isolation</span>
               </div>
             </div>
             <div className="yeschechbox2">
+              <label htmlFor="">Physical Symptoms:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>no longer enjoying previous activities</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>talking, or writing about death</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              {/* <input type="checkbox" name="" id="" /> */}
-              <label htmlFor="">Physical Symptoms: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  id="insomnia"
+                  checked={physicalSymptoms.includes("insomnia")}
+                  onChange={() => handleCheckboxChangePhysical("insomnia")}
+                />
                 <span>Insomnia</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  id="hypersomnia"
+                  checked={physicalSymptoms.includes("hypersomnia")}
+                  onChange={() => handleCheckboxChangePhysical("hypersomnia")}
+                />
                 <span>Hypersomnia</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>changes in appetite</span>
+                <input
+                  type="checkbox"
+                  id="changesInAppetite"
+                  checked={physicalSymptoms.includes("changesInAppetite")}
+                  onChange={() =>
+                    handleCheckboxChangePhysical("changesInAppetite")
+                  }
+                />
+                <span>Changes in appetite</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>weight gain/loss</span>
+                <input
+                  type="checkbox"
+                  id="weightGainLoss"
+                  checked={physicalSymptoms.includes("weightGainLoss")}
+                  onChange={() =>
+                    handleCheckboxChangePhysical("weightGainLoss")
+                  }
+                />
+                <span>Weight gain/loss</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>panic attacks</span>
+                <input
+                  type="checkbox"
+                  id="panicAttacks"
+                  checked={physicalSymptoms.includes("panicAttacks")}
+                  onChange={() => handleCheckboxChangePhysical("panicAttacks")}
+                />
+                <span>Panic attacks</span>
               </div>
             </div>
+
             <div className="yeschechbox2">
               {/* <input type="checkbox" name="" id="" /> */}
               <label htmlFor="">Cognitive Symptoms:</label>
@@ -1315,7 +1490,7 @@ const TreatmentPlan = () => {
             </div>
           </div>
           <div className="form-actions">
-            <button type="submit" className="initalsubmit">
+            <button type="button" className="initalsubmit" onClick={handlePost}>
               SUBMIT DETAILS
             </button>
           </div>

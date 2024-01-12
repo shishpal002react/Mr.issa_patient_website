@@ -3,8 +3,13 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
 import { user_detail, patient_form } from "../../Api_Collection/Api";
+import SingInModel from "../Modal/SingInModel";
 
 const TreatmentPlan = () => {
+  // model data
+  const [signatureModel1, setSignatureModel1] = useState(false);
+  const [signatureModel2, setSignatureModel2] = useState(false);
+  const [signatureModel3, setSignatureModel3] = useState(false);
   //user Detail
   const [user, setUser] = useState("");
   const [userId, setUserId] = useState("");
@@ -34,10 +39,10 @@ const TreatmentPlan = () => {
   const [mindText, setMindText] = useState("");
   //ADLS
   const [adls, setAdls] = useState("");
-  const [adlsText, setAldsText] = useState("");
+  // const [adlsText, setAldsText] = useState("");
   //Behavioral Health Services:
   const [BHealth, setBHealth] = useState("");
-  const [Btext, setBtext] = useState("");
+  // const [Btext, setBtext] = useState("");
   //Primary Care Provider:
   const [primaryCare, setPrimaryCare] = useState("");
   //Resident Goals
@@ -50,9 +55,9 @@ const TreatmentPlan = () => {
   // Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
   const [behavioralSymptoms, setBehavioralSymptoms] = useState([]);
   const [physicalSymptoms, setPhysicalSymptoms] = useState([]);
-  const [consnotiveSymptoms, setConsnotiveSymptoms] = useState("");
-  const [psychosocialSymptoms, setPsychosocialSymptoms] = useState("");
-  const [interventionsImplemented, setInterventionsImplemented] = useState("");
+  const [consnotiveSymptoms, setConsnotiveSymptoms] = useState([]);
+  const [psychosocialSymptoms, setPsychosocialSymptoms] = useState([]);
+  const [interventionsImplemented, setInterventionsImplemented] = useState([]);
   //Goals for Changes in the Resident Phychorial Interaction or Behaviour
   const [maintainSobriety, setMaintainSobriety] = useState("");
   const [livingSkills, setLivingSkills] = useState("");
@@ -75,14 +80,24 @@ const TreatmentPlan = () => {
   const [discharge, setDischarge] = useState("");
   //Individual Participating in Developing the Service Plan
   const [residentPlan, setResidentPlan] = useState("");
-  // Signature indicates participation and informed consent for treatment services.
-  const [signatureName, setSignatureName] = useState("");
-  const [singnatureAdress, setSignatureAdress] = useState("");
-  const [signature1, setSignature1] = useState("");
-  const [singatureDate, setSignatureDate] = useState("");
-  const [signatureBehavioure, setSignatureBehavioure] = useState("");
-  const [signature2, setSignature2] = useState("");
-  const [singatureDate1, setSignatureDate1] = useState("");
+  const [guardian, setGuardian] = useState("");
+  const [staff, setStaff] = useState("");
+  const [bpn, setBph] = useState("");
+  //signaturesResident
+  const [nameResident, setNameResident] = useState("");
+  const [credentialsResident, setCredentialsResident] = useState("");
+  const [signatureResident, setsignatureResident] = useState("");
+  const [dateResident, setDateResident] = useState("");
+  // "signaturesFacilityRep"
+  const [nameFacilityRep, setNameFacilityRep] = useState("");
+  const [credentialsFacilityRep, setCredentialsFacilityRep] = useState("");
+  const [signatureFacilityRep, setsignatureFacilityRep] = useState("");
+  const [dateFacilityRep, setDateFacilityRep] = useState("");
+  //signaturesBhp"
+  const [nameBhp, setNameBhp] = useState("");
+  const [credentialsBhp, setCredentialsBhp] = useState("");
+  const [signatureBhp, setsignatureBhp] = useState("");
+  const [dateBhp, setDateBhp] = useState("");
 
   useEffect(() => {
     setUserId(user?._id);
@@ -107,10 +122,12 @@ const TreatmentPlan = () => {
       },
 
       presentingProblems: presentingPrice,
-      mentalStatus: mind,
+      mentalStatus: mendelHealth,
+      mentalStatusOther: mentelText,
       moodLevel: mind,
-      adls: adlsText,
-      behavioralHealthServices: Btext,
+      moodLevelOther: mindText,
+      adls: adls,
+      behavioralHealthServices: BHealth,
       primaryCareProvider: primaryCare,
 
       allergies: allergies,
@@ -120,19 +137,28 @@ const TreatmentPlan = () => {
       riskAssessment: {
         behavioralSymptoms: behavioralSymptoms,
         physicalSymptoms: physicalSymptoms,
+        cognitiveSymptoms: consnotiveSymptoms,
+        psychosocialSymptoms: psychosocialSymptoms,
       },
-      // miss the api paremeter
+      //miss some value
+
+      signaturesResident: {
+        name: nameResident,
+        credentials: credentialsResident,
+        signature: signatureResident,
+        date: dateResident,
+      },
       signaturesFacilityRep: {
-        name: "Facility Rep Name",
-        credentials: "Credentials",
-        signature: "Signature Image URL",
-        date: "2024-01-03",
+        name: nameFacilityRep,
+        credentials: credentialsFacilityRep,
+        signature: signatureFacilityRep,
+        date: dateFacilityRep,
       },
       signaturesBhp: {
-        name: "BHP Name",
-        credentials: "Credentials",
-        signature: "Signature Image URL",
-        date: "2024-01-03",
+        name: nameBhp,
+        credentials: credentialsBhp,
+        signature: signatureBhp,
+        date: dateBhp,
       },
     };
     patient_form(data);
@@ -166,6 +192,27 @@ const TreatmentPlan = () => {
       }
     });
   };
+
+  const handleCheckboxChangeCognitive = (symptom) => {
+    setConsnotiveSymptoms((prevSelectedSymptoms) => {
+      if (prevSelectedSymptoms.includes(symptom)) {
+        return prevSelectedSymptoms.filter((selected) => selected !== symptom);
+      } else {
+        return [...prevSelectedSymptoms, symptom];
+      }
+    });
+  };
+
+  const handleCheckboxChangePsychosocial = (symptom) => {
+    setPsychosocialSymptoms((prevSelectedSymptoms) => {
+      if (prevSelectedSymptoms.includes(symptom)) {
+        return prevSelectedSymptoms.filter((selected) => selected !== symptom);
+      } else {
+        return [...prevSelectedSymptoms, symptom];
+      }
+    });
+  };
+
   return (
     <>
       <div className="backbutton">
@@ -408,15 +455,14 @@ const TreatmentPlan = () => {
                 />
               </div>
             )}
-
             <label htmlFor="">Mood Level:</label>
             <div className="yeschechbox2">
               <div>
                 <input
                   type="checkbox"
                   id="normal"
-                  checked={mind === "normal"}
-                  onChange={() => handleCheckboxChangeMind("normal")}
+                  checked={mind === "Normal"}
+                  onChange={() => handleCheckboxChangeMind("Normal")}
                 />
                 <label htmlFor="normal">Normal</label>
               </div>
@@ -424,8 +470,8 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="elevated"
-                  checked={mind === "elevated"}
-                  onChange={() => handleCheckboxChangeMind("elevated")}
+                  checked={mind === "Elevated"}
+                  onChange={() => handleCheckboxChangeMind("Elevated")}
                 />
                 <label htmlFor="elevated">Elevated</label>
               </div>
@@ -433,8 +479,8 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="depressed"
-                  checked={mind === "depressed"}
-                  onChange={() => handleCheckboxChangeMind("depressed")}
+                  checked={mind === "Depressed"}
+                  onChange={() => handleCheckboxChangeMind("Depressed")}
                 />
                 <label htmlFor="depressed">Depressed</label>
               </div>
@@ -442,8 +488,8 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="anxious"
-                  checked={mind === "anxious"}
-                  onChange={() => handleCheckboxChangeMind("anxious")}
+                  checked={mind === "Anxious"}
+                  onChange={() => handleCheckboxChangeMind("Anxious")}
                 />
                 <label htmlFor="anxious">Anxious</label>
               </div>
@@ -471,22 +517,28 @@ const TreatmentPlan = () => {
                 />
               </div>
             )}
-
             <label htmlFor="">ADLS:</label>
             <div className="yeschechbox2">
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
-                <span>☒ Is independent with all ADLS</span>
+                <input
+                  type="checkbox"
+                  id="independent"
+                  checked={adls === "independent"}
+                  onChange={() => setAdls("independent")}
+                />
+                <label htmlFor="independent">Independent</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>
-                  Personal care level – See Attached personal care treatment
-                  plan
-                </span>
+                <input
+                  type="checkbox"
+                  id="personalCareLevel"
+                  checked={adls === "personalCareLevel"}
+                  onChange={() => setAdls("personalCareLevel")}
+                />
+                <label htmlFor="personalCareLevel">Personal Care Level</label>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <textarea
                 type="text"
                 id="AHCCCS"
@@ -497,23 +549,47 @@ const TreatmentPlan = () => {
                 required
                 onChange={(e) => setAldsText(e.target.value)}
               />
-            </div>
+            </div> */}
             <label htmlFor="">Behavioral Health Services:</label>
             <div className="yeschechbox2">
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Receives behavioral health services</span>
+                <input
+                  type="checkbox"
+                  id="receivesServices"
+                  value="receivesServices"
+                  checked={BHealth === "receivesServices"}
+                  onChange={() => setBHealth("receivesServices")}
+                />
+                <label htmlFor="receivesServices">
+                  Receives behavioral health services
+                </label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Is prescribed psychotropic medication</span>
+                <input
+                  type="checkbox"
+                  id="prescribedMedication"
+                  value="prescribedMedication"
+                  checked={BHealth === "prescribedMedication"}
+                  onChange={() => setBHealth("prescribedMedication")}
+                />
+                <label htmlFor="prescribedMedication">
+                  Is prescribed psychotropic medication
+                </label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Resident agrees to follow house rules.</span>
+                <input
+                  type="checkbox"
+                  id="followsHouseRules"
+                  value="followsHouseRules"
+                  checked={BHealth === "followsHouseRules"}
+                  onChange={() => setBHealth("followsHouseRules")}
+                />
+                <label htmlFor="followsHouseRules">
+                  Resident agrees to follow house rules.
+                </label>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <textarea
                 type="text"
                 id="AHCCCS"
@@ -524,7 +600,7 @@ const TreatmentPlan = () => {
                 required
                 onChange={(e) => setBtext(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="admissionDate">Primary Care Provider:</label>
               <input
@@ -581,7 +657,6 @@ const TreatmentPlan = () => {
                 onChange={(e) => setGoalAllergies(e.target.value)}
               />
             </div>
-
             <div className="form-field">
               <label htmlFor="gender">Strengths</label>
               <select
@@ -746,56 +821,126 @@ const TreatmentPlan = () => {
                 <span>Panic attacks</span>
               </div>
             </div>
-
             <div className="yeschechbox2">
-              {/* <input type="checkbox" name="" id="" /> */}
-              <label htmlFor="">Cognitive Symptoms:</label>
+              <label htmlFor="cognitiveSymptoms">Cognitive Symptoms:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Lacking the ability to concentrate</span>
+                <input
+                  type="checkbox"
+                  id="concentration"
+                  checked={consnotiveSymptoms.includes("concentration")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("concentration")
+                  }
+                />
+                <label htmlFor="concentration">
+                  Lacking the ability to concentrate
+                </label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>memory impairment, ruminating</span>
+                <input
+                  type="checkbox"
+                  id="memoryImpairment"
+                  checked={consnotiveSymptoms.includes("memoryImpairment")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("memoryImpairment")
+                  }
+                />
+                <label htmlFor="memoryImpairment">
+                  Memory impairment, ruminating
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="thoughtsAboutDeath"
+                  checked={consnotiveSymptoms.includes("thoughtsAboutDeath")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("thoughtsAboutDeath")
+                  }
+                />
+                <label htmlFor="thoughtsAboutDeath">
+                  Pervasive thoughts about death and dying
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="inabilityToFocus"
+                  checked={consnotiveSymptoms.includes("inabilityToFocus")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("inabilityToFocus")
+                  }
+                />
+                <label htmlFor="inabilityToFocus">
+                  Inability to focus on specific tasks
+                </label>
               </div>
             </div>
             <div className="yeschechbox2">
-              {/* <input type="checkbox" name="" id="" /> */}
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>pervasive thoughts about death and dying</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>inability to focus on specific tasks </span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              {/* <input type="checkbox" name="" id="" /> */}
               <label htmlFor="">Psychosocial Symptoms: </label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Feeling of helplessness</span>
+                <input
+                  type="checkbox"
+                  id="helplessness"
+                  checked={psychosocialSymptoms.includes("helplessness")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("helplessness")
+                  }
+                />
+                <label htmlFor="helplessness">Feeling of helplessness</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>worthlessness</span>
+                <input
+                  type="checkbox"
+                  id="worthlessness"
+                  checked={psychosocialSymptoms.includes("worthlessness")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("worthlessness")
+                  }
+                />
+                <label htmlFor="worthlessness">Worthlessness</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>depression</span>
+                <input
+                  type="checkbox"
+                  id="depression"
+                  checked={psychosocialSymptoms.includes("depression")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("depression")
+                  }
+                />
+                <label htmlFor="depression">Depression</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>anxiety</span>
+                <input
+                  type="checkbox"
+                  id="anxiety"
+                  checked={psychosocialSymptoms.includes("anxiety")}
+                  onChange={() => handleCheckboxChangePsychosocial("anxiety")}
+                />
+                <label htmlFor="anxiety">Anxiety</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>mood swings</span>
+                <input
+                  type="checkbox"
+                  id="moodSwings"
+                  checked={psychosocialSymptoms.includes("moodSwings")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("moodSwings")
+                  }
+                />
+                <label htmlFor="moodSwings">Mood Swings</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>irritability</span>
+                <input
+                  type="checkbox"
+                  id="irritability"
+                  checked={psychosocialSymptoms.includes("irritability")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("irritability")
+                  }
+                />
+                <label htmlFor="irritability">Irritability</label>
               </div>
             </div>
             <label htmlFor="">Interventions that are being implemented:</label>
@@ -888,7 +1033,6 @@ const TreatmentPlan = () => {
                 <span>Hours per Week</span>
               </div>
             </div>
-
             <div className="yeschechbox2">
               <label htmlFor="">Individual: </label>
               <div>
@@ -1392,9 +1536,11 @@ const TreatmentPlan = () => {
                 </span>
               </div>
             </div>
+            {/* /"signaturesResident */}
+
             <div className="formsheading">
               <h6>
-                Signature indicates participation and informed consent for
+                signatures Resident participation and informed consent for
                 treatment services.
               </h6>
             </div>
@@ -1403,9 +1549,10 @@ const TreatmentPlan = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={nameResident}
                 placeholder="Enter your Lorem Ipsum"
                 required
+                onChange={(e) => setNameResident(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -1415,14 +1562,16 @@ const TreatmentPlan = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={credentialsResident}
                 placeholder="Enter your Lorem Ipsum"
                 required
+                onChange={(e) => setCredentialsResident(e.target.value)}
               />
             </div>
             <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
+              <div class="upload-icon" onClick={() => setSignatureModel1(true)}>
+                {/* [signatureResident, setsignatureResident] = useState("") */}
                 <img
                   src={formupload}
                   alt=""
@@ -1430,12 +1579,8 @@ const TreatmentPlan = () => {
                 />
               </div>
               <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
+                <button className="upload-button1">SAVED AS DRAFT</button>
+                <button className="upload-button">SAVED AND SIGNED</button>
               </div>
             </div>
             <div className="form-field">
@@ -1444,50 +1589,131 @@ const TreatmentPlan = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={dateResident}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setDateResident(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Behavioral Health Professional</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value=""
-                placeholder="Enter text"
-                required
+          </div>
+          {/*   "signaturesFacilityRep": */}
+          <div className="formsheading">
+            <h6>
+              signatures FacilityRep participation and informed consent for
+              treatment services.
+            </h6>
+          </div>
+          <div className="form-field">
+            <label htmlFor="AHCCCS">First and Last Name</label>
+            <input
+              type="text"
+              id="AHCCCS"
+              value={nameFacilityRep}
+              placeholder="Enter your Lorem Ipsum"
+              required
+              onChange={(e) => setNameFacilityRep(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="AHCCCS">
+              Resident or Resident’s representative
+            </label>
+            <input
+              type="text"
+              id="AHCCCS"
+              value={credentialsFacilityRep}
+              placeholder="Enter your Lorem Ipsum"
+              required
+              onChange={(e) => setCredentialsFacilityRep(e.target.value)}
+            />
+          </div>
+          <div class="file-upload-box">
+            <input type="file" id="fileInput" style={{ display: "none" }} />
+            <div class="upload-icon" onClick={() => setSignatureModel2(true)}>
+              {/* const [signatureFacilityRep, setsignatureFacilityRep] = useState(""); */}
+              <img
+                src={formupload}
+                alt=""
+                style={{ width: "100px", height: "100px" }}
               />
             </div>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
+            <div style={{ display: "block" }}>
+              <button className="upload-button1">SAVED AS DRAFT</button>
+              <button className="upload-button">SAVED AND SIGNED</button>
             </div>
-            <div className="form-field">
-              <label htmlFor="dateOfBirth">Date:</label>
-              <input
-                style={{ color: "#1A9FB2" }}
-                type="date"
-                id="dateOfBirth"
-                value=""
-                placeholder="DD/MM/YYYY"
-                required
+          </div>
+          <div className="form-field">
+            <label htmlFor="dateOfBirth">Date:</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+              id="dateOfBirth"
+              value={dateFacilityRep}
+              placeholder="DD/MM/YYYY"
+              required
+              onChange={(e) => setDateFacilityRep(e.target.value)}
+            />
+          </div>
+          {/* //signaturesBhp */}
+          const [nameBhp, setNameBhp] = useState(""); const [credentialsBhp,
+          setCredentialsBhp] = useState(""); const [signatureBhp,
+          setsignatureBhp] = useState(""); const [dateBhp, setDateBhp] =
+          useState("");
+          <div className="formsheading">
+            <h6>
+              Signatures Bhp participation and informed consent for treatment
+              services.
+            </h6>
+          </div>
+          <div className="form-field">
+            <label htmlFor="AHCCCS">First and Last Name</label>
+            <input
+              type="text"
+              id="AHCCCS"
+              value={nameBhp}
+              placeholder="Enter your Lorem Ipsum"
+              required
+              onChange={(e) => setNameBhp(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="AHCCCS">
+              Resident or Resident’s representative
+            </label>
+            <input
+              type="text"
+              id="AHCCCS"
+              value={credentialsBhp}
+              placeholder="Enter your Lorem Ipsum"
+              required
+              onChange={(e) => setCredentialsBhp(e.target.value)}
+            />
+          </div>
+          <div class="file-upload-box">
+            <input type="file" id="fileInput" style={{ display: "none" }} />
+            <div class="upload-icon" onClick={() => setSignatureModel3(true)}>
+              <img
+                src={formupload}
+                alt=""
+                style={{ width: "100px", height: "100px" }}
               />
             </div>
+            <div style={{ display: "block" }}>
+              <button className="upload-button1">SAVED AS DRAFT</button>
+              <button className="upload-button">SAVED AND SIGNED</button>
+            </div>
+          </div>
+          <div className="form-field">
+            <label htmlFor="dateOfBirth">Date:</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+              id="dateOfBirth"
+              value={dateBhp}
+              placeholder="DD/MM/YYYY"
+              required
+              onChange={(e) => setDateBhp(e.target.value)}
+            />
           </div>
           <div className="form-actions">
             <button type="button" className="initalsubmit" onClick={handlePost}>
@@ -1496,6 +1722,66 @@ const TreatmentPlan = () => {
           </div>
         </form>
       </div>
+      {/* signature 1 */}
+      {signatureModel1 && (
+        <SingInModel onClick={() => setSignatureModel1(false)}>
+          <div className="input_singin_button">
+            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
+            <input
+              type="text"
+              placeholder="Enter Sing in Signature"
+              value={signatureResident}
+              onChange={(e) => setsignatureResident(e.target.value)}
+            />
+          </div>
+
+          <div className="sing_in_submit_button">
+            <button type="button" onClick={() => setSignatureModel1(false)}>
+              Submit
+            </button>
+          </div>
+        </SingInModel>
+      )}
+      {/* signature 2 */}
+      {signatureModel2 && (
+        <SingInModel onClick={() => setSignatureModel2(false)}>
+          <div className="input_singin_button">
+            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
+            <input
+              type="text"
+              placeholder="Enter Sing in Signature"
+              value={signatureFacilityRep}
+              onChange={(e) => setsignatureFacilityRep(e.target.value)}
+            />
+          </div>
+
+          <div className="sing_in_submit_button">
+            <button type="button" onClick={() => setSignatureModel2(false)}>
+              Submit
+            </button>
+          </div>
+        </SingInModel>
+      )}
+      {/* signature3 */}
+      {signatureModel3 && (
+        <SingInModel onClick={() => setSignatureModel3(false)}>
+          <div className="input_singin_button">
+            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
+            <input
+              type="text"
+              placeholder="Enter Sing in Signature"
+              value={signatureBhp}
+              onChange={(e) => setsignatureBhp(e.target.value)}
+            />
+          </div>
+
+          <div className="sing_in_submit_button">
+            <button type="button" onClick={() => setSignatureModel3(false)}>
+              Submit
+            </button>
+          </div>
+        </SingInModel>
+      )}
     </>
   );
 };

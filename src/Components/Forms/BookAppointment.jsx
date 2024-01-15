@@ -27,9 +27,16 @@ const BookAppointment = () => {
     appointmentDate: appoinmentDate,
     appointmentTime: appoinmentTime,
   };
+  const initial_value = () => {
+    setContectNumber("");
+    setReasonForVisit("");
+    setAppoinmentDate("");
+    setAppoinmentTime("");
+  };
   const handlePostData = (e) => {
     e.preventDefault();
     appoinment_Booking(data);
+    initial_value();
   };
   return (
     <>

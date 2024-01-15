@@ -6,6 +6,8 @@ import formupload from "../../img/formupload.png";
 import { user_detail, Resident_form } from "../../Api_Collection/Api";
 
 const ResidentIntakes = () => {
+  //model
+  const [showSingIn, setShowSingIn] = useState(false);
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState("");
   const [user, setUser] = useState("");
@@ -23,7 +25,10 @@ const ResidentIntakes = () => {
   const [staffName, setStaffName] = useState("");
   const [staffSignature, setStaffSignature] = useState("");
   const [staffDate, setStaffDate] = useState("");
-  const [internalDisclosureList, setInternalDisclosureList] = useState("");
+  const [internalName, setInternalName] = useState("");
+  const [internalRelationship, setInternalRelationship] = useState("");
+  const [internalContect, setInternalContect] = useState("");
+  const [internalDisclosureList, setInternalDisclosureList] = useState([]);
   const [internalDisclosureListExpire, setInternalDisclosureListExpire] =
     useState("");
   const [
@@ -142,15 +147,15 @@ const ResidentIntakes = () => {
   const [
     advanceDirectivesFilingStatusWishNotFiled,
     setAdvanceDirectivesFilingStatusWishNotFiled,
-  ] = useState("");
+  ] = useState(false);
   const [
     advanceDirectivesFilingStatusAskedForCopyNotProvided,
     setAdvanceDirectivesFilingStatusAskedForCopyNotProvided,
-  ] = useState("");
+  ] = useState(false);
   const [
     advanceDirectivesFilingStatusOther,
     setAdvanceDirectivesFilingStatusOther,
-  ] = useState("");
+  ] = useState(false);
   const [
     advanceDirectivesCoordinationOfCareCopySentToPCP,
     setAdvanceDirectivesCoordinationOfCareCopySentToPCP,
@@ -299,6 +304,126 @@ const ResidentIntakes = () => {
     insuranceInformationPrimaryInsurancePolicyholderPhone,
     setInsuranceInformationPrimaryInsurancePolicyholderPhone,
   ] = useState("");
+  const [
+    insuranceInformationPrimaryInsurancePolicyholderRelationship,
+    setInsuranceInformationPrimaryInsurancePolicyholderRelationship,
+  ] = useState("");
+
+  const [
+    insuranceInformationPrimaryInsuranceCompany,
+    setInsuranceInformationPrimaryInsuranceCompany,
+  ] = useState("");
+
+  const [
+    insuranceInformationPrimaryInsuranceCustomerServicePhone,
+    setInsuranceInformationPrimaryInsuranceCustomerServicePhone,
+  ] = useState("");
+
+  const [
+    insuranceInformationPrimaryInsuranceSubscriberNumber,
+    setInsuranceInformationPrimaryInsuranceSubscriberNumber,
+  ] = useState("");
+
+  const [
+    insuranceInformationPrimaryInsuranceSubscriberGroup,
+    setInsuranceInformationPrimaryInsuranceSubscriberGroup,
+  ] = useState("");
+
+  const [
+    insuranceInformationPrimaryInsuranceSubscriberEffectiveDate,
+    setInsuranceInformationPrimaryInsuranceSubscriberEffectiveDate,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderName,
+    setInsuranceInformationSecondaryInsurancePolicyholderName,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderDateOfBirth,
+    setInsuranceInformationSecondaryInsurancePolicyholderDateOfBirth,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderAddress,
+    setinsuranceInformationSecondaryInsurancePolicyholderAddress,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderCity,
+    setInsuranceInformationSecondaryInsurancePolicyholderCity,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderState,
+    setInsuranceInformationSecondaryInsurancePolicyholderState,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderZip,
+    setInsuranceInformationSecondaryInsurancePolicyholderZip,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderPhone,
+    setInsuranceInformationSecondaryInsurancePolicyholderPhone,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsurancePolicyholderRelationship,
+    setInsuranceInformationSecondaryInsurancePolicyholderRelationship,
+  ] = useState("");
+  const [
+    insuranceInformationSecondaryInsuranceCompany,
+    setInsuranceInformationSecondaryInsuranceCompany,
+  ] = useState("");
+  const [
+    insuranceInformationSecondaryInsuranceCustomerServicePhone,
+    setInsuranceInformationSecondaryInsuranceCustomerServicePhone,
+  ] = useState("");
+  const [
+    insuranceInformationSecondaryInsuranceSubscriberNumber,
+    setInsuranceInformationSecondaryInsuranceSubscriberNumber,
+  ] = useState("");
+
+  const [
+    insuranceInformationSecondaryInsuranceSubscriberGroup,
+    setInsuranceInformationSecondaryInsuranceSubscriberGroup,
+  ] = useState("");
+  const [
+    insuranceInformationSecondaryInsuranceSubscriberEffectiveDate,
+    setInsuranceInformationSecondaryInsuranceSubscriberEffectiveDate,
+  ] = useState("");
+
+  const [
+    obligationsAndAuthorizationResidentName,
+    setObligationsAndAuthorizationResidentName,
+  ] = useState("");
+
+  const [
+    obligationsAndAuthorizationResidentSignature,
+    setObligationsAndAuthorizationResidentSignature,
+  ] = useState("");
+
+  const [
+    obligationsAndAuthorizationResidentDate,
+    setObligationsAndAuthorizationResidentDate,
+  ] = useState("");
+
+  const [
+    obligationsAndAuthorizationGuardianRepresentativeName,
+    setObligationsAndAuthorizationGuardianRepresentativeName,
+  ] = useState("");
+
+  const [
+    obligationsAndAuthorizationGuardianRepresentativeSignature,
+    setRobligationsAndAuthorizationGuardianRepresentativeSignature,
+  ] = useState("");
+
+  const [
+    obligationsAndAuthorizationGuardianRepresentativeDate,
+    setObligationsAndAuthorizationGuardianRepresentativeDate,
+  ] = useState("");
 
   useEffect(() => {
     setUserId(userDetail?._id);
@@ -308,6 +433,18 @@ const ResidentIntakes = () => {
   useEffect(() => {
     user_detail(setUserDetail);
   }, []);
+
+  // handle internal list
+  const handleinternalData = () => {
+    setInternalDisclosureList((prev) => [
+      ...prev,
+      { internalContect, internalName, internalRelationship },
+    ]);
+    setInternalContect("");
+    setInternalRelationship("");
+    setInternalName("");
+  };
+
   return (
     <>
       <div className="backbutton">
@@ -420,33 +557,22 @@ const ResidentIntakes = () => {
             >
               Resident Signature
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+
+            <input
+              type="text"
+              value={residentSignature}
+              onChange={(e) => setResidentSignature(e.target.value)}
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={residentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setResidentDate(e.target.value)}
               />
             </div>
             <h2
@@ -467,9 +593,10 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="admissionDate"
-                value=""
+                value={guardianRepresentativeName}
                 placeholder="Enter full name"
                 required
+                onChange={(e) => setGuardianRepresentativeName(e.target.value)}
               />
             </div>
             <label
@@ -483,33 +610,24 @@ const ResidentIntakes = () => {
             >
               Guardian / Representative Signature
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              value={guardianRepresentativeSignature}
+              onChange={(e) =>
+                setGuardianRepresentativeSignature(e.target.value)
+              }
+            />
+
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={guardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setGuardianRepresentativeDate(e.target.value)}
               />
             </div>
             <h2
@@ -528,9 +646,10 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={staffName}
                 placeholder="Enter full name"
                 required
+                onChange={(e) => setStaffName(e.target.value)}
               />
             </div>
             <label
@@ -544,33 +663,21 @@ const ResidentIntakes = () => {
             >
               Staff Signature
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              value={staffSignature}
+              onChange={(e) => setStaffSignature(e.target.value)}
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={staffDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setStaffDate(e.target.value)}
               />
             </div>
             <h6
@@ -598,15 +705,17 @@ const ResidentIntakes = () => {
               involved in my care and are concerned about my well being who may
               want to talk to me while at Company Name
             </p>
+
             <div className="safetyplandiv">
               <div className="form-field">
                 <label htmlFor="AHCCCS">Name of Person</label>
                 <input
                   type="text"
                   id="AHCCCS"
-                  value=""
+                  value={internalName}
                   placeholder="Enter text"
                   required
+                  onChange={(e) => setInternalName(e.target.value)}
                 />
               </div>
               <div className="form-field">
@@ -614,9 +723,10 @@ const ResidentIntakes = () => {
                 <input
                   type="text"
                   id="AHCCCS"
-                  value=""
+                  value={internalRelationship}
                   placeholder="Enter text"
                   required
+                  onChange={(e) => setInternalRelationship(e.target.value)}
                 />
               </div>
               <div className="form-field">
@@ -624,13 +734,18 @@ const ResidentIntakes = () => {
                 <input
                   type="text"
                   id="AHCCCS"
-                  value=""
+                  value={internalContect}
                   placeholder="Enter text"
                   required
+                  onChange={(e) => setInternalContect(e.target.value)}
                 />
               </div>
               <div className="form-actions">
-                <button type="submit" className="safetybutton">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleinternalData}
+                >
                   SAVE
                 </button>
               </div>
@@ -661,14 +776,25 @@ const ResidentIntakes = () => {
             </h6>
 
             <div className="form-field">
+              <label htmlFor="">Resident Name</label>
+              <input
+                type="text"
+                vlaue={internalDisclosureListResidentName}
+                onChange={(e) =>
+                  setInternalDisclosureListResidentName(e.target.value)
+                }
+              />
               <label htmlFor="dateOfBirth">Expiry Date</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={internalDisclosureListResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setInternalDisclosureListResidentDate(e.target.value)
+                }
               />
             </div>
             <label
@@ -682,7 +808,15 @@ const ResidentIntakes = () => {
             >
               Resident Signature
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              placeholder="Resident signature"
+              value={internalDisclosureListResidentSignature}
+              onChange={(e) =>
+                setInternalDisclosureListResidentSignature(e.target.value)
+              }
+            />
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -699,8 +833,8 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
-            <div className="form-field">
+            </div> */}
+            {/* <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
@@ -710,15 +844,20 @@ const ResidentIntakes = () => {
                 placeholder="DD/MM/YYYY"
                 required
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="AHCCCS">Guardian/Representative Full Name</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={internalDisclosureListGuardianRepresentativeName}
                 placeholder="Enter text"
                 required
+                onChange={(e) =>
+                  setInternalDisclosureListGuardianRepresentativeName(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <label
@@ -732,7 +871,17 @@ const ResidentIntakes = () => {
             >
               Guardian / Representative Signature
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              value={internalDisclosureListGuardianRepresentativeSignature}
+              placeholder="Signature"
+              onChange={(e) =>
+                setInternalDisclosureListGuardianRepresentativeSignature(
+                  e.target.value
+                )
+              }
+            />
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -749,16 +898,21 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={internalDisclosureListGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setInternalDisclosureListGuardianRepresentativeDate(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <label
@@ -770,35 +924,46 @@ const ResidentIntakes = () => {
                 color: "#000000",
               }}
             >
+              Staff Name
+            </label>
+            <input
+              type="text"
+              value={internalDisclosureListStaffName}
+              onChange={(e) =>
+                setInternalDisclosureListStaffName(e.target.value)
+              }
+            />
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
               Staff Signature
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              value={internalDisclosureListStaffSignature}
+              placeholder="Staff signature"
+              onChange={(e) =>
+                setInternalDisclosureListStaffSignature(e.target.value)
+              }
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={internalDisclosureListStaffDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setInternalDisclosureListStaffDate(e.target.value)
+                }
               />
             </div>
             <h6
@@ -1036,38 +1201,46 @@ const ResidentIntakes = () => {
                 color: "#000000",
               }}
             >
+              Resident Name
+            </label>
+            <input
+              type="text"
+              value={residentRightsResidentName}
+              placeholder="Name"
+              onChange={(e) => setResidentRightsResidentName(e.target.value)}
+            />
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
               Resident Signature
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              value={residentRightsResidentSignature}
+              placeholder="Signature"
+              onChange={(e) =>
+                setResidentRightsResidentSignature(e.target.value)
+              }
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={residentRightsResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setResidentRightsResidentDate(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
               <input
                 type="text"
@@ -1116,7 +1289,7 @@ const ResidentIntakes = () => {
                 placeholder="DD/MM/YYYY"
                 required
               />
-            </div>
+            </div> */}
             <h6
               style={{
                 fontWeight: "600",
@@ -1136,9 +1309,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={photoVideoConsentResidentName}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setPhotoVideoConsentResidentName(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1147,9 +1323,12 @@ const ResidentIntakes = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={photoVideoConsentDateOfBirth}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setPhotoVideoConsentDateOfBirth(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1158,9 +1337,12 @@ const ResidentIntakes = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={photoVideoConsentAdmissionDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setPhotoVideoConsentAdmissionDate(e.target.value)
+                }
               />
             </div>
             <p style={{ color: "#000000" }}>
@@ -1188,9 +1370,54 @@ const ResidentIntakes = () => {
                 color: "#000000",
               }}
             >
+              Consent ConsentGiven
+            </label>
+            <input
+              type="text"
+              value={photoVideoConsentConsentGiven}
+              placeholder="Signature details"
+              onChange={(e) => setPhotoVideoConsentConsentGiven(e.target.value)}
+            />
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
+              Consent ConsentWithdrawn
+            </label>
+            <input
+              type="text"
+              placeholder="Consent Withdrawn"
+              value={photoVideoConsentConsentWithdrawn}
+              onChange={(e) =>
+                setPhotoVideoConsentConsentWithdrawn(e.target.value)
+              }
+            />
+
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
               Resident Signature
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              value={photoVideoConsentResidentSignature}
+              placeholder="Signature"
+              onChange={(e) =>
+                setPhotoVideoConsentResidentSignature(e.target.value)
+              }
+            />
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -1207,16 +1434,19 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={photoVideoConsentResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setPhotoVideoConsentResidentDate(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1224,9 +1454,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={photoVideoConsentGuardianRepresentativeName}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setPhotoVideoConsentGuardianRepresentativeName(e.target.value)
+                }
               />
             </div>
             <label
@@ -1240,7 +1473,17 @@ const ResidentIntakes = () => {
             >
               Guardian/Representative Signature:
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              placeholder="Representative Signature"
+              value={photoVideoConsentGuardianRepresentativeSignature}
+              onChange={(e) =>
+                setPhotoVideoConsentGuardianRepresentativeSignature(
+                  e.target.value
+                )
+              }
+            />
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -1257,16 +1500,19 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={photoVideoConsentGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setPhotoVideoConsentGuardianRepresentativeDate(e.target.value)
+                }
               />
             </div>
             <h6
@@ -1295,9 +1541,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={advanceDirectivesResidentName}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setAdvanceDirectivesResidentName(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1305,9 +1554,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={advanceDirectivesResidentAddress}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setAdvanceDirectivesResidentAddress(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1318,6 +1570,9 @@ const ResidentIntakes = () => {
                     type="radio"
                     id="maleRadio"
                     name="gender"
+                    value="male"
+                    checked={advanceDirectivesResidentGender === "male"}
+                    onChange={() => setAdvanceDirectivesResidentGender("male")}
                     className="custom-radio"
                   />
                   <label htmlFor="maleRadio">Male</label>
@@ -1327,6 +1582,11 @@ const ResidentIntakes = () => {
                     type="radio"
                     id="femaleRadio"
                     name="gender"
+                    value="female"
+                    checked={advanceDirectivesResidentGender === "female"}
+                    onChange={() =>
+                      setAdvanceDirectivesResidentGender("female")
+                    }
                     className="custom-radio"
                   />
                   <label htmlFor="femaleRadio">Female</label>
@@ -1339,9 +1599,26 @@ const ResidentIntakes = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={advanceDirectivesResidentDateOfBirth}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setAdvanceDirectivesResidentDateOfBirth(e.target.value)
+                }
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="dateOfadress">Address</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                id="dateOfadress"
+                value={advanceDirectivesResidentAddress}
+                placeholder="Address"
+                required
+                onChange={(e) =>
+                  setAdvanceDirectivesResidentAddress(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1350,17 +1627,58 @@ const ResidentIntakes = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={advanceDirectivesResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setAdvanceDirectivesResidentDate(e.target.value)
+                }
               />
             </div>
             <div className="formsheading">
               <h6>Advance Directives Information</h6>
               <p>
                 I have been provided information and verbal explanation about
-                Advance Directive. Member initials ______Date _____ Resident is
-                refusing advance directives. Member initials ______Date ______
+                Advance Directive. Member initials{" "}
+                <input
+                  style={{ outline: "none", border: "none" }}
+                  type="text"
+                  placeholder="______"
+                  value={advanceDirectivesProvidedInfoInitials}
+                  onChange={(e) =>
+                    setAdvanceDirectivesProvidedInfoInitials(e.target.value)
+                  }
+                />{" "}
+                Date{" "}
+                <input
+                  type="date"
+                  placeholder="______"
+                  value={advanceDirectivesProvidedInfoDate}
+                  onChange={(e) =>
+                    setAdvanceDirectivesProvidedInfoDate(e.target.value)
+                  }
+                />{" "}
+                Resident is refusing advance directives. Member initials
+                <input
+                  style={{ outline: "none", border: "none" }}
+                  type="text"
+                  placeholder="______"
+                  value={advanceDirectivesProvidedInfoRefusingInitials}
+                  onChange={(e) =>
+                    setAdvanceDirectivesProvidedInfoRefusingInitials(
+                      e.target.value
+                    )
+                  }
+                />{" "}
+                Date{" "}
+                <input
+                  type="date"
+                  placeholder="______"
+                  value={advanceDirectivesProvidedInfoRefusingDate}
+                  onChange={(e) =>
+                    setAdvanceDirectivesProvidedInfoRefusingDate(e.target.value)
+                  }
+                />{" "}
               </p>
             </div>
             <div className="formsheading">
@@ -1369,14 +1687,38 @@ const ResidentIntakes = () => {
             <div className="yeschechbox2">
               <span>Resident has developed an Advanced Directive:</span>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input
+                  type="radio"
+                  id="yesRadio"
+                  name="option"
+                  value="yes"
+                  checked={advanceDirectivesDeveloped === "yes"}
+                  onChange={() => setAdvanceDirectivesDeveloped("yes")}
+                />
+                <label htmlFor="yesRadio">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+                <input
+                  type="radio"
+                  id="noRadio"
+                  name="option"
+                  value="no"
+                  checked={advanceDirectivesDeveloped === "no"}
+                  onChange={() => setAdvanceDirectivesDeveloped("no")}
+                />
+                <label htmlFor="noRadio">No</label>
               </div>
             </div>
+            {advanceDirectivesDeveloped === "no" && (
+              <input
+                type="text"
+                placeholder="Please enter"
+                value={advanceDirectivesDevelopedComment}
+                onChange={(e) =>
+                  setAdvanceDirectivesDevelopedComment(e.target.value)
+                }
+              />
+            )}
             <div className="yeschechbox2">
               <span>
                 - If No, stop and let Resident know that assistance in
@@ -1389,14 +1731,34 @@ const ResidentIntakes = () => {
                 in the BHRF medical record?
               </span>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input
+                  type="checkbox"
+                  id="yesCheckbox"
+                  checked={advanceDirectivesExecutedInRecord === "yes"}
+                  onChange={() => setAdvanceDirectivesExecutedInRecord("yes")}
+                />
+                <label htmlFor="yesCheckbox">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+                <input
+                  type="checkbox"
+                  id="noCheckbox"
+                  checked={advanceDirectivesExecutedInRecord === "no"}
+                  onChange={() => setAdvanceDirectivesExecutedInRecord("no")}
+                />
+                <label htmlFor="noCheckbox">No</label>
               </div>
             </div>
+            {advanceDirectivesExecutedInRecord === "no" && (
+              <input
+                type="text"
+                placeholder="Please enter"
+                value={advanceDirectivesExecutedInRecordComment}
+                onChange={(e) =>
+                  setAdvanceDirectivesExecutedInRecordComment(e.target.value)
+                }
+              />
+            )}
             <div className="yeschechbox2">
               <span>
                 If the Advanced Directive has been executed, but not filed in
@@ -1405,7 +1767,16 @@ const ResidentIntakes = () => {
             </div>
             <div className="yeschechbox2">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  id="exampleCheckbox"
+                  checked={advanceDirectivesFilingStatusWishNotFiled}
+                  onChange={() =>
+                    setAdvanceDirectivesFilingStatusWishNotFiled(
+                      !advanceDirectivesFilingStatusWishNotFiled
+                    )
+                  }
+                />
                 <span>
                   Resident does not wish to have it filed in his/her medical
                   record.
@@ -1414,7 +1785,16 @@ const ResidentIntakes = () => {
             </div>
             <div className="yeschechbox2">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  id="exampleCheckbox"
+                  checked={advanceDirectivesFilingStatusAskedForCopyNotProvided}
+                  onChange={() =>
+                    setAdvanceDirectivesFilingStatusAskedForCopyNotProvided(
+                      !advanceDirectivesFilingStatusAskedForCopyNotProvided
+                    )
+                  }
+                />
                 <span>
                   BHRF has asked for a copy, but it has not been provided.
                 </span>
@@ -1422,10 +1802,30 @@ const ResidentIntakes = () => {
             </div>
             <div className="yeschechbox2">
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>
-                  Other:________________________________________________{" "}
-                </span>
+                <input
+                  type="checkbox"
+                  id="exampleCheckbox"
+                  checked={advanceDirectivesFilingStatusOther}
+                  onChange={() =>
+                    setAdvanceDirectivesFilingStatusOther(
+                      !advanceDirectivesFilingStatusOther
+                    )
+                  }
+                />
+                Other
+                {/* <span>
+                  <input
+                    type="text"
+                    placeholder="______"
+                    style={{ outline: "none", border: "none" }}
+                    value={advanceDirectivesCoordinationOfCareCopySentToPCP}
+                    onChange={(e) =>
+                      setAdvanceDirectivesCoordinationOfCareCopySentToPCP(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span> */}
               </div>
             </div>
             <div className="yeschechbox2">
@@ -1441,12 +1841,30 @@ const ResidentIntakes = () => {
                 </span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input
+                  type="checkbox"
+                  id="yesCheckbox"
+                  checked={
+                    advanceDirectivesCoordinationOfCareCopySentToPCP === "yes"
+                  }
+                  onChange={() =>
+                    setAdvanceDirectivesCoordinationOfCareCopySentToPCP("yes")
+                  }
+                />
+                <label htmlFor="yesCheckbox">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+                <input
+                  type="checkbox"
+                  id="noCheckbox"
+                  checked={
+                    advanceDirectivesCoordinationOfCareCopySentToPCP === "no"
+                  }
+                  onChange={() =>
+                    setAdvanceDirectivesCoordinationOfCareCopySentToPCP("no")
+                  }
+                />
+                <label htmlFor="noCheckbox">No</label>
               </div>
             </div>
             <div className="yeschechbox2">
@@ -1456,12 +1874,26 @@ const ResidentIntakes = () => {
                 </span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input
+                  type="checkbox"
+                  id="yesCheckbox"
+                  checked={advanceDirectivesCoordinationOfCareActedOn === "yes"}
+                  onChange={() =>
+                    setAdvanceDirectivesCoordinationOfCareActedOn("yes")
+                  }
+                />
+                <label htmlFor="yesCheckbox">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+                <input
+                  type="checkbox"
+                  id="noCheckbox"
+                  checked={advanceDirectivesCoordinationOfCareActedOn === "no"}
+                  onChange={() =>
+                    setAdvanceDirectivesCoordinationOfCareActedOn("no")
+                  }
+                />
+                <label htmlFor="noCheckbox">No</label>
               </div>
             </div>
             <div className="yeschechbox2">
@@ -1474,10 +1906,38 @@ const ResidentIntakes = () => {
                 <span>Yes</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>
+                <input
+                  type="checkbox"
+                  id="yesCheckbox"
+                  checked={
+                    advanceDirectivesCoordinationOfCareAppropriatePartiesNotified ===
+                    "yes"
+                  }
+                  onChange={() =>
+                    setAdvanceDirectivesCoordinationOfCareAppropriatePartiesNotified(
+                      "yes"
+                    )
+                  }
+                />
+                {advanceDirectivesCoordinationOfCareAppropriatePartiesNotified ===
+                  "yes" && (
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      advanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment
+                    }
+                    onChange={(e) =>
+                      setAdvanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment(
+                        e.target.value
+                      )
+                    }
+                  />
+                )}
+                {/* <span>
                   (Specify who)________________________________________________{" "}
-                </span>
+                </span> */}
               </div>
             </div>
             <div className="yeschechbox2">
@@ -1485,10 +1945,35 @@ const ResidentIntakes = () => {
                 <span>No</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>
-                  (Describe why)________________________________________________{" "}
-                </span>
+                <input
+                  type="checkbox"
+                  id="noCheckbox"
+                  checked={
+                    advanceDirectivesCoordinationOfCareAppropriatePartiesNotified ===
+                    "no"
+                  }
+                  onChange={() =>
+                    setAdvanceDirectivesCoordinationOfCareAppropriatePartiesNotified(
+                      "no"
+                    )
+                  }
+                />
+                {advanceDirectivesCoordinationOfCareAppropriatePartiesNotified ===
+                  "no" && (
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      advanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment
+                    }
+                    onChange={(e) =>
+                      setAdvanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment(
+                        e.target.value
+                      )
+                    }
+                  />
+                )}
               </div>
             </div>
             <h6
@@ -1502,12 +1987,20 @@ const ResidentIntakes = () => {
               Acknowledgement Of Complaint Process
             </h6>
             <p style={{ color: "#000000" }}>
-              I,________________________________________________ have been
-              explained by facility staff of the facility resident complaint
-              process. Resident/Guardian understands that they have the right to
-              file complaint with the facility, and with the Arizona Department
-              of Residential Licensing when complaint can not be resolved with
-              the facility.
+              I,{" "}
+              <input
+                style={{ outline: "none", border: "none" }}
+                type="text"
+                value={complaintProcessAcknowledgementCompany}
+                onChange={(e) =>
+                  setComplaintProcessAcknowledgementCompany(e.target.value)
+                }
+              />{" "}
+              have been explained by facility staff of the facility resident
+              complaint process. Resident/Guardian understands that they have
+              the right to file complaint with the facility, and with the
+              Arizona Department of Residential Licensing when complaint can not
+              be resolved with the facility.
             </p>
             <p style={{ color: "#000000" }}>
               Licensing Services Division: 150 N 18th Ave #450, Phoenix, AZ
@@ -1529,9 +2022,38 @@ const ResidentIntakes = () => {
                 color: "#000000",
               }}
             >
+              Name
+            </label>
+            <input
+              type="text"
+              placeholder="Name"
+              value={complaintProcessAcknowledgementResidentName}
+              onChange={(e) =>
+                setComplaintProcessAcknowledgementResidentName(e.target.value)
+              }
+            />
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
               Resident Signature
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              placeholder="Signature"
+              value={complaintProcessAcknowledgementResidentSignature}
+              onChange={(e) =>
+                setComplaintProcessAcknowledgementResidentSignature(
+                  e.target.value
+                )
+              }
+            />
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -1548,16 +2070,19 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={complaintProcessAcknowledgementResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setComplaintProcessAcknowledgementResidentDate(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -1565,9 +2090,16 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={
+                  complaintProcessAcknowledgementGuardianRepresentativeName
+                }
                 placeholder="Enter text"
                 required
+                onChange={(e) =>
+                  setComplaintProcessAcknowledgementGuardianRepresentativeName(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <label
@@ -1581,7 +2113,19 @@ const ResidentIntakes = () => {
             >
               Guardian/Representative Signature:
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              value={
+                complaintProcessAcknowledgementGuardianRepresentativeSignature
+              }
+              placeholder="Signature"
+              onChange={(e) =>
+                setComplaintProcessAcknowledgementGuardianRepresentativeSignature(
+                  e.target.value
+                )
+              }
+            />
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -1598,16 +2142,23 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={
+                  complaintProcessAcknowledgementGuardianRepresentativeDate
+                }
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setComplaintProcessAcknowledgementGuardianRepresentativeDate(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <h6
@@ -1622,9 +2173,18 @@ const ResidentIntakes = () => {
             </h6>
             <div className="Residentrights">
               <p>
-                I, _______________________________________________ received an
-                orientation by facility by staff. The orientation included but
-                not limited to the following:
+                I,
+                <input
+                  type="text"
+                  placeholder="________"
+                  style={{ border: "none", outline: "none" }}
+                  value={orientationToAgencyCompany}
+                  onChange={(e) =>
+                    setOrientationToAgencyCompany(e.target.value)
+                  }
+                />{" "}
+                received an orientation by facility by staff. The orientation
+                included but not limited to the following:
               </p>
               <p>
                 1. An explanation of the behavioral health services the agency
@@ -2094,6 +2654,7 @@ const ResidentIntakes = () => {
           </div>
         </form>
       </div>
+      {/* {showSingIn && <SingInModel setShowSingIn={setShowSingIn} />} */}
     </>
   );
 };

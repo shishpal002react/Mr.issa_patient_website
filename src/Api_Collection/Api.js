@@ -86,3 +86,45 @@ export const Resident_form = async (payLoad) => {
     show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };
+
+export const appoinment_Booking = async (payLoad) => {
+  try {
+    const res = await axios.post(
+      `${BaseUrl}Patient/createAppointment`,
+      payLoad,
+      Token
+    );
+    show_notification(
+      "Success !",
+      "Appointment Submit Successfully",
+      "success"
+    );
+    return res;
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
+export const appointment_Upcoming = async (setAppoinment) => {
+  try {
+    const res = await axios.get(
+      `${BaseUrl}Patient/getAllPastAppointments`,
+      Token
+    );
+    setAppoinment(res?.data);
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
+export const appointment_Past = async (setAppoinmentPast) => {
+  try {
+    const res = await axios.get(
+      `${BaseUrl}Patient/getAllUpcomingAppointments`,
+      Token
+    );
+    setAppoinmentPast(res?.data);
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};

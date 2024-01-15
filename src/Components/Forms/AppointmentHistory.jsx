@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
-import HistoryCard from '../Cards/HistoryCards'
-import cards from '../../img/card1.png'
+import { useNavigate } from "react-router-dom";
+import HistoryCard from "../Cards/HistoryCards";
+import cards from "../../img/card1.png";
+import {
+  appointment_Upcoming,
+  appointment_Past,
+} from "../../Api_Collection/Api";
 
 const AppointmentHistory = () => {
+  const [appoinmentUpcoming, setAppoinmentUpcoming] = useState("");
+  const [appoinmentPast, setAppoinmentPast] = useState("");
+
+  useEffect(() => {
+    appointment_Upcoming(setAppoinmentUpcoming);
+    appointment_Past(setAppoinmentPast);
+  }, []);
   const data = [
     {
       imageUrl: cards,
@@ -30,26 +41,31 @@ const AppointmentHistory = () => {
       visit: "MEDICATION",
       referenceId: "CEN1TB9054",
     },
-
-
   ];
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-
-    <div className='booking-container'>
-      <div className='backbutton'>
-        <IoArrowBackCircle style={{ color: '#1A9FB2', width: '40px', height: '40px', cursor: 'pointer' }} onClick={() => navigate('/appointment_scheduling')} />
+    <div className="booking-container">
+      <div className="backbutton">
+        <IoArrowBackCircle
+          style={{
+            color: "#1A9FB2",
+            width: "40px",
+            height: "40px",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/appointment_scheduling")}
+        />
       </div>
-      <div className='form-container'>
+      <div className="form-container">
         <div className="formheading1">
-          <div className='formsheading2'>
+          <div className="formsheading2">
             <h1>MY APPOINTMENTS</h1>
           </div>
         </div>
-        <div className='SchedulingCard'>
-          <div className='todayappointments'>
+        <div className="SchedulingCard">
+          <div className="todayappointments">
             <p>UPCOMING</p>
-            {data.map((history, index) => (
+            {appoinmentUpcoming?.data?.map((history, index) => (
               <HistoryCard
                 key={index}
                 imageUrl={history.imageUrl}
@@ -59,9 +75,9 @@ const AppointmentHistory = () => {
               />
             ))}
           </div>
-          <div className='tomorrowappointments'>
+          <div className="tomorrowappointments">
             <p>PAST</p>
-            {data.map((history, index) => (
+            {appoinmentPast?.data?.map((history, index) => (
               <HistoryCard
                 key={index}
                 imageUrl={history.imageUrl}
@@ -74,8 +90,7 @@ const AppointmentHistory = () => {
         </div>
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default AppointmentHistory
+export default AppointmentHistory;

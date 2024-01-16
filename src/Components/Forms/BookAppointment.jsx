@@ -8,12 +8,6 @@ import { appoinment_Booking } from "../../Api_Collection/Api";
 const BookAppointment = () => {
   const navigate = useNavigate();
 
-  // "name": "varun chaudhary",
-  //   "contactNumber": "7982583718",
-  //   "reasonForVisit": "gfg",
-  //   "appointmentDate": "2023-12-31",
-  //   "appointmentTime": "
-
   const [name, setName] = useState("");
   const [contectNumber, setContectNumber] = useState("");
   const [reasonForVisit, setReasonForVisit] = useState("");
@@ -28,6 +22,7 @@ const BookAppointment = () => {
     appointmentTime: appoinmentTime,
   };
   const initial_value = () => {
+    setName("");
     setContectNumber("");
     setReasonForVisit("");
     setAppoinmentDate("");

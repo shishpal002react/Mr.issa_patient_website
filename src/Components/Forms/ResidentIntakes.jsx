@@ -6,8 +6,6 @@ import formupload from "../../img/formupload.png";
 import { user_detail, Resident_form } from "../../Api_Collection/Api";
 
 const ResidentIntakes = () => {
-  //model
-  const [showSingIn, setShowSingIn] = useState(false);
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState("");
   const [user, setUser] = useState("");
@@ -346,7 +344,7 @@ const ResidentIntakes = () => {
 
   const [
     insuranceInformationSecondaryInsurancePolicyholderAddress,
-    setinsuranceInformationSecondaryInsurancePolicyholderAddress,
+    setInsuranceInformationSecondaryInsurancePolicyholderAddress,
   ] = useState("");
 
   const [
@@ -417,7 +415,7 @@ const ResidentIntakes = () => {
 
   const [
     obligationsAndAuthorizationGuardianRepresentativeSignature,
-    setRobligationsAndAuthorizationGuardianRepresentativeSignature,
+    setObligationsAndAuthorizationGuardianRepresentativeSignature,
   ] = useState("");
 
   const [
@@ -445,6 +443,259 @@ const ResidentIntakes = () => {
     setInternalName("");
   };
 
+  const initializeValues = () => {
+    setUser("");
+    setUserId("");
+    setCompanyName("");
+    setResidentName("");
+    setResidentSignature("");
+    setResidentDate("");
+    setGuardianRepresentativeName("");
+    setGuardianRepresentativeSignature("");
+    setGuardianRepresentativeDate("");
+    setStaffName("");
+    setStaffSignature("");
+    setStaffDate("");
+    setInternalName("");
+    setInternalRelationship("");
+    setInternalContect("");
+    setInternalDisclosureList([]);
+    setInternalDisclosureListExpire("");
+    setInternalDisclosureListResidentName("");
+    setInternalDisclosureListResidentSignature("");
+    setInternalDisclosureListResidentDate("");
+    setInternalDisclosureListGuardianRepresentativeName("");
+    setInternalDisclosureListGuardianRepresentativeSignature("");
+    setInternalDisclosureListGuardianRepresentativeDate("");
+    setInternalDisclosureListStaffName("");
+    setInternalDisclosureListStaffSignature("");
+    setInternalDisclosureListStaffDate("");
+    setResidentRightsResidentName("");
+    setResidentRightsResidentSignature("");
+    setResidentRightsResidentDate("");
+    setPhotoVideoConsentResidentName("");
+    setPhotoVideoConsentDateOfBirth("");
+    setPhotoVideoConsentAdmissionDate("");
+    setPhotoVideoConsentConsentGiven("");
+    setPhotoVideoConsentConsentWithdrawn("");
+    setPhotoVideoConsentResidentSignature("");
+    setPhotoVideoConsentResidentDate("");
+    setPhotoVideoConsentGuardianRepresentativeName("");
+    setPhotoVideoConsentGuardianRepresentativeSignature("");
+    setPhotoVideoConsentGuardianRepresentativeDate("");
+    setAdvanceDirectivesResidentName("");
+    setAdvanceDirectivesResidentGender("");
+    setAdvanceDirectivesResidentDateOfBirth("");
+    setAdvanceDirectivesResidentAddress("");
+    setAdvanceDirectivesResidentDate("");
+    setAdvanceDirectivesProvidedInfoInitials("");
+    setAdvanceDirectivesProvidedInfoDate("");
+    setAdvanceDirectivesProvidedInfoRefusingInitials("");
+    setAdvanceDirectivesProvidedInfoRefusingDate(undefined);
+    setAdvanceDirectivesDeveloped(undefined);
+    setAdvanceDirectivesDevelopedComment("");
+    setAdvanceDirectivesExecutedInRecord("");
+    setAdvanceDirectivesExecutedInRecordComment("");
+    setAdvanceDirectivesFilingStatusWishNotFiled(false);
+    setAdvanceDirectivesFilingStatusAskedForCopyNotProvided(false);
+    setAdvanceDirectivesFilingStatusOther(false);
+    setAdvanceDirectivesCoordinationOfCareCopySentToPCP("");
+    setAdvanceDirectivesCoordinationOfCareActedOn("");
+    setAdvanceDirectivesCoordinationOfCareAppropriatePartiesNotified("");
+    setAdvanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment("");
+    setComplaintProcessAcknowledgementCompany("");
+    setComplaintProcessAcknowledgementResidentName("");
+    setComplaintProcessAcknowledgementResidentSignature("");
+    setComplaintProcessAcknowledgementResidentDate("");
+    setComplaintProcessAcknowledgementGuardianRepresentativeName("");
+    setComplaintProcessAcknowledgementGuardianRepresentativeSignature("");
+    setComplaintProcessAcknowledgementGuardianRepresentativeDate("");
+    setOrientationToAgencyCompany("");
+    setOrientationToAgencyResidentName("");
+    setOrientationToAgencyResidentSignature("");
+    setOrientationToAgencyResidentDate("");
+    setOrientationToAgencyGuardianRepresentativeName("");
+    setOrientationToAgencyGuardianRepresentativeSignature("");
+    setOrientationToAgencyGuardianRepresentativeDate("");
+    setPromotionTalkStrategicApproach("");
+    setLockBoxKeyIssueReturnDateKeyIssued("");
+    setLockBoxKeyIssueReturnDateKeyReturned("");
+    setLockBoxKeyIssueReturnAddress("");
+    setLockBoxKeyIssueReturnResponsibleFor("");
+    setLockBoxKeyIssueReturnResponsibleForCorporation("");
+    setLockBoxKeyIssueReturnCharged("");
+    setLockBoxKeyIssueReturnResidentName("");
+    setLockBoxKeyIssueReturnResidentSignature("");
+    setLockBoxKeyIssueReturnResidentDate("");
+    setLockBoxKeyIssueReturnGuardianRepresentativeName("");
+    setLockBoxKeyIssueReturnGuardianRepresentativeSignature("");
+    setLockBoxKeyIssueReturnGuardianRepresentativeDate("");
+    setLockBoxKeyIssueReturnStaffName("");
+    setLockBoxKeyIssueReturnStaffSignature("");
+    setLockBoxKeyIssueReturnStaffDate("");
+    setInsuranceInformationPrimaryInsurancePolicyholderName("");
+    setInsuranceInformationPrimaryInsurancePolicyholderDateOfBirth("");
+    setInsuranceInformationPrimaryInsurancePolicyholderAddress("");
+    setInsuranceInformationPrimaryInsurancePolicyholderCity("");
+    setInsuranceInformationPrimaryInsurancePolicyholderState("");
+    setInsuranceInformationPrimaryInsurancePolicyholderZip("");
+    setInsuranceInformationPrimaryInsurancePolicyholderPhone("");
+    setInsuranceInformationPrimaryInsurancePolicyholderRelationship("");
+    setInsuranceInformationPrimaryInsuranceCompany("");
+    setInsuranceInformationPrimaryInsuranceCustomerServicePhone("");
+    setInsuranceInformationPrimaryInsuranceSubscriberNumber("");
+    setInsuranceInformationPrimaryInsuranceSubscriberGroup("");
+    setInsuranceInformationPrimaryInsuranceSubscriberEffectiveDate("");
+    setInsuranceInformationSecondaryInsurancePolicyholderName("");
+    setInsuranceInformationSecondaryInsurancePolicyholderDateOfBirth("");
+    setInsuranceInformationSecondaryInsurancePolicyholderAddress("");
+    setInsuranceInformationSecondaryInsurancePolicyholderCity("");
+    setInsuranceInformationSecondaryInsurancePolicyholderState("");
+    setInsuranceInformationSecondaryInsurancePolicyholderZip("");
+    setInsuranceInformationSecondaryInsurancePolicyholderPhone("");
+    setInsuranceInformationSecondaryInsurancePolicyholderRelationship("");
+    setInsuranceInformationSecondaryInsuranceCompany("");
+    setInsuranceInformationSecondaryInsuranceCustomerServicePhone("");
+    setInsuranceInformationSecondaryInsuranceSubscriberNumber("");
+    setInsuranceInformationSecondaryInsuranceSubscriberGroup("");
+    setInsuranceInformationSecondaryInsuranceSubscriberEffectiveDate("");
+    setObligationsAndAuthorizationResidentName("");
+    setObligationsAndAuthorizationResidentSignature("");
+    setObligationsAndAuthorizationResidentDate("");
+    setObligationsAndAuthorizationGuardianRepresentativeName("");
+    setObligationsAndAuthorizationGuardianRepresentativeSignature("");
+    setObligationsAndAuthorizationGuardianRepresentativeDate("");
+  };
+
+  const data = {
+    patientId: userId,
+    companyName,
+    residentName,
+    residentSignature,
+    residentDate,
+    guardianRepresentativeName,
+    guardianRepresentativeSignature,
+    guardianRepresentativeDate,
+    staffName,
+    staffSignature,
+    staffDate,
+    internalName,
+    internalRelationship,
+    internalContect,
+    internalDisclosureList,
+    internalDisclosureListExpire,
+    internalDisclosureListResidentName,
+    internalDisclosureListResidentSignature,
+    internalDisclosureListResidentDate,
+    internalDisclosureListGuardianRepresentativeName,
+    internalDisclosureListGuardianRepresentativeSignature,
+    internalDisclosureListGuardianRepresentativeDate,
+    internalDisclosureListStaffName,
+    internalDisclosureListStaffSignature,
+    internalDisclosureListStaffDate,
+    residentRightsResidentName,
+    residentRightsResidentSignature,
+    residentRightsResidentDate,
+    photoVideoConsentResidentName,
+    photoVideoConsentDateOfBirth,
+    photoVideoConsentAdmissionDate,
+    photoVideoConsentConsentGiven,
+    photoVideoConsentConsentWithdrawn,
+    photoVideoConsentResidentSignature,
+    photoVideoConsentResidentDate,
+    photoVideoConsentGuardianRepresentativeName,
+    photoVideoConsentGuardianRepresentativeSignature,
+    photoVideoConsentGuardianRepresentativeDate,
+    advanceDirectivesResidentName,
+    advanceDirectivesResidentGender,
+    advanceDirectivesResidentDateOfBirth,
+    advanceDirectivesResidentAddress,
+    advanceDirectivesResidentDate,
+    advanceDirectivesProvidedInfoInitials,
+    advanceDirectivesProvidedInfoDate,
+    advanceDirectivesProvidedInfoRefusingInitials,
+    advanceDirectivesProvidedInfoRefusingDate,
+    advanceDirectivesDeveloped,
+    advanceDirectivesDevelopedComment,
+    advanceDirectivesExecutedInRecord,
+    advanceDirectivesExecutedInRecordComment,
+    advanceDirectivesFilingStatusWishNotFiled,
+    advanceDirectivesFilingStatusAskedForCopyNotProvided,
+    advanceDirectivesFilingStatusOther,
+    advanceDirectivesCoordinationOfCareCopySentToPCP,
+    advanceDirectivesCoordinationOfCareActedOn,
+    advanceDirectivesCoordinationOfCareAppropriatePartiesNotified,
+    advanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment,
+    complaintProcessAcknowledgementCompany,
+    complaintProcessAcknowledgementResidentName,
+    complaintProcessAcknowledgementResidentSignature,
+    complaintProcessAcknowledgementResidentDate,
+    complaintProcessAcknowledgementGuardianRepresentativeName,
+    complaintProcessAcknowledgementGuardianRepresentativeSignature,
+    complaintProcessAcknowledgementGuardianRepresentativeDate,
+    orientationToAgencyCompany,
+    orientationToAgencyResidentName,
+    orientationToAgencyResidentSignature,
+    orientationToAgencyResidentDate,
+    orientationToAgencyGuardianRepresentativeName,
+    orientationToAgencyGuardianRepresentativeSignature,
+    orientationToAgencyGuardianRepresentativeDate,
+    promotionTalkStrategicApproach,
+    lockBoxKeyIssueReturnDateKeyIssued,
+    lockBoxKeyIssueReturnDateKeyReturned,
+    lockBoxKeyIssueReturnAddress,
+    lockBoxKeyIssueReturnResponsibleFor,
+    lockBoxKeyIssueReturnResponsibleForCorporation,
+    lockBoxKeyIssueReturnCharged,
+    lockBoxKeyIssueReturnResidentName,
+    lockBoxKeyIssueReturnResidentSignature,
+    lockBoxKeyIssueReturnResidentDate,
+    lockBoxKeyIssueReturnGuardianRepresentativeName,
+    lockBoxKeyIssueReturnGuardianRepresentativeSignature,
+    lockBoxKeyIssueReturnGuardianRepresentativeDate,
+    lockBoxKeyIssueReturnStaffName,
+    lockBoxKeyIssueReturnStaffSignature,
+    lockBoxKeyIssueReturnStaffDate,
+    insuranceInformationPrimaryInsurancePolicyholderName,
+    insuranceInformationPrimaryInsurancePolicyholderDateOfBirth,
+    insuranceInformationPrimaryInsurancePolicyholderAddress,
+    insuranceInformationPrimaryInsurancePolicyholderCity,
+    insuranceInformationPrimaryInsurancePolicyholderState,
+    insuranceInformationPrimaryInsurancePolicyholderZip,
+    insuranceInformationPrimaryInsurancePolicyholderPhone,
+    insuranceInformationPrimaryInsurancePolicyholderRelationship,
+    insuranceInformationPrimaryInsuranceCompany,
+    insuranceInformationPrimaryInsuranceCustomerServicePhone,
+    insuranceInformationPrimaryInsuranceSubscriberNumber,
+    insuranceInformationPrimaryInsuranceSubscriberGroup,
+    insuranceInformationPrimaryInsuranceSubscriberEffectiveDate,
+    insuranceInformationSecondaryInsurancePolicyholderName,
+    insuranceInformationSecondaryInsurancePolicyholderDateOfBirth,
+    insuranceInformationSecondaryInsurancePolicyholderAddress,
+    insuranceInformationSecondaryInsurancePolicyholderCity,
+    insuranceInformationSecondaryInsurancePolicyholderState,
+    insuranceInformationSecondaryInsurancePolicyholderZip,
+    insuranceInformationSecondaryInsurancePolicyholderPhone,
+    insuranceInformationSecondaryInsurancePolicyholderRelationship,
+    insuranceInformationSecondaryInsuranceCompany,
+    insuranceInformationSecondaryInsuranceCustomerServicePhone,
+    insuranceInformationSecondaryInsuranceSubscriberNumber,
+    insuranceInformationSecondaryInsuranceSubscriberGroup,
+    insuranceInformationSecondaryInsuranceSubscriberEffectiveDate,
+    obligationsAndAuthorizationResidentName,
+    obligationsAndAuthorizationResidentSignature,
+    obligationsAndAuthorizationResidentDate,
+    obligationsAndAuthorizationGuardianRepresentativeName,
+    obligationsAndAuthorizationGuardianRepresentativeSignature,
+    obligationsAndAuthorizationGuardianRepresentativeDate,
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    Resident_form(data);
+    initializeValues();
+  };
+
   return (
     <>
       <div className="backbutton">
@@ -464,7 +715,7 @@ const ResidentIntakes = () => {
             <h1>RESIDENT INTAKES</h1>
           </div>
         </div>
-        <form action="">
+        <form onSubmit={submitHandler}>
           <div className="residentdiv">
             <h6
               style={{
@@ -714,7 +965,6 @@ const ResidentIntakes = () => {
                   id="AHCCCS"
                   value={internalName}
                   placeholder="Enter text"
-                  required
                   onChange={(e) => setInternalName(e.target.value)}
                 />
               </div>
@@ -725,7 +975,6 @@ const ResidentIntakes = () => {
                   id="AHCCCS"
                   value={internalRelationship}
                   placeholder="Enter text"
-                  required
                   onChange={(e) => setInternalRelationship(e.target.value)}
                 />
               </div>
@@ -736,7 +985,6 @@ const ResidentIntakes = () => {
                   id="AHCCCS"
                   value={internalContect}
                   placeholder="Enter text"
-                  required
                   onChange={(e) => setInternalContect(e.target.value)}
                 />
               </div>
@@ -2212,7 +2460,16 @@ const ResidentIntakes = () => {
             >
               Resident Signature:
             </label>
-            <div class="file-upload-box">
+            <input
+              type="text"
+              value={orientationToAgencyResidentSignature}
+              placeholder="Signature"
+              onChange={(e) =>
+                setOrientationToAgencyResidentSignature(e.target.value)
+              }
+            />
+
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -2229,16 +2486,19 @@ const ResidentIntakes = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={orientationToAgencyResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setOrientationToAgencyResidentDate(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2246,9 +2506,14 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={orientationToAgencyGuardianRepresentativeName}
                 placeholder="Enter text"
                 required
+                onChange={(e) =>
+                  setOrientationToAgencyGuardianRepresentativeName(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <label
@@ -2262,33 +2527,29 @@ const ResidentIntakes = () => {
             >
               Guardian/Representative Signature:
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              value={orientationToAgencyGuardianRepresentativeSignature}
+              type="text"
+              onChange={(e) =>
+                setOrientationToAgencyGuardianRepresentativeSignature(
+                  e.target.value
+                )
+              }
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={orientationToAgencyGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setOrientationToAgencyGuardianRepresentativeDate(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <h6
@@ -2306,9 +2567,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={promotionTalkStrategicApproach}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setPromotionTalkStrategicApproach(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2316,9 +2580,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={lockBoxKeyIssueReturnDateKeyIssued}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnDateKeyIssued(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2326,9 +2593,12 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={lockBoxKeyIssueReturnDateKeyReturned}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnDateKeyReturned(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2336,19 +2606,55 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={lockBoxKeyIssueReturnAddress}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnAddress(e.target.value)
+                }
               />
             </div>
             <div className="Residentrights">
               <p>
-                I, ______________________________________ will be responsible
-                for my individual lock box key to ____________ Corporation lock
-                box located in my room. I will not give my key to anyone except
-                to staff upon request. I understand that if I loose my key I
-                will be charged a $_____ re-key fee. I understand that upon my
-                discharge from this program I will return my key to the program.
+                I,{" "}
+                <span>
+                  <input
+                    type="text"
+                    placeholder="________"
+                    value={lockBoxKeyIssueReturnResponsibleFor}
+                    onChange={(e) =>
+                      setLockBoxKeyIssueReturnResponsibleFor(e.target.value)
+                    }
+                  />
+                </span>{" "}
+                will be responsible for my individual lock box key to
+                <span>
+                  <input
+                    type="text"
+                    placeholder="________"
+                    value={lockBoxKeyIssueReturnResponsibleForCorporation}
+                    onChange={(e) =>
+                      setLockBoxKeyIssueReturnResponsibleForCorporation(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>{" "}
+                Corporation lock box located in my room. I will not give my key
+                to anyone except to staff upon request. I understand that if I
+                loose my key I will be charged a $
+                <span>
+                  <input
+                    type="text"
+                    placeholder="________"
+                    value={lockBoxKeyIssueReturnCharged}
+                    onChange={(e) =>
+                      setLockBoxKeyIssueReturnCharged(e.target.value)
+                    }
+                  />
+                </span>{" "}
+                re-key fee. I understand that upon my discharge from this
+                program I will return my key to the program.
               </p>
             </div>
             <label
@@ -2360,35 +2666,48 @@ const ResidentIntakes = () => {
                 color: "#000000",
               }}
             >
+              Resident Name:
+            </label>
+            <input
+              placeholder="Name"
+              value={lockBoxKeyIssueReturnResidentName}
+              type="text"
+              onChange={(e) =>
+                setLockBoxKeyIssueReturnResidentName(e.target.value)
+              }
+            />
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
               Resident Signature:
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              placeholder="Signature"
+              value={lockBoxKeyIssueReturnResidentSignature}
+              type="text"
+              onChange={(e) =>
+                setLockBoxKeyIssueReturnResidentSignature(e.target.value)
+              }
+            />
+
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={lockBoxKeyIssueReturnResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnResidentDate(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2396,9 +2715,14 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={lockBoxKeyIssueReturnGuardianRepresentativeName}
                 placeholder="Enter text"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnGuardianRepresentativeName(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <label
@@ -2412,33 +2736,30 @@ const ResidentIntakes = () => {
             >
               Guardian/Representative Signature:
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              placeholder="Signature"
+              value={lockBoxKeyIssueReturnGuardianRepresentativeSignature}
+              onChange={(e) =>
+                setLockBoxKeyIssueReturnGuardianRepresentativeSignature(
+                  e.target.value
+                )
+              }
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={lockBoxKeyIssueReturnGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnGuardianRepresentativeDate(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <div className="form-field">
@@ -2446,9 +2767,25 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={lockBoxKeyIssueReturnStaffName}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnStaffName(e.target.value)
+                }
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="AHCCCS">Signature Witness</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={lockBoxKeyIssueReturnStaffSignature}
+                placeholder="Enter signature"
+                required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnStaffSignature(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2457,9 +2794,12 @@ const ResidentIntakes = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={lockBoxKeyIssueReturnStaffDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setLockBoxKeyIssueReturnStaffDate(e.target.value)
+                }
               />
             </div>
             <h6
@@ -2475,66 +2815,398 @@ const ResidentIntakes = () => {
             <div className="Residentrights">
               <p>Primary Insurance:</p>
               <p>
-                Name of Policyholder ______________________________ Policy
-                holder Date of Birth ___________________
+                Name of Policyholder{" "}
+                <span>
+                  <input
+                    type="text"
+                    placeholder="_______"
+                    value={insuranceInformationPrimaryInsurancePolicyholderName}
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsurancePolicyholderName(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>{" "}
+                Policy holder Date of Birth{" "}
+                <span>
+                  <input
+                    type="date"
+                    value={
+                      insuranceInformationPrimaryInsurancePolicyholderDateOfBirth
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsurancePolicyholderDateOfBirth(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 Policyholder Address (if different than Resident)
-                __________________________________________________
+                <span>
+                  <input
+                    type="text"
+                    value={
+                      insuranceInformationPrimaryInsurancePolicyholderAddress
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsurancePolicyholderAddress(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 City, State, Zip
-                ______________________________________________________
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={insuranceInformationPrimaryInsurancePolicyholderCity}
+                  onChange={(e) =>
+                    setInsuranceInformationPrimaryInsurancePolicyholderCity(
+                      e.target.value
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  placeholder="State"
+                  value={insuranceInformationPrimaryInsurancePolicyholderState}
+                  onChange={(e) =>
+                    setInsuranceInformationPrimaryInsurancePolicyholderState(
+                      e.target.value
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  placeholder="Zip"
+                  value={insuranceInformationPrimaryInsurancePolicyholderZip}
+                  onChange={(e) =>
+                    setInsuranceInformationPrimaryInsurancePolicyholderZip(
+                      e.target.value
+                    )
+                  }
+                />
               </p>
               <p>
                 Phone Number
-                ______________________________________________________
+                <span>
+                  <input
+                    type="text"
+                    placeholder="_______"
+                    value={
+                      insuranceInformationPrimaryInsurancePolicyholderPhone
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsurancePolicyholderPhone(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 Policyholder Relationship to Resident
-                _________________________________
+                <span>
+                  <input
+                    type="text"
+                    placeholder="_______"
+                    value={
+                      insuranceInformationPrimaryInsurancePolicyholderRelationship
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsurancePolicyholderRelationship(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
-                Insurance Company Name _________________________________________
+                Insurance Company Name{" "}
+                <span>
+                  <input
+                    type="text"
+                    placeholder="____"
+                    value={insuranceInformationPrimaryInsuranceCompany}
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsuranceCompany(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 Customer Service Phone Number
-                ____________________________________
+                <span>
+                  <input
+                    type="text"
+                    placeholder="______"
+                    value={
+                      insuranceInformationPrimaryInsuranceCustomerServicePhone
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsuranceCustomerServicePhone(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
-                Subscriber # _____________________ Group# _______________
-                Effective Date _____________________
+                Subscriber #{" "}
+                <span>
+                  <input
+                    type="text"
+                    placeholder="______"
+                    value={insuranceInformationPrimaryInsuranceSubscriberNumber}
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsuranceSubscriberNumber(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>{" "}
+                Group#{" "}
+                <span>
+                  <input
+                    type="text"
+                    placeholder="______"
+                    value={insuranceInformationPrimaryInsuranceSubscriberGroup}
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsuranceSubscriberGroup(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
+                Effective Date{" "}
+                <span>
+                  <input
+                    type="date"
+                    value={
+                      insuranceInformationPrimaryInsuranceSubscriberEffectiveDate
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationPrimaryInsuranceSubscriberEffectiveDate(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
-                Secondary Insurance Name of Policyholder ____________________
-                Policy holder Date of Birth __________
+                Secondary Insurance Name of Policyholder{" "}
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsurancePolicyholderName
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsurancePolicyholderName(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
+              </p>
+              <p>
+                Policy holder Date of Birth{" "}
+                <span>
+                  <input
+                    type="date"
+                    value={
+                      insuranceInformationSecondaryInsurancePolicyholderDateOfBirth
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsurancePolicyholderDateOfBirth(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 Policyholder Address (if different than Resident)
-                ___________________________
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsurancePolicyholderAddress
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsurancePolicyholderAddress(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 City, State, Zip
-                ______________________________________________________
+                <input
+                  type="text"
+                  placeholder="City"
+                  style={{ outline: "none", border: "none" }}
+                  value={insuranceInformationSecondaryInsurancePolicyholderCity}
+                  onChange={(e) =>
+                    setInsuranceInformationSecondaryInsurancePolicyholderCity(
+                      e.target.value
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  placeholder="State"
+                  style={{ outline: "none", border: "none" }}
+                  value={
+                    insuranceInformationSecondaryInsurancePolicyholderState
+                  }
+                  onChange={(e) =>
+                    setInsuranceInformationSecondaryInsurancePolicyholderState(
+                      e.target.value
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  placeholder="Zip"
+                  style={{ outline: "none", border: "none" }}
+                  value={insuranceInformationSecondaryInsurancePolicyholderZip}
+                  onChange={(e) =>
+                    setInsuranceInformationSecondaryInsurancePolicyholderZip(
+                      e.target.value
+                    )
+                  }
+                />
               </p>
               <p>
                 Phone Number
-                ______________________________________________________
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsurancePolicyholderPhone
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsurancePolicyholderPhone(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 Policyholder Relationship to Resident
-                _________________________________
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsurancePolicyholderRelationship
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsurancePolicyholderRelationship(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
-                Insurance Company Name _________________________________________
+                Insurance Company Name{" "}
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={insuranceInformationSecondaryInsuranceCompany}
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsuranceCompany(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 Customer Service Phone Number
-                ____________________________________
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsuranceCustomerServicePhone
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsuranceCustomerServicePhone(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
-                Subscriber # _____________________ Group# _______________
-                Effective Date ______________________
+                Subscriber #
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsuranceSubscriberNumber
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsuranceSubscriberNumber(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>{" "}
+                Group#{" "}
+                <span>
+                  <input
+                    type="text"
+                    style={{ outline: "none", border: "none" }}
+                    placeholder="_______"
+                    value={
+                      insuranceInformationSecondaryInsuranceSubscriberGroup
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsuranceSubscriberGroup(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
+                Effective Date{" "}
+                <span>
+                  <input
+                    type="date"
+                    value={
+                      insuranceInformationSecondaryInsuranceSubscriberEffectiveDate
+                    }
+                    onChange={(e) =>
+                      setInsuranceInformationSecondaryInsuranceSubscriberEffectiveDate(
+                        e.target.value
+                      )
+                    }
+                  />
+                </span>
               </p>
               <p>
                 OBLIGATIONS OF RESPONSIBLE PARTY: Our facility files for
@@ -2556,6 +3228,19 @@ const ResidentIntakes = () => {
                 payable to me.
               </p>
             </div>
+            <div className="form-field">
+              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={obligationsAndAuthorizationResidentName}
+                placeholder="Enter Name"
+                required
+                onChange={(e) =>
+                  setObligationsAndAuthorizationResidentName(e.target.value)
+                }
+              />
+            </div>
             <label
               htmlFor=""
               style={{
@@ -2567,33 +3252,25 @@ const ResidentIntakes = () => {
             >
               Resident Signature:
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              value={obligationsAndAuthorizationResidentSignature}
+              onChange={(e) =>
+                setObligationsAndAuthorizationResidentSignature(e.target.value)
+              }
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={obligationsAndAuthorizationResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setObligationsAndAuthorizationResidentDate(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -2601,9 +3278,14 @@ const ResidentIntakes = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={obligationsAndAuthorizationGuardianRepresentativeName}
                 placeholder="Enter Name"
                 required
+                onChange={(e) =>
+                  setObligationsAndAuthorizationGuardianRepresentativeName(
+                    e.target.value
+                  )
+                }
               />
             </div>
             <label
@@ -2617,33 +3299,29 @@ const ResidentIntakes = () => {
             >
               Guardian/Representative Signature:
             </label>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <input
+              type="text"
+              value={obligationsAndAuthorizationGuardianRepresentativeSignature}
+              onChange={(e) =>
+                setObligationsAndAuthorizationGuardianRepresentativeSignature(
+                  e.target.value
+                )
+              }
+            />
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={obligationsAndAuthorizationGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setObligationsAndAuthorizationGuardianRepresentativeDate(
+                    e.target.value
+                  )
+                }
               />
             </div>
           </div>

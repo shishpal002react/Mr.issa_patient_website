@@ -75,7 +75,7 @@ const ResidentIntakes = () => {
   const [photoVideoConsentAdmissionDate, setPhotoVideoConsentAdmissionDate] =
     useState("");
   const [photoVideoConsentConsentGiven, setPhotoVideoConsentConsentGiven] =
-    useState("");
+    useState();
   const [
     photoVideoConsentConsentWithdrawn,
     setPhotoVideoConsentConsentWithdrawn,
@@ -579,11 +579,8 @@ const ResidentIntakes = () => {
     staffName,
     staffSignature,
     staffDate,
-    internalName,
-    internalRelationship,
-    internalContect,
     internalDisclosureList,
-    internalDisclosureListExpire,
+    // internalDisclosureListExpire,
     internalDisclosureListResidentName,
     internalDisclosureListResidentSignature,
     internalDisclosureListResidentDate,
@@ -797,6 +794,40 @@ const ResidentIntakes = () => {
             >
               Resident’s Details
             </h2>
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
+              Company Name
+            </label>
+
+            <input
+              type="text"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+            />
+            <label
+              htmlFor=""
+              style={{
+                marginRight: "50px",
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
+              Resident residentName
+            </label>
+
+            <input
+              type="text"
+              value={residentName}
+              onChange={(e) => setResidentName(e.target.value)}
+            />
             <label
               htmlFor=""
               style={{
@@ -1620,12 +1651,15 @@ const ResidentIntakes = () => {
             >
               Consent ConsentGiven
             </label>
-            <input
-              type="text"
+            <select
+              type="select"
               value={photoVideoConsentConsentGiven}
-              placeholder="Signature details"
               onChange={(e) => setPhotoVideoConsentConsentGiven(e.target.value)}
-            />
+            >
+              <option>Open this select menu</option>
+              <option value={true}>True</option>
+              <option value={false}>False</option>
+            </select>
             <label
               htmlFor=""
               style={{
@@ -1637,14 +1671,25 @@ const ResidentIntakes = () => {
             >
               Consent ConsentWithdrawn
             </label>
-            <input
+            <select
+              type="select"
+              value={photoVideoConsentConsentWithdrawn}
+              onChange={(e) =>
+                setPhotoVideoConsentConsentWithdrawn(e.target.value)
+              }
+            >
+              <option>Open this select menu</option>
+              <option value={true}>True</option>
+              <option value={false}>False</option>
+            </select>
+            {/* <input
               type="text"
               placeholder="Consent Withdrawn"
               value={photoVideoConsentConsentWithdrawn}
               onChange={(e) =>
                 setPhotoVideoConsentConsentWithdrawn(e.target.value)
               }
-            />
+            /> */}
 
             <label
               htmlFor=""
@@ -1855,7 +1900,7 @@ const ResidentIntakes = () => {
                 }
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="dateOfadress">Address</label>
               <input
                 style={{ color: "#1A9FB2" }}
@@ -1868,7 +1913,7 @@ const ResidentIntakes = () => {
                   setAdvanceDirectivesResidentAddress(e.target.value)
                 }
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date</label>
               <input
@@ -2236,14 +2281,17 @@ const ResidentIntakes = () => {
             </h6>
             <p style={{ color: "#000000" }}>
               I,{" "}
-              <input
-                style={{ outline: "none", border: "none" }}
-                type="text"
-                value={complaintProcessAcknowledgementCompany}
-                onChange={(e) =>
-                  setComplaintProcessAcknowledgementCompany(e.target.value)
-                }
-              />{" "}
+              <span>
+                <input
+                  style={{ outline: "none", border: "none" }}
+                  type="text"
+                  placeholder="________"
+                  value={complaintProcessAcknowledgementCompany}
+                  onChange={(e) =>
+                    setComplaintProcessAcknowledgementCompany(e.target.value)
+                  }
+                />
+              </span>{" "}
               have been explained by facility staff of the facility resident
               complaint process. Resident/Guardian understands that they have
               the right to file complaint with the facility, and with the
@@ -2578,7 +2626,7 @@ const ResidentIntakes = () => {
             <div className="form-field">
               <label htmlFor="AHCCCS">Date Key Issued:</label>
               <input
-                type="text"
+                type="date"
                 id="AHCCCS"
                 value={lockBoxKeyIssueReturnDateKeyIssued}
                 placeholder="Enter Name"
@@ -2591,7 +2639,7 @@ const ResidentIntakes = () => {
             <div className="form-field">
               <label htmlFor="AHCCCS">Date Key Returned:</label>
               <input
-                type="text"
+                type="date"
                 id="AHCCCS"
                 value={lockBoxKeyIssueReturnDateKeyReturned}
                 placeholder="Enter Name"
@@ -2645,8 +2693,8 @@ const ResidentIntakes = () => {
                 loose my key I will be charged a $
                 <span>
                   <input
-                    type="text"
-                    placeholder="________"
+                    type="number"
+                    placeholder={0}
                     value={lockBoxKeyIssueReturnCharged}
                     onChange={(e) =>
                       setLockBoxKeyIssueReturnCharged(e.target.value)
@@ -2973,17 +3021,19 @@ const ResidentIntakes = () => {
                   />
                 </span>{" "}
                 Group#{" "}
+                <input
+                  type="text"
+                  id="group_Data"
+                  style={{ display: "inline-block" }}
+                  value={insuranceInformationPrimaryInsuranceSubscriberGroup}
+                  onChange={(e) =>
+                    setInsuranceInformationPrimaryInsuranceSubscriberGroup(
+                      e.target.value
+                    )
+                  }
+                />
                 <span>
-                  <input
-                    type="text"
-                    placeholder="______"
-                    value={insuranceInformationPrimaryInsuranceSubscriberGroup}
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsuranceSubscriberGroup(
-                        e.target.value
-                      )
-                    }
-                  />
+                  <label htmlFor="group_Data">__________</label>
                 </span>
                 Effective Date{" "}
                 <span>

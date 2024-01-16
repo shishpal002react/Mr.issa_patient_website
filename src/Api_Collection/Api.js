@@ -76,7 +76,7 @@ export const patient_form = async (payLoad) => {
 export const Resident_form = async (payLoad) => {
   try {
     const res = await axios.post(
-      `${BaseUrl}Patient/createTreatmentPlan`,
+      `${BaseUrl}Patient/createResidentIntake`,
       payLoad,
       Token
     );

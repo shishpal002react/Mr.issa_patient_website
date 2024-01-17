@@ -10,7 +10,7 @@ import body5 from "../../img/body5.png";
 import body6 from "../../img/body6.png";
 import body7 from "../../img/body7.png";
 import body8 from "../../img/body8.png";
-import { user_detail } from "../../Api_Collection/Api";
+import { user_detail, Nurssing_form } from "../../Api_Collection/Api";
 
 const NursingAssessment = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const NursingAssessment = () => {
     careProvidedBehavioralHealthServices,
     setCareProvidedBehavioralHealthServices,
   ] = useState("");
-  const [vitalsBloodPressure, setVitalsBloodPressure] = useState("");
+  const [vitalsBloodPressure, setVitalsBloodPressure] = useState(0);
   const [vitalsPulse, setVitalsPulse] = useState(0);
   const [vitalsRespiratoryRate, setVitalsRespiratoryRate] = useState(0);
   const [vitalsOxygenLevel, setVitalsOxygenLevel] = useState(0);
@@ -42,43 +42,43 @@ const NursingAssessment = () => {
   const [
     covid19ScreeningSymptomsFeverOrChills,
     setCovid19ScreeningSymptomsFeverOrChills,
-  ] = useState(true);
+  ] = useState();
   const [
     covid19ScreeningSymptomsShortnessOfBreath,
     setCovid19ScreeningSymptomsShortnessOfBreath,
-  ] = useState(false);
+  ] = useState();
   const [
     covid19ScreeningSymptomsSoreThroat,
     setCovid19ScreeningSymptomsSoreThroat,
-  ] = useState(false);
+  ] = useState();
   const [
     covid19ScreeningSymptomsDiarrhea,
     setCovid19ScreeningSymptomsDiarrhea,
-  ] = useState(true);
+  ] = useState();
   const [covid19ScreeningSymptomsCough, setCovid19ScreeningSymptomsCough] =
-    useState(true);
+    useState();
   const [
     covid19ScreeningSymptomsBodyAches,
     setCovid19ScreeningSymptomsBodyAches,
-  ] = useState(false);
+  ] = useState();
   const [
     covid19ScreeningSymptomsCongestionOrRunnyNose,
     setCovid19ScreeningSymptomsCongestionOrRunnyNose,
-  ] = useState(false);
+  ] = useState();
   const [
     covid19ScreeningSymptomsLossOfTasteOrSmell,
     setCovid19ScreeningSymptomsLossOfTasteOrSmell,
-  ] = useState(true);
+  ] = useState();
   const [covid19ScreeningSymptomsFatigue, setCovid19ScreeningSymptomsFatigue] =
-    useState(true);
+    useState();
   const [
     covid19ScreeningSymptomsHeadache,
     setCovid19ScreeningSymptomsHeadache,
-  ] = useState(false);
+  ] = useState();
   const [
     covid19ScreeningSymptomsNauseaOrVomiting,
     setCovid19ScreeningSymptomsNauseaOrVomiting,
-  ] = useState(true);
+  ] = useState();
   const [reviewOfSystemsConstitutional, setReviewOfSystemsConstitutional] =
     useState("");
   const [reviewOfSystemsCardiovascular, setReviewOfSystemsCardiovascular] =
@@ -111,27 +111,27 @@ const NursingAssessment = () => {
   const [
     suicidalRiskAssessmentDeniesSymptomsBellow,
     setSuicidalRiskAssessmentDeniesSymptomsBellow,
-  ] = useState(true);
+  ] = useState(false);
   const [behavioralSymptoms, setBehavioralSymptoms] = useState("");
   const [physicalSymptoms, setPhysicalSymptoms] = useState("");
   const [psychosocialSymptoms, setPsychosocialSymptoms] = useState("");
-  const [currentMedications, setCurrentMedications] = useState("");
+  const [currentMedications, setCurrentMedications] = useState(false);
   const [nutritionDiet, setNutritionDiet] = useState("");
   const [nutritionSpecialDietOrder, setNutritionSpecialDietOrder] =
     useState("");
   const [nutritionFluidRestrictions, setNutritionFluidRestrictions] =
-    useState("");
+    useState();
   const [skinCheck, setSkinCheck] = useState("");
   const [residentDeniesSkinConcerns, setResidentDeniesSkinConcerns] =
-    useState(true);
-  const [front, setFront] = useState("");
-  const [back, setBack] = useState("");
-  const [sideLeft, setSideLeft] = useState();
-  const [sideRight, setSideRight] = useState();
-  const [legFront, setLegFront] = useState();
-  const [legBack, setLegBack] = useState();
-  const [legLeft, setLegLeft] = useState();
-  const [legRight, setLegRight] = useState();
+    useState(false);
+  const [front, setFront] = useState(false);
+  const [back, setBack] = useState(false);
+  const [sideLeft, setSideLeft] = useState(false);
+  const [sideRight, setSideRight] = useState(false);
+  const [legFront, setLegFront] = useState(false);
+  const [legBack, setLegBack] = useState(false);
+  const [legLeft, setLegLeft] = useState(false);
+  const [legRight, setLegRight] = useState(false);
   const [bhtName, setBhtName] = useState("");
   const [bhtSignature, setBhtSignature] = useState("");
   const [rnName, setRnName] = useState("");
@@ -144,6 +144,125 @@ const NursingAssessment = () => {
   useEffect(() => {
     user_detail(setUserDetail);
   }, []);
+
+  const initialData = () => {
+    setUserId('');
+    setAdmissionDate('');
+    setTodayDate('');
+    setAdmissionDiagnoses('');
+    setCodeStatus('');
+    setLastTBScreeningDate('');
+    setTbScreeningResults('');
+    setCareProvidedPhysicalServices('');
+    setCareProvidedBehavioralHealthServices('');
+    setVitalsBloodPressure(0);
+    setVitalsPulse(0);
+    setVitalsRespiratoryRate(0);
+    setVitalsOxygenLevel(0);
+    setVitalsTemperature(0);
+    setVitalsWeight(0);
+    setVitalsHeightFeet(0);
+    setVitalsHeightInches(0);
+    setAllergies('');
+    setCovid19ScreeningSymptomsFeverOrChills(false);
+    setCovid19ScreeningSymptomsShortnessOfBreath(false);
+    setCovid19ScreeningSymptomsSoreThroat(false);
+    setCovid19ScreeningSymptomsDiarrhea(false);
+    setCovid19ScreeningSymptomsCough(false);
+    setCovid19ScreeningSymptomsBodyAches(false);
+    setCovid19ScreeningSymptomsCongestionOrRunnyNose(false);
+    setCovid19ScreeningSymptomsLossOfTasteOrSmell(false);
+    setCovid19ScreeningSymptomsFatigue(false);
+    setCovid19ScreeningSymptomsHeadache(false);
+    setCovid19ScreeningSymptomsNauseaOrVomiting(false);
+    setReviewOfSystemsConstitutional('');
+    setReviewOfSystemsCardiovascular('');
+    setReviewOfSystemsEndocrine('');
+    setReviewOfSystemsGastrointestinal('');
+    setReviewOfSystemsGenitourinary('');
+    setReviewOfSystemsHematologyOncology('');
+    setReviewOfSystemsHeadNeckThroat('');
+    setReviewOfSystemsIntegumentary('');
+    setReviewOfSystemsMusculoskeletal('');
+    setReviewOfSystemsPsychiatric('');
+    setReviewOfSystemsNeurologic('');
+    setReviewOfSystemsRespiratory('');
+    setReviewOfSystemsAllergicImmunologic('');
+    setSuicidalRiskAssessmentDeniesSymptomsBellow(false);
+    setBehavioralSymptoms('');
+    setPhysicalSymptoms('');
+    setPsychosocialSymptoms('');
+    setCurrentMedications('');
+    setNutritionDiet('');
+    setNutritionSpecialDietOrder('');
+    setNutritionFluidRestrictions('');
+    setSkinCheck('');
+    setResidentDeniesSkinConcerns(false);
+    setFront('');
+    setBack('');
+    setSideLeft('');
+    setSideRight('');
+    setLegFront('');
+    setLegBack('');
+    setLegLeft('');
+    setLegRight('');
+    setBhtName('');
+    setBhtSignature('');
+    setRnName('');
+    setRnSignature('');
+  };
+  
+
+  const handlePost = (e) => {
+    e.preventDefault();
+    const data = {
+      userId,
+      admissionDate,
+      todayDate,
+      admissionDiagnoses,
+      codeStatus,
+      lastTBScreeningDate,
+      tbScreeningResults,
+      careProvidedPhysicalServices,
+      careProvidedBehavioralHealthServices,
+      vitalsBloodPressure,
+      vitalsPulse,
+      vitalsRespiratoryRate,
+      vitalsOxygenLevel,
+      vitalsTemperature,
+      vitalsWeight,
+      vitalsHeightFeet,
+      vitalsHeightInches,
+      allergies,
+      covid19ScreeningSymptomsFeverOrChills,
+      covid19ScreeningSymptomsShortnessOfBreath,
+      reviewOfSystemsConstitutional,
+      suicidalRiskAssessmentDeniesSymptomsBellow,
+      behavioralSymptoms,
+      physicalSymptoms,
+      psychosocialSymptoms,
+      currentMedications,
+      nutritionDiet,
+      nutritionSpecialDietOrder,
+      nutritionFluidRestrictions,
+      skinCheck,
+      residentDeniesSkinConcerns,
+      front,
+      back,
+      sideLeft,
+      sideRight,
+      legFront,
+      legBack,
+      legLeft,
+      legRight,
+      bhtName,
+      bhtSignature,
+      rnName,
+      rnSignature,
+    };
+    Nurssing_form(data)
+    initialData();
+  };
 
   return (
     <>
@@ -164,7 +283,7 @@ const NursingAssessment = () => {
             <h1>Initial Nursing Assessment</h1>
           </div>
         </div>
-        <form action="">
+        <form onSubmit={handlePost}>
           <div className="form-section">
             <h2>Resident’s Details</h2>
             <div className="form-field">
@@ -188,10 +307,11 @@ const NursingAssessment = () => {
                 value={admissionDate}
                 placeholder="DD/MM/YYYY"
                 required
-                onChange={(e) => setTodayDate(e.target.value)}
+                onChange={(e) => setAdmissionDate(e.target.value)}
               />
             </div>
-            {/* <div className="form-field">
+          </div>
+          {/* <div className="form-field">
                             <label htmlFor="AHCCCS">Resident Full Name</label>
                             <input
                                 type="text"
@@ -202,7 +322,7 @@ const NursingAssessment = () => {
                                 onChange={(e)=>setAdmissionDiagnoses(e.target.value)}
                             />
                         </div> */}
-            {/* <div className="form-field">
+          {/* <div className="form-field">
                             <label htmlFor="admissionDate">Date of Birth</label>
                             <input
                                 style={{ color: '#1A9FB2' }}
@@ -214,7 +334,7 @@ const NursingAssessment = () => {
                                 onChange={(e)=>setLastTBScreeningDate(e.target.value)}
                             />
                         </div> */}
-            {/* <div className="form-field">
+          {/* <div className="form-field">
                             <label htmlFor="AHCCCS">Age</label>
                             <input
                                 type="text"
@@ -224,7 +344,7 @@ const NursingAssessment = () => {
                                 required
                             />
                         </div> */}
-            {/* <div className="form-field">
+          {/* <div className="form-field">
                             <label htmlFor="AHCCCS">Select Gender</label>
                             <div className='genderdiv'>
                                 <div className='genderbox'>
@@ -237,371 +357,565 @@ const NursingAssessment = () => {
                                 </div>
                             </div>
                         </div> */}
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Admission Diagnosis</label>
-              <textarea
-                type="text"
-                id="AHCCCS"
-                value={admissionDiagnoses}
-                rows={5}
-                cols={130}
-                placeholder="Enter text."
-                required
-                onChange={(e) => setAdmissionDiagnoses(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="gender">Code Status</label>
-              <select
-                id="gender"
-                value={codeStatus}
-                required
-                onChange={(e) => setCodeStatus(e.target.value)}
-              >
-                <option value="Sample Code Status">Full Code</option>
-                <option value="Full Code">Full Code</option>
-                <option value="DNR">DNR</option>
-              </select>
-            </div>
-            <div className="form-field">
-              <label htmlFor="admissionDate">Date of Last TB Screening</label>
-              <input
-                style={{ color: "#1A9FB2" }}
-                type="date"
-                id="dateOfBirth"
-                value={lastTBScreeningDate}
-                placeholder="DD/MM/YYYY"
-                required
-                onChange={(e) => setLastTBScreeningDate(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="gender">Results of TB Screening</label>
-              <select
-                id="gender"
-                value={tbScreeningResults}
-                required
-                onChange={(e) => setTbScreeningResults(e.target.value)}
-              >
-                <option value="Negative">Negative</option>
-                <option value="Positive">Positive</option>
-                <option value="Pending">Pending</option>
-              </select>
-            </div>
-            <div className="form-field">
-              <label htmlFor="gender">Care to be provided at Devine Care</label>
-              <select
-                id="gender"
-                value={careProvidedPhysicalServices}
-                required
-                onChange={(e) =>
-                  setCareProvidedPhysicalServices(e.target.value)
-                }
-              >
-                <option value="Physical Services">Physical Services</option>
-                <option value="Behavioral Health Services">
-                  Behavioral Health Services
-                </option>
-              </select>
-            </div>
-            <div className="form-field">
-              <label htmlFor="gender">
-                Care to be provided at Care Provided Behavioral Health Services
-                Care
-              </label>
-              <input
-                type="text"
-                placeholder="Care provider"
-                value={careProvidedBehavioralHealthServices}
-                onChange={(e) =>
-                  setCareProvidedBehavioralHealthServices(e.target.value)
-                }
-              />
-            </div>
-            <h2>Vitals</h2>
-            <div className="form-field">
-              <div style={{ display: "flex" }}>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Blood Pressure</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsBloodPressure}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsBloodPressure(e.target.value)}
-                  />
-                </div>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Pulse Rate</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsPulse}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsPulse(e.target.value)}
-                  />
-                </div>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Respiration Rate</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsRespiratoryRate}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => e.target.value}
-                  />
-                </div>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Body Temperature</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsRespiratoryRate}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsRespiratoryRate(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="AHCCCS">Blood Oxygen</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsOxygenLevel}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsOxygenLevel(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div style={{ display: "flex", marginTop: "10px" }}>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Weight</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsWeight}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsWeight(e.target.value)}
-                  />
-                </div>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Height</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsHeightFeet}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsHeightFeet(e.target.value)}
-                  />
-                </div>
-                <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="AHCCCS">Height Inches</label>
-                  <input
-                    type="number"
-                    id="AHCCCS"
-                    value={vitalsHeightInches}
-                    required
-                    style={{ width: "166px", height: "50px" }}
-                    onChange={(e) => setVitalsHeightInches(e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Allergies:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={allergies}
-                required
-                onChange={(e) => setAllergies(e.target.value)}
-              />
-            </div>
-
-            <div className="formsheading">
-              <h6>Covid-19 Screening</h6>
-              <p>
-                Regardless of your vaccination status, have you experienced any
-                of the symptoms bellow in the past 48 hours?
-              </p>
-            </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">New onset of fever or chills?</label>
-              <div>
+          <div className="form-field">
+            <label htmlFor="AHCCCS">Admission Diagnosis</label>
+            <textarea
+              type="text"
+              id="AHCCCS"
+              value={admissionDiagnoses}
+              rows={5}
+              cols={130}
+              placeholder="Enter text."
+              required
+              onChange={(e) => setAdmissionDiagnoses(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="gender">Code Status</label>
+            <select
+              id="gender"
+              value={codeStatus}
+              required
+              onChange={(e) => setCodeStatus(e.target.value)}
+            >
+           
+              <option value="">Select any one</option>
+              <option value="Full Code">Full Code</option>
+              <option value="DNR">DNR</option>
+            </select>
+          </div>
+          <div className="form-field">
+            <label htmlFor="admissionDate">Date of Last TB Screening</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+              id="dateOfBirth"
+              value={lastTBScreeningDate}
+              placeholder="DD/MM/YYYY"
+              required
+              onChange={(e) => setLastTBScreeningDate(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="gender">Results of TB Screening</label>
+            <select
+              id="gender"
+              value={tbScreeningResults}
+              required
+              onChange={(e) => setTbScreeningResults(e.target.value)}
+            >
+              <option value="Negative">Negative</option>
+              <option value="Positive">Positive</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+          <div className="form-field">
+            <label htmlFor="gender">Care to be provided at Devine Care</label>
+            <select
+              id="gender"
+              value={careProvidedPhysicalServices}
+              required
+              onChange={(e) => setCareProvidedPhysicalServices(e.target.value)}
+            >
+              <option value="Physical Services">Physical Services</option>
+              <option value="Behavioral Health Services">
+                Behavioral Health Services
+              </option>
+            </select>
+          </div>
+          <div className="form-field">
+            <label htmlFor="gender">
+              Care to be provided at Care Provided Behavioral Health Services
+              Care
+            </label>
+            <input
+              type="text"
+              placeholder="Care provider"
+              value={careProvidedBehavioralHealthServices}
+              onChange={(e) =>
+                setCareProvidedBehavioralHealthServices(e.target.value)
+              }
+            />
+          </div>
+          <h2>Vitals</h2>
+          <div className="form-field">
+            <div style={{ display: "flex" }}>
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Blood Pressure</label>
                 <input
-                  type="checkbox"
-                  id="yesCheckbox"
-                  onChange={() => setCovid19ScreeningSymptomsFeverOrChills(true)}
-                  checked={covid19ScreeningSymptomsFeverOrChills === true}
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsBloodPressure}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsBloodPressure(e.target.value)}
                 />
-                <label htmlFor="yesCheckbox">Yes</label>
               </div>
-              <div>
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Pulse Rate</label>
                 <input
-                  type="checkbox"
-                  id="noCheckbox"
-                  onChange={() => setCovid19ScreeningSymptomsFeverOrChills(false)}
-                  checked={covid19ScreeningSymptomsFeverOrChills === false}
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsPulse}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsPulse(e.target.value)}
                 />
-                <label htmlFor="noCheckbox">No</label>
               </div>
-              <label htmlFor="">
-                New onset of shortness of breath or difficulty breathing?
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Respiration Rate</label>
+                <input
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsRespiratoryRate}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsRespiratoryRate(e.target.value)}
+                />
+              </div>
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Body Temperature</label>
+                <input
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsTemperature}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsTemperature(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="AHCCCS">Blood Oxygen</label>
+                <input
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsOxygenLevel}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsOxygenLevel(e.target.value)}
+                />
+              </div>
+            </div>
+            <div style={{ display: "flex", marginTop: "10px" }}>
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Weight</label>
+                <input
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsWeight}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsWeight(e.target.value)}
+                />
+              </div>
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Height</label>
+                <input
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsHeightFeet}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsHeightFeet(e.target.value)}
+                />
+              </div>
+              <div style={{ marginRight: "20px" }}>
+                <label htmlFor="AHCCCS">Height Inches</label>
+                <input
+                  type="number"
+                  id="AHCCCS"
+                  value={vitalsHeightInches}
+                  required
+                  style={{ width: "166px", height: "50px" }}
+                  onChange={(e) => setVitalsHeightInches(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="form-field">
+            <label htmlFor="AHCCCS">Allergies:</label>
+            <input
+              type="text"
+              id="AHCCCS"
+              value={allergies}
+              required
+              onChange={(e) => setAllergies(e.target.value)}
+            />
+          </div>
+
+          <div className="formsheading">
+            <h6>Covid-19 Screening</h6>
+            <p>
+              Regardless of your vaccination status, have you experienced any of
+              the symptoms bellow in the past 48 hours?
+            </p>
+          </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">New onset of fever or chills?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="yesCheckbox"
+                checked={covid19ScreeningSymptomsFeverOrChills === true}
+                onChange={() => setCovid19ScreeningSymptomsFeverOrChills(true)}
+              />
+              <label htmlFor="yesCheckbox">Yes</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="noCheckbox"
+                checked={covid19ScreeningSymptomsFeverOrChills === false}
+                onChange={() => setCovid19ScreeningSymptomsFeverOrChills(false)}
+              />
+              <label htmlFor="noCheckbox">No</label>
+            </div>
+            <label htmlFor="">
+              New onset of shortness of breath or difficulty breathing?
+            </label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsShortnessOfBreath"
+                checked={covid19ScreeningSymptomsShortnessOfBreath === true}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsShortnessOfBreath(true)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsShortnessOfBreath">
+                Yes
               </label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsShortnessOfBreath" checked={covid19ScreeningSymptomsShortnessOfBreath===true} onChange={()=>setCovid19ScreeningSymptomsShortnessOfBreath(true)}/>
-                <label htmlFor="covid19ScreeningSymptomsShortnessOfBreath">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsShortnessOfBreathno" checked={covid19ScreeningSymptomsShortnessOfBreath===false} onChange={()=>setCovid19ScreeningSymptomsShortnessOfBreath(false)}/>
-                <label htmlFor="covid19ScreeningSymptomsShortnessOfBreathno">No</label>
-              </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">New onset of sore throat?</label>
-              <div>
-                <input type="checkbox"  id="covid19ScreeningSymptomsSoreThroat" checked={covid19ScreeningSymptomsSoreThroat===true} onChange={()=>setCovid19ScreeningSymptomsSoreThroat(true)}/>
-                <label htmlFor="covid19ScreeningSymptomsSoreThroat">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox"  id="covid19ScreeningSymptomsSoreThroatno" checked={covid19ScreeningSymptomsSoreThroat===false} onChange={()=>setCovid19ScreeningSymptomsSoreThroat(false)}/>
-                <label htmlFor="covid19ScreeningSymptomsSoreThroatno">No</label>
-              </div>
-              <label htmlFor="">New onset of diarrhea?</label>
-              <div>
-                <input type="checkbox"  id="covid19ScreeningSymptomsDiarrhea" checked={covid19ScreeningSymptomsDiarrhea===true} onChange={()=>setCovid19ScreeningSymptomsDiarrhea(true)}/>
-                <label htmlFor="covid19ScreeningSymptomsDiarrhea">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox"  id="covid19ScreeningSymptomsDiarrheano" checked={covid19ScreeningSymptomsDiarrhea===false} onChange={()=>setCovid19ScreeningSymptomsDiarrhea(false)}/>
-                <label htmlFor="covid19ScreeningSymptomsDiarrheano">No</label>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsShortnessOfBreathno"
+                checked={covid19ScreeningSymptomsShortnessOfBreath === false}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsShortnessOfBreath(false)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsShortnessOfBreathno">
+                No
+              </label>
             </div>
+          </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">New onset of sore throat?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsSoreThroat"
+                checked={covid19ScreeningSymptomsSoreThroat === true}
+                onChange={() => setCovid19ScreeningSymptomsSoreThroat(true)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsSoreThroat">Yes</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsSoreThroatno"
+                checked={covid19ScreeningSymptomsSoreThroat === false}
+                onChange={() => setCovid19ScreeningSymptomsSoreThroat(false)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsSoreThroatno">No</label>
+            </div>
+            <label htmlFor="">New onset of diarrhea?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsDiarrhea"
+                checked={covid19ScreeningSymptomsDiarrhea === true}
+                onChange={() => setCovid19ScreeningSymptomsDiarrhea(true)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsDiarrhea">Yes</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsDiarrheano"
+                checked={covid19ScreeningSymptomsDiarrhea === false}
+                onChange={() => setCovid19ScreeningSymptomsDiarrhea(false)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsDiarrheano">No</label>
+            </div>
+          </div>
 
-            <div className="yeschechbox2">
-              <label htmlFor="">New onset of cough?</label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsCough" checked={covid19ScreeningSymptomsCough===true} onChange={()=>setCovid19ScreeningSymptomsCough(true)} />
-                <label htmlFor="covid19ScreeningSymptomsCough">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsCoughno" checked={covid19ScreeningSymptomsCough===false} onChange={()=>setCovid19ScreeningSymptomsCough(false)} />
-                <label htmlFor="covid19ScreeningSymptomsCoughno">No</label>
-              </div>
-              <label htmlFor=""> New onset of muscle or body aches?</label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsBodyAches" checked={covid19ScreeningSymptomsBodyAches===true} onChange={()=>setCovid19ScreeningSymptomsBodyAches(true)}/>
-               <label htmlFor="covid19ScreeningSymptomsBodyAches">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsBodyAchesno" checked={covid19ScreeningSymptomsBodyAches===false} onChange={()=>setCovid19ScreeningSymptomsBodyAches(false)}/>
-               <label htmlFor="covid19ScreeningSymptomsBodyAchesno">No</label>
-              </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">New onset of cough?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsCough"
+                checked={covid19ScreeningSymptomsCough === true}
+                onChange={() => setCovid19ScreeningSymptomsCough(true)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsCough">Yes</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">New onset of congestion or runny nose?</label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsCongestionOrRunnyNose" checked={covid19ScreeningSymptomsCongestionOrRunnyNose===true} onChange={()=>setCovid19ScreeningSymptomsCongestionOrRunnyNose(true)}/>
-               <label htmlFor="covid19ScreeningSymptomsCongestionOrRunnyNose">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsCongestionOrRunnyNoseno" checked={covid19ScreeningSymptomsCongestionOrRunnyNose===false} onChange={()=>setCovid19ScreeningSymptomsCongestionOrRunnyNose(false)}/>
-               <label htmlFor="covid19ScreeningSymptomsCongestionOrRunnyNoseno">No</label>
-              </div>
-              <label htmlFor="">New onset of loss of taste or smell?</label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsLossOfTasteOrSmell" checked={covid19ScreeningSymptomsLossOfTasteOrSmell===true} onChange={()=>setCovid19ScreeningSymptomsLossOfTasteOrSmell(true)} />
-                <label htmlFor="covid19ScreeningSymptomsLossOfTasteOrSmell">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsLossOfTasteOrSmellno" checked={covid19ScreeningSymptomsLossOfTasteOrSmell===false} onChange={()=>setCovid19ScreeningSymptomsLossOfTasteOrSmell(false)} />
-                <label htmlFor="covid19ScreeningSymptomsLossOfTasteOrSmellno">No</label>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsCoughno"
+                checked={covid19ScreeningSymptomsCough === false}
+                onChange={() => setCovid19ScreeningSymptomsCough(false)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsCoughno">No</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">New onset of fatigue? </label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsFatigue" checked={covid19ScreeningSymptomsFatigue===true} onChange={()=>setCovid19ScreeningSymptomsFatigue(true)}/>
-               <label htmlFor="covid19ScreeningSymptomsFatigue">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsFatigueno" checked={covid19ScreeningSymptomsFatigue===false} onChange={()=>setCovid19ScreeningSymptomsFatigue(false)}/>
-               <label htmlFor="covid19ScreeningSymptomsFatigueno">No</label>
-              </div>
-              <label htmlFor="">New onset of headache?</label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsHeadache" checked={covid19ScreeningSymptomsHeadache===true} onChange={()=>setCovid19ScreeningSymptomsHeadache(true)}/>
-                <label htmlFor="covid19ScreeningSymptomsHeadache">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsHeadacheno" checked={covid19ScreeningSymptomsHeadache===false} onChange={()=>setCovid19ScreeningSymptomsHeadache(false)}/>
-                <label htmlFor="covid19ScreeningSymptomsHeadacheno">No</label>
-              </div>
+            <label htmlFor=""> New onset of muscle or body aches?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsBodyAches"
+                checked={covid19ScreeningSymptomsBodyAches === true}
+                onChange={() => setCovid19ScreeningSymptomsBodyAches(true)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsBodyAches">Yes</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">New onset of nausea or vomiting?</label>
-              <div>
-                <input type="checkbox" id="covid19ScreeningSymptomsNauseaOrVomiting" checked={covid19ScreeningSymptomsNauseaOrVomiting===true} onChange={()=>setCovid19ScreeningSymptomsNauseaOrVomiting(true)}/>
-                <label htmlFor="covid19ScreeningSymptomsNauseaOrVomiting">Yes</label>
-              </div>
-              <div>
-              <input type="checkbox" id="covid19ScreeningSymptomsNauseaOrVomitingno" checked={covid19ScreeningSymptomsNauseaOrVomiting===false} onChange={()=>setCovid19ScreeningSymptomsNauseaOrVomiting(false)}/>
-                <label htmlFor="covid19ScreeningSymptomsNauseaOrVomitingno">No</label>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsBodyAchesno"
+                checked={covid19ScreeningSymptomsBodyAches === false}
+                onChange={() => setCovid19ScreeningSymptomsBodyAches(false)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsBodyAchesno">No</label>
             </div>
+          </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">New onset of congestion or runny nose?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsCongestionOrRunnyNose"
+                checked={covid19ScreeningSymptomsCongestionOrRunnyNose === true}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsCongestionOrRunnyNose(true)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsCongestionOrRunnyNose">
+                Yes
+              </label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsCongestionOrRunnyNoseno"
+                checked={
+                  covid19ScreeningSymptomsCongestionOrRunnyNose === false
+                }
+                onChange={() =>
+                  setCovid19ScreeningSymptomsCongestionOrRunnyNose(false)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsCongestionOrRunnyNoseno">
+                No
+              </label>
+            </div>
+            <label htmlFor="">New onset of loss of taste or smell?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsLossOfTasteOrSmell"
+                checked={covid19ScreeningSymptomsLossOfTasteOrSmell === true}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsLossOfTasteOrSmell(true)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsLossOfTasteOrSmell">
+                Yes
+              </label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsLossOfTasteOrSmellno"
+                checked={covid19ScreeningSymptomsLossOfTasteOrSmell === false}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsLossOfTasteOrSmell(false)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsLossOfTasteOrSmellno">
+                No
+              </label>
+            </div>
+          </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">New onset of fatigue? </label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsFatigue"
+                checked={covid19ScreeningSymptomsFatigue === true}
+                onChange={() => setCovid19ScreeningSymptomsFatigue(true)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsFatigue">Yes</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsFatigueno"
+                checked={covid19ScreeningSymptomsFatigue === false}
+                onChange={() => setCovid19ScreeningSymptomsFatigue(false)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsFatigueno">No</label>
+            </div>
+            <label htmlFor="">New onset of headache?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsHeadache"
+                checked={covid19ScreeningSymptomsHeadache === true}
+                onChange={() => setCovid19ScreeningSymptomsHeadache(true)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsHeadache">Yes</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsHeadacheno"
+                checked={covid19ScreeningSymptomsHeadache === false}
+                onChange={() => setCovid19ScreeningSymptomsHeadache(false)}
+              />
+              <label htmlFor="covid19ScreeningSymptomsHeadacheno">No</label>
+            </div>
+          </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">New onset of nausea or vomiting?</label>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsNauseaOrVomiting"
+                checked={covid19ScreeningSymptomsNauseaOrVomiting === true}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsNauseaOrVomiting(true)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsNauseaOrVomiting">
+                Yes
+              </label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="covid19ScreeningSymptomsNauseaOrVomitingno"
+                checked={covid19ScreeningSymptomsNauseaOrVomiting === false}
+                onChange={() =>
+                  setCovid19ScreeningSymptomsNauseaOrVomiting(false)
+                }
+              />
+              <label htmlFor="covid19ScreeningSymptomsNauseaOrVomitingno">
+                No
+              </label>
+            </div>
+          </div>
 
-            <div className="formsheading">
-              <h6>Review Of Systems</h6>
+          <div className="formsheading">
+            <h6>Review Of Systems</h6>
+          </div>
+          <div className="yeschechbox2">
+            <label htmlFor="">Constitutional:</label>
+            <div>
+              <input
+                type="checkbox"
+                id="DENIES"
+                checked={reviewOfSystemsConstitutional === "DENIES"}
+                onChange={() => setReviewOfSystemsConstitutional("DENIES")}
+              />
+              <label htmlFor="DENIES">DENIES</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Constitutional:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Fever</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span> Poor appetite</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Unexplained weight gain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Fatigue</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Chills</span>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Fever"
+                checked={reviewOfSystemsConstitutional === "Fever"}
+                onChange={() => setReviewOfSystemsConstitutional("Fever")}
+              />
+              <label htmlFor="Fever">Fever</label>
             </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Change in appetite</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Night Sweats</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Unexplained weight loss</span>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Poor appetite"
+                checked={reviewOfSystemsConstitutional === "Poor appetite"}
+                onChange={() =>
+                  setReviewOfSystemsConstitutional("Poor appetite")
+                }
+              />
+              <label htmlFor="Poor appetite">Poor appetite</label>
             </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Unexplained weight gain"
+                checked={
+                  reviewOfSystemsConstitutional === "Unexplained weight gain"
+                }
+                onChange={() =>
+                  setReviewOfSystemsConstitutional("Unexplained weight gain")
+                }
+              />
+              <label htmlFor="Unexplained weight gain">
+                Unexplained weight gain
+              </label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Fatigue"
+                checked={reviewOfSystemsConstitutional === "Fatigue"}
+                onChange={() => setReviewOfSystemsConstitutional("Fatigue")}
+              />
+              <label htmlFor="Fatigue">Fatigue</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Chills"
+                checked={reviewOfSystemsConstitutional === "Chills"}
+                onChange={() => setReviewOfSystemsConstitutional("Chills")}
+              />
+              <label htmlFor="Chills">Chills</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Change in appetite"
+                checked={reviewOfSystemsConstitutional === "Change in appetite"}
+                onChange={() =>
+                  setReviewOfSystemsConstitutional("Change in appetite")
+                }
+              />
+              <label htmlFor="Change in appetite">Change in appetite</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Night Sweats"
+                checked={reviewOfSystemsConstitutional === "Night Sweats"}
+                onChange={() =>
+                  setReviewOfSystemsConstitutional("Night Sweats")
+                }
+              />
+              <label htmlFor="Night Sweats">Night Sweats</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Unexplained weight loss"
+                checked={
+                  reviewOfSystemsConstitutional === "Unexplained weight loss"
+                }
+                onChange={() =>
+                  setReviewOfSystemsConstitutional("Unexplained weight loss")
+                }
+              />
+              <label htmlFor="Unexplained weight loss">
+                Unexplained weight loss
+              </label>
+            </div>
+          </div>
 
-            <div className="form-field">
+          {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
@@ -611,35 +925,82 @@ const NursingAssessment = () => {
                 cols={82}
                 required
               />
+            </div> */}
+
+          <div className="yeschechbox2">
+            <label htmlFor="">Cardiovascular:</label>
+            <div>
+              <input
+                type="checkbox"
+                id="DENIES"
+                checked={reviewOfSystemsCardiovascular === "DENIES"}
+                onChange={() => setReviewOfSystemsCardiovascular("DENIES")}
+              />
+              <label htmlFor="DENIES">DENIES</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Cardiovascular:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Chest pain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Shortness of breath</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Racing Pulse</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Swelling of the feet/hands</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Irregular heartbeat</span>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Chest pain"
+                checked={reviewOfSystemsCardiovascular === "Chest pain"}
+                onChange={() => setReviewOfSystemsCardiovascular("Chest pain")}
+              />
+              <label htmlFor="Chest pain">Chest pain</label>
             </div>
-            <div className="yeschechbox2">
+            <div>
+              <input
+                type="checkbox"
+                id="Shortness of breath"
+                checked={
+                  reviewOfSystemsCardiovascular === "Shortness of breath"
+                }
+                onChange={() =>
+                  setReviewOfSystemsCardiovascular("Shortness of breath")
+                }
+              />
+              <label htmlFor="Shortness of breath">Shortness of breath</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Racing Pulse"
+                checked={reviewOfSystemsCardiovascular === "Racing Pulse"}
+                onChange={() =>
+                  setReviewOfSystemsCardiovascular("Racing Pulse")
+                }
+              />
+              <label htmlFor="Racing Pulse">Racing Pulse</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Swelling of the feet/hands"
+                checked={
+                  reviewOfSystemsCardiovascular === "Swelling of the feet/hands"
+                }
+                onChange={() =>
+                  setReviewOfSystemsCardiovascular("Swelling of the feet/hands")
+                }
+              />
+              <label htmlFor="Swelling of the feet/hands">
+                Swelling of the feet/hands
+              </label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="Irregular heartbeat"
+                checked={
+                  reviewOfSystemsCardiovascular === "Irregular heartbeat"
+                }
+                onChange={() =>
+                  setReviewOfSystemsCardiovascular("Irregular heartbeat")
+                }
+              />
+              <label htmlFor="Irregular heartbeat">Irregular heartbeat</label>
+            </div>
+          </div>
+          {/* <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>
@@ -657,35 +1018,67 @@ const NursingAssessment = () => {
                 cols={82}
                 required
               />
+            </div> */}
+          <div className="yeschechbox2">
+            <label htmlFor="">Endocrine:</label>
+            <div>
+              <input
+                type="checkbox"
+                id="deniesEndocrine"
+                checked={reviewOfSystemsEndocrine === "DENIES"}
+                onChange={() => setReviewOfSystemsEndocrine("DENIES")}
+              />
+              <label htmlFor="deniesEndocrine">DENIES</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Endocrine:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Excess thirst</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Excessive urination</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Heat Intolerance</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Cold Intolerance</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Hair loss</span>
-              </div>
+            <div>
+              <input
+                type="checkbox"
+                id="excessThirst"
+                checked={reviewOfSystemsEndocrine === "Excess thirst"}
+                onChange={() => setReviewOfSystemsEndocrine("Excess thirst")}
+              />
+              <label htmlFor="excessThirst">Excess thirst</label>
             </div>
-            <div className="yeschechbox2">
+            <div>
+              <input
+                type="checkbox"
+                id="excessiveUrination"
+                checked={reviewOfSystemsEndocrine === "Excessive urination"}
+                onChange={() =>
+                  setReviewOfSystemsEndocrine("Excessive urination")
+                }
+              />
+              <label htmlFor="excessiveUrination">Excessive urination</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="heatIntolerance"
+                checked={reviewOfSystemsEndocrine === "Heat Intolerance"}
+                onChange={() => setReviewOfSystemsEndocrine("Heat Intolerance")}
+              />
+              <label htmlFor="heatIntolerance">Heat Intolerance</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="coldIntolerance"
+                checked={reviewOfSystemsEndocrine === "Cold Intolerance"}
+                onChange={() => setReviewOfSystemsEndocrine("Cold Intolerance")}
+              />
+              <label htmlFor="coldIntolerance">Cold Intolerance</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="hairLoss"
+                checked={reviewOfSystemsEndocrine === "Hair loss"}
+                onChange={() => setReviewOfSystemsEndocrine("Hair loss")}
+              />
+              <label htmlFor="hairLoss">Hair loss</label>
+            </div>
+          </div>
+          {/* <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Dry skin Is resident’s blood sugar under control?</span>
@@ -706,8 +1099,8 @@ const NursingAssessment = () => {
                 <input type="checkbox" name="" id="" />
                 <span>n/a</span>
               </div>
-            </div>
-            <div className="form-field">
+            </div> */}
+          {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
@@ -717,601 +1110,1008 @@ const NursingAssessment = () => {
                 cols={82}
                 required
               />
-            </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Gastrointestinal:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Abdominal pain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Nausea</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Diarrhea</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Bloody stools</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Stomach Ulcers</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Constipation</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Trouble Swallowing</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Jaundice/yellow skin</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            </div> */}
+          <div className="yeschechbox2">
+            <label htmlFor="">Gastrointestinal:</label>
+            <div>
+              <input
+                type="checkbox"
+                id="deniesGastrointestinal"
+                checked={reviewOfSystemsGastrointestinal === "DENIES"}
+                onChange={() => setReviewOfSystemsGastrointestinal("DENIES")}
               />
+              <label htmlFor="deniesGastrointestinal">DENIES</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Genitourinary: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Genital sores or ulcers</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Kidney failure/problems</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Kidney stones</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Painful/difficult urination</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Testicular pain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Urinary discharge</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            <div>
+              <input
+                type="checkbox"
+                id="abdominalPain"
+                checked={reviewOfSystemsGastrointestinal === "Abdominal pain"}
+                onChange={() =>
+                  setReviewOfSystemsGastrointestinal("Abdominal pain")
+                }
               />
+              <label htmlFor="abdominalPain">Abdominal pain</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Hematology/Oncology:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Easy bruising</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Prolonged bleeding</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            <div>
+              <input
+                type="checkbox"
+                id="nausea"
+                checked={reviewOfSystemsGastrointestinal === "Nausea"}
+                onChange={() => setReviewOfSystemsGastrointestinal("Nausea")}
               />
+              <label htmlFor="nausea">Nausea</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Head, Ease, Nose, Throat: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Hearing loss</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Sore throat</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Runny nose</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Dry mouth</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Jaw Claudication (pain in jaw when chewing)</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Earache</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Missing teeth</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            <div>
+              <input
+                type="checkbox"
+                id="diarrhea"
+                checked={reviewOfSystemsGastrointestinal === "Diarrhea"}
+                onChange={() => setReviewOfSystemsGastrointestinal("Diarrhea")}
               />
+              <label htmlFor="diarrhea">Diarrhea</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Integumentary:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Rash</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Change in mole</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Skin sores</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Skin cancer</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Sever itching </span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Loss of hair</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            <div>
+              <input
+                type="checkbox"
+                id="bloodyStools"
+                checked={reviewOfSystemsGastrointestinal === "Bloody stools"}
+                onChange={() =>
+                  setReviewOfSystemsGastrointestinal("Bloody stools")
+                }
               />
+              <label htmlFor="bloodyStools">Bloody stools</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Musculoskeletal: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Muscle aches</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Difficulty laying flat due to muscle pain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Back pain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Joint pain</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Deformities</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            <div>
+              <input
+                type="checkbox"
+                id="stomachUlcers"
+                checked={reviewOfSystemsGastrointestinal === "Stomach Ulcers"}
+                onChange={() =>
+                  setReviewOfSystemsGastrointestinal("Stomach Ulcers")
+                }
               />
+              <label htmlFor="stomachUlcers">Stomach Ulcers</label>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Psychiatric: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Insomnia</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Irritability</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Depression</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Anxiety</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Recurrent bad thoughts</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Mood swings</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Hallucinations</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Compulsions</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
+            <div>
+              <input
+                type="checkbox"
+                id="constipation"
+                checked={reviewOfSystemsGastrointestinal === "Constipation"}
+                onChange={() =>
+                  setReviewOfSystemsGastrointestinal("Constipation")
+                }
               />
+              <label htmlFor="constipation">Constipation</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="troubleSwallowing"
+                checked={
+                  reviewOfSystemsGastrointestinal === "Trouble Swallowing"
+                }
+                onChange={() =>
+                  setReviewOfSystemsGastrointestinal("Trouble Swallowing")
+                }
+              />
+              <label htmlFor="troubleSwallowing">Trouble Swallowing</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="jaundiceYellowSkin"
+                checked={
+                  reviewOfSystemsGastrointestinal === "Jaundice/yellow skin"
+                }
+                onChange={() =>
+                  setReviewOfSystemsGastrointestinal("Jaundice/yellow skin")
+                }
+              />
+              <label htmlFor="jaundiceYellowSkin">Jaundice/yellow skin</label>
+            </div>
+         </div>
+
+            {/* jojfdf */}
+            <div className="yeschechbox2">
+              <label htmlFor="">Genitourinary:</label>
+              <div>
+                <input
+                  type="checkbox"
+                  id="deniesGenitourinary"
+                  checked={reviewOfSystemsGenitourinary === "DENIES"}
+                  onChange={() => setReviewOfSystemsGenitourinary("DENIES")}
+                />
+                <label htmlFor="deniesGenitourinary">DENIES</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="genitalSoresUlcers"
+                  checked={
+                    reviewOfSystemsGenitourinary === "Genital sores or ulcers"
+                  }
+                  onChange={() =>
+                    setReviewOfSystemsGenitourinary("Genital sores or ulcers")
+                  }
+                />
+                <label htmlFor="genitalSoresUlcers">
+                  Genital sores or ulcers
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="kidneyFailureProblems"
+                  checked={
+                    reviewOfSystemsGenitourinary === "Kidney failure/problems"
+                  }
+                  onChange={() =>
+                    setReviewOfSystemsGenitourinary("Kidney failure/problems")
+                  }
+                />
+                <label htmlFor="kidneyFailureProblems">
+                  Kidney failure/problems
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Kidney stones"
+                  checked={reviewOfSystemsGenitourinary === "Kidney stones"}
+                  onChange={() =>
+                    setReviewOfSystemsGenitourinary("Kidney stones")
+                  }
+                />
+                <label htmlFor="Kidney stones">Kidney stones</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Painful/difficult urination"
+                  checked={
+                    reviewOfSystemsGenitourinary ===
+                    "Painful/difficult urination"
+                  }
+                  onChange={() =>
+                    setReviewOfSystemsGenitourinary(
+                      "Painful/difficult urination"
+                    )
+                  }
+                />
+                <label htmlFor="Painful/difficult urination">
+                  Painful/difficult urination
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Testicular pain"
+                  checked={reviewOfSystemsGenitourinary === "Testicular pain"}
+                  onChange={() =>
+                    setReviewOfSystemsGenitourinary("Testicular pain")
+                  }
+                />
+                <label htmlFor="Testicular pain">Testicular pain</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Urinary discharge"
+                  checked={reviewOfSystemsGenitourinary === "Urinary discharge"}
+                  onChange={() =>
+                    setReviewOfSystemsGenitourinary("Urinary discharge")
+                  }
+                />
+                <label htmlFor="Urinary discharge">Urinary discharge</label>
+              </div>
             </div>
 
             <div className="yeschechbox2">
-              <label htmlFor="">Neurologic: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Weakness</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Headaches</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Scalp tenderness</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Dizziness</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Problems with balance</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Paralysis of extremities</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Tremor</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Stroke</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Numbness or tingling</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Seizures or convulsions</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Fainting</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Problems walking</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
-              />
-            </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Respiratory </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Wheezing</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Cough</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Coughing up blood</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Severe or Frequent colds</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Difficulty breathing</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
-              />
-            </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Allergic/Immunologic: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>DENIES</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Seasonal allergies</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Hay fever symptoms</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Itching </span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span> Frequent infections</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span> Exposure to HIV</span>
-              </div>
-            </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
-              />
-            </div>
+        <label htmlFor="">Hematology/Oncology:</label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesHematologyOncology"
+            checked={reviewOfSystemsHematologyOncology === 'DENIES'}
+            onChange={() => setReviewOfSystemsHematologyOncology('DENIES')}
+          />
+          <label htmlFor="deniesHematologyOncology">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="easyBruising"
+            checked={reviewOfSystemsHematologyOncology === 'Easy bruising'}
+            onChange={() => setReviewOfSystemsHematologyOncology('Easy bruising')}
+          />
+          <label htmlFor="easyBruising">Easy bruising</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="prolongedBleeding"
+            checked={reviewOfSystemsHematologyOncology === 'Prolonged bleeding'}
+            onChange={() => setReviewOfSystemsHematologyOncology('Prolonged bleeding')}
+          />
+          <label htmlFor="prolongedBleeding">Prolonged bleeding</label>
+        </div>
+      </div>
+          
+      <div className="yeschechbox2">
+        <label htmlFor="">Head, Ear, Nose, Throat: </label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesHeadNeckThroat"
+            checked={reviewOfSystemsHeadNeckThroat === 'DENIES'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('DENIES')}
+          />
+          <label htmlFor="deniesHeadNeckThroat">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="hearingLoss"
+            checked={reviewOfSystemsHeadNeckThroat === 'Hearing loss'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Hearing loss')}
+          />
+          <label htmlFor="hearingLoss">Hearing loss</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="soreThroat"
+            checked={reviewOfSystemsHeadNeckThroat === 'Sore throat'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Sore throat')}
+          />
+          <label htmlFor="soreThroat">Sore throat</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="runnyNose"
+            checked={reviewOfSystemsHeadNeckThroat === 'Runny nose'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Runny nose')}
+          />
+          <label htmlFor="runnyNose">Runny nose</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="dryMouth"
+            checked={reviewOfSystemsHeadNeckThroat === 'Dry mouth'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Dry mouth')}
+          />
+          <label htmlFor="dryMouth">Dry mouth</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="jawClaudication"
+            checked={reviewOfSystemsHeadNeckThroat === 'Jaw Claudication (pain in jaw when chewing)'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Jaw Claudication (pain in jaw when chewing)')}
+          />
+          <label htmlFor="jawClaudication">Jaw Claudication (pain in jaw when chewing)</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="earache"
+            checked={reviewOfSystemsHeadNeckThroat === 'Earache'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Earache')}
+          />
+          <label htmlFor="earache">Earache</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="missingTeeth"
+            checked={reviewOfSystemsHeadNeckThroat === 'Missing teeth'}
+            onChange={() => setReviewOfSystemsHeadNeckThroat('Missing teeth')}
+          />
+          <label htmlFor="missingTeeth">Missing teeth</label>
+        </div>
+      </div>
+         
+       
+      <div className="yeschechbox2">
+        <label htmlFor="">Integumentary:</label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesIntegumentary"
+            checked={reviewOfSystemsIntegumentary === 'DENIES'}
+            onChange={() => setReviewOfSystemsIntegumentary('DENIES')}
+          />
+          <label htmlFor="deniesIntegumentary">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="rash"
+            checked={reviewOfSystemsIntegumentary === 'Rash'}
+            onChange={() => setReviewOfSystemsIntegumentary('Rash')}
+          />
+          <label htmlFor="rash">Rash</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="changeInMole"
+            checked={reviewOfSystemsIntegumentary === 'Change in mole'}
+            onChange={() => setReviewOfSystemsIntegumentary('Change in mole')}
+          />
+          <label htmlFor="changeInMole">Change in mole</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="skinSores"
+            checked={reviewOfSystemsIntegumentary === 'Skin sores'}
+            onChange={() => setReviewOfSystemsIntegumentary('Skin sores')}
+          />
+          <label htmlFor="skinSores">Skin sores</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="skinCancer"
+            checked={reviewOfSystemsIntegumentary === 'Skin cancer'}
+            onChange={() => setReviewOfSystemsIntegumentary('Skin cancer')}
+          />
+          <label htmlFor="skinCancer">Skin cancer</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="severeItching"
+            checked={reviewOfSystemsIntegumentary === 'Severe itching'}
+            onChange={() => setReviewOfSystemsIntegumentary('Severe itching')}
+          />
+          <label htmlFor="severeItching">Severe itching</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="lossOfHair"
+            checked={reviewOfSystemsIntegumentary === 'Loss of hair'}
+            onChange={() => setReviewOfSystemsIntegumentary('Loss of hair')}
+          />
+          <label htmlFor="lossOfHair">Loss of hair</label>
+        </div>
+      </div>
+      
+           
+      <div className="yeschechbox2">
+        <label htmlFor="">Musculoskeletal: </label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesMusculoskeletal"
+            checked={reviewOfSystemsMusculoskeletal === 'DENIES'}
+            onChange={() => setReviewOfSystemsMusculoskeletal('DENIES')}
+          />
+          <label htmlFor="deniesMusculoskeletal">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="muscleAches"
+            checked={reviewOfSystemsMusculoskeletal === 'Muscle aches'}
+            onChange={() => setReviewOfSystemsMusculoskeletal('Muscle aches')}
+          />
+          <label htmlFor="muscleAches">Muscle aches</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="difficultyLayingFlat"
+            checked={reviewOfSystemsMusculoskeletal === 'Difficulty laying flat due to muscle pain'}
+            onChange={() => setReviewOfSystemsMusculoskeletal('Difficulty laying flat due to muscle pain')}
+          />
+          <label htmlFor="difficultyLayingFlat">Difficulty laying flat due to muscle pain</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="backPain"
+            checked={reviewOfSystemsMusculoskeletal === 'Back pain'}
+            onChange={() => setReviewOfSystemsMusculoskeletal('Back pain')}
+          />
+          <label htmlFor="backPain">Back pain</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="jointPain"
+            checked={reviewOfSystemsMusculoskeletal === 'Joint pain'}
+            onChange={() => setReviewOfSystemsMusculoskeletal('Joint pain')}
+          />
+          <label htmlFor="jointPain">Joint pain</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="deformities"
+            checked={reviewOfSystemsMusculoskeletal === 'Deformities'}
+            onChange={() => setReviewOfSystemsMusculoskeletal('Deformities')}
+          />
+          <label htmlFor="deformities">Deformities</label>
+        </div>
+      </div>
+          
+          
+      <div className="yeschechbox2">
+        <label htmlFor="">Psychiatric: </label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesPsychiatric"
+            checked={reviewOfSystemsPsychiatric === 'DENIES'}
+            onChange={() => setReviewOfSystemsPsychiatric('DENIES')}
+          />
+          <label htmlFor="deniesPsychiatric">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="insomnia"
+            checked={reviewOfSystemsPsychiatric === 'Insomnia'}
+            onChange={() => setReviewOfSystemsPsychiatric('Insomnia')}
+          />
+          <label htmlFor="insomnia">Insomnia</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="irritability"
+            checked={reviewOfSystemsPsychiatric === 'Irritability'}
+            onChange={() => setReviewOfSystemsPsychiatric('Irritability')}
+          />
+          <label htmlFor="irritability">Irritability</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="depression"
+            checked={reviewOfSystemsPsychiatric === 'Depression'}
+            onChange={() => setReviewOfSystemsPsychiatric('Depression')}
+          />
+          <label htmlFor="depression">Depression</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="anxiety"
+            checked={reviewOfSystemsPsychiatric === 'Anxiety'}
+            onChange={() => setReviewOfSystemsPsychiatric('Anxiety')}
+          />
+          <label htmlFor="anxiety">Anxiety</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="recurrentBadThoughts"
+            checked={reviewOfSystemsPsychiatric === 'Recurrent bad thoughts'}
+            onChange={() => setReviewOfSystemsPsychiatric('Recurrent bad thoughts')}
+          />
+          <label htmlFor="recurrentBadThoughts">Recurrent bad thoughts</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="moodSwings"
+            checked={reviewOfSystemsPsychiatric === 'Mood swings'}
+            onChange={() => setReviewOfSystemsPsychiatric('Mood swings')}
+          />
+          <label htmlFor="moodSwings">Mood swings</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="hallucinations"
+            checked={reviewOfSystemsPsychiatric === 'Hallucinations'}
+            onChange={() => setReviewOfSystemsPsychiatric('Hallucinations')}
+          />
+          <label htmlFor="hallucinations">Hallucinations</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="compulsions"
+            checked={reviewOfSystemsPsychiatric === 'Compulsions'}
+            onChange={() => setReviewOfSystemsPsychiatric('Compulsions')}
+          />
+          <label htmlFor="compulsions">Compulsions</label>
+        </div>
+      </div>
+
+      <div className="yeschechbox2">
+        <label htmlFor="">Neurologic: </label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesNeurologic"
+            checked={reviewOfSystemsNeurologic === 'DENIES'}
+            onChange={() => setReviewOfSystemsNeurologic('DENIES')}
+          />
+          <label htmlFor="deniesNeurologic">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="weakness"
+            checked={reviewOfSystemsNeurologic === 'Weakness'}
+            onChange={() => setReviewOfSystemsNeurologic('Weakness')}
+          />
+          <label htmlFor="weakness">Weakness</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="headaches"
+            checked={reviewOfSystemsNeurologic === 'Headaches'}
+            onChange={() => setReviewOfSystemsNeurologic('Headaches')}
+          />
+          <label htmlFor="headaches">Headaches</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="scalpTenderness"
+            checked={reviewOfSystemsNeurologic === 'Scalp tenderness'}
+            onChange={() => setReviewOfSystemsNeurologic('Scalp tenderness')}
+          />
+          <label htmlFor="scalpTenderness">Scalp tenderness</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="dizziness"
+            checked={reviewOfSystemsNeurologic === 'Dizziness'}
+            onChange={() => setReviewOfSystemsNeurologic('Dizziness')}
+          />
+          <label htmlFor="dizziness">Dizziness</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="balanceProblems"
+            checked={reviewOfSystemsNeurologic === 'Problems with balance'}
+            onChange={() => setReviewOfSystemsNeurologic('Problems with balance')}
+          />
+          <label htmlFor="balanceProblems">Problems with balance</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="paralysis"
+            checked={reviewOfSystemsNeurologic === 'Paralysis of extremities'}
+            onChange={() => setReviewOfSystemsNeurologic('Paralysis of extremities')}
+          />
+          <label htmlFor="paralysis">Paralysis of extremities</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="tremor"
+            checked={reviewOfSystemsNeurologic === 'Tremor'}
+            onChange={() => setReviewOfSystemsNeurologic('Tremor')}
+          />
+          <label htmlFor="tremor">Tremor</label>
+        </div>
+      </div>
+
+      <div className="yeschechbox2">
+       <div>
+          <input
+            type="checkbox"
+            id="stroke"
+            checked={reviewOfSystemsNeurologic === 'Stroke'}
+            onChange={() => setReviewOfSystemsNeurologic('Stroke')}
+          />
+          <label htmlFor="stroke">Stroke</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="numbnessTingling"
+            checked={reviewOfSystemsNeurologic === 'Numbness or tingling'}
+            onChange={() => setReviewOfSystemsNeurologic('Numbness or tingling')}
+          />
+          <label htmlFor="numbnessTingling">Numbness or tingling</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="seizures"
+            checked={reviewOfSystemsNeurologic === 'Seizures or convulsions'}
+            onChange={() => setReviewOfSystemsNeurologic('Seizures or convulsions')}
+          />
+          <label htmlFor="seizures">Seizures or convulsions</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="fainting"
+            checked={reviewOfSystemsNeurologic === 'Fainting'}
+            onChange={() => setReviewOfSystemsNeurologic('Fainting')}
+          />
+          <label htmlFor="fainting">Fainting</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="walkingProblems"
+            checked={reviewOfSystemsNeurologic === 'Problems walking'}
+            onChange={() => setReviewOfSystemsNeurologic('Problems walking')}
+          />
+          <label htmlFor="walkingProblems">Problems walking</label>
+        </div>
+       </div>
+           
+       <div className="yeschechbox2">
+        <label htmlFor="">Respiratory: </label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesRespiratory"
+            checked={reviewOfSystemsRespiratory === 'DENIES'}
+            onChange={() => setReviewOfSystemsRespiratory('DENIES')}
+          />
+          <label htmlFor="deniesRespiratory">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="wheezing"
+            checked={reviewOfSystemsRespiratory === 'Wheezing'}
+            onChange={() => setReviewOfSystemsRespiratory('Wheezing')}
+          />
+          <label htmlFor="wheezing">Wheezing</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="cough"
+            checked={reviewOfSystemsRespiratory === 'Cough'}
+            onChange={() => setReviewOfSystemsRespiratory('Cough')}
+          />
+          <label htmlFor="cough">Cough</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="coughingUpBlood"
+            checked={reviewOfSystemsRespiratory === 'Coughing up blood'}
+            onChange={() => setReviewOfSystemsRespiratory('Coughing up blood')}
+          />
+          <label htmlFor="coughingUpBlood">Coughing up blood</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="severeOrFrequentColds"
+            checked={reviewOfSystemsRespiratory === 'Severe or Frequent colds'}
+            onChange={() => setReviewOfSystemsRespiratory('Severe or Frequent colds')}
+          />
+          <label htmlFor="severeOrFrequentColds">Severe or Frequent colds</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="difficultyBreathing"
+            checked={reviewOfSystemsRespiratory === 'Difficulty breathing'}
+            onChange={() => setReviewOfSystemsRespiratory('Difficulty breathing')}
+          />
+          <label htmlFor="difficultyBreathing">Difficulty breathing</label>
+        </div>
+      </div>
+            
+            
+      <div className="yeschechbox2">
+        <label htmlFor="">Allergic/Immunologic: </label>
+        <div>
+          <input
+            type="checkbox"
+            id="deniesAllergicImmunologic"
+            checked={reviewOfSystemsAllergicImmunologic === 'DENIES'}
+            onChange={() => setReviewOfSystemsAllergicImmunologic('DENIES')}
+          />
+          <label htmlFor="deniesAllergicImmunologic">DENIES</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="seasonalAllergies"
+            checked={reviewOfSystemsAllergicImmunologic === 'Seasonal allergies'}
+            onChange={() => setReviewOfSystemsAllergicImmunologic('Seasonal allergies')}
+          />
+          <label htmlFor="seasonalAllergies">Seasonal allergies</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="hayFeverSymptoms"
+            checked={reviewOfSystemsAllergicImmunologic === 'Hay fever symptoms'}
+            onChange={() => setReviewOfSystemsAllergicImmunologic('Hay fever symptoms')}
+          />
+          <label htmlFor="hayFeverSymptoms">Hay fever symptoms</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="itching"
+            checked={reviewOfSystemsAllergicImmunologic === 'Itching'}
+            onChange={() => setReviewOfSystemsAllergicImmunologic('Itching')}
+          />
+          <label htmlFor="itching">Itching</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="frequentInfections"
+            checked={reviewOfSystemsAllergicImmunologic === 'Frequent infections'}
+            onChange={() => setReviewOfSystemsAllergicImmunologic('Frequent infections')}
+          />
+          <label htmlFor="frequentInfections">Frequent infections</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="exposureToHIV"
+            checked={reviewOfSystemsAllergicImmunologic === 'Exposure to HIV'}
+            onChange={() => setReviewOfSystemsAllergicImmunologic('Exposure to HIV')}
+          />
+          <label htmlFor="exposureToHIV">Exposure to HIV</label>
+        </div>
+      </div>
+            
+           
             <div className="yeschechbox2">
               <label htmlFor="">Suicidal Risk Assessment:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Denies Symptoms Bellow</span>
-              </div>
+        <input
+          type="checkbox"
+          id="suicidalRiskAssessmentDeniesSymptomsBellow"
+          checked={suicidalRiskAssessmentDeniesSymptomsBellow}
+          onChange={()=>setSuicidalRiskAssessmentDeniesSymptomsBellow(!suicidalRiskAssessmentDeniesSymptomsBellow)}
+        />
+        <label htmlFor="suicidalRiskAssessmentDeniesSymptomsBellow">Denies Symptoms Bellow</label>
+      </div>
+      
             </div>
+
+
             <div className="yeschechbox2">
-              <label htmlFor="">Behavioral symptoms: </label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>self-injuring</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>reckless behavior</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>impulsive behaviors</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>shifts in temperament</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>no longer enjoying previous activities</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>talking or writing about death</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Physical symptoms:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>insomnia</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>hypersomnia</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>changes in appetite</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>weight loss/gain</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>panic attacks</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Psychosocial symptoms:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span> helplessness/hopelessness</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span> worthlessness</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>depression</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>anxiety</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>mood swings</span>
-              </div>
-            </div>
-            <div className="yeschechbox2">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Irritable</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Resident contracts for safety.</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>
-                  Resident Safety Plan to be completed within 48 hours of
-                  admission.
-                </span>
-              </div>
-            </div>
+      <label htmlFor="">Behavioral symptoms: </label>
+      <div>
+        <input
+          type="checkbox"
+          id="selfInjuring"
+          checked={behavioralSymptoms === 'self-injuring'}
+          onChange={() => setBehavioralSymptoms('self-injuring')}
+        />
+        <label htmlFor="selfInjuring">self-injuring</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="recklessBehavior"
+          checked={behavioralSymptoms === 'reckless behavior'}
+          onChange={() => setBehavioralSymptoms('reckless behavior')}
+        />
+        <label htmlFor="recklessBehavior">reckless behavior</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="impulsiveBehaviors"
+          checked={behavioralSymptoms === 'impulsive behaviors'}
+          onChange={() => setBehavioralSymptoms('impulsive behaviors')}
+        />
+        <label htmlFor="impulsiveBehaviors">impulsive behaviors</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="shiftsInTemperament"
+          checked={behavioralSymptoms === 'shifts in temperament'}
+          onChange={() => setBehavioralSymptoms('shifts in temperament')}
+        />
+        <label htmlFor="shiftsInTemperament">shifts in temperament</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="noLongerEnjoyingActivities"
+          checked={behavioralSymptoms === 'no longer enjoying previous activities'}
+          onChange={() => setBehavioralSymptoms('no longer enjoying previous activities')}
+        />
+        <label htmlFor="noLongerEnjoyingActivities">no longer enjoying previous activities</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="talkingOrWritingAboutDeath"
+          checked={behavioralSymptoms === 'talking or writing about death'}
+          onChange={() => setBehavioralSymptoms('talking or writing about death')}
+        />
+        <label htmlFor="talkingOrWritingAboutDeath">talking or writing about death</label>
+      </div>
+    </div>
+            
+    <div className="yeschechbox2">
+      <label htmlFor="">Physical symptoms:</label>
+      <div>
+        <input
+          type="checkbox"
+          id="insomnia"
+          checked={physicalSymptoms==='insomnia'}
+          onChange={() => setPhysicalSymptoms('insomnia')}
+        />
+        <label htmlFor="insomnia">insomnia</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="hypersomnia"
+          checked={physicalSymptoms==='hypersomnia'}
+          onChange={() => setPhysicalSymptoms('hypersomnia')}
+        />
+        <label htmlFor="hypersomnia">hypersomnia</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="changesInAppetite"
+          checked={physicalSymptoms==='changes in appetite'}
+          onChange={() => setPhysicalSymptoms('changes in appetite')}
+        />
+        <label htmlFor="changesInAppetite">changes in appetite</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="weightLossGain"
+          checked={physicalSymptoms==='weight loss/gain'}
+          onChange={() => setPhysicalSymptoms('weight loss/gain')}
+        />
+        <label htmlFor="weightLossGain">weight loss/gain</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="panicAttacks"
+          checked={physicalSymptoms==='panic attacks'}
+          onChange={() => setPhysicalSymptoms('panic attacks')}
+        />
+        <label htmlFor="panicAttacks">panic attacks</label>
+      </div>
+    </div>
+    <div className="yeschechbox2">
+      <label htmlFor="">Psychosocial symptoms:</label>
+      <div>
+        <input
+          type="checkbox"
+          id="helplessnessHopelessness"
+          checked={psychosocialSymptoms === 'helplessness/hopelessness'}
+          onChange={() => setPsychosocialSymptoms('helplessness/hopelessness')}
+        />
+        <label htmlFor="helplessnessHopelessness">helplessness/hopelessness</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="worthlessness"
+          checked={psychosocialSymptoms === 'worthlessness'}
+          onChange={() => setPsychosocialSymptoms('worthlessness')}
+        />
+        <label htmlFor="worthlessness">worthlessness</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="depression"
+          checked={psychosocialSymptoms === 'depression'}
+          onChange={() => setPsychosocialSymptoms('depression')}
+        />
+        <label htmlFor="depression">depression</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="anxiety"
+          checked={psychosocialSymptoms === 'anxiety'}
+          onChange={() => setPsychosocialSymptoms('anxiety')}
+        />
+        <label htmlFor="anxiety">anxiety</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="moodSwings"
+          checked={psychosocialSymptoms === 'mood swings'}
+          onChange={() => setPsychosocialSymptoms('mood swings')}
+        />
+        <label htmlFor="moodSwings">mood swings</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="irritable"
+          checked={psychosocialSymptoms === 'Irritable'}
+          onChange={() => setPsychosocialSymptoms('Irritable')}
+        />
+        <label htmlFor="irritable">Irritable</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="residentContractsForSafety"
+          checked={psychosocialSymptoms === 'Resident contracts for safety.'}
+          onChange={() => setPsychosocialSymptoms('Resident contracts for safety.')}
+        />
+        <label htmlFor="residentContractsForSafety">Resident contracts for safety.</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="residentSafetyPlanCompleted"
+          checked={psychosocialSymptoms === 'Resident Safety Plan to be completed within 48 hours of admission.'}
+          onChange={() => setPsychosocialSymptoms('Resident Safety Plan to be completed within 48 hours of admission.')}
+        />
+        <label htmlFor="residentSafetyPlanCompleted">Resident Safety Plan to be completed within 48 hours of admission.</label>
+      </div>
+    </div>
+           
             <div className="yeschechbox2">
               <label htmlFor="">Current Medications:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>
-                  Verified that a list of current medications is present on
-                  file.
-                </span>
+                <input type="checkbox" id="currentMedications" checked={currentMedications} onChange={()=>setCurrentMedications(!currentMedications)}/>
+                <label htmlFor="currentMedications"> Verified that a list of current medications is present on
+                  file.</label>
               </div>
             </div>
             <div className="yeschechbox2">
               <label htmlFor="">Nutrition: Diet: </label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>As tolerated</span>
+                <input type="checkbox" id="As tolerated" checked={nutritionDiet==="As tolerated"} onChange={()=>setNutritionDiet("As tolerated")}/>
+               <label htmlFor="As tolerated">As tolerated</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Special diet ordered: _____________________</span>
+              <input type="checkbox" id="Special diet" checked={nutritionDiet==="Special diet"} onChange={()=>setNutritionDiet("Special diet")}/>
+               <label htmlFor="Special diet">Special diet</label>
+    
               </div>
             </div>
             <div className="yeschechbox2">
               <label htmlFor="">Fluid restrictions?</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>yes</span>
+                <input type="checkbox" id="nutritionFluidRestrictions" checked={nutritionFluidRestrictions===true} onChange={()=>setNutritionFluidRestrictions(true)}/>
+                <label htmlFor="nutritionFluidRestrictions">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>no</span>
+              <input type="checkbox" id="nutritionFluidRestrictionsno" checked={nutritionFluidRestrictions===false} onChange={()=>setNutritionFluidRestrictions(false)}/>
+                <label htmlFor="nutritionFluidRestrictionsno">No</label>
               </div>
             </div>
             <div className="yeschechbox2">
               <label htmlFor="">
-                Skin Check - Areas requiring treatment marked and labeled:{" "}
+              Nutrition Special Diet Order - Areas requiring treatment marked and labeled:
               </label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="text" value={nutritionSpecialDietOrder} onChange={(e)=>setNutritionSpecialDietOrder(e.target.value)}/>
+                <span>Nutrition Special Diet Order denies skin concerns</span>
+              </div>
+           </div>
+            <div className="yeschechbox2">
+              <label htmlFor="">
+                Skin Check - Areas requiring treatment marked and labeled:
+              </label>
+              <div>
+                <input type="text" value={skinCheck} onChange={(e)=>setSkinCheck(e.target.value)}/>
                 <span>Resident denies skin concerns</span>
               </div>
             </div>
@@ -1320,6 +2120,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={front}
+                    onChange={()=>setFront(!front)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1337,6 +2139,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={back}
+                    onChange={()=>setBack(!back)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1354,6 +2158,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={sideLeft}
+                    onChange={()=>setSideLeft(!sideLeft)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1371,6 +2177,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={sideRight}
+                    onChange={()=>setSideRight(!sideRight)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1390,6 +2198,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={legFront}
+                    onChange={()=>setLegFront(!legFront)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1407,6 +2217,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={legBack}
+                    onChange={()=>setLegBack(!legBack)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1424,6 +2236,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={legLeft}
+                    onChange={()=>setLegLeft(!legLeft)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1441,6 +2255,8 @@ const NursingAssessment = () => {
                 <div className="bodyiamge">
                   <input
                     type="checkbox"
+                    checked={legRight}
+                    onChange={()=>setLegRight(!legRight)}
                     style={{
                       width: "22px",
                       height: "22px",
@@ -1462,58 +2278,28 @@ const NursingAssessment = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={bhtName}
                 placeholder="Enter Name"
                 required
+                onChange={(e)=>setBhtName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
+            <label htmlFor="AHCCCS">BHT Signature:</label>
+            <input type="text" value={bhtSignature} onChange={(e)=>setBhtSignature(e.target.value)}/>
             <div className="form-field">
               <label htmlFor="AHCCCS">RN Name:</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={rnName}
                 placeholder="Enter Name"
                 required
+                onChange={(e)=>setRnName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
-          </div>
+            <label htmlFor="AHCCCS">RN Signature:</label>
+            <input type="text" value={rnSignature} onChange={(e)=>setRnSignature(e.target.value)}/>
+        
           <div className="form-actions">
             <button type="submit" className="initalsubmit">
               SUBMIT DETAILS

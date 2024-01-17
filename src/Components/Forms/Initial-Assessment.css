@@ -163,7 +163,8 @@ input[type="checkbox"] {
 
 .yeschechbox2 {
   display: flex;
-  grid-gap: 10px; /* Adjust as needed for spacing between items */
+  grid-gap: 10px; 
+  flex-wrap: nowrap;/* Adjust as needed for spacing between items */
 }
 
 .yeschechbox2 div {

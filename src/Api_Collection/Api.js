@@ -87,6 +87,20 @@ export const Resident_form = async (payLoad) => {
   }
 };
 
+export const Nurssing_form = async (payLoad) => {
+  try {
+    const res = await axios.post(
+      `${BaseUrl}Patient/createNursingAssessment`,
+      payLoad,
+      Token
+    );
+    show_notification("Success !", "Form Submit Successfully", "success");
+    return res;
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
 export const appoinment_Booking = async (payLoad) => {
   try {
     const res = await axios.post(

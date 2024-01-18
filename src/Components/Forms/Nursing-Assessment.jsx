@@ -18,6 +18,7 @@ const NursingAssessment = () => {
   const [userId, setUserId] = useState("");
 
   //all useState value
+  const [sex,setSex]=useState("");
   const [admissionDate, setAdmissionDate] = useState("");
   const [todayDate, setTodayDate] = useState("");
   const [admissionDiagnoses, setAdmissionDiagnoses] = useState("");
@@ -25,11 +26,11 @@ const NursingAssessment = () => {
   const [lastTBScreeningDate, setLastTBScreeningDate] = useState("");
   const [tbScreeningResults, setTbScreeningResults] = useState("");
   const [careProvidedPhysicalServices, setCareProvidedPhysicalServices] =
-    useState("");
+    useState();
   const [
     careProvidedBehavioralHealthServices,
     setCareProvidedBehavioralHealthServices,
-  ] = useState("");
+  ] = useState();
   const [vitalsBloodPressure, setVitalsBloodPressure] = useState(0);
   const [vitalsPulse, setVitalsPulse] = useState(0);
   const [vitalsRespiratoryRate, setVitalsRespiratoryRate] = useState(0);
@@ -148,13 +149,14 @@ const NursingAssessment = () => {
   const initialData = () => {
     setUserId('');
     setAdmissionDate('');
+    setSex("");
     setTodayDate('');
     setAdmissionDiagnoses('');
     setCodeStatus('');
     setLastTBScreeningDate('');
     setTbScreeningResults('');
     setCareProvidedPhysicalServices('');
-    setCareProvidedBehavioralHealthServices('');
+    setCareProvidedBehavioralHealthServices();
     setVitalsBloodPressure(0);
     setVitalsPulse(0);
     setVitalsRespiratoryRate(0);
@@ -216,8 +218,9 @@ const NursingAssessment = () => {
   const handlePost = (e) => {
     e.preventDefault();
     const data = {
-      userId,
+      patientId:userId,
       admissionDate,
+      sex,
       todayDate,
       admissionDiagnoses,
       codeStatus,
@@ -310,6 +313,25 @@ const NursingAssessment = () => {
                 onChange={(e) => setAdmissionDate(e.target.value)}
               />
             </div>
+          </div>
+          <div className="form-field">
+            <label htmlFor="gender">Select Gender</label>
+            <select
+            type="select"
+              id="gender"
+              value={sex}
+              required
+              onChange={(e) => setSex(e.target.value)}
+            >
+               <option >Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">
+                False
+              </option>
+              <option value="Other">
+                Other
+              </option>
+            </select>
           </div>
           {/* <div className="form-field">
                             <label htmlFor="AHCCCS">Resident Full Name</label>
@@ -417,9 +439,9 @@ const NursingAssessment = () => {
               required
               onChange={(e) => setCareProvidedPhysicalServices(e.target.value)}
             >
-              <option value="Physical Services">Physical Services</option>
-              <option value="Behavioral Health Services">
-                Behavioral Health Services
+              <option value={true}>True</option>
+              <option value={false}>
+                False
               </option>
             </select>
           </div>
@@ -428,14 +450,26 @@ const NursingAssessment = () => {
               Care to be provided at Care Provided Behavioral Health Services
               Care
             </label>
-            <input
+            <select
+            type="select"
+              id="careProvidedBehavioralHealthServices"
+              value={careProvidedBehavioralHealthServices}
+              required
+              onChange={(e) => setCareProvidedBehavioralHealthServices(e.target.value)}
+            >
+              <option value={true}>True</option>
+              <option value={false}>
+                False
+              </option>
+            </select>
+            {/* <input
               type="text"
               placeholder="Care provider"
               value={careProvidedBehavioralHealthServices}
               onChange={(e) =>
                 setCareProvidedBehavioralHealthServices(e.target.value)
               }
-            />
+            /> */}
           </div>
           <h2>Vitals</h2>
           <div className="form-field">

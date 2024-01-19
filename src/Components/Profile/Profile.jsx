@@ -6,13 +6,15 @@ import cards from "../../img/card1.png";
 import nurse1 from "../../img/nurse (1).png";
 import nurse2 from "../../img/nurse (2).png";
 import nurse3 from "../../img/nurse (3).png";
-import { user_detail } from "../../Api_Collection/Api";
+import { user_detail,appointment_Upcoming } from "../../Api_Collection/Api";
 
 const Profile = () => {
   const [user, setUser] = useState("");
+  const [appoinmentUpcoming, setAppoinmentUpcoming] = useState("");
 
   useEffect(() => {
     user_detail(setUser);
+    appointment_Upcoming(setAppoinmentUpcoming);
   }, []);
 
   console.log(user, "user data");
@@ -77,35 +79,31 @@ const Profile = () => {
       </div>
       <div className="profile_right">
         <div className="profileppointments">
-          <p>Recent Centres</p>
-          {data.map((appointment, index) => (
-            <AppointmentsCard
-              key={index}
-              imageUrl={appointment.imageUrl}
-              date={appointment.date}
-              slot={appointment.slot}
-              location={appointment.location}
-            />
-          ))}
+        <p>Upcoming Appointment</p>
+          {appoinmentUpcoming?.data?.map((appointment, index) => (
+          <AppointmentsCard
+            key={index}
+            imageUrl={appointment?.imageUrl}
+            date={new Date(appointment?.date).toLocaleDateString()}
+            slot={appointment?.slot}
+            location={appointment?.location}
+          />
+        ))}
         </div>
         <div className="nurse">
           <p>Recent Nurses / CNA</p>
           <div className="nurse-card">
-            <div className="nursecard">
+
+            {
+              user?.employeesId?.map((item,i)=>(
+                <div className="nursecard">
               <img src={nurse1} alt="" />
               <p>Nina Johnson</p>
               <span>Centre 1</span>
             </div>
-            <div className="nursecard">
-              <img src={nurse2} alt="" />
-              <p>Clara Davis</p>
-              <span>Centre 1</span>
-            </div>
-            <div className="nursecard">
-              <img src={nurse3} alt="" />
-              <p>John Smith</p>
-              <span>Centre 1</span>
-            </div>
+              ))
+            }
+            
           </div>
         </div>
       </div>

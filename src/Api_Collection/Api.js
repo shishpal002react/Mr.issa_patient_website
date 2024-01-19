@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios,{useState} from "axios";
 import { Store } from "react-notifications-component";
 
 const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
@@ -8,6 +8,7 @@ const Token = {
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 };
+
 
 export const show_notification = (title, message, type) => {
   Store.addNotification({
@@ -28,6 +29,7 @@ export const show_notification = (title, message, type) => {
 export const login_user = async (payLoad, navigate) => {
   try {
     const res = await axios.post(`${BaseUrl}Patient/signin`, payLoad);
+   
     localStorage.setItem("token", res?.data?.accessToken);
     show_notification("Success !", "Singin Successfully", "success");
     navigate("/patient_panel");
@@ -40,10 +42,12 @@ export const user_detail = async (setUser) => {
   try {
     const res = await axios.get(`${BaseUrl}Patient/getProfile`, Token);
     setUser(res?.data?.data);
+   
   } catch (e) {
     show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };
+
 
 export const safety_form = async (payLoad) => {
   try {
@@ -145,13 +149,26 @@ export const appointment_Upcoming = async (setAppoinment) => {
   }
 };
 
-export const appointment_Past = async (setAppoinmentPast) => {
+export const appointment_get = async (setAppoinmentPast) => {
   try {
     const res = await axios.get(
       `${BaseUrl}Patient/getAllUpcomingAppointments`,
       Token
     );
     setAppoinmentPast(res?.data);
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
+
+export const medication_get = async (patientId,setMedication) => {
+  try {
+    const res = await axios.get(
+      `${BaseUrl}Patient/getOngoingMedications/${patientId}`,
+      Token
+    );
+    setMedication(res?.data?.data);
   } catch (e) {
     show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }

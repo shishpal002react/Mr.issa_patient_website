@@ -5,7 +5,7 @@ import HistoryCard from "../Cards/HistoryCards";
 import cards from "../../img/card1.png";
 import {
   appointment_Upcoming,
-  appointment_Past,
+  appointment_get,
 } from "../../Api_Collection/Api";
 
 const AppointmentHistory = () => {
@@ -14,7 +14,7 @@ const AppointmentHistory = () => {
 
   useEffect(() => {
     appointment_Upcoming(setAppoinmentUpcoming);
-    appointment_Past(setAppoinmentPast);
+    appointment_get(setAppoinmentPast);
   }, []);
   const data = [
     {

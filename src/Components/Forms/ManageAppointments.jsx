@@ -5,13 +5,13 @@ import HistoryCard from "../Cards/HistoryCards";
 import cards from "../../img/card1.png";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import "./ManageAppointments.css";
-import { appointment_Past } from "../../Api_Collection/Api";
+import { appointment_get } from "../../Api_Collection/Api";
 
 const ManageAppointments = () => {
   const [appoinmentPast, setAppoinmentPast] = useState("");
 
   useEffect(() => {
-    appointment_Past(setAppoinmentPast);
+    appointment_get(setAppoinmentPast);
   }, []);
 
   const navigate = useNavigate();

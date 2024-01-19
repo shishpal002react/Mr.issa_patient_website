@@ -232,7 +232,7 @@ const TreatmentPlan = () => {
             <h1>TREATMENT PLAN</h1>
           </div>
         </div>
-        <form>
+        <form onSubmit={handlePost}>
           <div className="form-section">
             <div className="form-field">
               <label htmlFor="admissionDate">Name:</label>
@@ -658,7 +658,7 @@ const TreatmentPlan = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="gender">Strengths</label>
+              <label htmlFor="">Strengths</label>
               <select
                 style={{ color: "#1A9FB2" }}
                 id="gender"
@@ -666,7 +666,7 @@ const TreatmentPlan = () => {
                 required
                 onChange={(e) => setStrengths(e.target.value)}
               >
-                <option value="">Selecte</option>
+                <option value="">Select</option>
                 <option value="Self Motivated">Self Motivated</option>
                 <option value="Loving">Loving</option>
                 <option value="Honest">Honest</option>
@@ -1045,7 +1045,7 @@ const TreatmentPlan = () => {
                 <span>As needed</span>
               </div>
             </div>
-            <div className="formsheading">
+            {/* <div className="formsheading">
               <h6>
                 Goals for Changes in the Resident Phychorial Interaction or
                 Behaviour{" "}
@@ -1054,8 +1054,8 @@ const TreatmentPlan = () => {
                 Fill the following information for the respective ‘Current
                 Treatment Goals’
               </p>
-            </div>
-            <div className="form-field">
+            </div> */}
+            {/* <div className="form-field">
               <label
                 htmlFor="AHCCCS"
                 style={{
@@ -1198,7 +1198,7 @@ const TreatmentPlan = () => {
                 <option value="Male">Select</option>
                 <option value="Female">Select</option>
               </select>
-            </div>
+            </div> */}
             <div className="yeschechbox2">
               <label htmlFor="">
                 Resident overall participation in treatment:{" "}
@@ -1371,7 +1371,7 @@ const TreatmentPlan = () => {
                 rows={5}
                 cols={130}
                 placeholder="Type Here....."
-                required
+                
               />
             </div>
             <div className="yeschechbox2">
@@ -1453,7 +1453,7 @@ const TreatmentPlan = () => {
                 </span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="gender">
                 Clinical Summary/Recommendations/Intervention:
               </label>
@@ -1462,7 +1462,7 @@ const TreatmentPlan = () => {
                 <option value="Male">Select</option>
                 <option value="Female">Select</option>
               </select>
-            </div>
+            </div> */}
             <div className="formsheading">
               <p>
                 The mirrors in the facility are SHATTERPROOF, and if they were
@@ -1477,7 +1477,7 @@ const TreatmentPlan = () => {
                 id="AHCCCS"
                 value=""
                 placeholder="Enter your Lorem Ipsum"
-                required
+                
               />
             </div>
             <p
@@ -1499,7 +1499,7 @@ const TreatmentPlan = () => {
                 id="AHCCCS"
                 value=""
                 placeholder="Enter your Lorem Ipsum"
-                required
+                
               />
             </div>
             <div className="formsheading">
@@ -1654,11 +1654,7 @@ const TreatmentPlan = () => {
               onChange={(e) => setDateFacilityRep(e.target.value)}
             />
           </div>
-          {/* //signaturesBhp */}
-          const [nameBhp, setNameBhp] = useState(""); const [credentialsBhp,
-          setCredentialsBhp] = useState(""); const [signatureBhp,
-          setsignatureBhp] = useState(""); const [dateBhp, setDateBhp] =
-          useState("");
+       
           <div className="formsheading">
             <h6>
               Signatures Bhp participation and informed consent for treatment
@@ -1716,7 +1712,7 @@ const TreatmentPlan = () => {
             />
           </div>
           <div className="form-actions">
-            <button type="button" className="initalsubmit" onClick={handlePost}>
+            <button type="submit" className="initalsubmit">
               SUBMIT DETAILS
             </button>
           </div>

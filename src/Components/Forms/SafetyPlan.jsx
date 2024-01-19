@@ -74,7 +74,8 @@ const SafetyPlan = () => {
     setSingIn("");
   };
 
-  const handlePost = () => {
+  const handlePost = (e) => {
+    e.preventDefault();
     const data = {
       patientId: userId,
       date: date,
@@ -151,7 +152,7 @@ const SafetyPlan = () => {
             <h1>Resident Safety Plan</h1>
           </div>
         </div>
-        <form>
+        <form onSubmit={handlePost}>
           <div className="form-section">
             <div className="form-field">
               <label htmlFor="residentFullName">Resident Full Name</label>
@@ -244,7 +245,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={socialName}
                   placeholder="Enter name"
-                  required
+                  
                   onChange={(e) => setSocialName(e.target.value)}
                 />
               </div>
@@ -255,7 +256,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={socialPhone}
                   placeholder="Enter number"
-                  required
+                  
                   onChange={(e) => setSocialPhone(e.target.value)}
                 />
               </div>
@@ -266,7 +267,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={socialRelationship}
                   placeholder="Enter text"
-                  required
+                  
                   onChange={(e) => setSocialRelationship(e.target.value)}
                 />
               </div>
@@ -336,7 +337,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={helpName}
                   placeholder="Enter name"
-                  required
+                  
                   onChange={(e) => setHelpName(e.target.value)}
                 />
               </div>
@@ -347,7 +348,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={helpPhone}
                   placeholder="Enter number"
-                  required
+                  
                   onChange={(e) => setHelpPhone(e.target.value)}
                 />
               </div>
@@ -358,7 +359,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={helpRelationship}
                   placeholder="Enter text"
-                  required
+                  
                   onChange={(e) => setHelpRelationship(e.target.value)}
                 />
               </div>
@@ -397,7 +398,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={crisisName}
                   placeholder="Enter name"
-                  required
+                  
                   onChange={(e) => setCrisisName(e.target.value)}
                 />
               </div>
@@ -408,7 +409,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={crisisPhone}
                   placeholder="Enter number"
-                  required
+                  
                   onChange={(e) => setCrisisPhone(e.target.value)}
                 />
               </div>
@@ -419,7 +420,7 @@ const SafetyPlan = () => {
                   id="AHCCCS"
                   value={crisisRelationship}
                   placeholder="Enter text"
-                  required
+                  
                   onChange={(e) => setCrisisRelationship(e.target.value)}
                 />
               </div>
@@ -472,7 +473,7 @@ const SafetyPlan = () => {
             </div>
           </div>
           <div className="form-actions">
-            <button type="button" onClick={handlePost} className="initalsubmit">
+            <button type="submit"  className="initalsubmit">
               SUBMIT DETAILS
             </button>
           </div>

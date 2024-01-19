@@ -21,7 +21,8 @@
 
 .appointmentCard{
     display: flex;
-    justify-content: space-between;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 
 /* Responsive styles for screen size 867px and below */
@@ -58,6 +59,7 @@
     }
     .appointmentCard{
         display: block;
-        justify-content: space-between;
+        /* justify-content: space-between; */
+        gap: 5%;
     }
 }

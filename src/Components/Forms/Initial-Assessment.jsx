@@ -9,33 +9,46 @@ import locate from "../../img/locate.png";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { user_detail, initialAssestment_form } from "../../Api_Collection/Api";
+import Select from 'react-select';
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState("");
-  const [patientId, setPatientId] = useState("");
   const [userData, setUserData] = useState("");
 
-  //state 
+  //state
+  const [hasNotified, setHasNotified] = useState("");
+  const [assessmentOn, setAssessmentOn] = useState("");
+  const [patientId, setPatientId] = useState("");
   const [dob, setDob] = useState("yourDateOfBirth");
   const [companyName, setCompanyName] = useState("yourCompanyName");
   const [residentName, setResidentName] = useState("yourResidentName");
   const [sex, setSex] = useState("yourSex");
-  const [dateOfAssessment, setDateOfAssessment] = useState("yourDateOfAssessment");
+  const [dateOfAssessment, setDateOfAssessment] = useState(
+    "yourDateOfAssessment"
+  );
   const [ahcccsNumber, setAhcccsNumber] = useState("yourAhcccsNumber");
-  const [preferredLanguage, setPreferredLanguage] = useState("yourPreferredLanguage");
+  const [preferredLanguage, setPreferredLanguage] = useState(
+    "yourPreferredLanguage"
+  );
   const [ethnicity, setEthnicity] = useState("yourEthnicity");
   const [admissionStatus, setAdmissionStatus] = useState("yourAdmissionStatus");
   const [programLocation, setProgramLocation] = useState("yourProgramLocation");
   const [guardianship, setGuardianship] = useState("yourGuardianship");
-  const [powerOfAttorneyStatus, setPowerOfAttorneyStatus] = useState("yourPowerOfAttorneyStatus");
+  const [powerOfAttorneyStatus, setPowerOfAttorneyStatus] = useState(
+    "yourPowerOfAttorneyStatus"
+  );
   const [todayDate, setTodayDate] = useState("yourTodayDate");
-  const [guardianshipPoaPubFidName, setGuardianshipPoaPubFidName] = useState("yourGuardianshipPoaPubFidName");
+  const [guardianshipPoaPubFidName, setGuardianshipPoaPubFidName] = useState(
+    "yourGuardianshipPoaPubFidName"
+  );
   const [approvedBy, setApprovedBy] = useState("yourApprovedBy");
-  const [reasonForAdmission, setReasonForAdmission] = useState("yourReasonForAdmission");
+  const [reasonForAdmission, setReasonForAdmission] = useState(
+    "yourReasonForAdmission"
+  );
   const [residentGoals, setResidentGoals] = useState("yourResidentGoals");
-  
+
   // Resident Strengths (Array)
   const [residentStrengths, setResidentStrengths] = useState([
     "Self motivated",
@@ -52,43 +65,51 @@ const InitialAssessment = () => {
     "Family",
     "Writing",
     "Coloring",
-    "Art"
+    "Art",
   ]);
 
-  const [residentLimitations, setResidentLimitations] = useState("yourResidentLimitations");
-  const [currentBehavioralIssues, setCurrentBehavioralIssues] = useState("yourCurrentBehavioralIssues");
+  const [residentLimitations, setResidentLimitations] = useState(
+    "yourResidentLimitations"
+  );
+  const [currentBehavioralIssues, setCurrentBehavioralIssues] = useState(
+    "yourCurrentBehavioralIssues"
+  );
 
   // Behavioral Interventions (Array of Objects)
   const [behavioralInterventions, setBehavioralInterventions] = useState([
     {
       need: "",
-      intervention: ""
-    }
+      intervention: "",
+    },
   ]);
 
   const [dischargePlan, setDischargePlan] = useState("yourDischargePlan");
-  const [estimateDateOfDischarge, setEstimateDateOfDischarge] = useState("yourEstimateDateOfDischarge");
-  const [agreementWithPlan, setAgreementWithPlan] = useState("yourAgreementWithPlan");
+  const [estimateDateOfDischarge, setEstimateDateOfDischarge] = useState(
+    "yourEstimateDateOfDischarge"
+  );
+  const [agreementWithPlan, setAgreementWithPlan] = useState(
+    "yourAgreementWithPlan"
+  );
 
   // Resident Guardian Agreement
   const [residentGuardianAgreement, setResidentGuardianAgreement] = useState({
     name: "yourResidentGuardianName",
     signature: "yourResidentGuardianSignature",
-    date: "yourResidentGuardianDate"
+    date: "yourResidentGuardianDate",
   });
 
   // Staff Agreement
   const [staffAgreement, setStaffAgreement] = useState({
     name: "yourStaffName",
     signature: "yourStaffSignature",
-    date: "yourStaffDate"
+    date: "yourStaffDate",
   });
 
   // BHP Agreement
   const [bhpAgreement, setBhpAgreement] = useState({
     name: "yourBhpName",
     signature: "yourBhpSignature",
-    date: "yourBhpDate"
+    date: "yourBhpDate",
   });
 
   // Other
@@ -96,7 +117,7 @@ const InitialAssessment = () => {
     name: "yourOtherName",
     relationship: "yourOtherRelationship",
     signature: "yourOtherSignature",
-    date: "yourOtherDate"
+    date: "yourOtherDate",
   });
 
   // Medical Conditions (Array of Objects)
@@ -105,8 +126,8 @@ const InitialAssessment = () => {
       condition: "yourMedicalCondition",
       yes: "yourMedicalConditionYes",
       no: "yourMedicalConditionNo",
-      comments: "yourMedicalConditionComments"
-    }
+      comments: "yourMedicalConditionComments",
+    },
   ]);
 
   // Active Withdrawal Symptoms
@@ -128,7 +149,7 @@ const InitialAssessment = () => {
     BonePain: "",
     Tearing: "",
     Seizures: "",
-    LossofMuscleCoordination: ""
+    LossofMuscleCoordination: "",
   });
 
   // Mental Status Exam (Nested Object)
@@ -136,27 +157,30 @@ const InitialAssessment = () => {
     apparentAge: {
       consistent: true,
       younger: false,
-      older: false
+      older: false,
     },
     // ... (similarly for other fields)
   });
 
   // Significant Social Developmental History
-  const [significantSocialDevelopmentalHistory, setSignificantSocialDevelopmentalHistory] = useState("");
+  const [
+    significantSocialDevelopmentalHistory,
+    setSignificantSocialDevelopmentalHistory,
+  ] = useState("");
 
   // Personal Information (Nested Object)
   const [personalInformation, setPersonalInformation] = useState({
     highestEducation: "Your Highest Education",
     specialEducation: "Your Special Education",
     currentStudent: "Yes/No",
-    currentStudentLocation: "Your Current Student Location"
+    currentStudentLocation: "Your Current Student Location",
   });
 
   // Employment History (Nested Object)
   const [employmentHistory, setEmploymentHistory] = useState({
     currentlyEmployed: "Yes/No",
     employmentLocation: "Your Employment Location",
-    fullTime: "Yes/No"
+    fullTime: "Yes/No",
   });
 
   const [workHistory, setWorkHistory] = useState("Your Work History");
@@ -164,7 +188,7 @@ const InitialAssessment = () => {
   // Military History (Nested Object)
   const [militaryHistory, setMilitaryHistory] = useState({
     militaryService: "Yes/No",
-    activeDuty: "Yes/No"
+    activeDuty: "Yes/No",
   });
 
   // Arrested History (Multiple Fields)
@@ -172,10 +196,12 @@ const InitialAssessment = () => {
   const [arrestedForAssault, setArrestedForAssault] = useState("");
   const [arrestedForBadChecks, setArrestedForBadChecks] = useState("");
   const [arrestedForShoplifting, setArrestedForShoplifting] = useState("");
-  const [arrestedForAttemptedMurder, setArrestedForAttemptedMurder] = useState("");
+  const [arrestedForAttemptedMurder, setArrestedForAttemptedMurder] =
+    useState("");
   const [arrestedForDrug, setArrestedForDrug] = useState("");
   const [arrestedForAlcohol, setArrestedForAlcohol] = useState("");
-  const [arrestedForDisorderlyConduct, setArrestedForDisorderlyConduct] = useState("");
+  const [arrestedForDisorderlyConduct, setArrestedForDisorderlyConduct] =
+    useState("");
   const [arrestedForIdentityTheft, setArrestedForIdentityTheft] = useState("");
   const [arrestedForSexOffense, setArrestedForSexOffense] = useState("");
   const [arrestedForOther, setArrestedForOther] = useState("");
@@ -190,12 +216,14 @@ const InitialAssessment = () => {
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState("");
   const [bathingShoweringFair, setBathingShoweringFair] = useState("");
-  const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] = useState("");
+  const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
+    useState("");
   const [bathingShoweringComments, setBathingShoweringComments] = useState("");
 
   const [groomingHygieneGood, setGroomingHygieneGood] = useState("");
   const [groomingHygieneFair, setGroomingHygieneFair] = useState("");
-  const [groomingHygieneNeedAssist, setGroomingHygieneNeedAssist] = useState("");
+  const [groomingHygieneNeedAssist, setGroomingHygieneNeedAssist] =
+    useState("");
   const [groomingHygieneComments, setGroomingHygieneComments] = useState("");
 
   const [mobilityGood, setMobilityGood] = useState("");
@@ -214,20 +242,28 @@ const InitialAssessment = () => {
   const [shoppingNeedAssist, setShoppingNeedAssist] = useState("NeedAssist");
   const [shoppingComments, setShoppingComments] = useState("Comments");
 
-  const [managingMoneyBudgetGood, setManagingMoneyBudgetGood] = useState("Good");
-  const [managingMoneyBudgetFair, setManagingMoneyBudgetFair] = useState("Fair");
-  const [managingMoneyBudgetNeedAssist, setManagingMoneyBudgetNeedAssist] = useState("NeedAssist");
-  const [managingMoneyBudgetComments, setManagingMoneyBudgetComments] = useState("Comments");
+  const [managingMoneyBudgetGood, setManagingMoneyBudgetGood] =
+    useState("Good");
+  const [managingMoneyBudgetFair, setManagingMoneyBudgetFair] =
+    useState("Fair");
+  const [managingMoneyBudgetNeedAssist, setManagingMoneyBudgetNeedAssist] =
+    useState("NeedAssist");
+  const [managingMoneyBudgetComments, setManagingMoneyBudgetComments] =
+    useState("Comments");
 
   const [takingMedicationsGood, setTakingMedicationsGood] = useState("Good");
   const [takingMedicationsFair, setTakingMedicationsFair] = useState("Fair");
-  const [takingMedicationsNeedAssist, setTakingMedicationsNeedAssist] = useState("NeedAssist");
-  const [takingMedicationsComments, setTakingMedicationsComments] = useState("Comments");
+  const [takingMedicationsNeedAssist, setTakingMedicationsNeedAssist] =
+    useState("NeedAssist");
+  const [takingMedicationsComments, setTakingMedicationsComments] =
+    useState("Comments");
 
   const [preparingFoodGood, setPreparingFoodGood] = useState("Good");
   const [preparingFoodFair, setPreparingFoodFair] = useState("Fair");
-  const [preparingFoodNeedAssist, setPreparingFoodNeedAssist] = useState("NeedAssist");
-  const [preparingFoodComments, setPreparingFoodComments] = useState("Comments");
+  const [preparingFoodNeedAssist, setPreparingFoodNeedAssist] =
+    useState("NeedAssist");
+  const [preparingFoodComments, setPreparingFoodComments] =
+    useState("Comments");
 
   const [eatingGood, setEatingGood] = useState("Good");
   const [eatingFair, setEatingFair] = useState("Fair");
@@ -251,10 +287,14 @@ const InitialAssessment = () => {
   const [hobbiesLeisureActivities, setHobbiesLeisureActivities] = useState("");
 
   // Medical Equipment
-  const [medicalEquipmentWheelchair, setMedicalEquipmentWheelchair] = useState("");
-  const [medicalEquipmentOxygenTank, setMedicalEquipmentOxygenTank] = useState("");
-  const [medicalEquipmentCpapMachine, setMedicalEquipmentCpapMachine] = useState("");
-  const [medicalEquipmentShowerChair, setMedicalEquipmentShowerChair] = useState("");
+  const [medicalEquipmentWheelchair, setMedicalEquipmentWheelchair] =
+    useState("");
+  const [medicalEquipmentOxygenTank, setMedicalEquipmentOxygenTank] =
+    useState("");
+  const [medicalEquipmentCpapMachine, setMedicalEquipmentCpapMachine] =
+    useState("");
+  const [medicalEquipmentShowerChair, setMedicalEquipmentShowerChair] =
+    useState("");
   const [medicalEquipmentOther, setMedicalEquipmentOther] = useState("");
 
   // Special Precautions (Nested Object)
@@ -265,14 +305,16 @@ const InitialAssessment = () => {
     withdrawal: "",
     inappropriateSexualBehaviors: "",
     substanceUse: "",
-    noSpecialPrecautions: ""
+    noSpecialPrecautions: "",
   });
 
-  const [currentThoughtsOfHarmingSelf, setCurrentThoughtsOfHarmingSelf] = useState("");
+  const [currentThoughtsOfHarmingSelf, setCurrentThoughtsOfHarmingSelf] =
+    useState("");
   const [suicidalIdeation, setSuicidalIdeation] = useState("");
   const [suicidalIdeationUrgency, setSuicidalIdeationUrgency] = useState("");
   const [suicidalIdeationSeverity, setSuicidalIdeationSeverity] = useState("");
-  const [currentThoughtsOfHarmingOthers, setCurrentThoughtsOfHarmingOthers] = useState("");
+  const [currentThoughtsOfHarmingOthers, setCurrentThoughtsOfHarmingOthers] =
+    useState("");
 
   // Risk Factors (Nested Object)
   const [riskFactors, setRiskFactors] = useState({
@@ -287,7 +329,109 @@ const InitialAssessment = () => {
     familyHistoryOfSuicide: "",
     terminalPhysicalIllness: "",
     currentStressors: "",
-    chronicPain: ""
+    chronicPain: "",
+  });
+
+  // State variables for protectiveFactors
+  const [protectiveFactors, setProtectiveFactors] = useState({
+    supportsAvailable: "",
+    spiritualReligiousSupport: "",
+    religiousCulturalProhibitions: "",
+    fearOfConsequences: "",
+    ableToBeEngagedInIntervention: "",
+    willingToCommitToKeepingSelfSafe: "",
+  });
+
+  // State variable for riskLevel
+  const [riskLevel, setRiskLevel] = useState("");
+
+  // State variables for psychiatricDiagnoses
+  const [psychiatricDiagnoses, setPsychiatricDiagnoses] = useState([
+    {
+      icdCode: "",
+      description: "",
+      primary: "",
+      secondary: "",
+      tertiary: "",
+      additional: "",
+    },
+  ]);
+
+  // State variables for medicalDiagnoses
+  const [medicalDiagnoses, setMedicalDiagnoses] = useState([
+    {
+      icdCode: "",
+      description: "",
+      primary: "",
+      secondary: "",
+      tertiary: "",
+      additional: "",
+    },
+  ]);
+
+  // State variable for additionalDiagnoses
+  const [additionalDiagnoses, setAdditionalDiagnoses] = useState("");
+
+  // State variable for primarySupportGroup
+  const [primarySupportGroup, setPrimarySupportGroup] = useState("");
+
+  // State variable for maritalProblems
+  const [maritalProblems, setMaritalProblems] = useState("");
+
+  // State variable for accessToHealthCareServices
+  const [accessToHealthCareServices, setAccessToHealthCareServices] =
+    useState("");
+
+  // State variable for educationalProblems
+  const [educationalProblems, setEducationalProblems] = useState("");
+
+  // State variable for housingProblems
+  const [housingProblems, setHousingProblems] = useState("");
+
+  // State variable for familyProblems
+  const [familyProblems, setFamilyProblems] = useState("");
+
+  // State variable for occupationalProblems
+  const [occupationalProblems, setOccupationalProblems] = useState("");
+
+  // State variable for interactionWithLegalSystem, substanceUseInHome, sexualProblems, otherStressors
+  const [interactionWithLegalSystem, setInteractionWithLegalSystem] =
+    useState("");
+  const [substanceUseInHome, setSubstanceUseInHome] = useState("");
+  const [sexualProblems, setSexualProblems] = useState("");
+  const [otherStressors, setOtherStressors] = useState("");
+
+  // State variables for significantRecentLosses
+  const [significantRecentLosses, setSignificantRecentLosses] = useState({
+    no: "",
+    yes: "",
+    typeOfLoss: {
+      death: "",
+      job: "",
+      childRemovedFromHouse: "",
+      injury: "",
+      divorceSeparation: "",
+      violentActsAgainstPersonFamily: "",
+      medicalSurgical: "",
+      accidentInjury: "",
+      other: "",
+    },
+  });
+
+  // State variables for staffInformation
+  const [staffInformation, setStaffInformation] = useState({
+    staffName: "Dr. Smith",
+    staffTitle: "Psychiatrist",
+    staffSignature: "Dr. Smith's Signature",
+    staffDate: "2024-01-10",
+  });
+
+  // State variables for bhpInformation
+  const [bhpInformation, setBhpInformation] = useState({
+    bhpName: "Jane Doe",
+    bhpCredentials: "Licensed Therapist",
+    bhpSignature: "Jane Doe's Signature",
+    bhpDate: "2024-01-10",
   });
 
   useEffect(() => {
@@ -316,14 +460,37 @@ const InitialAssessment = () => {
         <FormUpper />
         <p>
           COMPANY NAME has notified
-          __________________________________________________ to participate in
-          his/her Service Treatment Plan/Initial Assessment on
-          __________________
+          <input
+            style={{ outline: "none", border: "none" }}
+            type="text"
+            value={hasNotified}
+            placeholder="_________"
+            onChange={(e) => setHasNotified(e.target.value)}
+          />{" "}
+          to participate in his/her Service Treatment Plan/Initial Assessment on
+          <input
+            style={{ outline: "none", border: "none" }}
+            type="text"
+            value={assessmentOn}
+            placeholder="_________"
+            onChange={(e) => setAssessmentOn(e.target.value)}
+          />
         </p>
         <form>
           <h5>Section - 1</h5>
           <div className="form-section">
             <h2>Basic Details</h2>
+            <div className="form-field">
+              <label htmlFor="residentFullName">Company Name </label>
+              <input
+                type="text"
+                id="residentFullName"
+                value={companyName}
+                placeholder="Enter full name"
+                required
+                onChange={(e) => setCompanyName(e.target.value)}
+              />
+            </div>
             <div className="form-field">
               <label htmlFor="residentFullName">Resident Full Name</label>
               <input
@@ -332,17 +499,19 @@ const InitialAssessment = () => {
                 value={user}
                 placeholder="Enter full name"
                 required
-                onChange={(e)=>setUser(e.target.value)}
+                onChange={(e) => setUser(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="residentFullName">Gender</label>
+
               <div className="genderdiv">
                 <div className="genderbox">
                   <input
                     type="radio"
                     id="maleRadio"
-                    name="gender"
+                    checked={sex === "Male"}
+                    onChange={() => setSex("Male")}
                     className="custom-radio"
                   />
                   <label htmlFor="maleRadio">Male</label>
@@ -351,10 +520,21 @@ const InitialAssessment = () => {
                   <input
                     type="radio"
                     id="femaleRadio"
-                    name="gender"
+                    checked={sex === "Female"}
+                    onChange={() => setSex("Female")}
                     className="custom-radio"
                   />
                   <label htmlFor="femaleRadio">Female</label>
+                </div>
+                <div className="genderbox">
+                  <input
+                    type="radio"
+                    id="femaleRadio"
+                    checked={sex === "Other"}
+                    onChange={() => setSex("Other")}
+                    className="custom-radio"
+                  />
+                  <label htmlFor="femaleRadio">Other</label>
                 </div>
               </div>
             </div>
@@ -364,19 +544,21 @@ const InitialAssessment = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={dob}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) => setDob(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="admissionDate">Admission Date:</label>
               <input
-                type="text"
+                type="date"
                 id="admissionDate"
-                value=""
+                value={dateOfAssessment}
                 placeholder="Enter Date"
                 required
+                onChange={(e) => setDateOfAssessment(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -384,48 +566,60 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={ahcccsNumber}
                 placeholder="Enter text"
                 required
+                onChange={(e) => setAhcccsNumber(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="preferredlanguage">Preferred Language</label>
-              <select
+              <input
+                type="text"
+                required
+                value={preferredLanguage}
+                onChange={(e) => setPreferredLanguage(e.target.value)}
+              />
+              {/* <select
                 style={{ color: "#1A9FB2" }}
                 id="preferredlanguage"
-                value=""
+                value={preferredLanguage}
                 required
+                onChange={(e)=>setPreferredLanguage(e.target.value)}
               >
                 <option value="English">English</option>
                 <option value="Hindi">Hindi</option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+             
+              </select> */}
             </div>
             <div className="form-field">
               <label htmlFor="ethnicity">Ethnicity</label>
-              <select
+              <input type="text" required value={ethnicity} onChange={(e)=>setEthnicity(e.target.value)} />
+              {/* <select
                 style={{ color: "#1A9FB2" }}
                 id="ethnicity"
-                value=""
+                value={ethnicity}
                 required
+                onChange={(e)=>setEthnicity(e.target.value)}
               >
                 <option value="Asian">Asian</option>
                 <option value="Asian">Asian</option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+             
+              </select> */}
             </div>
             <div className="form-field">
               <label htmlFor="admissionstatus">Admission Status</label>
               <select
                 style={{ color: "#1A9FB2" }}
                 id="admissionstatus"
-                value=""
+                value={admissionStatus}
                 required
-              >
-                <option value="Voluntary">Voluntary</option>
-                <option value="Voluntary">Court Ordered Treatment</option>
-                {/* <option value="Female">Sanskrit</option> */}
+                onChange={(e)=>setAdmissionStatus(e.target.value)}
+              > 
+               <option value="">Select Status</option><option value="Voluntary">Voluntary</option>
+              <option value="Court Ordered Treatment">Court Ordered Treatment</option>
+               
+             
               </select>
             </div>
             <div className="form-field">
@@ -442,11 +636,13 @@ const InitialAssessment = () => {
               </label>
               <textarea
                 id="programlocation&address"
-                value=""
+                type="text"
+                value={programLocation}
                 rows={5}
                 cols={130}
                 placeholder="Enter Full Address"
                 required
+                onChange={(e)=>setProgramLocation(e.target.value)}
               />
             </div>
 
@@ -455,9 +651,10 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="guardianship"
-                value=""
+                value={guardianship}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setGuardianship(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -465,9 +662,10 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="attorneystatus"
-                value=""
+                value={powerOfAttorneyStatus}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setPowerOfAttorneyStatus(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -475,9 +673,10 @@ const InitialAssessment = () => {
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={todayDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setTodayDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -485,9 +684,10 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="fidname"
-                value=""
+                value={guardianshipPoaPubFidName}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setGuardianshipPoaPubFidName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -495,9 +695,10 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={approvedBy}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setApprovedBy(e.target.value)}
               />
             </div>
             <h2>Other Details</h2>
@@ -505,69 +706,81 @@ const InitialAssessment = () => {
               <label htmlFor="reasonadmission">
                 Reason for Admission to Services
               </label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Depression</option>
-                <option value="Enter text">Mood changes</option>
-                <option value="Enter text">
+              <select id="reasonadmission" value={reasonForAdmission} required onChange={(e)=>setReasonForAdmission(e.target.value)}>
+                <option value="Enter text">Select Reason For Admission</option>
+                <option value="Depression">Depression</option>
+                <option value="Mood changes">Mood changes</option>
+                <option value="Trouble falling or staying asleep">
                   Trouble falling or staying asleep
                 </option>
-                <option value="Enter text">Mood swings</option>
-                <option value="Enter text">Social withdrawal</option>
-                <option value="Enter text">Changes in eating habits</option>
-                <option value="Enter text">Feelings of anger</option>
-                <option value="Enter text">Negative thoughts</option>
-                <option value="Enter text">Confused thinking</option>
-                <option value="Enter text">Irritability</option>
-                <option value="Enter text">Loss of interest</option>
-                <option value="Enter text">Fatigue or low energy</option>
-                <option value="Enter text">Difficulty concentrating</option>
-                <option value="Enter text">Delusions</option>
-                <option value="Enter text">Hallucinations</option>
-                <option value="Enter text">Substance use</option>
-                <option value="Enter text">Stress</option>
-                <option value="Enter text">Trouble coping</option>
-                <option value="Enter text">Feelings of fear</option>
-                <option value="Enter text">Grief/Loss</option>
-                <option value="Enter text">Eating Disorder</option>
-                <option value="Enter text">Danger to self</option>
-                <option value="Enter text">Danger to others</option>
-                <option value="Enter text">Lack of self care</option>
-                <option value="Enter text">Inability to maintain safety</option>
-                <option value="Enter text">Autism Spectrum Disorder</option>
-                <option value="Enter text">Bipolar Disorder</option>
-                <option value="Enter text">
+                <option value="Mood swings">Mood swings</option>
+                <option value="Social withdrawal">Social withdrawal</option>
+                <option value="Changes in eating habits">Changes in eating habits</option>
+                <option value="Feelings of anger">Feelings of anger</option>
+                <option value="Negative thoughts">Negative thoughts</option>
+                <option value="Confused thinking">Confused thinking</option>
+                <option value="Irritability">Irritability</option>
+                <option value="Loss of interest">Loss of interest</option>
+                <option value="Fatigue or low energy">Fatigue or low energy</option>
+                <option value="Difficulty concentrating">Difficulty concentrating</option>
+                <option value="Delusions">Delusions</option>
+                <option value="Hallucinations">Hallucinations</option>
+                <option value="Substance use">Substance use</option>
+                <option value="Stress">Stress</option>
+                <option value="Trouble coping">Trouble coping</option>
+                <option value="Feelings of fear">Feelings of fear</option>
+                <option value="Grief/Loss">Grief/Loss</option>
+                <option value="Eating Disorder">Eating Disorder</option>
+                <option value="Danger to self">Danger to self</option>
+                <option value="Danger to others">Danger to others</option>
+                <option value="Lack of self caret">Lack of self care</option>
+                <option value="Inability to maintain safety">Inability to maintain safety</option>
+                <option value="Autism Spectrum Disorder">Autism Spectrum Disorder</option>
+                <option value="Bipolar Disorder">Bipolar Disorder</option>
+                <option value="Inability to maintain self care">
                   Inability to maintain self care
                 </option>
-                <option value="Enter text">Inability to self administer</option>
-                <option value="Enter text">medication</option>
-                <option value="Enter text">Conduct Disorder</option>
-                <option value="Enter text">
+                <option value="Inability to self administer">Inability to self administer</option>
+                <option value="Medication">Medication</option>
+                <option value="Conduct Disorder">Conduct Disorder</option>
+                <option value="Inappropriate Sexual Behavior">
                   Inappropriate Sexual Behavior
                 </option>
-                <option value="Enter text">Schizophrenia Disorder</option>
-                <option value="Enter text">Major Depressive Disorder</option>
-                <option value="Enter text">Obsessive Disorder</option>
-                <option value="Enter text">Psychosis</option>
-                <option value="Enter text">Abused</option>
-                <option value="Enter text">Assaulted</option>
-
-                {/* <option value="Female">Sanskrit</option> */}
+                <option value="Schizophrenia Disorder">Schizophrenia Disorder</option>
+                <option value="Major Depressive Disorder">Major Depressive Disorder</option>
+                <option value="Obsessive Disorder">Obsessive Disorder</option>
+                <option value="Psychosis">Psychosis</option>
+                <option value="Abused">Abused</option>
+                <option value="Assaulted">Assaulted</option>
               </select>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address">Resident’s Goals:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                type="text"
+                value={residentGoals}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setResidentGoals(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Resident’s Strength</label>
+              {/* <Select
+        isMulti
+        options={options}
+        value={selectedOptions}
+        onChange={handleChange}
+      />
+      <div>
+        Selected Options:
+        {selectedOptions.map((option) => (
+          <span key={option.value}>{option.label}, </span>
+        ))}
+      </div> */}
               <select id="reasonadmission" value="" required>
                 <option value="Enter text">Enter text</option>
                 <option value="Enter text">Self motivated</option>
@@ -585,7 +798,7 @@ const InitialAssessment = () => {
                 <option value="Enter text">Writing</option>
                 <option value="Enter text">Coloring</option>
                 <option value="Enter text">Art</option>
-                {/* <option value="Female">Sanskrit</option> */}
+ 
               </select>
             </div>
             <div className="form-field">

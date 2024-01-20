@@ -1,47 +1,65 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
+import { user_detail, faceSheet_form } from "../../Api_Collection/Api";
 
 const FaceSheet = () => {
+  
+  const [patientName, setPatientName] = useState("");
+  const [userDetail, setUserDetail] = useState("");
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [adminDate, setADminData] = useState("");
-  const [facilityAdress, setFacilityAdress] = useState("");
-  const [facilityPhone, setFacilityPhone] = useState("");
-  const [bop, setDop] = useState("");
-  const [eyeColor, setEyeColor] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeigth] = useState("");
-  const [hairColor, setHairColor] = useState();
-  const [indentityMark, setIndentityMark] = useState("");
-  const [Language, setLanguage] = useState("");
-  const [courtOrder, setCourtOrder] = useState("");
-  //Family/Guardian Emergency Name and Contact:
-  const [familyName, setFamilyName] = useState("");
-  const [familyContect, setFamilyContect] = useState("");
-  const [Allergies, setAllergies] = useState("");
-  const [otherAllergies, setOtherAllergies] = useState("");
-  //Primary Care Provider
-  const [primaryName, setPrimaryName] = useState("");
-  const [primaryNumber, setPrimaryNumber] = useState("");
-  const [primaryAdress, setPrimaryAdress] = useState("");
-  const [otherSpecification, setOtherSpecification] = useState("");
-  //Psychiatric Provider
-  const [psyName, setPsyName] = useState("");
-  const [psyNumber, setPsyNumber] = useState("");
-  const [psyAdress, setPsyAdress] = useState("");
-  const [psyOtherSpecification, setPsyOtherSpecification] = useState("");
-  const [preHospitalPhone, setPreHospitalPhone] = useState("");
-  const [preHospitalAdress, setPreHospitalName] = useState("");
-  const [healthPlan, setHealthPlane] = useState("");
-  const [id, setId] = useState("");
-  const [Manager, setManage] = useState("");
-  const [mail, setMail] = useState("");
-  const [socialSecurity, setSocialSecurity] = useState("");
-  const [mentalHealth, setMentailHealth] = useState("");
-  const [postSurgeries, setPostSurgeries] = useState("");
+  const [patientId, setPatientId] = useState("6572c20ed4a09e03c1c57f56");
+  const [residentName, setResidentName] = useState("John Doe");
+  const [dob, setDob] = useState("1990-01-01");
+  const [dateOfAdmit, setDateOfAdmit] = useState("2024-01-19");
+  const [facilityAddress, setFacilityAddress] = useState("123 Main St");
+  const [facilityPhoneNumber, setFacilityPhoneNumber] = useState("555-1234");
+  const [placeOfBirth, setPlaceOfBirth] = useState("City, Country");
+  const [eyeColor, setEyeColor] = useState("Brown");
+  const [height, setHeight] = useState("6 feet");
+  const [weight, setWeight] = useState("160 lbs");
+  const [hairColor, setHairColor] = useState("Black");
+  const [identifiableMarks, setIdentifiableMarks] = useState("Scar on left hand");
+  const [primaryLanguage, setPrimaryLanguage] = useState("English");
+  const [courtOrderedTreatment, setCourtOrderedTreatment] = useState(false);
+  const [familyGuardianEmergencyName, setFamilyGuardianEmergencyName] = useState("Jane Doe");
+  const [familyGuardianEmergencyContact, setFamilyGuardianEmergencyContact] = useState("555-5678");
+  const [facilityEmergencyContact, setFacilityEmergencyContact] = useState("555-8765");
+  const [medicationAllergies, setMedicationAllergies] = useState("Penicillin");
+  const [otherAllergies, setOtherAllergies] = useState("Pollen");
+  const [primaryCareProviderName, setPrimaryCareProviderName] = useState("Dr. Smith");
+  const [primaryCareProviderPhone, setPrimaryCareProviderPhone] = useState("555-4321");
+  const [primaryCareProviderAddress, setPrimaryCareProviderAddress] = useState("456 Medical St");
+  const [primaryCareProviderOtherSpecialists, setPrimaryCareProviderOtherSpecialists] = useState(["Dermatologist", "Cardiologist"]);
+  const [psychiatricProviderName, setPsychiatricProviderName] = useState("Dr. Johnson");
+  const [psychiatricProviderPhone, setPsychiatricProviderPhone] = useState("555-9876");
+  const [psychiatricProviderAddress, setPsychiatricProviderAddress] = useState("789 Psychiatry Blvd");
+  const [psychiatricProviderOtherSpecialists, setPsychiatricProviderOtherSpecialists] = useState(["Therapist", "Neuropsychiatrist"]);
+  const [preferredHospitalName, setPreferredHospitalName] = useState("City Hospital");
+  const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("555-1111");
+  const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("789 Hospital St");
+  const [healthPlan, setHealthPlan] = useState("Insurance XYZ");
+  const [healthPlanId, setHealthPlanId] = useState("12345");
+  const [caseManagerName, setCaseManagerName] = useState("Casey Manager");
+  const [caseManagerPhone, setCaseManagerPhone] = useState("555-2222");
+  const [caseManagerEmail, setCaseManagerEmail] = useState("casey@example.com");
+  const [socialSecurityRepresentativePayeeName, setSocialSecurityRepresentativePayeeName] = useState("SSR Payee");
+  const [socialSecurityRepresentativePayeePhone, setSocialSecurityRepresentativePayeePhone] = useState("555-3333");
+  const [socialSecurityRepresentativePayeeEmail, setSocialSecurityRepresentativePayeeEmail] = useState("ssrpayee@example.com");
+  const [mentalHealthDiagnoses, setMentalHealthDiagnoses] = useState("Depression");
+  const [medicalDiagnosesHistory, setMedicalDiagnosesHistory] = useState("Hypertension");
+  const [pastSurgeries, setPastSurgeries] = useState("Appendectomy");
+
+  useEffect(() => {
+    setPatientId(userDetail?._id);
+    setPatientName(userDetail?.fullName);
+  }, [userDetail]);
+
+  useEffect(() => {
+    user_detail(setUserDetail);
+  }, []);
+
 
   return (
     <>
@@ -69,9 +87,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="residentFullName"
-                value=""
+                value={residentName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setResidentName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -80,9 +99,10 @@ const FaceSheet = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={dob}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setDob(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -91,9 +111,10 @@ const FaceSheet = () => {
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
-                value=""
+                value={dateOfAdmit}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setDateOfAdmit(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -101,9 +122,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={facilityAddress}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setFacilityAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -111,9 +133,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={facilityPhoneNumber}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setFacilityPhoneNumber(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -121,9 +144,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={placeOfBirth}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPlaceOfBirth(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -131,9 +155,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={eyeColor}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setEyeColor(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -141,9 +166,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={height}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setHeight(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -151,9 +177,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={weight}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setWeight(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -161,9 +188,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={hairColor}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setHairColor(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -171,9 +199,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={identifiableMarks}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setIdentifiableMarks(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -181,20 +210,21 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={primaryLanguage}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPrimaryLanguage(e.target.value)}
               />
             </div>
             <div className="yeschechbox2">
               <label htmlFor="AHCCCS">Court Ordered Treatment?</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input type="checkbox"  id="courtOrderedTreatment" value={courtOrderedTreatment} checked={courtOrderedTreatment===true} onChange={()=>setCourtOrderedTreatment(true)}/>
+                <label htmlFor="courtOrderedTreatment">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <input type="checkbox"  id="courtOrderedTreatmentno" value={courtOrderedTreatment} checked={courtOrderedTreatment===false} onChange={(e)=>setCourtOrderedTreatment(false)}/>
+                <label htmlFor="courtOrderedTreatmentno">No</label>
               </div>
             </div>
             <div className="form-field">
@@ -204,9 +234,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={familyGuardianEmergencyName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setFamilyGuardianEmergencyName(e.target.value)}
               />
             </div>
             <div className="form-field">

@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import Home from "./Pages/Home/Home";
 import Appointments from "./Components/Appointments/Appointments";

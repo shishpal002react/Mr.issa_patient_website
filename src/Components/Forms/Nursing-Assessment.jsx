@@ -2084,8 +2084,8 @@ const NursingAssessment = () => {
         <input
           type="checkbox"
           id="residentContractsForSafety"
-          checked={psychosocialSymptoms === 'Resident contracts for safety.'}
-          onChange={() => setPsychosocialSymptoms('Resident contracts for safety.')}
+          checked={psychosocialSymptoms === 'Resident contracts for safety'}
+          onChange={() => setPsychosocialSymptoms('Resident contracts for safety')}
         />
         <label htmlFor="residentContractsForSafety">Resident contracts for safety.</label>
       </div>

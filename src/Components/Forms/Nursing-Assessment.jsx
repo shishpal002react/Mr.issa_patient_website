@@ -1981,11 +1981,11 @@ const NursingAssessment = () => {
       <div>
         <input
           type="checkbox"
-          id="insomnia"
+          id="insomniap"
           checked={physicalSymptoms==='insomnia'}
           onChange={() => setPhysicalSymptoms('insomnia')}
         />
-        <label htmlFor="insomnia">insomnia</label>
+        <label htmlFor="insomniap">insomnia</label>
       </div>
       <div>
         <input
@@ -2087,14 +2087,14 @@ const NursingAssessment = () => {
           checked={psychosocialSymptoms === 'Resident contracts for safety'}
           onChange={() => setPsychosocialSymptoms('Resident contracts for safety')}
         />
-        <label htmlFor="residentContractsForSafety">Resident contracts for safety.</label>
+        <label htmlFor="residentContractsForSafety">Resident contracts for safety</label>
       </div>
       <div>
         <input
           type="checkbox"
           id="residentSafetyPlanCompleted"
-          checked={psychosocialSymptoms === 'Resident Safety Plan to be completed within 48 hours of admission.'}
-          onChange={() => setPsychosocialSymptoms('Resident Safety Plan to be completed within 48 hours of admission.')}
+          checked={psychosocialSymptoms === 'Resident Safety Plan to be completed within 48 hours of admission'}
+          onChange={() => setPsychosocialSymptoms('Resident Safety Plan to be completed within 48 hours of admission')}
         />
         <label htmlFor="residentSafetyPlanCompleted">Resident Safety Plan to be completed within 48 hours of admission.</label>
       </div>

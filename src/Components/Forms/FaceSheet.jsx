@@ -31,11 +31,11 @@ const FaceSheet = () => {
   const [primaryCareProviderName, setPrimaryCareProviderName] = useState("Dr. Smith");
   const [primaryCareProviderPhone, setPrimaryCareProviderPhone] = useState("555-4321");
   const [primaryCareProviderAddress, setPrimaryCareProviderAddress] = useState("456 Medical St");
-  const [primaryCareProviderOtherSpecialists, setPrimaryCareProviderOtherSpecialists] = useState(["Dermatologist", "Cardiologist"]);
+  const [primaryCareProviderOtherSpecialists, setPrimaryCareProviderOtherSpecialists] = useState([]);
   const [psychiatricProviderName, setPsychiatricProviderName] = useState("Dr. Johnson");
   const [psychiatricProviderPhone, setPsychiatricProviderPhone] = useState("555-9876");
   const [psychiatricProviderAddress, setPsychiatricProviderAddress] = useState("789 Psychiatry Blvd");
-  const [psychiatricProviderOtherSpecialists, setPsychiatricProviderOtherSpecialists] = useState(["Therapist", "Neuropsychiatrist"]);
+  const [psychiatricProviderOtherSpecialists, setPsychiatricProviderOtherSpecialists] = useState([]);
   const [preferredHospitalName, setPreferredHospitalName] = useState("City Hospital");
   const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("555-1111");
   const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("789 Hospital St");
@@ -60,7 +60,21 @@ const FaceSheet = () => {
     user_detail(setUserDetail);
   }, []);
 
+const handlePrimaryCareProviderOtherSpecialists=(e)=>{
+  const selectedValue = e.target.value;
 
+  if (!primaryCareProviderOtherSpecialists.includes(selectedValue) && selectedValue !== '') {
+    setPrimaryCareProviderOtherSpecialists((prev) => [...prev, selectedValue]);
+  }
+}
+
+const handlePsychiatricProviderOtherSpecialists=(e)=>{
+  const selectedValue = e.target.value;
+  
+  if (!psychiatricProviderOtherSpecialists.includes(selectedValue) && selectedValue !== '') {
+    setPsychiatricProviderOtherSpecialists((prev) => [...prev, selectedValue]);
+  }
+}
   return (
     <>
       <div className="backbutton">
@@ -80,7 +94,7 @@ const FaceSheet = () => {
             <h1>FACE SHEET</h1>
           </div>
         </div>
-        <form action="">
+        <form onSubmit="">
           <div className="form-section">
             <div className="form-field">
               <label htmlFor="residentFullName">Resident Name:</label>
@@ -245,9 +259,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={familyGuardianEmergencyContact}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setFamilyGuardianEmergencyContact(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -255,9 +270,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={facilityEmergencyContact}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setFacilityEmergencyContact(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -265,9 +281,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={medicationAllergies}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setMedicationAllergies(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -277,9 +294,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={otherAllergies}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setOtherAllergies(e.target.value)}
               />
             </div>
             <div className="formsheading">
@@ -290,9 +308,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={primaryCareProviderName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPrimaryCareProviderName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -300,9 +319,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={primaryCareProviderPhone}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPrimaryCareProviderPhone(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -310,12 +330,25 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={primaryCareProviderAddress}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPrimaryCareProviderAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
+              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
+              <select
+        required
+        onChange={handlePrimaryCareProviderOtherSpecialists}
+      >
+        <option value="">Select Option</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="Cardiologist">Cardiologist</option>
+        
+      </select>
+            </div>
+            {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <input
                 type="text"
@@ -324,17 +357,7 @@ const FaceSheet = () => {
                 placeholder="Type Here....."
                 required
               />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value=""
-                placeholder="Type Here....."
-                required
-              />
-            </div>
+            </div> */}
             <div className="formsheading">
               <h6>Psychiatric Provider</h6>
             </div>
@@ -343,9 +366,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={psychiatricProviderName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPsychiatricProviderName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -353,9 +377,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={psychiatricProviderPhone}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPsychiatricProviderPhone(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -363,9 +388,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={psychiatricProviderAddress}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPsychiatricProviderAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -380,15 +406,17 @@ const FaceSheet = () => {
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value=""
-                placeholder="Type Here....."
-                required
-              />
+              <select
+        required
+        onChange={handlePsychiatricProviderOtherSpecialists}
+      >
+        <option value="">Select Option</option>
+        <option value="Therapist">Therapist</option>
+        <option value="Neuropsychiatrist">Neuropsychiatrist</option>
+        
+      </select>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <input
                 type="text"
@@ -397,15 +425,16 @@ const FaceSheet = () => {
                 placeholder="Type Here....."
                 required
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="AHCCCS">Preferred Hospital Phone:</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={preferredHospitalName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPreferredHospitalName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -413,9 +442,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={preferredHospitalAddress}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPreferredHospitalAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -423,9 +453,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={healthPlan}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setHealthPlan(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -433,9 +464,10 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={healthPlanId}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setHealthPlanId(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -443,19 +475,32 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={caseManagerName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setCaseManagerName(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Phone Number/E-Mail:</label>
+              <label htmlFor="AHCCCS">Phone Number:</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={caseManagerPhone}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setCaseManagerPhone(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="AHCCCS">E-Mail:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={caseManagerEmail}
+                placeholder="Type Here....."
+                required
+                onChange={(e)=>setCaseManagerEmail(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -465,19 +510,32 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={socialSecurityRepresentativePayeeName}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setSocialSecurityRepresentativePayeeName(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Phone Number/E-Mail:</label>
+              <label htmlFor="AHCCCS">Phone Number:</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={socialSecurityRepresentativePayeePhone}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setSocialSecurityRepresentativePayeePhone(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="AHCCCS">E-Mail:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={socialSecurityRepresentativePayeeEmail}
+                placeholder="Type Here....."
+                required
+                onChange={(e)=>setSocialSecurityRepresentativePayeeEmail(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -485,9 +543,21 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={mentalHealthDiagnoses}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setMentalHealthDiagnoses(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="AHCCCS">Medical Diagnoses Health:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={medicalDiagnosesHistory}
+                placeholder="Type Here....."
+                required
+                onChange={(e)=>setMedicalDiagnosesHistory(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -495,12 +565,14 @@ const FaceSheet = () => {
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={pastSurgeries}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPastSurgeries(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
+            {/* signature is not add now */}
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -517,7 +589,7 @@ const FaceSheet = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="form-actions">
             <button type="submit" className="initalsubmit">

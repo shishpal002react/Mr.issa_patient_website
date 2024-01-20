@@ -2,54 +2,76 @@ import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
-import { user_detail, faceSheet_form } from "../../Api_Collection/Api";
+import {
+  user_detail,
+  faceSheet_form,
+  Nurssing_form,
+} from "../../Api_Collection/Api";
 
 const FaceSheet = () => {
-  
   const [patientName, setPatientName] = useState("");
   const [userDetail, setUserDetail] = useState("");
   const navigate = useNavigate();
-  const [patientId, setPatientId] = useState("6572c20ed4a09e03c1c57f56");
-  const [residentName, setResidentName] = useState("John Doe");
-  const [dob, setDob] = useState("1990-01-01");
-  const [dateOfAdmit, setDateOfAdmit] = useState("2024-01-19");
-  const [facilityAddress, setFacilityAddress] = useState("123 Main St");
-  const [facilityPhoneNumber, setFacilityPhoneNumber] = useState("555-1234");
-  const [placeOfBirth, setPlaceOfBirth] = useState("City, Country");
-  const [eyeColor, setEyeColor] = useState("Brown");
-  const [height, setHeight] = useState("6 feet");
-  const [weight, setWeight] = useState("160 lbs");
-  const [hairColor, setHairColor] = useState("Black");
-  const [identifiableMarks, setIdentifiableMarks] = useState("Scar on left hand");
-  const [primaryLanguage, setPrimaryLanguage] = useState("English");
-  const [courtOrderedTreatment, setCourtOrderedTreatment] = useState(false);
-  const [familyGuardianEmergencyName, setFamilyGuardianEmergencyName] = useState("Jane Doe");
-  const [familyGuardianEmergencyContact, setFamilyGuardianEmergencyContact] = useState("555-5678");
-  const [facilityEmergencyContact, setFacilityEmergencyContact] = useState("555-8765");
-  const [medicationAllergies, setMedicationAllergies] = useState("Penicillin");
-  const [otherAllergies, setOtherAllergies] = useState("Pollen");
-  const [primaryCareProviderName, setPrimaryCareProviderName] = useState("Dr. Smith");
-  const [primaryCareProviderPhone, setPrimaryCareProviderPhone] = useState("555-4321");
-  const [primaryCareProviderAddress, setPrimaryCareProviderAddress] = useState("456 Medical St");
-  const [primaryCareProviderOtherSpecialists, setPrimaryCareProviderOtherSpecialists] = useState([]);
-  const [psychiatricProviderName, setPsychiatricProviderName] = useState("Dr. Johnson");
-  const [psychiatricProviderPhone, setPsychiatricProviderPhone] = useState("555-9876");
-  const [psychiatricProviderAddress, setPsychiatricProviderAddress] = useState("789 Psychiatry Blvd");
-  const [psychiatricProviderOtherSpecialists, setPsychiatricProviderOtherSpecialists] = useState([]);
-  const [preferredHospitalName, setPreferredHospitalName] = useState("City Hospital");
-  const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("555-1111");
-  const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("789 Hospital St");
-  const [healthPlan, setHealthPlan] = useState("Insurance XYZ");
-  const [healthPlanId, setHealthPlanId] = useState("12345");
-  const [caseManagerName, setCaseManagerName] = useState("Casey Manager");
-  const [caseManagerPhone, setCaseManagerPhone] = useState("555-2222");
-  const [caseManagerEmail, setCaseManagerEmail] = useState("casey@example.com");
-  const [socialSecurityRepresentativePayeeName, setSocialSecurityRepresentativePayeeName] = useState("SSR Payee");
-  const [socialSecurityRepresentativePayeePhone, setSocialSecurityRepresentativePayeePhone] = useState("555-3333");
-  const [socialSecurityRepresentativePayeeEmail, setSocialSecurityRepresentativePayeeEmail] = useState("ssrpayee@example.com");
-  const [mentalHealthDiagnoses, setMentalHealthDiagnoses] = useState("Depression");
-  const [medicalDiagnosesHistory, setMedicalDiagnosesHistory] = useState("Hypertension");
-  const [pastSurgeries, setPastSurgeries] = useState("Appendectomy");
+  const [patientId, setPatientId] = useState("");
+  const [residentName, setResidentName] = useState("");
+  const [dob, setDob] = useState("");
+  const [dateOfAdmit, setDateOfAdmit] = useState("");
+  const [facilityAddress, setFacilityAddress] = useState("");
+  const [facilityPhoneNumber, setFacilityPhoneNumber] = useState("");
+  const [placeOfBirth, setPlaceOfBirth] = useState("");
+  const [eyeColor, setEyeColor] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [hairColor, setHairColor] = useState("");
+  const [identifiableMarks, setIdentifiableMarks] = useState("");
+  const [primaryLanguage, setPrimaryLanguage] = useState("");
+  const [courtOrderedTreatment, setCourtOrderedTreatment] = useState();
+  const [familyGuardianEmergencyName, setFamilyGuardianEmergencyName] =
+    useState("");
+  const [familyGuardianEmergencyContact, setFamilyGuardianEmergencyContact] =
+    useState("");
+  const [facilityEmergencyContact, setFacilityEmergencyContact] = useState("");
+  const [medicationAllergies, setMedicationAllergies] = useState("");
+  const [otherAllergies, setOtherAllergies] = useState("");
+  const [primaryCareProviderName, setPrimaryCareProviderName] = useState("");
+  const [primaryCareProviderPhone, setPrimaryCareProviderPhone] = useState("");
+  const [primaryCareProviderAddress, setPrimaryCareProviderAddress] =
+    useState("");
+  const [
+    primaryCareProviderOtherSpecialists,
+    setPrimaryCareProviderOtherSpecialists,
+  ] = useState([]);
+  const [psychiatricProviderName, setPsychiatricProviderName] = useState("");
+  const [psychiatricProviderPhone, setPsychiatricProviderPhone] = useState("");
+  const [psychiatricProviderAddress, setPsychiatricProviderAddress] =
+    useState("");
+  const [
+    psychiatricProviderOtherSpecialists,
+    setPsychiatricProviderOtherSpecialists,
+  ] = useState([]);
+  const [preferredHospitalName, setPreferredHospitalName] = useState("");
+  const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("");
+  const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("");
+  const [healthPlan, setHealthPlan] = useState("");
+  const [healthPlanId, setHealthPlanId] = useState("");
+  const [caseManagerName, setCaseManagerName] = useState("");
+  const [caseManagerPhone, setCaseManagerPhone] = useState("");
+  const [caseManagerEmail, setCaseManagerEmail] = useState("");
+  const [
+    socialSecurityRepresentativePayeeName,
+    setSocialSecurityRepresentativePayeeName,
+  ] = useState("");
+  const [
+    socialSecurityRepresentativePayeePhone,
+    setSocialSecurityRepresentativePayeePhone,
+  ] = useState("");
+  const [
+    socialSecurityRepresentativePayeeEmail,
+    setSocialSecurityRepresentativePayeeEmail,
+  ] = useState("");
+  const [mentalHealthDiagnoses, setMentalHealthDiagnoses] = useState("");
+  const [medicalDiagnosesHistory, setMedicalDiagnosesHistory] = useState("");
+  const [pastSurgeries, setPastSurgeries] = useState("");
 
   useEffect(() => {
     setPatientId(userDetail?._id);
@@ -60,21 +82,126 @@ const FaceSheet = () => {
     user_detail(setUserDetail);
   }, []);
 
-const handlePrimaryCareProviderOtherSpecialists=(e)=>{
-  const selectedValue = e.target.value;
+  const initial_Value = () => {
+    setResidentName("");
+    setDob("");
+    setDateOfAdmit("");
+    setFacilityAddress("");
+    setFacilityPhoneNumber("");
+    setPlaceOfBirth("");
+    setEyeColor("");
+    setHeight("");
+    setWeight("");
+    setHairColor("");
+    setIdentifiableMarks("");
+    setPrimaryLanguage("");
+    setCourtOrderedTreatment();
+    setFamilyGuardianEmergencyName("");
+    setFamilyGuardianEmergencyContact("");
+    setFacilityEmergencyContact("");
+    setMedicationAllergies("");
+    setOtherAllergies("");
+    setPrimaryCareProviderName("");
+    setPrimaryCareProviderPhone("");
+    setPrimaryCareProviderAddress("");
+    setPrimaryCareProviderOtherSpecialists([]);
+    setPsychiatricProviderName("");
+    setPsychiatricProviderPhone("");
+    setPsychiatricProviderAddress("");
+    setPsychiatricProviderOtherSpecialists([]);
+    setPreferredHospitalName("");
+    setPreferredHospitalPhone("");
+    setPreferredHospitalAddress("");
+    setHealthPlan("");
+    setHealthPlanId("");
+    setCaseManagerName("");
+    setCaseManagerPhone("");
+    setCaseManagerEmail("");
+    setSocialSecurityRepresentativePayeeName("");
+    setSocialSecurityRepresentativePayeePhone("");
+    setSocialSecurityRepresentativePayeeEmail("");
+    setMentalHealthDiagnoses("");
+    setMedicalDiagnosesHistory("");
+    setPastSurgeries("");
+  };
 
-  if (!primaryCareProviderOtherSpecialists.includes(selectedValue) && selectedValue !== '') {
-    setPrimaryCareProviderOtherSpecialists((prev) => [...prev, selectedValue]);
-  }
-}
+  const handleData = (e) => {
+    e.preventDefault();
+    const data = {
+      patientId,
+      residentName,
+      dob,
+      dateOfAdmit,
+      facilityAddress,
+      facilityPhoneNumber,
+      placeOfBirth,
+      eyeColor,
+      height,
+      weight,
+      hairColor,
+      identifiableMarks,
+      primaryLanguage,
+      courtOrderedTreatment,
+      familyGuardianEmergencyName,
+      familyGuardianEmergencyContact,
+      facilityEmergencyContact,
+      medicationAllergies,
+      otherAllergies,
+      primaryCareProviderName,
+      primaryCareProviderPhone,
+      primaryCareProviderAddress,
+      primaryCareProviderOtherSpecialists,
+      psychiatricProviderName,
+      psychiatricProviderPhone,
+      psychiatricProviderAddress,
+      psychiatricProviderOtherSpecialists,
+      preferredHospitalName,
+      preferredHospitalPhone,
+      preferredHospitalAddress,
+      healthPlan,
+      healthPlanId,
+      caseManagerName,
+      caseManagerPhone,
+      caseManagerEmail,
+      socialSecurityRepresentativePayeeName,
+      socialSecurityRepresentativePayeePhone,
+      socialSecurityRepresentativePayeeEmail,
+      mentalHealthDiagnoses,
+      medicalDiagnosesHistory,
+      pastSurgeries,
+    };
+    Nurssing_form(data);
+    initial_Value();
+  };
 
-const handlePsychiatricProviderOtherSpecialists=(e)=>{
-  const selectedValue = e.target.value;
-  
-  if (!psychiatricProviderOtherSpecialists.includes(selectedValue) && selectedValue !== '') {
-    setPsychiatricProviderOtherSpecialists((prev) => [...prev, selectedValue]);
-  }
-}
+  const handlePrimaryCareProviderOtherSpecialists = (e) => {
+    const selectedValue = e.target.value;
+
+    if (
+      !primaryCareProviderOtherSpecialists.includes(selectedValue) &&
+      selectedValue !== ""
+    ) {
+      setPrimaryCareProviderOtherSpecialists((prev) => [
+        ...prev,
+        selectedValue,
+      ]);
+    }
+  };
+
+  const handlePsychiatricProviderOtherSpecialists = (e) => {
+    const selectedValue = e.target.value;
+
+    if (
+      !psychiatricProviderOtherSpecialists.includes(selectedValue) &&
+      selectedValue !== ""
+    ) {
+      setPsychiatricProviderOtherSpecialists((prev) => [
+        ...prev,
+        selectedValue,
+      ]);
+    }
+  };
+
   return (
     <>
       <div className="backbutton">
@@ -94,7 +221,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
             <h1>FACE SHEET</h1>
           </div>
         </div>
-        <form onSubmit="">
+        <form onSubmit={handleData}>
           <div className="form-section">
             <div className="form-field">
               <label htmlFor="residentFullName">Resident Name:</label>
@@ -104,7 +231,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={residentName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setResidentName(e.target.value)}
+                onChange={(e) => setResidentName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -116,7 +243,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={dob}
                 placeholder="DD/MM/YYYY"
                 required
-                onChange={(e)=>setDob(e.target.value)}
+                onChange={(e) => setDob(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -128,7 +255,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={dateOfAdmit}
                 placeholder="DD/MM/YYYY"
                 required
-                onChange={(e)=>setDateOfAdmit(e.target.value)}
+                onChange={(e) => setDateOfAdmit(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -139,7 +266,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={facilityAddress}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setFacilityAddress(e.target.value)}
+                onChange={(e) => setFacilityAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -150,7 +277,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={facilityPhoneNumber}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setFacilityPhoneNumber(e.target.value)}
+                onChange={(e) => setFacilityPhoneNumber(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -161,7 +288,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={placeOfBirth}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPlaceOfBirth(e.target.value)}
+                onChange={(e) => setPlaceOfBirth(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -172,7 +299,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={eyeColor}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setEyeColor(e.target.value)}
+                onChange={(e) => setEyeColor(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -183,7 +310,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={height}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setHeight(e.target.value)}
+                onChange={(e) => setHeight(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -194,7 +321,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={weight}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setWeight(e.target.value)}
+                onChange={(e) => setWeight(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -205,7 +332,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={hairColor}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setHairColor(e.target.value)}
+                onChange={(e) => setHairColor(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -216,7 +343,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={identifiableMarks}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setIdentifiableMarks(e.target.value)}
+                onChange={(e) => setIdentifiableMarks(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -227,17 +354,29 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={primaryLanguage}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPrimaryLanguage(e.target.value)}
+                onChange={(e) => setPrimaryLanguage(e.target.value)}
               />
             </div>
             <div className="yeschechbox2">
               <label htmlFor="AHCCCS">Court Ordered Treatment?</label>
               <div>
-                <input type="checkbox"  id="courtOrderedTreatment" value={courtOrderedTreatment} checked={courtOrderedTreatment===true} onChange={()=>setCourtOrderedTreatment(true)}/>
+                <input
+                  type="checkbox"
+                  id="courtOrderedTreatment"
+                  value={courtOrderedTreatment}
+                  checked={courtOrderedTreatment === true}
+                  onChange={() => setCourtOrderedTreatment(true)}
+                />
                 <label htmlFor="courtOrderedTreatment">Yes</label>
               </div>
               <div>
-              <input type="checkbox"  id="courtOrderedTreatmentno" value={courtOrderedTreatment} checked={courtOrderedTreatment===false} onChange={(e)=>setCourtOrderedTreatment(false)}/>
+                <input
+                  type="checkbox"
+                  id="courtOrderedTreatmentno"
+                  value={courtOrderedTreatment}
+                  checked={courtOrderedTreatment === false}
+                  onChange={(e) => setCourtOrderedTreatment(false)}
+                />
                 <label htmlFor="courtOrderedTreatmentno">No</label>
               </div>
             </div>
@@ -251,7 +390,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={familyGuardianEmergencyName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setFamilyGuardianEmergencyName(e.target.value)}
+                onChange={(e) => setFamilyGuardianEmergencyName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -262,7 +401,9 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={familyGuardianEmergencyContact}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setFamilyGuardianEmergencyContact(e.target.value)}
+                onChange={(e) =>
+                  setFamilyGuardianEmergencyContact(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -273,7 +414,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={facilityEmergencyContact}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setFacilityEmergencyContact(e.target.value)}
+                onChange={(e) => setFacilityEmergencyContact(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -284,7 +425,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={medicationAllergies}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setMedicationAllergies(e.target.value)}
+                onChange={(e) => setMedicationAllergies(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -297,7 +438,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={otherAllergies}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setOtherAllergies(e.target.value)}
+                onChange={(e) => setOtherAllergies(e.target.value)}
               />
             </div>
             <div className="formsheading">
@@ -311,7 +452,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={primaryCareProviderName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPrimaryCareProviderName(e.target.value)}
+                onChange={(e) => setPrimaryCareProviderName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -322,7 +463,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={primaryCareProviderPhone}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPrimaryCareProviderPhone(e.target.value)}
+                onChange={(e) => setPrimaryCareProviderPhone(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -333,20 +474,19 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={primaryCareProviderAddress}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPrimaryCareProviderAddress(e.target.value)}
+                onChange={(e) => setPrimaryCareProviderAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <select
-        required
-        onChange={handlePrimaryCareProviderOtherSpecialists}
-      >
-        <option value="">Select Option</option>
-        <option value="Dermatologist">Dermatologist</option>
-        <option value="Cardiologist">Cardiologist</option>
-        
-      </select>
+                required
+                onChange={handlePrimaryCareProviderOtherSpecialists}
+              >
+                <option value="">Select Option</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="Cardiologist">Cardiologist</option>
+              </select>
             </div>
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
@@ -369,7 +509,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={psychiatricProviderName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPsychiatricProviderName(e.target.value)}
+                onChange={(e) => setPsychiatricProviderName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -380,7 +520,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={psychiatricProviderPhone}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPsychiatricProviderPhone(e.target.value)}
+                onChange={(e) => setPsychiatricProviderPhone(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -391,30 +531,8 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={psychiatricProviderAddress}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPsychiatricProviderAddress(e.target.value)}
+                onChange={(e) => setPsychiatricProviderAddress(e.target.value)}
               />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value=""
-                placeholder="Type Here....."
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <select
-        required
-        onChange={handlePsychiatricProviderOtherSpecialists}
-      >
-        <option value="">Select Option</option>
-        <option value="Therapist">Therapist</option>
-        <option value="Neuropsychiatrist">Neuropsychiatrist</option>
-        
-      </select>
             </div>
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
@@ -427,16 +545,49 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
               />
             </div> */}
             <div className="form-field">
-              <label htmlFor="AHCCCS">Preferred Hospital Phone:</label>
+              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
+              <select
+                required
+                onChange={handlePsychiatricProviderOtherSpecialists}
+              >
+                <option value="">Select Option</option>
+                <option value="Therapist">Therapist</option>
+                <option value="Neuropsychiatrist">Neuropsychiatrist</option>
+              </select>
+            </div>
+            {/* <div className="form-field">
+              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value=""
+                placeholder="Type Here....."
+                required
+              />
+            </div> */}
+            <div className="form-field">
+              <label htmlFor="AHCCCS">Preferred Hospital Name:</label>
               <input
                 type="text"
                 id="AHCCCS"
                 value={preferredHospitalName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPreferredHospitalName(e.target.value)}
+                onChange={(e) => setPreferredHospitalName(e.target.value)}
               />
             </div>
+            <div className="form-field">
+              <label htmlFor="AHCCCS">Preferred Hospital Phone:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={preferredHospitalPhone}
+                placeholder="Type Here....."
+                required
+                onChange={(e) => setPreferredHospitalPhone(e.target.value)}
+              />
+            </div>
+
             <div className="form-field">
               <label htmlFor="AHCCCS">Preferred Hospital Address:</label>
               <input
@@ -445,7 +596,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={preferredHospitalAddress}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPreferredHospitalAddress(e.target.value)}
+                onChange={(e) => setPreferredHospitalAddress(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -456,7 +607,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={healthPlan}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setHealthPlan(e.target.value)}
+                onChange={(e) => setHealthPlan(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -467,7 +618,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={healthPlanId}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setHealthPlanId(e.target.value)}
+                onChange={(e) => setHealthPlanId(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -478,7 +629,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={caseManagerName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setCaseManagerName(e.target.value)}
+                onChange={(e) => setCaseManagerName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -489,18 +640,18 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={caseManagerPhone}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setCaseManagerPhone(e.target.value)}
+                onChange={(e) => setCaseManagerPhone(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">E-Mail:</label>
               <input
-                type="text"
+                type="email"
                 id="AHCCCS"
                 value={caseManagerEmail}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setCaseManagerEmail(e.target.value)}
+                onChange={(e) => setCaseManagerEmail(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -513,7 +664,9 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={socialSecurityRepresentativePayeeName}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setSocialSecurityRepresentativePayeeName(e.target.value)}
+                onChange={(e) =>
+                  setSocialSecurityRepresentativePayeeName(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -524,18 +677,22 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={socialSecurityRepresentativePayeePhone}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setSocialSecurityRepresentativePayeePhone(e.target.value)}
+                onChange={(e) =>
+                  setSocialSecurityRepresentativePayeePhone(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">E-Mail:</label>
               <input
-                type="text"
+                type="email"
                 id="AHCCCS"
                 value={socialSecurityRepresentativePayeeEmail}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setSocialSecurityRepresentativePayeeEmail(e.target.value)}
+                onChange={(e) =>
+                  setSocialSecurityRepresentativePayeeEmail(e.target.value)
+                }
               />
             </div>
             <div className="form-field">
@@ -546,7 +703,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={mentalHealthDiagnoses}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setMentalHealthDiagnoses(e.target.value)}
+                onChange={(e) => setMentalHealthDiagnoses(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -557,7 +714,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={medicalDiagnosesHistory}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setMedicalDiagnosesHistory(e.target.value)}
+                onChange={(e) => setMedicalDiagnosesHistory(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -568,7 +725,7 @@ const handlePsychiatricProviderOtherSpecialists=(e)=>{
                 value={pastSurgeries}
                 placeholder="Type Here....."
                 required
-                onChange={(e)=>setPastSurgeries(e.target.value)}
+                onChange={(e) => setPastSurgeries(e.target.value)}
               />
             </div>
             {/* signature is not add now */}

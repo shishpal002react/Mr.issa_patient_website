@@ -44,7 +44,7 @@ export const user_detail = async (setUser) => {
     setUser(res?.data?.data);
    
   } catch (e) {
-    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };
 
@@ -119,6 +119,20 @@ export const Nurssing_form = async (payLoad) => {
   }
 };
 
+export const faceSheet_form = async (payLoad) => {
+  try {
+    const res = await axios.post(
+      `${BaseUrl}Patient/createFaceSheet`,
+      payLoad,
+      Token
+    );
+    show_notification("Success !", "Form Submit Successfully", "success");
+    return res;
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
 export const appoinment_Booking = async (payLoad) => {
   try {
     const res = await axios.post(
@@ -145,7 +159,7 @@ export const appointment_Upcoming = async (setAppoinment) => {
     );
     setAppoinment(res?.data);
   } catch (e) {
-    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };
 
@@ -157,7 +171,7 @@ export const appointment_get = async (setAppoinmentPast) => {
     );
     setAppoinmentPast(res?.data);
   } catch (e) {
-    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };
 
@@ -170,6 +184,6 @@ export const medication_get = async (patientId,setMedication) => {
     );
     setMedication(res?.data?.data);
   } catch (e) {
-    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }
 };

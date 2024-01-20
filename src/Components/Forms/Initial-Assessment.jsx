@@ -50,23 +50,7 @@ const InitialAssessment = () => {
   const [residentGoals, setResidentGoals] = useState("yourResidentGoals");
 
   // Resident Strengths (Array)
-  const [residentStrengths, setResidentStrengths] = useState([
-    "Self motivated",
-    "Loving",
-    "Honesty",
-    "Helping others",
-    "Communication",
-    "Creative",
-    "Patient",
-    "Dedication",
-    "Coloring",
-    "Decision making",
-    "Team work",
-    "Family",
-    "Writing",
-    "Coloring",
-    "Art",
-  ]);
+  const [residentStrengths, setResidentStrengths] = useState([]);
 
   const [residentLimitations, setResidentLimitations] = useState(
     "yourResidentLimitations"
@@ -88,78 +72,88 @@ const InitialAssessment = () => {
     "yourEstimateDateOfDischarge"
   );
   const [agreementWithPlan, setAgreementWithPlan] = useState(
-    "yourAgreementWithPlan"
+    ""
   );
 
   // Resident Guardian Agreement
-  const [residentGuardianAgreement, setResidentGuardianAgreement] = useState({
-    name: "yourResidentGuardianName",
-    signature: "yourResidentGuardianSignature",
-    date: "yourResidentGuardianDate",
-  });
+  const [residentGuardianAgreementName,setResidentGuardianAgreementName]=useState("");
+  const [residentGuardianAgreementSignature,setResidentGuardianAgreementSignature]=useState("")
+  const [residentGuardianAgreementDate,setResidentGuardianAgreementDate]=useState("")
+  const [residentGuardianAgreement, setResidentGuardianAgreement] = useState({});
 
   // Staff Agreement
-  const [staffAgreement, setStaffAgreement] = useState({
-    name: "yourStaffName",
-    signature: "yourStaffSignature",
-    date: "yourStaffDate",
-  });
+  const [staffAgreementname,setStaffAgreementName]=useState("");
+  const [staffAgreementSignature,setStaffAgreementSignature]=useState("");
+  const [staffAgreementDate,setStaffAgreementDate]=useState("")
+  const [staffAgreement, setStaffAgreement] = useState({});
 
   // BHP Agreement
-  const [bhpAgreement, setBhpAgreement] = useState({
-    name: "yourBhpName",
-    signature: "yourBhpSignature",
-    date: "yourBhpDate",
-  });
+  const [bhpAgreementName,setBhpAgreementName]=useState("");
+  const [bhpAgreementSignature,setBhpAgreementSignature]=useState("")
+  const [bhpAgreementDate,setBhpAgreementDate]=useState("")
+  const [bhpAgreement, setBhpAgreement] = useState({});
 
   // Other
-  const [other, setOther] = useState({
-    name: "yourOtherName",
-    relationship: "yourOtherRelationship",
-    signature: "yourOtherSignature",
-    date: "yourOtherDate",
-  });
+  const [otherName,setOtherName]=useState("");
+  const [otherRelationship,setOtherRelationship]=useState("");
+  const [otherSignature,setOtherSignature]=useState("");
+  const [otherDate,setOtherDate]=useState("");
+  const [other, setOther] = useState({});
 
-  // Medical Conditions (Array of Objects)
-  const [medicalConditions, setMedicalConditions] = useState([
-    {
-      condition: "yourMedicalCondition",
-      yes: "yourMedicalConditionYes",
-      no: "yourMedicalConditionNo",
-      comments: "yourMedicalConditionComments",
-    },
-  ]);
+  // Medical Conditions (Array of Objects) array
+  const [medicalConditionsCondition,setMedicalConditionsCondition]=useState('');
+  const [medicalConditionsYes,setMedicalConditionsYes]=useState("")
+  const [medicalConditionsNo,setMedicalConditionsNo]=useState("")
+  const [medicalConditionsComments,setMedicalConditionsComments]=useState("")
+  const [medicalConditions, setMedicalConditions] = useState([]);
+
+  // miss the value between the 79 to 99
+  const [SignificantFamilyMedicalPsychiatricHistory,setSignificantFamilyMedicalPsychiatricHistory]=useState("")
+  //mental Health
+  const [mentalHealthTreatmentHistoryTypeOfService,setMentalHealthTreatmentHistoryTypeOfService]=useState("");
+  const [mentalHealthTreatmentHistoryWhere,setMentalHealthTreatmentHistoryWhere]=useState("");
+  const [mentalHealthTreatmentHistoryDates,setMentalHealthTreatmentHistoryDates]=useState("");
+  const [mentalHealthTreatmentHistoryDiagnosisReason,setMentalHealthTreatmentHistoryDiagnosisReason]=useState("");
+  const [mentalHealthTreatmentHistory,setMentalHealthTreatmentHistory]=useState([]);
+  const [substanceAbuseHistory,setSubstanceAbuseHistory]=useState("");
+  const [substanceAbuseDenies,setSubstanceAbuseDenies]=useState("")
+  // substanceAbuseHistoryData array
+  const [substanceAbuseHistoryDataTypes,setSubstanceAbuseHistoryDataTypes]=useState("")
+  const [substanceAbuseHistoryDataAgeOfFirstUse,setSubstanceAbuseHistoryDataAgeOfFirstUse]=useState("");
+  const [substanceAbuseHistoryDataLastUse,setSubstanceAbuseHistoryDataLastUse]=useState("");
+  const [substanceAbuseHistoryDataFrequency,setSubstanceAbuseHistoryDataFrequency]=useState("");
+  const [substanceAbuseHistoryDataLengthOfSobriety,setSubstanceAbuseHistoryDataLengthOfSobriety]=useState("");
+  const [substanceAbuseHistoryData,setSubstanceAbuseHistoryData]=useState([]);
 
   // Active Withdrawal Symptoms
-  const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({
-    noneReportedOrObserved: "yourActiveWithdrawalNoneReportedOrObserved",
-    Agitation: "yourActiveWithdrawalAgitation",
-    Nausea: "yourActiveWithdrawalNausea",
-    Vomiting: "yourActiveWithdrawalVomiting",
-    Headache: "yourActiveWithdrawalHeadache",
-    TactileDisturbances: "yourActiveWithdrawalTactileDisturbances",
-    Anxiety: "yourActiveWithdrawalAnxiety",
-    Tremors: "yourActiveWithdrawalTremors",
-    VisualDisturbances: "",
-    AuditoryDisturbances: "",
-    Sweats: "",
-    Paranoia: "",
-    GooseBumps: "",
-    Runningnose: "",
-    BonePain: "",
-    Tearing: "",
-    Seizures: "",
-    LossofMuscleCoordination: "",
-  });
+  const [noneReportedOrObserved, setNoneReportedOrObserved] = useState(false);
+const [Agitation, setAgitation] = useState(false);
+const [Nausea, setNausea] = useState(false);
+const [Vomiting, setVomiting] = useState(false);
+const [Headache, setHeadache] = useState(false);
+const [TactileDisturbances, setTactileDisturbances] = useState(false);
+const [Anxiety, setAnxiety] = useState(false);
+const [Tremors, setTremors] = useState(false);
+const [VisualDisturbances, setVisualDisturbances] = useState(false);
+const [AuditoryDisturbances, setAuditoryDisturbances] = useState(false);
+const [Sweats, setSweats] = useState(false);
+const [Paranoia, setParanoia] = useState(false);
+const [GooseBumps, setGooseBumps] = useState(false);
+const [Runningnose, setRunningnose] = useState(false);
+const [BonePain, setBonePain] = useState(false);
+const [Tearing, setTearing] = useState(false);
+const [Seizures, setSeizures] = useState(false);
+const [LossofMuscleCoordination, setLossofMuscleCoordination] = useState(false);
+const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
 
   // Mental Status Exam (Nested Object)
+
   const [mentalStatusExam, setMentalStatusExam] = useState({
     apparentAge: {
       consistent: true,
       younger: false,
       older: false,
     },
-    // ... (similarly for other fields)
   });
 
   // Significant Social Developmental History
@@ -442,6 +436,29 @@ const InitialAssessment = () => {
   useEffect(() => {
     user_detail(setUserData);
   }, []);
+
+  //react select library 
+  const qualitiesOptions = [
+    { label: 'Self motivated', value: 'Self motivated' },
+    { label: 'Loving', value: 'Loving' },
+    { label: 'Honesty', value: 'Honesty' },
+    { label: 'Helping others', value: 'Helping others' },
+    { label: 'Communication', value: 'Communication' },
+    { label: 'Creative', value: 'Creative' },
+    { label: 'Patient', value: 'Patient' },
+    { label: 'Dedication', value: 'Dedication' },
+    { label: 'Coloring', value: 'Coloring' },
+    { label: 'Decision making', value: 'Decision making' },
+    { label: 'Team work', value: 'Team work' },
+    { label: 'Family', value: 'Family' },
+    { label: 'Writing', value: 'Writing' },
+    { label: 'Coloring', value: 'Coloring' },
+    { label: 'Art', value: 'Art' },
+  ];
+
+  const handleSelectChange = (selectedOptions) => {
+    setResidentStrengths(selectedOptions);
+  };
 
   return (
     <>
@@ -769,19 +786,19 @@ const InitialAssessment = () => {
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Resident’s Strength</label>
-              {/* <Select
+              <Select
         isMulti
-        options={options}
-        value={selectedOptions}
-        onChange={handleChange}
+        value={residentStrengths}
+        onChange={handleSelectChange}
+        options={qualitiesOptions}
       />
-      <div>
+      {/* <div>
         Selected Options:
-        {selectedOptions.map((option) => (
+        {qualitiesOptions.map((option) => (
           <span key={option.value}>{option.label}, </span>
         ))}
       </div> */}
-              <select id="reasonadmission" value="" required>
+              {/* <select id="reasonadmission" value="" required>
                 <option value="Enter text">Enter text</option>
                 <option value="Enter text">Self motivated</option>
                 <option value="Enter text">Loving</option>
@@ -799,7 +816,7 @@ const InitialAssessment = () => {
                 <option value="Enter text">Coloring</option>
                 <option value="Enter text">Art</option>
  
-              </select>
+              </select> */}
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address">
@@ -807,11 +824,12 @@ const InitialAssessment = () => {
               </label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={residentLimitations}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setResidentLimitations(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -820,11 +838,12 @@ const InitialAssessment = () => {
               </label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={currentBehavioralIssues}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setCurrentBehavioralIssues(e.target.value)}
               />
             </div>
             <label htmlFor="programlocation&address">
@@ -864,9 +883,10 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={dischargePlan}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setDischargePlan(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -874,12 +894,22 @@ const InitialAssessment = () => {
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={estimateDateOfDischarge}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setEstimateDateOfDischarge(e.target.value)}
               />
             </div>
 
+            <div className="form-field">
+              <label htmlFor="todaydate">Agreement With Plan</label>
+              <select required onChange={(e)=>setAgreementWithPlan(e.target.value)}>
+                <option value={true}>True</option>
+                <option value={false}>False</option>
+              </select>
+            </div>
+
+            
             <div class="checkbox-container1">
               <div class="checkoptions1">
                 <div class="checkboxitem1">
@@ -910,12 +940,14 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={residentGuardianAgreementName}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setResidentGuardianAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
+            <input type="text" required value={residentGuardianAgreementSignature} onChange={(e)=>setResidentGuardianAgreementSignature(e.target.value)}/>
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -932,15 +964,16 @@ const InitialAssessment = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={residentGuardianAgreementDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setResidentGuardianAgreementDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -948,12 +981,14 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={staffAgreementname}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setStaffAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
+            <input type="text" required value={staffAgreementSignature} onChange={(e)=>setStaffAgreementSignature(e.target.value)}/>
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -970,15 +1005,16 @@ const InitialAssessment = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={staffAgreementDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setStaffAgreementDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -986,12 +1022,14 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={bhpAgreementName}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setBhpAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
+            <input type="text" required value={bhpAgreementSignature} onChange={(e)=>setBhpAgreementSignature(e.target.value)}/>
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -1008,15 +1046,16 @@ const InitialAssessment = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={bhpAgreementDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setBhpAgreementDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -1024,12 +1063,14 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={otherName}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setOtherName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
+            <input type="text" required value={otherSignature} onChange={(e)=>setOtherSignature(e.target.value)}/>
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -1046,25 +1087,27 @@ const InitialAssessment = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="approvedby">Relationship to Resident</label>
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={otherRelationship}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setOtherRelationship(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Other name:</label>
+              <label htmlFor="approvedby">Other Date:</label>
               <input
-                type="text"
+                type="date"
                 id="approvedby"
-                value=""
+                value={otherDate}
                 placeholder="Enter name"
                 required
+                onChange={(e)=>setOtherDate(e.target.value)}
               />
             </div>
             <h5>Section - 2</h5>
@@ -1077,10 +1120,17 @@ const InitialAssessment = () => {
               <h6>Conditions</h6>
             </div>
 
+            {/* {
+            "condition": "yourMedicalCondition",
+            "yes": "yourMedicalConditionYes",
+            "no": "yourMedicalConditionNo",
+            "comments": "yourMedicalConditionComments"
+            } */}
+
             <div className="yeschechbox">
               <label htmlFor="">Diabetes</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" value />
                 <span>Yes</span>
               </div>
               <div>
@@ -1682,13 +1732,13 @@ const InitialAssessment = () => {
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Type of Service</label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">BHRF</option>
-                <option value="Enter text">IP</option>
-                <option value="Enter text">OP</option>
-                <option value="Enter text">PHP</option>
-                <option value="Enter text">IOP</option>
+              <select id="reasonadmission" required value={mentalHealthTreatmentHistoryTypeOfService} onChange={(e)=>setMentalHealthTreatmentHistoryTypeOfService(e.target.value)}>
+                <option value="">Enter text</option>
+                <option value="BHRF">BHRF</option>
+                <option value="IP">IP</option>
+                <option value="OP">OP</option>
+                <option value="PHP">PHP</option>
+                <option value="IOP">IOP</option>
                 {/* <option value="Female">Sanskrit</option> */}
               </select>
             </div>
@@ -1697,9 +1747,10 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={mentalHealthTreatmentHistoryWhere}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setMentalHealthTreatmentHistoryWhere(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -1707,22 +1758,23 @@ const InitialAssessment = () => {
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={mentalHealthTreatmentHistoryDates}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setMentalHealthTreatmentHistoryDates(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Diagnosis/Reason for Treatment
               </label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Mental health Treatment</option>
-                <option value="Enter text">Substance Abuse Treatment</option>
-                <option value="Enter text">Stabilization</option>
-                <option value="Enter text">Detox</option>
-                <option value="Enter text">
+              <select id="reasonadmission" required value={mentalHealthTreatmentHistoryDiagnosisReason} onChange={(e)=>setMentalHealthTreatmentHistoryDiagnosisReason(e.target.value)}>
+                <option value="">Enter text</option>
+                <option value="Mental health Treatment">Mental health Treatment</option>
+                <option value="Substance Abuse Treatment">Substance Abuse Treatment</option>
+                <option value="Stabilization">Stabilization</option>
+                <option value="Detox">Detox</option>
+                <option value="DTS/DTO Other">
                   DTS/DTO Other (Please specify)
                 </option>
 
@@ -1732,89 +1784,103 @@ const InitialAssessment = () => {
             <div className="yeschechbox">
               <label htmlFor="">Substance Abuse history:</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" id="substanceAbuseHistory" checked={substanceAbuseHistory===true} onChange={()=>setSubstanceAbuseHistory(true)} />
+                <label htmlFor="substanceAbuseHistory">Yes</label>
               </div>
-              <label htmlFor="">Denies:</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" id="substanceAbuseHistoryno" checked={substanceAbuseHistory===false} onChange={()=>setSubstanceAbuseHistory(false)} />
+                <label htmlFor="substanceAbuseHistoryno">No</label>
+              </div>
+            </div>
+
+            <div className="yeschechbox">
+              <label htmlFor="">Substance Abuse history:</label>
+              <div>
+                <input type="checkbox" id="substanceAbuseDenies" checked={substanceAbuseDenies===true} onChange={()=>setSubstanceAbuseDenies(true)} />
+                <label htmlFor="substanceAbuseDenies">Yes</label>
+              </div>
+              <div>
+                <input type="checkbox" id="substanceAbuseDeniesno" checked={substanceAbuseDenies===false} onChange={()=>setSubstanceAbuseDenies(false)} />
+                <label htmlFor="substanceAbuseDeniesno">No</label>
               </div>
             </div>
 
             <div className="form-field">
               <label htmlFor="reasonadmission">Type</label>
-              <select id="reasonadmission" value="" required>
+              <select id="reasonadmission" value={substanceAbuseHistoryDataTypes} required onChange={(e)=>setSubstanceAbuseHistoryDataTypes(e.target.value)}>
                 <option value="Enter text">Enter text</option>
-                <option value="Enter text">Alcohol</option>
-                <option value="Enter text">Benzodiazepines</option>
-                <option value="Enter text">Cocaine</option>
-                <option value="Enter text">Crack</option>
-                <option value="Enter text">
+                <option value="Alcohol">Alcohol</option>
+                <option value="Benzodiazepines">Benzodiazepines</option>
+                <option value="Cocaine">Cocaine</option>
+                <option value="Crack">Crack</option>
+                <option value="Hallucinogens">
                   Hallucinogens (LSD,mescaline,etc.)
                 </option>
-                <option value="Enter text">Heroin</option>
-                <option value="Enter text">Inhalants</option>
-                <option value="Enter text">Marijuana</option>
-                <option value="Enter text">Methamphetamine</option>
-                <option value="Enter text">Methadone</option>
-                <option value="Enter text">MDMA (ecstasy)</option>
-                <option value="Enter text">PCP (angel dust)</option>
-                <option value="Enter text">Prescription medicine</option>
-                <option value="Enter text">OTC medicine</option>
-                <option value="Enter text">other</option>
+                <option value="Heroin">Heroin</option>
+                <option value="Inhalants">Inhalants</option>
+                <option value="Marijuana">Marijuana</option>
+                <option value="Methamphetamine">Methamphetamine</option>
+                <option value="Methadone">Methadone</option>
+                <option value="MDMA">MDMA (ecstasy)</option>
+                <option value="PCP">PCP (angel dust)</option>
+                <option value="Prescription medicine">Prescription medicine</option>
+                <option value="OTC medicine">OTC medicine</option>
+                <option value="other">other</option>
                 {/* <option value="Female">Sanskrit</option> */}
               </select>
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Age of First use</label>
+              <label >Age of First use</label>
               <input
                 type="text"
-                id="approvedby"
-                value=""
+                id=""
+                value={substanceAbuseHistoryDataAgeOfFirstUse}
                 placeholder="Enter age"
                 required
+                onChange={(e)=>setSubstanceAbuseHistoryDataAgeOfFirstUse(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="reasonadmission">Last Use</label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Weeks ago</option>
-                <option value="Enter text">Days ago</option>
-                <option value="Enter text">Yesterday</option>
-                <option value="Enter text">Months ago</option>
-                <option value="Enter text">Few hours ago</option>
-                <option value="Enter text">Unsure</option>
-                {/* <option value="Female">Sanskrit</option> */}
+              <label htmlFor="">Last Use</label>
+              <select id="" value={substanceAbuseHistoryDataLastUse} required onChange={(e)=>setSubstanceAbuseHistoryDataLastUse(e.target.value)}>
+                <option value="">Enter text</option>
+                <option value="Weeks ago">Weeks ago</option>
+                <option value="Days ago">Days ago</option>
+                <option value="Yesterday">Yesterday</option>
+                <option value="Months ago">Months ago</option>
+                <option value="Few hours ago">Few hours ago</option>
+                <option value="Unsure">Unsure</option>
+              
               </select>
             </div>
             <div className="form-field">
-              <label htmlFor="reasonadmission">Frequency</label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Daily</option>
-                <option value="Enter text">Two to four times weekly</option>
-                <option value="Enter text">Multiple times a day</option>
-                <option value="Enter text">Chronic</option>
-                <option value="Enter text">Intermittent</option>
-                <option value="Enter text">Only on social events</option>
-                <option value="Enter text">Only on weekends</option>
-                <option value="Enter text">Few times a month</option>
-                {/* <option value="Female">Sanskrit</option> */}
+              <label htmlFor="">Frequency</label>
+              <select required value={substanceAbuseHistoryDataFrequency}  onChange={(e)=>setSubstanceAbuseHistoryDataFrequency(e.target.value)}>
+                <option value="">Enter text</option>
+                <option value="Daily">Daily</option>
+                <option value="Two to four times weekly">Two to four times weekly</option>
+                <option value="Multiple times a day">Multiple times a day</option>
+                <option value="Chronic">Chronic</option>
+                <option value="Intermittent">Intermittent</option>
+                <option value="Only on social events">Only on social events</option>
+                <option value="Only on weekends">Only on weekends</option>
+                <option value="Few times a month">Few times a month</option>
+               
               </select>
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Length of Sobriety</label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">One week</option>
-                <option value="Enter text">A few days ago, One month</option>
-                <option value="Enter text">Two months</option>
-                <option value="Enter text">Three months</option>
-                <option value="Enter text">Four months</option>
-                <option value="Enter text">Five to Six months</option>
-                <option value="Enter text">One year</option>
-                <option value="Enter text">Two years</option>
-                {/* <option value="Female">Sanskrit</option> */}
+              <select id="reasonadmission" required value={substanceAbuseHistoryDataLengthOfSobriety}  onChange={(e)=>setSubstanceAbuseHistoryDataLengthOfSobriety(e.target.value)}>
+                <option value="">Enter text</option>
+                <option value="One week">One week</option>
+                <option value="A few days ago, One month">A few days ago, One month</option>
+                <option value="Two months">Two months</option>
+                <option value="Three months">Three months</option>
+                <option value="Four months">Four months</option>
+                <option value="Five to Six months">Five to Six months</option>
+                <option value="One year">One year</option>
+                <option value="Two years">Two years</option>
+               
               </select>
             </div>
             {/* <div>
@@ -1868,43 +1934,43 @@ const InitialAssessment = () => {
               <div class="chechbox12">
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox" value={noneReportedOrObserved} checked={noneReportedOrObserved} onChange={()=>setNoneReportedOrObserved(!noneReportedOrObserved)}/>
                     <span>None reported observed</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Vomiting} checked={Vomiting} onChange={()=>setVomiting(!Vomiting)}/>
                     <span>Vomiting</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Anxiety} checked={Anxiety} onChange={()=>setAnxiety(!Anxiety)}/>
                     <span>Anxiety</span>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Agitation} checked={Agitation} onChange={()=>setAgitation(!Agitation)} />
                     <span>Agitation</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Headache} checked={Headache} onChange={()=>setHeadache(!Headache)} />
                     <span>Headache</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Tremors} checked={Tremors} onChange={()=>setTremors(!Tremors)}/>
                     <span>Tremors</span>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Nausea} checked={Nausea} onChange={()=>setNausea(!Nausea)}/>
                     <span>Nausea</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={TactileDisturbances} checked={TactileDisturbances} onChange={()=>setTactileDisturbances(!TactileDisturbances)}/>
                     <span>Tactile Disturbances</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={VisualDisturbances} checked={VisualDisturbances} onChange={()=>setVisualDisturbances(!VisualDisturbances)}/>
                     <span>Visual Disturbances</span>
                   </div>
                 </div>
@@ -1916,37 +1982,37 @@ const InitialAssessment = () => {
               <div class="chechbox12">
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Sweats} checked={Sweats} onChange={()=>setSweats(!Sweats)}/>
                     <span>Sweats</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={GooseBumps} checked={GooseBumps} onChange={()=>setGooseBumps(!GooseBumps)}/>
                     <span>Goose Bumps</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={BonePain} checked={BonePain} onChange={()=>setBonePain(!BonePain)}/>
                     <span>Bone Pain</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Seizures} checked={Seizures} onChange={()=>setSeizures(!Seizures)}/>
                     <span>Seizures</span>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Paranoia} checked={Paranoia} onChange={()=>setParanoia(!Paranoia)}/>
                     <span>Paranoia</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={Runningnose} checked={Runningnose} onChange={()=>setRunningnose(!Runningnose)}/>
                     <span>Running nose</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox" value={Tearing} checked={Tearing} onChange={()=>setTearing(!Tearing)}/>
                     <span>Tearing</span>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
+                    <input type="checkbox"  value={LossofMuscleCoordination} checked={LossofMuscleCoordination} onChange={()=>setLossofMuscleCoordination(!LossofMuscleCoordination)}/>
                     <span>Loss of muscle coordination</span>
                   </div>
                 </div>

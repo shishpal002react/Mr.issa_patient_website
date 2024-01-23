@@ -2147,23 +2147,25 @@ significantRecentLosses :{
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Substance Abuse history:</label>
-              <div>
+              
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="substanceAbuseHistory" checked={substanceAbuseHistory===true} onChange={()=>setSubstanceAbuseHistory(true)} />
                 <label htmlFor="substanceAbuseHistory">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="substanceAbuseHistoryno" checked={substanceAbuseHistory===false} onChange={()=>setSubstanceAbuseHistory(false)} />
                 <label htmlFor="substanceAbuseHistoryno">No</label>
               </div>
+              
             </div>
 
             <div className="yeschechbox">
               <label htmlFor="">Substance Abuse history:</label>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="substanceAbuseDenies" checked={substanceAbuseDenies===true} onChange={()=>setSubstanceAbuseDenies(true)} />
                 <label htmlFor="substanceAbuseDenies">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="substanceAbuseDeniesno" checked={substanceAbuseDenies===false} onChange={()=>setSubstanceAbuseDenies(false)} />
                 <label htmlFor="substanceAbuseDeniesno">No</label>
               </div>
@@ -3302,11 +3304,11 @@ significantRecentLosses :{
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Fall risk:</label>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="fallRisk" checked={fallRisk===true} onChange={()=>setFallRisk(true)} />
                 <label htmlFor="fallRisk">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
               <input type="checkbox" id="fallRiskno" checked={fallRisk===false} onChange={()=>setFallRisk(false)} />
                 <label htmlFor="fallRiskno">No</label>
               </div>
@@ -3369,11 +3371,11 @@ significantRecentLosses :{
                 Are you currently thinking about harming yourself or committing
                 suicide?
               </label>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="currentThoughtsOfHarmingSelf" checked={currentThoughtsOfHarmingSelf===true} onChange={()=>setCurrentThoughtsOfHarmingSelf(true)}/>
                 <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="currentThoughtsOfHarmingSelfno" checked={currentThoughtsOfHarmingSelf===false} onChange={()=>setCurrentThoughtsOfHarmingSelf(false)}/>
                 <label htmlFor="currentThoughtsOfHarmingSelfno">No</label>
               </div>
@@ -3387,11 +3389,11 @@ significantRecentLosses :{
               <div>
                 <span>Urgency:</span>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="suicidalIdeationUrgency" checked={suicidalIdeationUrgency===true} onChange={()=>setSuicidalIdeationUrgency(true)}/>
                 <label htmlFor="suicidalIdeationUrgency">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="suicidalIdeationUrgencyno" checked={suicidalIdeationUrgency===false} onChange={()=>setSuicidalIdeationUrgency(false)}/>
                 <label htmlFor="suicidalIdeationUrgencyno">NO</label>
               </div>
@@ -3399,11 +3401,11 @@ significantRecentLosses :{
             </div>
             <div className="yeschechbox1">
                 <label>Severity:</label>
-                <div>
+                <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="currentThoughtsOfHarmingSelf" checked={currentThoughtsOfHarmingSelf===true} onChange={()=>setSuicidalIdeationSeverity(true)}/>
                 <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="suicidalIdeationSeverityno" checked={suicidalIdeationSeverity===false} onChange={()=>setSuicidalIdeationSeverity(false)}/>
                 <label htmlFor="suicidalIdeationSeverityno">No</label>
               </div>
@@ -3413,11 +3415,11 @@ significantRecentLosses :{
                 Are you currently thinking about harming others or have
                 homicidal thoughts?
               </label>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="currentThoughtsOfHarmingOthers" checked={currentThoughtsOfHarmingOthers===true} onChange={()=>setCurrentThoughtsOfHarmingOthers(true)}/>
                 <label htmlFor="currentThoughtsOfHarmingOthers">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="currentThoughtsOfHarmingOthersno" checked={currentThoughtsOfHarmingOthers===false} onChange={()=>setCurrentThoughtsOfHarmingOthers(false)}/>
                 <label htmlFor="currentThoughtsOfHarmingOthersno">No</label>
               </div> 
@@ -3511,19 +3513,19 @@ significantRecentLosses :{
               </p>
             </div>
             <div className="yeschechbox1">
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox"  checked={riskLevel==="No Risk"} onChange={()=>setRiskLevel("No Risk")} />
                 <span>No Risk</span>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" checked={riskLevel==="Low Risk"} onChange={()=>setRiskLevel("Low Risk")} />
                 <span>Low Risk</span>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" checked={riskLevel==="Moderate Risk"} onChange={()=>setRiskLevel("Moderate Risk")} />
                 <span>Moderate Risk</span>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" checked={riskLevel==="High Risk"} onChange={()=>setRiskLevel("High Risk")}/>
                 <span>High Risk</span>
               </div>
@@ -3705,11 +3707,11 @@ significantRecentLosses :{
            
             <div className="yeschechbox">
               <label htmlFor="">Significant recent losses:</label>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
                 <input type="checkbox" id="setSetNoAndYes" checked={setNoAndYes===true} onChange={()=>setSetNoAndYes(true)}/>
                 <label htmlFor="setSetNoAndYes">Yes</label>
               </div>
-              <div>
+              <div style={{display:"flex" ,gap:"10px" ,alignItems:"center"}}>
               <input type="checkbox" id="setSetNoAndYesno" checked={setNoAndYes===false} onChange={()=>setSetNoAndYes(false)}/>
                 <label htmlFor="setSetNoAndYesno">No</label>
               </div>

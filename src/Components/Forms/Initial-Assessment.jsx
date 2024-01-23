@@ -1213,17 +1213,15 @@ significantRecentLosses :{
                 onChange={(e)=>setCurrentBehavioralIssues(e.target.value)}
               />
             </div>
-            <label htmlFor="programlocation&address">
+            {/* <label htmlFor="programlocation&address">
               Identified Needs/targeted Behaviors Intervention(s) to Meet
               Objectives
-            </label>
-            <div className="needs-interventions-container">
+            </label> */}
+            {/* <div className="needs-interventions-container">
               <div className="needs-interventions-column">
                 <h2>Needs</h2>
                 <ul>
-                  {/* {needs.map((need, index) => (
-                                    <li key={index}>{need}</li>
-                                ))} */}
+              
                   <li>1.</li>
                   <li>2.</li>
                   <li>3.</li>
@@ -1234,9 +1232,7 @@ significantRecentLosses :{
               <div className="needs-interventions-column">
                 <h2>Interventions</h2>
                 <ul>
-                  {/* {interventions.map((intervention, index) => (
-                                    <li key={index}>{intervention}</li>
-                                ))} */}
+              
                   <li>1.</li>
                   <li>2.</li>
                   <li>3.</li>
@@ -1244,7 +1240,7 @@ significantRecentLosses :{
                   <li style={{ borderBottom: "none" }}>5.</li>
                 </ul>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="approvedby">Discharge Plan</label>
               <input

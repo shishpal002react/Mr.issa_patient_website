@@ -75,7 +75,7 @@ const Appointments = () => {
         ))}
       </div>
       <div className="appointmentcontent">
-        <p>Download Medication Script</p>
+        <p>View your script</p>
       </div>
             
       {

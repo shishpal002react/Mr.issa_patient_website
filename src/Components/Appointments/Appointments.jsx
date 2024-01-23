@@ -79,7 +79,7 @@ const Appointments = () => {
       </div>
             
       {
-        script?.data?.map((item,i)=>(
+        script?.data?.slice(1,5)?.map((item,i)=>(
           <div key={i} style={{ width: "249px", height: "128px" }}>
           <img src={upload} alt="" onClick={()=>downloadPdf(item?.document)} style={{cursor:"pointer"}} />
         </div>

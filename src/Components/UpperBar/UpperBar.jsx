@@ -48,7 +48,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
     const otherFiltered = notification?.data?.filter(item => item.updatedAt !== today);
     setOtherData(otherFiltered);
 
-    console.log(todayFiltered,"today data",otherFiltered,"other data");
+    // console.log(todayFiltered,"today data",otherFiltered,"other data");
   }, [notification, today]);
 
  

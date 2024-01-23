@@ -5,7 +5,7 @@ import MedicationsCard from "../MedicationsCard/MedicationsCard";
 import "./Appointments.css";
 import cards from "../../img/card1.png";
 import Medications from "../../img/Medications.png";
-import upload from "../../img/upload.png";
+import upload from "../../img/upload.png"
 import nurse1 from "../../img/nurse (1).png";
 import {
   appointment_Upcoming,
@@ -77,15 +77,18 @@ const Appointments = () => {
       <div className="appointmentcontent">
         <p>View your script</p>
       </div>
-            
-      {
+            <div style={{display:"flex" ,gap:"20px" ,alignItems:"center",}}>
+      {/* {
         script?.data?.slice(1,5)?.map((item,i)=>(
           <div key={i} style={{ width: "249px", height: "128px" }}>
           <img src={upload} alt="" onClick={()=>downloadPdf(item?.document)} style={{cursor:"pointer"}} />
         </div>
         ))
-      }
-   
+      } */}
+      <div style={{ width: "249px", height: "128px" }}>
+          <img src={upload} alt="" onClick={()=>downloadPdf(script?.document)} style={{cursor:"pointer"}} />
+        </div>
+   </div>
      
     </div>
   );

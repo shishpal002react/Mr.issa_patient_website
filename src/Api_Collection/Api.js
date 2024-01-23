@@ -52,6 +52,7 @@ export const getAllPatientMedication = async (setScript) => {
   try {
     const res = await axios.get(`${BaseUrl}Patient/getAllPatientMedication`, Token);
     setScript(res?.data);
+    console.log(res?.data,"script data")
     
   } catch (e) {
     // show_notification("fail !", `${e?.response?.data?.message}`, "danger");

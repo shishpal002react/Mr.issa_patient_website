@@ -20,6 +20,7 @@ import superiority2 from "../../img/superiority2.png";
 import superiority3 from "../../img/superiority3.png";
 import care from "../../img/care.png";
 import tick from "../../img/tick.png";
+
 import contact from "../../img/contact.png";
 import { CiCircleChevRight } from "react-icons/ci";
 import "./LandingPage.css";

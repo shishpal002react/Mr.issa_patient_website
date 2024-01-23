@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css"; // Import the CSS file
 import { Link } from "react-router-dom";
+import logo from "../../img/OasisNotes.png";
 import { user_detail } from "../../Api_Collection/Api";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -15,7 +16,10 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${showMenu ? "responsive" : ""}`}>
-        <div className="logo">Logo</div>
+        <div className="logo">
+        <img className="logo" src={logo} alt="logo is not found" style={{maxHeight:"45px", marginTop:"1rem"}}/>
+        </div>
+        {/* <img className="logo" src={logo} alt="logo is not found" /> */}
         <div className={`nav-links ${showMenu ? "show" : ""}`}>
           <a href="#">Home</a>
           <a href="#">Intake</a>

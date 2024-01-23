@@ -1,5 +1,7 @@
 import React from "react";
 import "./login.css";
+import logo from "../img/OnlyLogo.png"
+import logoWithOssianNotes from "../img/OasisNotes.png"
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { login_user } from "../Api_Collection/Api.js";
@@ -20,11 +22,15 @@ const Login = () => {
   return (
     <div className="main-div-login">
       <div className="top-div-login">
+        <div style={{display:'grid',placeItems:"center",paddingTop:"10%"}}>
+
         <img
-          style={{ width: "100%", height: "100%" }}
-          src={"login.png"}
+          style={{ maxHeight:"150px", maxWidth:"460px"}}
+          src={logoWithOssianNotes}
+          // src={"login.png"}
           alt="login-banner"
-        />
+          />
+          </div>
       </div>
       <div className="bottom-div-login">
         <Form className="login-form" onSubmit={handleSubmit}>

@@ -690,7 +690,7 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
   const [medicalSurgical, setMedicalSurgical] = useState(false);
   const [accidentInjury, setAccidentInjury] = useState(false);
   const [otherSignificantRecentLosses, setOtherSignificantRecentLosses] = useState(false);
-  const [significantRecentLosses, setSignificantRecentLosses] = useState({});
+  // const [significantRecentLosses, setSignificantRecentLosses] = useState({});
 
   const [additionalNotes,setAdditionalNotes]=useState("")
 
@@ -740,12 +740,14 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
     setResidentStrengths(selectedOptions);
   };
 
-  const handleSubmit=()=>{
+  const handleSubmit=(e)=>{
+    e.preventDefault();
     const data={
       patientId,
       dob,
       hasNotified,
       assessmentOn,
+      companyName,
       residentName,
       sex,
       dateOfAssessment,
@@ -790,48 +792,29 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
         date:otherDate
       },
 // missing
-mentalHealthTreatmentHistory,
+       mentalHealthTreatmentHistory,
 
+//missing 
+significantRecentLosses :{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  typeOfLoss:{
+    death,
+    job,
+    childRemovedFromHouse,
+    injury,
+    divorceSeparation,
+    violentActsAgainstPersonFamily,
+    medicalSurgical,
+    accidentInjury,
+    other:otherSignificantRecentLosses
+  }
+}
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    initialAssestment_form(data);
+    // navigate("/intake");
   }
 
   return (
@@ -887,10 +870,12 @@ mentalHealthTreatmentHistory,
               <input
                 type="text"
                 id="residentFullName"
-                value={user}
+                // value={user}
+                value={residentName}
                 placeholder="Enter full name"
                 required
-                onChange={(e) => setUser(e.target.value)}
+                // onChange={(e) => setUser(e.target.value)}
+                onChange={(e)=>setResidentName(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -1517,10 +1502,11 @@ mentalHealthTreatmentHistory,
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={medicalConditionsComments}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
+                onChange={(e)=>setMedicalConditionsComments(e.target.value)}
                 required
               />
             </div>
@@ -1535,7 +1521,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1545,7 +1531,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">History of stroke</label>
               <div>
@@ -1557,7 +1543,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1567,7 +1553,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">High Blood Pressure</label>
               <div>
@@ -1579,7 +1565,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1589,7 +1575,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">
                 Lung disease (ie asthma, COPD, emphysema)
@@ -1603,7 +1589,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1613,7 +1599,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Seizures</label>
               <div>
@@ -1625,7 +1611,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1635,7 +1621,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Cancer</label>
               <div>
@@ -1647,7 +1633,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1657,7 +1643,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Liver/kidney disease</label>
               <div>
@@ -1669,7 +1655,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1679,7 +1665,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Thyroid disorder</label>
               <div>
@@ -1691,7 +1677,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1701,7 +1687,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">History of head trauma/traumatic brain</label>
               <div>
@@ -1713,7 +1699,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1723,7 +1709,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Injury</label>
               <div>
@@ -1735,7 +1721,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1745,7 +1731,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Chronic pain</label>
               <div>
@@ -1757,7 +1743,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1767,7 +1753,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">
                 Allergies (food, environment, medications)
@@ -1781,7 +1767,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1791,7 +1777,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Surgeries</label>
               <div>
@@ -1803,7 +1789,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1813,7 +1799,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Number of pregnancies / births</label>
               <div>
@@ -1825,7 +1811,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1835,7 +1821,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Substance use disorder (please specify)</label>
               <div>
@@ -1847,7 +1833,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1857,7 +1843,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Depression</label>
               <div>
@@ -1869,7 +1855,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1879,7 +1865,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Anxiety/panic attacks</label>
               <div>
@@ -1891,7 +1877,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1901,7 +1887,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Insomnia</label>
               <div>
@@ -1913,7 +1899,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1923,7 +1909,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Bipolar disorder</label>
               <div>
@@ -1935,7 +1921,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1945,7 +1931,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Schizophrenia</label>
               <div>
@@ -1957,7 +1943,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1967,7 +1953,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Obsessive compulsive disorder</label>
               <div>
@@ -1979,7 +1965,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -1989,7 +1975,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Personality disorder (please specify)</label>
               <div>
@@ -2001,7 +1987,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -2011,7 +1997,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Phobias</label>
               <div>
@@ -2023,7 +2009,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -2033,7 +2019,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Any other health conditions</label>
               <div>
@@ -2045,7 +2031,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -2055,7 +2041,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <label htmlFor="">Infection or Diseases</label>
               <div>
@@ -2067,7 +2053,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -2077,7 +2063,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Significant Family Medical/Psychiatric History:
@@ -3091,7 +3077,7 @@ mentalHealthTreatmentHistory,
                 <span>Intact</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="approvedby">Other (please specify):</label>
               <input
                 type="text"
@@ -3223,7 +3209,7 @@ mentalHealthTreatmentHistory,
                 <input type="checkbox" name="" id="" />
                 <span>No</span>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Criminal Justice Legal History
@@ -3252,7 +3238,7 @@ mentalHealthTreatmentHistory,
             <div className="formsheading">
               <h6>Current Independent Living Skills:</h6>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="reasonadmission">Type of Activity</label>
               <select id="reasonadmission" value="" required>
                 <option value="Select a option" onClick={()=>setBathingShoweringGood(true)}>Enter text</option>
@@ -3266,11 +3252,9 @@ mentalHealthTreatmentHistory,
                 <option value="Preparing food" onClick={()=>setBathingShoweringGood(true)}>Preparing food</option>
                 <option value="Eating" onClick={()=>setBathingShoweringGood(true)}>Eating</option>
                 <option value="Toileting" onClick={()=>setBathingShoweringGood(true)}>Toileting</option>
-                {/* buhdfj */}
-                
                 <option value="Other (specify)" onClick={()=>setOtherComments(true)}>Other (specify)</option>
               </select>
-            </div>
+            </div> */}
             <div className="yeschechbox">
               <div>
                 <input type="checkbox" name="" id="" />
@@ -3296,7 +3280,7 @@ mentalHealthTreatmentHistory,
                 <span>No</span>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
@@ -3306,7 +3290,7 @@ mentalHealthTreatmentHistory,
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             {/* start working  */}
             <div className="formsheading">
               <h6>Triggers:</h6>
@@ -3733,43 +3717,43 @@ mentalHealthTreatmentHistory,
               <div class="chechbox12">
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" id="death" checked={death} onChange={()=>setDeath(!death)}/>
+                    <input type="checkbox"  id="death" checked={death} onChange={()=>setDeath(!death)}/>
                     <label htmlFor="death">Death</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" id="injury" checked={injury} onChange={()=>setInjury(!injury)}/>
+                    <input type="checkbox"  id="injury" checked={injury} onChange={()=>setInjury(!injury)}/>
                     <label htmlFor="injury">Injury</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" id="medicalSurgical" checked={medicalSurgical} onChange={()=>setMedicalSurgical(!medicalSurgical)}/>
+                    <input type="checkbox"  id="medicalSurgical" checked={medicalSurgical} onChange={()=>setMedicalSurgical(!medicalSurgical)}/>
                     <label htmlFor="medicalSurgical">Medical/ surgical </label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" id="job" checked={job} onChange={()=>setJob(!job)}/>
+                    <input type="checkbox"  id="job" checked={job} onChange={()=>setJob(!job)}/>
                     <label htmlFor="job">Job</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" id="divorceSeparation" checked={divorceSeparation} onChange={()=>setDivorceSeparation(!divorceSeparation)}/>
+                    <input type="checkbox"  id="divorceSeparation" checked={divorceSeparation} onChange={()=>setDivorceSeparation(!divorceSeparation)}/>
                     <label htmlFor="divorceSeparation">Divorce / separation </label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" id="accidentInjury" checked={accidentInjury} onChange={()=>setAccidentInjury(!accidentInjury)}/>
+                    <input type="checkbox"  id="accidentInjury" checked={accidentInjury} onChange={()=>setAccidentInjury(!accidentInjury)}/>
                     <label htmlFor="accidentInjury">Accident /injury</label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" id="childRemovedFromHouse" checked={childRemovedFromHouse} onChange={()=>setChildRemovedFromHouse(!childRemovedFromHouse)}/>
+                    <input type="checkbox"  id="childRemovedFromHouse" checked={childRemovedFromHouse} onChange={()=>setChildRemovedFromHouse(!childRemovedFromHouse)}/>
                     <label htmlFor="childRemovedFromHouse">Child removed from house</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" id="violentActsAgainstPersonFamily" checked={violentActsAgainstPersonFamily} onChange={()=>setViolentActsAgainstPersonFamily(!violentActsAgainstPersonFamily)}/>
+                    <input type="checkbox"  id="violentActsAgainstPersonFamily" checked={violentActsAgainstPersonFamily} onChange={()=>setViolentActsAgainstPersonFamily(!violentActsAgainstPersonFamily)}/>
                     <label htmlFor="violentActsAgainstPersonFamily">Violent acts against person/family </label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" id="otherSignificantRecentLosses" checked={otherSignificantRecentLosses} onChange={()=>setOtherSignificantRecentLosses(!otherSignificantRecentLosses)}/>
+                    <input type="checkbox"  id="otherSignificantRecentLosses" checked={otherSignificantRecentLosses} onChange={()=>setOtherSignificantRecentLosses(!otherSignificantRecentLosses)}/>
                     <label htmlFor="otherSignificantRecentLosses">other (please specify)</label>
                   </div>
                 </div>

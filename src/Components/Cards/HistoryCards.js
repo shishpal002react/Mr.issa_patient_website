@@ -12,9 +12,9 @@ import {change_appointment_status} from "../../Api_Collection/Api"
 const HistoryCard = ({name, imageUrl, from, visit,  referenceId ,status=null,id,again_Call_appointment}) => {
 
 
-const handleStatus=(id)=>{
-  change_appointment_status(id);
-  again_Call_appointment();
+const handleStatus=async(id)=>{
+  await change_appointment_status(id);
+  await again_Call_appointment();
 }
 
   return (

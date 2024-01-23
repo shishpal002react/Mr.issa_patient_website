@@ -9,6 +9,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import logo from "../../img/OasisNotes.png"
 import { show_notification } from "../../Api_Collection/Api.js";
 
 const Sidebar = ({ isMenuOpen, toggleMenu }) => {
@@ -25,7 +26,11 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
 
   return (
     <div className="sidebar">
-      <div className="logo">Logo</div>
+      <div style={{display:"flex", justifyContent:"center",width:"70%"}}>
+      <div className="logo" >
+        <img src={logo} alt="" style={{maxHeight:"3rem",paddingLeft:"5px"}}/>
+      </div>
+      </div>
       <span className="close1" onClick={toggleMenu}>
         <MdClose />
       </span>

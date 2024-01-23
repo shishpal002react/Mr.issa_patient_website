@@ -742,6 +742,9 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
 
   const handleSubmit=(e)=>{
     e.preventDefault();
+
+    const stringValues = residentStrengths.map(item => item.value);
+
     const data={
       patientId,
       dob,
@@ -763,7 +766,7 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
       approvedBy,
       reasonForAdmission,
       residentGoals,
-      residentStrengths,
+      residentStrengths:stringValues,
       residentLimitations,
       currentBehavioralIssues,
       // missing
@@ -795,6 +798,11 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
        mentalHealthTreatmentHistory,
 
 //missing 
+
+
+
+
+
 significantRecentLosses :{
 
   typeOfLoss:{
@@ -814,7 +822,7 @@ significantRecentLosses :{
 
 
     initialAssestment_form(data);
-    // navigate("/intake");
+    navigate("/intake");
   }
 
   return (

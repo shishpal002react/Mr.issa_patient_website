@@ -224,7 +224,7 @@ export const notification_get = async (setNotification) => {
       Token
     );
     setNotification(res?.data);
-     console.log(res?.data?.data,"jai maa kali notification")
+
   } catch (e) {
     // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }

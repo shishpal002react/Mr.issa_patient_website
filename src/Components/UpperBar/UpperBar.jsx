@@ -31,7 +31,27 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   const [isNotificationModalOpen, setNotificationModalOpen] = useState(false);
   const [ischattingModalOpen, setChattingModalOpen] = useState(false);
   const [user, setUser] = useState("");
-  const [notification,setNotification]=useState("")
+
+  //notification
+  const [notification,setNotification]=useState("");
+  const [todayData, setTodayData] = useState([]);
+  const [otherData, setOtherData] = useState([]);
+
+  const today = new Date().toISOString().split('T')[0];
+
+  useEffect(() => {
+    // Filter data based on today's date
+    const todayFiltered = notification?.data?.filter(item => item.updatedAt === today);
+    setTodayData(todayFiltered);
+
+    // Filter data for other dates
+    const otherFiltered = notification?.data?.filter(item => item.updatedAt !== today);
+    setOtherData(otherFiltered);
+
+    console.log(todayFiltered,"today data",otherFiltered,"other data");
+  }, [notification, today]);
+
+ 
 
   useEffect(() => {
     user_detail(setUser);
@@ -151,7 +171,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
             <hr />
             {/* <p>Today</p> */}
             {
-              notification?.data?.map((item,i)=>(
+              notification?.data?.slice(0,4)?.map((item,i)=>(
                 <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
               <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
               <span >{item?.title}</span>

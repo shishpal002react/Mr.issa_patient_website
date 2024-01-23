@@ -91,6 +91,7 @@ const SafetyPlan = () => {
     };
     safety_form(data);
     initial_value();
+    navigate("/intake");
   };
 
   const handleSocialArray = (e) => {
@@ -281,12 +282,12 @@ const SafetyPlan = () => {
                 </button>
               </div>
             </div>
-            <div className="form-actions">
+            {/* <div className="form-actions">
               <button type="button" className="safetybutton1">
                 <CiCirclePlus style={{ width: "30px", height: "30px" }} /> ADD
                 MORE PEOPLE
               </button>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="programlocation&address">
                 Destination place :

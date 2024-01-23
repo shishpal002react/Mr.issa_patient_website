@@ -172,6 +172,7 @@ const FaceSheet = () => {
     };
     Nurssing_form(data);
     initial_Value();
+    navigate("/intake");
   };
 
   const handlePrimaryCareProviderOtherSpecialists = (e) => {

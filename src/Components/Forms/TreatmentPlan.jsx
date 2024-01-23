@@ -162,6 +162,7 @@ const TreatmentPlan = () => {
       },
     };
     patient_form(data);
+    navigate("/intake");
   };
 
   //handle check box

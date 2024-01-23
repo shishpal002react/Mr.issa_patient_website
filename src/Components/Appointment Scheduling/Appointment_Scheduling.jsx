@@ -4,6 +4,7 @@ import AppointmentsCard from '../Cards/AppointmentsCard'
 import scheduling1 from '../../img/sheduling1 (1).png'
 import scheduling2 from '../../img/sheduling1 (2).png'
 import scheduling3 from '../../img/sheduling1 (3).png'
+import nurse1 from "../../img/nurse (1).png";
 import cards from '../../img/card1.png'
 import { Link } from 'react-router-dom'
 import {
@@ -53,25 +54,25 @@ const Appointment_Scheduling = () => {
             <div className='todayappointments'>
                 <p>TODAY</p>
                 {appoinmentUpcoming?.data?.map((appointment, index) => (
-                    <AppointmentsCard
-                        key={index}
-                        imageUrl={appointment.imageUrl}
-                        date={new Date(appointment.date).toLocaleDateString()}
-                        slot={appointment.slot}
-                        location={appointment.location}
-                    />
+                     <AppointmentsCard
+                     key={index}  
+                     imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
+                     date={new Date(appointment?.date).toLocaleDateString()}
+                     slot={appointment?.time}
+                     location={appointment?.adminId?.address}
+                   />
                 ))}
             </div>
             <div className='tomorrowappointments'>
                 <p>TOMORROW</p>
                 {appoinmentPast?.data?.map((appointment, index) => (
-                    <AppointmentsCard
-                        key={index}
-                        imageUrl={appointment.imageUrl}
-                        date={new Date(appointment.date).toLocaleDateString()}
-                        slot={appointment.slot}
-                        location={appointment.location}
-                    />
+                     <AppointmentsCard
+                     key={index}  
+                     imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
+                     date={new Date(appointment?.date).toLocaleDateString()}
+                     slot={appointment?.time}
+                     location={appointment?.adminId?.address}
+                   />
                 ))}
             </div>
             </div>

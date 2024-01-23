@@ -21,42 +21,42 @@ const InitialAssessment = () => {
   const [hasNotified, setHasNotified] = useState("");
   const [assessmentOn, setAssessmentOn] = useState("");
   const [patientId, setPatientId] = useState("");
-  const [dob, setDob] = useState("yourDateOfBirth");
-  const [companyName, setCompanyName] = useState("yourCompanyName");
-  const [residentName, setResidentName] = useState("yourResidentName");
-  const [sex, setSex] = useState("yourSex");
+  const [dob, setDob] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [residentName, setResidentName] = useState("");
+  const [sex, setSex] = useState("");
   const [dateOfAssessment, setDateOfAssessment] = useState(
-    "yourDateOfAssessment"
+    ""
   );
-  const [ahcccsNumber, setAhcccsNumber] = useState("yourAhcccsNumber");
+  const [ahcccsNumber, setAhcccsNumber] = useState("");
   const [preferredLanguage, setPreferredLanguage] = useState(
-    "yourPreferredLanguage"
+    ""
   );
-  const [ethnicity, setEthnicity] = useState("yourEthnicity");
-  const [admissionStatus, setAdmissionStatus] = useState("yourAdmissionStatus");
-  const [programLocation, setProgramLocation] = useState("yourProgramLocation");
-  const [guardianship, setGuardianship] = useState("yourGuardianship");
+  const [ethnicity, setEthnicity] = useState("");
+  const [admissionStatus, setAdmissionStatus] = useState("");
+  const [programLocation, setProgramLocation] = useState("");
+  const [guardianship, setGuardianship] = useState("");
   const [powerOfAttorneyStatus, setPowerOfAttorneyStatus] = useState(
-    "yourPowerOfAttorneyStatus"
+    ""
   );
-  const [todayDate, setTodayDate] = useState("yourTodayDate");
+  const [todayDate, setTodayDate] = useState("");
   const [guardianshipPoaPubFidName, setGuardianshipPoaPubFidName] = useState(
-    "yourGuardianshipPoaPubFidName"
+    ""
   );
-  const [approvedBy, setApprovedBy] = useState("yourApprovedBy");
+  const [approvedBy, setApprovedBy] = useState("");
   const [reasonForAdmission, setReasonForAdmission] = useState(
-    "yourReasonForAdmission"
+    ""
   );
-  const [residentGoals, setResidentGoals] = useState("yourResidentGoals");
+  const [residentGoals, setResidentGoals] = useState("");
 
   // Resident Strengths (Array)
   const [residentStrengths, setResidentStrengths] = useState([]);
 
   const [residentLimitations, setResidentLimitations] = useState(
-    "yourResidentLimitations"
+    ""
   );
   const [currentBehavioralIssues, setCurrentBehavioralIssues] = useState(
-    "yourCurrentBehavioralIssues"
+    ""
   );
 
   // Behavioral Interventions (Array of Objects)
@@ -67,38 +67,38 @@ const InitialAssessment = () => {
     },
   ]);
 
-  const [dischargePlan, setDischargePlan] = useState("yourDischargePlan");
+  const [dischargePlan, setDischargePlan] = useState("");
   const [estimateDateOfDischarge, setEstimateDateOfDischarge] = useState(
-    "yourEstimateDateOfDischarge"
+    ""
   );
   const [agreementWithPlan, setAgreementWithPlan] = useState(
-    ""
+    
   );
 
   // Resident Guardian Agreement
   const [residentGuardianAgreementName,setResidentGuardianAgreementName]=useState("");
   const [residentGuardianAgreementSignature,setResidentGuardianAgreementSignature]=useState("")
   const [residentGuardianAgreementDate,setResidentGuardianAgreementDate]=useState("")
-  const [residentGuardianAgreement, setResidentGuardianAgreement] = useState({});
+  // const [residentGuardianAgreement, setResidentGuardianAgreement] = useState({});
 
   // Staff Agreement
   const [staffAgreementname,setStaffAgreementName]=useState("");
   const [staffAgreementSignature,setStaffAgreementSignature]=useState("");
   const [staffAgreementDate,setStaffAgreementDate]=useState("")
-  const [staffAgreement, setStaffAgreement] = useState({});
+  // const [staffAgreement, setStaffAgreement] = useState({});
 
   // BHP Agreement
   const [bhpAgreementName,setBhpAgreementName]=useState("");
   const [bhpAgreementSignature,setBhpAgreementSignature]=useState("")
   const [bhpAgreementDate,setBhpAgreementDate]=useState("")
-  const [bhpAgreement, setBhpAgreement] = useState({});
+  // const [bhpAgreement, setBhpAgreement] = useState({});
 
   // Other
   const [otherName,setOtherName]=useState("");
   const [otherRelationship,setOtherRelationship]=useState("");
   const [otherSignature,setOtherSignature]=useState("");
   const [otherDate,setOtherDate]=useState("");
-  const [other, setOther] = useState({});
+  // const [other, setOther] = useState({});
 
   // Medical Conditions (Array of Objects) array
   const [medicalConditionsCondition,setMedicalConditionsCondition]=useState('');
@@ -135,7 +135,7 @@ const [TactileDisturbances, setTactileDisturbances] = useState(false);
 const [Anxiety, setAnxiety] = useState(false);
 const [Tremors, setTremors] = useState(false);
 const [VisualDisturbances, setVisualDisturbances] = useState(false);
-const [AuditoryDisturbances, setAuditoryDisturbances] = useState(false);
+// const [AuditoryDisturbances, setAuditoryDisturbances] = useState(false);
 const [Sweats, setSweats] = useState(false);
 const [Paranoia, setParanoia] = useState(false);
 const [GooseBumps, setGooseBumps] = useState(false);
@@ -186,26 +186,116 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
   });
 
   // Arrested History (Multiple Fields)
-  const [arrestedForDUI, setArrestedForDUI] = useState("");
-  const [arrestedForAssault, setArrestedForAssault] = useState("");
-  const [arrestedForBadChecks, setArrestedForBadChecks] = useState("");
-  const [arrestedForShoplifting, setArrestedForShoplifting] = useState("");
-  const [arrestedForAttemptedMurder, setArrestedForAttemptedMurder] =
-    useState("");
-  const [arrestedForDrug, setArrestedForDrug] = useState("");
-  const [arrestedForAlcohol, setArrestedForAlcohol] = useState("");
-  const [arrestedForDisorderlyConduct, setArrestedForDisorderlyConduct] =
-    useState("");
-  const [arrestedForIdentityTheft, setArrestedForIdentityTheft] = useState("");
-  const [arrestedForSexOffense, setArrestedForSexOffense] = useState("");
-  const [arrestedForOther, setArrestedForOther] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
+  const [arrestedForDUI, setArrestedForDUI] = useState(false);
+  const [arrestedForAssault, setArrestedForAssault] = useState(false);
+  const [arrestedForBadChecks, setArrestedForBadChecks] = useState(false);
+  const [arrestedForShoplifting, setArrestedForShoplifting] = useState(false);
+  const [arrestedForAttemptedMurder, setArrestedForAttemptedMurder] = useState(false);
+  const [arrestedForDrug, setArrestedForDrug] = useState(false);
+  const [arrestedForAlcohol, setArrestedForAlcohol] = useState(false);
+  const [arrestedForDisorderlyConduct, setArrestedForDisorderlyConduct] = useState(false);
+  const [arrestedForIdentityTheft, setArrestedForIdentityTheft] = useState(false);
+  const [arrestedForSexOffense, setArrestedForSexOffense] = useState(false);
+  const [arrestedForOther, setArrestedForOther] = useState(false);
+  const [probationParole, setProbationParole] = useState(false);
+  const [pendingLitigation, setPendingLitigation] = useState(false);
+  const [sentencingDates, setSentencingDates] = useState(false);
+  const [needsLegalAid, setNeedsLegalAid] = useState(false);
+  const [incarcerated, setIncarcerated] = useState(false);
 
-  const [probationParole, setProbationParole] = useState("");
-  const [custody, setCustody] = useState("");
-  const [pendingLitigation, setPendingLitigation] = useState("");
-  const [sentencingDates, setSentencingDates] = useState("");
-  const [needsLegalAid, setNeedsLegalAid] = useState("");
-  const [incarcerated, setIncarcerated] = useState("");
+  const handleSelectChangeLegalHistory = (event) => {
+    const value = event.target.value;
+    setSelectedValue(value);
+
+    // Handle additional logic based on selected value
+    switch (value) {
+      case 'Arrested for DUI':
+        setArrestedForDUI(true);
+        // Additional logic for DUI
+        break;
+      case 'Arrested for assault':
+        setArrestedForAssault(true);
+        // Additional logic for assault
+        break;
+      case 'Arrested for bad checks':
+        setArrestedForBadChecks(true);
+        // Additional logic for bad checks
+        break;
+      case 'Arrested for shop lifting':
+        setArrestedForShoplifting(true);
+        // Additional logic for shop lifting
+        break;
+      case 'Arrested for attempted murder':
+        setArrestedForAttemptedMurder(true);
+        // Additional logic for attempted murder
+        break;
+      case 'Arrested for drug':
+        setArrestedForDrug(true);
+        // Additional logic for drug-related arrest
+        break;
+      case 'Arrested for alcohol':
+        setArrestedForAlcohol(true);
+        // Additional logic for alcohol-related arrest
+        break;
+      case 'Arrested for disorderly conduct':
+        setArrestedForDisorderlyConduct(true);
+        // Additional logic for disorderly conduct arrest
+        break;
+      case 'Arrested for identity theft/ forgery':
+        setArrestedForIdentityTheft(true);
+        // Additional logic for identity theft/ forgery arrest
+        break;
+      case 'Arrested for sex offense':
+        setArrestedForSexOffense(true);
+        // Additional logic for sex offense arrest
+        break;
+      case 'Arrested for other':
+        setArrestedForOther(true);
+        // Additional logic for other arrest
+        break;
+      case 'Probation/parole, custody':
+        setProbationParole(true);
+        // Additional logic for probation/parole/custody
+        break;
+      case 'Pending litigation':
+        setPendingLitigation(true);
+        // Additional logic for pending litigation
+        break;
+      case 'Sentencing dates':
+        setSentencingDates(true);
+        // Additional logic for sentencing dates
+        break;
+      case 'Needs Legal Aid':
+        setNeedsLegalAid(true);
+        // Additional logic for needing legal aid
+        break;
+      case 'Incarcerated':
+        setIncarcerated(true);
+        // Additional logic for being incarcerated
+        break;
+      default:
+        // Reset other state variables if needed
+        setArrestedForDUI(false);
+        setArrestedForAssault(false);
+        setArrestedForBadChecks(false);
+        setArrestedForShoplifting(false);
+        setArrestedForAttemptedMurder(false);
+        setArrestedForDrug(false);
+        setArrestedForAlcohol(false);
+        setArrestedForDisorderlyConduct(false);
+        setArrestedForIdentityTheft(false);
+        setArrestedForSexOffense(false);
+        setArrestedForOther(false);
+        setProbationParole(false);
+        setPendingLitigation(false);
+        setSentencingDates(false);
+        setNeedsLegalAid(false);
+        setIncarcerated(false);
+        break;
+    }
+  };
+
 
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState("");
@@ -281,152 +371,342 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
   const [hobbiesLeisureActivities, setHobbiesLeisureActivities] = useState("");
 
   // Medical Equipment
-  const [medicalEquipmentWheelchair, setMedicalEquipmentWheelchair] =
-    useState("");
-  const [medicalEquipmentOxygenTank, setMedicalEquipmentOxygenTank] =
-    useState("");
-  const [medicalEquipmentCpapMachine, setMedicalEquipmentCpapMachine] =
-    useState("");
-  const [medicalEquipmentShowerChair, setMedicalEquipmentShowerChair] =
-    useState("");
-  const [medicalEquipmentOther, setMedicalEquipmentOther] = useState("");
+  const [selectedValueMedical, setSelectedValueMedical] = useState('');
+  const [medicalEquipmentWheelchair, setMedicalEquipmentWheelchair] = useState(false);
+  const [medicalEquipmentOxygenTank, setMedicalEquipmentOxygenTank] = useState(false);
+  const [medicalEquipmentCpapMachine, setMedicalEquipmentCpapMachine] = useState(false);
+  const [medicalEquipmentShowerChair, setMedicalEquipmentShowerChair] = useState(false);
+  const [medicalEquipmentOther, setMedicalEquipmentOther] = useState(false);
+
+  const handleSelectChangeMedical = (event) => {
+    const value = event.target.value;
+    setSelectedValueMedical(value);
+
+    // Handle additional logic based on selected value
+    switch (value) {
+      case 'Wheel Chair':
+        setMedicalEquipmentWheelchair(true);
+        // Additional logic for Wheel Chair
+        break;
+      case 'Oxygen tank':
+        setMedicalEquipmentOxygenTank(true);
+        // Additional logic for Oxygen tank
+        break;
+      case 'CPAP Machine':
+        setMedicalEquipmentCpapMachine(true);
+        // Additional logic for CPAP Machine
+        break;
+      case 'Shower chair':
+        setMedicalEquipmentShowerChair(true);
+        // Additional logic for Shower chair
+        break;
+      case 'Other':
+        setMedicalEquipmentOther(true);
+        // Additional logic for Other
+        break;
+      default:
+        // Reset other state variables if needed
+        setMedicalEquipmentWheelchair(false);
+        setMedicalEquipmentOxygenTank(false);
+        setMedicalEquipmentCpapMachine(false);
+        setMedicalEquipmentShowerChair(false);
+        setMedicalEquipmentOther(false);
+        break;
+    }
+  };
+
 
   // Special Precautions (Nested Object)
-  const [specialPrecautions, setSpecialPrecautions] = useState({
-    seizure: "",
-    elopementAwol: "",
-    physicalAggression: "",
-    withdrawal: "",
-    inappropriateSexualBehaviors: "",
-    substanceUse: "",
-    noSpecialPrecautions: "",
-  });
+  const [selectedValueSpecialPrecautions, setSelectedValueSpecialPrecautions] = useState('');
+  const [seizure, setSeizure] = useState(false);
+  const [elopementAwol, setElopementAwol] = useState(false);
+  const [physicalAggression, setPhysicalAggression] = useState(false);
+  const [withdrawal, setWithdrawal] = useState(false);
+  const [inappropriateSexualBehaviors, setInappropriateSexualBehaviors] = useState(false);
+  const [substanceUse, setSubstanceUse] = useState(false);
+  const [noSpecialPrecautions, setNoSpecialPrecautions] = useState(false);
+  const [specialPrecautions, setSpecialPrecautions] = useState();
 
+  const handleSelectChangeSpecialPrecautions = (event) => {
+    const value = event.target.value;
+    setSelectedValueSpecialPrecautions(value);
+
+    // Handle additional logic based on selected value
+    switch (value) {
+      case 'Yes Seizure':
+        setSeizure(true);
+        // Additional logic for Yes Seizure
+        break;
+      case 'Elopement/Awol':
+        setElopementAwol(true);
+        // Additional logic for Elopement/Awol
+        break;
+      case 'Physical Aggression':
+        setPhysicalAggression(true);
+        // Additional logic for Physical Aggression
+        break;
+      case 'Withdrawal':
+        setWithdrawal(true);
+        // Additional logic for Withdrawal
+        break;
+      case 'Inappropriate Sexual Behaviors':
+        setInappropriateSexualBehaviors(true);
+        // Additional logic for Inappropriate Sexual Behaviors
+        break;
+      case 'Substance use':
+        setSubstanceUse(true);
+        // Additional logic for Substance use
+        break;
+      case 'None':
+        setNoSpecialPrecautions(true);
+        // Additional logic for None
+        break;
+      default:
+        // Reset other state variables if needed
+        setSeizure(false);
+        setElopementAwol(false);
+        setPhysicalAggression(false);
+        setWithdrawal(false);
+        setInappropriateSexualBehaviors(false);
+        setSubstanceUse(false);
+        setNoSpecialPrecautions(false);
+        break;
+    }
+  };
+
+  // jigjok
   const [currentThoughtsOfHarmingSelf, setCurrentThoughtsOfHarmingSelf] =
-    useState("");
+    useState();
   const [suicidalIdeation, setSuicidalIdeation] = useState("");
-  const [suicidalIdeationUrgency, setSuicidalIdeationUrgency] = useState("");
-  const [suicidalIdeationSeverity, setSuicidalIdeationSeverity] = useState("");
+  const [suicidalIdeationUrgency, setSuicidalIdeationUrgency] = useState();
+  const [suicidalIdeationSeverity, setSuicidalIdeationSeverity] = useState();
   const [currentThoughtsOfHarmingOthers, setCurrentThoughtsOfHarmingOthers] =
-    useState("");
+    useState();
 
   // Risk Factors (Nested Object)
-  const [riskFactors, setRiskFactors] = useState({
-    currentSuicidalIdeation: "",
-    priorSuicideAttempt: "",
-    accessToMeans: "",
-    substanceAbuse: "",
-    otherSelfAbusingBehavior: "",
-    recentLossesLackOfSupport: "",
-    behaviorCues: "",
-    symptomsOfPsychosis: "",
-    familyHistoryOfSuicide: "",
-    terminalPhysicalIllness: "",
-    currentStressors: "",
-    chronicPain: "",
-  });
+  const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState('');
+  const [currentSuicidalIdeation, setCurrentSuicidalIdeation] = useState(false);
+  const [priorSuicideAttempt, setPriorSuicideAttempt] = useState(false);
+  const [accessToMeans, setAccessToMeans] = useState(false);
+  const [substanceAbuse, setSubstanceAbuse] = useState(false);
+  const [otherSelfAbusingBehavior, setOtherSelfAbusingBehavior] = useState(false);
+  const [recentLossesLackOfSupport, setRecentLossesLackOfSupport] = useState(false);
+  const [behaviorCues, setBehaviorCues] = useState(false);
+  const [symptomsOfPsychosis, setSymptomsOfPsychosis] = useState(false);
+  const [familyHistoryOfSuicide, setFamilyHistoryOfSuicide] = useState(false);
+  const [terminalPhysicalIllness, setTerminalPhysicalIllness] = useState(false);
+  const [currentStressors, setCurrentStressors] = useState(false);
+  const [chronicPain, setChronicPain] = useState(false);
+  const [riskFactors, setRiskFactors] = useState({});
 
+  const handleSelectChangeRiskFactors = (event) => {
+    const value = event.target.value;
+    setSelectedValueRiskFactors(value);
+
+    // Handle additional logic based on selected value
+    switch (value) {
+      case 'Current suicidal ideation':
+        setCurrentSuicidalIdeation(true);
+        // Additional logic for Current suicidal ideation
+        break;
+      case 'Prior suicide attempt':
+        setPriorSuicideAttempt(true);
+        // Additional logic for Prior suicide attempt
+        break;
+      case 'Access to means (i.e. weapon)':
+        setAccessToMeans(true);
+        // Additional logic for Access to means (i.e. weapon)
+        break;
+      case 'Substance abuse':
+        setSubstanceAbuse(true);
+        // Additional logic for Substance abuse
+        break;
+      case 'Other self-abusing behavior':
+        setOtherSelfAbusingBehavior(true);
+        // Additional logic for Other self-abusing behavior
+        break;
+      case 'Recent losses/lack of support':
+        setRecentLossesLackOfSupport(true);
+        // Additional logic for Recent losses/lack of support
+        break;
+      case 'Behavior cues':
+        setBehaviorCues(true);
+        // Additional logic for Behavior cues
+        break;
+      case 'Symptoms of psychosis':
+        setSymptomsOfPsychosis(true);
+        // Additional logic for Symptoms of psychosis
+        break;
+      case 'Family history of suicide':
+        setFamilyHistoryOfSuicide(true);
+        // Additional logic for Family history of suicide
+        break;
+      case 'Terminal physical illness':
+        setTerminalPhysicalIllness(true);
+        // Additional logic for Terminal physical illness
+        break;
+      case 'Current stressors (specify)':
+        setCurrentStressors(true);
+        // Additional logic for Current stressors (specify)
+        break;
+      case 'Chronic pain':
+        setChronicPain(true);
+        // Additional logic for Chronic pain
+        break;
+      default:
+        // Reset other state variables if needed
+        setCurrentSuicidalIdeation(false);
+        setPriorSuicideAttempt(false);
+        setAccessToMeans(false);
+        setSubstanceAbuse(false);
+        setOtherSelfAbusingBehavior(false);
+        setRecentLossesLackOfSupport(false);
+        setBehaviorCues(false);
+        setSymptomsOfPsychosis(false);
+        setFamilyHistoryOfSuicide(false);
+        setTerminalPhysicalIllness(false);
+        setCurrentStressors(false);
+        setChronicPain(false);
+        break;
+    }
+  };
   // State variables for protectiveFactors
-  const [protectiveFactors, setProtectiveFactors] = useState({
-    supportsAvailable: "",
-    spiritualReligiousSupport: "",
-    religiousCulturalProhibitions: "",
-    fearOfConsequences: "",
-    ableToBeEngagedInIntervention: "",
-    willingToCommitToKeepingSelfSafe: "",
-  });
+  const [selectedValueProtectiveFactors, setSelectedValueProtectiveFactors] = useState('');
+  const [supportsAvailable, setSupportsAvailable] = useState(false);
+  const [spiritualReligiousSupport, setSpiritualReligiousSupport] = useState(false);
+  const [religiousCulturalProhibitions, setReligiousCulturalProhibitions] = useState(false);
+  const [fearOfConsequences, setFearOfConsequences] = useState(false);
+  const [ableToBeEngagedInIntervention, setAbleToBeEngagedInIntervention] = useState(false);
+  const [willingToCommitToKeepingSelfSafe, setWillingToCommitToKeepingSelfSafe] = useState(false);
+  const [protectiveFactors, setProtectiveFactors] = useState({});
+
+  const handleSelectChangeProtectiveFactors = (event) => {
+    const value = event.target.value;
+    setSelectedValueProtectiveFactors(value);
+
+    // Handle additional logic based on selected value
+    switch (value) {
+      case 'Supports available (family friends)':
+        setSupportsAvailable(true);
+        // Additional logic for Supports available (family friends)
+        break;
+      case 'Spiritual / religious support':
+        setSpiritualReligiousSupport(true);
+        // Additional logic for Spiritual / religious support
+        break;
+      case 'Religious/cultural prohibitions':
+        setReligiousCulturalProhibitions(true);
+        // Additional logic for Religious/cultural prohibitions
+        break;
+      case 'Fear of consequences':
+        setFearOfConsequences(true);
+        // Additional logic for Fear of consequences
+        break;
+      case 'Able to be engaged in intervention':
+        setAbleToBeEngagedInIntervention(true);
+        // Additional logic for Able to be engaged in intervention
+        break;
+      case 'Willing to commit to keeping self safe':
+        setWillingToCommitToKeepingSelfSafe(true);
+        // Additional logic for Willing to commit to keeping self safe
+        break;
+      default:
+        // Reset other state variables if needed
+        setSupportsAvailable(false);
+        setSpiritualReligiousSupport(false);
+        setReligiousCulturalProhibitions(false);
+        setFearOfConsequences(false);
+        setAbleToBeEngagedInIntervention(false);
+        setWillingToCommitToKeepingSelfSafe(false);
+        break;
+    }
+  };
+
 
   // State variable for riskLevel
   const [riskLevel, setRiskLevel] = useState("");
 
   // State variables for psychiatricDiagnoses
-  const [psychiatricDiagnoses, setPsychiatricDiagnoses] = useState([
-    {
-      icdCode: "",
-      description: "",
-      primary: "",
-      secondary: "",
-      tertiary: "",
-      additional: "",
-    },
-  ]);
+  const [icdCode, setIcdCode] = useState('');
+  const [description, setDescription] = useState('');
+  const [primary, setPrimary] = useState('');
+  const [secondary, setSecondary] = useState('');
+  const [tertiary, setTertiary] = useState('');
+  const [additional, setAdditional] = useState('');
+  const [psychiatricDiagnoses, setPsychiatricDiagnoses] = useState([]);
 
   // State variables for medicalDiagnoses
-  const [medicalDiagnoses, setMedicalDiagnoses] = useState([
-    {
-      icdCode: "",
-      description: "",
-      primary: "",
-      secondary: "",
-      tertiary: "",
-      additional: "",
-    },
-  ]);
+  const [icdCodeMedicalDiagnoses, setIcdCodeMedicalDiagnoses] = useState('');
+  const [descriptionMedicalDiagnoses, setDescriptionMedicalDiagnoses] = useState('');
+  const [primaryMedicalDiagnoses, setPrimaryMedicalDiagnoses] = useState('');
+  const [secondaryMedicalDiagnoses, setSecondaryMedicalDiagnoses] = useState('');
+  const [tertiaryMedicalDiagnoses, setTertiaryMedicalDiagnoses] = useState('');
+  const [additionalMedicalDiagnoses, setAdditionalMedicalDiagnoses] = useState('');
+  const [medicalDiagnoses, setMedicalDiagnoses] = useState([]);
 
   // State variable for additionalDiagnoses
   const [additionalDiagnoses, setAdditionalDiagnoses] = useState("");
 
   // State variable for primarySupportGroup
-  const [primarySupportGroup, setPrimarySupportGroup] = useState("");
+  const [primarySupportGroup, setPrimarySupportGroup] = useState(false);
 
   // State variable for maritalProblems
-  const [maritalProblems, setMaritalProblems] = useState("");
+  const [maritalProblems, setMaritalProblems] = useState(false);
 
   // State variable for accessToHealthCareServices
   const [accessToHealthCareServices, setAccessToHealthCareServices] =
-    useState("");
+    useState(false);
 
   // State variable for educationalProblems
-  const [educationalProblems, setEducationalProblems] = useState("");
+  const [educationalProblems, setEducationalProblems] = useState(false);
 
   // State variable for housingProblems
-  const [housingProblems, setHousingProblems] = useState("");
+  const [housingProblems, setHousingProblems] = useState(false);
 
   // State variable for familyProblems
-  const [familyProblems, setFamilyProblems] = useState("");
+  const [familyProblems, setFamilyProblems] = useState(false);
 
   // State variable for occupationalProblems
-  const [occupationalProblems, setOccupationalProblems] = useState("");
+  const [occupationalProblems, setOccupationalProblems] = useState(false);
 
   // State variable for interactionWithLegalSystem, substanceUseInHome, sexualProblems, otherStressors
   const [interactionWithLegalSystem, setInteractionWithLegalSystem] =
-    useState("");
-  const [substanceUseInHome, setSubstanceUseInHome] = useState("");
-  const [sexualProblems, setSexualProblems] = useState("");
+    useState(false);
+  const [substanceUseInHome, setSubstanceUseInHome] = useState(false);
+  const [sexualProblems, setSexualProblems] = useState(false);
+  const [otherBoolean,setOtherBoolean]=useState(false);
   const [otherStressors, setOtherStressors] = useState("");
 
   // State variables for significantRecentLosses
-  const [significantRecentLosses, setSignificantRecentLosses] = useState({
-    no: "",
-    yes: "",
-    typeOfLoss: {
-      death: "",
-      job: "",
-      childRemovedFromHouse: "",
-      injury: "",
-      divorceSeparation: "",
-      violentActsAgainstPersonFamily: "",
-      medicalSurgical: "",
-      accidentInjury: "",
-      other: "",
-    },
-  });
+  const [no,setNo]=useState(false);
+  const [yes,setYes]=useState(false);
+  const [setNoAndYes,setSetNoAndYes]=useState();
+  const [death, setDeath] = useState(false);
+  const [job, setJob] = useState('');
+  const [childRemovedFromHouse, setChildRemovedFromHouse] = useState('');
+  const [injury, setInjury] = useState(false);
+  const [divorceSeparation, setDivorceSeparation] = useState('');
+  const [violentActsAgainstPersonFamily, setViolentActsAgainstPersonFamily] = useState(false);
+  const [medicalSurgical, setMedicalSurgical] = useState(false);
+  const [accidentInjury, setAccidentInjury] = useState(false);
+  const [otherSignificantRecentLosses, setOtherSignificantRecentLosses] = useState(false);
+  const [significantRecentLosses, setSignificantRecentLosses] = useState({});
+
+  const [additionalNotes,setAdditionalNotes]=useState("")
 
   // State variables for staffInformation
-  const [staffInformation, setStaffInformation] = useState({
-    staffName: "Dr. Smith",
-    staffTitle: "Psychiatrist",
-    staffSignature: "Dr. Smith's Signature",
-    staffDate: "2024-01-10",
-  });
+  const [staffName, setStaffName] = useState('');
+  const [staffTitle, setStaffTitle] = useState('');
+  const [staffSignature, setStaffSignature] = useState("");
+  const [staffDate, setStaffDate] = useState('');
+  const [staffInformation, setStaffInformation] = useState({});
 
   // State variables for bhpInformation
-  const [bhpInformation, setBhpInformation] = useState({
-    bhpName: "Jane Doe",
-    bhpCredentials: "Licensed Therapist",
-    bhpSignature: "Jane Doe's Signature",
-    bhpDate: "2024-01-10",
-  });
+  const [bhpName, setBhpName] = useState('');
+  const [bhpCredentials, setBhpCredentials] = useState('');
+  const [bhpSignature, setBhpSignature] = useState("");
+  const [bhpDate, setBhpDate] = useState('');
+  const [bhpInformation, setBhpInformation] = useState({});
 
   useEffect(() => {
     setPatientId(userData?._id);
@@ -459,6 +739,100 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
   const handleSelectChange = (selectedOptions) => {
     setResidentStrengths(selectedOptions);
   };
+
+  const handleSubmit=()=>{
+    const data={
+      patientId,
+      dob,
+      hasNotified,
+      assessmentOn,
+      residentName,
+      sex,
+      dateOfAssessment,
+      ahcccsNumber,
+      preferredLanguage,
+      ethnicity,
+      admissionStatus,
+      programLocation,
+      guardianship,
+      powerOfAttorneyStatus,
+      todayDate,
+      guardianshipPoaPubFidName,
+      approvedBy,
+      reasonForAdmission,
+      residentGoals,
+      residentStrengths,
+      residentLimitations,
+      currentBehavioralIssues,
+      // missing
+      dischargePlan,
+      estimateDateOfDischarge,
+      agreementWithPlan,
+      residentGuardianAgreement :{
+        name:residentGuardianAgreementName,
+        signature:residentGuardianAgreementSignature,
+        date:residentGuardianAgreementDate
+      },
+      staffAgreement:{
+        name: staffAgreementname,
+        signature:staffAgreementSignature,
+        date:staffAgreementDate
+      },
+      bhpAgreement :{
+        name:bhpAgreementName,
+        signature:bhpAgreementSignature,
+        date:bhpAgreementDate
+      },
+      other :{
+        name: otherName,
+        relationship:otherRelationship,
+        signature:otherSignature,
+        date:otherDate
+      },
+// missing
+mentalHealthTreatmentHistory,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
 
   return (
     <>
@@ -493,7 +867,7 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
             onChange={(e) => setAssessmentOn(e.target.value)}
           />
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h5>Section - 1</h5>
           <div className="form-section">
             <h2>Basic Details</h2>
@@ -2854,32 +3228,26 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <label htmlFor="reasonadmission">
                 Criminal Justice Legal History
               </label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Arrested for DUI</option>
-                <option value="Enter text">Arrested for assault</option>
-                <option value="Enter text">Arrested for bad checks</option>
-                <option value="Enter text">Arrested for shop lifting</option>
-                <option value="Enter text">
-                  Arrested for attempted murder
-                </option>
-                <option value="Enter text">Arrested for drug</option>
-                <option value="Enter text">Arrested for alcohol</option>
-                <option value="Enter text">
-                  Arrested for disorderly conduct
-                </option>
-                <option value="Enter text">
-                  Arrested for identity theft/ forgery
-                </option>
-                <option value="Enter text">Arrested for sex offense</option>
-                <option value="Enter text">Arrested for _______</option>
-                <option value="Enter text">Probation/parole, custody</option>
-                <option value="Enter text">Pending litigation</option>
-                <option value="Enter text">Sentencing dates</option>
-                <option value="Enter text">Needs Legal Aid</option>
-                <option value="Enter text">Incarcerated</option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+              <select id="reasonadmission" value={selectedValue} onChange={handleSelectChangeLegalHistory} required>
+        <option value="">Select a value</option>
+        <option value="Arrested for DUI">Arrested for DUI</option>
+        <option value="Arrested for assault">Arrested for assault</option>
+        <option value="Arrested for bad checks">Arrested for bad checks</option>
+        <option value="Arrested for shop lifting">Arrested for shop lifting</option>
+        <option value="Arrested for attempted murder">Arrested for attempted murder</option>
+        <option value="Arrested for drug">Arrested for drug</option>
+        <option value="Arrested for alcohol">Arrested for alcohol</option>
+        <option value="Arrested for disorderly conduct">Arrested for disorderly conduct</option>
+        <option value="Arrested for identity theft/ forgery">Arrested for identity theft/ forgery</option>
+        <option value="Arrested for sex offense">Arrested for sex offense</option>
+        <option value="Arrested for other">Arrested for Other</option>
+        <option value="Probation/parole, custody">Probation/parole, custody</option>
+        <option value="Pending litigation">Pending litigation</option>
+        <option value="Sentencing dates">Sentencing dates</option>
+        <option value="Needs Legal Aid">Needs Legal Aid</option>
+        <option value="Incarcerated">Incarcerated</option>
+      </select>
+      {/* pending work */}
             </div>
             <div className="formsheading">
               <h6>Current Independent Living Skills:</h6>
@@ -2887,19 +3255,20 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
             <div className="form-field">
               <label htmlFor="reasonadmission">Type of Activity</label>
               <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Bathing/Showering</option>
-                <option value="Enter text">Grooming/hygiene</option>
-                <option value="Enter text">Mobility</option>
-                <option value="Enter text">Housework</option>
-                <option value="Enter text">Shopping</option>
-                <option value="Enter text">Managing money/budget</option>
-                <option value="Enter text">Taking medications</option>
-                <option value="Enter text">Preparing food</option>
-                <option value="Enter text">Eating</option>
-                <option value="Enter text">Toileting</option>
-                <option value="Enter text">Other (specify)</option>
-                {/* <option value="Female">Sanskrit</option> */}
+                <option value="Select a option" onClick={()=>setBathingShoweringGood(true)}>Enter text</option>
+                <option value="Bathing/Showering" onClick={()=>setBathingShoweringFair(true)}>Bathing/Showering</option>
+                <option value="Grooming/hygiene" onClick={()=>setBathingShoweringGood(true)}>Grooming/hygiene</option>
+                <option value="Mobility" onClick={()=>setBathingShoweringGood(true)}>Mobility</option>
+                <option value="Housework" onClick={()=>setBathingShoweringGood(true)}>Housework</option>
+                <option value="Shopping" onClick={()=>setBathingShoweringGood(true)}>Shopping</option>
+                <option value="Managing money/budget" onClick={()=>setBathingShoweringGood(true)}>Managing money/budget</option>
+                <option value="Taking medications" onClick={()=>setBathingShoweringGood(true)}>Taking medications</option>
+                <option value="Preparing food" onClick={()=>setBathingShoweringGood(true)}>Preparing food</option>
+                <option value="Eating" onClick={()=>setBathingShoweringGood(true)}>Eating</option>
+                <option value="Toileting" onClick={()=>setBathingShoweringGood(true)}>Toileting</option>
+                {/* buhdfj */}
+                
+                <option value="Other (specify)" onClick={()=>setOtherComments(true)}>Other (specify)</option>
               </select>
             </div>
             <div className="yeschechbox">
@@ -2938,18 +3307,20 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 required
               />
             </div>
+            {/* start working  */}
             <div className="formsheading">
               <h6>Triggers:</h6>
+              <input type="text" placeholder="Enter text" required value={triggers} onChange={(e)=>setTriggers(e.target.value)}/>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Fall risk:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input type="checkbox" id="fallRisk" checked={fallRisk===true} onChange={()=>setFallRisk(true)} />
+                <label htmlFor="fallRisk">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <input type="checkbox" id="fallRiskno" checked={fallRisk===false} onChange={()=>setFallRisk(false)} />
+                <label htmlFor="fallRiskno">No</label>
               </div>
             </div>
             <div className="form-field">
@@ -2957,9 +3328,10 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={fallRiskExplanation}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setFallRiskExplanation(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -2968,40 +3340,38 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               </label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={hobbiesLeisureActivities}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setHobbiesLeisureActivities(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="reasonadmission">Medical Equipment:</label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Wheel Chair</option>
-                <option value="Enter text">Oxygen tank</option>
-                <option value="Enter text">CPAP Machine</option>
-                <option value="Enter text">Shower chair</option>
-                <option value="Enter text">Other</option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+              <label htmlFor="reasonadmissionMedical">Medical Equipment:</label>
+              <select id="reasonadmissionMedical" value={selectedValueMedical} onChange={handleSelectChangeMedical} required>
+        <option value="">Enter text</option>
+        <option value="Wheel Chair">Wheel Chair</option>
+        <option value="Oxygen tank">Oxygen tank</option>
+        <option value="CPAP Machine">CPAP Machine</option>
+        <option value="Shower chair">Shower chair</option>
+        <option value="Other">Other</option>
+      </select>
+
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Special Precautions:</label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Yes Seizure</option>
-                <option value="Enter text">Elopement/Awol</option>
-                <option value="Enter text">Physical Aggression</option>
-                <option value="Enter text">Withdrawal</option>
-                <option value="Enter text">
-                  Inappropriate Sexual Behaviors
-                </option>
-                <option value="Enter text">Substance use</option>
-                <option value="Enter text">None</option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+              <select id="reasonadmission" value={selectedValueSpecialPrecautions} onChange={handleSelectChangeSpecialPrecautions} required>
+        <option value="">Enter text</option>
+        <option value="Yes Seizure">Yes Seizure</option>
+        <option value="Elopement/Awol">Elopement/Awol</option>
+        <option value="Physical Aggression">Physical Aggression</option>
+        <option value="Withdrawal">Withdrawal</option>
+        <option value="Inappropriate Sexual Behaviors">Inappropriate Sexual Behaviors</option>
+        <option value="Substance use">Substance use</option>
+        <option value="None">None</option>
+      </select>
             </div>
             <div className="formsheading">
               <h6>Safety and Risk Assessment</h6>
@@ -3012,32 +3382,17 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 suicide?
               </label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input type="checkbox" id="currentThoughtsOfHarmingSelf" checked={currentThoughtsOfHarmingSelf===true} onChange={()=>setCurrentThoughtsOfHarmingSelf(true)}/>
+                <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+                <input type="checkbox" id="currentThoughtsOfHarmingSelfno" checked={currentThoughtsOfHarmingSelf===false} onChange={()=>setCurrentThoughtsOfHarmingSelf(false)}/>
+                <label htmlFor="currentThoughtsOfHarmingSelfno">No</label>
               </div>
             </div>
             <div className="yeschechbox1">
               <label htmlFor="">Ideation</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Fleeting</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Periodic</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Constant</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>N/A</span>
-              </div>
+              <input style={{marginRight:"1rem"}} required placeholder="Enter text" value={suicidalIdeation} onChange={(e)=>setSuicidalIdeation(e.target.value)}/>
             </div>
             <div className="yeschechbox1">
               <label htmlFor="">Increasing in:</label>
@@ -3045,38 +3400,39 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 <span>Urgency:</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input type="checkbox" id="suicidalIdeationUrgency" checked={suicidalIdeationUrgency===true} onChange={()=>setSuicidalIdeationUrgency(true)}/>
+                <label htmlFor="suicidalIdeationUrgency">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+                <input type="checkbox" id="suicidalIdeationUrgencyno" checked={suicidalIdeationUrgency===false} onChange={()=>setSuicidalIdeationUrgency(false)}/>
+                <label htmlFor="suicidalIdeationUrgencyno">NO</label>
               </div>
-              <div>
-                <span>Severity:</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+              
             </div>
+            <div className="yeschechbox1">
+                <label>Severity:</label>
+                <div>
+                <input type="checkbox" id="currentThoughtsOfHarmingSelf" checked={currentThoughtsOfHarmingSelf===true} onChange={()=>setSuicidalIdeationSeverity(true)}/>
+                <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
+              </div>
+              <div>
+                <input type="checkbox" id="suicidalIdeationSeverityno" checked={suicidalIdeationSeverity===false} onChange={()=>setSuicidalIdeationSeverity(false)}/>
+                <label htmlFor="suicidalIdeationSeverityno">No</label>
+              </div>
+              </div>
             <div className="yeschechbox1">
               <label htmlFor="">
                 Are you currently thinking about harming others or have
                 homicidal thoughts?
               </label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input type="checkbox" id="currentThoughtsOfHarmingOthers" checked={currentThoughtsOfHarmingOthers===true} onChange={()=>setCurrentThoughtsOfHarmingOthers(true)}/>
+                <label htmlFor="currentThoughtsOfHarmingOthers">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <input type="checkbox" id="currentThoughtsOfHarmingOthersno" checked={currentThoughtsOfHarmingOthers===false} onChange={()=>setCurrentThoughtsOfHarmingOthers(false)}/>
+                <label htmlFor="currentThoughtsOfHarmingOthersno">No</label>
+              </div> 
             </div>
             <div className="formsheading">
               <h6>Risk Factors:</h6>
@@ -3085,28 +3441,23 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <label htmlFor="reasonadmission">
                 Select risk factors that apply
               </label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Current suicidal ideation</option>
-                <option value="Enter text">Prior suicide attempt</option>
-                <option value="Enter text">
-                  Access to means (i.e. weapon)
-                </option>
-                <option value="Enter text">Substance abuse</option>
-                <option value="Enter text">Other self-abusing behavior</option>
-                <option value="Enter text">
-                  Recent losses/lack of support
-                </option>
-                <option value="Enter text">Behavior cues</option>
-                <option value="Enter text">Symptoms of psychosis</option>
-                <option value="Enter text">Family history of suicide</option>
-                <option value="Enter text">Terminal physical illness</option>
-                <option value="Enter text">Current stressors (specify)</option>
-                <option value="Enter text">Chronic pain</option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+              <select id="reasonadmission" value={selectedValueRiskFactors} onChange={handleSelectChangeRiskFactors} required>
+        <option value="">Enter text</option>
+        <option value="Current suicidal ideation">Current suicidal ideation</option>
+        <option value="Prior suicide attempt">Prior suicide attempt</option>
+        <option value="Access to means (i.e. weapon)">Access to means (i.e. weapon)</option>
+        <option value="Substance abuse">Substance abuse</option>
+        <option value="Other self-abusing behavior">Other self-abusing behavior</option>
+        <option value="Recent losses/lack of support">Recent losses/lack of support</option>
+        <option value="Behavior cues">Behavior cues</option>
+        <option value="Symptoms of psychosis">Symptoms of psychosis</option>
+        <option value="Family history of suicide">Family history of suicide</option>
+        <option value="Terminal physical illness">Terminal physical illness</option>
+        <option value="Current stressors (specify)">Current stressors (specify)</option>
+        <option value="Chronic pain">Chronic pain</option>
+      </select>
             </div>
-            <div className="yeschechbox">
+            {/* <div className="yeschechbox">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Yes</span>
@@ -3126,33 +3477,22 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Protective factors that apply:
               </label>
-              <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">
-                  Supports available (family friends)
-                </option>
-                <option value="Enter text">
-                  Spiritual / religious support
-                </option>
-                <option value="Enter text">
-                  Religious/cultural prohibitions
-                </option>
-                <option value="Enter text">Fear of consequences</option>
-                <option value="Enter text">
-                  Able to be engaged in intervention
-                </option>
-                <option value="Enter text">
-                  Willing to commit to keeping self safe
-                </option>
-                {/* <option value="Female">Sanskrit</option> */}
-              </select>
+              <select id="reasonadmission" value={selectedValueProtectiveFactors} onChange={handleSelectChangeProtectiveFactors} required>
+        <option value="">Enter text</option>
+        <option value="Supports available (family friends)">Supports available (family friends)</option>
+        <option value="Spiritual / religious support">Spiritual / religious support</option>
+        <option value="Religious/cultural prohibitions">Religious/cultural prohibitions</option>
+        <option value="Fear of consequences">Fear of consequences</option>
+        <option value="Able to be engaged in intervention">Able to be engaged in intervention</option>
+        <option value="Willing to commit to keeping self safe">Willing to commit to keeping self safe</option>
+      </select>
             </div>
-            <div className="yeschechbox">
+            {/* <div className="yeschechbox">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Yes</span>
@@ -3172,7 +3512,7 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="formsheading">
               <p>
                 Considering the responses to the above risk factors in
@@ -3184,19 +3524,19 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
             </div>
             <div className="yeschechbox1">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox"  checked={riskLevel==="No Risk"} onChange={()=>setRiskLevel("No Risk")} />
                 <span>No Risk</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" checked={riskLevel==="Low Risk"} onChange={()=>setRiskLevel("Low Risk")} />
                 <span>Low Risk</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" checked={riskLevel==="Moderate Risk"} onChange={()=>setRiskLevel("Moderate Risk")} />
                 <span>Moderate Risk</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" checked={riskLevel==="High Risk"} onChange={()=>setRiskLevel("High Risk")}/>
                 <span>High Risk</span>
               </div>
             </div>
@@ -3206,7 +3546,7 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
             <div className="formsheading">
               <h6>Psychiatric Diagnoses</h6>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="approvedby">Primary*</label>
               <input
                 type="text"
@@ -3215,240 +3555,90 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 placeholder="Enter text"
                 required
               />
+            </div> */}
+            <div className="form-field">
+            <label htmlFor="icdCode">ICD Code:</label>
+      <input type="text" required id="icdCode" value={icdCode} onChange={(e) => setIcdCode(e.target.value)} />
+
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="description">Description:</label>
+      <input type="text" required id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+
+            </div >
+            <div className="form-field">
+            <label htmlFor="primary">Primary:</label>
+      <input type="text" required id="primary" value={primary} onChange={(e) => setPrimary(e.target.value)} />
+      </div>
+
+            <div className="form-field">
+             <label htmlFor="secondary">Secondary:</label>
+      <input type="text" required id="secondary" value={secondary} onChange={(e) => setSecondary(e.target.value)} />
+
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="tertiary">Tertiary:</label>
+      <input type="text" required id="tertiary" value={tertiary} onChange={(e) => setTertiary(e.target.value)} />
+
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Secondary</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="additional">Additional:</label>
+      <input type="text" required id="additional" value={additional} onChange={(e) => setAdditional(e.target.value)} />
             </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Tertiary</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Additional</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
+
+            <div className="form-actions">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  // onClick={handlepsychiatricDiagnoses}
+                >
+                  SAVE
+                </button>
+              </div>
+         
             <div className="formsheading">
               <h6>Medical Diagnoses</h6>
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Primary*</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="icdCode">ICD Code:</label>
+      <input type="text" required id="icdCode" value={icdCodeMedicalDiagnoses} onChange={(e) => setIcdCodeMedicalDiagnoses(e.target.value)} />
+
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="description">Description:</label>
+      <input type="text" required id="description" value={descriptionMedicalDiagnoses} onChange={(e) => setDescriptionMedicalDiagnoses(e.target.value)} />
+
+            </div >
+            <div className="form-field">
+            <label htmlFor="primary">Primary:</label>
+      <input type="text" required id="primary" value={primaryMedicalDiagnoses} onChange={(e) => setPrimaryMedicalDiagnoses(e.target.value)} />
+      </div>
+
+            <div className="form-field">
+             <label htmlFor="secondary">Secondary:</label>
+      <input type="text" required id="secondary" value={secondaryMedicalDiagnoses} onChange={(e) => setSecondaryMedicalDiagnoses(e.target.value)} />
+
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="tertiary">Tertiary:</label>
+      <input type="text" required id="tertiary" value={tertiaryMedicalDiagnoses} onChange={(e) => setTertiaryMedicalDiagnoses(e.target.value)} />
+
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Secondary</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
+            <label htmlFor="additional">Additional:</label>
+      <input type="text" required id="additional" value={additionalMedicalDiagnoses} onChange={(e) => setAdditionalMedicalDiagnoses(e.target.value)} />
             </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Tertiary</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Additional</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">ICD Code</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="approvedby">Description</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div>
+
+            <div className="form-actions">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  // onClick={handlepsychiatricDiagnoses}
+                >
+                  SAVE
+                </button>
+              </div>
+            
             <div className="formsheading">
               <h6>Psychosocial or Environmental Stressors</h6>
               <h6>Problems with / related to:</h6>
@@ -3457,79 +3647,83 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <div class="chechbox12">
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Primary support group</span>
+                    <input type="checkbox" id="primarySupportGroup" checked={primarySupportGroup} onChange={()=>setPrimarySupportGroup(!primarySupportGroup)}/>
+                    <label htmlFor="primarySupportGroup">Primary Support Group</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Educational problems</span>
+                    <input type="checkbox" id="educationalProblems" checked={educationalProblems} onChange={()=>setEducationalProblems(!educationalProblems)} />
+                    <label htmlFor="educationalProblems">Educational problems</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Occupational problems</span>
+                    <input type="checkbox" id="occupationalProblems" checked={occupationalProblems} onChange={()=>setOccupationalProblems(!occupationalProblems)}/>
+                    <label htmlFor="occupationalProblems">Occupational problems</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Sexual problems</span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Marital problems</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Housing problems</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Interaction with legal system</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>other (please specify)</span>
+                    <input type="checkbox" id="sexualProblems" checked={sexualProblems} onChange={()=>setSexualProblems(!sexualProblems)}/>
+                    <label htmlFor="sexualProblems">Sexual problems</label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Access to health care services</span>
+                    <input type="checkbox" id="maritalProblems" checked={maritalProblems} onChange={()=>setMaritalProblems(!maritalProblems)}/>
+                    <label htmlFor="maritalProblems">Marital problems</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Family problems</span>
+                    <input type="checkbox" id="housingProblems" checked={housingProblems} onChange={()=>setHousingProblems(!housingProblems)}/>
+                    <label htmlFor="housingProblems">Housing problems</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Substance use in home</span>
+                    <input type="checkbox" id="interactionWithLegalSystem" checked={interactionWithLegalSystem} onChange={()=>setInteractionWithLegalSystem(!interactionWithLegalSystem)}/>
+                    <label htmlFor="interactionWithLegalSystem">Interaction with legal system</label>
                   </div>
                   <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Auditory hallucinations</span> */}
+                    <input type="checkbox" id="otherBoolean" checked={otherBoolean} onChange={()=>setOtherBoolean(!otherBoolean)}/>
+                    <label htmlFor="otherBoolean">other (please specify)</label>
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                    <input type="checkbox" id="accessToHealthCareServices" checked={accessToHealthCareServices} onChange={()=>setAccessToHealthCareServices(!accessToHealthCareServices)}/>
+                    <label htmlFor="accessToHealthCareServices">Access to health care services</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input type="checkbox" id="familyProblems" checked={familyProblems} onChange={()=>setFamilyProblems(!familyProblems)}/>
+                    <label htmlFor="familyProblems">Family problems</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input type="checkbox" id="substanceUseInHome" checked={substanceUseInHome} onChange={()=>setSubstanceUseInHome(!substanceUseInHome)}/>
+                    <label htmlFor="substanceUseInHome">Substance use in home</label>
+                  </div>
+                  <div class="checkboxitem">
+                   
                   </div>
                 </div>
               </div>
             </div>
-            <div className="form-field">
+            {
+              otherBoolean &&  <div className="form-field">
               <textarea
                 id="programlocation&address"
-                value=""
+                value={otherStressors}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setOtherStressors(e.target.value)}
               />
-            </div>
+               </div>
+            }
+           
+           
             <div className="yeschechbox">
               <label htmlFor="">Significant recent losses:</label>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+                <input type="checkbox" id="setSetNoAndYes" checked={setNoAndYes===true} onChange={()=>setSetNoAndYes(true)}/>
+                <label htmlFor="setSetNoAndYes">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <input type="checkbox" id="setSetNoAndYesno" checked={setNoAndYes===false} onChange={()=>setSetNoAndYes(false)}/>
+                <label htmlFor="setSetNoAndYesno">No</label>
               </div>
             </div>
             <div className="formsheading">
@@ -3539,49 +3733,49 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <div class="chechbox12">
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Death</span>
+                    <input type="checkbox" id="death" checked={death} onChange={()=>setDeath(!death)}/>
+                    <label htmlFor="death">Death</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Injury</span>
+                    <input type="checkbox" id="injury" checked={injury} onChange={()=>setInjury(!injury)}/>
+                    <label htmlFor="injury">Injury</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Medical/ surgical </span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Job</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Divorce / separation </span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Accident /injury</span>
+                    <input type="checkbox" id="medicalSurgical" checked={medicalSurgical} onChange={()=>setMedicalSurgical(!medicalSurgical)}/>
+                    <label htmlFor="medicalSurgical">Medical/ surgical </label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Child removed from house</span>
+                    <input type="checkbox" id="job" checked={job} onChange={()=>setJob(!job)}/>
+                    <label htmlFor="job">Job</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Violent acts against person/family </span>
+                    <input type="checkbox" id="divorceSeparation" checked={divorceSeparation} onChange={()=>setDivorceSeparation(!divorceSeparation)}/>
+                    <label htmlFor="divorceSeparation">Divorce / separation </label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>other (please specify)</span>
+                    <input type="checkbox" id="accidentInjury" checked={accidentInjury} onChange={()=>setAccidentInjury(!accidentInjury)}/>
+                    <label htmlFor="accidentInjury">Accident /injury</label>
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                    <input type="checkbox" id="childRemovedFromHouse" checked={childRemovedFromHouse} onChange={()=>setChildRemovedFromHouse(!childRemovedFromHouse)}/>
+                    <label htmlFor="childRemovedFromHouse">Child removed from house</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input type="checkbox" id="violentActsAgainstPersonFamily" checked={violentActsAgainstPersonFamily} onChange={()=>setViolentActsAgainstPersonFamily(!violentActsAgainstPersonFamily)}/>
+                    <label htmlFor="violentActsAgainstPersonFamily">Violent acts against person/family </label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input type="checkbox" id="otherSignificantRecentLosses" checked={otherSignificantRecentLosses} onChange={()=>setOtherSignificantRecentLosses(!otherSignificantRecentLosses)}/>
+                    <label htmlFor="otherSignificantRecentLosses">other (please specify)</label>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <textarea
                 id="programlocation&address"
                 value=""
@@ -3590,15 +3784,16 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                 cols={82}
                 required
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="programlocation&address">Additional Notes:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={additionalNotes}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
+                onChange={(e)=>setAdditionalNotes(e.target.value)}
                 required
               />
             </div>
@@ -3607,12 +3802,21 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={staffName}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setStaffName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
+            <div className="form-field">
+              <label htmlFor="">Enter Signature</label>
+              <input type="text" required value={staffSignature} onChange={(e)=>setStaffSignature(e.target.vaue)}/>
+            </div>
+            <div className="form-field">
+              <label htmlFor="">Enter Staff Title</label>
+              <input type="text" required value={staffTitle} onChange={(e)=>setStaffTitle(e.target.vaue)}/>
+            </div>
+            {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
                 <img
@@ -3629,15 +3833,16 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={staffDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setStaffDate(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -3645,37 +3850,30 @@ const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={bhpName}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setBhpName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
+            <div className="form-field">
+              <label htmlFor="bhpCredentials">Enter BHP Credentials</label>
+              <input type="text" required value={bhpCredentials} onChange={(e)=>setBhpCredentials(e.target.vaue)}/>
             </div>
+            <div className="form-field">
+              <label htmlFor="bhpSignature">Enter Signature</label>
+              <input type="text" required value={bhpSignature} onChange={(e)=>setBhpSignature(e.target.vaue)}/>
+            </div>
+            
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
                 id="todaydate"
-                value=""
+                value={bhpDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e)=>setBhpDate(e.target.value)}
               />
             </div>
           </div>

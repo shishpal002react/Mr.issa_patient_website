@@ -48,6 +48,16 @@ export const user_detail = async (setUser) => {
   }
 };
 
+export const getAllPatientMedication = async (setScript) => {
+  try {
+    const res = await axios.get(`${BaseUrl}Patient/getAllPatientMedication`, Token);
+    setScript(res?.data);
+    
+  } catch (e) {
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
 
 export const safety_form = async (payLoad) => {
   try {
@@ -176,13 +186,45 @@ export const appointment_get = async (setAppoinmentPast) => {
 };
 
 
-export const medication_get = async (patientId,setMedication) => {
+export const medication_get = async (setMedication) => {
   try {
     const res = await axios.get(
-      `${BaseUrl}Patient/getOngoingMedications/${patientId}`,
+      // `${BaseUrl}Patient/getOngoingMedications/${patientId}`,
+      `${BaseUrl}Patient/getAllTodayAppointments`,
       Token
     );
-    setMedication(res?.data?.data);
+    setMedication(res?.data);
+
+  } catch (e) {
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
+
+export const change_appointment_status = async (id) => {
+  try {
+    const res = await axios.put(
+      // `${BaseUrl}Patient/getOngoingMedications/${patientId}`,
+      `${BaseUrl}Patient/cancelAppointment/${id}`,
+      Token
+    );
+    show_notification("Success !", `Status Update SuccessFully`, "danger");
+
+  } catch (e) {
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
+
+export const notification_get = async (setNotification) => {
+  try {
+    const res = await axios.get(
+      // `${BaseUrl}Patient/getOngoingMedications/${patientId}`,
+      `${BaseUrl}Patient/allNotification`,
+      Token
+    );
+    setNotification(res?.data);
+     console.log(res?.data?.data,"jai maa kali notification")
   } catch (e) {
     // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
   }

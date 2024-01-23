@@ -18,26 +18,7 @@ const Profile = () => {
   }, []);
 
   console.log(user, "user data");
-  const data = [
-    {
-      imageUrl: cards,
-      date: "DD/MM/YYYY",
-      slot: "HH:MM AM ",
-      location: "CENTRE 1",
-    },
-    {
-      imageUrl: cards,
-      date: "DD/MM/YYYY",
-      slot: "HH:MM AM ",
-      location: "CENTRE 1",
-    },
-    {
-      imageUrl: cards,
-      date: "DD/MM/YYYY",
-      slot: "HH:MM AM ",
-      location: "CENTRE 1",
-    },
-  ];
+  
   return (
     <div className="profile">
       <div className="profile-container">
@@ -82,24 +63,24 @@ const Profile = () => {
         <p>Upcoming Appointment</p>
           {appoinmentUpcoming?.data?.map((appointment, index) => (
           <AppointmentsCard
-            key={index}
-            imageUrl={appointment?.imageUrl}
+            key={index}  
+            imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
             date={new Date(appointment?.date).toLocaleDateString()}
-            slot={appointment?.slot}
-            location={appointment?.location}
+            slot={appointment?.time}
+            location={appointment?.adminId?.address}
           />
         ))}
         </div>
         <div className="nurse">
-          <p>Recent Nurses / CNA</p>
+          <p>Employee</p>
           <div className="nurse-card">
 
             {
               user?.employeesId?.map((item,i)=>(
-                <div className="nursecard">
-              <img src={nurse1} alt="" />
-              <p>Nina Johnson</p>
-              <span>Centre 1</span>
+                <div className="nursecard" key={i}>
+              <img src={item?.profilePic?item?.profilePic:nurse1} alt="" />
+              <p>{item?.fullName}</p>
+              {/* <span>Centre 1</span> */}
             </div>
               ))
             }

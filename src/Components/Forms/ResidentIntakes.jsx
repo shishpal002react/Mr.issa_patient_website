@@ -691,6 +691,7 @@ const ResidentIntakes = () => {
     e.preventDefault();
     Resident_form(data);
     initializeValues();
+    navigate("/intake");
   };
 
   return (

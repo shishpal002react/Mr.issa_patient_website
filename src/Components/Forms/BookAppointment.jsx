@@ -32,6 +32,7 @@ const BookAppointment = () => {
     e.preventDefault();
     appoinment_Booking(data);
     initial_value();
+    navigate("/appointment_scheduling")
   };
   return (
     <>

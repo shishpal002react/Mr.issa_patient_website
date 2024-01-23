@@ -265,6 +265,7 @@ const NursingAssessment = () => {
     };
     Nurssing_form(data)
     initialData();
+    navigate("/intake");
   };
 
   return (

@@ -3,6 +3,7 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import HistoryCard from "../Cards/HistoryCards";
 import cards from "../../img/card1.png";
+import nurse1 from "../../img/nurse (1).png";
 import {
   appointment_Upcoming,
   appointment_get,
@@ -16,32 +17,7 @@ const AppointmentHistory = () => {
     appointment_Upcoming(setAppoinmentUpcoming);
     appointment_get(setAppoinmentPast);
   }, []);
-  const data = [
-    {
-      imageUrl: cards,
-      from: "6 JUNE - 12 JUNE",
-      visit: "MEDICATION",
-      referenceId: "CEN1TB9054",
-    },
-    {
-      imageUrl: cards,
-      from: "6 JUNE - 12 JUNE",
-      visit: "MEDICATION",
-      referenceId: "CEN1TB9054",
-    },
-    {
-      imageUrl: cards,
-      from: "6 JUNE - 12 JUNE",
-      visit: "MEDICATION",
-      referenceId: "CEN1TB9054",
-    },
-    {
-      imageUrl: cards,
-      from: "6 JUNE - 12 JUNE",
-      visit: "MEDICATION",
-      referenceId: "CEN1TB9054",
-    },
-  ];
+ 
   const navigate = useNavigate();
   return (
     <div className="booking-container">
@@ -68,10 +44,10 @@ const AppointmentHistory = () => {
             {appoinmentUpcoming?.data?.map((history, index) => (
               <HistoryCard
                 key={index}
-                imageUrl={history.imageUrl}
+                imageUrl={history?.adminId?.profilePic?history?.adminId?.profilePic:nurse1}
                 from={history.from}
-                visit={history.visit}
-                referenceId={history.referenceId}
+                visit={history.reasonForVisit}
+                referenceId={history.patientId}
               />
             ))}
           </div>
@@ -80,10 +56,10 @@ const AppointmentHistory = () => {
             {appoinmentPast?.data?.map((history, index) => (
               <HistoryCard
                 key={index}
-                imageUrl={history.imageUrl}
+                imageUrl={history?.adminId?.profilePic?history?.adminId?.profilePic:nurse1}
                 from={history.from}
-                visit={history.visit}
-                referenceId={history.referenceId}
+                visit={history.reasonForVisit}
+                referenceId={history.patientId}
               />
             ))}
           </div>

@@ -23,7 +23,7 @@ import chatting1 from "../../img/chatting1.png";
 import { RiSearchLine } from "react-icons/ri";
 import { IoSearchSharp } from "react-icons/io5";
 import intake from "../../img/Mask group.png";
-import { user_detail, show_notification } from "../../Api_Collection/Api";
+import { user_detail, show_notification,notification_get } from "../../Api_Collection/Api";
 
 const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   const navigate = useNavigate();
@@ -31,9 +31,11 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   const [isNotificationModalOpen, setNotificationModalOpen] = useState(false);
   const [ischattingModalOpen, setChattingModalOpen] = useState(false);
   const [user, setUser] = useState("");
+  const [notification,setNotification]=useState("")
 
   useEffect(() => {
     user_detail(setUser);
+    notification_get(setNotification);
   }, []);
 
   const openProfileModal = () => {
@@ -147,8 +149,16 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
           <div className="notification">
             <h5>NOTIFICATIONS</h5>
             <hr />
-            <p>Today</p>
-            <div className="notificationcontent">
+            {/* <p>Today</p> */}
+            {
+              notification?.data?.map((item,i)=>(
+                <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
+              <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
+              <span >{item?.title}</span>
+            </div>
+              ))
+            }
+            {/* <div className="notificationcontent">
               <img src={notification1} alt="" />
               <span>Your Intake Documents have been Uploaded Succesfully!</span>
             </div>
@@ -166,7 +176,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
               }}
             >
               TAP TO VIEW
-            </p>
+            </p> */}
           </div>
         </NotificationModal>
       )}

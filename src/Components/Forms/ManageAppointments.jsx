@@ -6,6 +6,7 @@ import cards from "../../img/card1.png";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import "./ManageAppointments.css";
 import { appointment_get } from "../../Api_Collection/Api";
+import nurse1 from "../../img/nurse (1).png";
 
 const ManageAppointments = () => {
   const [appoinmentPast, setAppoinmentPast] = useState("");
@@ -13,6 +14,10 @@ const ManageAppointments = () => {
   useEffect(() => {
     appointment_get(setAppoinmentPast);
   }, []);
+
+  const again_Call_appointment=()=>{
+    appointment_get(setAppoinmentPast);
+  }
 
   const navigate = useNavigate();
   return (
@@ -47,17 +52,20 @@ const ManageAppointments = () => {
             <div className="manageppointments">
               {appoinmentPast?.data?.map((history, index) => (
                 <HistoryCard
-                  key={index}
-                  imageUrl={history.imageUrl}
-                  from={history.from}
-                  visit={history.visit}
-                  referenceId={history.referenceId}
+                id={history?._id}
+                again_Call_appointment={again_Call_appointment}
+                 name={history?.adminId?.address}
+                  imageUrl={history?.adminId?.profilePic?history?.adminId?.profilePic:nurse1}
+                  from={history.date}
+                  visit={history.reasonForVisit}
+                  referenceId={history.patientId}
+                  status={history?.status}
                 />
               ))}
             </div>
           </div>
         </div>
-        <div className="form-actions">
+        {/* <div className="form-actions">
           <button
             type="submit"
             className="managecontinue"
@@ -65,7 +73,7 @@ const ManageAppointments = () => {
           >
             CONTINUE
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

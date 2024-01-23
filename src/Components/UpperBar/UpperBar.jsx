@@ -33,25 +33,46 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   const [user, setUser] = useState("");
 
   //notification
-  const [notification,setNotification]=useState("");
+  const [notification,setNotification]=useState([]);
   const [todayData, setTodayData] = useState([]);
   const [otherData, setOtherData] = useState([]);
 
-  const today = new Date().toISOString().split('T')[0];
-
   useEffect(() => {
-    // Filter data based on today's date
-    const todayFiltered = notification?.data?.filter(item => item.updatedAt === today);
-    setTodayData(todayFiltered);
+    // Sort and separate data when the data changes
+    const sortAndSeparateData = () => {
+      // Sort the data by updatedAt date
+      const sortedData = [...notification].sort((a, b) => {
+        const dateA = new Date(a.updatedAt);
+        const dateB = new Date(b.updatedAt);
+        return dateB - dateA;
+      });
 
-    // Filter data for other dates
-    const otherFiltered = notification?.data?.filter(item => item.updatedAt !== today);
-    setOtherData(otherFiltered);
+      // Get today's date in the format 'YYYY-MM-DD'
+      const today = new Date().toISOString().split('T')[0];
 
-    // console.log(todayFiltered,"today data",otherFiltered,"other data");
-  }, [notification, today]);
+      // Separate data into todayData and otherData arrays
+      const todayDataArray = [];
+      const otherDataArray = [];
 
- 
+      sortedData.forEach(item => {
+        const itemDate = new Date(item.updatedAt).toISOString().split('T')[0];
+        if (itemDate === today) {
+          todayDataArray.push(item);
+        } else {
+          otherDataArray.push(item);
+        }
+      });
+
+      // Set the state with the separated data
+      setTodayData(todayDataArray);
+      setOtherData(otherDataArray);
+    };
+
+    sortAndSeparateData();
+  }, [notification]);
+
+ console.log(todayData,"today data");
+ console.log(otherData,"other data");
 
   useEffect(() => {
     user_detail(setUser);
@@ -169,9 +190,18 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
           <div className="notification">
             <h5>NOTIFICATIONS</h5>
             <hr />
-            {/* <p>Today</p> */}
+            <p>Today</p>
             {
-              notification?.data?.slice(0,4)?.map((item,i)=>(
+              todayData?.slice(0,2)?.map((item,i)=>(
+                <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
+              <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
+              <span >{item?.title}</span>
+            </div>
+              ))
+            }
+            <p style={{ color: "#1E1E1E99" }}>TOMORROW</p>
+            {
+              otherData?.slice(0,1)?.map((item,i)=>(
                 <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
               <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
               <span >{item?.title}</span>
@@ -186,8 +216,8 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
             <div className="notificationcontent">
               <img src={notification2} alt="" />
               <span>You Have 2 APPOINTMENTS Scheduled for today!</span>
-            </div>
-            <p
+            </div> */}
+            {/* <p
               style={{
                 color: "#1E1E1E99",
                 fontWeight: "700",

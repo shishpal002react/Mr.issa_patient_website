@@ -224,7 +224,7 @@ export const notification_get = async (setNotification) => {
       `${BaseUrl}Patient/allNotification`,
       Token
     );
-    setNotification(res?.data);
+    setNotification(res?.data?.data);
 
   } catch (e) {
     // show_notification("fail !", `${e?.response?.data?.message}`, "danger");

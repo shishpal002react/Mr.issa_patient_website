@@ -8,11 +8,12 @@
     display: flex;
     justify-content: center;
     z-index: 1;
-    overflow-y: scroll;
+   
 }
 
 .notificationmodal-content {
     position: relative;
+    overflow-y: scroll;
     top: 100px;
     left: 400px;
     background: #fff;
@@ -20,6 +21,10 @@
     width: 510px;
     height: 350px;
     text-align: start;
+}
+
+.notificationmodal-content::-webkit-scrollbar{
+    display: none;
 }
 
 .notification h5 {

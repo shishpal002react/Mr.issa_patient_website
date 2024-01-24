@@ -190,24 +190,35 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
           <div className="notification">
             <h5>NOTIFICATIONS</h5>
             <hr />
-            <p>Today</p>
             {
-              todayData?.slice(0,2)?.map((item,i)=>(
+  todayData.length>0 && (
+    <>
+      <p>Today</p>
+      {todayData.map((item, i) => (
+        <div className="notificationcontent" style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}>
+          <img src={item?.patientId?.profilePic ? item?.patientId?.profilePic : notification1} alt="" style={{ borderRadius: "50%" }} />
+          <span>{item?.title}</span>
+        </div>
+      ))}
+    </>
+  )
+}
+            {
+              otherData.length >0 && (
+                <>
+                  <p style={{ color: "#1E1E1E99" }}>Previous</p>
+            {
+              otherData?.map((item,i)=>(
                 <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
               <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
               <span >{item?.title}</span>
             </div>
               ))
             }
-            <p style={{ color: "#1E1E1E99" }}>TOMORROW</p>
-            {
-              otherData?.slice(0,1)?.map((item,i)=>(
-                <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
-              <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
-              <span >{item?.title}</span>
-            </div>
-              ))
+                </>
+              )
             }
+          
             {/* <div className="notificationcontent">
               <img src={notification1} alt="" />
               <span>Your Intake Documents have been Uploaded Succesfully!</span>
@@ -234,33 +245,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
       {/* Chatting Modal */}
       {ischattingModalOpen && (
         <ChattingModal onClose={closeChattingModal}>
-          <div className="chatting">
-            <p>CHAT</p>
-            <div className="search-bar">
-              <input type="text" placeholder="Search" value="" />
-              <RiSearchLine className="searchicon" />
-            </div>
-            <div className="chattingdiv">
-              <img src={chatting1} alt="User" />
-              <p>Nina Johnson</p>
-              <span>Have you Checked my Pulse Rate??</span>
-            </div>
-            <div className="chattingdiv">
-              <img src={chatting1} alt="User" />
-              <p>Nina Johnson</p>
-              <span>Have you Checked my Pulse Rate??</span>
-            </div>
-            <div className="chattingdiv">
-              <img src={chatting1} alt="User" />
-              <p>Nina Johnson</p>
-              <span>Have you Checked my Pulse Rate??</span>
-            </div>
-            <div className="chattingdiv">
-              <img src={chatting1} alt="User" />
-              <p>Nina Johnson</p>
-              <span>Have you Checked my Pulse Rate??</span>
-            </div>
-          </div>
+       
         </ChattingModal>
       )}
 

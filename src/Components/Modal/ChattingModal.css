@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
     z-index: 1;
+    /* overflow-y: scroll; */
+}
+
+.chattingmodal-overlay::-webkit-scrollbar{
+    display: none;
 }
 
 .chattingmodal-content{
@@ -17,19 +22,47 @@
     background: #EEEEEE;
     padding: 20px;
     width: 400px;
-    height: 1024px;
+    height: 100%;
     text-align: start;
+}
+
+.chattingmodal-content::-webkit-scrollbar{
+    display: none;
 }
 /* Modal.css */
 
-  
+.search-bar-chat{
+    position: fixed;
+    width: 100%;
+    margin: auto;
+}
+.search-bar-chat p{
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    color: #0C5C75;
+}
+.search-bar-chat input{
+    border: 1px solid #1E1E1E99;
+    border-radius: 9px;
+    width: 26%;
+}
+
   /* Style for the back arrow icon */
   .chatting-modal svg {
     margin-right: 10px;
   }
   
   /* Add additional styling as needed */
+  .chatting {
+   max-height: 62%;
+   overflow-y: scroll;
+   margin-top: 33%;
+   width: 100%;
+  }
 
+  .chatting::-webkit-scrollbar{
+    display: none;
+  }
 
 .chatting p:nth-child(1){
     color: #0C5C75;
@@ -42,8 +75,6 @@
 .chatting input{
     border: 1px solid #1E1E1E99;
     border-radius: 9px;
-   
-    
 }
 
 .chatting input::placeholder{
@@ -65,15 +96,52 @@
 
 .chattingdiv{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     padding: 20px;
-    width: 465px;
+    width: 100%;
+    background-color: red;
     height: 79px;
     background: #ffff;
     border: 1px solid;
     border-radius: 6px;
     margin-bottom: 20px;
     margin-top: 20px
+}
+
+.chattingdiv1{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    background-color:;
+    height: 79px;
+    background: #ffff;
+    border: 1px solid;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    margin-top: 20px
+}
+
+.submitButton {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 1rem;
+}
+
+.formClassInput{
+    display: flex;
+    gap: 1rem;
+}
+.formClassInput input{
+    width: 100%;
+}
+.formClassInput button{
+   border-radius: 10px;
+   background-color: #0C5C75;
+   color: white;
+   outline: none;
+   border: none;
+   width: 10rem;
 }
 
 .chattingdiv p{
@@ -100,7 +168,44 @@
     color: #000000;
   }
 
-
+  @media screen and (max-width:450px) {
+    .search-bar-chat{
+        position: fixed;
+        width: 80%;
+    }
+    .search-bar-chat p{
+        padding-top: 1rem;
+        font-size: 1.5rem;
+        color: #0C5C75;
+    }
+    .search-bar-chat input{
+        border: 1px solid #1E1E1E99;
+        border-radius: 9px;
+        width: 100%;
+    }
+    /* chat */
+    .chatting {
+        max-height: 76%;
+        overflow-y: scroll;
+         margin-top: 33%;
+       }
+       .formClassInput{
+        display: flex;
+        gap: 1rem;
+    }
+    .formClassInput input{
+        width: 225px;
+    }
+    .formClassInput button{
+       border-radius: 10px;
+       background-color: #0C5C75;
+       color: white;
+       outline: none;
+       border: none;
+       width: 10rem;
+    }
+    
+}
 
 
   @media(max-width: 868px) {

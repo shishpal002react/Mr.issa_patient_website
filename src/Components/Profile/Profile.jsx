@@ -33,7 +33,7 @@ const Profile = () => {
           <h3>Personal Information</h3>
           <p>
             <span>DATE OF BIRTH : </span>
-            {new Date(user?.date).toLocaleDateString()}
+            {new Date(user?.dateOfBirth).toLocaleDateString()}
           </p>
           <p>
             <span>AGE : </span>

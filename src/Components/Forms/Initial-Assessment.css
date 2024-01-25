@@ -122,6 +122,20 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
+.checkboxitem12 {
+  display: flex;
+  align-items: flex-start;
+ 
+  
+  /* width: calc(20% - 10px); */
+  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.checkboxitem12 input {
+  margin-top: 7px;
+}
+
 .checkboxitem1 span {
   font-size: 16px;
   color: #000000;
@@ -139,6 +153,21 @@ input[type="checkbox"] {
   display: flex;
   justify-content: space-between;
   width: 50%;
+  margin-bottom: 20px;
+}
+
+.yeschechbox23 {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  padding-left: 10%;
+  margin-bottom: 20px;
+}
+
+.yeschechbox235 {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
   margin-bottom: 20px;
 }
 
@@ -164,7 +193,7 @@ input[type="checkbox"] {
 .yeschechbox2 {
   display: flex;
   grid-gap: 10px; 
-  flex-wrap: wrap;/* Adjust as needed for spacing between items */
+  flex-wrap: wrap;
 }
 
 .yeschechbox2 div {
@@ -295,6 +324,29 @@ input[type="checkbox"] {
 .needs-interventions-column {
   width: 50%; /* Equal width for both columns */
   border: 1px solid black;
+}
+
+.needs-interventions-column1 {
+  width: 100%; /* Equal width for both columns */
+  /* border: 1px solid black; */
+}
+.needs-interventions-column1 table{
+  width: 100%; /* Equal width for both columns */
+  border: 1px solid black;
+}
+
+.needs-interventions-column1 table tr{
+  border: 1px solid black;
+}
+.needs-interventions-column1 table tr td{
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.needs-interventions-column1 table thead th{
+  border: 1px solid black;
+  padding: 10px;
+  width: 50%;
 }
 
 .needs-interventions-column h2 {
@@ -500,4 +552,37 @@ input[type="checkbox"] {
     width: 100%;
     height: auto;
   }
+}
+
+
+/* /text box width */
+
+.inLine_box_style{
+  display: flex;
+  height: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#input-text_value1{
+  width: 200px;
+  font-size: auto;
+}
+
+#input-text_value2{
+  width: 200px;
+}
+
+.checkBox-aligment{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.checkbox654{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }

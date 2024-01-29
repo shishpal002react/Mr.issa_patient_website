@@ -76,11 +76,11 @@ select {
   margin: 0 auto;
 }
 
-.checkoptions {
+/* .checkoptions {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
+} */
 
 /* Styling for each checkbox item */
 .checkboxitem {

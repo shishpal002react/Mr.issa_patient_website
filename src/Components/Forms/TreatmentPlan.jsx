@@ -893,9 +893,9 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="thoughtsAboutDeath"
-                  checked={consnotiveSymptoms.includes("thoughtsAboutDeath")}
+                  checked={consnotiveSymptoms.includes("pervasivethoughtsaboutdeathanddying")}
                   onChange={() =>
-                    handleCheckboxChangeCognitive("thoughtsAboutDeath")
+                    handleCheckboxChangeCognitive("pervasivethoughtsaboutdeathanddying")
                   }
                 />
                 <label htmlFor="thoughtsAboutDeath">
@@ -906,9 +906,9 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="inabilityToFocus"
-                  checked={consnotiveSymptoms.includes("inabilityToFocus")}
+                  checked={consnotiveSymptoms.includes("inabilitytofocusonspecifictasks")}
                   onChange={() =>
-                    handleCheckboxChangeCognitive("inabilityToFocus")
+                    handleCheckboxChangeCognitive("inabilitytofocusonspecifictasks")
                   }y
                 />
                 <label htmlFor="inabilityToFocus">
@@ -921,7 +921,7 @@ const TreatmentPlan = () => {
                   id="inabilityToFocus"
                   checked={consnotiveSymptoms.includes("specifictasks ")}
                   onChange={() =>
-                    handleCheckboxChangeCognitive("inabilityToFocus")
+                    handleCheckboxChangeCognitive("specifictasks")
                   }
                 />
                 <label htmlFor="inabilityToFocus">

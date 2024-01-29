@@ -267,6 +267,22 @@ const TreatmentPlan = () => {
     setBarriers(optionValue)
   }
 
+  // Maintain sobriety. Drop Down
+  const maintainsobrietyDropDownOption=[
+    {label: "Resident to maintain sobriety for the next 90 days",value:"Resident to maintain sobriety for the next 90 days"},
+    {label: "Resident to learn and implement coping skills to support sobriety",value:"Resident to learn and implement coping skills to support sobriety"},
+    {label: "Resident to learn relapse prevention skills",value:"Resident to learn relapse prevention skills"},
+    {label: "Resident will develop for sobriety",value:"Resident will develop for sobriety"},
+    {label: "Resident will maintain abstinence for at least the next 90 days",value:"Resident will maintain abstinence for at least the next 90 days"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Cognitive",value:"Cognitive"},
+  ]
 
   return (
     <>
@@ -1117,6 +1133,77 @@ const TreatmentPlan = () => {
               </select>
             </div>
             <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
+            <div className="form-field">
               <label
                 htmlFor="AHCCCS"
                 style={{
@@ -1134,6 +1221,77 @@ const TreatmentPlan = () => {
                 <option value="Female">Select</option>
               </select>
             </div>
+            <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
             <div className="form-field">
               <label
                 htmlFor="AHCCCS"
@@ -1153,6 +1311,77 @@ const TreatmentPlan = () => {
               </select>
             </div>
             <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
+            <div className="form-field">
               <label
                 htmlFor="AHCCCS"
                 style={{
@@ -1170,6 +1399,77 @@ const TreatmentPlan = () => {
                 <option value="Female">Select</option>
               </select>
             </div>
+            <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
             <div className="form-field">
               <label
                 htmlFor="AHCCCS"
@@ -1189,6 +1489,77 @@ const TreatmentPlan = () => {
               </select>
             </div>
             <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
+            <div className="form-field">
               <label
                 htmlFor="AHCCCS"
                 style={{
@@ -1206,6 +1577,77 @@ const TreatmentPlan = () => {
                 <option value="Female">Select</option>
               </select>
             </div>
+            <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
             <div className="form-field">
               <label
                 htmlFor="AHCCCS"
@@ -1225,6 +1667,77 @@ const TreatmentPlan = () => {
               </select>
             </div>
             <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
+            <div className="form-field">
               <label
                 htmlFor="AHCCCS"
                 style={{
@@ -1242,6 +1755,77 @@ const TreatmentPlan = () => {
                 <option value="Female">Select</option>
               </select>
             </div>
+            <div className="form-field">
+            <label >Name</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Admission Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+          
+              // value={name}
+              placeholder="Admission Messure"
+              required
+            //   onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Previous Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Previous Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Current Messure</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+           
+              // value={name}
+              placeholder="Enter Current Messure"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label >Estimete Date of complition</label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="date"
+           
+              // value={name}
+              placeholder="Enter Estimete Date of complition"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
             <label htmlFor="" className="label-review">
                 Resident overall participation in treatment:{" "}
               </label>

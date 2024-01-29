@@ -25,7 +25,7 @@
 }
 
 .form-field {
-  margin-bottom: 15px;
+  margin-top: 1.5rem;
 }
 
 .form-field1 {
@@ -741,19 +741,78 @@ needs-interventions-column2{
   align-items: center;
 }
 
+/* reivew of systems */
 
-@media (max-width: 450px) {
-  .parent-div-screening{
-    display: block;
-    margin-top: 2rem;
-    width: 100%;
-  }
+.label-review{
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
 }
+
+.yeschechbox-review{
+  display: grid;
+  grid-gap: 0.5rem;
+  column-gap: auto;
+  margin-top: 1.5rem;
+  margin-right: 10px;
+  grid-template-columns: repeat(5, 20%);
+}
+
+.yeschechbox-review div{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.yeschechbox-skin-check{
+  display: flex;
+  margin-top: 1rem;
+  gap : 10%;
+}
+
+.yeschechbox-skin-check div{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 767px){
   .parent-div-screening{
     display: block;
     margin-top: 2rem;
     width: 100%;
+  }
+  .label-review{
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+  .yeschechbox-review{
+    display: grid;
+    grid-gap: 0.5rem;
+    column-gap: auto;
+    margin-top: 1.5rem;
+    margin-right: 10px;
+    grid-template-columns: repeat(3, 30%);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .parent-div-screening{
+    display: block;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .label-review{
+    margin-top: 1.5rem;
+    font-size: 1.7rem;
+  }
+  .yeschechbox-review{
+    display: grid;
+    grid-gap: 0.5rem;
+    column-gap: auto;
+    margin-top: 1.5rem;
+    margin-right: 10px;
+    grid-template-columns: repeat(1, 100%);
   }
 }

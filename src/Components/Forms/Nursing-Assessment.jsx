@@ -35,14 +35,14 @@ const NursingAssessment = () => {
   //   careProvidedBehavioralHealthServices,
   //   setCareProvidedBehavioralHealthServices,
   // ] = useState();
-  const [vitalsBloodPressure, setVitalsBloodPressure] = useState(0);
-  const [vitalsPulse, setVitalsPulse] = useState(0);
-  const [vitalsRespiratoryRate, setVitalsRespiratoryRate] = useState(0);
-  const [vitalsOxygenLevel, setVitalsOxygenLevel] = useState(0);
-  const [vitalsTemperature, setVitalsTemperature] = useState(0);
-  const [vitalsWeight, setVitalsWeight] = useState(0);
-  const [vitalsHeightFeet, setVitalsHeightFeet] = useState(0);
-  const [vitalsHeightInches, setVitalsHeightInches] = useState(0);
+  const [vitalsBloodPressure, setVitalsBloodPressure] = useState();
+  const [vitalsPulse, setVitalsPulse] = useState();
+  const [vitalsRespiratoryRate, setVitalsRespiratoryRate] = useState();
+  const [vitalsOxygenLevel, setVitalsOxygenLevel] = useState();
+  const [vitalsTemperature, setVitalsTemperature] = useState();
+  const [vitalsWeight, setVitalsWeight] = useState();
+  const [vitalsHeightFeet, setVitalsHeightFeet] = useState();
+  const [vitalsHeightInches, setVitalsHeightInches] = useState();
   const [allergies, setAllergies] = useState("");
   const [
     covid19ScreeningSymptomsFeverOrChills,
@@ -508,14 +508,15 @@ const NursingAssessment = () => {
             </select>
        
           </div> */}
-          <h2>Vitals</h2>
+          <h2 style={{marginTop:"1rem"}}>Vitals</h2>
           <div className="form-field1">
         
               <div style={{ marginRight: "20px" }}>
                 <label htmlFor="AHCCCS">Blood Pressure</label>
                 <input
-                  type="number"
-                  id="AHCCCS"
+                  type="tel"
+                  pattern="{0-9}"
+                  placeholder="BP "
                   value={vitalsBloodPressure}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -526,8 +527,9 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Pulse Rate</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+                
                   value={vitalsPulse}
+                  placeholder="BPM"
                   required
                   style={{ width: "166px", height: "50px" }}
                   onChange={(e) => setVitalsPulse(e.target.value)}
@@ -537,7 +539,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Respiration Rate</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+                  placeholder="BPM"
                   value={vitalsRespiratoryRate}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -548,7 +550,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Body Temperature</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+                  placeholder="F"
                   value={vitalsTemperature}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -559,7 +561,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Blood Oxygen</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+              
                   value={vitalsOxygenLevel}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -572,7 +574,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Weight</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+              placeholder="Ibs"
                   value={vitalsWeight}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -583,7 +585,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Height</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+                placeholder="ft"
                   value={vitalsHeightFeet}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -594,7 +596,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Height Inches</label>
                 <input
                   type="number"
-                  id="AHCCCS"
+                  placeholder="In"
                   value={vitalsHeightInches}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -607,7 +609,7 @@ const NursingAssessment = () => {
             <label htmlFor="AHCCCS">Allergies:</label>
             <input
               type="text"
-              id="AHCCCS"
+       
               value={allergies}
               required
               onChange={(e) => setAllergies(e.target.value)}
@@ -932,8 +934,9 @@ const NursingAssessment = () => {
           <div className="formsheading">
             <h6>Review Of Systems</h6>
           </div>
-          <div className="yeschechbox2">
-            <label htmlFor="">Constitutional:</label>
+          <label htmlFor="" className="label-review">Constitutional:</label>
+
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -1046,9 +1049,9 @@ const NursingAssessment = () => {
               required
             />
           </div>
-
-          <div className="yeschechbox2">
-            <label htmlFor="">Cardiovascular:</label>
+          <label htmlFor="" className="label-review">Cardiovascular:</label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1119,15 +1122,15 @@ const NursingAssessment = () => {
               />
               <label htmlFor="Irregular heartbeat">Irregular heartbeat</label>
             </div>
-          </div>
-          <div className="yeschechbox2">
-              <div>
+
+            <div>
                 <input type="checkbox" name="" id="" />
-                <span>
+                <label htmlFor="">
                   Is your blood pressure under control? Yes / No / Unsure
-                </span>
+                </label>
               </div>
-            </div>
+          </div>
+        
             <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
@@ -1139,8 +1142,9 @@ const NursingAssessment = () => {
                 required
               />
             </div>
-          <div className="yeschechbox2">
-            <label htmlFor="">Endocrine:</label>
+            <label htmlFor="" className="label-review">Endocrine:</label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1197,9 +1201,7 @@ const NursingAssessment = () => {
               />
               <label htmlFor="hairLoss">Hair loss</label>
             </div>
-          </div>
-          <div className="yeschechbox2">
-              <div>
+            <div>
                 <input type="checkbox" name="" id="" />
                 <span>Dry skin Is resident’s blood sugar under control?</span>
               </div>
@@ -1219,7 +1221,11 @@ const NursingAssessment = () => {
                 <input type="checkbox" name="" id="" />
                 <span>n/a</span>
               </div>
-            </div> 
+          </div>
+          
+          {/* <div className="yeschechbox-review">
+        
+            </div>  */}
            <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
@@ -1231,8 +1237,9 @@ const NursingAssessment = () => {
                 required
               />
             </div> 
-          <div className="yeschechbox2">
-            <label htmlFor="">Gastrointestinal:</label>
+            <label htmlFor="" className="label-review">Gastrointestinal:</label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1344,8 +1351,9 @@ const NursingAssessment = () => {
             </div> 
 
           {/* jojfdf */}
-          <div className="yeschechbox2">
-            <label htmlFor="">Genitourinary:</label>
+          <label htmlFor="" className="label-review">Genitourinary:</label>
+          <div className="yeschechbox-review">
+           
             <div>
               <input
                 type="checkbox"
@@ -1447,8 +1455,9 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Hematology/Oncology:</label>
+            <label htmlFor="" className="label-review" >Hematology/Oncology:</label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1496,8 +1505,9 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Head, Ear, Nose, Throat: </label>
+            <label htmlFor="" className="label-review">Head, Ear, Nose, Throat: </label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1597,8 +1607,9 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Integumentary:</label>
+            <label htmlFor="" className="label-review">Integumentary:</label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1680,8 +1691,9 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Musculoskeletal: </label>
+            <label htmlFor="" className="label-review" >Musculoskeletal: </label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1762,9 +1774,9 @@ const NursingAssessment = () => {
                 required
               />
             </div> 
-
-          <div className="yeschechbox2">
-            <label htmlFor="">Psychiatric: </label>
+            <label htmlFor="" className="label-review">Psychiatric: </label>
+          <div className="yeschechbox-review">
+        
             <div>
               <input
                 type="checkbox"
@@ -1857,7 +1869,7 @@ const NursingAssessment = () => {
           <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
-                id="programlocation&address"
+                id=""
                 value=""
                 placeholder="Enter text"
                 rows={5}
@@ -1866,8 +1878,9 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Neurologic: </label>
+            <label htmlFor="" className="label-review">Neurologic: </label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -1948,9 +1961,6 @@ const NursingAssessment = () => {
               />
               <label htmlFor="tremor">Tremor</label>
             </div>
-          </div>
-
-          <div className="yeschechbox2">
             <div>
               <input
                 type="checkbox"
@@ -2006,10 +2016,12 @@ const NursingAssessment = () => {
             </div>
           </div>
 
+          
+
           <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
-                id="programlocation&address"
+                id=""
                 value=""
                 placeholder="Enter text"
                 rows={5}
@@ -2018,8 +2030,9 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Respiratory: </label>
+            <label htmlFor="" className="label-review">Respiratory: </label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -2088,7 +2101,7 @@ const NursingAssessment = () => {
           <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
-                id="programlocation&address"
+                
                 value=""
                 placeholder="Enter text"
                 rows={5}
@@ -2097,8 +2110,8 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Allergic/Immunologic: </label>
+            <label htmlFor="" className="label-review">Allergic/Immunologic: </label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2176,7 +2189,6 @@ const NursingAssessment = () => {
           <div className="form-field">
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
-                id="programlocation&address"
                 value=""
                 placeholder="Enter text"
                 rows={5}
@@ -2185,8 +2197,8 @@ const NursingAssessment = () => {
               />
             </div> 
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Suicidal Risk Assessment:</label>
+            <label htmlFor="" className="label-review">Suicidal Risk Assessment:</label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2204,8 +2216,8 @@ const NursingAssessment = () => {
             </div>
           </div>
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Behavioral symptoms: </label>
+          <label htmlFor="" className="label-review">Behavioral symptoms: </label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2276,9 +2288,9 @@ const NursingAssessment = () => {
               </label>
             </div>
           </div>
-
-          <div className="yeschechbox2">
-            <label htmlFor="">Physical symptoms:</label>
+            
+          <label htmlFor="" className="label-review">Physical symptoms:</label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2325,8 +2337,9 @@ const NursingAssessment = () => {
               <label htmlFor="panicAttacks">panic attacks</label>
             </div>
           </div>
-          <div className="yeschechbox2">
-            <label htmlFor="">Psychosocial symptoms:</label>
+          <label htmlFor="" className="yeschechbox-review">Psychosocial symptoms:</label>
+          <div className="yeschechbox-review">
+            
             <div>
               <input
                 type="checkbox"
@@ -2337,7 +2350,7 @@ const NursingAssessment = () => {
                 }
               />
               <label htmlFor="helplessnessHopelessness">
-                helplessness/hopelessness
+                helplessness
               </label>
             </div>
             <div>
@@ -2421,8 +2434,8 @@ const NursingAssessment = () => {
             </div>
           </div>
 
-          <div className="yeschechbox2">
-            <label htmlFor="">Current Medications:</label>
+          <label htmlFor="" className="yeschechbox-review">Current Medications:</label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2436,8 +2449,8 @@ const NursingAssessment = () => {
               </label>
             </div>
           </div>
-          <div className="yeschechbox2">
-            <label htmlFor="">Nutrition: Diet: </label>
+          <label htmlFor="" className="yeschechbox-review">Nutrition: Diet: </label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2457,8 +2470,9 @@ const NursingAssessment = () => {
               <label htmlFor="Special diet">Special diet</label>
             </div>
           </div>
-          <div className="yeschechbox2">
-            <label htmlFor="">Fluid restrictions?</label>
+
+          <label htmlFor="" className="yeschechbox-review">Fluid restrictions?</label>
+          <div className="yeschechbox-review">
             <div>
               <input
                 type="checkbox"
@@ -2478,10 +2492,10 @@ const NursingAssessment = () => {
               <label htmlFor="nutritionFluidRestrictionsno">No</label>
             </div>
           </div>
-          <div className="yeschechbox2">
+
+          {/* <div className="yeschechbox2">
             <label htmlFor="">
-              Nutrition Special Diet Order - Areas requiring treatment marked
-              and labeled:
+              Nutrition Special Diet Order 
             </label>
             <div>
               <input
@@ -2489,22 +2503,38 @@ const NursingAssessment = () => {
                 value={nutritionSpecialDietOrder}
                 onChange={(e) => setNutritionSpecialDietOrder(e.target.value)}
               />
-              <span>Nutrition Special Diet Order denies skin concerns</span>
             </div>
+          </div> */}
+
+          <div className="form-field">
+            <label htmlFor="AHCCCS">Nutrition Special Diet Order :</label>
+            <input
+              type="text"
+             
+              required
+              value={nutritionSpecialDietOrder}
+              onChange={(e) => setNutritionSpecialDietOrder(e.target.value)}
+            />
           </div>
-          <div className="yeschechbox2">
-            <label htmlFor="">
+
+
+        
+          <div className="yeschechbox-skin-check">
+          <label htmlFor="" className="yeschechbox2">
               Skin Check - Areas requiring treatment marked and labeled:
             </label>
             <div>
               <input
-                type="text"
+                type="checkbox"
                 value={skinCheck}
                 onChange={(e) => setSkinCheck(e.target.value)}
               />
               <span>Resident denies skin concerns</span>
             </div>
           </div>
+
+
+
           <div className="form-field">
             <div className="bodydiv">
               <div className="bodyiamge">
@@ -2667,14 +2697,14 @@ const NursingAssessment = () => {
             <label htmlFor="AHCCCS">BHT Name:</label>
             <input
               type="text"
-              id="AHCCCS"
+              // id="AHCCCS"
               value={bhtName}
               placeholder="Enter Name"
               required
               onChange={(e) => setBhtName(e.target.value)}
             />
           </div>
-          <label htmlFor="AHCCCS">BHT Signature:</label>
+          <label >BHT Signature:</label>
           <input
             type="text"
             value={bhtSignature}

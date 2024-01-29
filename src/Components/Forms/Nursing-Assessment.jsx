@@ -12,8 +12,11 @@ import body7 from "../../img/body7.png";
 import body8 from "../../img/body8.png";
 import Select from "react-select";
 import { user_detail, Nurssing_form } from "../../Api_Collection/Api";
+import SingInModel from "../Modal/SingInModel";
 
 const NursingAssessment = () => {
+  const [showSingInOne, setShowSingInOne] = useState(false);
+  const [showSingInTwo, setShowSingInTwo] = useState(false);
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState("");
   const [userId, setUserId] = useState("");
@@ -2553,7 +2556,7 @@ const NursingAssessment = () => {
                 <img
                   src={body1}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
               <div className="bodyiamge">
@@ -2572,7 +2575,7 @@ const NursingAssessment = () => {
                 <img
                   src={body2}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
               <div className="bodyiamge">
@@ -2591,7 +2594,7 @@ const NursingAssessment = () => {
                 <img
                   src={body3}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
               <div className="bodyiamge">
@@ -2610,7 +2613,7 @@ const NursingAssessment = () => {
                 <img
                   src={body4}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
             </div>
@@ -2631,7 +2634,7 @@ const NursingAssessment = () => {
                 <img
                   src={body5}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
               <div className="bodyiamge">
@@ -2650,7 +2653,7 @@ const NursingAssessment = () => {
                 <img
                   src={body6}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
               <div className="bodyiamge">
@@ -2669,7 +2672,7 @@ const NursingAssessment = () => {
                 <img
                   src={body7}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
               <div className="bodyiamge">
@@ -2688,7 +2691,7 @@ const NursingAssessment = () => {
                 <img
                   src={body8}
                   alt="Selectable Image"
-                  style={{ width: "101px", height: "189px" }}
+                  style={{ width: "120px", height: "189px" }}
                 />
               </div>
             </div>
@@ -2704,12 +2707,29 @@ const NursingAssessment = () => {
               onChange={(e) => setBhtName(e.target.value)}
             />
           </div>
-          <label >BHT Signature:</label>
-          <input
+          <label style={{marginTop:"1rem",marginBottom:"1rem"}}>BHT Signature:</label>
+          {/* <input
             type="text"
             value={bhtSignature}
             onChange={(e) => setBhtSignature(e.target.value)}
-          />
+          /> */}
+          <div class="file-upload-box">
+              <div class="upload-icon" >
+                <img
+                  src={formupload}
+                  alt=""
+                  style={{ width: "100px", height: "100px", cursor: "pointer" }}
+                />
+              </div>
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setShowSingInOne(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setShowSingInOne(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
           <div className="form-field">
             <label htmlFor="AHCCCS">RN Name:</label>
             <input
@@ -2721,12 +2741,30 @@ const NursingAssessment = () => {
               onChange={(e) => setRnName(e.target.value)}
             />
           </div>
-          <label htmlFor="AHCCCS">RN Signature:</label>
-          <input
+          <label style={{marginTop:"1rem",marginBottom:"1rem"}}>RN Signature:</label>
+          {/* <input
             type="text"
             value={rnSignature}
             onChange={(e) => setRnSignature(e.target.value)}
-          />
+          /> */}
+
+          <div class="file-upload-box">
+              <div class="upload-icon" >
+                <img
+                  src={formupload}
+                  alt=""
+                  style={{ width: "100px", height: "100px", cursor: "pointer" }}
+                />
+              </div>
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setShowSingInTwo(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setShowSingInTwo(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
 
           <div className="form-actions">
             <button
@@ -2738,6 +2776,44 @@ const NursingAssessment = () => {
           </div>
         </form>
       </div>
+      {showSingInOne && (
+        <SingInModel onClose={() => setShowSingInOne(false)}>
+          <div className="input_singin_button">
+            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
+            <input
+              type="text"
+              placeholder="Enter Sing in Signature"
+              value={bhtSignature}
+              onChange={(e) => setBhtSignature(e.target.value)}
+            />
+          </div>
+
+          <div className="sing_in_submit_button">
+            <button type="button"  onClick={() => setShowSingInOne(false)}>
+              Submit
+            </button>
+          </div>
+        </SingInModel>
+      )}
+           {showSingInTwo && (
+        <SingInModel onClose={() => setShowSingInTwo(false)}>
+          <div className="input_singin_button">
+            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
+            <input
+              type="text"
+              placeholder="Enter Sing in Signature"
+              value={rnSignature}
+            onChange={(e) => setRnSignature(e.target.value)}
+            />
+          </div>
+
+          <div className="sing_in_submit_button">
+            <button type="button" onClick={() => setShowSingInTwo(false)}>
+              Submit
+            </button>
+          </div>
+        </SingInModel>
+      )}
     </>
   );
 };

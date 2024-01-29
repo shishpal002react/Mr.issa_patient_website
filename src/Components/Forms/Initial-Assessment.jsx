@@ -145,7 +145,7 @@ const InitialAssessment = () => {
   const [
     substanceAbuseHistoryDataLastUse,
     setSubstanceAbuseHistoryDataLastUse,
-  ] = useState("");
+  ] = useState([]);
   const [
     substanceAbuseHistoryDataFrequency,
     setSubstanceAbuseHistoryDataFrequency,
@@ -181,6 +181,12 @@ const InitialAssessment = () => {
   const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
 
   // Mental Status Exam (Nested Object)
+  //peding more satte (__ to 283)
+
+ // "AbilityToConcentration": 
+    const [intact,setIntact]=useState(false);
+    const [otherintact,setOtherIntact]=useState("")
+
 
   const [mentalStatusExam, setMentalStatusExam] = useState({
     apparentAge: {
@@ -190,6 +196,8 @@ const InitialAssessment = () => {
     },
   });
 
+
+
   // Significant Social Developmental History
   const [
     significantSocialDevelopmentalHistory,
@@ -197,30 +205,28 @@ const InitialAssessment = () => {
   ] = useState("");
 
   // Personal Information (Nested Object)
-  const [personalInformation, setPersonalInformation] = useState({
-    highestEducation: "Your Highest Education",
-    specialEducation: "Your Special Education",
-    currentStudent: "Yes/No",
-    currentStudentLocation: "Your Current Student Location",
-  });
+  const [highestEducation, setHighestEducation] = useState("");
+  const [specialEducation, setSpecialEducation] = useState();
+  const [currentStudent, setCurrentStudent] = useState();
+  const [currentStudentLocation, setCurrentStudentLocation] = useState("");
+  const [personalInformation, setPersonalInformation] = useState({});
 
+  const [ifYesWhere,setIfYesWhere]=useState("")
   // Employment History (Nested Object)
-  const [employmentHistory, setEmploymentHistory] = useState({
-    currentlyEmployed: "Yes/No",
-    employmentLocation: "Your Employment Location",
-    fullTime: "Yes/No",
-  });
+  const [currentlyEmployed, setCurrentlyEmployed] = useState();
+  const [employmentLocation, setEmploymentLocation] = useState("");
+  const [fullTime, setFullTime] = useState();
+  const [employmentHistory, setEmploymentHistory] = useState({ });
 
-  const [workHistory, setWorkHistory] = useState("Your Work History");
+  const [workHistory, setWorkHistory] = useState("");
 
   // Military History (Nested Object)
-  const [militaryHistory, setMilitaryHistory] = useState({
-    militaryService: "Yes/No",
-    activeDuty: "Yes/No",
-  });
+  const [militaryService,setMilitaryService]=useState();
+  const [activeDuty,setActiveDuty]=useState("")
+  const [militaryHistory, setMilitaryHistory] = useState({});
 
   // Arrested History (Multiple Fields)
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState([]);
   const [arrestedForDUI, setArrestedForDUI] = useState(false);
   const [arrestedForAssault, setArrestedForAssault] = useState(false);
   const [arrestedForBadChecks, setArrestedForBadChecks] = useState(false);
@@ -241,103 +247,103 @@ const InitialAssessment = () => {
   const [needsLegalAid, setNeedsLegalAid] = useState(false);
   const [incarcerated, setIncarcerated] = useState(false);
 
-  const handleSelectChangeLegalHistory = (event) => {
-    const value = event.target.value;
-    setSelectedValue(value);
+  // const handleSelectChangeLegalHistory = (event) => {
+  //   const value = event.target.value;
+  //   setSelectedValue(value);
 
-    // Handle additional logic based on selected value
-    switch (value) {
-      case "Arrested for DUI":
-        setArrestedForDUI(true);
-        // Additional logic for DUI
-        break;
-      case "Arrested for assault":
-        setArrestedForAssault(true);
-        // Additional logic for assault
-        break;
-      case "Arrested for bad checks":
-        setArrestedForBadChecks(true);
-        // Additional logic for bad checks
-        break;
-      case "Arrested for shop lifting":
-        setArrestedForShoplifting(true);
-        // Additional logic for shop lifting
-        break;
-      case "Arrested for attempted murder":
-        setArrestedForAttemptedMurder(true);
-        // Additional logic for attempted murder
-        break;
-      case "Arrested for drug":
-        setArrestedForDrug(true);
-        // Additional logic for drug-related arrest
-        break;
-      case "Arrested for alcohol":
-        setArrestedForAlcohol(true);
-        // Additional logic for alcohol-related arrest
-        break;
-      case "Arrested for disorderly conduct":
-        setArrestedForDisorderlyConduct(true);
-        // Additional logic for disorderly conduct arrest
-        break;
-      case "Arrested for identity theft/ forgery":
-        setArrestedForIdentityTheft(true);
-        // Additional logic for identity theft/ forgery arrest
-        break;
-      case "Arrested for sex offense":
-        setArrestedForSexOffense(true);
-        // Additional logic for sex offense arrest
-        break;
-      case "Arrested for other":
-        setArrestedForOther(true);
-        // Additional logic for other arrest
-        break;
-      case "Probation/parole, custody":
-        setProbationParole(true);
-        // Additional logic for probation/parole/custody
-        break;
-      case "Pending litigation":
-        setPendingLitigation(true);
-        // Additional logic for pending litigation
-        break;
-      case "Sentencing dates":
-        setSentencingDates(true);
-        // Additional logic for sentencing dates
-        break;
-      case "Needs Legal Aid":
-        setNeedsLegalAid(true);
-        // Additional logic for needing legal aid
-        break;
-      case "Incarcerated":
-        setIncarcerated(true);
-        // Additional logic for being incarcerated
-        break;
-      default:
-        // Reset other state variables if needed
-        setArrestedForDUI(false);
-        setArrestedForAssault(false);
-        setArrestedForBadChecks(false);
-        setArrestedForShoplifting(false);
-        setArrestedForAttemptedMurder(false);
-        setArrestedForDrug(false);
-        setArrestedForAlcohol(false);
-        setArrestedForDisorderlyConduct(false);
-        setArrestedForIdentityTheft(false);
-        setArrestedForSexOffense(false);
-        setArrestedForOther(false);
-        setProbationParole(false);
-        setPendingLitigation(false);
-        setSentencingDates(false);
-        setNeedsLegalAid(false);
-        setIncarcerated(false);
-        break;
-    }
-  };
+  //   // Handle additional logic based on selected value
+  //   switch (value) {
+  //     case "Arrested for DUI":
+  //       setArrestedForDUI(true);
+  //       // Additional logic for DUI
+  //       break;
+  //     case "Arrested for assault":
+  //       setArrestedForAssault(true);
+  //       // Additional logic for assault
+  //       break;
+  //     case "Arrested for bad checks":
+  //       setArrestedForBadChecks(true);
+  //       // Additional logic for bad checks
+  //       break;
+  //     case "Arrested for shop lifting":
+  //       setArrestedForShoplifting(true);
+  //       // Additional logic for shop lifting
+  //       break;
+  //     case "Arrested for attempted murder":
+  //       setArrestedForAttemptedMurder(true);
+  //       // Additional logic for attempted murder
+  //       break;
+  //     case "Arrested for drug":
+  //       setArrestedForDrug(true);
+  //       // Additional logic for drug-related arrest
+  //       break;
+  //     case "Arrested for alcohol":
+  //       setArrestedForAlcohol(true);
+  //       // Additional logic for alcohol-related arrest
+  //       break;
+  //     case "Arrested for disorderly conduct":
+  //       setArrestedForDisorderlyConduct(true);
+  //       // Additional logic for disorderly conduct arrest
+  //       break;
+  //     case "Arrested for identity theft/ forgery":
+  //       setArrestedForIdentityTheft(true);
+  //       // Additional logic for identity theft/ forgery arrest
+  //       break;
+  //     case "Arrested for sex offense":
+  //       setArrestedForSexOffense(true);
+  //       // Additional logic for sex offense arrest
+  //       break;
+  //     case "Arrested for other":
+  //       setArrestedForOther(true);
+  //       // Additional logic for other arrest
+  //       break;
+  //     case "Probation/parole, custody":
+  //       setProbationParole(true);
+  //       // Additional logic for probation/parole/custody
+  //       break;
+  //     case "Pending litigation":
+  //       setPendingLitigation(true);
+  //       // Additional logic for pending litigation
+  //       break;
+  //     case "Sentencing dates":
+  //       setSentencingDates(true);
+  //       // Additional logic for sentencing dates
+  //       break;
+  //     case "Needs Legal Aid":
+  //       setNeedsLegalAid(true);
+  //       // Additional logic for needing legal aid
+  //       break;
+  //     case "Incarcerated":
+  //       setIncarcerated(true);
+  //       // Additional logic for being incarcerated
+  //       break;
+  //     default:
+  //       // Reset other state variables if needed
+  //       setArrestedForDUI(false);
+  //       setArrestedForAssault(false);
+  //       setArrestedForBadChecks(false);
+  //       setArrestedForShoplifting(false);
+  //       setArrestedForAttemptedMurder(false);
+  //       setArrestedForDrug(false);
+  //       setArrestedForAlcohol(false);
+  //       setArrestedForDisorderlyConduct(false);
+  //       setArrestedForIdentityTheft(false);
+  //       setArrestedForSexOffense(false);
+  //       setArrestedForOther(false);
+  //       setProbationParole(false);
+  //       setPendingLitigation(false);
+  //       setSentencingDates(false);
+  //       setNeedsLegalAid(false);
+  //       setIncarcerated(false);
+  //       break;
+  //   }
+  // };
 
   // Activities of Daily Living (ADLs)
-  const [bathingShoweringGood, setBathingShoweringGood] = useState("");
-  const [bathingShoweringFair, setBathingShoweringFair] = useState("");
+  const [bathingShoweringGood, setBathingShoweringGood] = useState([]);
+  const [bathingShoweringFair, setBathingShoweringFair] = useState();
   const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
-    useState("");
+    useState();
   const [bathingShoweringComments, setBathingShoweringComments] = useState("");
 
   const [groomingHygieneGood, setGroomingHygieneGood] = useState("");
@@ -407,7 +413,7 @@ const InitialAssessment = () => {
   const [hobbiesLeisureActivities, setHobbiesLeisureActivities] = useState("");
 
   // Medical Equipment
-  const [selectedValueMedical, setSelectedValueMedical] = useState("");
+  const [selectedValueMedical, setSelectedValueMedical] = useState([]);
   const [medicalEquipmentWheelchair, setMedicalEquipmentWheelchair] =
     useState(false);
   const [medicalEquipmentOxygenTank, setMedicalEquipmentOxygenTank] =
@@ -457,7 +463,7 @@ const InitialAssessment = () => {
 
   // Special Precautions (Nested Object)
   const [selectedValueSpecialPrecautions, setSelectedValueSpecialPrecautions] =
-    useState("");
+    useState([]);
   const [seizure, setSeizure] = useState(false);
   const [elopementAwol, setElopementAwol] = useState(false);
   const [physicalAggression, setPhysicalAggression] = useState(false);
@@ -525,7 +531,7 @@ const InitialAssessment = () => {
     useState();
 
   // Risk Factors (Nested Object)
-  const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState("");
+  const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState([]);
   const [currentSuicidalIdeation, setCurrentSuicidalIdeation] = useState(false);
   const [priorSuicideAttempt, setPriorSuicideAttempt] = useState(false);
   const [accessToMeans, setAccessToMeans] = useState(false);
@@ -542,77 +548,77 @@ const InitialAssessment = () => {
   const [chronicPain, setChronicPain] = useState(false);
   const [riskFactors, setRiskFactors] = useState({});
 
-  const handleSelectChangeRiskFactors = (event) => {
-    const value = event.target.value;
-    setSelectedValueRiskFactors(value);
+  // const handleSelectChangeRiskFactors = (event) => {
+  //   const value = event.target.value;
+  //   setSelectedValueRiskFactors(value);
 
-    // Handle additional logic based on selected value
-    switch (value) {
-      case "Current suicidal ideation":
-        setCurrentSuicidalIdeation(true);
-        // Additional logic for Current suicidal ideation
-        break;
-      case "Prior suicide attempt":
-        setPriorSuicideAttempt(true);
-        // Additional logic for Prior suicide attempt
-        break;
-      case "Access to means (i.e. weapon)":
-        setAccessToMeans(true);
-        // Additional logic for Access to means (i.e. weapon)
-        break;
-      case "Substance abuse":
-        setSubstanceAbuse(true);
-        // Additional logic for Substance abuse
-        break;
-      case "Other self-abusing behavior":
-        setOtherSelfAbusingBehavior(true);
-        // Additional logic for Other self-abusing behavior
-        break;
-      case "Recent losses/lack of support":
-        setRecentLossesLackOfSupport(true);
-        // Additional logic for Recent losses/lack of support
-        break;
-      case "Behavior cues":
-        setBehaviorCues(true);
-        // Additional logic for Behavior cues
-        break;
-      case "Symptoms of psychosis":
-        setSymptomsOfPsychosis(true);
-        // Additional logic for Symptoms of psychosis
-        break;
-      case "Family history of suicide":
-        setFamilyHistoryOfSuicide(true);
-        // Additional logic for Family history of suicide
-        break;
-      case "Terminal physical illness":
-        setTerminalPhysicalIllness(true);
-        // Additional logic for Terminal physical illness
-        break;
-      case "Current stressors (specify)":
-        setCurrentStressors(true);
-        // Additional logic for Current stressors (specify)
-        break;
-      case "Chronic pain":
-        setChronicPain(true);
-        // Additional logic for Chronic pain
-        break;
-      default:
-        // Reset other state variables if needed
-        setCurrentSuicidalIdeation(false);
-        setPriorSuicideAttempt(false);
-        setAccessToMeans(false);
-        setSubstanceAbuse(false);
-        setOtherSelfAbusingBehavior(false);
-        setRecentLossesLackOfSupport(false);
-        setBehaviorCues(false);
-        setSymptomsOfPsychosis(false);
-        setFamilyHistoryOfSuicide(false);
-        setTerminalPhysicalIllness(false);
-        setCurrentStressors(false);
-        setChronicPain(false);
-        break;
-    }
-  };
+  //   // Handle additional logic based on selected value
+  //   switch (value) {
+  //     case "Current suicidal ideation":
+  //       setCurrentSuicidalIdeation(true);
+  //       // Additional logic for Current suicidal ideation
+  //       break;
+  //     case "Prior suicide attempt":
+  //       setPriorSuicideAttempt(true);
+  //       // Additional logic for Prior suicide attempt
+  //       break;
+  //     case "Access to means (i.e. weapon)":
+  //       setAccessToMeans(true);
+  //       // Additional logic for Access to means (i.e. weapon)
+  //       break;
+  //     case "Substance abuse":
+  //       setSubstanceAbuse(true);
+  //       // Additional logic for Substance abuse
+  //       break;
+  //     case "Other self-abusing behavior":
+  //       setOtherSelfAbusingBehavior(true);
+  //       // Additional logic for Other self-abusing behavior
+  //       break;
+  //     case "Recent losses/lack of support":
+  //       setRecentLossesLackOfSupport(true);
+  //       // Additional logic for Recent losses/lack of support
+  //       break;
+  //     case "Behavior cues":
+  //       setBehaviorCues(true);
+  //       // Additional logic for Behavior cues
+  //       break;
+  //     case "Symptoms of psychosis":
+  //       setSymptomsOfPsychosis(true);
+  //       // Additional logic for Symptoms of psychosis
+  //       break;
+  //     case "Family history of suicide":
+  //       setFamilyHistoryOfSuicide(true);
+  //       // Additional logic for Family history of suicide
+  //       break;
+  //     case "Terminal physical illness":
+  //       setTerminalPhysicalIllness(true);
+  //       // Additional logic for Terminal physical illness
+  //       break;
+  //     case "Current stressors (specify)":
+  //       setCurrentStressors(true);
+  //       // Additional logic for Current stressors (specify)
+  //       break;
+  //     case "Chronic pain":
+  //       setChronicPain(true);
+  //       // Additional logic for Chronic pain
+  //       break;
+  //     default:
+  //       // Reset other state variables if needed
+  //       setCurrentSuicidalIdeation(false);
+  //       setPriorSuicideAttempt(false);
+  //       setAccessToMeans(false);
+  //       setSubstanceAbuse(false);
+  //       setOtherSelfAbusingBehavior(false);
+  //       setRecentLossesLackOfSupport(false);
+  //       setBehaviorCues(false);
+  //       setSymptomsOfPsychosis(false);
+  //       setFamilyHistoryOfSuicide(false);
+  //       setTerminalPhysicalIllness(false);
+  //       setCurrentStressors(false);
+  //       setChronicPain(false);
+  //       break;
+  //   }
+  // };
   // State variables for protectiveFactors
   const [selectedValueProtectiveFactors, setSelectedValueProtectiveFactors] =
     useState("");
@@ -684,6 +690,24 @@ const InitialAssessment = () => {
   const [additional, setAdditional] = useState("");
   const [psychiatricDiagnoses, setPsychiatricDiagnoses] = useState([]);
 
+
+  const handlePsychiatricDiagnoses=()=>{
+    setPsychiatricDiagnoses((prev)=>[...prev,{
+      icdCode,
+      description,
+      primary,
+      secondary,
+      tertiary,
+      additional
+    }])
+    setIcdCode("")
+    setDescription("")
+    setPrimary("")
+    setSecondary("")
+    setTertiary("")
+    setAdditional("")
+  }
+
   // State variables for medicalDiagnoses
   const [icdCodeMedicalDiagnoses, setIcdCodeMedicalDiagnoses] = useState("");
   const [descriptionMedicalDiagnoses, setDescriptionMedicalDiagnoses] =
@@ -695,6 +719,24 @@ const InitialAssessment = () => {
   const [additionalMedicalDiagnoses, setAdditionalMedicalDiagnoses] =
     useState("");
   const [medicalDiagnoses, setMedicalDiagnoses] = useState([]);
+
+
+  const handleMedicalDiagnoses=()=>{
+    setMedicalDiagnoses((prev)=>[...prev,{
+      icdCodeMedicalDiagnoses,
+      descriptionMedicalDiagnoses,
+      primaryMedicalDiagnoses,
+      secondaryMedicalDiagnoses,
+      tertiaryMedicalDiagnoses,
+      additionalMedicalDiagnoses
+    }])
+    setIcdCodeMedicalDiagnoses("")
+    setDescriptionMedicalDiagnoses("")
+    setPrimaryMedicalDiagnoses("")
+    setSecondaryMedicalDiagnoses("")
+    setTertiaryMedicalDiagnoses("")
+    setAdditionalMedicalDiagnoses("")
+  }
 
   // State variable for additionalDiagnoses
   const [additionalDiagnoses, setAdditionalDiagnoses] = useState("");
@@ -793,7 +835,6 @@ const InitialAssessment = () => {
   const handleSelectChange = (selectedOptions) => {
     setResidentStrengths(selectedOptions);
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -942,19 +983,18 @@ const InitialAssessment = () => {
   };
 
   //state Thyroid disorder
-const [thyroidDisorder,setThyroidDisorder]=useState([])
+  const [thyroidDisorder, setThyroidDisorder] = useState([]);
 
-const thyroidOptions = [
-  { label: "Hypothyroidism", value: "Hypothyroidism" },
-  { label: "Hyperthyroidism", value: "Hyperthyroidism" },
-
-]
-  const thyroiddisorderhnadler=(selectedOptions)=>{
-    setThyroidDisorder(selectedOptions)
-  }
+  const thyroidOptions = [
+    { label: "Hypothyroidism", value: "Hypothyroidism" },
+    { label: "Hyperthyroidism", value: "Hyperthyroidism" },
+  ];
+  const thyroiddisorderhnadler = (selectedOptions) => {
+    setThyroidDisorder(selectedOptions);
+  };
 
   // Infection or Diseases<
-  const [infectionDiseases,setInfectionDiseases]=useState([])
+  const [infectionDiseases, setInfectionDiseases] = useState([]);
 
   const infectionDiseasesOptions = [
     { label: "HIV/Aids", value: "HIV/Aids" },
@@ -970,11 +1010,11 @@ const thyroidOptions = [
     { label: "Mumps", value: "Mumps" },
     { label: "Signs of active TB", value: "Signs of active TB" },
     { label: "Scabies", value: "Scabies" },
-  ]
+  ];
 
-  const infectionDiseasesHandler=(selectedOptions)=>{
-    setInfectionDiseases(selectedOptions)
-  }
+  const infectionDiseasesHandler = (selectedOptions) => {
+    setInfectionDiseases(selectedOptions);
+  };
 
   //Significant Family Medical/Psychiatric History:
   const SignificantFamilyMedicalPsychiatricHistoryOptions = [
@@ -988,11 +1028,13 @@ const thyroidOptions = [
     { label: "Aunt", value: "Aunt" },
     { label: "Uncle", value: "Uncle" },
     { label: "Grandfather", value: "Grandfather" },
-  ]
+  ];
 
-  const SignificantFamilyMedicalPsychiatricHistoryHandler=(selectedOptions)=>{
-    setSignificantFamilyMedicalPsychiatricHistory(selectedOptions)
-  }
+  const SignificantFamilyMedicalPsychiatricHistoryHandler = (
+    selectedOptions
+  ) => {
+    setSignificantFamilyMedicalPsychiatricHistory(selectedOptions);
+  };
 
   // types of services
   const mentalHealthTreatmentHistoryTypeOfServiceOption = [
@@ -1001,11 +1043,13 @@ const thyroidOptions = [
     { label: "OP", value: "OP" },
     { label: "PHP", value: "PHP" },
     { label: "IOP", value: "IOP" },
-  ]
+  ];
 
-  const mentalHealthTreatmentHistoryTypeOfServiceHandler=(selectedOptions)=>{
-    setMentalHealthTreatmentHistoryTypeOfService(selectedOptions)
-  }
+  const mentalHealthTreatmentHistoryTypeOfServiceHandler = (
+    selectedOptions
+  ) => {
+    setMentalHealthTreatmentHistoryTypeOfService(selectedOptions);
+  };
 
   //Diagnosis/Reason for Treatment
   const mentalHealthTreatmentHistoryDiagnosisReasonOption = [
@@ -1013,12 +1057,17 @@ const thyroidOptions = [
     { label: "Substance Abuse Treatment", value: "Substance Abuse Treatment" },
     { label: "Stabilization", value: "Stabilization" },
     { label: "Detox", value: "Detox" },
-    { label: "DTS/DTO Other (Please specify)", value: "DTS/DTO Other (Please specify)" },
-  ]
+    {
+      label: "DTS/DTO Other (Please specify)",
+      value: "DTS/DTO Other (Please specify)",
+    },
+  ];
 
-  const mentalHealthTreatmentHistoryDiagnosisReasonHandler=(selectedOptions)=>{
-    setMentalHealthTreatmentHistoryDiagnosisReason(selectedOptions)
-  }
+  const mentalHealthTreatmentHistoryDiagnosisReasonHandler = (
+    selectedOptions
+  ) => {
+    setMentalHealthTreatmentHistoryDiagnosisReason(selectedOptions);
+  };
 
   // Type of services drop down
   const substanceAbuseHistoryDataTypesOption = [
@@ -1026,7 +1075,10 @@ const thyroidOptions = [
     { label: "Benzodiazepines", value: "Benzodiazepines" },
     { label: "Cocaine", value: "Cocaine" },
     { label: "Crack", value: "Crack" },
-    { label: "Hallucinogens (LSD,mescaline,etc.)", value: "Hallucinogens (LSD,mescaline,etc.)" },
+    {
+      label: "Hallucinogens (LSD,mescaline,etc.)",
+      value: "Hallucinogens (LSD,mescaline,etc.)",
+    },
     { label: "Heroin", value: "Heroin" },
     { label: "Crack", value: "Crack" },
     { label: "Inhalants", value: "Inhalants" },
@@ -1038,10 +1090,156 @@ const thyroidOptions = [
     { label: "Prescription medicine", value: "Prescription medicine" },
     { label: "OTC medicine", value: "OTC medicine" },
     { label: "other", value: "other" },
+  ];
+
+  const substanceAbuseHistoryDataTypesHandler = (selectedOptions) => {
+    setSubstanceAbuseHistoryDataTypes(selectedOptions);
+  };
+
+  //// Type of services Last use
+  const substanceAbuseHistoryDataLastUseOption = [
+    { label: "Weeks ago", value: "Weeks ago" },
+    { label: "Days ago", value: "Days ago" },
+    { label: "Yesterday", value: "Yesterday" },
+    { label: "Months ago", value: "Months ago" },
+    { label: "Few hours ago", value: "Few hours ago" },
+    { label: "Unsure", value: "Unsure" },
+  ];
+
+  const substanceAbuseHistoryDataLastUseHandler = (selectedOptions) => {
+    setSubstanceAbuseHistoryDataLastUse(selectedOptions);
+  };
+
+  //// Type of services frequency
+  const substanceAbuseHistoryDataFrequencyOption = [
+    { label: "Daily", value: "Daily" },
+    { label: "Two to four times weekly", value: "Two to four times weekly" },
+    { label: "Multiple times a day", value: "Multiple times a day" },
+    { label: "Chronic", value: "Chronic" },
+    { label: "Intermittent", value: "Intermittent" },
+    { label: "Only on social events", value: "Only on social events" },
+    { label: "Only on weekends", value: "Only on weekends" },
+    { label: "Few times a month", value: "Few times a month" },
+  ];
+
+  const substanceAbuseHistoryDataFrequencyHandler = (selectedOptions) => {
+    setSubstanceAbuseHistoryDataFrequency(selectedOptions);
+  };
+
+  //// Type of services length of Sobriety
+  const substanceAbuseHistoryDataLengthOfSobrietyOption = [
+    { label: "One week", value: "One week" },
+    { label: "A few days ago, One month", value: "A few days ago, One month" },
+    { label: "Two months", value: "Two months" },
+    { label: "Three months", value: "Three months" },
+    { label: "Four months", value: "Four months" },
+    { label: "Five to Six months", value: "Five to Six months" },
+    { label: "One year", value: "One year" },
+    { label: "Two years", value: "Two years" },
+  ];
+
+  const substanceAbuseHistoryDataLengthOfSobrietyHandler = (selectedOptions) => {
+    setSubstanceAbuseHistoryDataLengthOfSobriety(selectedOptions);
+  };
+
+  //Criminal Justice Legal History
+  const selectedValueOption = [
+    { label: "Arrested for DUI", value: "Arrested for DUI" },
+    { label: "Arrested for assault", value: "Arrested for assault" },
+    { label: "Arrested for bad checks", value: "Arrested for bad checks" },
+    { label: "Arrested for shop lifting", value: "Arrested for shop lifting" },
+    { label: "Arrested for attempted murder", value: "Arrested for attempted murder" },
+    { label: "Arrested for alcohol", value: "Arrested for alcohol" },
+    { label: "Arrested for disorderly conduct", value: "Arrested for disorderly conduct" },
+    { label: "Arrested for identity theft/ forgery", value: "Arrested for identity theft/ forgery" },
+    { label: "Arrested for sex offense", value: "Arrested for sex offense" },
+    { label: "Probation/parole, custody", value: "Probation/parole, custody" },
+    { label: "Pending litigation", value: "Pending litigation" },
+    { label: "Sentencing dates", value: "Sentencing dates" },
+    { label: "Needs Legal Aid", value: "Needs Legal Aid" },
+    { label: "Incarcerated", value: "Incarcerated" },
   ]
 
-  const substanceAbuseHistoryDataTypesHandler=(selectedOptions)=>{
-    setSubstanceAbuseHistoryDataTypes(selectedOptions)
+  const selectedValueHandler = (selectedOptions) => {
+    setSelectedValue(selectedOptions);
+  };
+
+  // Current Independent Living Skills:
+  const bathingShoweringGoodOptions = [
+    { label: "Bathing/Showering", value: "Bathing/Showering" },
+    { label: "Grooming/hygiene", value: "Grooming/hygiene" },
+    { label: "Mobility", value: "Mobility" },
+    { label: "Housework", value: "Housework" },
+    { label: "Shopping", value: "Shopping" },
+    { label: "Managing money/budget", value: "Managing money/budget" },
+    { label: "Taking medications", value: "Taking medications" },
+    { label: "Preparing food", value: "Preparing food" },
+    { label: "Eating", value: "Eating" },
+    { label: "Toileting", value: "Toileting" },
+    { label: "Other(specify)", value: "Other(specify)" }
+  ]
+  
+  const bathingShoweringGoodJHandler=(optionValue)=>{
+    setBathingShoweringGood(optionValue);
+  }
+
+  //Medical Equipment:
+  const selectedValueMedicalOption = [
+    { label: "Wheel Chair", value: "Wheel Chair" },
+    { label: "Oxygen tank", value: "Oxygen tank" },
+    { label: "CPAP Machine", value: "CPAP Machine" },
+    { label: "Shower chair", value: "Shower chair" },
+    { label: "Other", value: "Other" },
+  ]
+
+  const selectedValueMedicalHandler=(optionValue)=>{
+    setSelectedValueMedical(optionValue);
+  }
+
+  const selectedValueSpecialPrecautionsOption = [
+    { label: "Yes Seizure", value: "Yes Seizure" },
+    { label: "Elopement/Awol", value: "Elopement/Awol" },
+    { label: "Physical Aggression", value: "Physical Aggression" },
+    { label: "Withdrawal", value: "Withdrawal" },
+    { label: "Inappropriate Sexual Behaviors", value: "Inappropriate Sexual Behaviors" },
+    { label: "Substance use", value: "Substance use" },
+    { label: "None", value: "None" },
+  ]
+  const selectedValueSpecialPrecautionsHandler=(optionValue)=>{
+    setSelectedValueSpecialPrecautions(optionValue)
+  }
+
+  //Select risk factors that apply
+  const selectedValueRiskFactorsOption = [
+    { label: "Current suicidal ideation", value: "Current suicidal ideation" },
+    { label: "Prior suicide attempt", value: "Prior suicide attempt" },
+    { label: "Access to means (i.e. weapon)", value: "Access to means (i.e. weapon)" },
+    { label: "Other self-abusing behavior", value: "Other self-abusing behavior" },
+    { label: "Recent losses/lack of support", value: "Recent losses/lack of support" },
+    { label: "Symptoms of psychosis", value: "Symptoms of psychosis" },
+    { label: "Family history of suicide", value: "Family history of suicide" },
+    { label: "Terminal physical illness", value: "Terminal physical illness" },
+    { label: "Current stressors (specify)", value: "Current stressors (specify)" },
+    { label: "Chronic pain", value: "Chronic pain" },
+  ]
+
+  const selectedValueRiskFactorsHandler=(optionValue)=>{
+    setSelectedValueRiskFactors(optionValue)
+  }
+
+  //Protective factors that apply:
+  const selectedValueProtectiveFactorsOption = [
+    { label: "Supports available (family friends)", value: "Supports available (family friends)" },
+    { label: "Spiritual / religious support", value: "Spiritual / religious support" },
+    { label: "Religious/cultural prohibitions", value: "Religious/cultural prohibitions" },
+    { label: " Fear of consequences", value: " Fear of consequences" },
+    { label: " Able to be engaged in intervention", value: " Able to be engaged in intervention" },
+    { label: "Willing to commit to keeping self safe", value: "Willing to commit to keeping self safe" },
+
+  ]
+
+  const selectedValueProtectiveFactorsHandler=(optionValue)=>{
+    setSelectedValueProtectiveFactors(optionValue)
   }
 
   return (
@@ -1098,7 +1296,10 @@ const thyroidOptions = [
             </div>
           </div>
         </p>
-        <form onSubmit={handleSubmit} style={{ marginTop: "100px" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ marginTop: "100px" }}
+        >
           <h5>Section - 1</h5>
           <div className="form-section">
             <h2>Basic Details</h2>
@@ -1224,33 +1425,10 @@ const thyroidOptions = [
                 value={ethnicity}
                 onChange={(e) => setEthnicity(e.target.value)}
               />
-              {/* <select
-                style={{ color: "#1A9FB2" }}
-                id="ethnicity"
-                value={ethnicity}
-                required
-                onChange={(e)=>setEthnicity(e.target.value)}
-              >
-                <option value="Asian">Asian</option>
-                <option value="Asian">Asian</option>
-             
-              </select> */}
             </div>
             <div className="form-field">
               <label htmlFor="admissionstatus">Admission Status</label>
-              {/* <select
-                style={{ color: "#1A9FB2" }}
-                id="admissionstatus"
-                value={admissionStatus}
-                required
-                onChange={(e)=>setAdmissionStatus(e.target.value)}
 
-              > 
-               <option value="">Select Status</option><option value="Voluntary">Voluntary</option>
-              <option value="Court Ordered Treatment">Court Ordered Treatment</option>
-               
-             
-              </select> */}
               <Select
                 isMulti
                 value={admissionStatus}
@@ -1348,53 +1526,6 @@ const thyroidOptions = [
                 onChange={handleSelectChangeAdmissionReasonForAdmission}
                 options={option_value_ReasonForAdmission}
               />
-              {/* <select id="reasonadmission" value={reasonForAdmission} required onChange={(e)=>setReasonForAdmission(e.target.value)}>
-                <option value="Enter text">Select Reason For Admission</option>
-                <option value="Depression">Depression</option>
-                <option value="Mood changes">Mood changes</option>
-                <option value="Trouble falling or staying asleep">
-                  Trouble falling or staying asleep
-                </option>
-                <option value="Mood swings">Mood swings</option>
-                <option value="Social withdrawal">Social withdrawal</option>
-                <option value="Changes in eating habits">Changes in eating habits</option>
-                <option value="Feelings of anger">Feelings of anger</option>
-                <option value="Negative thoughts">Negative thoughts</option>
-                <option value="Confused thinking">Confused thinking</option>
-                <option value="Irritability">Irritability</option>
-                <option value="Loss of interest">Loss of interest</option>
-                <option value="Fatigue or low energy">Fatigue or low energy</option>
-                <option value="Difficulty concentrating">Difficulty concentrating</option>
-                <option value="Delusions">Delusions</option>
-                <option value="Hallucinations">Hallucinations</option>
-                <option value="Substance use">Substance use</option>
-                <option value="Stress">Stress</option>
-                <option value="Trouble coping">Trouble coping</option>
-                <option value="Feelings of fear">Feelings of fear</option>
-                <option value="Grief/Loss">Grief/Loss</option>
-                <option value="Eating Disorder">Eating Disorder</option>
-                <option value="Danger to self">Danger to self</option>
-                <option value="Danger to others">Danger to others</option>
-                <option value="Lack of self caret">Lack of self care</option>
-                <option value="Inability to maintain safety">Inability to maintain safety</option>
-                <option value="Autism Spectrum Disorder">Autism Spectrum Disorder</option>
-                <option value="Bipolar Disorder">Bipolar Disorder</option>
-                <option value="Inability to maintain self care">
-                  Inability to maintain self care
-                </option>
-                <option value="Inability to self administer">Inability to self administer</option>
-                <option value="Medication">Medication</option>
-                <option value="Conduct Disorder">Conduct Disorder</option>
-                <option value="Inappropriate Sexual Behavior">
-                  Inappropriate Sexual Behavior
-                </option>
-                <option value="Schizophrenia Disorder">Schizophrenia Disorder</option>
-                <option value="Major Depressive Disorder">Major Depressive Disorder</option>
-                <option value="Obsessive Disorder">Obsessive Disorder</option>
-                <option value="Psychosis">Psychosis</option>
-                <option value="Abused">Abused</option>
-                <option value="Assaulted">Assaulted</option>
-              </select> */}
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address">Resident’s Goals:</label>
@@ -1512,15 +1643,14 @@ const thyroidOptions = [
                 {behavioralInterventionsArray.length > 0 && (
                   <table>
                     <thead>
-                      {/* <th>S No.</th> */}
+        
                       <th>Need</th>
                       <th>Intervention</th>
                     </thead>
                     <tbody>
                       {behavioralInterventionsArray?.map((i, index) => (
                         <tr>
-                          {/* <td>{index+1}</td> */}
-                          {/* <td> {i.need} </td> */}
+  
                           <td>{`${index + 1}. ${i.need}`} </td>
                           <td>{`${index + 1}. ${i.intervention}`} </td>
                         </tr>
@@ -1603,7 +1733,10 @@ const thyroidOptions = [
                     and levels of services included in my behavior plan.
                   </span>
                 </div>
-                <div class="checkboxitem12" style={{ display: "flex" }}>
+                <div
+                  class="checkboxitem12"
+                  style={{ display: "flex" }}
+                >
                   <input
                     type="checkbox"
                     checked={agreementWithPlan === false}
@@ -1845,32 +1978,34 @@ const thyroidOptions = [
                 page.
               </p>
               <p>B. Current and Past Medical/Psychiatric Conditions.</p>
-              <h6>Conditions</h6>
+              <h6 style={{fontSize:"25px",marginTop:"2.5rem"}}>Conditions</h6>
             </div>
 
-            {/* {
-            "condition": "yourMedicalCondition",
-            "yes": "yourMedicalConditionYes",
-            "no": "yourMedicalConditionNo",
-            "comments": "yourMedicalConditionComments"
-            } */}
+    
 
             <div className="yeschechbox">
-              <label htmlFor="">Diabetes</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Diabetes</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" value />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    value
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
 
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value={medicalConditionsComments}
@@ -1882,21 +2017,29 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Heart disease / heart attack</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Heart disease / heart attack</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
-                  <input type="checkbox" name="" id="" />
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
                   <span>Yes</span>
                 </div>
                 <div className="checkBox-aligment">
-                  <input type="checkbox" name="" id="" />
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
                   <span>No</span>
                 </div>
               </div>
             </div>
-            
+
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -1907,20 +2050,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">History of stroke</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of stroke</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -1931,20 +2082,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">High Blood Pressure</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>High Blood Pressure</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -1955,22 +2114,30 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>
                 Lung disease (ie asthma, COPD, emphysema)
               </label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -1981,20 +2148,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Seizures</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Seizures</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2005,20 +2180,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Cancer</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Cancer</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2029,20 +2212,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Liver/kidney disease</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Liver/kidney disease</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+            <div className="form-field"> 
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2053,26 +2244,36 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Thyroid disorder</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Thyroid disorder</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Select thyroid disorder </label>
+              <label htmlFor="programlocation&address" style={{fontSize:"20px",marginTop:"1.5rem"}}>
+                Select thyroid disorder{" "}
+              </label>
               {/* <select name="" id="">
                 <option value="">Select any one</option>
                 <option value="">Hypothyroidism</option>
                 <option value="">Hyperthyroidism</option>
               </select> */}
-               <Select
+              <Select
                 isMulti
                 value={thyroidDisorder}
                 onChange={thyroiddisorderhnadler}
@@ -2080,20 +2281,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">History of head trauma/traumatic brain</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of head trauma/traumatic brain</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2104,20 +2313,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Injury</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Injury</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2128,20 +2345,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Chronic pain</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Chronic pain</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2152,22 +2377,30 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>
                 Allergies (food, environment, medications)
               </label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2178,20 +2411,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Surgeries</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Surgeries</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2202,20 +2443,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Number of pregnancies / births</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Number of pregnancies / births</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2226,20 +2475,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Substance use disorder (please specify)</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Substance use disorder (please specify)</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2250,20 +2507,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Depression</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Depression</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2274,20 +2539,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Anxiety/panic attacks</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Anxiety/panic attacks</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2298,20 +2571,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Insomnia</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Insomnia</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2322,20 +2603,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Bipolar disorder</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Bipolar disorder</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2346,20 +2635,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Schizophrenia</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Schizophrenia</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2370,20 +2667,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Obsessive compulsive disorder</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Obsessive compulsive disorder</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2394,20 +2699,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Personality disorder (please specify)</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Personality disorder (please specify)</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2420,18 +2733,26 @@ const thyroidOptions = [
             <div className="yeschechbox">
               <label htmlFor="">Phobias</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2442,20 +2763,28 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Any other health conditions</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Any other health conditions</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comments</label>
+              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
                 value=""
@@ -2466,22 +2795,32 @@ const thyroidOptions = [
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Infection or Diseases</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Infection or Diseases</label>
               <div className="checkbox654">
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
-              </div>
-              <div className="checkBox-aligment">
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
-              </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>Yes</span>
+                </div>
+                <div className="checkBox-aligment">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                  <span>No</span>
+                </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address">Select Infection or Diseases </label>
-           
-               <Select
+              <label htmlFor="programlocation&address">
+                Select Infection or Diseases{" "}
+              </label>
+
+              <Select
                 isMulti
                 value={infectionDiseases}
                 onChange={infectionDiseasesHandler}
@@ -2492,7 +2831,7 @@ const thyroidOptions = [
               <label htmlFor="reasonadmission">
                 Significant Family Medical/Psychiatric History:
               </label>
-              
+
               <Select
                 isMulti
                 value={SignificantFamilyMedicalPsychiatricHistory}
@@ -2508,8 +2847,7 @@ const thyroidOptions = [
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Type of Service</label>
-          
-              
+
               <Select
                 isMulti
                 value={mentalHealthTreatmentHistoryTypeOfService}
@@ -2547,7 +2885,7 @@ const thyroidOptions = [
               <label htmlFor="reasonadmission">
                 Diagnosis/Reason for Treatment
               </label>
-              
+
               <Select
                 isMulti
                 value={mentalHealthTreatmentHistoryDiagnosisReason}
@@ -2555,73 +2893,45 @@ const thyroidOptions = [
                 options={mentalHealthTreatmentHistoryDiagnosisReasonOption}
               />
             </div>
-            
-            <div style={{display:"flex",gap:"10px"}}>
-            <div className="yeschechbox235">
-           
-              <label htmlFor="">Substance Abuse history:</label>
 
-              <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
-              >
-                <input
-                  type="checkbox"
-                  id="substanceAbuseHistory"
-                  checked={substanceAbuseHistory}
-                  onChange={() => setSubstanceAbuseHistory(!substanceAbuseHistory)}
-                />
+            <div style={{ display: "flex", gap: "10px" }}>
+              <div className="yeschechbox235">
+                <label htmlFor="">Substance Abuse history:</label>
+
+                <div
+                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                >
+                  <input
+                    type="checkbox"
+                    id="substanceAbuseHistory"
+                    checked={substanceAbuseHistory}
+                    onChange={() =>
+                      setSubstanceAbuseHistory(!substanceAbuseHistory)
+                    }
+                  />
+                </div>
               </div>
-            
-            </div>
 
-            <div className="yeschechbox23">
-              <label htmlFor="">Denie </label>
-              <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
-              >
-                <input
-                  type="checkbox"
-                  id="substanceAbuseDenies"
-                  checked={substanceAbuseDenies}
-                  onChange={() => setSubstanceAbuseDenies(!substanceAbuseDenies)}
-                />
+              <div className="yeschechbox23">
+                <label htmlFor="">Denies </label>
+                <div
+                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                >
+                  <input
+                    type="checkbox"
+                    id="substanceAbuseDenies"
+                    checked={substanceAbuseDenies}
+                    onChange={() =>
+                      setSubstanceAbuseDenies(!substanceAbuseDenies)
+                    }
+                  />
+                </div>
               </div>
-            </div>
-
             </div>
 
             <div className="form-field">
               <label htmlFor="reasonadmission">Type</label>
-              {/* <select
-                id="reasonadmission"
-                value={substanceAbuseHistoryDataTypes}
-                required
-                onChange={(e) =>
-                  setSubstanceAbuseHistoryDataTypes(e.target.value)
-                }
-              >
-                <option value="Enter text">Enter text</option>
-                <option value="Alcohol">Alcohol</option>
-                <option value="Benzodiazepines">Benzodiazepines</option>
-                <option value="Cocaine">Cocaine</option>
-                <option value="Crack">Crack</option>
-                <option value="Hallucinogens">
-                  Hallucinogens (LSD,mescaline,etc.)
-                </option>
-                <option value="Heroin">Heroin</option>
-                <option value="Inhalants">Inhalants</option>
-                <option value="Marijuana">Marijuana</option>
-                <option value="Methamphetamine">Methamphetamine</option>
-                <option value="Methadone">Methadone</option>
-                <option value="MDMA">MDMA (ecstasy)</option>
-                <option value="PCP">PCP (angel dust)</option>
-                <option value="Prescription medicine">
-                  Prescription medicine
-                </option>
-                <option value="OTC medicine">OTC medicine</option>
-                <option value="other">other</option>
-                {/* <option value="Female">Sanskrit</option> */}
-               <Select
+              <Select
                 isMulti
                 value={substanceAbuseHistoryDataTypes}
                 onChange={substanceAbuseHistoryDataTypesHandler}
@@ -2643,127 +2953,43 @@ const thyroidOptions = [
             </div>
             <div className="form-field">
               <label htmlFor="">Last Use</label>
-              <select
-                id=""
+
+              <Select
+                isMulti
                 value={substanceAbuseHistoryDataLastUse}
-                required
-                onChange={(e) =>
-                  setSubstanceAbuseHistoryDataLastUse(e.target.value)
-                }
-              >
-                <option value="">Enter text</option>
-                <option value="Weeks ago">Weeks ago</option>
-                <option value="Days ago">Days ago</option>
-                <option value="Yesterday">Yesterday</option>
-                <option value="Months ago">Months ago</option>
-                <option value="Few hours ago">Few hours ago</option>
-                <option value="Unsure">Unsure</option>
-              </select>
+                onChange={substanceAbuseHistoryDataLastUseHandler}
+                options={substanceAbuseHistoryDataLastUseOption}
+              />
             </div>
             <div className="form-field">
               <label htmlFor="">Frequency</label>
-              <select
-                required
+              <Select
+                isMulti
                 value={substanceAbuseHistoryDataFrequency}
-                onChange={(e) =>
-                  setSubstanceAbuseHistoryDataFrequency(e.target.value)
-                }
-              >
-                <option value="">Enter text</option>
-                <option value="Daily">Daily</option>
-                <option value="Two to four times weekly">
-                  Two to four times weekly
-                </option>
-                <option value="Multiple times a day">
-                  Multiple times a day
-                </option>
-                <option value="Chronic">Chronic</option>
-                <option value="Intermittent">Intermittent</option>
-                <option value="Only on social events">
-                  Only on social events
-                </option>
-                <option value="Only on weekends">Only on weekends</option>
-                <option value="Few times a month">Few times a month</option>
-              </select>
+                onChange={substanceAbuseHistoryDataFrequencyHandler}
+                options={substanceAbuseHistoryDataFrequencyOption}
+              />
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Length of Sobriety</label>
-              <select
-                id="reasonadmission"
-                required
-                value={substanceAbuseHistoryDataLengthOfSobriety}
-                onChange={(e) =>
-                  setSubstanceAbuseHistoryDataLengthOfSobriety(e.target.value)
-                }
-              >
-                <option value="">Enter text</option>
-                <option value="One week">One week</option>
-                <option value="A few days ago, One month">
-                  A few days ago, One month
-                </option>
-                <option value="Two months">Two months</option>
-                <option value="Three months">Three months</option>
-                <option value="Four months">Four months</option>
-                <option value="Five to Six months">Five to Six months</option>
-                <option value="One year">One year</option>
-                <option value="Two years">Two years</option>
-              </select>
-            </div>
-            <div>
-              Boss
-              <div className="chechbox12">
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>None reported or observed</span>
-                </div>
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Vomiting</span>
-                </div>
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Anxiety</span>
-                </div>
-              </div>
-              <div className="chechbox12">
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Agitation</span>
-                </div>
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Headache</span>
-                </div>
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Tremors</span>
-                </div>
-              </div>
-              <div className="chechbox12">
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Nausea</span>
-                </div>
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Tactile Disturbances</span>
-                </div>
-                <div className="checkoptions">
-                  <input type="checkbox" />
-                  <span>Visual Disturbances</span>
-                </div>
-              </div>
+              <Select
+              value={substanceAbuseHistoryDataLengthOfSobriety}
+              isMulti
+              onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+              options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+              />
             </div>
 
             <div class="checkbox-container">
               <label>Active Withdrawal Symptoms:</label>
-              <div class="chechbox12">
+              <div class="chechbox12-correct">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
                       value={noneReportedOrObserved}
                       checked={noneReportedOrObserved}
+                      style={{alignSelf:"start",marginTop:"10px"}}
                       onChange={() =>
                         setNoneReportedOrObserved(!noneReportedOrObserved)
                       }
@@ -2856,7 +3082,7 @@ const thyroidOptions = [
 
             <div class="checkbox-container">
               <label>Auditory Disturbances</label>
-              <div class="chechbox12">
+              <div class="chechbox12-aligment411">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
@@ -3070,7 +3296,7 @@ const thyroidOptions = [
               <h6>Demeanor / Interaction</h6>
             </div>
             <div class="checkbox-container">
-              <div class="chechbox12">
+              <div class="chechbox12-aligment4">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     {/* <input type="checkbox" /> */}
@@ -3322,7 +3548,7 @@ const thyroidOptions = [
               <h6>Cognition</h6>
             </div>
             <div class="checkbox-container">
-              <div class="chechbox12">
+              <div class="chechbox12-aligment411">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     {/* <input type="checkbox" /> */}
@@ -3436,7 +3662,7 @@ const thyroidOptions = [
               <h6>Motor activity</h6>
             </div>
             <div class="checkbox-container">
-              <div class="chechbox12">
+              <div class="chechbox12-aligment411">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     {/* <input type="checkbox" /> */}
@@ -3546,116 +3772,201 @@ const thyroidOptions = [
                 </div>
               </div>
             </div>
-            <div className="yeschechbox1">
-              <label htmlFor="">Orientation to Person:</label>
+            <div className="yeschechbox1" style={{marginTop:"1.5rem"}}>
+              <label htmlFor="" >Orientation to Person:</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Yes</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>No</span>
               </div>
               <label htmlFor="">Place:</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Yes</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>No</span>
               </div>
               <label htmlFor="">Time:</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Yes</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>No</span>
               </div>
               <label htmlFor="">Circumstances:</label>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Yes</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>No</span>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Judgment:</label>
+              <div className="yesNoAligment">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Good</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Fair</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Poor</span>
+              </div>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Insight:</label>
+              <div className="yesNoAligment">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Good</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Fair</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Poor</span>
+              </div>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Memory:</label>
+              <div className="yesNoAligment">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Good</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Fair</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <span>Poor</span>
+              </div>
               </div>
             </div>
             <div className="yeschechbox">
+              <div style={{display:"flex", gap:"90px"}}>
               <label htmlFor="">Ability to concentration:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Intact</span>
+
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="intact"
+                  checked={intact}
+                  onChange={()=>setIntact(!intact)}
+                />
+                <label htmlFor="intact">Intact</label>
+              </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">Other (please specify):</label>
+              <label htmlFor="otherintact">Other (please specify):</label>
               <input
                 type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter age"
+                id="otherintact"
+                value={otherintact}
+                placeholder="please specify"
                 required
+                onChange={(e)=>setOtherIntact(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="approvedby">
                 Significant Social/Developmental History:
               </label>
+              <p>Child</p>
               <input
                 type="text"
                 id="approvedby"
-                value=""
-                placeholder="Enter age"
+                value={significantSocialDevelopmentalHistory}
+                placeholder="Enter "
                 required
+                onChange={(e)=>setSignificantSocialDevelopmentalHistory(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -3663,9 +3974,10 @@ const thyroidOptions = [
               <input
                 type="text"
                 id="approvedby"
-                value=""
-                placeholder="Enter age"
+                value={currentStudentLocation}
+                placeholder="Enter "
                 required
+                onChange={(e)=>setCurrentStudentLocation(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -3673,31 +3985,60 @@ const thyroidOptions = [
               <input
                 type="text"
                 id="approvedby"
-                value=""
-                placeholder="Enter age"
+                value={highestEducation}
+                placeholder="Enter education"
                 required
+                onChange={(e)=>setHighestEducation(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Special education:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
+              <div className="employment-Aligmant">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  checked={specialEducation===true} 
+                  onChange={()=>setSpecialEducation(true)}
+                />
                 <span>Yes</span>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  checked={specialEducation===true} 
+                  onChange={()=>setSpecialEducation(true)}
+                />
                 <span>No</span>
+              </div>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Currently a student?</label>
-              <div>
-                <input type="checkbox" name="" id="" />
+              <div className="employment-Aligmant">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  checked={currentStudent===true} 
+                  onChange={()=>setCurrentStudent(true)}
+                />
                 <span>Yes</span>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  checked={currentStudent===false} 
+                  onChange={()=>setCurrentStudent(false)}
+                />
                 <span>No</span>
+              </div>
               </div>
             </div>
             <div className="form-field">
@@ -3705,9 +4046,10 @@ const thyroidOptions = [
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={ifYesWhere}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setIfYesWhere(e.target.value)}
               />
             </div>
             <div className="formsheading">
@@ -3715,23 +4057,61 @@ const thyroidOptions = [
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Currently employed:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+              <div className="employment-Aligmant">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  name=""
+                  id="currentlyEmployed"
+                  checked={currentlyEmployed===true}
+                  onChange={()=>setCurrentlyEmployed(true)}
+                />
+                <label htmlFor="currentlyEmployed">Yes</label>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="currentlyEmployedno"
+                  checked={currentlyEmployed===false}
+                  onChange={()=>setCurrentlyEmployed(false)}
+                />
+                <label htmlFor="currentlyEmployedno">No</label>
+              </div>
               </div>
             </div>
+            <div className="yeschechbox">
+              <label htmlFor="">Fully time employed:</label>
+              <div className="employment-Aligmant">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  name=""
+                  id="fullTime"
+                  checked={fullTime===true}
+                  onChange={()=>setFullTime(true)}
+                />
+                <label htmlFor="fullTime">Yes</label>
+              </div>
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="fullTimeno"
+                  checked={fullTime===false}
+                  onChange={()=>setFullTime(false)}
+                />
+                <label htmlFor="fullTimeno">No</label>
+              </div>
+              </div>
+              </div>
             <div className="form-field">
               <label htmlFor="approvedby">If employed, where? FT or PT?</label>
               <input
                 type="text"
                 id="approvedby"
-                value=""
+                value={employmentLocation}
                 placeholder="Enter text"
                 required
+                onChange={(e)=>setEmploymentLocation(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -3740,199 +4120,143 @@ const thyroidOptions = [
               </label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={workHistory}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setWorkHistory(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Military History:</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+              <div className="yesNoAligment">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="militaryService"
+                  checked={militaryService===true}
+                  onChange={()=>setMilitaryService(true)}
+
+                />
+               <label htmlFor="militaryService">Yes</label>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="militaryServiceno"
+                  checked={militaryService===false}
+                  onChange={()=>setMilitaryService(false)}
+
+                />
+               <label htmlFor="militaryServiceno">No</label>
+              </div>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Currently on active duty?</label>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+              <div className="yesNoAligment">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="activeDuty"
+                  checked={activeDuty===true}
+                  onChange={()=>setActiveDuty(true)}
+                />
+              <label htmlFor="activeDuty">Yes</label>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="activeDutyno"
+                  checked={activeDuty===false}
+                  onChange={()=>setActiveDuty(false)}
+                />
+              <label htmlFor="activeDutyno">No</label>
+              </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Criminal Justice Legal History
               </label>
-              <select
-                id="reasonadmission"
-                value={selectedValue}
-                onChange={handleSelectChangeLegalHistory}
-                required
-              >
-                <option value="">Select a value</option>
-                <option value="Arrested for DUI">Arrested for DUI</option>
-                <option value="Arrested for assault">
-                  Arrested for assault
-                </option>
-                <option value="Arrested for bad checks">
-                  Arrested for bad checks
-                </option>
-                <option value="Arrested for shop lifting">
-                  Arrested for shop lifting
-                </option>
-                <option value="Arrested for attempted murder">
-                  Arrested for attempted murder
-                </option>
-                <option value="Arrested for drug">Arrested for drug</option>
-                <option value="Arrested for alcohol">
-                  Arrested for alcohol
-                </option>
-                <option value="Arrested for disorderly conduct">
-                  Arrested for disorderly conduct
-                </option>
-                <option value="Arrested for identity theft/ forgery">
-                  Arrested for identity theft/ forgery
-                </option>
-                <option value="Arrested for sex offense">
-                  Arrested for sex offense
-                </option>
-                <option value="Arrested for other">Arrested for Other</option>
-                <option value="Probation/parole, custody">
-                  Probation/parole, custody
-                </option>
-                <option value="Pending litigation">Pending litigation</option>
-                <option value="Sentencing dates">Sentencing dates</option>
-                <option value="Needs Legal Aid">Needs Legal Aid</option>
-                <option value="Incarcerated">Incarcerated</option>
-              </select>
-              {/* pending work */}
+              <Select
+              isMulti
+              value={selectedValue}
+              onChange={selectedValueHandler}
+              options={selectedValueOption}
+              />
+              
             </div>
             <div className="formsheading">
               <h6>Current Independent Living Skills:</h6>
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Type of Activity</label>
-              <select id="reasonadmission" value="" required>
-                <option
-                  value="Select a option"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Enter text
-                </option>
-                <option
-                  value="Bathing/Showering"
-                  onClick={() => setBathingShoweringFair(true)}
-                >
-                  Bathing/Showering
-                </option>
-                <option
-                  value="Grooming/hygiene"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Grooming/hygiene
-                </option>
-                <option
-                  value="Mobility"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Mobility
-                </option>
-                <option
-                  value="Housework"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Housework
-                </option>
-                <option
-                  value="Shopping"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Shopping
-                </option>
-                <option
-                  value="Managing money/budget"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Managing money/budget
-                </option>
-                <option
-                  value="Taking medications"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Taking medications
-                </option>
-                <option
-                  value="Preparing food"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Preparing food
-                </option>
-                <option
-                  value="Eating"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Eating
-                </option>
-                <option
-                  value="Toileting"
-                  onClick={() => setBathingShoweringGood(true)}
-                >
-                  Toileting
-                </option>
-                <option
-                  value="Other (specify)"
-                  onClick={() => setOtherComments(true)}
-                >
-                  Other (specify)
-                </option>
-              </select>
+              <Select
+              value={bathingShoweringGood}
+              isMulti
+              onChange={bathingShoweringGoodJHandler}
+              options={bathingShoweringGoodOptions}/>
             </div>
-            <div className="yeschechbox">
+            <div className="yeschechbox employment-Aligmant">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  checked={bathingShoweringFair===true}
+                  onChange={()=>setBathingShoweringFair(true)}
+                />
                 <span>Good</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  checked={bathingShoweringFair===false}
+                  onChange={()=>setBathingShoweringFair(false)}
+                />
                 <span>Fair</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                
+                />
                 <span>Not so good</span>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Need assist?</label>
+              <div className="employment-Aligmant">
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  checked={bathingShoweringNeedAssist===true}
+                  onChange={()=>setBathingShoweringNeedAssist(true)}
+                />
                 <span>Yes</span>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  checked={bathingShoweringNeedAssist===false}
+                  onChange={()=>setBathingShoweringNeedAssist(false)}
+                />
                 <span>No</span>
               </div>
+              </div>
             </div>
-            {/* <div className="form-field">
+            <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={bathingShoweringComments}
                 placeholder="Enter text"
                 rows={5}
                 cols={82}
                 required
+                onChange={(e)=>setBathingShoweringComments(e.target.value)}
               />
-            </div> */}
+            </div>
             {/* start working  */}
             <div className="formsheading">
               <h6>Triggers:</h6>
@@ -3996,39 +4320,22 @@ const thyroidOptions = [
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmissionMedical">Medical Equipment:</label>
-              <select
-                id="reasonadmissionMedical"
-                value={selectedValueMedical}
-                onChange={handleSelectChangeMedical}
-                required
-              >
-                <option value="">Enter text</option>
-                <option value="Wheel Chair">Wheel Chair</option>
-                <option value="Oxygen tank">Oxygen tank</option>
-                <option value="CPAP Machine">CPAP Machine</option>
-                <option value="Shower chair">Shower chair</option>
-                <option value="Other">Other</option>
-              </select>
+        
+              <Select
+              value={selectedValueMedical}
+              isMulti
+              onChange={selectedValueMedicalHandler}
+              options={selectedValueMedicalOption}
+              />
             </div>
             <div className="form-field">
               <label htmlFor="reasonadmission">Special Precautions:</label>
-              <select
-                id="reasonadmission"
-                value={selectedValueSpecialPrecautions}
-                onChange={handleSelectChangeSpecialPrecautions}
-                required
-              >
-                <option value="">Enter text</option>
-                <option value="Yes Seizure">Yes Seizure</option>
-                <option value="Elopement/Awol">Elopement/Awol</option>
-                <option value="Physical Aggression">Physical Aggression</option>
-                <option value="Withdrawal">Withdrawal</option>
-                <option value="Inappropriate Sexual Behaviors">
-                  Inappropriate Sexual Behaviors
-                </option>
-                <option value="Substance use">Substance use</option>
-                <option value="None">None</option>
-              </select>
+              <Select
+              value={selectedValueSpecialPrecautions}
+              isMulti
+              onChange={selectedValueSpecialPrecautionsHandler}
+              options={selectedValueSpecialPrecautionsOption}
+              />
             </div>
             <div className="formsheading">
               <h6>Safety and Risk Assessment</h6>
@@ -4038,9 +4345,8 @@ const thyroidOptions = [
                 Are you currently thinking about harming yourself or committing
                 suicide?
               </label>
-              <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
-              >
+              <div className="riskAndSafityAligment">
+              <div className="checkBox-aligment">
                 <input
                   type="checkbox"
                   id="currentThoughtsOfHarmingSelf"
@@ -4049,9 +4355,7 @@ const thyroidOptions = [
                 />
                 <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
               </div>
-              <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
-              >
+              <div className="checkBox-aligment">
                 <input
                   type="checkbox"
                   id="currentThoughtsOfHarmingSelfno"
@@ -4060,19 +4364,61 @@ const thyroidOptions = [
                 />
                 <label htmlFor="currentThoughtsOfHarmingSelfno">No</label>
               </div>
+              </div>
             </div>
             <div className="yeschechbox1">
               <label htmlFor="">Ideation</label>
-              <input
+              {/* <input
                 style={{ marginRight: "1rem" }}
                 required
                 placeholder="Enter text"
                 value={suicidalIdeation}
                 onChange={(e) => setSuicidalIdeation(e.target.value)}
-              />
+              /> */}
+
+<div className="employment-Aligmant-location">
+              <div>
+                <input
+                  type="checkbox"
+                  // checked={bathingShoweringNeedAssist===true}
+                  // onChange={()=>setBathingShoweringNeedAssist(true)}
+                />
+                <span>Fleeting</span>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  // checked={bathingShoweringNeedAssist===false}
+                  // onChange={()=>setBathingShoweringNeedAssist(false)}
+                />
+                <span>Periodic</span>
+              </div>
+             <div>
+                <input
+                  type="checkbox"
+                  // checked={bathingShoweringNeedAssist===false}
+                  // onChange={()=>setBathingShoweringNeedAssist(false)}
+                />
+                <span>Constant</span>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  // checked={bathingShoweringNeedAssist===false}
+                  // onChange={()=>setBathingShoweringNeedAssist(false)}
+                />
+                <span>N/A</span>
+              </div>
+              </div>
+        
             </div>
-            <div className="yeschechbox1">
+
+
+              <div className="increasingClass" >
               <label htmlFor="">Increasing in:</label>
+                 
+                 <div className="increasingClassInternal">
+            <div className="yeschechbox1">
               <div>
                 <span>Urgency:</span>
               </div>
@@ -4124,14 +4470,19 @@ const thyroidOptions = [
                 <label htmlFor="suicidalIdeationSeverityno">No</label>
               </div>
             </div>
+            </div>
+
+              </div>
+         
+            
             <div className="yeschechbox1">
               <label htmlFor="">
                 Are you currently thinking about harming others or have
                 homicidal thoughts?
               </label>
-              <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
-              >
+
+              <div className="safetyRiskLast">
+              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <input
                   type="checkbox"
                   id="currentThoughtsOfHarmingOthers"
@@ -4151,7 +4502,11 @@ const thyroidOptions = [
                 />
                 <label htmlFor="currentThoughtsOfHarmingOthersno">No</label>
               </div>
+              </div>
             </div>
+
+
+
             <div className="formsheading">
               <h6>Risk Factors:</h6>
             </div>
@@ -4159,44 +4514,11 @@ const thyroidOptions = [
               <label htmlFor="reasonadmission">
                 Select risk factors that apply
               </label>
-              <select
-                id="reasonadmission"
-                value={selectedValueRiskFactors}
-                onChange={handleSelectChangeRiskFactors}
-                required
-              >
-                <option value="">Enter text</option>
-                <option value="Current suicidal ideation">
-                  Current suicidal ideation
-                </option>
-                <option value="Prior suicide attempt">
-                  Prior suicide attempt
-                </option>
-                <option value="Access to means (i.e. weapon)">
-                  Access to means (i.e. weapon)
-                </option>
-                <option value="Substance abuse">Substance abuse</option>
-                <option value="Other self-abusing behavior">
-                  Other self-abusing behavior
-                </option>
-                <option value="Recent losses/lack of support">
-                  Recent losses/lack of support
-                </option>
-                <option value="Behavior cues">Behavior cues</option>
-                <option value="Symptoms of psychosis">
-                  Symptoms of psychosis
-                </option>
-                <option value="Family history of suicide">
-                  Family history of suicide
-                </option>
-                <option value="Terminal physical illness">
-                  Terminal physical illness
-                </option>
-                <option value="Current stressors (specify)">
-                  Current stressors (specify)
-                </option>
-                <option value="Chronic pain">Chronic pain</option>
-              </select>
+              <Select
+              value={selectedValueRiskFactors}
+              isMulti
+              options={selectedValueRiskFactorsOption}
+              onChange={selectedValueRiskFactorsHandler}/>
             </div>
             {/* <div className="yeschechbox">
               <div>
@@ -4223,32 +4545,13 @@ const thyroidOptions = [
               <label htmlFor="reasonadmission">
                 Protective factors that apply:
               </label>
-              <select
-                id="reasonadmission"
-                value={selectedValueProtectiveFactors}
-                onChange={handleSelectChangeProtectiveFactors}
-                required
-              >
-                <option value="">Enter text</option>
-                <option value="Supports available (family friends)">
-                  Supports available (family friends)
-                </option>
-                <option value="Spiritual / religious support">
-                  Spiritual / religious support
-                </option>
-                <option value="Religious/cultural prohibitions">
-                  Religious/cultural prohibitions
-                </option>
-                <option value="Fear of consequences">
-                  Fear of consequences
-                </option>
-                <option value="Able to be engaged in intervention">
-                  Able to be engaged in intervention
-                </option>
-                <option value="Willing to commit to keeping self safe">
-                  Willing to commit to keeping self safe
-                </option>
-              </select>
+              <Select
+              value={selectedValueProtectiveFactors}
+              isMulti
+              onChange={selectedValueProtectiveFactorsHandler}
+              options={selectedValueProtectiveFactorsOption}
+              />
+           
             </div>
             {/* <div className="yeschechbox">
               <div>
@@ -4280,7 +4583,7 @@ const thyroidOptions = [
                 danger to self (DTS) as:
               </p>
             </div>
-            <div className="yeschechbox1">
+            <div className="yeschechbox_select-4">
               <div
                 style={{ display: "flex", gap: "10px", alignItems: "center" }}
               >
@@ -4404,11 +4707,43 @@ const thyroidOptions = [
               <button
                 type="button"
                 className="safetybutton"
-                // onClick={handlepsychiatricDiagnoses}
+                onClick={handlePsychiatricDiagnoses}
               >
-                SAVE
+                Add
               </button>
             </div>
+
+            <div className="needs-interventions-container2">
+              <div className="needs-interventions-column2">
+                {psychiatricDiagnoses.length > 0 && (
+                  <table>
+                    <thead>
+                    <th>icdCode</th>
+                      <th>Description</th>
+                      <th>Primary</th>
+                      <th>Secondary</th>
+                      <th>Tertiary</th>
+                      <th>Additional</th>
+                    </thead>
+                    <tbody>
+                      {psychiatricDiagnoses?.map((i, index) => (
+                        <tr>
+                          <td>{`${index + 1}. ${i.icdCode}`} </td>
+                          <td>{`${index + 1}. ${i.description}`} </td>
+                          <td>{`${index + 1}. ${i.primary}`} </td>
+                          <td>{`${index + 1}. ${i.secondary}`} </td>
+                          <td>{`${index + 1}. ${i.tertiary}`} </td>
+                          <td>{`${index + 1}. ${i.additional}`} </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+              </div>
+
+
+           
 
             <div className="formsheading">
               <h6>Medical Diagnoses</h6>
@@ -4479,18 +4814,48 @@ const thyroidOptions = [
               <button
                 type="button"
                 className="safetybutton"
-                // onClick={handlepsychiatricDiagnoses}
+                onClick={handleMedicalDiagnoses}
               >
-                SAVE
+                Add
               </button>
             </div>
+
+
+            <div className="needs-interventions-container2">
+              <div className="needs-interventions-column2">
+                {medicalDiagnoses.length > 0 && (
+                  <table>
+                    <thead>
+                    <th>icdCode</th>
+                      <th>Description</th>
+                      <th>Primary</th>
+                      <th>Secondary</th>
+                      <th>Tertiary</th>
+                      <th>Additional</th>
+                    </thead>
+                    <tbody>
+                      {medicalDiagnoses?.map((i, index) => (
+                        <tr>
+                          <td>{`${index + 1}. ${i.icdCodeMedicalDiagnoses}`} </td>
+                          <td>{`${index + 1}. ${i.descriptionMedicalDiagnoses}`} </td>
+                          <td>{`${index + 1}. ${i.primaryMedicalDiagnoses}`} </td>
+                          <td>{`${index + 1}. ${i.secondaryMedicalDiagnoses}`} </td>
+                          <td>{`${index + 1}. ${i.tertiaryMedicalDiagnoses}`} </td>
+                          <td>{`${index + 1}. ${i.additionalMedicalDiagnoses}`} </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+              </div>
 
             <div className="formsheading">
               <h6>Psychosocial or Environmental Stressors</h6>
               <h6>Problems with / related to:</h6>
             </div>
             <div class="checkbox-container">
-              <div class="chechbox12">
+              <div class="chechbox12-aligment4">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
@@ -4644,7 +5009,7 @@ const thyroidOptions = [
             <div className="yeschechbox">
               <label htmlFor="">Significant recent losses:</label>
               <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                className="Significant-losses"
               >
                 <input
                   type="checkbox"
@@ -4670,7 +5035,7 @@ const thyroidOptions = [
               <h6>If yes, please check applicable loss(es):</h6>
             </div>
             <div class="checkbox-container">
-              <div class="chechbox12">
+              <div class="chechbox12-correct">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
@@ -4859,7 +5224,7 @@ const thyroidOptions = [
               />
             </div>
             <div className="form-field">
-              <label htmlFor="approvedby">BHT name, credentials:</label>
+              <label htmlFor="approvedby">BHP</label>
               <input
                 type="text"
                 id="approvedby"
@@ -4902,7 +5267,10 @@ const thyroidOptions = [
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="initalsubmit">
+            <button
+              type="submit"
+              className="initalsubmit"
+            >
               SUBMIT DETAILS
             </button>
           </div>

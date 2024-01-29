@@ -29,7 +29,7 @@ const NursingAssessment = () => {
   const [admissionDate, setAdmissionDate] = useState("");
   const [todayDate, setTodayDate] = useState("");
   const [admissionDiagnoses, setAdmissionDiagnoses] = useState("");
-  const [codeStatus, setCodeStatus] = useState("");
+  const [codeStatus, setCodeStatus] = useState([]);
   const [lastTBScreeningDate, setLastTBScreeningDate] = useState("");
   const [tbScreeningResults, setTbScreeningResults] = useState("");
   const [careProvidedPhysicalServices, setCareProvidedPhysicalServices] =
@@ -285,6 +285,17 @@ const NursingAssessment = () => {
   const careProvidedPhysicalServicesHandler = (optionValue) => {
     setCareProvidedPhysicalServices(optionValue);
   };
+
+  //code Status
+  
+  const codeStatusOption=[
+    {label:"Full Code", value:"Full Code"},
+    {label:"DNR", value:"DNR"}
+  ]
+
+  const codeStatusHandler=(optionValue)=>{
+    setCodeStatus(optionValue)
+  }
   return (
     <>
       <div className="backbutton">
@@ -445,16 +456,13 @@ const NursingAssessment = () => {
           </div>
           <div className="form-field">
             <label htmlFor="gender">Code Status</label>
-            <select
-              id="gender"
-              value={codeStatus}
-              required
-              onChange={(e) => setCodeStatus(e.target.value)}
-            >
-              <option value="">Select any one</option>
-              <option value="Full Code">Full Code</option>
-              <option value="DNR">DNR</option>
-            </select>
+            <Select
+            isMulti
+            onChange={codeStatusHandler}
+            options={codeStatusOption}
+            value={codeStatus}
+            />
+            
           </div>
           <div className="form-field">
             <label htmlFor="admissionDate">Date of Last TB Screening</label>
@@ -564,7 +572,7 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Blood Oxygen</label>
                 <input
                   type="number"
-              
+                placeholder="O2%"
                   value={vitalsOxygenLevel}
                   required
                   style={{ width: "166px", height: "50px" }}
@@ -588,14 +596,14 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Height</label>
                 <input
                   type="number"
-                placeholder="ft"
+                placeholder="Ft/Inche"
                   value={vitalsHeightFeet}
                   required
                   style={{ width: "166px", height: "50px" }}
                   onChange={(e) => setVitalsHeightFeet(e.target.value)}
                 />
               </div>
-              <div style={{ marginRight: "20px" }}>
+              {/* <div style={{ marginRight: "20px" }}>
                 <label htmlFor="AHCCCS">Height Inches</label>
                 <input
                   type="number"
@@ -605,7 +613,7 @@ const NursingAssessment = () => {
                   style={{ width: "166px", height: "50px" }}
                   onChange={(e) => setVitalsHeightInches(e.target.value)}
                 />
-              </div>
+              </div> */}
        
           </div>
           <div className="form-field">
@@ -944,6 +952,7 @@ const NursingAssessment = () => {
               <input
                 type="checkbox"
                 id="DENIES"
+              
                 checked={reviewOfSystemsConstitutional === "DENIES"}
                 onChange={() => setReviewOfSystemsConstitutional("DENIES")}
               />
@@ -1222,7 +1231,7 @@ const NursingAssessment = () => {
               </div>
               <div>
                 <input type="checkbox" name="" id="" />
-                <span>n/a</span>
+                <span>N/a</span>
               </div>
           </div>
           
@@ -2228,7 +2237,7 @@ const NursingAssessment = () => {
                 checked={behavioralSymptoms === "self-injuring"}
                 onChange={() => setBehavioralSymptoms("self-injuring")}
               />
-              <label htmlFor="selfInjuring">self-injuring</label>
+              <label htmlFor="selfInjuring">Self-injuring</label>
             </div>
             <div>
               <input
@@ -2237,7 +2246,7 @@ const NursingAssessment = () => {
                 checked={behavioralSymptoms === "reckless behavior"}
                 onChange={() => setBehavioralSymptoms("reckless behavior")}
               />
-              <label htmlFor="recklessBehavior">reckless behavior</label>
+              <label htmlFor="recklessBehavior">Reckless behavior</label>
             </div>
             <div>
               <input
@@ -2246,7 +2255,7 @@ const NursingAssessment = () => {
                 checked={behavioralSymptoms === "impulsive behaviors"}
                 onChange={() => setBehavioralSymptoms("impulsive behaviors")}
               />
-              <label htmlFor="impulsiveBehaviors">impulsive behaviors</label>
+              <label htmlFor="impulsiveBehaviors">Impulsive behaviors</label>
             </div>
             <div>
               <input
@@ -2255,7 +2264,7 @@ const NursingAssessment = () => {
                 checked={behavioralSymptoms === "shifts in temperament"}
                 onChange={() => setBehavioralSymptoms("shifts in temperament")}
               />
-              <label htmlFor="shiftsInTemperament">shifts in temperament</label>
+              <label htmlFor="shiftsInTemperament">Shifts in temperament</label>
             </div>
             <div>
               <input
@@ -2272,7 +2281,7 @@ const NursingAssessment = () => {
                 }
               />
               <label htmlFor="noLongerEnjoyingActivities">
-                no longer enjoying previous activities
+                No longer enjoying previous activities
               </label>
             </div>
             <div>
@@ -2287,7 +2296,7 @@ const NursingAssessment = () => {
                 }
               />
               <label htmlFor="talkingOrWritingAboutDeath">
-                talking or writing about death
+                Talking or writing about death
               </label>
             </div>
           </div>
@@ -2301,7 +2310,7 @@ const NursingAssessment = () => {
                 checked={physicalSymptoms === "insomnia"}
                 onChange={() => setPhysicalSymptoms("insomnia")}
               />
-              <label htmlFor="insomniap">insomnia</label>
+              <label htmlFor="insomniap">Insomnia</label>
             </div>
             <div>
               <input
@@ -2310,7 +2319,7 @@ const NursingAssessment = () => {
                 checked={physicalSymptoms === "hypersomnia"}
                 onChange={() => setPhysicalSymptoms("hypersomnia")}
               />
-              <label htmlFor="hypersomnia">hypersomnia</label>
+              <label htmlFor="hypersomnia">Hypersomnia</label>
             </div>
             <div>
               <input
@@ -2319,7 +2328,7 @@ const NursingAssessment = () => {
                 checked={physicalSymptoms === "changes in appetite"}
                 onChange={() => setPhysicalSymptoms("changes in appetite")}
               />
-              <label htmlFor="changesInAppetite">changes in appetite</label>
+              <label htmlFor="changesInAppetite">Changes in appetite</label>
             </div>
             <div>
               <input
@@ -2328,7 +2337,7 @@ const NursingAssessment = () => {
                 checked={physicalSymptoms === "weight loss/gain"}
                 onChange={() => setPhysicalSymptoms("weight loss/gain")}
               />
-              <label htmlFor="weightLossGain">weight loss/gain</label>
+              <label htmlFor="weightLossGain">Weight loss/gain</label>
             </div>
             <div>
               <input
@@ -2337,10 +2346,10 @@ const NursingAssessment = () => {
                 checked={physicalSymptoms === "panic attacks"}
                 onChange={() => setPhysicalSymptoms("panic attacks")}
               />
-              <label htmlFor="panicAttacks">panic attacks</label>
+              <label htmlFor="panicAttacks">Panic attacks</label>
             </div>
           </div>
-          <label htmlFor="" className="yeschechbox-review">Psychosocial symptoms:</label>
+          <label htmlFor="" className="label-review">Psychosocial symptoms:</label>
           <div className="yeschechbox-review">
             
             <div>
@@ -2353,7 +2362,7 @@ const NursingAssessment = () => {
                 }
               />
               <label htmlFor="helplessnessHopelessness">
-                helplessness
+                Helplessness
               </label>
             </div>
             <div>
@@ -2363,7 +2372,7 @@ const NursingAssessment = () => {
                 checked={psychosocialSymptoms === "worthlessness"}
                 onChange={() => setPsychosocialSymptoms("worthlessness")}
               />
-              <label htmlFor="worthlessness">worthlessness</label>
+              <label htmlFor="worthlessness">Worthlessness</label>
             </div>
             <div>
               <input
@@ -2372,7 +2381,7 @@ const NursingAssessment = () => {
                 checked={psychosocialSymptoms === "depression"}
                 onChange={() => setPsychosocialSymptoms("depression")}
               />
-              <label htmlFor="depression">depression</label>
+              <label htmlFor="depression">Depression</label>
             </div>
             <div>
               <input
@@ -2381,7 +2390,7 @@ const NursingAssessment = () => {
                 checked={psychosocialSymptoms === "anxiety"}
                 onChange={() => setPsychosocialSymptoms("anxiety")}
               />
-              <label htmlFor="anxiety">anxiety</label>
+              <label htmlFor="anxiety">Anxiety</label>
             </div>
             <div>
               <input
@@ -2390,7 +2399,7 @@ const NursingAssessment = () => {
                 checked={psychosocialSymptoms === "mood swings"}
                 onChange={() => setPsychosocialSymptoms("mood swings")}
               />
-              <label htmlFor="moodSwings">mood swings</label>
+              <label htmlFor="moodSwings">Mood swings</label>
             </div>
             <div>
               <input
@@ -2742,11 +2751,6 @@ const NursingAssessment = () => {
             />
           </div>
           <label style={{marginTop:"1rem",marginBottom:"1rem"}}>RN Signature:</label>
-          {/* <input
-            type="text"
-            value={rnSignature}
-            onChange={(e) => setRnSignature(e.target.value)}
-          /> */}
 
           <div class="file-upload-box">
               <div class="upload-icon" >

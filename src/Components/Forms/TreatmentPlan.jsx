@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
 import { user_detail, patient_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
+import Select from "react-select";
 
 const TreatmentPlan = () => {
   // model data
@@ -39,10 +40,10 @@ const TreatmentPlan = () => {
   const [mindText, setMindText] = useState("");
   //ADLS
   const [adls, setAdls] = useState("");
-  // const [adlsText, setAldsText] = useState("");
+  const [adlsText, setAldsText] = useState("");
   //Behavioral Health Services:
   const [BHealth, setBHealth] = useState("");
-  // const [Btext, setBtext] = useState("");
+  const [Btext, setBtext] = useState("");
   //Primary Care Provider:
   const [primaryCare, setPrimaryCare] = useState("");
   //Resident Goals
@@ -214,6 +215,59 @@ const TreatmentPlan = () => {
     });
   };
 
+// Presenting Problems
+  const presentingPriceOption = [
+    { label: "Depression", value: "Depression" },
+    { label: "Mood Changes", value: "Mood Changes" },
+    { label: "Trouble Falling / staying Asleep", value: "Trouble Falling / staying Asleep" },
+    { label: "Mood Swings", value: "Mood Swings" },
+    { label: "Social Withdrawals", value: "Social Withdrawals" },
+    { label: "Changes in Eating habits", value: "Changes in Eating habits" },
+    { label: "Feeling of anger", value: "Feeling of anger" }
+    
+  ];
+
+  const presentingPriceHandler = (optionValue) => {
+    setPresentingPrice(optionValue);
+  };
+
+  //Strengths:
+  const strengthsOption = [
+    { label: "Self Motivated", value: "Self Motivated" },
+    { label: "Loving", value: "Loving" },
+    { label: "Honest", value: "Honest" },
+    { label: "Helping Others", value: "Helping Others" },
+    { label: "Communication", value: "Communication" },
+    { label: "Creative", value: "Creative" },
+    { label: "Patient", value: "Patient" },
+    { label: "Dedication", value: "Dedication" },
+    { label: "Coloring", value: "Coloring" },
+    { label: "Decision Making", value: "Decision Making" },
+    {label:"Team Work",value : "Team Work"}
+  ]
+
+  const strengthsHandler = (optionValue) => {
+    setStrengths(optionValue);
+  };
+
+  //Barriers
+  const BarriersOption=[
+    {label: "Cognitive",value:"Cognitive"},
+    {label: "Lack of Insight",value:"Lack of Insight"},
+    {label: "Financial",value:"Financial"},
+    {label: "Refusal of Treatment",value:"Refusal of Treatment"},
+    {label: "Social Stigma",value:"Social Stigma"},
+    {label: "Racial",value:"Racial"},
+    {label: "Limited availibility to Mental Health awareness & Education",value:"Limited availibility to Mental Health awareness & Education"},
+    {label: "Lack of Mental Health professionals & Services",value:"Lack of Mental Health professionals & Services"},
+    {label: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",value:"Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations"},
+  ]
+
+  const BarriersHandler=(optionValue)=>{
+    setBarriers(optionValue)
+  }
+
+
   return (
     <>
       <div className="backbutton">
@@ -290,7 +344,7 @@ const TreatmentPlan = () => {
                 </div>
               </div>
             </div> */}
-            <h2>Resident Details</h2>
+            <h2 style={{marginTop:"1rem"}}>Resident Details</h2>
             <div className="form-field">
               <label htmlFor="AHCCCS">Resident Name:</label>
               <input
@@ -377,32 +431,19 @@ const TreatmentPlan = () => {
             </div>
             <div className="form-field">
               <label htmlFor="gender">Presenting Problems</label>
-              <select
-                style={{ color: "#1A9FB2" }}
-                id="gender"
-                value={presentingPrice}
-                required
-                onChange={(e) => setPresentingPrice(e.target.value)}
-              >
-                <option value="">Select</option>
-                <option value="Depression">Depression</option>
-                <option value="Mood Changes">Mood Changes</option>
-                <option value="Trouble Falling / staying Asleep">
-                  Trouble Falling / staying Asleep
-                </option>
-                <option value="Mood Swings">Mood Swings</option>
-                <option value="Social Withdrawals">Social Withdrawals</option>
-                <option value="Changes in Eating habits">
-                  Changes in Eating habits
-                </option>
-                <option value="Feeling of anger">Feeling of anger</option>
-              </select>
+            
+              <Select
+              isMulti
+              onChange={presentingPriceHandler}
+              value={presentingPrice}
+              options={presentingPriceOption}
+              />
             </div>
             <div className="formsheading">
               <h6>Diagonsis</h6>
             </div>
-            <label htmlFor="">Mental Status:</label>
-            <div className="yeschechbox2">
+            <label htmlFor="" className="label-review" >Mental Status:</label>
+            <div className="yeschechbox-review">
               <div>
                 <input
                   type="checkbox"
@@ -410,7 +451,7 @@ const TreatmentPlan = () => {
                   checked={mendelHealth === "oriented"}
                   onChange={() => handleCheckboxChangeMentalHealth("oriented")}
                 />
-                <label htmlFor="oriented">Oriented</label>
+                <label htmlFor="oriented" >Oriented</label>
               </div>
               <div>
                 <input
@@ -456,8 +497,8 @@ const TreatmentPlan = () => {
                 />
               </div>
             )}
-            <label htmlFor="">Mood Level:</label>
-            <div className="yeschechbox2">
+            <label htmlFor="" className="label-review">Mood Level:</label>
+            <div className="yeschechbox-review">
               <div>
                 <input
                   type="checkbox"
@@ -518,8 +559,8 @@ const TreatmentPlan = () => {
                 />
               </div>
             )}
-            <label htmlFor="">ADLS:</label>
-            <div className="yeschechbox2">
+            <label htmlFor="" className="label-review">ADLS:</label>
+            <div className="yeschechbox-review">
               <div>
                 <input
                   type="checkbox"
@@ -539,7 +580,7 @@ const TreatmentPlan = () => {
                 <label htmlFor="personalCareLevel">Personal Care Level</label>
               </div>
             </div>
-            {/* <div className="form-field">
+            <div className="form-field">
               <textarea
                 type="text"
                 id="AHCCCS"
@@ -550,9 +591,9 @@ const TreatmentPlan = () => {
                 required
                 onChange={(e) => setAldsText(e.target.value)}
               />
-            </div> */}
-            <label htmlFor="">Behavioral Health Services:</label>
-            <div className="yeschechbox2">
+            </div>
+            <label htmlFor="" className="label-review">Behavioral Health Services:</label>
+            <div className="yeschechbox-review">
               <div>
                 <input
                   type="checkbox"
@@ -571,7 +612,7 @@ const TreatmentPlan = () => {
                   id="prescribedMedication"
                   value="prescribedMedication"
                   checked={BHealth === "prescribedMedication"}
-                  onChange={() => setBHealth("prescribedMedication")}
+                 onChange={() => setBHealth("prescribedMedication")}
                 />
                 <label htmlFor="prescribedMedication">
                   Is prescribed psychotropic medication
@@ -590,7 +631,7 @@ const TreatmentPlan = () => {
                 </label>
               </div>
             </div>
-            {/* <div className="form-field">
+            <div className="form-field">
               <textarea
                 type="text"
                 id="AHCCCS"
@@ -601,19 +642,19 @@ const TreatmentPlan = () => {
                 required
                 onChange={(e) => setBtext(e.target.value)}
               />
-            </div> */}
+            </div>
             <div className="form-field">
-              <label htmlFor="admissionDate">Primary Care Provider:</label>
+              <label className="label-review">Primary Care Provider:</label>
               <input
                 type="text"
-                id="admissionDate"
+                
                 value={primaryCare}
                 required
                 onChange={(e) => setPrimaryCare(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="gender">Psychiatric Provider:</label>
+              <label className="label-review" >Psychiatric Provider:</label>
               <p>
                 Resident to receive treatment services from above provider(s)
                 every 1 to 2 months or earlier as needed. Specialty providers
@@ -625,63 +666,41 @@ const TreatmentPlan = () => {
               <h6>Resident Goals</h6>
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Allergies</label>
+              <label className="label-review">Allergies</label>
               <textarea
                 type="text"
-                id="AHCCCS"
+              
                 value={allergies}
-                rows={5}
+                rows={3}
                 cols={130}
                 required
                 onChange={(e) => setAllergies(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Triggers</label>
+              <label className="label-review">Triggers</label>
               <textarea
                 type="text"
-                id="AHCCCS"
+                
                 value={Triggers}
-                rows={5}
+                rows={3}
                 cols={130}
                 required
                 onChange={(e) => setTriggers(e.target.value)}
               />
             </div>
+      
             <div className="form-field">
-              <label htmlFor="AHCCCS">Allergies:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={goalAllergies}
-                required
-                onChange={(e) => setGoalAllergies(e.target.value)}
+              <label htmlFor="" className="label-review">Strengths</label>
+              
+              <Select
+              isMulti
+              options={strengthsOption}
+              onChange={strengthsHandler}
+              value={strengths}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="">Strengths</label>
-              <select
-                style={{ color: "#1A9FB2" }}
-                id="gender"
-                value={strengths}
-                required
-                onChange={(e) => setStrengths(e.target.value)}
-              >
-                <option value="">Select</option>
-                <option value="Self Motivated">Self Motivated</option>
-                <option value="Loving">Loving</option>
-                <option value="Honest">Honest</option>
-                <option value="Helping Others">Helping Others</option>
-                <option value="Communication">Communication</option>
-                <option value="Creative">Creative</option>
-                <option value="Patient">Patient</option>
-                <option value="Dedication">Dedication</option>
-                <option value="Coloring">Coloring</option>
-                <option value="Decision Making">Decision Making</option>
-                <option value="Team Work">Team Work</option>
-              </select>
-            </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="programlocation&address">Limitation</label>
               <textarea
                 id="programlocation&address"
@@ -691,40 +710,24 @@ const TreatmentPlan = () => {
                 required
                 onChange={(e) => setLimitation(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
-              <label htmlFor="gender">Barriers:</label>
-              <select
-                style={{ color: "#1A9FB2" }}
-                id="gender"
-                value={Barriers}
-                required
-                onChange={(e) => setBarriers(e.target.value)}
-              >
-                <option value="">Selecte</option>
-                <option value="Cognitive">Cognitive</option>
-                <option value="Lack of Insight">Lack of Insight</option>
-                <option value="Financial">Financial</option>
-                <option value="Refusal of Treatment">
-                  Refusal of Treatment
-                </option>
-                <option value="Social Stigma">Social Stigma</option>
-                <option value="Racial">Racial</option>
-                <option value="Limited availibility to Mental Health awareness & Education">
-                  Limited availibility to Mental Health awareness & Education
-                </option>
-                <option value="Male">
-                  Lack of Mental Health professionals & Services
-                </option>
-              </select>
+              <label className="label-review">Barriers:</label>
+             
+              <Select
+              isMulti
+              onChange={BarriersHandler}
+              value={Barriers}
+              options={BarriersOption}
+              />
             </div>
             <div className="formsheading">
               <h6>
                 Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
               </h6>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Behavioral Symptoms:</label>
+            <label htmlFor="" className="label-review">Behavioral Symptoms:</label>
+            <div className="yeschechbox-review">
               <div>
                 <input
                   type="checkbox"
@@ -769,9 +772,44 @@ const TreatmentPlan = () => {
                 />
                 <span>Social isolation</span>
               </div>
+             
+              <div>
+                <input
+                  type="checkbox"
+                  id="socialIsolation"
+                  checked={behavioralSymptoms.includes("nolongerenjoyingpreviousactivities")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("Nolongerenjoyingpreviousactivities")
+                  }
+                />
+                <span>No longer enjoying previous activities </span>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="socialIsolation"
+                  checked={behavioralSymptoms.includes("talkingorwriting")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("talkingorwriting")
+                  }
+                />
+                <span>Talking, or writing</span>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="socialIsolation"
+                  checked={behavioralSymptoms.includes("aboutdeath")}
+                  onChange={() =>
+                    handleCheckboxChangeBehavioral("aboutdeath")
+                  }
+                />
+                <span>About death </span>
+              </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Physical Symptoms:</label>
+            <label htmlFor="" className="label-review">Physical Symptoms:</label>
+            <div className="yeschechbox-review">
+             
               <div>
                 <input
                   type="checkbox"
@@ -822,8 +860,9 @@ const TreatmentPlan = () => {
                 <span>Panic attacks</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="cognitiveSymptoms">Cognitive Symptoms:</label>
+            <label htmlFor="cognitiveSymptoms" className="label-review">Cognitive Symptoms:</label>
+            <div className="yeschechbox-review">
+              
               <div>
                 <input
                   type="checkbox"
@@ -870,15 +909,29 @@ const TreatmentPlan = () => {
                   checked={consnotiveSymptoms.includes("inabilityToFocus")}
                   onChange={() =>
                     handleCheckboxChangeCognitive("inabilityToFocus")
-                  }
+                  }y
                 />
                 <label htmlFor="inabilityToFocus">
                   Inability to focus on specific tasks
                 </label>
               </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="inabilityToFocus"
+                  checked={consnotiveSymptoms.includes("specifictasks ")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("inabilityToFocus")
+                  }
+                />
+                <label htmlFor="inabilityToFocus">
+                specific tasks 
+                </label>
+              </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Psychosocial Symptoms: </label>
+            <label htmlFor="" className="label-review">Psychosocial Symptoms: </label>
+            <div className="yeschechbox-review">
+              
               <div>
                 <input
                   type="checkbox"
@@ -944,8 +997,8 @@ const TreatmentPlan = () => {
                 <label htmlFor="irritability">Irritability</label>
               </div>
             </div>
-            <label htmlFor="">Interventions that are being implemented:</label>
-            <div className="yeschechbox2">
+            <label htmlFor="" className="label-review">Interventions that are being implemented:</label>
+            <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Psychiatric services</span>
@@ -954,8 +1007,6 @@ const TreatmentPlan = () => {
                 <input type="checkbox" name="" id="" />
                 <span>Communication Skills</span>
               </div>
-            </div>
-            <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Verbal Prompt</span>
@@ -964,8 +1015,6 @@ const TreatmentPlan = () => {
                 <input type="checkbox" name="" id="" />
                 <span>Interactive Feedback</span>
               </div>
-            </div>
-            <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Encouragement</span>
@@ -974,8 +1023,6 @@ const TreatmentPlan = () => {
                 <input type="checkbox" name="" id="" />
                 <span>Role-Play</span>
               </div>
-            </div>
-            <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Sponsors, and support programs & people</span>
@@ -984,8 +1031,6 @@ const TreatmentPlan = () => {
                 <input type="checkbox" name="" id="" />
                 <span>Review of Treatment Plan</span>
               </div>
-            </div>
-            <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span> Relaxation techniques,</span>
@@ -1002,8 +1047,6 @@ const TreatmentPlan = () => {
                 <input type="checkbox" name="" id="" />
                 <span>Rehearsal, Spiritual exploration</span>
               </div>
-            </div>
-            <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span> Values clarification, Psycho-education,</span>
@@ -1012,8 +1055,6 @@ const TreatmentPlan = () => {
                 <input type="checkbox" name="" id="" />
                 <span>Exploring feelings</span>
               </div>
-            </div>
-            <div className="yeschechbox2">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Distraction,</span>
@@ -1023,10 +1064,11 @@ const TreatmentPlan = () => {
                 <span>Redirection,</span>
               </div>
             </div>
+    
             <div className="formsheading">
               <h6>Counseling Frequency</h6>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox-review">
               <div>
                 <span>Total of Minimum</span>
               </div>
@@ -1034,19 +1076,19 @@ const TreatmentPlan = () => {
                 <span>Hours per Week</span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox-review">
               <label htmlFor="">Individual: </label>
               <div>
                 <span>Minimum 1 hour session per week</span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox-review">
               <label htmlFor="">Individual: </label>
               <div>
                 <span>As needed</span>
               </div>
             </div>
-            {/* <div className="formsheading">
+            <div className="formsheading">
               <h6>
                 Goals for Changes in the Resident Phychorial Interaction or
                 Behaviour{" "}
@@ -1055,8 +1097,8 @@ const TreatmentPlan = () => {
                 Fill the following information for the respective ‘Current
                 Treatment Goals’
               </p>
-            </div> */}
-            {/* <div className="form-field">
+            </div>
+            <div className="form-field">
               <label
                 htmlFor="AHCCCS"
                 style={{
@@ -1199,11 +1241,12 @@ const TreatmentPlan = () => {
                 <option value="Male">Select</option>
                 <option value="Female">Select</option>
               </select>
-            </div> */}
-            <div className="yeschechbox2">
-              <label htmlFor="">
+            </div>
+            <label htmlFor="" className="label-review">
                 Resident overall participation in treatment:{" "}
               </label>
+            <div className="yeschechbox-review">
+             
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>100%</span>
@@ -1225,8 +1268,10 @@ const TreatmentPlan = () => {
                 <span>≤5%</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Resident Attitude:</label>
+
+            <label htmlFor="" className="label-review">Resident Attitude:</label>
+            <div className="yeschechbox-review">
+             
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Attentive</span>
@@ -1248,8 +1293,9 @@ const TreatmentPlan = () => {
                 <span>Resistant</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Resident progress:</label>
+            <label htmlFor="" className="label-review">Resident progress:</label>
+            <div className="yeschechbox-review">
+              
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Deterioration</span>
@@ -1271,8 +1317,9 @@ const TreatmentPlan = () => {
                 <span>Goal achieved</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Support System:</label>
+            <label htmlFor="" className="label-review">Support System:</label>
+            <div className="yeschechbox-review">
+              
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Family</span>
@@ -1298,8 +1345,9 @@ const TreatmentPlan = () => {
                 <span>Other</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Religious Preference:</label>
+            <label htmlFor="" className="label-review">Religious Preference:</label>
+            <div className="yeschechbox-review">
+              
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Christian</span>
@@ -1317,19 +1365,17 @@ const TreatmentPlan = () => {
                 <span>Other</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">
+            <label htmlFor="" className="label-review">
                 Discharge planning & Re-evaluation of initial symptoms,
                 behaviours & Goals
               </label>
-            </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox2-horizontal">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Follow-up Medical appointments upon discharge</span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox2-horizontal">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>
@@ -1337,19 +1383,19 @@ const TreatmentPlan = () => {
                 </span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox2-horizontal">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Continue with Psychiatric Provider</span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox2-horizontal">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Continue with Primary Care Provider (PCP)</span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox2-horizontal">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>
@@ -1361,7 +1407,8 @@ const TreatmentPlan = () => {
             <div className="form-field">
               <label
                 htmlFor="AHCCCS"
-                style={{ color: "#00000080", fontWeight: "600" }}
+                className="label-review"
+                // style={{ color: "#00000080", fontWeight: "600" }}
               >
                 Specify ( If Others )
               </label>
@@ -1375,12 +1422,11 @@ const TreatmentPlan = () => {
                 
               />
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">
+            <label htmlFor="" className="label-review">
                 Recommendations for further programs upon discharge:
               </label>
-            </div>
-            <div className="yeschechbox2">
+          
+            <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>PHP</span>
@@ -1410,11 +1456,9 @@ const TreatmentPlan = () => {
                 <span>Flex Care 8</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">
+            <label htmlFor="" className="label-review">
                 After care and Transition planning / Community Resources:
               </label>
-            </div>
             <div className="yeschechbox2">
               {/* <label htmlFor="">Cardiovascular:</label> */}
               <div>
@@ -1472,7 +1516,7 @@ const TreatmentPlan = () => {
               </p>
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Treatment plan review date</label>
+              <label htmlFor="AHCCCS" className="label-review">Treatment plan review date</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -1494,7 +1538,7 @@ const TreatmentPlan = () => {
               significant change in condition or event that affects treatment.
             </p>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Discharge Plan Date:</label>
+              <label htmlFor="AHCCCS" className="label-review">Discharge Plan Date:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -1506,10 +1550,8 @@ const TreatmentPlan = () => {
             <div className="formsheading">
               <h6>Individual Participating in Developing the Service Plan</h6>
             </div>
-            <div className="yeschechbox2">
-              <label htmlFor="">Resident / Representative</label>
-            </div>
-            <div className="yeschechbox2">
+            <label htmlFor="" className="label-review">Resident / Representative</label>
+            <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">Yes</label>
@@ -1523,7 +1565,7 @@ const TreatmentPlan = () => {
                 </span>
               </div>
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">No</label>
@@ -1585,11 +1627,11 @@ const TreatmentPlan = () => {
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date:</label>
+              <label >Date:</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+             
                 value={dateResident}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1605,7 +1647,7 @@ const TreatmentPlan = () => {
             </h6>
           </div>
           <div className="form-field">
-            <label htmlFor="AHCCCS">First and Last Name</label>
+            <label >First and Last Name</label>
             <input
               type="text"
               id="AHCCCS"

@@ -763,6 +763,14 @@ needs-interventions-column2{
   align-items: center;
 }
 
+input[type="checkbox"] {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  transform: scale(1.5);
+  width: 14px;
+  height: 10px;
+}
+
 .yeschechbox-skin-check{
   display: flex;
   margin-top: 1rem;
@@ -815,4 +823,13 @@ needs-interventions-column2{
     margin-right: 10px;
     grid-template-columns: repeat(1, 100%);
   }
+}
+
+/* treatment form */
+/* Discharge planning & Re-evaluation of initial symptoms,
+                behaviours & Goals */
+.yeschechbox2-horizontal div{
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

@@ -5,6 +5,7 @@ import formupload from "../../img/formupload.png";
 import { CiCirclePlus } from "react-icons/ci";
 import { user_detail, safety_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
+import Select from "react-select";
 
 const SafetyPlan = () => {
   //singIn model state
@@ -35,7 +36,7 @@ const SafetyPlan = () => {
   const [crisisRelationship, setCrisisRelationship] = useState("");
   const [crisisArray, setCrisisArray] = useState([]);
   //environmentSafetyMedications
-  const [enviromentAdress, setEnviromentAdress] = useState("");
+  const [enviromentAdress, setEnviromentAdress] = useState();
   //singin
   const [singin, setSingIn] = useState("");
 
@@ -76,6 +77,7 @@ const SafetyPlan = () => {
 
   const handlePost = (e) => {
     e.preventDefault();
+    
     const data = {
       patientId: userId,
       date: date,
@@ -94,8 +96,8 @@ const SafetyPlan = () => {
     navigate("/intake");
   };
 
-  const handleSocialArray = (e) => {
-    e.preventDefault();
+  const handleSocialArray = () => {
+    
     const newContact = {
       name: socialName,
       phone: socialPhone,
@@ -106,33 +108,46 @@ const SafetyPlan = () => {
     setSocialPhone("");
     setSocialRelationship("");
   };
-  const handleHelpArray = (e) => {
-    e.preventDefault();
-    setHelpArray((prev) => ({
-      ...prev,
+  const handleHelpArray = () => {
+
+    const newContact = {
       name: helpName,
       phone: helpPhone,
       relationship: helpRelationship,
-    }));
-    console.log("add help");
+    };
+    setHelpArray((prev) => [...prev, newContact]);
+    
+  
     setHelpName("");
     setHelpPhone("");
     setHelpRelationship("");
   };
 
-  const handleCrisisArray = (e) => {
-    e.preventDefault();
-    setCrisisArray((prev) => ({
-      ...prev,
+
+  const handleCrisisArray = () => {
+    const newContact = {
       clinicianName: crisisName,
       phone: crisisPhone,
       relationship: crisisRelationship,
-    }));
+    };
+    setCrisisArray((prev) => [...prev, newContact]);
 
     setCrisisName("");
     setCrisisPhone("");
     setCrisisRelationship("");
   };
+
+  // Making the environment safe
+  const enviromentAdressOptions=[
+    {label  :"No prescribed medications or OTC medications to be kept in person" , value:"No prescribed medications or OTC medications to be kept in person"},
+    {label  :"No firearms allowed, no sharp object such as razor, scissor, knife, needle, nail, etc  to be kept in person" , value:"No firearms allowed, no sharp object such as razor, scissor, knife, needle, nail, etc to be kept in person"},
+    {label  :"No drugs or alcohol" , value:"No drugs or alcohol"},
+    {label  :"No long strings or rope allowed" , value:"No long strings or rope allowed"},
+  ]
+  
+  const enviromentAdresshandler=(optionValue)=>{
+    setEnviromentAdress(optionValue)
+  }
 
   return (
     <>
@@ -178,7 +193,7 @@ const SafetyPlan = () => {
               />
             </div>
             <h5
-              style={{ fontWeight: "700", fontSize: "20px", color: "#000000" }}
+              style={{ fontWeight: "700", fontSize: "20px", color: "#000000" ,marginTop:"1.5rem"}}
             >
               {" "}
               <span style={{ color: "#0C5C75" }}>STEP 1 :</span> Warning SIgns{" "}
@@ -205,6 +220,7 @@ const SafetyPlan = () => {
                 fontSize: "20px",
                 color: "#000000",
                 textAlign: "start",
+                marginTop:"1.5rem"
               }}
             >
               {" "}
@@ -232,6 +248,7 @@ const SafetyPlan = () => {
                 fontSize: "20px",
                 color: "#000000",
                 textAlign: "start",
+                marginTop:"1.5rem"
               }}
             >
               {" "}
@@ -278,16 +295,34 @@ const SafetyPlan = () => {
                   className="safetybutton"
                   onClick={handleSocialArray}
                 >
-                  SAVE
+                  Add
                 </button>
               </div>
             </div>
-            {/* <div className="form-actions">
-              <button type="button" className="safetybutton1">
-                <CiCirclePlus style={{ width: "30px", height: "30px" }} /> ADD
-                MORE PEOPLE
-              </button>
-            </div> */}
+
+            <div className="needs-interventions-container">
+              <div className="needs-interventions-column3">
+                {socialArray.length > 0 && (
+                  <table>
+                    <thead>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Relationship</th>
+                    </thead>
+                    <tbody>
+                      {socialArray?.map((i, index) => (
+                        <tr>
+                          <td>{`${index + 1}. ${i.name}`} </td>
+                          <td>{`${index + 1}. ${i.phone}`} </td>
+                          <td>{`${index + 1}. ${i.relationship}`} </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </div>
+            
             <div className="form-field">
               <label htmlFor="programlocation&address">
                 Destination place :
@@ -324,10 +359,11 @@ const SafetyPlan = () => {
                 fontSize: "20px",
                 color: "#000000",
                 textAlign: "start",
+                marginTop:"1.5rem"
               }}
             >
               {" "}
-              <span style={{ color: "#0C5C75" }}>STEP 3 :</span> People whom I
+              <span style={{ color: "#0C5C75" }}>STEP 4 :</span> People whom I
               can ask for Help
             </h5>
             <div className="safetyplandiv">
@@ -370,16 +406,41 @@ const SafetyPlan = () => {
                   className="safetybutton"
                   onClick={handleHelpArray}
                 >
-                  SAVE
+                  Add
                 </button>
               </div>
             </div>
-            <div className="form-actions">
+
+               <div className="needs-interventions-container">
+              <div className="needs-interventions-column3">
+                {helpArray.length > 0 && (
+                  <table>
+                    <thead>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Relationship</th>
+                    </thead>
+                    <tbody>
+                      {helpArray?.map((i, index) => (
+                        <tr>
+                          <td>{`${index + 1}. ${i.name}`} </td>
+                          <td>{`${index + 1}. ${i.phone}`} </td>
+                          <td>{`${index + 1}. ${i.relationship}`} </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </div>
+
+
+            {/* <div className="form-actions">
               <button type="button" className="safetybutton1">
                 <CiCirclePlus style={{ width: "30px", height: "30px" }} /> ADD
                 MORE PEOPLE
               </button>
-            </div>
+            </div> */}
             <h5
               style={{
                 fontWeight: "700",
@@ -393,10 +454,10 @@ const SafetyPlan = () => {
             </h5>
             <div className="safetyplandiv">
               <div className="form-field">
-                <label htmlFor="AHCCCS">Clinic / Facility Name</label>
+                <label >Clinic / Facility Name</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+                 
                   value={crisisName}
                   placeholder="Enter name"
                   
@@ -404,10 +465,10 @@ const SafetyPlan = () => {
                 />
               </div>
               <div className="form-field">
-                <label htmlFor="AHCCCS">Phone Number</label>
+                <label >Phone Number</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+               
                   value={crisisPhone}
                   placeholder="Enter number"
                   
@@ -415,10 +476,10 @@ const SafetyPlan = () => {
                 />
               </div>
               <div className="form-field">
-                <label htmlFor="AHCCCS">Relationship</label>
+                <label >Relationship</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+                
                   value={crisisRelationship}
                   placeholder="Enter text"
                   
@@ -431,21 +492,45 @@ const SafetyPlan = () => {
                   className="safetybutton"
                   onClick={handleCrisisArray}
                 >
-                  SAVE
+                  Add
                 </button>
               </div>
             </div>
-            <div className="form-actions">
+
+            <div className="needs-interventions-container">
+              <div className="needs-interventions-column3">
+                {crisisArray.length > 0 && (
+                  <table>
+                    <thead>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Relationship</th>
+                    </thead>
+                    <tbody>
+                      {crisisArray?.map((i, index) => (
+                        <tr>
+                          <td>{`${index + 1}. ${i.clinicianName}`} </td>
+                          <td>{`${index + 1}. ${i.phone}`} </td>
+                          <td>{`${index + 1}. ${i.relationship}`} </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </div>
+
+            {/* <div className="form-actions">
               <button type="button" className="safetybutton1">
                 <CiCirclePlus style={{ width: "30px", height: "30px" }} /> ADD
                 MORE PEOPLE
               </button>
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="programlocation&address">
                 Making the Environment Safe :
               </label>
-              <textarea
+              {/* <textarea
                 id="programlocation&address"
                 value={enviromentAdress}
                 rows={5}
@@ -453,21 +538,21 @@ const SafetyPlan = () => {
                 placeholder="Enter Full Address"
                 required
                 onChange={(e) => setEnviromentAdress(e?.target?.value)}
+              /> */}
+              <Select
+              isMulti
+              options={enviromentAdressOptions}
+              value={enviromentAdress}
+              onChange={enviromentAdresshandler}
+              
               />
             </div>
             <div class="file-upload-box">
-              <div class="upload-icon" onClick={() => setShowSingIn(true)}>
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px", cursor: "pointer" }}
-                />
-              </div>
               <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="">
+                <button className="upload-button1" type="button" onClick={() => setShowSingIn(true)}>
                   SAVED AS DRAFT
                 </button>
-                <button className="upload-button" onclick="">
+                <button className="upload-button" type="button" onClick={() => setShowSingIn(true)}>
                   SAVED AND SIGNED
                 </button>
               </div>

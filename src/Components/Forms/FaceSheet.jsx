@@ -20,6 +20,7 @@ const FaceSheet = () => {
   const [facilityPhoneNumber, setFacilityPhoneNumber] = useState("");
   const [placeOfBirth, setPlaceOfBirth] = useState("");
   const [eyeColor, setEyeColor] = useState("");
+  const [race,setRace]=useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [hairColor, setHairColor] = useState("");
@@ -136,6 +137,7 @@ const FaceSheet = () => {
       facilityPhoneNumber,
       placeOfBirth,
       eyeColor,
+      race,
       height,
       weight,
       hairColor,
@@ -304,6 +306,17 @@ const FaceSheet = () => {
               />
             </div>
             <div className="form-field">
+              <label htmlFor="AHCCCS">Race:</label>
+              <input
+                type="text"
+                id="AHCCCS"
+                value={race}
+                placeholder="Type Here....."
+                required
+                onChange={(e) => setRace(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
               <label htmlFor="AHCCCS">Height:</label>
               <input
                 type="text"
@@ -358,7 +371,7 @@ const FaceSheet = () => {
                 onChange={(e) => setPrimaryLanguage(e.target.value)}
               />
             </div>
-            <div className="yeschechbox2">
+            <div className="yeschechbox2" style={{marginTop:"1rem"}}>
               <label htmlFor="AHCCCS">Court Ordered Treatment?</label>
               <div>
                 <input
@@ -478,7 +491,7 @@ const FaceSheet = () => {
                 onChange={(e) => setPrimaryCareProviderAddress(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <select
                 required
@@ -488,7 +501,7 @@ const FaceSheet = () => {
                 <option value="Dermatologist">Dermatologist</option>
                 <option value="Cardiologist">Cardiologist</option>
               </select>
-            </div>
+            </div> */}
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <input
@@ -545,7 +558,7 @@ const FaceSheet = () => {
                 required
               />
             </div> */}
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <select
                 required
@@ -555,7 +568,7 @@ const FaceSheet = () => {
                 <option value="Therapist">Therapist</option>
                 <option value="Neuropsychiatrist">Neuropsychiatrist</option>
               </select>
-            </div>
+            </div> */}
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <input

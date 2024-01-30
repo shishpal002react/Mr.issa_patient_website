@@ -368,7 +368,7 @@ input[type="checkbox"] {
   width: 100%;
 }
 
-needs-interventions-column2{
+.needs-interventions-column2{
   width: 100%;
 }
 
@@ -388,7 +388,30 @@ needs-interventions-column2{
 .needs-interventions-column2 table thead th{
   border: 1px solid black;
   padding: 10px;
- 
+}
+
+/* safety plane */
+.needs-interventions-column3 {
+  width: 100%; /* Equal width for both columns */
+  /* border: 1px solid black; */
+}
+.needs-interventions-column3 table{
+  width: 100%; /* Equal width for both columns */
+  border: 1px solid black;
+}
+
+.needs-interventions-column3 table tr{
+  border: 1px solid black;
+}
+.needs-interventions-column3 table tr td{
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.needs-interventions-column3 table thead th{
+  border: 1px solid black;
+  padding: 10px;
+  
 }
 
 

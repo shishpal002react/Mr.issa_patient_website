@@ -1659,32 +1659,6 @@ const InitialAssessment = () => {
                   </table>
                 )}
               </div>
-
-              {/* <div className="needs-interventions-column">
-                <h2>Needs</h2>
-
-                <ul>
-                  <li>1.</li>
-
-                  <li style={{ borderBottom: "none" }}>5</li>
-                </ul>
-              </div> */}
-              {/* <div className="needs-interventions-column">
-                <h2>Interventions</h2>
-                <ul>
-              
-                  <li>1.</li>
-                  
-                  <li style={{ borderBottom: "none" }}>5.</li>
-                </ul>
-              </div> */}
-              {/* <button
-                  type="button"
-                  className="safetybutton"
-                  onClick=""
-                >
-                  SAVE
-                </button> */}
             </div>
             <div className="form-field">
               <label htmlFor="approvedby">Discharge Plan</label>

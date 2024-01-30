@@ -802,6 +802,12 @@ input[type="checkbox"] {
     margin-right: 10px;
     grid-template-columns: repeat(3, 30%);
   }
+  .yeschechbox2-horizontal div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -822,6 +828,12 @@ input[type="checkbox"] {
     margin-top: 1.5rem;
     margin-right: 10px;
     grid-template-columns: repeat(1, 100%);
+  }
+  .yeschechbox2-horizontal div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 50%;
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import formupload from "../../img/formupload.png";
+
 import { user_detail, patient_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
 import Select from "react-select";
@@ -59,7 +59,17 @@ const TreatmentPlan = () => {
   const [consnotiveSymptoms, setConsnotiveSymptoms] = useState([]);
   const [psychosocialSymptoms, setPsychosocialSymptoms] = useState([]);
   const [interventionsImplemented, setInterventionsImplemented] = useState([]);
+
   //Goals for Changes in the Resident Phychorial Interaction or Behaviour
+  const [option1, setOption1] = useState([]);
+  const [option2, setOption2] = useState([]);
+  const [option3, setOption3] = useState([]);
+  const [option4, setOption4] = useState([]);
+  const [option5, setOption5] = useState([]);
+  const [option6, setOption6] = useState([]);
+  const [option7, setOption7] = useState([]);
+  const [option8, setOption8] = useState([]);
+
   const [maintainSobriety, setMaintainSobriety] = useState("");
   const [livingSkills, setLivingSkills] = useState("");
   const [employment, setEmployment] = useState("");
@@ -215,16 +225,18 @@ const TreatmentPlan = () => {
     });
   };
 
-// Presenting Problems
+  // Presenting Problems
   const presentingPriceOption = [
     { label: "Depression", value: "Depression" },
     { label: "Mood Changes", value: "Mood Changes" },
-    { label: "Trouble Falling / staying Asleep", value: "Trouble Falling / staying Asleep" },
+    {
+      label: "Trouble Falling / staying Asleep",
+      value: "Trouble Falling / staying Asleep",
+    },
     { label: "Mood Swings", value: "Mood Swings" },
     { label: "Social Withdrawals", value: "Social Withdrawals" },
     { label: "Changes in Eating habits", value: "Changes in Eating habits" },
-    { label: "Feeling of anger", value: "Feeling of anger" }
-    
+    { label: "Feeling of anger", value: "Feeling of anger" },
   ];
 
   const presentingPriceHandler = (optionValue) => {
@@ -243,46 +255,344 @@ const TreatmentPlan = () => {
     { label: "Dedication", value: "Dedication" },
     { label: "Coloring", value: "Coloring" },
     { label: "Decision Making", value: "Decision Making" },
-    {label:"Team Work",value : "Team Work"}
-  ]
+    { label: "Team Work", value: "Team Work" },
+  ];
 
   const strengthsHandler = (optionValue) => {
     setStrengths(optionValue);
   };
 
   //Barriers
-  const BarriersOption=[
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Lack of Insight",value:"Lack of Insight"},
-    {label: "Financial",value:"Financial"},
-    {label: "Refusal of Treatment",value:"Refusal of Treatment"},
-    {label: "Social Stigma",value:"Social Stigma"},
-    {label: "Racial",value:"Racial"},
-    {label: "Limited availibility to Mental Health awareness & Education",value:"Limited availibility to Mental Health awareness & Education"},
-    {label: "Lack of Mental Health professionals & Services",value:"Lack of Mental Health professionals & Services"},
-    {label: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",value:"Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations"},
-  ]
+  const BarriersOption = [
+    { label: "Cognitive", value: "Cognitive" },
+    { label: "Lack of Insight", value: "Lack of Insight" },
+    { label: "Financial", value: "Financial" },
+    { label: "Refusal of Treatment", value: "Refusal of Treatment" },
+    { label: "Social Stigma", value: "Social Stigma" },
+    { label: "Racial", value: "Racial" },
+    {
+      label: "Limited availibility to Mental Health awareness & Education",
+      value: "Limited availibility to Mental Health awareness & Education",
+    },
+    {
+      label: "Lack of Mental Health professionals & Services",
+      value: "Lack of Mental Health professionals & Services",
+    },
+    {
+      label: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
+      value: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
+    },
+  ];
 
-  const BarriersHandler=(optionValue)=>{
-    setBarriers(optionValue)
-  }
+  const BarriersHandler = (optionValue) => {
+    setBarriers(optionValue);
+  };
 
   // Maintain sobriety. Drop Down
-  const maintainsobrietyDropDownOption=[
-    {label: "Resident to maintain sobriety for the next 90 days",value:"Resident to maintain sobriety for the next 90 days"},
-    {label: "Resident to learn and implement coping skills to support sobriety",value:"Resident to learn and implement coping skills to support sobriety"},
-    {label: "Resident to learn relapse prevention skills",value:"Resident to learn relapse prevention skills"},
-    {label: "Resident will develop for sobriety",value:"Resident will develop for sobriety"},
-    {label: "Resident will maintain abstinence for at least the next 90 days",value:"Resident will maintain abstinence for at least the next 90 days"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-    {label: "Cognitive",value:"Cognitive"},
-  ]
+  // option1
+  const option1Option = [
+    {
+      label: "Resident to maintain sobriety for the next 90 days",
+      value: "Resident to maintain sobriety for the next 90 days",
+    },
+    {
+      label:
+        "Resident to learn and implement coping skills to support sobriety",
+      value:
+        "Resident to learn and implement coping skills to support sobriety",
+    },
+    {
+      label: "Resident to learn relapse prevention skills",
+      value: "Resident to learn relapse prevention skills",
+    },
+    {
+      label: "Resident will develop for sobriety",
+      value: "Resident will develop for sobriety",
+    },
+    {
+      label: "Resident will maintain abstinence for at least the next 90 days",
+      value: "Resident will maintain abstinence for at least the next 90 days",
+    },
+    {
+      label: "Resident will complete step",
+      value: "Resident will complete step",
+    },
+    {
+      label: "Resident will report craving to staff on shift",
+      value: "Resident will report craving to staff on shift",
+    },
+    {
+      label: "Resident will know at least 3 triggers to substance use",
+      value: "Resident will know at least 3 triggers to substance use",
+    },
+    {
+      label:
+        "Resident will learn and know the consequences associated with substance use",
+      value:
+        "Resident will learn and know the consequences associated with substance use",
+    },
+    {
+      label:
+        "Resident will participate with the clinical team for after planning",
+      value:
+        "Resident will participate with the clinical team for after planning",
+    },
+    {
+      label:
+        "Resident will involve family as a support system to help maintain sobriety",
+      value:
+        "Resident will involve family as a support system to help maintain sobriety",
+    },
+    {
+      label: "Resident will attend self-help group (AA,NA,COA,)",
+      value: "Resident will attend self-help group (AA,NA,COA,)",
+    },
+    {
+      label: "Identify 4 positive friend that will support sobriety",
+      value: "Identify 4 positive friend that will support sobriety",
+    },
+    {
+      label: "Resident will refrain from drug seeking behaviors",
+      value: "Resident will refrain from drug seeking behaviors",
+    },
+  ];
+
+  const option1Handler = (optionValue) => {
+    setOption1(optionValue);
+  };
+
+  // option2
+  const option2Option = [
+    {
+      label: "Resident to learn coping skills to manage anxiety, depression",
+      value: "Resident to learn coping skills to manage anxiety, depression",
+    },
+    {
+      label: "Resident to learn skills to manage time",
+      value: "Resident to learn skills to manage time",
+    },
+    {
+      label: "Resident to learn how to open a bank account",
+      value: "Resident to learn how to open a bank account",
+    },
+    {
+      label: "Resident to learn how communicate assertively",
+      value: "Resident to learn how communicate assertively",
+    },
+    {
+      label:
+        "Resident will learn how to identify triggers and address them accordingly",
+      value:
+        "Resident will learn how to identify triggers and address them accordingly",
+    },
+    {
+      label:
+        "Resident will be able to schedule own transportation to and from medical/psychiatric appointments or activities",
+      value:
+        "Resident will be able to schedule own transportation to and from medical/psychiatric appointments or activities",
+    },
+    {
+      label: "Be able to manage and budget finances",
+      value: "Be able to manage and budget finances",
+    },
+    {
+      label: "Resident to attend 100% of scheduled appointments",
+      value: "Resident to attend 100% of scheduled appointments",
+    },
+    {
+      label: "Resident will develop coping skills on how to manage stress",
+      value: "Resident will develop coping skills on how to manage stress",
+    },
+    {
+      label: "Resident will learn how to make bed",
+      value: "Resident will learn how to make bed",
+    },
+    {
+      label: "Resident will obtain drivers license ",
+      value: "Resident will obtain drivers license ",
+    },
+    {
+      label:
+        "Resident to recognize the difference between healthy and unhealthy boundaries",
+      value:
+        "Resident to recognize the difference between healthy and unhealthy boundaries",
+    },
+  ];
+
+  const option2Handler = (optionValue) => {
+    setOption2(optionValue);
+  };
+
+  // option3
+  const option3Option = [
+    { label: "Resident to Create resume", value: "Resident to Create resume" },
+    {
+      label: "Resident will Call, email, or contact ",
+      value: "Resident will Call, email, or contact ",
+    },
+    {
+      label: "Resident to learn mock interview",
+      value: "Resident to learn mock interview",
+    },
+  ];
+
+  const option3Handler = (optionValue) => {
+    setOption3(optionValue);
+  };
+  // option4
+  const option4Option = [
+    {
+      label: "Resident will shower at least every other day without prompt",
+      value: "Resident will shower at least every other day without prompt",
+    },
+    {
+      label: "Resident will learn how to prepare basic meal",
+      value: "Resident will learn how to prepare basic meal",
+    },
+    {
+      label:
+        "Resident will brush teeth at least every other day without prompt",
+      value:
+        "Resident will brush teeth at least every other day without prompt",
+    },
+    {
+      label: "Complete laundry independently",
+      value: "Complete laundry independently",
+    },
+    {
+      label:
+        "Resident will develop skills to independently do laundry, sort, wash and dry clothing.",
+      value:
+        "Resident will develop skills to independently do laundry, sort, wash and dry clothing.",
+    },
+    ,
+  ];
+
+  const option4Handler = (optionValue) => {
+    setOption4(optionValue);
+  };
+  // option5
+  const option5Option = [
+    {
+      label: "Resident will create a safety plan",
+      value: "Resident will create a safety plan",
+    },
+    {
+      label: "Resident will contract for safety",
+      value: "Resident will contract for safety",
+    },
+    {
+      label: "Resident will not elope from the facility for the next 30 days",
+      value: "Resident will not elope from the facility for the next 30 days",
+    },
+    {
+      label: "Resident will learn not to touch hot items or spark objects",
+      value: "Resident will learn not to touch hot items or spark objects",
+    },
+    {
+      label: "Resident will be aware of surroundings when going on outing",
+      value: "Resident will be aware of surroundings when going on outing",
+    },
+    {
+      label:
+        "Resident will identify dangers that involves wondering off from the facility",
+      value:
+        "Resident will identify dangers that involves wondering off from the facility",
+    },
+  ];
+
+  const option5Handler = (optionValue) => {
+    setOption5(optionValue);
+  };
+  // option6
+  const option6Option = [
+    {
+      label: "Resident to take all prescribed medications",
+      value: "Resident to take all prescribed medications",
+    },
+    {
+      label: "Resident will learn all names of her medications",
+      value: "Resident will learn all names of her medications",
+    },
+    {
+      label:
+        "Resident will self-administer medications with supervision without errors",
+      value:
+        "Resident will self-administer medications with supervision without errors",
+    },
+    {
+      label: "Resident will take medications in a timely manner",
+      value: "Resident will take medications in a timely manner",
+    },
+    {
+      label:
+        "Resident will learn how to order medication refills from the pharmacy",
+      value:
+        "Resident will learn how to order medication refills from the pharmacy",
+    },
+  ];
+
+  const option6Handler = (optionValue) => {
+    setOption6(optionValue);
+  };
+  //option7
+  const option7Option = [
+    {
+      label:
+        "Resident to learn how to utilize coping skills to manage mental health symptoms",
+      value:
+        "Resident to learn how to utilize coping skills to manage mental health symptoms",
+    },
+    {
+      label: "Resident to learn how to utilize EMS appropriately",
+      value: "Resident to learn how to utilize EMS appropriately",
+    },
+    {
+      label:
+        "Resident verbalizes an understanding of diagnoses, and their impact",
+      value:
+        "Resident verbalizes an understanding of diagnoses, and their impact",
+    },
+    {
+      label:
+        "Resident to reduce the frequency of maladaptive behaviors, thoughts and feelings that affects quality of daily life",
+      value:
+        "Resident to reduce the frequency of maladaptive behaviors, thoughts and feelings that affects quality of daily life",
+    },
+  ];
+
+  const option7Handler = (optionValue) => {
+    setOption7(optionValue);
+  };
+  //option8
+  const option8Option = [
+    {
+      label: "Resident will attend all court appointments",
+      value: "Resident will attend all court appointments",
+    },
+    {
+      label:
+        "Resident will attend all scheduled appointment with probation/parole officer",
+      value:
+        "Resident will attend all scheduled appointment with probation/parole officer",
+    },
+  ];
+
+  const option8Handler = (optionValue) => {
+    setOption8(optionValue);
+  };
+
+//yeschechbox2-horizontal
+const [clinicalSummary,setClinicalSummary]=useState([])
+const clinicalSummaryOption=[
+  {label  :"Resident to continue to attend treatment with the facility" , value:"Resident to continue to attend treatment with the facility"},
+  {label  :"Resident to continue to attend schedule appointments with PCP, Psychiatric provider, and specialist" , value:"Resident to continue to attend schedule appointments with PCP, Psychiatric provider, and specialist"},
+  {label  :"Resident will contract for safety while in the program" , value:"Resident will contract for safety while in the program"},
+]
+
+const clinicalSummaryHandler=(optionValue)=>{
+  setClinicalSummary(optionValue)
+}
 
   return (
     <>
@@ -360,7 +670,7 @@ const TreatmentPlan = () => {
                 </div>
               </div>
             </div> */}
-            <h2 style={{marginTop:"1rem"}}>Resident Details</h2>
+            <h2 style={{ marginTop: "1rem" }}>Resident Details</h2>
             <div className="form-field">
               <label htmlFor="AHCCCS">Resident Name:</label>
               <input
@@ -447,18 +757,20 @@ const TreatmentPlan = () => {
             </div>
             <div className="form-field">
               <label htmlFor="gender">Presenting Problems</label>
-            
+
               <Select
-              isMulti
-              onChange={presentingPriceHandler}
-              value={presentingPrice}
-              options={presentingPriceOption}
+                isMulti
+                onChange={presentingPriceHandler}
+                value={presentingPrice}
+                options={presentingPriceOption}
               />
             </div>
             <div className="formsheading">
               <h6>Diagonsis</h6>
             </div>
-            <label htmlFor="" className="label-review" >Mental Status:</label>
+            <label htmlFor="" className="label-review">
+              Mental Status:
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input
@@ -467,7 +779,7 @@ const TreatmentPlan = () => {
                   checked={mendelHealth === "oriented"}
                   onChange={() => handleCheckboxChangeMentalHealth("oriented")}
                 />
-                <label htmlFor="oriented" >Oriented</label>
+                <label htmlFor="oriented">Oriented</label>
               </div>
               <div>
                 <input
@@ -513,7 +825,9 @@ const TreatmentPlan = () => {
                 />
               </div>
             )}
-            <label htmlFor="" className="label-review">Mood Level:</label>
+            <label htmlFor="" className="label-review">
+              Mood Level:
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input
@@ -575,7 +889,9 @@ const TreatmentPlan = () => {
                 />
               </div>
             )}
-            <label htmlFor="" className="label-review">ADLS:</label>
+            <label htmlFor="" className="label-review">
+              ADLS:
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input
@@ -608,7 +924,9 @@ const TreatmentPlan = () => {
                 onChange={(e) => setAldsText(e.target.value)}
               />
             </div>
-            <label htmlFor="" className="label-review">Behavioral Health Services:</label>
+            <label htmlFor="" className="label-review">
+              Behavioral Health Services:
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input
@@ -628,7 +946,7 @@ const TreatmentPlan = () => {
                   id="prescribedMedication"
                   value="prescribedMedication"
                   checked={BHealth === "prescribedMedication"}
-                 onChange={() => setBHealth("prescribedMedication")}
+                  onChange={() => setBHealth("prescribedMedication")}
                 />
                 <label htmlFor="prescribedMedication">
                   Is prescribed psychotropic medication
@@ -663,14 +981,13 @@ const TreatmentPlan = () => {
               <label className="label-review">Primary Care Provider:</label>
               <input
                 type="text"
-                
                 value={primaryCare}
                 required
                 onChange={(e) => setPrimaryCare(e.target.value)}
               />
             </div>
             <div className="form-field">
-              <label className="label-review" >Psychiatric Provider:</label>
+              <label className="label-review">Psychiatric Provider:</label>
               <p>
                 Resident to receive treatment services from above provider(s)
                 every 1 to 2 months or earlier as needed. Specialty providers
@@ -685,7 +1002,6 @@ const TreatmentPlan = () => {
               <label className="label-review">Allergies</label>
               <textarea
                 type="text"
-              
                 value={allergies}
                 rows={3}
                 cols={130}
@@ -697,7 +1013,6 @@ const TreatmentPlan = () => {
               <label className="label-review">Triggers</label>
               <textarea
                 type="text"
-                
                 value={Triggers}
                 rows={3}
                 cols={130}
@@ -705,15 +1020,17 @@ const TreatmentPlan = () => {
                 onChange={(e) => setTriggers(e.target.value)}
               />
             </div>
-      
+
             <div className="form-field">
-              <label htmlFor="" className="label-review">Strengths</label>
-              
+              <label htmlFor="" className="label-review">
+                Strengths
+              </label>
+
               <Select
-              isMulti
-              options={strengthsOption}
-              onChange={strengthsHandler}
-              value={strengths}
+                isMulti
+                options={strengthsOption}
+                onChange={strengthsHandler}
+                value={strengths}
               />
             </div>
             {/* <div className="form-field">
@@ -729,12 +1046,12 @@ const TreatmentPlan = () => {
             </div> */}
             <div className="form-field">
               <label className="label-review">Barriers:</label>
-             
+
               <Select
-              isMulti
-              onChange={BarriersHandler}
-              value={Barriers}
-              options={BarriersOption}
+                isMulti
+                onChange={BarriersHandler}
+                value={Barriers}
+                options={BarriersOption}
               />
             </div>
             <div className="formsheading">
@@ -742,7 +1059,9 @@ const TreatmentPlan = () => {
                 Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
               </h6>
             </div>
-            <label htmlFor="" className="label-review">Behavioral Symptoms:</label>
+            <label htmlFor="" className="label-review">
+              Behavioral Symptoms:
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input
@@ -788,14 +1107,18 @@ const TreatmentPlan = () => {
                 />
                 <span>Social isolation</span>
               </div>
-             
+
               <div>
                 <input
                   type="checkbox"
                   id="socialIsolation"
-                  checked={behavioralSymptoms.includes("nolongerenjoyingpreviousactivities")}
+                  checked={behavioralSymptoms.includes(
+                    "nolongerenjoyingpreviousactivities"
+                  )}
                   onChange={() =>
-                    handleCheckboxChangeBehavioral("Nolongerenjoyingpreviousactivities")
+                    handleCheckboxChangeBehavioral(
+                      "Nolongerenjoyingpreviousactivities"
+                    )
                   }
                 />
                 <span>No longer enjoying previous activities </span>
@@ -816,16 +1139,15 @@ const TreatmentPlan = () => {
                   type="checkbox"
                   id="socialIsolation"
                   checked={behavioralSymptoms.includes("aboutdeath")}
-                  onChange={() =>
-                    handleCheckboxChangeBehavioral("aboutdeath")
-                  }
+                  onChange={() => handleCheckboxChangeBehavioral("aboutdeath")}
                 />
                 <span>About death </span>
               </div>
             </div>
-            <label htmlFor="" className="label-review">Physical Symptoms:</label>
+            <label htmlFor="" className="label-review">
+              Physical Symptoms:
+            </label>
             <div className="yeschechbox-review">
-             
               <div>
                 <input
                   type="checkbox"
@@ -876,9 +1198,10 @@ const TreatmentPlan = () => {
                 <span>Panic attacks</span>
               </div>
             </div>
-            <label htmlFor="cognitiveSymptoms" className="label-review">Cognitive Symptoms:</label>
+            <label htmlFor="cognitiveSymptoms" className="label-review">
+              Cognitive Symptoms:
+            </label>
             <div className="yeschechbox-review">
-              
               <div>
                 <input
                   type="checkbox"
@@ -909,9 +1232,13 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="thoughtsAboutDeath"
-                  checked={consnotiveSymptoms.includes("pervasivethoughtsaboutdeathanddying")}
+                  checked={consnotiveSymptoms.includes(
+                    "pervasivethoughtsaboutdeathanddying"
+                  )}
                   onChange={() =>
-                    handleCheckboxChangeCognitive("pervasivethoughtsaboutdeathanddying")
+                    handleCheckboxChangeCognitive(
+                      "pervasivethoughtsaboutdeathanddying"
+                    )
                   }
                 />
                 <label htmlFor="thoughtsAboutDeath">
@@ -922,10 +1249,15 @@ const TreatmentPlan = () => {
                 <input
                   type="checkbox"
                   id="inabilityToFocus"
-                  checked={consnotiveSymptoms.includes("inabilitytofocusonspecifictasks")}
+                  checked={consnotiveSymptoms.includes(
+                    "inabilitytofocusonspecifictasks"
+                  )}
                   onChange={() =>
-                    handleCheckboxChangeCognitive("inabilitytofocusonspecifictasks")
-                  }y
+                    handleCheckboxChangeCognitive(
+                      "inabilitytofocusonspecifictasks"
+                    )
+                  }
+                  y
                 />
                 <label htmlFor="inabilityToFocus">
                   Inability to focus on specific tasks
@@ -940,14 +1272,13 @@ const TreatmentPlan = () => {
                     handleCheckboxChangeCognitive("specifictasks")
                   }
                 />
-                <label htmlFor="inabilityToFocus">
-                specific tasks 
-                </label>
+                <label htmlFor="inabilityToFocus">Specific tasks</label>
               </div>
             </div>
-            <label htmlFor="" className="label-review">Psychosocial Symptoms: </label>
+            <label htmlFor="" className="label-review">
+              Psychosocial Symptoms:{" "}
+            </label>
             <div className="yeschechbox-review">
-              
               <div>
                 <input
                   type="checkbox"
@@ -1013,7 +1344,9 @@ const TreatmentPlan = () => {
                 <label htmlFor="irritability">Irritability</label>
               </div>
             </div>
-            <label htmlFor="" className="label-review">Interventions that are being implemented:</label>
+            <label htmlFor="" className="label-review">
+              Interventions that are being implemented:
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
@@ -1080,11 +1413,11 @@ const TreatmentPlan = () => {
                 <span>Redirection,</span>
               </div>
             </div>
-    
+
             <div className="formsheading">
               <h6>Counseling Frequency</h6>
             </div>
-            <div className="yeschechbox-review">
+            {/* <div className="yeschechbox-review">
               <div>
                 <span>Total of Minimum</span>
               </div>
@@ -1097,13 +1430,73 @@ const TreatmentPlan = () => {
               <div>
                 <span>Minimum 1 hour session per week</span>
               </div>
-            </div>
+            </div> */}
             <div className="yeschechbox-review">
+            <div>
+                <input type="checkbox" name="" id="" />
+                <span>Group</span>
+              </div>
+            <div>
+                <input type="checkbox" name="" id="" />
+                <span>3 times a day</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>4 times a day</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Individual Counseling: Minimum 1 hour session per week </span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Individual Therapy: As needed</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Resident decline individual therapy services</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Family Counseling</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>NA</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>AA</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Month ART Meeting/Staffing</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Weekly ART Meeting/Staffing   </span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Other</span>
+              </div>
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
+            {/* <div className="yeschechbox-review">
               <label htmlFor="">Individual: </label>
               <div>
                 <span>As needed</span>
               </div>
-            </div>
+            </div> */}
             <div className="formsheading">
               <h6>
                 Goals for Changes in the Resident Phychorial Interaction or
@@ -1116,7 +1509,6 @@ const TreatmentPlan = () => {
             </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1126,86 +1518,80 @@ const TreatmentPlan = () => {
               >
                 1. Maintain Sobriety
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option1Option}
+                value={option1}
+                onChange={option1Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1215,86 +1601,80 @@ const TreatmentPlan = () => {
               >
                 2. Independent Living Skills
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option2Option}
+                value={option2}
+                onChange={option2Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1304,86 +1684,80 @@ const TreatmentPlan = () => {
               >
                 3. Employment
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option3Option}
+                value={option3}
+                onChange={option3Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1393,86 +1767,80 @@ const TreatmentPlan = () => {
               >
                 4. ADLS
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option4Option}
+                value={option4}
+                onChange={option4Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1482,86 +1850,80 @@ const TreatmentPlan = () => {
               >
                 5. Safety
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option5Option}
+                value={option5}
+                onChange={option5Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1571,86 +1933,80 @@ const TreatmentPlan = () => {
               >
                 6. Medication Education
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option6Option}
+                value={option6}
+                onChange={option6Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1660,86 +2016,80 @@ const TreatmentPlan = () => {
               >
                 7. Managing Mental Health
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option7Option}
+                value={option7}
+                onChange={option7Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <div className="form-field">
               <label
-                htmlFor="AHCCCS"
                 style={{
                   fontWeight: "600",
                   fontSize: "20px",
@@ -1749,88 +2099,82 @@ const TreatmentPlan = () => {
               >
                 8. Legal
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
+              <Select
+                isMulti
+                options={option8Option}
+                value={option8}
+                onChange={option8Handler}
+              />
             </div>
             <div className="form-field">
-            <label >Name</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Enter name"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Admission Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-          
-              // value={name}
-              placeholder="Admission Messure"
-              required
-            //   onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Previous Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Previous Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Current Messure</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="text"
-           
-              // value={name}
-              placeholder="Enter Current Messure"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label >Estimete Date of complition</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-           
-              // value={name}
-              placeholder="Enter Estimete Date of complition"
-              required
-              // onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
-            <textarea
-              id="programlocation&address"
-              value=""
-              placeholder="Enter text"
-              rows={3}
-              cols={82}
-              required
-            />
-          </div>
+              <label>Name</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Admission Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Admission Messure"
+                required
+                //   onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Previous Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Previous Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Current Messure</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter Current Messure"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Estimete Date of complition</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+                // value={name}
+                placeholder="Enter Estimete Date of complition"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Comment:</label>
+              <textarea
+                value=""
+                placeholder="Enter text"
+                rows={3}
+                cols={82}
+                required
+              />
+            </div>
             <label htmlFor="" className="label-review">
-                Resident overall participation in treatment:{" "}
-              </label>
+              Resident overall participation in treatment:{" "}
+            </label>
             <div className="yeschechbox-review">
-             
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>100%</span>
@@ -1853,9 +2197,10 @@ const TreatmentPlan = () => {
               </div>
             </div>
 
-            <label htmlFor="" className="label-review">Resident Attitude:</label>
+            <label htmlFor="" className="label-review">
+              Resident Attitude:
+            </label>
             <div className="yeschechbox-review">
-             
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Attentive</span>
@@ -1877,9 +2222,10 @@ const TreatmentPlan = () => {
                 <span>Resistant</span>
               </div>
             </div>
-            <label htmlFor="" className="label-review">Resident progress:</label>
+            <label htmlFor="" className="label-review">
+              Resident progress:
+            </label>
             <div className="yeschechbox-review">
-              
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Deterioration</span>
@@ -1901,9 +2247,10 @@ const TreatmentPlan = () => {
                 <span>Goal achieved</span>
               </div>
             </div>
-            <label htmlFor="" className="label-review">Support System:</label>
+            <label htmlFor="" className="label-review">
+              Support System:
+            </label>
             <div className="yeschechbox-review">
-              
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Family</span>
@@ -1929,9 +2276,33 @@ const TreatmentPlan = () => {
                 <span>Other</span>
               </div>
             </div>
-            <label htmlFor="" className="label-review">Religious Preference:</label>
+            <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={5}
+              cols={82}
+              required
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="admissionDate">Current List of medication: </label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+              id="dateOfBirth"
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+            <label htmlFor="" className="label-review">
+              Religious Preference:
+            </label>
             <div className="yeschechbox-review">
-              
               <div>
                 <input type="checkbox" name="" id="" />
                 <span>Christian</span>
@@ -1946,13 +2317,74 @@ const TreatmentPlan = () => {
               </div>
               <div>
                 <input type="checkbox" name="" id="" />
+                <span>Islam</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Judaism</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Hinduism</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Mormonism</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
                 <span>Other</span>
               </div>
             </div>
+            <div className="form-field">
+            <label htmlFor="programlocation&address">Comment:</label>
+            <textarea
+              id="programlocation&address"
+              value=""
+              placeholder="Enter text"
+              rows={3}
+              cols={82}
+              required
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="admissionDate">Nutrition and wellness Planning: </label>
+            <input
+              style={{ color: "#1A9FB2" }}
+              type="text"
+              id="dateOfBirth"
+              // value={name}
+              placeholder="Enter name"
+              required
+              // onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <label className="label-review">Recommendation to extend residential treatment for : </label>
+          <div className="yeschechbox-review">
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>30 Days</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>60 Days</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>90 Days</span>
+              </div>
+             
+            </div>
+            <div className="yeschechbox2-horizontal">
+              <div>
+                <input type="checkbox" name="" id="" />
+                <span>Resident requires Assistance to maintain personal funds and/or hand personal finances</span>
+              </div>
+            </div>
             <label htmlFor="" className="label-review">
-                Discharge planning & Re-evaluation of initial symptoms,
-                behaviours & Goals
-              </label>
+              Discharge planning & Re-evaluation of initial symptoms, behaviours
+              & Goals
+            </label>
             <div className="yeschechbox2-horizontal">
               <div>
                 <input type="checkbox" name="" id="" />
@@ -1992,7 +2424,7 @@ const TreatmentPlan = () => {
               <label
                 htmlFor="AHCCCS"
                 className="label-review"
-                // style={{ color: "#00000080", fontWeight: "600" }}
+                
               >
                 Specify ( If Others )
               </label>
@@ -2003,13 +2435,12 @@ const TreatmentPlan = () => {
                 rows={5}
                 cols={130}
                 placeholder="Type Here....."
-                
               />
             </div>
             <label htmlFor="" className="label-review">
-                Recommendations for further programs upon discharge:
-              </label>
-          
+              Recommendations for further programs upon discharge:
+            </label>
+
             <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
@@ -2041,33 +2472,34 @@ const TreatmentPlan = () => {
               </div>
             </div>
             <label htmlFor="" className="label-review">
-                After care and Transition planning / Community Resources:
-              </label>
-            <div className="yeschechbox2">
-              {/* <label htmlFor="">Cardiovascular:</label> */}
+              After care and Transition planning / Community Resources:
+            </label>
+            <div className="yeschechbox2-horizontal">
+             
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
+                <input type="checkbox" name="" id="" />
                 <span>National suicide hotline 988 or 1-800-273-8255</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              {/* <label htmlFor="">Cardiovascular:</label> */}
+            <div className="yeschechbox2-horizontal">
+        
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
+                <input type="checkbox" name="" id="" />
                 <span>Emergency care 911</span>
               </div>
             </div>
-            <div className="yeschechbox2">
-              {/* <label htmlFor="">Cardiovascular:</label> */}
+            <div className="yeschechbox2-horizontal">
+ 
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
+                <input type="checkbox" name="" id="" />
                 <span>24-Hour crisis in Maricopa County 602-222-9444</span>
               </div>
             </div>
+
             <div className="yeschechbox2">
-              {/* <label htmlFor="">Cardiovascular:</label> */}
+             
               <div>
-                {/* <input type="checkbox" name="" id="" /> */}
+                
                 <span>
                   This treatment plan has been developed before the resident
                   receives physical health services or behavioral health
@@ -2082,16 +2514,24 @@ const TreatmentPlan = () => {
                 </span>
               </div>
             </div>
-            {/* <div className="form-field">
-              <label htmlFor="gender">
-                Clinical Summary/Recommendations/Intervention:
+            
+            <div className="formsheading">
+            <label className="label-review">
+                Clinical Summary 
+                /Recommendations/Intervention:
               </label>
-              <select id="gender" value="" required>
-                <option value="">Select</option>
-                <option value="Male">Select</option>
-                <option value="Female">Select</option>
-              </select>
-            </div> */}
+              </div>
+            
+            <div className="form-field">
+            <Select
+             isMulti
+             value={clinicalSummary}
+             options={clinicalSummaryOption}
+             onChange={clinicalSummaryHandler}
+             />
+            </div>
+            
+            
             <div className="formsheading">
               <p>
                 The mirrors in the facility are SHATTERPROOF, and if they were
@@ -2100,13 +2540,14 @@ const TreatmentPlan = () => {
               </p>
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS" className="label-review">Treatment plan review date</label>
+              <label htmlFor="AHCCCS" className="label-review">
+                Treatment plan review date
+              </label>
               <input
                 type="text"
                 id="AHCCCS"
                 value=""
                 placeholder="Enter your Lorem Ipsum"
-                
               />
             </div>
             <p
@@ -2122,19 +2563,58 @@ const TreatmentPlan = () => {
               significant change in condition or event that affects treatment.
             </p>
             <div className="form-field">
-              <label htmlFor="AHCCCS" className="label-review">Discharge Plan Date:</label>
+              <label htmlFor="AHCCCS" className="label-review">
+                Discharge Plan Date:
+              </label>
               <input
-                type="text"
+                type="date"
                 id="AHCCCS"
                 value=""
                 placeholder="Enter your Lorem Ipsum"
-                
               />
             </div>
             <div className="formsheading">
               <h6>Individual Participating in Developing the Service Plan</h6>
             </div>
-            <label htmlFor="" className="label-review">Resident / Representative</label>
+            <div className="form-field">
+              <label>Resident</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>Staff</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label>BHP</label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="text"
+                // value={name}
+                placeholder="Enter name"
+                required
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+          
+
+
+            <label htmlFor="" className="label-review">
+              Resident / Representative
+            </label>
             <div className="yeschechbox-review">
               <div>
                 <input type="checkbox" name="" id="" />
@@ -2197,25 +2677,17 @@ const TreatmentPlan = () => {
             </div>
             <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon" onClick={() => setSignatureModel1(true)}>
-                {/* [signatureResident, setsignatureResident] = useState("") */}
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
+            
               <div style={{ display: "block" }}>
-                <button className="upload-button1">SAVED AS DRAFT</button>
-                <button className="upload-button">SAVED AND SIGNED</button>
+                <button className="upload-button1" type="button" onClick={() => setSignatureModel1(true)}>SAVED AS DRAFT</button>
+                <button className="upload-button" type="button" onClick={() => setSignatureModel1(true)}>SAVED AND SIGNED</button>
               </div>
             </div>
             <div className="form-field">
-              <label >Date:</label>
+              <label>Date:</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-             
                 value={dateResident}
                 placeholder="DD/MM/YYYY"
                 required
@@ -2231,7 +2703,7 @@ const TreatmentPlan = () => {
             </h6>
           </div>
           <div className="form-field">
-            <label >First and Last Name</label>
+            <label>First and Last Name</label>
             <input
               type="text"
               id="AHCCCS"
@@ -2256,17 +2728,10 @@ const TreatmentPlan = () => {
           </div>
           <div class="file-upload-box">
             <input type="file" id="fileInput" style={{ display: "none" }} />
-            <div class="upload-icon" onClick={() => setSignatureModel2(true)}>
-              {/* const [signatureFacilityRep, setsignatureFacilityRep] = useState(""); */}
-              <img
-                src={formupload}
-                alt=""
-                style={{ width: "100px", height: "100px" }}
-              />
-            </div>
+         
             <div style={{ display: "block" }}>
-              <button className="upload-button1">SAVED AS DRAFT</button>
-              <button className="upload-button">SAVED AND SIGNED</button>
+              <button className="upload-button1" type="button" onClick={() => setSignatureModel2(true)}>SAVED AS DRAFT</button>
+              <button className="upload-button" type="button" onClick={() => setSignatureModel2(true)}>SAVED AND SIGNED</button>
             </div>
           </div>
           <div className="form-field">
@@ -2281,7 +2746,7 @@ const TreatmentPlan = () => {
               onChange={(e) => setDateFacilityRep(e.target.value)}
             />
           </div>
-       
+
           <div className="formsheading">
             <h6>
               Signatures Bhp participation and informed consent for treatment
@@ -2314,16 +2779,10 @@ const TreatmentPlan = () => {
           </div>
           <div class="file-upload-box">
             <input type="file" id="fileInput" style={{ display: "none" }} />
-            <div class="upload-icon" onClick={() => setSignatureModel3(true)}>
-              <img
-                src={formupload}
-                alt=""
-                style={{ width: "100px", height: "100px" }}
-              />
-            </div>
+         
             <div style={{ display: "block" }}>
-              <button className="upload-button1">SAVED AS DRAFT</button>
-              <button className="upload-button">SAVED AND SIGNED</button>
+              <button className="upload-button1" type="button"  onClick={() => setSignatureModel3(true)}>SAVED AS DRAFT</button>
+              <button className="upload-button" type="button"  onClick={() => setSignatureModel3(true)}>SAVED AND SIGNED</button>
             </div>
           </div>
           <div className="form-field">
@@ -2367,7 +2826,7 @@ const TreatmentPlan = () => {
       )}
       {/* signature 2 */}
       {signatureModel2 && (
-        <SingInModel onClick={() => setSignatureModel2(false)}>
+        <SingInModel onClose={() => setSignatureModel2(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
             <input
@@ -2387,7 +2846,7 @@ const TreatmentPlan = () => {
       )}
       {/* signature3 */}
       {signatureModel3 && (
-        <SingInModel onClick={() => setSignatureModel3(false)}>
+        <SingInModel onClose={() => setSignatureModel3(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
             <input

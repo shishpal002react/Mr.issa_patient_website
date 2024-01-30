@@ -2723,13 +2723,7 @@ const NursingAssessment = () => {
             onChange={(e) => setBhtSignature(e.target.value)}
           /> */}
           <div class="file-upload-box">
-              <div class="upload-icon" >
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px", cursor: "pointer" }}
-                />
-              </div>
+              
               <div style={{ display: "block" }}>
                 <button className="upload-button1" type="button" onClick={() => setShowSingInOne(true)}>
                   SAVED AS DRAFT
@@ -2753,13 +2747,7 @@ const NursingAssessment = () => {
           <label style={{marginTop:"1rem",marginBottom:"1rem"}}>RN Signature:</label>
 
           <div class="file-upload-box">
-              <div class="upload-icon" >
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px", cursor: "pointer" }}
-                />
-              </div>
+              
               <div style={{ display: "block" }}>
                 <button className="upload-button1" type="button" onClick={() => setShowSingInTwo(true)}>
                   SAVED AS DRAFT

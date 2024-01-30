@@ -1693,8 +1693,8 @@ const InitialAssessment = () => {
             </div> */}
 
             <div class="checkbox-container1">
-              <div class="checkoptions1">
-                <label htmlFor="todaydate">Agreement With Plan</label>
+              <div class="checkoptions1" style={{marginTop:"1.2rem"}}>
+                <label >Agreement With Plan</label>
                 <div class="checkboxitem1">
                   <input
                     type="checkbox"

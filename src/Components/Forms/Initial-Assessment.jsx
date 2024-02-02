@@ -101,13 +101,73 @@ const InitialAssessment = () => {
   // const [other, setOther] = useState({});
 
   // Medical Conditions (Array of Objects) array
-  const [medicalConditionsCondition, setMedicalConditionsCondition] =
-    useState("");
-  const [medicalConditionsYes, setMedicalConditionsYes] = useState("");
-  const [medicalConditionsNo, setMedicalConditionsNo] = useState("");
-  const [medicalConditionsComments, setMedicalConditionsComments] =
-    useState("");
-  const [medicalConditions, setMedicalConditions] = useState([]);
+// diabetes
+const [diabetes,setDiabetes]=useState("")
+const [yesDiabetes,setYesDiabetes]=useState();
+const [noDiabetes,setNoDiabetes]=useState(false);
+const [commentDiabety,setCommentDeabetes]=useState("")
+
+//Heart disease / heart attack
+const [heart ,setHeart] =useState("")
+const [yesHeart ,setYesHeart ]=useState();
+const [noHeart ,setNoHeart ]=useState(false);
+const [commentHeart ,setCommentHeart ]=useState("")
+
+//History 
+const [history  ,setHistory ] =useState("")
+const [yesHistory ,setYesHistory  ]=useState();
+const [noHistory  ,setNoHistory ]=useState(false);
+const [commentHistory  ,setCommentHistory  ]=useState("")
+
+//High Blood Pressure
+const [High   ,setHigh  ] =useState("")
+const [yesHigh  ,setYesHigh   ]=useState();
+const [noHigh  ,setNoHigh  ]=useState(false);
+const [commentHigh ,setCommentHigh   ]=useState("")
+
+//Lung disease (ie asthma, COPD, emphysema)
+const [Lung    ,setLung  ] =useState("")
+const [yesLung   ,setYesLung    ]=useState();
+const [noLung  ,setNoLung   ]=useState(false);
+const [commentLung,setCommentLung]=useState("")
+
+//Seizures
+const [SeizuresMental ,setSeizuresMental ] =useState("")
+const [yesSeizures   ,setYesSeizures   ]=useState();
+const [noSeizures ,setNoSeizures  ]=useState(false);
+const [commentSeizures,setCommentSeizures]=useState("")
+
+//Cancer
+const [Cancer    ,setCancer ] =useState("")
+const [yesCancer   ,setYesCancer   ]=useState();
+const [noCancer ,setNoCancer  ]=useState(false);
+const [commentCancer,setCommentCancer]=useState("")
+
+// Liver/kidney disease
+const [Liver    ,setLiver] =useState("")
+const [yesLiver   ,setYesLiver  ]=useState();
+const [noLiver ,setNoLiver ]=useState(false);
+const [commentLiver,setCommentLiver]=useState("")
+
+//Thyroid disorder
+const [Thyroid     ,setThyroid ] =useState("")
+const [yesThyroid    ,setYesThyroid   ]=useState();
+const [noThyroid ,setNoThyroid  ]=useState(false);
+
+
+// History of head trauma/traumatic brain injury
+const [brainInjury    ,setBrainInjury] =useState("")
+const [yesbrainInjury   ,setYesBrainInjury  ]=useState();
+const [nobrainInjury ,setNoBrainInjury]=useState(false);
+const [commentbrainInjury,setbrainInjury]=useState("")
+
+//Chronic painChronic pain
+const [Chronic     ,setChronic ] =useState("")
+const [yesChronic   ,setYesChronic  ]=useState();
+const [noChronic ,setNoChronic ]=useState(false);
+// const [commentbrainInjury,setbrainInjury]=useState("")
+
+const [medicalConditions, setMedicalConditions] = useState([]);
 
   // miss the value between the 79 to 99
   const [
@@ -246,98 +306,6 @@ const InitialAssessment = () => {
   const [sentencingDates, setSentencingDates] = useState(false);
   const [needsLegalAid, setNeedsLegalAid] = useState(false);
   const [incarcerated, setIncarcerated] = useState(false);
-
-  // const handleSelectChangeLegalHistory = (event) => {
-  //   const value = event.target.value;
-  //   setSelectedValue(value);
-
-  //   // Handle additional logic based on selected value
-  //   switch (value) {
-  //     case "Arrested for DUI":
-  //       setArrestedForDUI(true);
-  //       // Additional logic for DUI
-  //       break;
-  //     case "Arrested for assault":
-  //       setArrestedForAssault(true);
-  //       // Additional logic for assault
-  //       break;
-  //     case "Arrested for bad checks":
-  //       setArrestedForBadChecks(true);
-  //       // Additional logic for bad checks
-  //       break;
-  //     case "Arrested for shop lifting":
-  //       setArrestedForShoplifting(true);
-  //       // Additional logic for shop lifting
-  //       break;
-  //     case "Arrested for attempted murder":
-  //       setArrestedForAttemptedMurder(true);
-  //       // Additional logic for attempted murder
-  //       break;
-  //     case "Arrested for drug":
-  //       setArrestedForDrug(true);
-  //       // Additional logic for drug-related arrest
-  //       break;
-  //     case "Arrested for alcohol":
-  //       setArrestedForAlcohol(true);
-  //       // Additional logic for alcohol-related arrest
-  //       break;
-  //     case "Arrested for disorderly conduct":
-  //       setArrestedForDisorderlyConduct(true);
-  //       // Additional logic for disorderly conduct arrest
-  //       break;
-  //     case "Arrested for identity theft/ forgery":
-  //       setArrestedForIdentityTheft(true);
-  //       // Additional logic for identity theft/ forgery arrest
-  //       break;
-  //     case "Arrested for sex offense":
-  //       setArrestedForSexOffense(true);
-  //       // Additional logic for sex offense arrest
-  //       break;
-  //     case "Arrested for other":
-  //       setArrestedForOther(true);
-  //       // Additional logic for other arrest
-  //       break;
-  //     case "Probation/parole, custody":
-  //       setProbationParole(true);
-  //       // Additional logic for probation/parole/custody
-  //       break;
-  //     case "Pending litigation":
-  //       setPendingLitigation(true);
-  //       // Additional logic for pending litigation
-  //       break;
-  //     case "Sentencing dates":
-  //       setSentencingDates(true);
-  //       // Additional logic for sentencing dates
-  //       break;
-  //     case "Needs Legal Aid":
-  //       setNeedsLegalAid(true);
-  //       // Additional logic for needing legal aid
-  //       break;
-  //     case "Incarcerated":
-  //       setIncarcerated(true);
-  //       // Additional logic for being incarcerated
-  //       break;
-  //     default:
-  //       // Reset other state variables if needed
-  //       setArrestedForDUI(false);
-  //       setArrestedForAssault(false);
-  //       setArrestedForBadChecks(false);
-  //       setArrestedForShoplifting(false);
-  //       setArrestedForAttemptedMurder(false);
-  //       setArrestedForDrug(false);
-  //       setArrestedForAlcohol(false);
-  //       setArrestedForDisorderlyConduct(false);
-  //       setArrestedForIdentityTheft(false);
-  //       setArrestedForSexOffense(false);
-  //       setArrestedForOther(false);
-  //       setProbationParole(false);
-  //       setPendingLitigation(false);
-  //       setSentencingDates(false);
-  //       setNeedsLegalAid(false);
-  //       setIncarcerated(false);
-  //       break;
-  //   }
-  // };
 
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState([]);
@@ -531,152 +499,45 @@ const InitialAssessment = () => {
     useState();
 
   // Risk Factors (Nested Object)
-  const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState([]);
-  const [currentSuicidalIdeation, setCurrentSuicidalIdeation] = useState(false);
-  const [priorSuicideAttempt, setPriorSuicideAttempt] = useState(false);
-  const [accessToMeans, setAccessToMeans] = useState(false);
-  const [substanceAbuse, setSubstanceAbuse] = useState(false);
-  const [otherSelfAbusingBehavior, setOtherSelfAbusingBehavior] =
-    useState(false);
-  const [recentLossesLackOfSupport, setRecentLossesLackOfSupport] =
-    useState(false);
-  const [behaviorCues, setBehaviorCues] = useState(false);
-  const [symptomsOfPsychosis, setSymptomsOfPsychosis] = useState(false);
-  const [familyHistoryOfSuicide, setFamilyHistoryOfSuicide] = useState(false);
-  const [terminalPhysicalIllness, setTerminalPhysicalIllness] = useState(false);
-  const [currentStressors, setCurrentStressors] = useState(false);
-  const [chronicPain, setChronicPain] = useState(false);
-  const [riskFactors, setRiskFactors] = useState({});
+ // Risk Factors (Nested Object)
+ const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState([]);
+ const [riskYesNo,setRiskYesNo]=useState();
+ const [riskComment,setRiskComment]=useState("");
+ const [riskFactorArray,setRiskFactoeArray]=useState([])
 
-  // const handleSelectChangeRiskFactors = (event) => {
-  //   const value = event.target.value;
-  //   setSelectedValueRiskFactors(value);
+ const handleRiskFactor=()=>{
+   const newData={
+     selectedValueRiskFactors,
+     riskYesNo,
+     riskComment
+   }
+   setRiskFactoeArray((prev)=> [...prev,newData]);
+   setSelectedValueRiskFactors([]);
+   setRiskYesNo();
+   setRiskComment("");
+ }
+ const [riskFactors, setRiskFactors] = useState({});
 
-  //   // Handle additional logic based on selected value
-  //   switch (value) {
-  //     case "Current suicidal ideation":
-  //       setCurrentSuicidalIdeation(true);
-  //       // Additional logic for Current suicidal ideation
-  //       break;
-  //     case "Prior suicide attempt":
-  //       setPriorSuicideAttempt(true);
-  //       // Additional logic for Prior suicide attempt
-  //       break;
-  //     case "Access to means (i.e. weapon)":
-  //       setAccessToMeans(true);
-  //       // Additional logic for Access to means (i.e. weapon)
-  //       break;
-  //     case "Substance abuse":
-  //       setSubstanceAbuse(true);
-  //       // Additional logic for Substance abuse
-  //       break;
-  //     case "Other self-abusing behavior":
-  //       setOtherSelfAbusingBehavior(true);
-  //       // Additional logic for Other self-abusing behavior
-  //       break;
-  //     case "Recent losses/lack of support":
-  //       setRecentLossesLackOfSupport(true);
-  //       // Additional logic for Recent losses/lack of support
-  //       break;
-  //     case "Behavior cues":
-  //       setBehaviorCues(true);
-  //       // Additional logic for Behavior cues
-  //       break;
-  //     case "Symptoms of psychosis":
-  //       setSymptomsOfPsychosis(true);
-  //       // Additional logic for Symptoms of psychosis
-  //       break;
-  //     case "Family history of suicide":
-  //       setFamilyHistoryOfSuicide(true);
-  //       // Additional logic for Family history of suicide
-  //       break;
-  //     case "Terminal physical illness":
-  //       setTerminalPhysicalIllness(true);
-  //       // Additional logic for Terminal physical illness
-  //       break;
-  //     case "Current stressors (specify)":
-  //       setCurrentStressors(true);
-  //       // Additional logic for Current stressors (specify)
-  //       break;
-  //     case "Chronic pain":
-  //       setChronicPain(true);
-  //       // Additional logic for Chronic pain
-  //       break;
-  //     default:
-  //       // Reset other state variables if needed
-  //       setCurrentSuicidalIdeation(false);
-  //       setPriorSuicideAttempt(false);
-  //       setAccessToMeans(false);
-  //       setSubstanceAbuse(false);
-  //       setOtherSelfAbusingBehavior(false);
-  //       setRecentLossesLackOfSupport(false);
-  //       setBehaviorCues(false);
-  //       setSymptomsOfPsychosis(false);
-  //       setFamilyHistoryOfSuicide(false);
-  //       setTerminalPhysicalIllness(false);
-  //       setCurrentStressors(false);
-  //       setChronicPain(false);
-  //       break;
-  //   }
-  // };
-  // State variables for protectiveFactors
-  const [selectedValueProtectiveFactors, setSelectedValueProtectiveFactors] =
-    useState("");
-  const [supportsAvailable, setSupportsAvailable] = useState(false);
-  const [spiritualReligiousSupport, setSpiritualReligiousSupport] =
-    useState(false);
-  const [religiousCulturalProhibitions, setReligiousCulturalProhibitions] =
-    useState(false);
-  const [fearOfConsequences, setFearOfConsequences] = useState(false);
-  const [ableToBeEngagedInIntervention, setAbleToBeEngagedInIntervention] =
-    useState(false);
-  const [
-    willingToCommitToKeepingSelfSafe,
-    setWillingToCommitToKeepingSelfSafe,
-  ] = useState(false);
-  const [protectiveFactors, setProtectiveFactors] = useState({});
+ // State variables for protectiveFactors
+ const [selectedValueProtectiveFactors, setSelectedValueProtectiveFactors] =
+   useState([]);
+   const [protectiveYesNo,setProtectiveYesNo]=useState();
+ const [protectiveComment,setprotectiveComment]=useState("");
+ const [protectiveFactorsArray,setProtectiveFactorsArray]=useState([]);
 
-  const handleSelectChangeProtectiveFactors = (event) => {
-    const value = event.target.value;
-    setSelectedValueProtectiveFactors(value);
+ const handleProtectiveFactors=()=>{
+   const newData={
+     selectedValueProtectiveFactors,
+     protectiveYesNo,
+     protectiveComment
+   }
+   setProtectiveFactorsArray((prev)=> [...prev,newData]);
+   setSelectedValueProtectiveFactors([]);
+   setProtectiveYesNo();
+   setprotectiveComment("");
+ }
 
-    // Handle additional logic based on selected value
-    switch (value) {
-      case "Supports available (family friends)":
-        setSupportsAvailable(true);
-        // Additional logic for Supports available (family friends)
-        break;
-      case "Spiritual / religious support":
-        setSpiritualReligiousSupport(true);
-        // Additional logic for Spiritual / religious support
-        break;
-      case "Religious/cultural prohibitions":
-        setReligiousCulturalProhibitions(true);
-        // Additional logic for Religious/cultural prohibitions
-        break;
-      case "Fear of consequences":
-        setFearOfConsequences(true);
-        // Additional logic for Fear of consequences
-        break;
-      case "Able to be engaged in intervention":
-        setAbleToBeEngagedInIntervention(true);
-        // Additional logic for Able to be engaged in intervention
-        break;
-      case "Willing to commit to keeping self safe":
-        setWillingToCommitToKeepingSelfSafe(true);
-        // Additional logic for Willing to commit to keeping self safe
-        break;
-      default:
-        // Reset other state variables if needed
-        setSupportsAvailable(false);
-        setSpiritualReligiousSupport(false);
-        setReligiousCulturalProhibitions(false);
-        setFearOfConsequences(false);
-        setAbleToBeEngagedInIntervention(false);
-        setWillingToCommitToKeepingSelfSafe(false);
-        break;
-    }
-  };
+ const [protectiveFactors, setProtectiveFactors] = useState({});
 
   // State variable for riskLevel
   const [riskLevel, setRiskLevel] = useState("");
@@ -1298,7 +1159,7 @@ const InitialAssessment = () => {
         </p>
         <form
           onSubmit={handleSubmit}
-          style={{ marginTop: "100px" }}
+          style={{ marginTop: "8rem" }}
         >
           <h5>Section - 1</h5>
           <div className="form-section">
@@ -1515,7 +1376,7 @@ const InitialAssessment = () => {
                 onChange={(e) => setApprovedBy(e.target.value)}
               />
             </div>
-            <h2>Other Details</h2>
+            <h2 style={{marginTop:"1.5rem"}}>Other Details</h2>
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Reason for Admission to Services
@@ -1534,7 +1395,7 @@ const InitialAssessment = () => {
                 type="text"
                 value={residentGoals}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
                 onChange={(e) => setResidentGoals(e.target.value)}
@@ -1582,7 +1443,7 @@ const InitialAssessment = () => {
                 id="programlocation&address"
                 value={residentLimitations}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
                 onChange={(e) => setResidentLimitations(e.target.value)}
@@ -1596,32 +1457,32 @@ const InitialAssessment = () => {
                 id="programlocation&address"
                 value={currentBehavioralIssues}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
                 onChange={(e) => setCurrentBehavioralIssues(e.target.value)}
               />
             </div>
-            <label htmlFor="programlocation&address">
+            <label className="label-review">
               Identified Needs/targeted Behaviors Intervention(s) to Meet
               Objectives
             </label>
             <div className="safetyplandiv">
               <div className="form-field">
-                <label htmlFor="AHCCCS">Needs</label>
+                <label >Needs</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+                  
                   value={need}
                   placeholder="Enter Needs"
                   onChange={(e) => setNeed(e.target.value)}
                 />
               </div>
               <div className="form-field">
-                <label htmlFor="AHCCCS">Interventions</label>
+                <label >Interventions</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+                 
                   value={intervention}
                   placeholder="Enter Interventions"
                   onChange={(e) => setIntervention(e.target.value)}
@@ -1694,7 +1555,7 @@ const InitialAssessment = () => {
 
             <div class="checkbox-container1">
               <div class="checkoptions1" style={{marginTop:"1.2rem"}}>
-                <label >Agreement With Plan</label>
+                {/* <label >Agreement With Plan</label> */}
                 <div class="checkboxitem1">
                   <input
                     type="checkbox"
@@ -1742,6 +1603,7 @@ const InitialAssessment = () => {
                 }
               />
             </div>
+            <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1751,6 +1613,7 @@ const InitialAssessment = () => {
                 setResidentGuardianAgreementSignature(e.target.value)
               }
             />
+            </div>
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1793,6 +1656,7 @@ const InitialAssessment = () => {
                 onChange={(e) => setStaffAgreementName(e.target.value)}
               />
             </div>
+            <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1800,6 +1664,7 @@ const InitialAssessment = () => {
               value={staffAgreementSignature}
               onChange={(e) => setStaffAgreementSignature(e.target.value)}
             />
+            </div>
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1840,6 +1705,7 @@ const InitialAssessment = () => {
                 onChange={(e) => setBhpAgreementName(e.target.value)}
               />
             </div>
+            <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1847,6 +1713,7 @@ const InitialAssessment = () => {
               value={bhpAgreementSignature}
               onChange={(e) => setBhpAgreementSignature(e.target.value)}
             />
+            </div>
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1887,6 +1754,7 @@ const InitialAssessment = () => {
                 onChange={(e) => setOtherName(e.target.value)}
               />
             </div>
+            <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1894,6 +1762,7 @@ const InitialAssessment = () => {
               value={otherSignature}
               onChange={(e) => setOtherSignature(e.target.value)}
             />
+            </div>
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1945,7 +1814,7 @@ const InitialAssessment = () => {
                 onChange={(e) => setOtherDate(e.target.value)}
               />
             </div>
-            <h5>Section - 2</h5>
+            <h5 style={{marginTop:"1.5rem"}}>Section - 2</h5>
             <div className="formsheading">
               <p>
                 A. Currently prescribed medications are attached on a separate
@@ -1963,17 +1832,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    value
+                    id="diabetes"
+                    checked={diabetes===true}
+                    onChange={()=>setDiabetes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="diabetes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="diabetesno"
+                    checked={diabetes===false}
+                    onChange={()=>setDiabetes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="diabetesno">No</label>
                 </div>
               </div>
             </div>
@@ -1982,11 +1854,11 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value={medicalConditionsComments}
+                value={commentDiabety}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
-                onChange={(e) => setMedicalConditionsComments(e.target.value)}
+                onChange={(e) => setCommentDeabetes(e.target.value)}
                 required
               />
             </div>
@@ -1996,18 +1868,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesHeart"
+                    checked={yesHeart===true}
+                    onChange={()=>setYesHeart(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesHeart">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesHeartno"
+                    checked={yesHeart===false}
+                    onChange={()=>setYesHeart(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesHeartno">No</label>
                 </div>
               </div>
             </div>
@@ -2016,11 +1890,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentHeart}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentHeart(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2029,18 +1904,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesHistory"
+                    checked={yesHistory===true}
+                    onChange={()=>setYesHistory(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesHistory">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesHistoryno"
+                    checked={yesHistory===false}
+                    onChange={()=>setYesHistory(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesHistoryno">No</label>
                 </div>
               </div>
             </div>
@@ -2048,11 +1925,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentHistory}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentHistory(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2061,18 +1939,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesHigh"
+                    checked={yesHigh===true}
+                    onChange={()=>setYesHigh(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesHigh">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesHighno"
+                    checked={yesHigh===false}
+                    onChange={()=>setYesHigh(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesHighno">No</label>
                 </div>
               </div>
             </div>
@@ -2080,11 +1960,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentHigh}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentHigh(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2095,18 +1976,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesLung"
+                    checked={diabetes===true}
+                    onChange={()=>setYesLung(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesLung">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesLungno"
+                    checked={yesLung===false}
+                    onChange={()=>setYesLung(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesLungno">No</label>
                 </div>
               </div>
             </div>
@@ -2114,11 +1997,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentLung}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentLung(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2127,18 +2011,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="diabetes"
+                    checked={diabetes===true}
+                    onChange={()=>setDiabetes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="diabetes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesSeizuresno"
+                    checked={yesSeizures===false}
+                    onChange={()=>setYesSeizures(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesSeizuresno">No</label>
                 </div>
               </div>
             </div>
@@ -2146,11 +2032,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentSeizures}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentSeizures(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2159,18 +2046,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesCancer"
+                    checked={yesCancer===true}
+                    onChange={()=>setYesCancer(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesCancer">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesCancerno"
+                    checked={yesCancer===false}
+                    onChange={()=>setYesCancer(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesCancerno">No</label>
                 </div>
               </div>
             </div>
@@ -2178,11 +2067,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentCancer}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentCancer(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2191,18 +2081,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesLiver"
+                    checked={yesLiver===true}
+                    onChange={()=>setYesLiver(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesLiver">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesLiverno"
+                    checked={yesLiver===false}
+                    onChange={()=>setYesLiver(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesLiverno">No</label>
                 </div>
               </div>
             </div>
@@ -2210,11 +2102,12 @@ const InitialAssessment = () => {
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={commentLiver}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setCommentLiver(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2223,18 +2116,20 @@ const InitialAssessment = () => {
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesThyroid"
+                    checked={yesThyroid===true}
+                    onChange={()=>setYesThyroid(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesThyroid">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="setYesThyroidno"
+                    checked={setYesThyroid===false}
+                    onChange={()=>setYesThyroid(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="setYesThyroidno">No</label>
                 </div>
               </div>
             </div>
@@ -2254,9 +2149,9 @@ const InitialAssessment = () => {
                 options={thyroidOptions}
               />
             </div>
-            <div className="yeschechbox">
+            <div className="yeschechbox" style={{marginTop:"1.5rem"}}>
               <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of head trauma/traumatic brain</label>
-              <div className="checkbox654">
+              <div className="checkbox654" >
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
@@ -2814,7 +2709,7 @@ const InitialAssessment = () => {
               />
             </div>
             <div className="formsheading">
-              <h6>
+              <h6 style={{marginTop:"2rem"}}>
                 Mental Health Treatment History (in Resident hospitalization,
                 partial hospitalization, out Resident, etc):
               </h6>
@@ -2869,7 +2764,7 @@ const InitialAssessment = () => {
             </div>
 
             <div style={{ display: "flex", gap: "10px" }}>
-              <div className="yeschechbox235">
+              <div className="yeschechbox235" style={{marginTop:"1.5rem"}}>
                 <label htmlFor="">Substance Abuse history:</label>
 
                 <div
@@ -2884,10 +2779,11 @@ const InitialAssessment = () => {
                     }
                   />
                 </div>
+                
               </div>
 
-              <div className="yeschechbox23">
-                <label htmlFor="">Denies </label>
+              <div className="yeschechbox23" style={{marginTop:"1.5rem"}}>
+                <label htmlFor="" >Denies: </label>
                 <div
                   style={{ display: "flex", gap: "10px", alignItems: "center" }}
                 >
@@ -4319,7 +4215,7 @@ const InitialAssessment = () => {
                 Are you currently thinking about harming yourself or committing
                 suicide?
               </label>
-              <div className="riskAndSafityAligment">
+              <div className="riskAndSafityAligment" style={{paddingLeft:"15px"}}>
               <div className="checkBox-aligment">
                 <input
                   type="checkbox"
@@ -4340,6 +4236,8 @@ const InitialAssessment = () => {
               </div>
               </div>
             </div>
+
+
             <div className="yeschechbox1">
               <label htmlFor="">Ideation</label>
               {/* <input
@@ -4375,7 +4273,7 @@ const InitialAssessment = () => {
                 />
                 <span>Constant</span>
               </div>
-              <div>
+              <div style={{marginLeft:"10%"}}>
                 <input
                   type="checkbox"
                   // checked={bathingShoweringNeedAssist===false}
@@ -4397,7 +4295,7 @@ const InitialAssessment = () => {
                 <span>Urgency:</span>
               </div>
               <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
               >
                 <input
                   type="checkbox"
@@ -4408,7 +4306,7 @@ const InitialAssessment = () => {
                 <label htmlFor="suicidalIdeationUrgency">Yes</label>
               </div>
               <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
               >
                 <input
                   type="checkbox"
@@ -4419,10 +4317,12 @@ const InitialAssessment = () => {
                 <label htmlFor="suicidalIdeationUrgencyno">NO</label>
               </div>
             </div>
-            <div className="yeschechbox1">
+
+
+            <div className="yeschechbox1" style={{marginLeft:"3rem"}}>
               <label>Severity:</label>
               <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
               >
                 <input
                   type="checkbox"
@@ -4433,7 +4333,7 @@ const InitialAssessment = () => {
                 <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
               </div>
               <div
-                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
               >
                 <input
                   type="checkbox"
@@ -4479,8 +4379,7 @@ const InitialAssessment = () => {
               </div>
             </div>
 
-
-
+              
             <div className="formsheading">
               <h6>Risk Factors:</h6>
             </div>
@@ -4494,27 +4393,75 @@ const InitialAssessment = () => {
               options={selectedValueRiskFactorsOption}
               onChange={selectedValueRiskFactorsHandler}/>
             </div>
-            {/* <div className="yeschechbox">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+            <div className="yeschechbox">
+              <div className="safetyRiskFactor">
+              <div className="safetyRiskFactor-child">
+                <input type="checkbox" id="riskYesNo" checked={riskYesNo===true} onChange={()=>setRiskYesNo(true)} />
+                <label htmlFor="riskYesNo">Yes</label>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <div className="safetyRiskFactor-child">
+                <input type="checkbox" id="riskYesNono" checked={riskYesNo===false} onChange={()=>setRiskYesNo(false)}/>
+                <label htmlFor="riskYesNono">No</label>
+              </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={riskComment}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
-                required
+                
+                onChange={(e)=>setRiskComment(e.target.value)}
               />
-            </div> */}
+            </div>
+
+            <div className="form-actions">
+              <button
+                type="button"
+                className="safetybutton"
+                onClick={handleRiskFactor}
+              >
+                Add
+              </button>
+            </div>
+
+            
+            <div className="needs-interventions-container">
+  <div className="needs-interventions-column3">
+    {riskFactorArray.length > 0 && (
+      <table>
+        <thead>
+          <tr>
+            <th>Select risk factors that apply</th>
+            <th>Yes</th>
+            <th>No</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          {riskFactorArray?.map((i, index) => (
+            <tr key={index}>
+              <td>
+                <ol>
+                  {i?.selectedValueRiskFactors?.map((item) => (
+                    <li key={item?.value}>{item?.value}</li>
+                  ))}
+                </ol>
+              </td>
+              <td>{`${index + 1}. ${i.riskYesNo === true ? "True" : "False"}`} </td>
+              <td>{`${index + 1}. ${i.riskYesNo === true ? "False" : "True"}`} </td>
+              <td>{`${index + 1}. ${i.riskComment}`} </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+</div>
+
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Protective factors that apply:
@@ -4527,27 +4474,76 @@ const InitialAssessment = () => {
               />
            
             </div>
-            {/* <div className="yeschechbox">
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+            <div className="yeschechbox">
+            <div className="safetyRiskFactor">
+              <div className="safetyRiskFactor-child">
+              <input type="checkbox" id="protectiveYesNo" checked={protectiveYesNo===true} onChange={()=>setProtectiveYesNo(true)} />
+                <label htmlFor="protectiveYesNo">Yes</label>
               </div>
-              <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <div className="safetyRiskFactor-child">
+              <input type="checkbox" id="protectiveYesNono" checked={protectiveYesNo===false} onChange={()=>setProtectiveYesNo(false)} />
+                <label htmlFor="protectiveYesNono">No</label>
+              </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={protectiveComment}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
-                required
+                
+                onChange={(e)=>setprotectiveComment(e.target.value)}
               />
-            </div> */}
+            </div>
+
+            <div className="form-actions">
+              <button
+                type="button"
+                className="safetybutton"
+                onClick={handleProtectiveFactors}
+              >
+                Add
+              </button>
+            </div>
+
+            <div className="needs-interventions-container">
+  <div className="needs-interventions-column3">
+    {protectiveFactorsArray.length > 0 && (
+      <table>
+        <thead>
+          <tr>
+            <th>Protective factors that apply</th>
+            <th>Yes</th>
+            <th>No</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          {protectiveFactorsArray?.map((i, index) => (
+            <tr key={index}>
+              <td>
+                <ol>
+                  {i?.selectedValueProtectiveFactors?.map((item) => (
+                    <li key={item?.value}>{item?.value}</li>
+                  ))}
+                </ol>
+              </td>
+              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "True" : "False"}`} </td>
+              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "False" : "True"}`} </td>
+              <td>{`${index + 1}. ${i.protectiveComment}`} </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+</div>
+
+
+           
             <div className="formsheading">
               <p>
                 Considering the responses to the above risk factors in

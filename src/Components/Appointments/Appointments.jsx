@@ -19,6 +19,10 @@ const Appointments = () => {
   const [medication,setMedication]=useState("")
   const [script,setScript]=useState("")
 
+  //view panel
+  const [view,setView]=useState(false);
+  const [view1,setView1]=useState(false);
+
   // useEffect(()=>{
   //   medication_get(setMedication);
   // },[patientId])
@@ -45,34 +49,58 @@ const Appointments = () => {
     <div className="appointmentcontainer">
       <div className="appointmentcontent">
         <p>Upcoming Appointments</p>
-        <p>VIEW ALL</p>
+        <p onClick={()=>setView(!view)}>VIEW ALL</p>
       </div>
       <div className="appointmentCard">
-        {appoinmentUpcoming?.data?.map((appointment, index) => (
-          <AppointmentsCard
+  {
+    view ? 
+      appoinmentUpcoming?.data?.map((appointment, index) => (
+        <AppointmentsCard
           key={index}  
-          imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
+          imageUrl={appointment?.adminId?.profilePic ? appointment?.adminId?.profilePic : nurse1}
           date={new Date(appointment?.date).toLocaleDateString()}
           slot={appointment?.time}
           location={appointment?.adminId?.address}
-          />
-        ))}
-      </div>
+        />
+      )) :
+      appoinmentUpcoming?.data?.slice(0, 4)?.map((appointment, index) => (
+        <AppointmentsCard
+          key={index}  
+          imageUrl={appointment?.adminId?.profilePic ? appointment?.adminId?.profilePic : nurse1}
+          date={new Date(appointment?.date).toLocaleDateString()}
+          slot={appointment?.time}
+          location={appointment?.adminId?.address}
+        />
+      ))
+  }
+</div>
       <div className="appointmentcontent">
         <p>Ongoing Medications</p>
-        <p>VIEW ALL</p>
+        <p onClick={()=>setView1(!view1)}>VIEW ALL</p>
       </div>
       <div className="appointmentCard">
-        {medication?.data?.map((appointment, index) => (
-          <MedicationsCard
-            key={index}
-            name={appointment?.name}
-            imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
-            dose={appointment?.timeStatus?.[0]?.time}
-            startfrom={new Date(appointment?.date).toLocaleDateString()}
-            duration={appointment?.duration}
-          />
-        ))}
+        {
+          view1 ?  medication?.data?.map((appointment, index) => (
+            <MedicationsCard
+              key={index}
+              name={appointment?.name}
+              imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
+              dose={appointment?.timeStatus?.[0]?.time}
+              startfrom={new Date(appointment?.date).toLocaleDateString()}
+              duration={appointment?.duration}
+            />
+          )): medication?.data?.slice(0,4)?.map((appointment, index) => (
+            <MedicationsCard
+              key={index}
+              name={appointment?.name}
+              imageUrl={appointment?.adminId?.profilePic?appointment?.adminId?.profilePic:nurse1}
+              dose={appointment?.timeStatus?.[0]?.time}
+              startfrom={new Date(appointment?.date).toLocaleDateString()}
+              duration={appointment?.duration}
+            />
+          ))
+        }
+
       </div>
       <div className="appointmentcontent">
         <p>View your script</p>

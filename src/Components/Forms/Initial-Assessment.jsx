@@ -10,6 +10,7 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { user_detail, initialAssestment_form } from "../../Api_Collection/Api";
 import Select from "react-select";
+import SingInModel from "../Modal/SingInModel";
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
@@ -153,19 +154,80 @@ const [commentLiver,setCommentLiver]=useState("")
 const [Thyroid     ,setThyroid ] =useState("")
 const [yesThyroid    ,setYesThyroid   ]=useState();
 const [noThyroid ,setNoThyroid  ]=useState(false);
-
+//dropdown
 
 // History of head trauma/traumatic brain injury
-const [brainInjury    ,setBrainInjury] =useState("")
-const [yesbrainInjury   ,setYesBrainInjury  ]=useState();
-const [nobrainInjury ,setNoBrainInjury]=useState(false);
-const [commentbrainInjury,setbrainInjury]=useState("")
+const [brain    ,setBrain] =useState("")
+const [yesbrain   ,setYesBrain ]=useState();
+const [nobrain,setNoBrain]=useState(false);
+const [commentbrain,setbrain]=useState("")
+
+// injury
+// const [injury,setInjury] =useState("")
+const [yesInjury ,setYesInjury ]=useState();
+const [noInjury ,setNoInjury]=useState(false);
+const [commentInjury,setCommentInjury]=useState("")
 
 //Chronic painChronic pain
 const [Chronic     ,setChronic ] =useState("")
 const [yesChronic   ,setYesChronic  ]=useState();
 const [noChronic ,setNoChronic ]=useState(false);
-// const [commentbrainInjury,setbrainInjury]=useState("")
+
+// Allergies (food, environment, medications)
+const [AllergiesYes,setAllergiesYes]=useState();
+const [AllergiesComment,setAllergiesComment]=useState("")
+
+// Surgeries
+const [SurgeriesYes,setSurgeriessYes]=useState();
+const [SurgeriesComment,setSurgeriesComment]=useState("")
+
+//Number of pregnancies / births
+const [pregnanciesYes,setPregnanciesYes]=useState();
+const [pregnanciesComment,setPregnanciesComment]=useState("");
+
+// Substance use disorder (please specify)
+const [SubstanceYes ,setSubstanceYes ]=useState();
+const [SubstanceComment,setSubstanceComment]=useState("")
+
+// Depression 
+const [DepressionYes,setDepressionYes]=useState();
+const [DepressionComment,setDepressionComment]=useState("")
+
+// Anxiety/panic attacks
+const [AnxietyYes,setAnxietyYes]=useState()
+const [AnxietyComment,setAnxietyComment]=useState("");
+
+// Insomnia 
+const [InsomniaYes,setInsomniaYes]=useState()
+const [InsomniaComment,setInsomniaComment]=useState("")
+
+// Bipolar disorder
+const [BipolarYes,setBipolarYes]=useState();
+const [BipolarComment,setBipolarComment]=useState("");
+
+// Schizophrenia 
+const [SchizophreniaYes,setSchizophreniaYes]=useState()
+const [SchizophreniaComment,setSchizophreniaComment]=useState("")
+
+// Obsessive compulsive disorder
+const [ObsessiveYes,setObsessiveYes]=useState()
+const [ObsessiveComment,setObsessiveComment]=useState("");
+
+// Personality disorder (please specify
+const [PersonalityYes ,setPersonalityYes]=useState();
+const [PersonalityComment,setPersonalityComment]=useState("")
+
+// Phobias 
+const [PhobiasYes,setPhobiasYes]=useState()
+const [PhobiasComment,setPhobiasComment]=useState("")
+
+// Any other health conditions
+const [healthConditionsYes,setHealthConditionsYes]=useState()
+const [healthConditionsYesComment,sethealthConditionsYesComment]=useState("")
+
+// Infection or Diseases
+const [InfectionYes,setInfectionYes]=useState();
+// drop down c
 
 const [medicalConditions, setMedicalConditions] = useState([]);
 
@@ -1313,7 +1375,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 id="programlocation&address"
                 type="text"
                 value={programLocation}
-                rows={5}
+                rows={2}
                 cols={130}
                 placeholder="Enter Full Address"
                 required
@@ -1468,7 +1530,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               Objectives
             </label>
             <div className="safetyplandiv">
-              <div className="form-field">
+              <div className="form-field" style={{marginBottom:"10px"}}>
                 <label >Needs</label>
                 <input
                   type="text"
@@ -2126,7 +2188,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   <input
                     type="checkbox"
                     id="setYesThyroidno"
-                    checked={setYesThyroid===false}
+                    checked={yesThyroid===false}
                     onChange={()=>setYesThyroid(false)}
                   />
                   <label htmlFor="setYesThyroidno">No</label>
@@ -2151,32 +2213,34 @@ const [medicalConditions, setMedicalConditions] = useState([]);
             </div>
             <div className="yeschechbox" style={{marginTop:"1.5rem"}}>
               <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of head trauma/traumatic brain</label>
-              <div className="checkbox654" >
+              <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesbrain"
+                    checked={yesbrain===true}
+                    onChange={()=>setYesBrain(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesbrain">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
-                    type="checkbox"
-                    name=""
-                    id=""
+                    type="yesbrainno"
+                    id="setYesThyroidno"
+                    checked={yesbrain===false}
+                    onChange={()=>setYesBrain(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesbrainno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={commentbrain}
+                onChange={(e)=>setbrain(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2187,28 +2251,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesInjury"
+                    checked={yesInjury===true}
+                    onChange={()=>setYesInjury(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="yesInjury">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="yesInjuryno"
+                    checked={yesInjury===false}
+                    onChange={()=>setYesInjury(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="yesInjuryno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={commentInjury}
+                onChange={(e)=>setCommentInjury(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2219,28 +2285,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="Chronic"
+                    checked={yesChronic===true}
+                    onChange={()=>setYesChronic(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="Chronic">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="Chronicno"
+                    checked={yesChronic===false}
+                    onChange={()=>setYesChronic(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="Chronicno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+               value={noChronic}
+               onChange={(e)=>setNoChronic(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2253,28 +2321,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="AllergiesYes"
+                    checked={AllergiesYes===true}
+                    onChange={()=>setAllergiesYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="AllergiesYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="AllergiesYesno"
+                    checked={AllergiesYes===false}
+                    onChange={()=>setAllergiesYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="AllergiesYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={AllergiesComment}
+                onChange={(e)=>setAllergiesComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2285,28 +2355,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="SurgeriesYes"
+                    checked={SurgeriesYes===true}
+                    onChange={()=>setSurgeriessYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="SurgeriesYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="SurgeriesYesno"
+                    checked={SurgeriesYes===false}
+                    onChange={()=>setSurgeriessYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="SurgeriesYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={SurgeriesComment}
+                onChange={(e)=>setSurgeriesComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2317,28 +2389,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="pregnanciesYes"
+                    checked={pregnanciesYes===true}
+                    onChange={()=>setPregnanciesYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="pregnanciesYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="pregnanciesYesno"
+                    checked={pregnanciesYes===false}
+                    onChange={()=>setPregnanciesYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="pregnanciesYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={pregnanciesComment}
+                onChange={(e)=>setPregnanciesComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2349,28 +2423,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="SubstanceYes"
+                    checked={SubstanceYes===true}
+                    onChange={()=>setSubstanceYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="SubstanceYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="SubstanceYesno"
+                    checked={SubstanceYes===false}
+                    onChange={()=>setSubstanceYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="SubstanceYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={SubstanceComment}
+                onChange={(e)=>setSubstanceComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2381,28 +2457,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="DepressionYes"
+                    checked={DepressionYes===true}
+                    onChange={()=>setDepressionYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="DepressionYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="DepressionYesno"
+                    checked={DepressionYes===false}
+                    onChange={()=>setDepressionYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="DepressionYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={DepressionComment}
+                onChange={(e)=>setDepressionComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2413,28 +2491,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="AnxietyYes"
+                    checked={AnxietyYes===true}
+                    onChange={()=>setAnxietyYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="AnxietyYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="AnxietyYesno"
+                    checked={AnxietyYes===false}
+                    onChange={()=>setAnxietyYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="AnxietyYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+              value={AnxietyComment}
+              onChange={(e)=>setAnxietyComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2445,28 +2525,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="InsomniaYes"
+                    checked={InsomniaYes===true}
+                    onChange={()=>setInsomniaYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="InsomniaYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="InsomniaYesno"
+                    checked={InsomniaYes===false}
+                    onChange={()=>setInsomniaYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="InsomniaYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={healthConditionsYesComment}
+                onChange={(e)=>sethealthConditionsYesComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2477,28 +2559,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="BipolarYes"
+                    checked={BipolarYes===true}
+                    onChange={()=>setBipolarYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="BipolarYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="BipolarYesno"
+                    checked={BipolarYes===false}
+                    onChange={()=>setBipolarYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="BipolarYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+               value={BipolarComment}
+               onChange={(e)=>setBipolarComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2509,28 +2593,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="SchizophreniaYes"
+                    checked={SchizophreniaYes===true}
+                    onChange={()=>setSchizophreniaYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="SchizophreniaYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="SchizophreniaYesno"
+                    checked={SchizophreniaYes===false}
+                    onChange={()=>setSchizophreniaYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="SchizophreniaYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+              <label htmlFor="" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={SchizophreniaComment}
+                onChange={(e)=>setSchizophreniaComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2541,28 +2627,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="ObsessiveYes"
+                    checked={ObsessiveYes===true}
+                    onChange={()=>setObsessiveYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="ObsessiveYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="ObsessiveYesno"
+                    checked={ObsessiveYes===false}
+                    onChange={()=>setObsessiveYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="ObsessiveYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={ObsessiveComment}
+                onChange={(e)=>setObsessiveComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2573,28 +2661,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="PersonalityYes"
+                    checked={PersonalityYes===true}
+                    onChange={()=>setPersonalityYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="PersonalityYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="PersonalityYesno"
+                    checked={PersonalityYes===false}
+                    onChange={()=>setPersonalityYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="PersonalityYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={PersonalityComment}
+                onChange={(e)=>setPersonalityComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2605,28 +2695,30 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="PhobiasYes"
+                    checked={PhobiasYes===true}
+                    onChange={()=>setPhobiasYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="PhobiasYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="PhobiasYesno"
+                    checked={PhobiasYes===false}
+                    onChange={()=>setPhobiasYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="PhobiasYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                value={PhobiasComment}
+                onChange={(e)=>setPhobiasComment(e.target.value)}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
               />
@@ -2637,30 +2729,32 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="healthConditionsYes"
+                    checked={healthConditionsYes===true}
+                    onChange={()=>setHealthConditionsYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="healthConditionsYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="healthConditionsYesno"
+                    checked={healthConditionsYes===false}
+                    onChange={()=>setHealthConditionsYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="healthConditionsYesno">No</label>
                 </div>
               </div>
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-              <textarea
-                id="programlocation&address"
-                value=""
+              <textare
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                value={healthConditionsYesComment}
+                onChange={(e)=>sethealthConditionsYesComment(e.target.value)}
               />
             </div>
             <div className="yeschechbox">
@@ -2669,18 +2763,20 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="InfectionYes"
+                    checked={InfectionYes===true}
+                    onChange={()=>setInfectionYes(true)}
                   />
-                  <span>Yes</span>
+                  <label htmlFor="InfectionYes">Yes</label>
                 </div>
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
-                    name=""
-                    id=""
+                    id="InfectionYesno"
+                    checked={InfectionYes===false}
+                    onChange={()=>setInfectionYes(false)}
                   />
-                  <span>No</span>
+                  <label htmlFor="InfectionYesno">No</label>
                 </div>
               </div>
             </div>
@@ -3992,7 +4088,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 id="programlocation&address"
                 value={workHistory}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
                 onChange={(e)=>setWorkHistory(e.target.value)}
@@ -4121,7 +4217,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 id="programlocation&address"
                 value={bathingShoweringComments}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
                 onChange={(e)=>setBathingShoweringComments(e.target.value)}
@@ -4182,7 +4278,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 id="programlocation&address"
                 value={hobbiesLeisureActivities}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
                 onChange={(e) => setHobbiesLeisureActivities(e.target.value)}
@@ -4968,7 +5064,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   id="programlocation&address"
                   value={otherStressors}
                   placeholder="Enter text"
-                  rows={5}
+                  rows={2}
                   cols={82}
                   required
                   onChange={(e) => setOtherStressors(e.target.value)}
@@ -5129,7 +5225,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 id="programlocation&address"
                 value={additionalNotes}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 onChange={(e) => setAdditionalNotes(e.target.value)}
                 required
@@ -5161,7 +5257,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 type="text"
                 required
                 value={staffTitle}
-                onChange={(e) => setStaffTitle(e.target.vaue)}
+                onChange={(e) => setStaffTitle(e.target.value)}
               />
             </div>
             {/* <div class="file-upload-box">

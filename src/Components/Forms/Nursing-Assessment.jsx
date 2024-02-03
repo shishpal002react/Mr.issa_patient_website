@@ -13,10 +13,13 @@ import body8 from "../../img/body8.png";
 import Select from "react-select";
 import { user_detail, Nurssing_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
+import Draftinmodel from "../Modal/Draftinmodel";
 
 const NursingAssessment = () => {
   const [showSingInOne, setShowSingInOne] = useState(false);
   const [showSingInTwo, setShowSingInTwo] = useState(false);
+  const [draftModel,setDraftModel]=useState(false)
+
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState("");
   const [userId, setUserId] = useState("");
@@ -2725,7 +2728,7 @@ const NursingAssessment = () => {
           <div class="file-upload-box">
               
               <div style={{ display: "block" }}>
-                <button className="upload-button1" type="button" onClick={() => setShowSingInOne(true)}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 <button className="upload-button" type="button" onClick={() => setShowSingInOne(true)}>
@@ -2749,7 +2752,7 @@ const NursingAssessment = () => {
           <div class="file-upload-box">
               
               <div style={{ display: "block" }}>
-                <button className="upload-button1" type="button" onClick={() => setShowSingInTwo(true)}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 <button className="upload-button" type="button" onClick={() => setShowSingInTwo(true)}>
@@ -2768,6 +2771,9 @@ const NursingAssessment = () => {
           </div>
         </form>
       </div>
+      {
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
       {showSingInOne && (
         <SingInModel onClose={() => setShowSingInOne(false)}>
           <div className="input_singin_button">

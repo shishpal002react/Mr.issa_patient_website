@@ -11,6 +11,7 @@ import {
   appointment_Upcoming,
   appointment_get,medication_get,user_detail,getAllPatientMedication
 } from "../../Api_Collection/Api";
+import Vitals from "../Vitals/Vitals";
 
 const Appointments = () => {
   const [appoinmentUpcoming, setAppoinmentUpcoming] = useState("");
@@ -47,6 +48,10 @@ const Appointments = () => {
 
   return (
     <div className="appointmentcontainer">
+    <div >
+ 
+      <Vitals/></div>
+
       <div className="appointmentcontent">
         <p>Upcoming Appointments</p>
         <p onClick={()=>setView(!view)}>VIEW ALL</p>
@@ -74,6 +79,7 @@ const Appointments = () => {
       ))
   }
 </div>
+
       <div className="appointmentcontent">
         <p>Ongoing Medications</p>
         <p onClick={()=>setView1(!view1)}>VIEW ALL</p>

@@ -10,10 +10,24 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { user_detail, initialAssestment_form } from "../../Api_Collection/Api";
 import Select from "react-select";
-import SingInModel from "../Modal/SingInModel";
+import SingInUpdateModel from "../Modal/SingInUpdateModel";
+import Draftinmodel from "../Modal/Draftinmodel";
+
+
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
+
+  //singin model
+  const [draftModel,setDraftModel]=useState(false)
+  //  all model
+  const [signInModel1,setSigInModel1]=useState(false);
+  const [signInModel2,setSigInModel2]=useState(false);
+  const [signInModel3,setSigInModel3]=useState(false);
+  const [signInModel4,setSigInModel4]=useState(false);
+  const [signInModel5,setSigInModel5]=useState(false);
+  const [signInModel6,setSigInModel6]=useState(false);
+  const [signInModel7,setSigInModel7]=useState(false);
 
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState("");
@@ -300,24 +314,183 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [Seizures, setSeizures] = useState(false);
   const [LossofMuscleCoordination, setLossofMuscleCoordination] =
     useState(false);
+
   const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
 
   // Mental Status Exam (Nested Object)
   //peding more satte (__ to 283)
+    //mental state value
 
- // "AbilityToConcentration": 
-    const [intact,setIntact]=useState(false);
-    const [otherintact,setOtherIntact]=useState("")
+    //apparentAge
+    const [consistent, setConsistent] = useState(true);
+  const [younger, setYounger] = useState(false);
+  const [older, setOlder] = useState(false);
 
+  //height
+  const [averageHeight, setAverageHeight] = useState(true);
+  const [short, setShort] = useState(false);
+  const [tall, setTall] = useState(false);
 
-  const [mentalStatusExam, setMentalStatusExam] = useState({
-    apparentAge: {
-      consistent: true,
-      younger: false,
-      older: false,
-    },
-  });
+  //Weight
+  const [averageWeight, setAverageWeight] = useState(true);
+  const [obese, setObese] = useState(false);
+  const [overweight, setOverweight] = useState(false);
+  const [thin, setThin] = useState(false);
+  const [emaciated, setEmaciated] = useState(false);
 
+  //attire
+  const [casual, setCasual] = useState(false);
+  const [neat, setNeat] = useState(false);
+  const [tattered, setTattered] = useState(false);
+  const [dirty, setDirty] = useState(false);
+
+  //Grooming
+  const [wellGroomed, setWellGroomed] = useState(false);
+  const [adequateGrooming, setAdequateGrooming] = useState(false);
+  const [unkempt, setUnkempt] = useState(false);
+  const [disheveled, setDisheveled] = useState(false);
+
+    // <h6>Demeanor / Interaction</h6>
+  //Mood
+  const [euthymic, setEuthymic] = useState(false);
+  const [irritable, setIrritable] = useState(false);
+  const [elevated, setElevated] = useState(false);
+  const [depressedMood, setDepressedMood] = useState(false);
+  const [anxious, setAnxious] = useState(false);
+
+  //Affect
+  const [normalRange, setNormalRange] = useState(false);
+  const [depressedAffect, setDepressedAffect] = useState(false);
+  const [labile, setLabile] = useState(false);
+  const [constricted, setConstricted] = useState(false);
+  const [other, setOther] = useState(false);
+  const [otherText,setOtherText]=useState("")
+
+  //EyeContact
+  const [appropriate, setAppropriate] = useState(false);
+  const [minimal, setMinimal] = useState(false);
+  const [poor, setPoor] = useState(false);
+  const [adequateEyeContact, setAdequateEyeContact] = useState(false);
+
+  //Cooperation
+  const [appropriateCooperation, setAppropriateCooperation] = useState(false);
+  const [hostile, setHostile] = useState(false);
+  const [evasive, setEvasive] = useState(false);
+  const [defensive, setDefensive] = useState(false);
+  const [indifferent, setIndifferent] = useState(false);
+
+  //Speech section 3 
+
+  //Articulation
+  const [normalArticulation, setNormalArticulation] = useState(false);
+  const [unintelligible, setUnintelligible] = useState(false);
+  const [mumbled, setMumbled] = useState(false);
+  const [slurred, setSlurred] = useState(false);
+  const [stuttered, setStuttered] = useState(false);
+
+  //Tone 
+  const [normalTone, setNormalTone] = useState(false);
+  const [soft, setSoft] = useState(false);
+  const [loud, setLoud] = useState(false);
+  const [pressured, setPressured] = useState(false);
+
+  //Rate
+  const [normalRate, setNormalRate] = useState(false);
+  const [slow, setSlow] = useState(false);
+  const [fast, setFast] = useState(false);
+
+  //Quantity
+  const [normalQuantity, setNormalQuantity] = useState(false);
+  const [verbose, setVerbose] = useState(false);
+  const [mutism, setMutism] = useState(false);
+
+//responseLatency
+const [normalresponseLatency, setNormalresponseLatency] = useState(false);
+  const [delayed, setDelayed] = useState(false);
+  const [shortened, setShortened] = useState(false);
+
+// sesion 3 Cognition
+  // thoughtContent
+  const [unremarkablethoughtContent, setUnremarkablethoughtContent] = useState(false);
+  const [suspicious, setSuspicious] = useState(false);
+  const [negative, setNegative] = useState(false);
+  const [concrete, setConcrete] = useState(false);
+
+//thoughtProcesses
+const [logicalCoherent, setLogicalCoherent] = useState(false);
+  const [tangential, setTangential] = useState(false);
+  const [circumstantial, setCircumstantial] = useState(false);
+  const [vague, setVague] = useState(false);
+
+  //Delusions
+  const [noDelusions, setNoDelusions] = useState(false);
+  const [yesPersecutory, setYesPersecutory] = useState(false);
+  const [yesSomatic, setYesSomatic] = useState(false);
+  const [yesGrandiose, setYesGrandiose] = useState(false);
+  const [yesOtherDelusions, setYesOtherDelusions] = useState('');
+  const [yesOtherDelusionsText,setYesOtherDelusionsText]=useState("")
+//Hallucinations
+const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(false);
+  const [visualHallucinations, setVisualHallucinations] = useState(false);
+  const [auditoryHallucinations, setAuditoryHallucinations] = useState(false);
+  const [tactileHallucinations, setTactileHallucinations] = useState(false);
+  const [yesOtherHallucinations, setYesOtherHallucinations] = useState('');
+  const [yesOtherHallucinationsText,setYesOtherHallucinationsText]=useState("")
+// Motor activity
+  //Gait
+  const [normalGait, setNormalGait] = useState(false);
+  const [staggering, setStaggering] = useState(false);
+  const [shuffling, setShuffling] = useState(false);
+  const [slowGait, setSlowGait] = useState(false);
+  const [awkward, setAwkward] = useState(false);
+
+  //Posture
+  const [normalPosture, setNormalPosture] = useState(false);
+  const [relaxed, setRelaxed] = useState(false);
+  const [rigid, setRigid] = useState(false);
+  const [tense, setTense] = useState(false);
+  const [slouched, setSlouched] = useState(false);
+
+  //PsychomotorActivity
+  const [withinNormalLimits, setWithinNormalLimits] = useState(false);
+  const [calm, setCalm] = useState(false);
+  const [hyperactive, setHyperactive] = useState(false);
+  const [agitated, setAgitated] = useState(false);
+  const [hypoactive, setHypoactive] = useState(false);
+
+  //Mannerisms
+  const [none, setNone] = useState(false);
+  const [tics, setTics] = useState(false);
+  const [tremorsMannerisms, setTremorsMannerisms] = useState(false);
+  const [rocking, setRocking] = useState(false);
+  const [picking, setPicking] = useState(false);
+//Orientation to Person:
+  //orientation
+  const [person, setPerson] = useState();
+  const [place, setPlace] = useState();
+  const [time, setTime] = useState();
+  const [circumstances, setCircumstances] = useState();
+  
+  //Judgment
+  const [goodJudgment, setGoodJudgment] = useState(false);
+  const [fairJudgment, setFairJudgment] = useState(false);
+  const [poorJudgment, setPoorJudgment] = useState(false);
+
+  //Insight
+  const [goodInsight, setGoodInsight] = useState(false);
+  const [fairInsight, setFairInsight] = useState(false);
+  const [poorInsight, setPoorInsight] = useState(false);
+
+  //Memory
+  const [goodMemory, setGoodMemory] = useState(false);
+  const [fairMemory, setFairMemory] = useState(false);
+  const [poorMemory, setPoorMemory] = useState(false);
+
+ //AbilityToConcentration
+ const [intactAbilityToConcentration, setIntactAbilityToConcentration] = useState(false);
+  const [otherAbilityToConcentration, setOtherAbilityToConcentration] = useState('');
+
+  const [mentalStatusExam, setMentalStatusExam] = useState();
 
 
   // Significant Social Developmental History
@@ -349,25 +522,6 @@ const [medicalConditions, setMedicalConditions] = useState([]);
 
   // Arrested History (Multiple Fields)
   const [selectedValue, setSelectedValue] = useState([]);
-  const [arrestedForDUI, setArrestedForDUI] = useState(false);
-  const [arrestedForAssault, setArrestedForAssault] = useState(false);
-  const [arrestedForBadChecks, setArrestedForBadChecks] = useState(false);
-  const [arrestedForShoplifting, setArrestedForShoplifting] = useState(false);
-  const [arrestedForAttemptedMurder, setArrestedForAttemptedMurder] =
-    useState(false);
-  const [arrestedForDrug, setArrestedForDrug] = useState(false);
-  const [arrestedForAlcohol, setArrestedForAlcohol] = useState(false);
-  const [arrestedForDisorderlyConduct, setArrestedForDisorderlyConduct] =
-    useState(false);
-  const [arrestedForIdentityTheft, setArrestedForIdentityTheft] =
-    useState(false);
-  const [arrestedForSexOffense, setArrestedForSexOffense] = useState(false);
-  const [arrestedForOther, setArrestedForOther] = useState(false);
-  const [probationParole, setProbationParole] = useState(false);
-  const [pendingLitigation, setPendingLitigation] = useState(false);
-  const [sentencingDates, setSentencingDates] = useState(false);
-  const [needsLegalAid, setNeedsLegalAid] = useState(false);
-  const [incarcerated, setIncarcerated] = useState(false);
 
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState([]);
@@ -375,66 +529,6 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
     useState();
   const [bathingShoweringComments, setBathingShoweringComments] = useState("");
-
-  const [groomingHygieneGood, setGroomingHygieneGood] = useState("");
-  const [groomingHygieneFair, setGroomingHygieneFair] = useState("");
-  const [groomingHygieneNeedAssist, setGroomingHygieneNeedAssist] =
-    useState("");
-  const [groomingHygieneComments, setGroomingHygieneComments] = useState("");
-
-  const [mobilityGood, setMobilityGood] = useState("");
-  const [mobilityFair, setMobilityFair] = useState("");
-  const [mobilityNeedAssist, setMobilityNeedAssist] = useState("");
-  const [mobilityComments, setMobilityComments] = useState("");
-
-  // Instrumental Activities of Daily Living (IADLs)
-  const [houseworkGood, setHouseworkGood] = useState("Good");
-  const [houseworkFair, setHouseworkFair] = useState("Fair");
-  const [houseworkNeedAssist, setHouseworkNeedAssist] = useState("NeedAssist");
-  const [houseworkComments, setHouseworkComments] = useState("Comments");
-
-  const [shoppingGood, setShoppingGood] = useState("Good");
-  const [shoppingFair, setShoppingFair] = useState("Fair");
-  const [shoppingNeedAssist, setShoppingNeedAssist] = useState("NeedAssist");
-  const [shoppingComments, setShoppingComments] = useState("Comments");
-
-  const [managingMoneyBudgetGood, setManagingMoneyBudgetGood] =
-    useState("Good");
-  const [managingMoneyBudgetFair, setManagingMoneyBudgetFair] =
-    useState("Fair");
-  const [managingMoneyBudgetNeedAssist, setManagingMoneyBudgetNeedAssist] =
-    useState("NeedAssist");
-  const [managingMoneyBudgetComments, setManagingMoneyBudgetComments] =
-    useState("Comments");
-
-  const [takingMedicationsGood, setTakingMedicationsGood] = useState("Good");
-  const [takingMedicationsFair, setTakingMedicationsFair] = useState("Fair");
-  const [takingMedicationsNeedAssist, setTakingMedicationsNeedAssist] =
-    useState("NeedAssist");
-  const [takingMedicationsComments, setTakingMedicationsComments] =
-    useState("Comments");
-
-  const [preparingFoodGood, setPreparingFoodGood] = useState("Good");
-  const [preparingFoodFair, setPreparingFoodFair] = useState("Fair");
-  const [preparingFoodNeedAssist, setPreparingFoodNeedAssist] =
-    useState("NeedAssist");
-  const [preparingFoodComments, setPreparingFoodComments] =
-    useState("Comments");
-
-  const [eatingGood, setEatingGood] = useState("Good");
-  const [eatingFair, setEatingFair] = useState("Fair");
-  const [eatingNeedAssist, setEatingNeedAssist] = useState("NeedAssist");
-  const [eatingComments, setEatingComments] = useState("Comments");
-
-  const [toiletingGood, setToiletingGood] = useState("Good");
-  const [toiletingFair, setToiletingFair] = useState("Fair");
-  const [toiletingNeedAssist, setToiletingNeedAssist] = useState("NeedAssist");
-  const [toiletingComments, setToiletingComments] = useState("Comments");
-
-  const [otherGood, setOtherGood] = useState("Good");
-  const [otherFair, setOtherFair] = useState("Fair");
-  const [otherNeedAssist, setOtherNeedAssist] = useState("NeedAssist");
-  const [otherComments, setOtherComments] = useState("Comments");
 
   const [triggers, setTriggers] = useState("");
   const [fallRisk, setFallRisk] = useState("");
@@ -444,113 +538,12 @@ const [medicalConditions, setMedicalConditions] = useState([]);
 
   // Medical Equipment
   const [selectedValueMedical, setSelectedValueMedical] = useState([]);
-  const [medicalEquipmentWheelchair, setMedicalEquipmentWheelchair] =
-    useState(false);
-  const [medicalEquipmentOxygenTank, setMedicalEquipmentOxygenTank] =
-    useState(false);
-  const [medicalEquipmentCpapMachine, setMedicalEquipmentCpapMachine] =
-    useState(false);
-  const [medicalEquipmentShowerChair, setMedicalEquipmentShowerChair] =
-    useState(false);
-  const [medicalEquipmentOther, setMedicalEquipmentOther] = useState(false);
 
-  const handleSelectChangeMedical = (event) => {
-    const value = event.target.value;
-    setSelectedValueMedical(value);
-
-    // Handle additional logic based on selected value
-    switch (value) {
-      case "Wheel Chair":
-        setMedicalEquipmentWheelchair(true);
-        // Additional logic for Wheel Chair
-        break;
-      case "Oxygen tank":
-        setMedicalEquipmentOxygenTank(true);
-        // Additional logic for Oxygen tank
-        break;
-      case "CPAP Machine":
-        setMedicalEquipmentCpapMachine(true);
-        // Additional logic for CPAP Machine
-        break;
-      case "Shower chair":
-        setMedicalEquipmentShowerChair(true);
-        // Additional logic for Shower chair
-        break;
-      case "Other":
-        setMedicalEquipmentOther(true);
-        // Additional logic for Other
-        break;
-      default:
-        // Reset other state variables if needed
-        setMedicalEquipmentWheelchair(false);
-        setMedicalEquipmentOxygenTank(false);
-        setMedicalEquipmentCpapMachine(false);
-        setMedicalEquipmentShowerChair(false);
-        setMedicalEquipmentOther(false);
-        break;
-    }
-  };
 
   // Special Precautions (Nested Object)
   const [selectedValueSpecialPrecautions, setSelectedValueSpecialPrecautions] =
     useState([]);
-  const [seizure, setSeizure] = useState(false);
-  const [elopementAwol, setElopementAwol] = useState(false);
-  const [physicalAggression, setPhysicalAggression] = useState(false);
-  const [withdrawal, setWithdrawal] = useState(false);
-  const [inappropriateSexualBehaviors, setInappropriateSexualBehaviors] =
-    useState(false);
-  const [substanceUse, setSubstanceUse] = useState(false);
-  const [noSpecialPrecautions, setNoSpecialPrecautions] = useState(false);
-  const [specialPrecautions, setSpecialPrecautions] = useState();
-
-  const handleSelectChangeSpecialPrecautions = (event) => {
-    const value = event.target.value;
-    setSelectedValueSpecialPrecautions(value);
-
-    // Handle additional logic based on selected value
-    switch (value) {
-      case "Yes Seizure":
-        setSeizure(true);
-        // Additional logic for Yes Seizure
-        break;
-      case "Elopement/Awol":
-        setElopementAwol(true);
-        // Additional logic for Elopement/Awol
-        break;
-      case "Physical Aggression":
-        setPhysicalAggression(true);
-        // Additional logic for Physical Aggression
-        break;
-      case "Withdrawal":
-        setWithdrawal(true);
-        // Additional logic for Withdrawal
-        break;
-      case "Inappropriate Sexual Behaviors":
-        setInappropriateSexualBehaviors(true);
-        // Additional logic for Inappropriate Sexual Behaviors
-        break;
-      case "Substance use":
-        setSubstanceUse(true);
-        // Additional logic for Substance use
-        break;
-      case "None":
-        setNoSpecialPrecautions(true);
-        // Additional logic for None
-        break;
-      default:
-        // Reset other state variables if needed
-        setSeizure(false);
-        setElopementAwol(false);
-        setPhysicalAggression(false);
-        setWithdrawal(false);
-        setInappropriateSexualBehaviors(false);
-        setSubstanceUse(false);
-        setNoSpecialPrecautions(false);
-        break;
-    }
-  };
-
+ 
   // jigjok
   const [currentThoughtsOfHarmingSelf, setCurrentThoughtsOfHarmingSelf] =
     useState();
@@ -560,7 +553,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [currentThoughtsOfHarmingOthers, setCurrentThoughtsOfHarmingOthers] =
     useState();
 
-  // Risk Factors (Nested Object)
+
  // Risk Factors (Nested Object)
  const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState([]);
  const [riskYesNo,setRiskYesNo]=useState();
@@ -1225,7 +1218,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
         >
           <h5>Section - 1</h5>
           <div className="form-section">
-            <h2>Basic Details</h2>
+            <h2 style={{marginTop:"1rem"}}>Basic Details</h2>
             {/* <div className="form-field">
               <label htmlFor="residentFullName">Company Name </label>
               <input
@@ -1665,7 +1658,29 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 }
               />
             </div>
-            <div className="form-field">
+
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel1(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel1 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel1(false)}
+                singin={residentGuardianAgreementSignature}
+                setSingIn={setResidentGuardianAgreementSignature}
+                
+                />)
+            }
+
+            {/* <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1675,25 +1690,8 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 setResidentGuardianAgreementSignature(e.target.value)
               }
             />
-            </div>
-            {/* <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
             </div> */}
+           
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
@@ -1718,7 +1716,27 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setStaffAgreementName(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel2(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel2 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel2(false)}
+                singin={staffAgreementSignature}
+                setSingIn={setStaffAgreementSignature}
+                
+                />)
+            }
+            {/* <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1726,7 +1744,8 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               value={staffAgreementSignature}
               onChange={(e) => setStaffAgreementSignature(e.target.value)}
             />
-            </div>
+            </div> */}
+            
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1767,7 +1786,27 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setBhpAgreementName(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel3(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel3 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel3(false)}
+                singin={bhpAgreementSignature}
+                setSingIn={setBhpAgreementSignature}
+                
+                />)
+            }
+            {/* <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1775,7 +1814,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               value={bhpAgreementSignature}
               onChange={(e) => setBhpAgreementSignature(e.target.value)}
             />
-            </div>
+            </div> */}
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1816,7 +1855,27 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setOtherName(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel4(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel4 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel4(false)}
+                singin={otherSignature}
+                setSingIn={setOtherSignature}
+                
+                />)
+            }
+            {/* <div className="form-field">
             <label htmlFor="">Signature</label>
             <input
               type="text"
@@ -1824,7 +1883,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               value={otherSignature}
               onChange={(e) => setOtherSignature(e.target.value)}
             />
-            </div>
+            </div> */}
             {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1854,7 +1913,27 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setOtherRelationship(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel5(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel5 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel5(false)}
+                singin={otherSignature}
+                setSingIn={setOtherSignature}
+                
+                />)
+            }
+            {/* <div className="form-field">
               <label htmlFor="approvedby">Signature</label>
               <input
                 type="text"
@@ -1864,7 +1943,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 required
                 onChange={(e) => setOtherSignature(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="approvedby">Other Date:</label>
               <input
@@ -2225,8 +2304,9 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 </div>
                 <div className="checkBox-aligment">
                   <input
-                    type="yesbrainno"
-                    id="setYesThyroidno"
+
+                    type="checkbox"
+                    id="yesbrainno"
                     checked={yesbrain===false}
                     onChange={()=>setYesBrain(false)}
                   />
@@ -2953,6 +3033,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="noneReportedOrObserved"
                       value={noneReportedOrObserved}
                       checked={noneReportedOrObserved}
                       style={{alignSelf:"start",marginTop:"10px"}}
@@ -2960,87 +3041,96 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                         setNoneReportedOrObserved(!noneReportedOrObserved)
                       }
                     />
-                    <span>None reported observed</span>
+                    <label htmlFor="noneReportedOrObserved">None reported observed</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Vomiting"
                       value={Vomiting}
                       checked={Vomiting}
                       onChange={() => setVomiting(!Vomiting)}
                     />
-                    <span>Vomiting</span>
+                    <label htmlFor="Vomiting">Vomiting</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Anxiety"
                       value={Anxiety}
                       checked={Anxiety}
                       onChange={() => setAnxiety(!Anxiety)}
                     />
-                    <span>Anxiety</span>
+                    <label htmlFor="Anxiety">Anxiety</label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Agitation"
                       value={Agitation}
                       checked={Agitation}
                       onChange={() => setAgitation(!Agitation)}
                     />
-                    <span>Agitation</span>
+                    <label htmlFor="Agitation">Agitation</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Headache"
                       value={Headache}
                       checked={Headache}
                       onChange={() => setHeadache(!Headache)}
                     />
-                    <span>Headache</span>
+                    <label htmlFor="Headache">Headache</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Tremors"
                       value={Tremors}
                       checked={Tremors}
+                      
                       onChange={() => setTremors(!Tremors)}
                     />
-                    <span>Tremors</span>
+                    <label htmlFor="Tremors">Tremors</label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Nausea"
                       value={Nausea}
                       checked={Nausea}
                       onChange={() => setNausea(!Nausea)}
                     />
-                    <span>Nausea</span>
+                    <label htmlFor="Nausea">Nausea</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="TactileDisturbances"
                       value={TactileDisturbances}
                       checked={TactileDisturbances}
                       onChange={() =>
                         setTactileDisturbances(!TactileDisturbances)
                       }
                     />
-                    <span>Tactile Disturbances</span>
+                    <label htmlFor="TactileDisturbances">Tactile Disturbances</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="VisualDisturbances"
                       value={VisualDisturbances}
                       checked={VisualDisturbances}
                       onChange={() =>
                         setVisualDisturbances(!VisualDisturbances)
                       }
                     />
-                    <span>Visual Disturbances</span>
+                    <label htmlFor="VisualDisturbances">Visual Disturbances</label>
                   </div>
                 </div>
               </div>
@@ -3053,78 +3143,86 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Sweats"
                       value={Sweats}
                       checked={Sweats}
                       onChange={() => setSweats(!Sweats)}
                     />
-                    <span>Sweats</span>
+                    <label htmlFor="Sweats">Sweats</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="GooseBumps"
                       value={GooseBumps}
                       checked={GooseBumps}
                       onChange={() => setGooseBumps(!GooseBumps)}
                     />
-                    <span>Goose Bumps</span>
+                    <label htmlFor="GooseBumps">Goose Bumps</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="BonePain"
                       value={BonePain}
                       checked={BonePain}
                       onChange={() => setBonePain(!BonePain)}
                     />
-                    <span>Bone Pain</span>
+                    <label htmlFor="BonePain">Bone Pain</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Seizures"
                       value={Seizures}
                       checked={Seizures}
                       onChange={() => setSeizures(!Seizures)}
                     />
-                    <span>Seizures</span>
+                    <label htmlFor="Seizures">Seizures</label>
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Paranoia"
                       value={Paranoia}
                       checked={Paranoia}
                       onChange={() => setParanoia(!Paranoia)}
                     />
-                    <span>Paranoia</span>
+                    <label htmlFor="Paranoia">Paranoia</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Runningnose"
                       value={Runningnose}
                       checked={Runningnose}
                       onChange={() => setRunningnose(!Runningnose)}
                     />
-                    <span>Running nose</span>
+                    <label htmlFor="Runningnose">Running nose</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="Tearing"
                       value={Tearing}
                       checked={Tearing}
                       onChange={() => setTearing(!Tearing)}
                     />
-                    <span>Tearing</span>
+                    <label htmlFor="Tearing">Tearing</label>
                   </div>
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
+                      id="LossofMuscleCoordination"
                       value={LossofMuscleCoordination}
                       checked={LossofMuscleCoordination}
                       onChange={() =>
                         setLossofMuscleCoordination(!LossofMuscleCoordination)
                       }
                     />
-                    <span>Loss of muscle coordination</span>
+                    <label htmlFor="LossofMuscleCoordination">Loss of muscle coordination</label>
                   </div>
                 </div>
               </div>
@@ -3155,85 +3253,80 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   <div class="checkboxitem">
                     <label>Grooming</label>
                   </div>
+
+                  {/* api implementation */}
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Consistent</span>
+                    <input type="checkbox" id="consistent" checked={consistent} onChange={()=>setConsistent(!consistent)}/>
+                    <label htmlFor="consistent">Consistent</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Average</span>
+                  <input type="checkbox" id="averageHeight" checked={averageHeight} onChange={()=>setAverageHeight(!averageHeight)}/>
+                    <label htmlFor="averageHeight">Average</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Average</span>
+                  <input type="checkbox" id="averageWeight" checked={averageWeight} onChange={()=>setAverageWeight(!averageHeight)}/>
+                    <label htmlFor="averageWeight">Average</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Casual</span>
+                  <input type="checkbox" id="casual" checked={casual} onChange={()=>setCasual(!casual)}/>
+                    <label htmlFor="casual">Casual</label>
+                 
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Well-groomed</span>
+                  <input type="checkbox" id="casual" checked={wellGroomed} onChange={()=>setWellGroomed(!wellGroomed)}/>
+                    <label htmlFor="wellGroomed">Well-groomed</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Younger</span>
+                  <input type="checkbox" id="Younger" checked={younger} onChange={()=>setYounger(!younger)}/>
+                    <label htmlFor="Younger">Younger</label>
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Short</span>
+                  <input type="checkbox" id="short" checked={short} onChange={()=>setShort(!short)}/>
+                    <label htmlFor="short">Short</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Obese</span>
+                  <input type="checkbox" id="obese" checked={obese} onChange={()=>setObese(!obese)}/>
+                    <label htmlFor="obese">Obese</label>
+               
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Neat</span>
+                  <input type="checkbox" id="neat" checked={neat} onChange={()=>setNeat(!neat)}/>
+                    <label htmlFor="neat">Neat</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Adequate</span>
+                  <input type="checkbox" id="adequateGrooming" checked={adequateGrooming} onChange={()=>setAdequateGrooming(!adequateGrooming)}/>
+                    <label htmlFor="adequateGrooming">Adequate</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Older</span>
+                  <input type="checkbox" id="older" checked={older} onChange={()=>setOlder(!older)}/>
+                    <label htmlFor="older">Older</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Tall</span>
+                  <input type="checkbox" id="tall" checked={tall} onChange={()=>setTall(!tall)}/>
+                    <label htmlFor="tall">Tall</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Overweight</span>
+                  <input type="checkbox" id="overweight" checked={overweight} onChange={()=>setOverweight(!overweight)}/>
+                    <label htmlFor="overweight">Overweight</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Tattered</span>
+                  <input type="checkbox" id="tattered" checked={tattered} onChange={()=>setTattered(!tattered)}/>
+                    <label htmlFor="tattered">Tattered</label>
+               
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Unkempt</span>
-                  </div>
-                  <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Older</span> */}
-                  </div>
-                  <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Tall</span> */}
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Thin</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Dirty</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Disheveled</span>
+                  <input type="checkbox" id="unkempt" checked={unkempt} onChange={()=>setUnkempt(!unkempt)}/>
+                    <label htmlFor="unkempt">Unkempt</label>
+                   
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
@@ -3244,8 +3337,32 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                                         <span>Tall</span> */}
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Emaciated</span>
+                  <input type="checkbox" id="thin" checked={thin} onChange={()=>setThin(!thin)}/>
+                    <label htmlFor="thin">Thin</label>
+                   
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="dirty" checked={dirty} onChange={()=>setDirty(!dirty)}/>
+                    <label htmlFor="dirty">Dirty</label>
+              
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="disheveled" checked={disheveled} onChange={()=>setDisheveled(!disheveled)}/>
+                    <label htmlFor="disheveled">Disheveled</label>
+                    
+                  </div>
+                  <div class="checkboxitem">
+                    {/* <input type="checkbox" />
+                                        <span>Older</span> */}
+                  </div>
+                  <div class="checkboxitem">
+                    {/* <input type="checkbox" />
+                                        <span>Tall</span> */}
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="emaciated" checked={emaciated} onChange={()=>setEmaciated(!emaciated)}/>
+                    <label htmlFor="emaciated">Emaciated</label>
+                   
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
@@ -3280,98 +3397,139 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                     <label>Cooperation</label>
                   </div>
                 </div>
+                {/* state is start */}
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Euthymic</span>
+                  <input type="checkbox" id="euthymic" checked={euthymic} onChange={()=>setEuthymic(!euthymic)}/>
+                    <label htmlFor="euthymic">Euthymic</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal range</span>
+                  <input type="checkbox" id="normalRange" checked={normalRange} onChange={()=>setNormalRange(!normalRange)}/>
+                    <label htmlFor="normalRange">Normal range</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Appropriate</span>
+                  <input type="checkbox" id="appropriate" checked={appropriate} onChange={()=>setAppropriate(!appropriate)}/>
+                    <label htmlFor="appropriate">Appropriate</label>
+              
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Appropriate</span>
+                  <input type="checkbox" id="appropriateCooperation" checked={appropriateCooperation} onChange={()=>setAppropriateCooperation(!appropriateCooperation)}/>
+                    <label htmlFor="appropriateCooperation">Appropriate</label>
+                
+                  </div>
+                </div>
+                
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="irritable" checked={irritable} onChange={()=>setIrritable(!irritable)}/>
+                    <label htmlFor="irritable">Irritable</label>
+                    
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="depressedAffect" checked={depressedAffect} onChange={()=>setDepressedAffect(!depressedAffect)}/>
+                    <label htmlFor="depressedAffect">Depressed</label>
+                 
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="minimal" checked={minimal} onChange={()=>setMinimal(!minimal)}/>
+                    <label htmlFor="minimal">Minimal</label>
+                 
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="hostile" checked={hostile} onChange={()=>setHostile(!hostile)}/>
+                    <label htmlFor="hostile">Hostile</label>
+                 
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Irritable</span>
+                  <input type="checkbox" id="elevated" checked={elevated} onChange={()=>setElevated(!elevated)}/>
+                    <label htmlFor="elevated">Elevated</label>
+               
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Depressed</span>
+                  <input type="checkbox" id="labile" checked={labile} onChange={()=>setLabile(!labile)}/>
+                    <label htmlFor="labile">Labile</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Minimal</span>
+                  <input type="checkbox" id="poor" checked={poor} onChange={()=>setPoor(!poor)}/>
+                    <label htmlFor="poor">Poor</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Hostile</span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Elevated</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Labile</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Poor</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Evasive</span>
+                  <input type="checkbox" id="evasive" checked={evasive} onChange={()=>setEvasive(!evasive)}/>
+                    <label htmlFor="evasive">Evasive</label>
+                 
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Depressed</span>
+                  <input type="checkbox" id="depressedMood" checked={depressedMood} onChange={()=>setDepressedMood(!depressedMood)}/>
+                    <label htmlFor="depressedMood">Depressed</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Constricted</span>
+                  <input type="checkbox" id="constricted" checked={constricted} onChange={()=>setConstricted(!constricted)}/>
+                    <label htmlFor="constricted">Constricted</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Adequate</span>
+                  <input type="checkbox" id="adequateEyeContact" checked={adequateEyeContact} onChange={()=>setAdequateEyeContact(!adequateEyeContact)}/>
+                    <label htmlFor="adequateEyeContact">Adequate</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Defensive</span>
+                  <input type="checkbox" id="defensive" checked={defensive} onChange={()=>setDefensive(!defensive)}/>
+                    <label htmlFor="defensive">Defensive</label>
+                    
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Anxious</span>
+                  <input type="checkbox" id="anxious" checked={anxious} onChange={()=>setAnxious(!anxious)}/>
+                    <label htmlFor="anxious">Anxious</label>
+             
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Other</span>
+                  <input type="checkbox" id="other" checked={other} onChange={()=>setOther(!other)}/>
+                    <label htmlFor="other">Other</label>
+                 
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
                                         <span>Adequate</span> */}
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Indifferent</span>
+                  <input type="checkbox" id="indifferent" checked={indifferent} onChange={()=>setIndifferent(!indifferent)}/>
+                    <label htmlFor="indifferent">Indifferent</label>
+                  
                   </div>
                 </div>
               </div>
             </div>
+
+{
+  other && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <textarea
+      value={otherText}
+      onChange={(e)=>setOtherText(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+
+}
+
+         
+
             <div className="formsheading">
               <h6>Speech</h6>
             </div>
@@ -3398,80 +3556,98 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                     <label>Response latency</label>
                   </div>
                 </div>
+                {/* api is starting */}
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalArticulation" checked={normalArticulation} onChange={()=>setNormalArticulation(!normalArticulation)}/>
+                    <label htmlFor="normalArticulation">Normal</label>
+                 
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalTone" checked={normalRate} onChange={()=>setNormalRate(!normalRate)}/>
+                    <label htmlFor="normalRate">Normal</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalTone" checked={normalTone} onChange={()=>setNormalTone(!normalTone)}/>
+                    <label htmlFor="normalTone">Normal</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalQuantity" checked={normalQuantity} onChange={()=>setNormalQuantity(!normalQuantity)}/>
+                    <label htmlFor="normalQuantity">Normal</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalresponseLatency" checked={normalresponseLatency} onChange={()=>setNormalresponseLatency(!normalresponseLatency)}/>
+                    <label htmlFor="normalresponseLatency">Normal</label>
+               
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Unintelligible</span>
+                  <input type="checkbox" id="unintelligible" checked={unintelligible} onChange={()=>setUnintelligible(!unintelligible)}/>
+                    <label htmlFor="unintelligible">Unintelligible</label>
+                 
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Soft</span>
+                  <input type="checkbox" id="soft" checked={soft} onChange={()=>setSoft(!soft)}/>
+                    <label htmlFor="soft">Soft</label>
+              
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Slow</span>
+                  <input type="checkbox" id="slow" checked={slow} onChange={()=>setSlow(!slow)}/>
+                    <label htmlFor="slow">Slow</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Verbose</span>
+                  <input type="checkbox" id="verbose" checked={verbose} onChange={()=>setVerbose(!verbose)}/>
+                    <label htmlFor="verbose">Verbose</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Delayed</span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Mumbled</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Loud</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Fast</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Mutism</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Shortened</span>
+                  <input type="checkbox" id="delayed" checked={delayed} onChange={()=>setDelayed(!delayed)}/>
+                    <label htmlFor="delayed">Delayed</label>
+                  
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Slurred</span>
+                  <input type="checkbox" id="mumbled" checked={mumbled} onChange={()=>setMumbled(!mumbled)}/>
+                    <label htmlFor="mumbled">Mumbled</label>
+            
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Pressured</span>
+                  <input type="checkbox" id="loud" checked={loud} onChange={()=>setLoud(!loud)}/>
+                    <label htmlFor="loud">Loud</label>
+                
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="fast" checked={fast} onChange={()=>setFast(!fast)}/>
+                    <label htmlFor="fast">Fast</label>
+                 
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="mutism" checked={mutism} onChange={()=>setMutism(!mutism)}/>
+                    <label htmlFor="mutism">Mutism</label>
+                
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="shortened" checked={shortened} onChange={()=>setShortened(!shortened)}/>
+                    <label htmlFor="shortened">Shortened</label>
+               
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="slurred" checked={slurred} onChange={()=>setSlurred(!slurred)}/>
+                    <label htmlFor="slurred">Slurred</label>
+                   
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="pressured" checked={pressured} onChange={()=>setPressured(!pressured)}/>
+                    <label htmlFor="pressured">Pressured</label>
+                    
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
@@ -3488,8 +3664,9 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Stuttered</span>
+                  <input type="checkbox" id="stuttered" checked={stuttered} onChange={()=>setStuttered(!stuttered)}/>
+                    <label htmlFor="stuttered">Stuttered</label>
+            
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
@@ -3532,76 +3709,94 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                     <label>Hallucinations</label>
                   </div>
                 </div>
+                {/* api  */}
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Unremarkable</span>
+                  <input type="checkbox" id="unremarkablethoughtContent" checked={unremarkablethoughtContent} onChange={()=>setUnremarkablethoughtContent(!unremarkablethoughtContent)}/>
+                    <label htmlFor="unremarkablethoughtContent">Unremarkable</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Logical/Coherent</span>
+                    
+                    <input type="checkbox" id="logicalCoherent" checked={logicalCoherent} onChange={()=>setLogicalCoherent(!logicalCoherent)}/>
+                    <label htmlFor="logicalCoherent">Logical/Coherent</label>
+              
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>No</span>
+                  <input type="checkbox" id="noDelusions" checked={noDelusions} onChange={()=>setNoDelusions(!noDelusions)}/>
+                    <label htmlFor="noDelusions">No</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Unremarkable</span>
+                  <input type="checkbox" id="unremarkableHallucinations" checked={unremarkableHallucinations} onChange={()=>setUnremarkableHallucinations(!unremarkableHallucinations)}/>
+                    <label htmlFor="unremarkableHallucinations">Unremarkable</label>
+                   
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Suspicious</span>
+                  <input type="checkbox" id="suspicious" checked={suspicious} onChange={()=>setSuspicious(!suspicious)}/>
+                    <label htmlFor="suspicious">Suspicious</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Tangential</span>
+                  <input type="checkbox" id="tangential" checked={tangential} onChange={()=>setTangential(!tangential)}/>
+                    <label htmlFor="tangential">Tangential</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Yes, persecutory</span>
+                  <input type="checkbox" id="yesPersecutory" checked={yesPersecutory} onChange={()=>setYesPersecutory(!yesPersecutory)}/>
+                    <label htmlFor="yesPersecutory">Yes, persecutory</label>
+             
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Visual hallucinations</span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Negative</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Circumstantial</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Yes, somatic</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Auditory hallucinations</span>
+                  <input type="checkbox" id="visualHallucinations" checked={visualHallucinations} onChange={()=>setVisualHallucinations(!visualHallucinations)}/>
+                    <label htmlFor="visualHallucinations">Visual hallucinations</label>
+                   
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Concrete</span>
+                  <input type="checkbox" id="negative" checked={negative} onChange={()=>setNegative(!negative)}/>
+                    <label htmlFor="negative">Negative</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Vague</span>
+                  <input type="checkbox" id="circumstantial" checked={circumstantial} onChange={()=>setCircumstantial(!circumstantial)}/>
+                    <label htmlFor="circumstantial">Circumstantial</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Yes, grandiose</span>
+                  <input type="checkbox" id="yesSomatic" checked={yesSomatic} onChange={()=>setYesSomatic(!yesSomatic)}/>
+                    <label htmlFor="yesSomatic">Yes, somatic</label>
+                  
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Yes, Tactile hallucinations</span>
+                  <input type="checkbox" id="auditoryHallucinations" checked={auditoryHallucinations} onChange={()=>setAuditoryHallucinations(!auditoryHallucinations)}/>
+                    <label htmlFor="auditoryHallucinations">Auditory hallucinations</label>
+                  
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="concrete" checked={concrete} onChange={()=>setConcrete(!concrete)}/>
+                    <label htmlFor="concrete">Concrete</label>
+           
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="vague" checked={vague} onChange={()=>setVague(!vague)}/>
+                    <label htmlFor="vague">Vague</label>
+             
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="yesGrandiose" checked={yesGrandiose} onChange={()=>setYesGrandiose(!yesGrandiose)}/>
+                    <label htmlFor="yesGrandiose">Yes, grandiose</label>
+                   
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="tactileHallucinations" checked={tactileHallucinations} onChange={()=>setTactileHallucinations(!tactileHallucinations)}/>
+                    <label htmlFor="tactileHallucinations">Yes, Tactile hallucinations</label>
+                   
                   </div>
                 </div>
                 <div class="checkoptions">
@@ -3614,16 +3809,49 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                                         <span>Other</span> */}
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Yes, other</span>
+                  <input type="checkbox" id="yesOtherDelusions" checked={yesOtherDelusions} onChange={()=>setYesOtherDelusions(!yesOtherDelusions)}/>
+                    <label htmlFor="yesOtherDelusions">Yes, other</label>
+                 
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Yes, other</span>
+                  <input type="checkbox" id="yesOtherHallucinations" checked={yesOtherHallucinations} onChange={()=>setYesOtherHallucinations(!yesOtherHallucinations)}/>
+                    <label htmlFor="yesOtherHallucinations">Yes, other</label>
                   </div>
                 </div>
               </div>
             </div>
+
+            { 
+            yesOtherDelusions && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>Delusions Comments</label>
+              <textarea
+                value={yesOtherDelusionsText}
+                onChange={(e)=>setYesOtherDelusionsText(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
+
+            { 
+            yesOtherHallucinations && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>Hallucinations Comments</label>
+              <textarea
+                value={yesOtherHallucinationsText}
+                onChange={(e)=>setYesOtherHallucinationsText(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
             <div className="formsheading">
               <h6>Motor activity</h6>
             </div>
@@ -3645,253 +3873,207 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   <div class="checkboxitem">
                     <label>Mannerisms</label>
                   </div>
+                  {/* api */}
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalGait" checked={normalGait} onChange={()=>setNormalGait(!normalGait)}/>
+                    <label htmlFor="normalGait">Normal</label>
+                 
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Normal</span>
+                  <input type="checkbox" id="normalPosture" checked={normalPosture} onChange={()=>setNormalPosture(!normalPosture)}/>
+                    <label htmlFor="normalPosture">Normal</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Within normal limits</span>
+                  <input type="checkbox" id="withinNormalLimits" checked={withinNormalLimits} onChange={()=>setWithinNormalLimits(!withinNormalLimits)}/>
+                    <label htmlFor="withinNormalLimits">Within normal limits</label>
+                
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>None</span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Staggering</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Relaxed</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Calm</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Tics</span>
+                  <input type="checkbox" id="none" checked={none} onChange={()=>setNone(!none)}/>
+                    <label htmlFor="none">None</label>
+
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Shuffling</span>
+                  <input type="checkbox" id="staggering" checked={staggering} onChange={()=>setStaggering(!staggering)}/>
+                    <label htmlFor="staggering">Staggering</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Rigid</span>
+                  <input type="checkbox" id="relaxed" checked={relaxed} onChange={()=>setRelaxed(!relaxed)}/>
+                    <label htmlFor="relaxed">Relaxed</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Hyperactive</span>
+                  <input type="checkbox" id="calm" checked={calm} onChange={()=>setCalm(!calm)}/>
+                    <label htmlFor="calm">Calm</label>
+                    
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Tremors</span>
-                  </div>
-                </div>
-                <div class="checkoptions">
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Slow</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Tense</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Agitated</span>
-                  </div>
-                  <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Rocking</span>
+                  <input type="checkbox" id="tics" checked={tics} onChange={()=>setTics(!tics)}/>
+                    <label htmlFor="tics">Tics</label>
+                
                   </div>
                 </div>
                 <div class="checkoptions">
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Awkward</span>
+                  <input type="checkbox" id="shuffling" checked={shuffling} onChange={()=>setShuffling(!shuffling)}/>
+                    <label htmlFor="shuffling">Shuffling</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Slouched</span>
+                  <input type="checkbox" id="rigid" checked={rigid} onChange={()=>setRigid(!rigid)}/>
+                    <label htmlFor="rigid">Rigid</label>
+               
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Hypoactive</span>
+                  <input type="checkbox" id="hyperactive" checked={hyperactive} onChange={()=>setHyperactive(!hyperactive)}/>
+                    <label htmlFor="hyperactive">Hyperactive</label>
+                   
                   </div>
                   <div class="checkboxitem">
-                    <input type="checkbox" />
-                    <span>Picking</span>
+                  <input type="checkbox" id="tremorsMannerisms" checked={tremorsMannerisms} onChange={()=>setTremorsMannerisms(!tremorsMannerisms)}/>
+                    <label htmlFor="tremorsMannerisms">Tremors</label>
+               
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="slowGait" checked={slowGait} onChange={()=>setSlowGait(!slowGait)}/>
+                    <label htmlFor="slowGait">Slow</label>
+              
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="tense" checked={tense} onChange={()=>setTense(!tense)}/>
+                    <label htmlFor="tense">Tense</label>
+                 
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="agitated" checked={agitated} onChange={()=>setAgitated(!agitated)}/>
+                    <label htmlFor="agitated">Agitated</label>
+                   
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="rocking" checked={rocking} onChange={()=>setRocking(!rocking)}/>
+                    <label htmlFor="rocking">Rocking</label>
+                    
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="awkward" checked={awkward} onChange={()=>setAwkward(!awkward)}/>
+                    <label htmlFor="awkward">Awkward</label>
+                    
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="slouched" checked={slouched} onChange={()=>setSlouched(!slouched)}/>
+                    <label htmlFor="slouched">Slouched</label>
+                   
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="hypoactive" checked={hypoactive} onChange={()=>setHypoactive(!hypoactive)}/>
+                    <label htmlFor="hypoactive">Hypoactive</label>
+                    
+                  </div>
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="picking" checked={picking} onChange={()=>setPicking(!picking)}/>
+                    <label htmlFor="picking">Picking</label>
+                 
                   </div>
                 </div>
               </div>
             </div>
             <div className="yeschechbox1" style={{marginTop:"1.5rem"}}>
               <label htmlFor="" >Orientation to Person:</label>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Yes</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="person" checked={person===true} onChange={()=>setPerson(true)}/>
+                    <label htmlFor="person">Yes</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>No</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="personno" checked={person===false} onChange={()=>setPerson(false)}/>
+                    <label htmlFor="personno">No</label>
               </div>
               <label htmlFor="">Place:</label>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Yes</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="place" checked={place===true} onChange={()=>setPlace(true)}/>
+                    <label htmlFor="place">Yes</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>No</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="placeno" checked={place===false} onChange={()=>setPlace(false)}/>
+                    <label htmlFor="placeno">No</label>
               </div>
               <label htmlFor="">Time:</label>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Yes</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="placeno" checked={time===true} onChange={()=>setTime(true)}/>
+                    <label htmlFor="placeno">Yes</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>No</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="timeno" checked={time===false} onChange={()=>setTime(false)}/>
+                    <label htmlFor="timeno">No</label>
               </div>
               <label htmlFor="">Circumstances:</label>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Yes</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="circumstances" checked={circumstances===true} onChange={()=>setCircumstances(true)}/>
+                    <label htmlFor="circumstances">Yes</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>No</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="circumstancesno" checked={circumstances===true} onChange={()=>setCircumstances(false)}/>
+                    <label htmlFor="circumstancesno">No</label>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Judgment:</label>
               <div className="yesNoAligment">
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Good</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="goodJudgment" checked={goodJudgment} onChange={()=>setGoodJudgment(!goodJudgment)}/>
+                    <label htmlFor="goodJudgment">Good</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Fair</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="fairJudgment" checked={fairJudgment} onChange={()=>setFairJudgment(!fairJudgment)}/>
+                    <label htmlFor="fairJudgment">Fair</label>
+               
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Poor</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="poorJudgment" checked={poorJudgment} onChange={()=>setPoorJudgment(!poorJudgment)}/>
+                    <label htmlFor="poorJudgment">Poor</label>
               </div>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Insight:</label>
               <div className="yesNoAligment">
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Good</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="goodInsight" checked={goodInsight} onChange={()=>setGoodInsight(!goodInsight)}/>
+                    <label htmlFor="goodInsight">Good</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Fair</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="fairInsight" checked={fairInsight} onChange={()=>setFairInsight(!fairInsight)}/>
+                    <label htmlFor="fairInsight">Fair</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Poor</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="poorInsight" checked={poorInsight} onChange={()=>setPoorInsight(!poorInsight)}/>
+                    <label htmlFor="poorInsight">Poor</label>
               </div>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Memory:</label>
               <div className="yesNoAligment">
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Good</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="goodMemory" checked={goodMemory} onChange={()=>setGoodMemory(!goodMemory)}/>
+                    <label htmlFor="goodMemory">Good</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Fair</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="fairMemory" checked={fairMemory} onChange={()=>setFairMemory(!fairMemory)}/>
+                    <label htmlFor="fairMemory">Fair</label>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
-                <span>Poor</span>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+              <input type="checkbox" id="poorMemory" checked={poorMemory} onChange={()=>setPoorMemory(!poorMemory)}/>
+                    <label htmlFor="poorMemory">Poor</label>
               </div>
               </div>
             </div>
@@ -3903,8 +4085,8 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 <input
                   type="checkbox"
                   id="intact"
-                  checked={intact}
-                  onChange={()=>setIntact(!intact)}
+                  checked={intactAbilityToConcentration}
+                  onChange={()=>setIntactAbilityToConcentration(!intactAbilityToConcentration)}
                 />
                 <label htmlFor="intact">Intact</label>
               </div>
@@ -3915,10 +4097,10 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               <input
                 type="text"
                 id="otherintact"
-                value={otherintact}
+                value={otherAbilityToConcentration}
                 placeholder="please specify"
                 required
-                onChange={(e)=>setOtherIntact(e.target.value)}
+                onChange={(e)=>setOtherAbilityToConcentration(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -3958,9 +4140,9 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="">Special education:</label>
-              <div className="employment-Aligmant">
-              <div className="checkboxitem">
+              <label htmlFor="" style={{marginTop:"1rem"}}>Special education:</label>
+              <div className="employment-Aligmant" style={{marginTop:"1rem"}}>
+              <div className="checkboxitem" >
                 <input
                   type="checkbox"
                   name=""
@@ -3968,7 +4150,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={specialEducation===true} 
                   onChange={()=>setSpecialEducation(true)}
                 />
-                <span>Yes</span>
+                <label>Yes</label>
               </div>
               <div className="checkboxitem">
                 <input
@@ -3978,7 +4160,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={specialEducation===true} 
                   onChange={()=>setSpecialEducation(true)}
                 />
-                <span>No</span>
+                <label>No</label>
               </div>
               </div>
             </div>
@@ -3993,7 +4175,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={currentStudent===true} 
                   onChange={()=>setCurrentStudent(true)}
                 />
-                <span>Yes</span>
+                <label>Yes</label>
               </div>
               <div className="checkboxitem">
                 <input
@@ -4003,7 +4185,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={currentStudent===false} 
                   onChange={()=>setCurrentStudent(false)}
                 />
-                <span>No</span>
+                <label>No</label>
               </div>
               </div>
             </div>
@@ -4165,14 +4347,14 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               onChange={bathingShoweringGoodJHandler}
               options={bathingShoweringGoodOptions}/>
             </div>
-            <div className="yeschechbox employment-Aligmant">
+            <div className="yeschechbox employment-Aligmantfall-risk">
               <div>
                 <input
                   type="checkbox"
                   checked={bathingShoweringFair===true}
                   onChange={()=>setBathingShoweringFair(true)}
                 />
-                <span>Good</span>
+                <label>Good</label>
               </div>
               <div>
                 <input
@@ -4180,34 +4362,34 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={bathingShoweringFair===false}
                   onChange={()=>setBathingShoweringFair(false)}
                 />
-                <span>Fair</span>
+                <label>Fair</label>
               </div>
               <div>
                 <input
                   type="checkbox"
                 
                 />
-                <span>Not so good</span>
+                <label>Not so good</label>
               </div>
             </div>
             <div className="yeschechbox">
               <label htmlFor="">Need assist?</label>
               <div className="employment-Aligmant">
-              <div>
+              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <input
                   type="checkbox"
                   checked={bathingShoweringNeedAssist===true}
                   onChange={()=>setBathingShoweringNeedAssist(true)}
                 />
-                <span>Yes</span>
+                <label>Yes</label>
               </div>
-              <div>
+              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <input
                   type="checkbox"
                   checked={bathingShoweringNeedAssist===false}
                   onChange={()=>setBathingShoweringNeedAssist(false)}
                 />
-                <span>No</span>
+                <label>No</label>
               </div>
               </div>
             </div>
@@ -4234,7 +4416,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setTriggers(e.target.value)}
               />
             </div>
-            <div className="yeschechbox">
+            <div className="yeschechboxFall-risk">
               <label htmlFor="">Fall risk:</label>
               <div
                 style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -4345,50 +4527,50 @@ const [medicalConditions, setMedicalConditions] = useState([]);
               /> */}
 
 <div className="employment-Aligmant-location">
-              <div>
+              <div style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}>
                 <input
                   type="checkbox"
                   // checked={bathingShoweringNeedAssist===true}
                   // onChange={()=>setBathingShoweringNeedAssist(true)}
                 />
-                <span>Fleeting</span>
+                <label>Fleeting</label>
               </div>
-              <div>
+              <div style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}>
                 <input
                   type="checkbox"
                   // checked={bathingShoweringNeedAssist===false}
                   // onChange={()=>setBathingShoweringNeedAssist(false)}
                 />
-                <span>Periodic</span>
+                <label>Periodic</label>
               </div>
-             <div>
+             <div style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}>
                 <input
                   type="checkbox"
                   // checked={bathingShoweringNeedAssist===false}
                   // onChange={()=>setBathingShoweringNeedAssist(false)}
                 />
-                <span>Constant</span>
+                <label>Constant</label>
               </div>
-              <div style={{marginLeft:"10%"}}>
+              <div style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}>
                 <input
                   type="checkbox"
                   // checked={bathingShoweringNeedAssist===false}
                   // onChange={()=>setBathingShoweringNeedAssist(false)}
                 />
-                <span>N/A</span>
+                <label>N/A</label>
               </div>
               </div>
         
             </div>
 
-
+{/* api add some time */}
               <div className="increasingClass" >
               <label htmlFor="">Increasing in:</label>
                  
                  <div className="increasingClassInternal">
             <div className="yeschechbox1">
               <div>
-                <span>Urgency:</span>
+                <label>Urgency:</label>
               </div>
               <div
                 style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
@@ -4658,7 +4840,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={riskLevel === "No Risk"}
                   onChange={() => setRiskLevel("No Risk")}
                 />
-                <span>No Risk</span>
+                <label>No Risk</label>
               </div>
               <div
                 style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -4668,7 +4850,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={riskLevel === "Low Risk"}
                   onChange={() => setRiskLevel("Low Risk")}
                 />
-                <span>Low Risk</span>
+                <label>Low Risk</label>
               </div>
               <div
                 style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -4678,7 +4860,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={riskLevel === "Moderate Risk"}
                   onChange={() => setRiskLevel("Moderate Risk")}
                 />
-                <span>Moderate Risk</span>
+                <label>Moderate Risk</label>
               </div>
               <div
                 style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -4688,7 +4870,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                   checked={riskLevel === "High Risk"}
                   onChange={() => setRiskLevel("High Risk")}
                 />
-                <span>High Risk</span>
+                <label>High Risk</label>
               </div>
             </div>
             <div className="formsheading">
@@ -4794,12 +4976,12 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                     <tbody>
                       {psychiatricDiagnoses?.map((i, index) => (
                         <tr>
-                          <td>{`${index + 1}. ${i.icdCode}`} </td>
-                          <td>{`${index + 1}. ${i.description}`} </td>
-                          <td>{`${index + 1}. ${i.primary}`} </td>
-                          <td>{`${index + 1}. ${i.secondary}`} </td>
-                          <td>{`${index + 1}. ${i.tertiary}`} </td>
-                          <td>{`${index + 1}. ${i.additional}`} </td>
+                          <td>{`${i.icdCode}`} </td>
+                          <td>{`${i.description}`} </td>
+                          <td>{`${i.primary}`} </td>
+                          <td>{`${i.seco}`}</td>
+                          <td>{`${i.tertiary}`} </td>
+                          <td>{`${i.additional}`} </td>
                         </tr>
                       ))}
                     </tbody>
@@ -4902,12 +5084,12 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                     <tbody>
                       {medicalDiagnoses?.map((i, index) => (
                         <tr>
-                          <td>{`${index + 1}. ${i.icdCodeMedicalDiagnoses}`} </td>
-                          <td>{`${index + 1}. ${i.descriptionMedicalDiagnoses}`} </td>
-                          <td>{`${index + 1}. ${i.primaryMedicalDiagnoses}`} </td>
-                          <td>{`${index + 1}. ${i.secondaryMedicalDiagnoses}`} </td>
-                          <td>{`${index + 1}. ${i.tertiaryMedicalDiagnoses}`} </td>
-                          <td>{`${index + 1}. ${i.additionalMedicalDiagnoses}`} </td>
+                          <td>{`${i.icdCodeMedicalDiagnoses}`} </td>
+                          <td>{`${i.descriptionMedicalDiagnoses}`} </td>
+                          <td>{`${i.primaryMedicalDiagnoses}`} </td>
+                          <td>{`${i.secondaryMedicalDiagnoses}`} </td>
+                          <td>{`${i.tertiaryMedicalDiagnoses}`} </td>
+                          <td>{`${i.additionalMedicalDiagnoses}`} </td>
                         </tr>
                       ))}
                     </tbody>
@@ -5242,7 +5424,27 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setStaffName(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel6(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel6 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel6(false)}
+                singin={staffSignature}
+                setSingIn={setStaffSignature}
+                
+                />)
+            }
+            {/* <div className="form-field">
               <label htmlFor="">Enter Signature</label>
               <input
                 type="text"
@@ -5250,7 +5452,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 value={staffSignature}
                 onChange={(e) => setStaffSignature(e.target.vaue)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="">Enter Staff Title</label>
               <input
@@ -5309,7 +5511,27 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 onChange={(e) => setBhpCredentials(e.target.vaue)}
               />
             </div>
-            <div className="form-field">
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel7(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel7 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel7(false)}
+                singin={bhpSignature}
+                setSingIn={setBhpSignature}
+                
+                />)
+            }
+            {/* <div className="form-field">
               <label htmlFor="bhpSignature">Enter Signature</label>
               <input
                 type="text"
@@ -5317,7 +5539,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
                 value={bhpSignature}
                 onChange={(e) => setBhpSignature(e.target.vaue)}
               />
-            </div>
+            </div> */}
 
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
@@ -5342,6 +5564,9 @@ const [medicalConditions, setMedicalConditions] = useState([]);
           </div>
         </form>
       </div>
+      {
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
     </>
   );
 };

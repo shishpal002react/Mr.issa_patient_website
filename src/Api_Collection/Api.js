@@ -38,6 +38,8 @@ export const login_user = async (payLoad, navigate) => {
   }
 };
 
+
+
 export const user_detail = async (setUser) => {
   try {
     const res = await axios.get(`${BaseUrl}Patient/getProfile`, Token);

@@ -3,11 +3,12 @@ import React from "react";
 import "./SingInModel.css"; // Import your modal styles if needed
 import { IoMdClose } from "react-icons/io";
 
-const SingInUpdateModel = ({ setShowSingIn, singin, setSingIn }) => {
+const SingInUpdateModel = ({ onClose, singin, setSingIn }) => {
+
   return (
-    <div className="modal-overlay-sing" onClick={() => setShowSingIn(false)}>
+    <div className="modal-overlay-sing" onClick={onClose}>
       <div className="modal-content-sing" onClick={(e) => e.stopPropagation()}>
-        <span className="close-btn-sing" onClick={() => setShowSingIn(false)}>
+        <span className="close-btn-sing" onClick={() => onClose(false)}>
           <IoMdClose style={{ width: "50px", height: "30px" }} />
         </span>
         <div className="input_singin_button">
@@ -21,7 +22,7 @@ const SingInUpdateModel = ({ setShowSingIn, singin, setSingIn }) => {
         </div>
 
         <div className="sing_in_submit_button">
-          <button type="button" onClick={() => setShowSingIn(false)}>
+          <button type="button" onClick={onClose}>
             Submit
           </button>
         </div>

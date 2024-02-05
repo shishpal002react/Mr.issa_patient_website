@@ -4,9 +4,27 @@ import { useNavigate } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
 import formupload from "../../img/formupload.png";
 import { user_detail, Resident_form } from "../../Api_Collection/Api";
+import AutosizeInput from 'react-input-autosize';
+import SingInUpdateModel from "../Modal/SingInUpdateModel";
+import Draftinmodel from "../Modal/Draftinmodel";
+
 
 const ResidentIntakes = () => {
   const navigate = useNavigate();
+
+    //singin model
+    const [draftModel,setDraftModel]=useState(false)
+    //  all model
+    const [signInModel1,setSigInModel1]=useState(false);
+    const [signInModel2,setSigInModel2]=useState(false);
+    const [signInModel3,setSigInModel3]=useState(false);
+    const [signInModel4,setSigInModel4]=useState(false);
+    const [signInModel5,setSigInModel5]=useState(false);
+    const [signInModel6,setSigInModel6]=useState(false);
+    const [signInModel7,setSigInModel7]=useState(false);
+
+
+    //state
   const [userDetail, setUserDetail] = useState("");
   const [user, setUser] = useState("");
   const [userId, setUserId] = useState("");
@@ -731,7 +749,15 @@ const ResidentIntakes = () => {
             </p>
             <h6>
               I voluntarily apply for evaluation/behavioral health treatment at
-              COMPANY NAME and understand, consent and agree as follows (to be
+             <span>
+             
+              <AutosizeInput
+ inputStyle={{ border: "none", outline: "none" }}
+  placeholder="COMPANY NAME"
+  value={companyName}
+  onChange={(e) => setCompanyName(e.target.value)}
+/>
+                </span> and understand, consent and agree as follows (to be
               executed by legally authorized person if the Resident is incapable
               of giving informed consent):
             </h6>
@@ -754,20 +780,61 @@ const ResidentIntakes = () => {
                 audit and program evaluation and where otherwise legally
                 required. Additionally, I understand that by signing this
                 consent I am giving permission for ADHS/DBHS to access my
-                information and records maintained by the T/RBHA, COMPANY NAME
+                information and records maintained by the T/RBHA, <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span>
                 and/or it’s subcontracted providers concerning the provision of
                 covered services.
               </li>
               <li>
                 I consent to the use and disclosure of my protected health
-                information (PHI) by COMPANY NAME, it’s staff members and it’s
+                information (PHI) by
+                 <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span>
+               , it’s staff members and it’s
                 contractors / interns for the purpose of treatment, payment and
                 health care operations. This is a joint consent form between
-                COMPANY NAME and it’s staff members. I understand the following:
+                <span>
+             
+              <AutosizeInput
+ inputStyle={{ border: "none", outline: "none" }}
+  placeholder="COMPANY NAME"
+  value={companyName}
+  onChange={(e) => setCompanyName(e.target.value)}
+/>
+                </span> and it’s staff members. I understand the following:
                 My signature on the consent is required in order for me to
-                receive care from COMPANY NAME, I have the right to revoke this
+                receive care from <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span>, I have the right to revoke this
                 consent, in writing, at any time, except to the extent that
-                COMPANY NAME has taken action in reliance upon this consent.
+                <span>
+             
+              <AutosizeInput
+ inputStyle={{ border: "none", outline: "none" }}
+  placeholder="COMPANY NAME"
+  value={companyName}
+  onChange={(e) => setCompanyName(e.target.value)}
+/>
+                </span> has taken action in reliance upon this consent.
               </li>
               <li>
                 I understand that all the information gathered during my
@@ -784,7 +851,7 @@ const ResidentIntakes = () => {
             </ul>
           </div>
           <div className="yeschechbox2">
-            <div>
+            <div style={{display :"flex", gap:"10px",alignItems:"center"}}>
               <input type="checkbox" name="" id="" />
               <label htmlFor="">I Agree to the Terms & Conditions</label>
             </div>
@@ -795,59 +862,65 @@ const ResidentIntakes = () => {
             >
               Resident’s Details
             </h2>
-            <label
+            {/* <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Company Name
-            </label>
+            </label> */}
 
-            <input
+            {/* <input
               type="text"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
-            />
-            <label
+            /> */}
+            {/* <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident residentName
-            </label>
+            </label> */}
 
-            <input
+            {/* <input
               type="text"
               value={residentName}
               onChange={(e) => setResidentName(e.target.value)}
-            />
+            /> */}
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature
             </label>
 
-            <input
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel1(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel1 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel1(false)}
+                singin={residentSignature}
+                setSingIn={setResidentSignature}
+                
+                />)
+            }
+
+            {/* <input
               type="text"
               value={residentSignature}
               onChange={(e) => setResidentSignature(e.target.value)}
-            />
+            /> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label htmlFor="dateOfBirth" className="label-review-resitent">Date:</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
@@ -870,7 +943,7 @@ const ResidentIntakes = () => {
               Guardian/Representative Details
             </h2>
             <div className="form-field">
-              <label htmlFor="admissionDate">
+              <label htmlFor="admissionDate" className="label-review-resitent">
                 Guardian/Representative Full Name
               </label>
               <input
@@ -884,25 +957,41 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian / Representative Signature
             </label>
-            <input
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel2(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel1 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel2(false)}
+                singin={guardianRepresentativeSignature}
+                setSingIn={setGuardianRepresentativeSignature}
+                
+                />)
+            }
+
+            {/* <input
               type="text"
               value={guardianRepresentativeSignature}
               onChange={(e) =>
                 setGuardianRepresentativeSignature(e.target.value)
               }
-            />
+            /> */}
 
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label htmlFor="dateOfBirth" className="label-review-resitent">Date: </label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
@@ -925,10 +1014,10 @@ const ResidentIntakes = () => {
               Staff Details
             </h2>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Staff Full Name</label>
+              <label className="label-review-resitent">Staff Full Name</label>
               <input
                 type="text"
-                id="AHCCCS"
+                
                 value={staffName}
                 placeholder="Enter full name"
                 required
@@ -937,26 +1026,41 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Staff Signature
             </label>
-            <input
+            <div class="file-upload-box">
+              
+              <div style={{ display: "block" }}>
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel3(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+            </div>
+
+            {
+              signInModel1 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel3(false)}
+                singin={staffSignature}
+                setSingIn={setStaffSignature}
+                
+                />)
+            }
+            {/* <input
               type="text"
               value={staffSignature}
               onChange={(e) => setStaffSignature(e.target.value)}
-            />
+            /> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label  className="label-review-resitent">Date:</label>
               <input
-                style={{ color: "#1A9FB2" }}
+
                 type="date"
-                id="dateOfBirth"
+               
                 value={staffDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -969,12 +1073,21 @@ const ResidentIntakes = () => {
                 fontSize: "24px",
                 textAlign: "center",
                 marginBottom: "20px",
+                marginTop:"1.5rem"
               }}
             >
               Internal Resident Disclosure List
             </h6>
             <p>
-              I authorize and agree that Company Name may verbally disclose my
+              I authorize and agree that<span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span> may verbally disclose my
               protected health information (PHI) to the following family
               members, individuals and / or significant others in my life each
               of whom is directly involved in my care and are concerned about my
@@ -982,11 +1095,27 @@ const ResidentIntakes = () => {
               issues either in person or on the telephone.
             </p>
             <p>
-              I authorize and agree that Company Name may acknowledge and accept
+              I authorize and agree that <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span> may acknowledge and accept
               telephone calls from the following family members, individuals and
               / or significant others in my life each of whom is directly
               involved in my care and are concerned about my well being who may
-              want to talk to me while at Company Name
+              want to talk to me while at <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span>
             </p>
 
             <div className="safetyplandiv">
@@ -1030,14 +1159,38 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div>
-            <div className="form-actions">
-              <button type="submit" className="safetybutton1">
-                <CiCirclePlus style={{ width: "30px", height: "30px" }} /> ADD
-                MORE PEOPLE
-              </button>
+            <div className="needs-interventions-container">
+              <div className="needs-interventions-column3">
+                {internalDisclosureList.length > 0 && (
+                  <table>
+                    <thead>
+                      <th>Name of Person</th>
+                      <th>Relationship</th>
+                      <th>Contact</th>
+                    </thead>
+                    <tbody>
+                      {internalDisclosureList?.map((i, index) => (
+                        <tr>
+                          <td>{`${index + 1}. ${i.internalName}`} </td>
+                          <td>{`${index + 1}. ${i.internalRelationship}`} </td>
+                          <td>{`${index + 1}. ${i.internalContect}`} </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
             </div>
-            <p>
-              I acknowledge and agree that Company Name may disclose my
+            <p style={{marginTop:"1.5rem"}}>
+              I acknowledge and agree that <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span> may disclose my
               protected health information to the person(s) set forth in this
               form. I understand that I can revoke this authorization in
               writing, except to the extent that action has already been taken,
@@ -1056,7 +1209,7 @@ const ResidentIntakes = () => {
             </h6>
 
             <div className="form-field">
-              <label htmlFor="">Resident Name</label>
+              <label htmlFor="" className="label-review-resitent">Resident Name</label>
               <input
                 type="text"
                 vlaue={internalDisclosureListResidentName}
@@ -1064,7 +1217,7 @@ const ResidentIntakes = () => {
                   setInternalDisclosureListResidentName(e.target.value)
                 }
               />
-              <label htmlFor="dateOfBirth">Expiry Date</label>
+              <label htmlFor="dateOfBirth" className="label-review-resitent">Expiry Date</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
@@ -1079,12 +1232,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature
             </label>
@@ -1126,7 +1274,7 @@ const ResidentIntakes = () => {
               />
             </div> */}
             <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Full Name</label>
+              <label className="label-review-resitent">Guardian/Representative Full Name</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -1142,12 +1290,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian / Representative Signature
             </label>
@@ -1180,11 +1323,11 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+           
                 value={internalDisclosureListGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1197,12 +1340,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Staff Name
             </label>
@@ -1215,12 +1353,7 @@ const ResidentIntakes = () => {
             />
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Staff Signature
             </label>
@@ -1233,11 +1366,11 @@ const ResidentIntakes = () => {
               }
             />
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+               
                 value={internalDisclosureListStaffDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1474,14 +1607,33 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
-              Resident Name
+              Resident Signature
+            </label>
+            <input
+              type="text"
+              // value={residentRightsResidentSignature}
+              placeholder="Signature"
+              
+            />
+            <div className="form-field">
+              <label className="label-review-resitent">Date </label>
+              <input
+                style={{ color: "#1A9FB2" }}
+                type="date"
+           
+                value={residentRightsResidentDate}
+                placeholder="DD/MM/YYYY"
+                required
+                onChange={(e) => setResidentRightsResidentDate(e.target.value)}
+              />
+            </div>
+            <label
+              htmlFor=""
+              className="label-review-resitent"
+            >
+              Guardian/Representative Name
             </label>
             <input
               type="text"
@@ -1491,14 +1643,9 @@ const ResidentIntakes = () => {
             />
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
-              Resident Signature
+              Guardian/Representative Signature
             </label>
             <input
               type="text"
@@ -1509,11 +1656,11 @@ const ResidentIntakes = () => {
               }
             />
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+           
                 value={residentRightsResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1576,6 +1723,7 @@ const ResidentIntakes = () => {
                 fontSize: "24px",
                 textAlign: "center",
                 marginBottom: "20px",
+                marginTop:"1.5rem"
               }}
             >
               PHOTO/VIDEO CONSENT FORM
@@ -1585,7 +1733,7 @@ const ResidentIntakes = () => {
               only.
             </p>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Resident Name:</label>
+              <label className="label-review-resitent">Resident Name:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -1598,11 +1746,11 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <label className="label-review-resitent">Date of Birth</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+              
                 value={photoVideoConsentDateOfBirth}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1612,11 +1760,11 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Admission Date:</label>
+              <label className="label-review-resitent">Admission Date:</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+               
                 value={photoVideoConsentAdmissionDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1626,7 +1774,15 @@ const ResidentIntakes = () => {
               />
             </div>
             <p style={{ color: "#000000" }}>
-              Agree to give COMPANY NAME the consent to appear in photographs
+              Agree to give <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="COMPANY NAME"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span> the consent to appear in photographs
               and videotapes for the purpose of identification and capturing
               memories from activities. I understand that the photographs and
               videos will only be displayed within the home if will never be
@@ -1643,12 +1799,7 @@ const ResidentIntakes = () => {
             </p>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Consent ConsentGiven
             </label>
@@ -1658,17 +1809,12 @@ const ResidentIntakes = () => {
               onChange={(e) => setPhotoVideoConsentConsentGiven(e.target.value)}
             >
               <option>Open this select menu</option>
-              <option value={true}>True</option>
-              <option value={false}>False</option>
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
             </select>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Consent ConsentWithdrawn
             </label>
@@ -1694,12 +1840,7 @@ const ResidentIntakes = () => {
 
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature
             </label>
@@ -1730,11 +1871,11 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+              
                 value={photoVideoConsentResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1744,10 +1885,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+              <label className="label-review-resitent">Guardian/Representative Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+               
                 value={photoVideoConsentGuardianRepresentativeName}
                 placeholder="Enter Name"
                 required
@@ -1758,12 +1899,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian/Representative Signature:
             </label>
@@ -1796,11 +1932,11 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date of Signature Obtained</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+               
                 value={photoVideoConsentGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1815,6 +1951,7 @@ const ResidentIntakes = () => {
                 fontSize: "24px",
                 textAlign: "center",
                 marginBottom: "20px",
+                marginTop:"1.5rem"
               }}
             >
               ADVANCED DIRECTIVE FORM
@@ -1831,10 +1968,10 @@ const ResidentIntakes = () => {
               MEMBER MEDICAL RECORD
             </h6>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Resident Name:</label>
+              <label className="label-review-resitent">Resident Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+             
                 value={advanceDirectivesResidentName}
                 placeholder="Enter Name"
                 required
@@ -1844,10 +1981,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Address:</label>
+              <label className="label-review-resitent">Address:</label>
               <input
                 type="text"
-                id="AHCCCS"
+          
                 value={advanceDirectivesResidentAddress}
                 placeholder="Enter Name"
                 required
@@ -1857,7 +1994,7 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="">Select Gender</label>
+              <label className="label-review-resitent">Select Gender</label>
               <div className="genderdiv">
                 <div className="genderbox">
                   <input
@@ -1888,11 +2025,11 @@ const ResidentIntakes = () => {
               </div>
             </div>
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <label className="label-review-resitent" >Date of Birth</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+              
                 value={advanceDirectivesResidentDateOfBirth}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1916,11 +2053,11 @@ const ResidentIntakes = () => {
               />
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date</label>
+              <label className="label-review-resitent" >Date</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+               
                 value={advanceDirectivesResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -1934,45 +2071,66 @@ const ResidentIntakes = () => {
               <p>
                 I have been provided information and verbal explanation about
                 Advance Directive. Member initials{" "}
-                <input
-                  style={{ outline: "none", border: "none" }}
-                  type="text"
-                  placeholder="______"
-                  value={advanceDirectivesProvidedInfoInitials}
-                  onChange={(e) =>
-                    setAdvanceDirectivesProvidedInfoInitials(e.target.value)
-                  }
-                />{" "}
+                <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width :'auto' }}
+type="date"
+
+value={advanceDirectivesProvidedInfoInitials}
+onChange={(e) =>
+  setAdvanceDirectivesProvidedInfoInitials(e.target.value)
+}
+/>
+               </span>
+                
                 Date{" "}
-                <input
-                  type="date"
-                  placeholder="______"
-                  value={advanceDirectivesProvidedInfoDate}
-                  onChange={(e) =>
-                    setAdvanceDirectivesProvidedInfoDate(e.target.value)
-                  }
-                />{" "}
-                Resident is refusing advance directives. Member initials
-                <input
-                  style={{ outline: "none", border: "none" }}
-                  type="text"
-                  placeholder="______"
-                  value={advanceDirectivesProvidedInfoRefusingInitials}
-                  onChange={(e) =>
-                    setAdvanceDirectivesProvidedInfoRefusingInitials(
-                      e.target.value
-                    )
-                  }
-                />{" "}
-                Date{" "}
-                <input
-                  type="date"
-                  placeholder="______"
-                  value={advanceDirectivesProvidedInfoRefusingDate}
-                  onChange={(e) =>
-                    setAdvanceDirectivesProvidedInfoRefusingDate(e.target.value)
-                  }
-                />{" "}
+                <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width :'auto' }}
+type="date"
+
+
+value={advanceDirectivesProvidedInfoDate}
+onChange={(e) =>
+  setAdvanceDirectivesProvidedInfoDate(e.target.value)
+}
+/>
+               </span>
+               
+               <p>Resident is refusing advance directives. Member initials
+                
+               <span>
+               <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width :'auto' }}
+type="date"
+
+
+value={advanceDirectivesProvidedInfoRefusingInitials}
+onChange={(e) =>
+  setAdvanceDirectivesProvidedInfoRefusingInitials(e.target.value)
+}
+/>
+</span>
+Date{" "}
+<span>
+               <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width :'auto' }}
+type="date"
+
+
+value={advanceDirectivesProvidedInfoRefusingDate}
+onChange={(e) =>
+  setAdvanceDirectivesProvidedInfoRefusingDate(e.target.value)
+}
+/>
+</span>
+                
+                </p> 
+             
+               
+                
               </p>
             </div>
             <div className="formsheading">
@@ -1982,7 +2140,7 @@ const ResidentIntakes = () => {
               <span>Resident has developed an Advanced Directive:</span>
               <div>
                 <input
-                  type="radio"
+                  type="checkbox"
                   id="yesRadio"
                   name="option"
                   value="yes"
@@ -1993,7 +2151,7 @@ const ResidentIntakes = () => {
               </div>
               <div>
                 <input
-                  type="radio"
+                type="checkbox"
                   id="noRadio"
                   name="option"
                   value="no"
@@ -2005,6 +2163,7 @@ const ResidentIntakes = () => {
             </div>
             {advanceDirectivesDeveloped === "no" && (
               <input
+                style={{marginBottom:"1rem"}}
                 type="text"
                 placeholder="Please enter"
                 value={advanceDirectivesDevelopedComment}
@@ -2013,9 +2172,9 @@ const ResidentIntakes = () => {
                 }
               />
             )}
-            <div className="yeschechbox2">
+            <div className="yeschechbox2" >
               <span>
-                - If No, stop and let Resident know that assistance in
+                If No, stop and let Resident know that assistance in
                 developing an Advanced Directive is available.
               </span>
             </div>
@@ -2046,6 +2205,7 @@ const ResidentIntakes = () => {
             {advanceDirectivesExecutedInRecord === "no" && (
               <input
                 type="text"
+                style={{marginBottom:"1rem"}}
                 placeholder="Please enter"
                 value={advanceDirectivesExecutedInRecordComment}
                 onChange={(e) =>
@@ -2060,7 +2220,7 @@ const ResidentIntakes = () => {
               </span>
             </div>
             <div className="yeschechbox2">
-              <div>
+              <div style={{display:"flex",alignItems:"center",gap:"10px",marginTop:"10px"}}>
                 <input
                   type="checkbox"
                   id="exampleCheckbox"
@@ -2071,14 +2231,14 @@ const ResidentIntakes = () => {
                     )
                   }
                 />
-                <span>
+                <span htmlFor="advanceDirectivesFilingStatusWishNotFiled">
                   Resident does not wish to have it filed in his/her medical
                   record.
                 </span>
               </div>
             </div>
             <div className="yeschechbox2">
-              <div>
+              <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
                 <input
                   type="checkbox"
                   id="exampleCheckbox"
@@ -2095,7 +2255,7 @@ const ResidentIntakes = () => {
               </div>
             </div>
             <div className="yeschechbox2">
-              <div>
+              <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
                 <input
                   type="checkbox"
                   id="exampleCheckbox"
@@ -2107,19 +2267,7 @@ const ResidentIntakes = () => {
                   }
                 />
                 Other
-                {/* <span>
-                  <input
-                    type="text"
-                    placeholder="______"
-                    style={{ outline: "none", border: "none" }}
-                    value={advanceDirectivesCoordinationOfCareCopySentToPCP}
-                    onChange={(e) =>
-                      setAdvanceDirectivesCoordinationOfCareCopySentToPCP(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span> */}
+               
               </div>
             </div>
             <div className="yeschechbox2">
@@ -2197,7 +2345,7 @@ const ResidentIntakes = () => {
             </div>
             <div className="yeschechbox2">
               <div>
-                <span>Yes</span>
+                <span>Yes  (Specify who)</span>
               </div>
               <div>
                 <input
@@ -2218,7 +2366,7 @@ const ResidentIntakes = () => {
                   <input
                     type="text"
                     style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
+                    placeholder="__________________"
                     value={
                       advanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment
                     }
@@ -2236,7 +2384,7 @@ const ResidentIntakes = () => {
             </div>
             <div className="yeschechbox2">
               <div>
-                <span>No</span>
+                <span>No (Describe why) </span>
               </div>
               <div>
                 <input
@@ -2257,7 +2405,7 @@ const ResidentIntakes = () => {
                   <input
                     type="text"
                     style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
+                    placeholder="__________________"
                     value={
                       advanceDirectivesCoordinationOfCareAppropriatePartiesNotifiedComment
                     }
@@ -2283,16 +2431,16 @@ const ResidentIntakes = () => {
             <p style={{ color: "#000000" }}>
               I,{" "}
               <span>
-                <input
-                  style={{ outline: "none", border: "none" }}
-                  type="text"
-                  placeholder="________"
-                  value={complaintProcessAcknowledgementCompany}
-                  onChange={(e) =>
-                    setComplaintProcessAcknowledgementCompany(e.target.value)
-                  }
-                />
-              </span>{" "}
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+ placeholder="__________________"
+ value={complaintProcessAcknowledgementCompany}
+ onChange={(e) => setComplaintProcessAcknowledgementCompany(e.target.value)}
+/>
+               </span>
+              
               have been explained by facility staff of the facility resident
               complaint process. Resident/Guardian understands that they have
               the right to file complaint with the facility, and with the
@@ -2310,7 +2458,7 @@ const ResidentIntakes = () => {
               By signing below, resident acknowledge to have been informed of
               the complaint process.
             </p>
-            <label
+            {/* <label
               htmlFor=""
               style={{
                 marginRight: "50px",
@@ -2328,15 +2476,10 @@ const ResidentIntakes = () => {
               onChange={(e) =>
                 setComplaintProcessAcknowledgementResidentName(e.target.value)
               }
-            />
+            /> */}
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature
             </label>
@@ -2369,11 +2512,10 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label  className="label-review-resitent">Date: </label>
               <input
-                style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+             
                 value={complaintProcessAcknowledgementResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -2383,10 +2525,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+              <label  className="label-review-resitent">Guardian/Representative Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+           
                 value={
                   complaintProcessAcknowledgementGuardianRepresentativeName
                 }
@@ -2401,12 +2543,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian/Representative Signature:
             </label>
@@ -2441,11 +2578,11 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label  className="label-review-resitent">Date:</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
-                id="dateOfBirth"
+              
                 value={
                   complaintProcessAcknowledgementGuardianRepresentativeDate
                 }
@@ -2464,6 +2601,7 @@ const ResidentIntakes = () => {
                 fontSize: "24px",
                 textAlign: "center",
                 marginBottom: "20px",
+                marginTop:"1.5rem"
               }}
             >
               ORIENTATION TO AGENCY
@@ -2471,15 +2609,17 @@ const ResidentIntakes = () => {
             <div className="Residentrights">
               <p>
                 I,
-                <input
-                  type="text"
-                  placeholder="________"
-                  style={{ border: "none", outline: "none" }}
-                  value={orientationToAgencyCompany}
-                  onChange={(e) =>
-                    setOrientationToAgencyCompany(e.target.value)
-                  }
-                />{" "}
+                <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="________"
+ value={orientationToAgencyCompany}
+ onChange={(e) => setOrientationToAgencyCompany(e.target.value)}
+/>
+               </span>
+               
                 received an orientation by facility by staff. The orientation
                 included but not limited to the following:
               </p>
@@ -2500,12 +2640,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature:
             </label>
@@ -2537,11 +2672,11 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date: </label>
               <input
-                style={{ color: "#1A9FB2" }}
+                
                 type="date"
-                id="dateOfBirth"
+               
                 value={orientationToAgencyResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -2551,10 +2686,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+              <label className="label-review-resitent">Guardian/Representative Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+             
                 value={orientationToAgencyGuardianRepresentativeName}
                 placeholder="Enter text"
                 required
@@ -2567,12 +2702,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian/Representative Signature:
             </label>
@@ -2586,11 +2716,11 @@ const ResidentIntakes = () => {
               }
             />
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date: </label>
               <input
-                style={{ color: "#1A9FB2" }}
+               
                 type="date"
-                id="dateOfBirth"
+               
                 value={orientationToAgencyGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -2607,15 +2737,16 @@ const ResidentIntakes = () => {
                 fontSize: "24px",
                 textAlign: "center",
                 marginBottom: "20px",
+                marginTop:"1.5rem"
               }}
             >
               Resident Lock Box Key Issue and Return
             </h6>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Resident’s Name</label>
+              <label className="label-review-resitent">Resident’s Name</label>
               <input
                 type="text"
-                id="AHCCCS"
+                
                 value={promotionTalkStrategicApproach}
                 placeholder="Enter Name"
                 required
@@ -2624,11 +2755,11 @@ const ResidentIntakes = () => {
                 }
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Date Key Issued:</label>
+            <div >
+              <label className="label-review-resitent">Date Key Issued:</label>
               <input
                 type="date"
-                id="AHCCCS"
+               
                 value={lockBoxKeyIssueReturnDateKeyIssued}
                 placeholder="Enter Name"
                 required
@@ -2638,10 +2769,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Date Key Returned:</label>
+              <label className="label-review-resitent">Date Key Returned:</label>
               <input
                 type="date"
-                id="AHCCCS"
+            
                 value={lockBoxKeyIssueReturnDateKeyReturned}
                 placeholder="Enter Name"
                 required
@@ -2651,10 +2782,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Address</label>
+              <label className="label-review-resitent">Address</label>
               <input
                 type="text"
-                id="AHCCCS"
+              
                 value={lockBoxKeyIssueReturnAddress}
                 placeholder="Enter Name"
                 required
@@ -2663,57 +2794,56 @@ const ResidentIntakes = () => {
                 }
               />
             </div>
-            <div className="Residentrights">
+            <div className="Residentrights" style={{marginTop:"1.5rem"}}>
               <p>
                 I,{" "}
                 <span>
-                  <input
-                    type="text"
-                    placeholder="________"
-                    value={lockBoxKeyIssueReturnResponsibleFor}
-                    onChange={(e) =>
-                      setLockBoxKeyIssueReturnResponsibleFor(e.target.value)
-                    }
-                  />
-                </span>{" "}
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="________"
+
+ value={lockBoxKeyIssueReturnResponsibleFor}
+ onChange={(e) => setLockBoxKeyIssueReturnResponsibleFor(e.target.value)}
+/>
+               </span>
+            
                 will be responsible for my individual lock box key to
                 <span>
-                  <input
-                    type="text"
-                    placeholder="________"
-                    value={lockBoxKeyIssueReturnResponsibleForCorporation}
-                    onChange={(e) =>
-                      setLockBoxKeyIssueReturnResponsibleForCorporation(
-                        e.target.value
-                      )
-                    }
-                  />
+                <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="________"
+
+ value={lockBoxKeyIssueReturnResponsibleForCorporation}
+ onChange={(e) => setLockBoxKeyIssueReturnResponsibleForCorporation(e.target.value)}
+/>
+               </span>
+                 
                 </span>{" "}
                 Corporation lock box located in my room. I will not give my key
                 to anyone except to staff upon request. I understand that if I
                 loose my key I will be charged a $
                 <span>
-                  <input
-                    type="number"
-                    placeholder={0}
-                    value={lockBoxKeyIssueReturnCharged}
-                    onChange={(e) =>
-                      setLockBoxKeyIssueReturnCharged(e.target.value)
-                    }
-                  />
+                <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="number"
+placeholder="____"
+ value={lockBoxKeyIssueReturnCharged}
+ onChange={(e) => setLockBoxKeyIssueReturnCharged(e.target.value)}
+/>
+               </span>
+                
                 </span>{" "}
                 re-key fee. I understand that upon my discharge from this
                 program I will return my key to the program.
               </p>
             </div>
-            <label
+            {/* <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Name:
             </label>
@@ -2724,15 +2854,10 @@ const ResidentIntakes = () => {
               onChange={(e) =>
                 setLockBoxKeyIssueReturnResidentName(e.target.value)
               }
-            />
+            /> */}
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature:
             </label>
@@ -2746,11 +2871,11 @@ const ResidentIntakes = () => {
             />
 
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date: </label>
               <input
-                style={{ color: "#1A9FB2" }}
+             
                 type="date"
-                id="dateOfBirth"
+             
                 value={lockBoxKeyIssueReturnResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -2760,10 +2885,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+              <label className="label-review-resitent">Guardian/Representative Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+            
                 value={lockBoxKeyIssueReturnGuardianRepresentativeName}
                 placeholder="Enter text"
                 required
@@ -2776,12 +2901,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian/Representative Signature:
             </label>
@@ -2798,7 +2918,7 @@ const ResidentIntakes = () => {
             <div className="form-field">
               <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
               <input
-                style={{ color: "#1A9FB2" }}
+      
                 type="date"
                 id="dateOfBirth"
                 value={lockBoxKeyIssueReturnGuardianRepresentativeDate}
@@ -2812,10 +2932,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Staff Witness</label>
+              <label className="label-review-resitent">Staff Witness</label>
               <input
                 type="text"
-                id="AHCCCS"
+               
                 value={lockBoxKeyIssueReturnStaffName}
                 placeholder="Enter Name"
                 required
@@ -2825,10 +2945,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Signature Witness</label>
+              <label className="label-review-resitent">Signature Witness</label>
               <input
                 type="text"
-                id="AHCCCS"
+           
                 value={lockBoxKeyIssueReturnStaffSignature}
                 placeholder="Enter signature"
                 required
@@ -2838,9 +2958,9 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date</label>
+              <label className="label-review-resitent">Date</label>
               <input
-                style={{ color: "#1A9FB2" }}
+               
                 type="date"
                 id="dateOfBirth"
                 value={lockBoxKeyIssueReturnStaffDate}
@@ -2857,6 +2977,7 @@ const ResidentIntakes = () => {
                 fontSize: "16px",
                 textAlign: "center",
                 marginBottom: "20px",
+                marginTop:"1.5rem"
               }}
             >
               INSURANCE INFORMATION
@@ -2866,398 +2987,408 @@ const ResidentIntakes = () => {
               <p>
                 Name of Policyholder{" "}
                 <span>
-                  <input
-                    type="text"
-                    placeholder="_______"
-                    value={insuranceInformationPrimaryInsurancePolicyholderName}
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsurancePolicyholderName(
-                        e.target.value
-                      )
-                    }
-                  />
+                <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="________________"
+value={insuranceInformationPrimaryInsurancePolicyholderName}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderName(
+    e.target.value
+  )
+}
+/>
+               </span>
+                 
                 </span>{" "}
                 Policy holder Date of Birth{" "}
                 <span>
-                  <input
-                    type="date"
-                    value={
-                      insuranceInformationPrimaryInsurancePolicyholderDateOfBirth
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsurancePolicyholderDateOfBirth(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+type="date"
+value={
+  insuranceInformationPrimaryInsurancePolicyholderDateOfBirth
+}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderDateOfBirth(
+    e.target.value
+  )
+}
+/>
+               </span>
+              
               </p>
               <p>
                 Policyholder Address (if different than Resident)
                 <span>
-                  <input
-                    type="text"
-                    value={
-                      insuranceInformationPrimaryInsurancePolicyholderAddress
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsurancePolicyholderAddress(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+type="text"
+placeholder="_______________"
+value={
+  insuranceInformationPrimaryInsurancePolicyholderAddress
+}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderAddress(
+    e.target.value
+  )
+}
+/>
+               </span>
+               
               </p>
               <p>
-                City, State, Zip
-                <input
-                  type="text"
-                  placeholder="City"
-                  value={insuranceInformationPrimaryInsurancePolicyholderCity}
-                  onChange={(e) =>
-                    setInsuranceInformationPrimaryInsurancePolicyholderCity(
-                      e.target.value
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="State"
-                  value={insuranceInformationPrimaryInsurancePolicyholderState}
-                  onChange={(e) =>
-                    setInsuranceInformationPrimaryInsurancePolicyholderState(
-                      e.target.value
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="Zip"
-                  value={insuranceInformationPrimaryInsurancePolicyholderZip}
-                  onChange={(e) =>
-                    setInsuranceInformationPrimaryInsurancePolicyholderZip(
-                      e.target.value
-                    )
-                  }
-                />
+                City:
+                
+                <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+type="text"
+placeholder="City"
+value={insuranceInformationPrimaryInsurancePolicyholderCity}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderCity(
+    e.target.value
+  )
+}
+/>
+               </span>
+                 State:
+                 <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+type="text"
+placeholder="State"
+value={insuranceInformationPrimaryInsurancePolicyholderState}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderState(
+    e.target.value
+  )
+}
+/>
+               </span>
+                 
+                  Zip:
+
+                  <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+type="text"
+placeholder="Zip"
+value={insuranceInformationPrimaryInsurancePolicyholderZip}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderZip(
+    e.target.value
+  )
+}
+/>
+               </span>
+               
+               
+                
               </p>
               <p>
                 Phone Number
                 <span>
-                  <input
-                    type="text"
-                    placeholder="_______"
-                    value={
-                      insuranceInformationPrimaryInsurancePolicyholderPhone
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsurancePolicyholderPhone(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" ,width:"auto"}}
+type="text"
+placeholder="_________________________________________________________"
+value={
+  insuranceInformationPrimaryInsurancePolicyholderPhone
+}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderPhone(
+    e.target.value
+  )
+}
+/>
+               </span>
+               
               </p>
               <p>
                 Policyholder Relationship to Resident
                 <span>
-                  <input
-                    type="text"
-                    placeholder="_______"
-                    value={
-                      insuranceInformationPrimaryInsurancePolicyholderRelationship
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsurancePolicyholderRelationship(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" ,width:"auto"}}
+type="text"
+placeholder="_________________________________________________________"
+value={
+  insuranceInformationPrimaryInsurancePolicyholderRelationship
+}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsurancePolicyholderRelationship(
+    e.target.value
+  )
+}
+/>
+               </span>
+               
               </p>
               <p>
-                Insurance Company Name{" "}
+                Insurance Company Name
                 <span>
-                  <input
-                    type="text"
-                    placeholder="____"
-                    value={insuranceInformationPrimaryInsuranceCompany}
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" ,width:"auto"}}
+type="text"
+placeholder="_________________________________________________________"
+value={insuranceInformationPrimaryInsuranceCompany}
                     onChange={(e) =>
                       setInsuranceInformationPrimaryInsuranceCompany(
                         e.target.value
                       )
                     }
-                  />
-                </span>
+/>
+               </span>
+               
               </p>
               <p>
                 Customer Service Phone Number
                 <span>
-                  <input
-                    type="text"
-                    placeholder="______"
-                    value={
-                      insuranceInformationPrimaryInsuranceCustomerServicePhone
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsuranceCustomerServicePhone(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" ,width:"auto"}}
+type="text"
+placeholder="_________________________________________________________"
+value={
+  insuranceInformationPrimaryInsuranceCustomerServicePhone
+}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsuranceCustomerServicePhone(
+    e.target.value
+  )
+}
+/>
+               </span>
+              
               </p>
               <p>
                 Subscriber #{" "}
                 <span>
-                  <input
-                    type="text"
-                    placeholder="______"
-                    value={insuranceInformationPrimaryInsuranceSubscriberNumber}
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsuranceSubscriberNumber(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>{" "}
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="_______________"
+value={insuranceInformationPrimaryInsuranceSubscriberNumber}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsuranceSubscriberNumber(
+    e.target.value
+  )
+}
+/>
+               </span>
+             
                 Group#{" "}
-                <input
-                  type="text"
-                  id="group_Data"
-                  style={{ display: "inline-block" }}
-                  value={insuranceInformationPrimaryInsuranceSubscriberGroup}
-                  onChange={(e) =>
-                    setInsuranceInformationPrimaryInsuranceSubscriberGroup(
-                      e.target.value
-                    )
-                  }
-                />
                 <span>
-                  <label htmlFor="group_Data">__________</label>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="_______________"
+value={insuranceInformationPrimaryInsuranceSubscriberGroup}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsuranceSubscriberGroup(
+    e.target.value
+  )
+}
+/>
+              
                 </span>
                 Effective Date{" "}
                 <span>
-                  <input
-                    type="date"
-                    value={
-                      insuranceInformationPrimaryInsuranceSubscriberEffectiveDate
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationPrimaryInsuranceSubscriberEffectiveDate(
-                        e.target.value
-                      )
-                    }
-                  />
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="date"
+placeholder="_____________"
+value={
+  insuranceInformationPrimaryInsuranceSubscriberEffectiveDate
+}
+onChange={(e) =>
+  setInsuranceInformationPrimaryInsuranceSubscriberEffectiveDate(
+    e.target.value
+  )
+}
+/>
+              
                 </span>
+              
               </p>
               <p>
                 Secondary Insurance Name of Policyholder{" "}
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsurancePolicyholderName
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsurancePolicyholderName(
-                        e.target.value
-                      )
-                    }
-                  />
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="_______________"
+value={
+  insuranceInformationSecondaryInsurancePolicyholderName
+}
+onChange={(e) =>
+  setInsuranceInformationSecondaryInsurancePolicyholderName(
+    e.target.value
+  )
+}
+/>
                 </span>
-              </p>
-              <p>
                 Policy holder Date of Birth{" "}
                 <span>
-                  <input
-                    type="date"
-                    value={
-                      insuranceInformationSecondaryInsurancePolicyholderDateOfBirth
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsurancePolicyholderDateOfBirth(
-                        e.target.value
-                      )
-                    }
-                  />
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="date"
+placeholder="_______________"
+value={
+  insuranceInformationSecondaryInsurancePolicyholderDateOfBirth
+}
+onChange={(e) =>
+  setInsuranceInformationSecondaryInsurancePolicyholderDateOfBirth(
+    e.target.value
+  )
+}
+/>
                 </span>
+               
+              
               </p>
+            
               <p>
                 Policyholder Address (if different than Resident)
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsurancePolicyholderAddress
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsurancePolicyholderAddress(
-                        e.target.value
-                      )
-                    }
-                  />
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" }}
+type="text"
+placeholder="_______________"
+value={
+  insuranceInformationSecondaryInsurancePolicyholderAddress
+}
+onChange={(e) =>
+  setInsuranceInformationSecondaryInsurancePolicyholderAddress(
+    e.target.value
+  )
+}
+/>
                 </span>
+              
               </p>
               <p>
-                City, State, Zip
-                <input
-                  type="text"
-                  placeholder="City"
-                  style={{ outline: "none", border: "none" }}
-                  value={insuranceInformationSecondaryInsurancePolicyholderCity}
-                  onChange={(e) =>
-                    setInsuranceInformationSecondaryInsurancePolicyholderCity(
-                      e.target.value
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="State"
-                  style={{ outline: "none", border: "none" }}
-                  value={
-                    insuranceInformationSecondaryInsurancePolicyholderState
-                  }
-                  onChange={(e) =>
-                    setInsuranceInformationSecondaryInsurancePolicyholderState(
-                      e.target.value
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="Zip"
-                  style={{ outline: "none", border: "none" }}
-                  value={insuranceInformationSecondaryInsurancePolicyholderZip}
-                  onChange={(e) =>
-                    setInsuranceInformationSecondaryInsurancePolicyholderZip(
-                      e.target.value
-                    )
-                  }
-                />
+                City: 
+                <span>
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsurancePolicyholderCity}
+ onChange={(e) => setInsuranceInformationSecondaryInsurancePolicyholderCity(e.target.value)}
+/>
+               </span>
+                
+                 State:
+                 <span>
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsurancePolicyholderState}
+ onChange={(e) => setInsuranceInformationSecondaryInsurancePolicyholderState(e.target.value)}
+/>
+               </span>
+                  Zip
+                  <span>
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsurancePolicyholderZip}
+ onChange={(e) => setInsuranceInformationSecondaryInsurancePolicyholderZip(e.target.value)}
+/>
+               </span>
+              
               </p>
               <p>
                 Phone Number
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsurancePolicyholderPhone
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsurancePolicyholderPhone(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsurancePolicyholderPhone}
+ onChange={(e) => setInsuranceInformationSecondaryInsurancePolicyholderPhone(e.target.value)}
+/>
+               </span>
+              
               </p>
               <p>
                 Policyholder Relationship to Resident
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsurancePolicyholderRelationship
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsurancePolicyholderRelationship(
-                        e.target.value
-                      )
-                    }
-                  />
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsurancePolicyholderRelationship}
+ onChange={(e) => setInsuranceInformationSecondaryInsurancePolicyholderRelationship(e.target.value)}
+/>
+               </span>
+                <span>
+              
                 </span>
               </p>
               <p>
                 Insurance Company Name{" "}
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={insuranceInformationSecondaryInsuranceCompany}
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsuranceCompany(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsuranceCompany}
+ onChange={(e) => setInsuranceInformationSecondaryInsuranceCompany(e.target.value)}
+/>
+               </span>
+               
               </p>
               <p>
                 Customer Service Phone Number
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsuranceCustomerServicePhone
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsuranceCustomerServicePhone(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsuranceCustomerServicePhone}
+ onChange={(e) => setInsuranceInformationSecondaryInsuranceCustomerServicePhone(e.target.value)}
+/>
+               </span>
+              
               </p>
               <p>
                 Subscriber #
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsuranceSubscriberNumber
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsuranceSubscriberNumber(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>{" "}
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsuranceSubscriberNumber}
+ onChange={(e) => setInsuranceInformationSecondaryInsuranceSubscriberNumber(e.target.value)}
+/>
+               </span>
+               
                 Group#{" "}
                 <span>
-                  <input
-                    type="text"
-                    style={{ outline: "none", border: "none" }}
-                    placeholder="_______"
-                    value={
-                      insuranceInformationSecondaryInsuranceSubscriberGroup
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsuranceSubscriberGroup(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsuranceSubscriberGroup}
+ onChange={(e) => setInsuranceInformationSecondaryInsuranceSubscriberGroup(e.target.value)}
+/>
+               </span>
+             
                 Effective Date{" "}
                 <span>
-                  <input
-                    type="date"
-                    value={
-                      insuranceInformationSecondaryInsuranceSubscriberEffectiveDate
-                    }
-                    onChange={(e) =>
-                      setInsuranceInformationSecondaryInsuranceSubscriberEffectiveDate(
-                        e.target.value
-                      )
-                    }
-                  />
-                </span>
+             <AutosizeInput
+             type="date"
+inputStyle={{ border: "none", outline: "none",width:"auto" }}
+ placeholder="______________________"
+ value={insuranceInformationSecondaryInsuranceSubscriberEffectiveDate}
+ onChange={(e) => setInsuranceInformationSecondaryInsuranceSubscriberEffectiveDate(e.target.value)}
+/>
+               </span>
+             
               </p>
               <p>
                 OBLIGATIONS OF RESPONSIBLE PARTY: Our facility files for
@@ -3279,8 +3410,8 @@ const ResidentIntakes = () => {
                 payable to me.
               </p>
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+            {/* <div className="form-field">
+              <label className="label-review-resitent">Guardian/Representative Name:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -3291,15 +3422,10 @@ const ResidentIntakes = () => {
                   setObligationsAndAuthorizationResidentName(e.target.value)
                 }
               />
-            </div>
+            </div> */}
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Resident Signature:
             </label>
@@ -3311,11 +3437,11 @@ const ResidentIntakes = () => {
               }
             />
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date: </label>
               <input
-                style={{ color: "#1A9FB2" }}
+             
                 type="date"
-                id="dateOfBirth"
+              
                 value={obligationsAndAuthorizationResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -3325,10 +3451,10 @@ const ResidentIntakes = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Guardian/Representative Name:</label>
+              <label className="label-review-resitent">Guardian/Representative Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+                
                 value={obligationsAndAuthorizationGuardianRepresentativeName}
                 placeholder="Enter Name"
                 required
@@ -3341,12 +3467,7 @@ const ResidentIntakes = () => {
             </div>
             <label
               htmlFor=""
-              style={{
-                marginRight: "50px",
-                fontWeight: "500",
-                fontSize: "16px",
-                color: "#000000",
-              }}
+              className="label-review-resitent"
             >
               Guardian/Representative Signature:
             </label>
@@ -3360,11 +3481,11 @@ const ResidentIntakes = () => {
               }
             />
             <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date: </label>
               <input
-                style={{ color: "#1A9FB2" }}
+                
                 type="date"
-                id="dateOfBirth"
+                
                 value={obligationsAndAuthorizationGuardianRepresentativeDate}
                 placeholder="DD/MM/YYYY"
                 required
@@ -3383,7 +3504,9 @@ const ResidentIntakes = () => {
           </div>
         </form>
       </div>
-      {/* {showSingIn && <SingInModel setShowSingIn={setShowSingIn} />} */}
+      {
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
     </>
   );
 };

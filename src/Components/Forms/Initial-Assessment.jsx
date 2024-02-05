@@ -525,6 +525,22 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
 
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState([]);
+  const [typesOfActivityOther,setTypesOfActivityOther]=useState("")
+//implment type of other activity
+const [typeOfOtherBoolean,setTypeOfOtherBoolean]=useState(false);
+useEffect(() => {
+  // setTypeOfOtherBoolean()
+  for (let i = 0; i < bathingShoweringGood.length; i++) {
+    if (bathingShoweringGood[i].value === "Other(specify)") {
+      setTypeOfOtherBoolean(true);
+      break; 
+    }else{
+      setTypeOfOtherBoolean(false);
+    }
+  }
+}, [bathingShoweringGood]);
+
+ 
   const [bathingShoweringFair, setBathingShoweringFair] = useState();
   const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
     useState();
@@ -4340,13 +4356,30 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
               <h6>Current Independent Living Skills:</h6>
             </div>
             <div className="form-field">
-              <label htmlFor="reasonadmission">Type of Activity</label>
+              <label >Type of Activity</label>
               <Select
               value={bathingShoweringGood}
               isMulti
               onChange={bathingShoweringGoodJHandler}
               options={bathingShoweringGoodOptions}/>
             </div>
+            {
+              typeOfOtherBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={typesOfActivityOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setTypesOfActivityOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+            
             <div className="yeschechbox employment-Aligmantfall-risk">
               <div>
                 <input
@@ -5195,7 +5228,7 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
                       checked={otherBoolean}
                       onChange={() => setOtherBoolean(!otherBoolean)}
                     />
-                    <label htmlFor="otherBoolean">other (please specify)</label>
+                    <label htmlFor="otherBoolean">Other (please specify)</label>
                   </div>
                 </div>
                 <div class="checkoptions">
@@ -5385,7 +5418,7 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
                       }
                     />
                     <label htmlFor="otherSignificantRecentLosses">
-                      other (please specify)
+                      Other (please specify)
                     </label>
                   </div>
                 </div>
@@ -5462,24 +5495,7 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
                 onChange={(e) => setStaffTitle(e.target.value)}
               />
             </div>
-            {/* <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div> */}
+          
             <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input

@@ -92,33 +92,47 @@ const NursingAssessment = () => {
   ] = useState();
   const [reviewOfSystemsConstitutional, setReviewOfSystemsConstitutional] =
     useState("");
+    const [reviewOfSystemsConstitutionalOther, setReviewOfSystemsConstitutionalOther] =
+    useState("");
   const [reviewOfSystemsCardiovascular, setReviewOfSystemsCardiovascular] =
     useState("");
+    const [reviewOfSystemsCardiovascularOther,setReviewOfSystemsCardiovascularOther]=useState("")
   const [reviewOfSystemsEndocrine, setReviewOfSystemsEndocrine] = useState("");
+  const [reviewOfSystemsEndocrineOther,setReviewOfSystemsEndocrineOther]=useState("")
   const [reviewOfSystemsGastrointestinal, setReviewOfSystemsGastrointestinal] =
     useState("");
+  const [reviewOfSystemsGastrointestinalOther,setReviewOfSystemsGastrointestinalOther]=useState("")
   const [reviewOfSystemsGenitourinary, setReviewOfSystemsGenitourinary] =
     useState("");
+    const [reviewOfSystemsGenitourinaryOther,setReviewOfSystemsGenitourinaryOther]=useState("")
   const [
     reviewOfSystemsHematologyOncology,
     setReviewOfSystemsHematologyOncology,
   ] = useState("");
+  const [reviewOfSystemsHematologyOncologyOther,setReviewOfSystemsHematologyOncologyOther]=useState("")
   const [reviewOfSystemsHeadNeckThroat, setReviewOfSystemsHeadNeckThroat] =
     useState("");
+    const [reviewOfSystemsHeadNeckThroatOther,setReviewOfSystemsHeadNeckThroatOther]=useState("")
   const [reviewOfSystemsIntegumentary, setReviewOfSystemsIntegumentary] =
     useState("");
+  const [reviewOfSystemsIntegumentaryOther,setReviewOfSystemsIntegumentaryOther]=useState("") 
   const [reviewOfSystemsMusculoskeletal, setReviewOfSystemsMusculoskeletal] =
     useState("");
+    const [reviewOfSystemsMusculoskeletalOther,setReviewOfSystemsMusculoskeletalOther]=useState("")
   const [reviewOfSystemsPsychiatric, setReviewOfSystemsPsychiatric] =
     useState("");
+    const [reviewOfSystemsPsychiatricOther,setReviewOfSystemsPsychiatricOther]=useState("")
   const [reviewOfSystemsNeurologic, setReviewOfSystemsNeurologic] =
     useState("");
+    const [reviewOfSystemsNeurologicOther,setReviewOfSystemsNeurologicOther]=useState("")
   const [reviewOfSystemsRespiratory, setReviewOfSystemsRespiratory] =
     useState("");
+    const [reviewOfSystemsRespiratoryOther,setReviewOfSystemsRespiratoryOther]=useState("")
   const [
     reviewOfSystemsAllergicImmunologic,
     setReviewOfSystemsAllergicImmunologic,
   ] = useState("");
+  const [reviewOfSystemsAllergicImmunologicOther,setReviewOfSystemsAllergicImmunologicOther]=useState("")
   const [
     suicidalRiskAssessmentDeniesSymptomsBellow,
     setSuicidalRiskAssessmentDeniesSymptomsBellow,
@@ -450,7 +464,7 @@ const NursingAssessment = () => {
               type="text"
               id="AHCCCS"
               value={admissionDiagnoses}
-              rows={5}
+              rows={2}
               cols={130}
               placeholder="Enter text."
               required
@@ -1054,14 +1068,15 @@ const NursingAssessment = () => {
           </div>
 
           <div className="form-field">
-            <label htmlFor="programlocation&address">Comment:</label>
+            <label htmlFor="reviewOfSystemsConstitutionalOther&address">Comment:</label>
             <textarea
-              id="programlocation&address"
-              value=""
+              id="reviewOfSystemsConstitutionalOther&address"
+              value={reviewOfSystemsConstitutionalOther}
               placeholder="Enter text"
-              rows={5}
+              rows={2}
               cols={82}
               required
+              onChange={(e)=>setReviewOfSystemsConstitutionalOther(e.target.value)}
             />
           </div>
           <label htmlFor="" className="label-review">Cardiovascular:</label>
@@ -1139,22 +1154,32 @@ const NursingAssessment = () => {
             </div>
 
             <div>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">
+            <input
+                type="checkbox"
+                id="itsgoodother"
+                checked={
+                  reviewOfSystemsCardiovascular === "Is your blood pressure under control? Yes / No / Unsure"
+                }
+                onChange={() =>
+                  setReviewOfSystemsCardiovascular("Is your blood pressure under control? Yes / No / Unsure")
+                }
+              />
+                <label htmlFor="itsgoodother">
                   Is your blood pressure under control? Yes / No / Unsure
                 </label>
               </div>
           </div>
         
             <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
+              <label htmlFor="reviewOfSystemsCardiovascularOther">Comment:</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                id="reviewOfSystemsCardiovascularOther"
+                value={reviewOfSystemsCardiovascularOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsCardiovascularOther(e.target.value)}
               />
             </div>
             <label htmlFor="" className="label-review">Endocrine:</label>
@@ -1217,24 +1242,49 @@ const NursingAssessment = () => {
               <label htmlFor="hairLoss">Hair loss</label>
             </div>
             <div>
-                <input type="checkbox" name="" id="" />
-                <span>Dry skin Is resident’s blood sugar under control?</span>
+            <input
+                type="checkbox"
+                id="Dry skin Is resident’s blood sugar under control?"
+                checked={reviewOfSystemsEndocrine === "Dry skin Is resident’s blood sugar under control?"}
+                onChange={() => setReviewOfSystemsEndocrine("Dry skin Is resident’s blood sugar under control?")}
+              />
+                <label htmlFor="Dry skin Is resident’s blood sugar under control?">Dry skin Is resident’s blood sugar under control?</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Yes</span>
+              <input
+                type="checkbox"
+                id="Yes"
+                checked={reviewOfSystemsEndocrine === "Yes"}
+                onChange={() => setReviewOfSystemsEndocrine("Yes")}
+              />
+                <label htmlFor="Yes">Yes</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>No</span>
+              <input
+                type="checkbox"
+                id="no"
+                checked={reviewOfSystemsEndocrine === "No"}
+                onChange={() => setReviewOfSystemsEndocrine("No")}
+              />
+                <label htmlFor="no">No</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>Unsure</span>
+              <input
+                type="checkbox"
+                id="Unsure"
+                checked={reviewOfSystemsEndocrine === "Unsure"}
+                onChange={() => setReviewOfSystemsEndocrine("Unsure")}
+              />
+                <label htmlFor="Unsure">Unsure</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="" />
-                <span>N/a</span>
+              <input
+                type="checkbox"
+                id="N/a"
+                checked={reviewOfSystemsEndocrine === "N/a"}
+                onChange={() => setReviewOfSystemsEndocrine("N/a")}
+              />
+                <label htmlFor="N/a">N/a</label>
               </div>
           </div>
           
@@ -1242,14 +1292,15 @@ const NursingAssessment = () => {
         
             </div>  */}
            <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
+              <label htmlFor="reviewOfSystemsEndocrineOther">Comment:</label>
               <textarea
-                id="programlocation&address"
-                value=""
+                id="reviewOfSystemsEndocrineOther"
+                value={reviewOfSystemsEndocrineOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsEndocrineOther(e.target.value)}
               />
             </div> 
             <label htmlFor="" className="label-review">Gastrointestinal:</label>
@@ -1357,11 +1408,12 @@ const NursingAssessment = () => {
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={reviewOfSystemsGastrointestinalOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsGastrointestinalOther(e.target.value)}
               />
             </div> 
 
@@ -1462,11 +1514,12 @@ const NursingAssessment = () => {
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={reviewOfSystemsGenitourinaryOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsGenitourinaryOther(e.target.value)}
               />
             </div> 
 
@@ -1512,11 +1565,12 @@ const NursingAssessment = () => {
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={reviewOfSystemsHematologyOncologyOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsHematologyOncologyOther(e.target.value)}
               />
             </div> 
 
@@ -1614,11 +1668,12 @@ const NursingAssessment = () => {
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={reviewOfSystemsHeadNeckThroatOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsHeadNeckThroatOther(e.target.value)}
               />
             </div> 
 
@@ -1698,11 +1753,12 @@ const NursingAssessment = () => {
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={reviewOfSystemsIntegumentaryOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsIntegumentaryOther(e.target.value)}
               />
             </div> 
 
@@ -1782,11 +1838,12 @@ const NursingAssessment = () => {
               <label htmlFor="programlocation&address">Comment:</label>
               <textarea
                 id="programlocation&address"
-                value=""
+                value={reviewOfSystemsMusculoskeletalOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsMusculoskeletalOther(e.target.value)}
               />
             </div> 
             <label htmlFor="" className="label-review">Psychiatric: </label>
@@ -1882,14 +1939,14 @@ const NursingAssessment = () => {
           </div>
           
           <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
+              <label >Comment:</label>
               <textarea
-                id=""
-                value=""
+                value={reviewOfSystemsPsychiatricOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsPsychiatricOther(e.target.value)}
               />
             </div> 
 
@@ -2034,14 +2091,15 @@ const NursingAssessment = () => {
           
 
           <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
+              <label htmlFor="reviewOfSystemsNeurologicOther">Comment:</label>
               <textarea
-                id=""
-                value=""
+                id="reviewOfSystemsNeurologicOther"
+                value={reviewOfSystemsNeurologicOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsNeurologicOther(e.target.value)}
               />
             </div> 
 
@@ -2114,14 +2172,15 @@ const NursingAssessment = () => {
             </div>
           </div>
           <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
+              <label htmlFor="reviewOfSystemsRespiratoryOther">Comment:</label>
               <textarea
-                
-                value=""
+                id="reviewOfSystemsRespiratoryOther"
+                value={reviewOfSystemsRespiratoryOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsRespiratoryOther(e.target.value)}
               />
             </div> 
 
@@ -2202,13 +2261,15 @@ const NursingAssessment = () => {
           </div>
 
           <div className="form-field">
-              <label htmlFor="programlocation&address">Comment:</label>
+              <label htmlFor="reviewOfSystemsAllergicImmunologicOther">Comment:</label>
               <textarea
-                value=""
+              id="reviewOfSystemsAllergicImmunologicOther"
+                value={reviewOfSystemsAllergicImmunologicOther}
                 placeholder="Enter text"
-                rows={5}
+                rows={2}
                 cols={82}
                 required
+                onChange={(e)=>setReviewOfSystemsAllergicImmunologicOther(e.target.value)}
               />
             </div> 
 
@@ -2719,7 +2780,7 @@ const NursingAssessment = () => {
               onChange={(e) => setBhtName(e.target.value)}
             />
           </div>
-          <label style={{marginTop:"1rem",marginBottom:"1rem"}}>BHT Signature:</label>
+          <label style={{marginTop:"1rem"}}>BHT Signature:</label>
           {/* <input
             type="text"
             value={bhtSignature}
@@ -2747,7 +2808,7 @@ const NursingAssessment = () => {
               onChange={(e) => setRnName(e.target.value)}
             />
           </div>
-          <label style={{marginTop:"1rem",marginBottom:"1rem"}}>RN Signature:</label>
+          <label style={{marginTop:"1rem"}}>RN Signature:</label>
 
           <div class="file-upload-box">
               

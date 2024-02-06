@@ -35,6 +35,7 @@ const SafetyPlan = () => {
   const [crisisPhone, setCrisisPhone] = useState("");
   const [crisisRelationship, setCrisisRelationship] = useState("");
   const [crisisArray, setCrisisArray] = useState([]);
+  const [localEmergencyNumber,setLocalEmergencyNumber]=useState("")
   //environmentSafetyMedications
   const [enviromentAdress, setEnviromentAdress] = useState();
   //singin
@@ -71,6 +72,7 @@ const SafetyPlan = () => {
     setCrisisPhone("");
     setCrisisRelationship("");
     setCrisisArray([]);
+    setLocalEmergencyNumber("")
     setEnviromentAdress("");
     setSingIn("");
   };
@@ -88,6 +90,8 @@ const SafetyPlan = () => {
       distractionsPlane: place,
       helpContactsPeople: helpArray,
       professionals: crisisArray,
+      //penddig
+      localEmergencyNumber,
       environmentSafetyMedications: enviromentAdress,
       signature: singin,
     };
@@ -178,6 +182,7 @@ const SafetyPlan = () => {
                 value={user}
                 placeholder="Enter full name"
                 required
+                onChange={(e)=>setUser(e.target.value)}
               />
             </div>
             <div className="form-field">
@@ -435,12 +440,6 @@ const SafetyPlan = () => {
             </div>
 
 
-            {/* <div className="form-actions">
-              <button type="button" className="safetybutton1">
-                <CiCirclePlus style={{ width: "30px", height: "30px" }} /> ADD
-                MORE PEOPLE
-              </button>
-            </div> */}
             <h5
               style={{
                 fontWeight: "700",
@@ -519,6 +518,29 @@ const SafetyPlan = () => {
                 )}
               </div>
             </div>
+
+
+            <h5
+              style={{
+                fontWeight: "700",
+                fontSize: "20px",
+                color: "#000000",
+                textAlign: "start",
+              }}
+            >
+              {" "}
+              Suicide Prevention Lifeline: 1-800-273-TALK (8255)
+            </h5>
+
+            <div className="form-field">
+                <label >Local Emergency Help: </label>
+                <input
+                  type="text"
+                  value={localEmergencyNumber}
+                  placeholder="Enter number"
+                  onChange={(e) => setLocalEmergencyNumber(e.target.value)}
+                />
+              </div>
 
             {/* <div className="form-actions">
               <button type="button" className="safetybutton1">

@@ -962,7 +962,7 @@ const NursingAssessment = () => {
           <div className="formsheading">
             <h6>Review Of Systems</h6>
           </div>
-          <label htmlFor="" className="label-review">Constitutional:</label>
+          <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Constitutional:</label>
 
           <div className="yeschechbox-review">
             <div>

@@ -7,10 +7,19 @@ import { user_detail, Resident_form } from "../../Api_Collection/Api";
 import AutosizeInput from 'react-input-autosize';
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
-
+import Accordion from 'react-bootstrap/Accordion';
 
 const ResidentIntakes = () => {
   const navigate = useNavigate();
+
+  //page state
+  const [page,setPage]=useState(1);
+ 
+
+
+  const handleNextPage=()=>{
+    setPage(page+1);
+  }
 
     //singin model
     const [draftModel,setDraftModel]=useState(false)
@@ -23,6 +32,7 @@ const ResidentIntakes = () => {
     const [signInModel6,setSigInModel6]=useState(false);
     const [signInModel7,setSigInModel7]=useState(false);
 
+   
 
     //state
   const [userDetail, setUserDetail] = useState("");
@@ -41,6 +51,7 @@ const ResidentIntakes = () => {
   const [staffName, setStaffName] = useState("");
   const [staffSignature, setStaffSignature] = useState("");
   const [staffDate, setStaffDate] = useState("");
+  const [internalResidentDate,setInternalResidentDate]=useState("")
   const [internalName, setInternalName] = useState("");
   const [internalRelationship, setInternalRelationship] = useState("");
   const [internalContect, setInternalContect] = useState("");
@@ -79,6 +90,12 @@ const ResidentIntakes = () => {
   ] = useState("");
   const [internalDisclosureListStaffDate, setInternalDisclosureListStaffDate] =
     useState("");
+    //add some patemeter
+    const [residentRightsResidentSignatureValue, setResidentRightsResidentSignatureValue] =
+    useState("");
+    const [residentRightsResidentSignatureValueDate, setResidentRightsResidentSignatureValueDate] =
+    useState("");
+
   const [residentRightsResidentName, setResidentRightsResidentName] =
     useState("");
   const [residentRightsResidentSignature, setResidentRightsResidentSignature] =
@@ -93,11 +110,11 @@ const ResidentIntakes = () => {
   const [photoVideoConsentAdmissionDate, setPhotoVideoConsentAdmissionDate] =
     useState("");
   const [photoVideoConsentConsentGiven, setPhotoVideoConsentConsentGiven] =
-    useState();
+    useState(false);
   const [
     photoVideoConsentConsentWithdrawn,
     setPhotoVideoConsentConsentWithdrawn,
-  ] = useState("");
+  ] = useState(false);
   const [
     photoVideoConsentResidentSignature,
     setPhotoVideoConsentResidentSignature,
@@ -488,6 +505,8 @@ const ResidentIntakes = () => {
     setInternalDisclosureListStaffName("");
     setInternalDisclosureListStaffSignature("");
     setInternalDisclosureListStaffDate("");
+    setResidentRightsResidentSignatureValue('')
+    setResidentRightsResidentSignatureValueDate("")
     setResidentRightsResidentName("");
     setResidentRightsResidentSignature("");
     setResidentRightsResidentDate("");
@@ -598,7 +617,7 @@ const ResidentIntakes = () => {
     staffSignature,
     staffDate,
     internalDisclosureList,
-    // internalDisclosureListExpire,
+    internalDisclosureListExpire,
     internalDisclosureListResidentName,
     internalDisclosureListResidentSignature,
     internalDisclosureListResidentDate,
@@ -608,6 +627,8 @@ const ResidentIntakes = () => {
     internalDisclosureListStaffName,
     internalDisclosureListStaffSignature,
     internalDisclosureListStaffDate,
+    residentRightsResidentSignatureValue,
+    residentRightsResidentSignatureValueDate,
     residentRightsResidentName,
     residentRightsResidentSignature,
     residentRightsResidentDate,
@@ -829,6 +850,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 <span>
              
               <AutosizeInput
+              type="text"
  inputStyle={{ border: "none", outline: "none" }}
   placeholder="COMPANY NAME"
   value={companyName}
@@ -974,7 +996,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
 
             {
-              signInModel1 && (<SingInUpdateModel 
+              signInModel2 && (<SingInUpdateModel 
                 onClose={()=>setSigInModel2(false)}
                 singin={guardianRepresentativeSignature}
                 setSingIn={setGuardianRepresentativeSignature}
@@ -1043,7 +1065,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
 
             {
-              signInModel1 && (<SingInUpdateModel 
+              signInModel3 && (<SingInUpdateModel 
                 onClose={()=>setSigInModel3(false)}
                 singin={staffSignature}
                 setSingIn={setStaffSignature}
@@ -1098,6 +1120,7 @@ inputStyle={{ border: "none", outline: "none" }}
               I authorize and agree that <span>
              
              <AutosizeInput
+             type="text"
 inputStyle={{ border: "none", outline: "none" }}
  placeholder="COMPANY NAME"
  value={companyName}
@@ -1194,7 +1217,16 @@ inputStyle={{ border: "none", outline: "none" }}
               protected health information to the person(s) set forth in this
               form. I understand that I can revoke this authorization in
               writing, except to the extent that action has already been taken,
-              at any time and it will expire on provided date or one year from
+              at any time and it will expire on <span>
+             
+             <AutosizeInput
+inputStyle={{ border: "none", outline: "none" ,width:"auto"}}
+type="date"
+ placeholder="________"
+ value={internalDisclosureListExpire}
+ onChange={(e) => setInternalDisclosureListExpire(e.target.value)}
+/>
+               </span> or one year from
               the date of my signature.{" "}
             </p>
             <h6
@@ -1209,15 +1241,15 @@ inputStyle={{ border: "none", outline: "none" }}
             </h6>
 
             <div className="form-field">
-              <label htmlFor="" className="label-review-resitent">Resident Name</label>
+              {/* <label htmlFor="" className="label-review-resitent">Resident Name</label>
               <input
                 type="text"
                 vlaue={internalDisclosureListResidentName}
                 onChange={(e) =>
                   setInternalDisclosureListResidentName(e.target.value)
                 }
-              />
-              <label htmlFor="dateOfBirth" className="label-review-resitent">Expiry Date</label>
+              /> */}
+              {/* <label htmlFor="dateOfBirth" className="label-review-resitent">Expiry Date</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
@@ -1228,7 +1260,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) =>
                   setInternalDisclosureListResidentDate(e.target.value)
                 }
-              />
+              /> */}
             </div>
             <label
               htmlFor=""
@@ -1262,17 +1294,20 @@ inputStyle={{ border: "none", outline: "none" }}
                 </button>
               </div>
             </div> */}
-            {/* <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
+            <div className="form-field">
+              <label >Date </label>
               <input
-                style={{ color: "#1A9FB2" }}
+                
                 type="date"
-                id="dateOfBirth"
-                value=""
+               
+                value={internalDisclosureListResidentDate}
                 placeholder="DD/MM/YYYY"
                 required
+                onChange={(e) =>
+                  setInternalDisclosureListResidentDate(e.target.value)
+                }
               />
-            </div> */}
+            </div>
             <div className="form-field">
               <label className="label-review-resitent">Guardian/Representative Full Name</label>
               <input
@@ -1323,9 +1358,9 @@ inputStyle={{ border: "none", outline: "none" }}
               </div>
             </div> */}
             <div className="form-field">
-              <label className="label-review-resitent">Date of Signature Obtained</label>
+              <label className="label-review-resitent">Date </label>
               <input
-                style={{ color: "#1A9FB2" }}
+              
                 type="date"
            
                 value={internalDisclosureListGuardianRepresentativeDate}
@@ -1338,7 +1373,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 }
               />
             </div>
-            <label
+            {/* <label
               htmlFor=""
               className="label-review-resitent"
             >
@@ -1350,7 +1385,7 @@ inputStyle={{ border: "none", outline: "none" }}
               onChange={(e) =>
                 setInternalDisclosureListStaffName(e.target.value)
               }
-            />
+            /> */}
             <label
               htmlFor=""
               className="label-review-resitent"
@@ -1613,9 +1648,9 @@ inputStyle={{ border: "none", outline: "none" }}
             </label>
             <input
               type="text"
-              // value={residentRightsResidentSignature}
+              value={residentRightsResidentSignatureValue}
               placeholder="Signature"
-              
+              onChange={(e)=>setResidentRightsResidentSignatureValue(e.target.value)}
             />
             <div className="form-field">
               <label className="label-review-resitent">Date </label>
@@ -1623,10 +1658,10 @@ inputStyle={{ border: "none", outline: "none" }}
                 style={{ color: "#1A9FB2" }}
                 type="date"
            
-                value={residentRightsResidentDate}
+                value={residentRightsResidentSignatureValueDate}
                 placeholder="DD/MM/YYYY"
                 required
-                onChange={(e) => setResidentRightsResidentDate(e.target.value)}
+                onChange={(e) => setResidentRightsResidentSignatureValueDate(e.target.value)}
               />
             </div>
             <label
@@ -1791,44 +1826,37 @@ inputStyle={{ border: "none", outline: "none" }}
               and residents are the only individuals who will see the
               photographs and videotapes.
             </p>
-            <p style={{ color: "#000000" }}>
-              ☒I DO give consent to appear in photographs and videotapes.
-            </p>
-            <p style={{ color: "#000000" }}>
-              ☒ I DO NOT give consent to appear in photographs and videotapes.
-            </p>
-            <label
-              htmlFor=""
-              className="label-review-resitent"
-            >
-              Consent ConsentGiven
-            </label>
-            <select
-              type="select"
-              value={photoVideoConsentConsentGiven}
-              onChange={(e) => setPhotoVideoConsentConsentGiven(e.target.value)}
-            >
-              <option>Open this select menu</option>
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
-            </select>
-            <label
-              htmlFor=""
-              className="label-review-resitent"
-            >
-              Consent ConsentWithdrawn
-            </label>
-            <select
-              type="select"
-              value={photoVideoConsentConsentWithdrawn}
-              onChange={(e) =>
-                setPhotoVideoConsentConsentWithdrawn(e.target.value)
-              }
-            >
-              <option>Open this select menu</option>
-              <option value={true}>True</option>
-              <option value={false}>False</option>
-            </select>
+            <div className="yeschechbox2">
+              <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
+                <input
+                  type="checkbox"
+                  id="exampleCheckbox"
+                  checked={photoVideoConsentConsentGiven}
+                  onChange={() =>
+                    setPhotoVideoConsentConsentGiven(
+                      !photoVideoConsentConsentGiven
+                    )
+                  }
+                />
+                <span> I DO give consent to appear in photographs and videotapes.</span>
+              </div>
+        </div>
+        <div className="yeschechbox2">
+              <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
+                <input
+                  type="checkbox"
+                  id="exampleCheckbox"
+                  checked={photoVideoConsentConsentWithdrawn}
+                  onChange={() =>
+                    setPhotoVideoConsentConsentWithdrawn(
+                      !photoVideoConsentConsentWithdrawn
+                    )
+                  }
+                />
+                <span> I DO NOT give consent to appear in photographs and videotapes.</span>
+              </div>
+        </div>
+          
             {/* <input
               type="text"
               placeholder="Consent Withdrawn"
@@ -1901,7 +1929,7 @@ inputStyle={{ border: "none", outline: "none" }}
               htmlFor=""
               className="label-review-resitent"
             >
-              Guardian/Representative Signature:
+              Guardian/Representative Signature Date
             </label>
             <input
               type="text"
@@ -1981,19 +2009,6 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="form-field">
-              <label className="label-review-resitent">Address:</label>
-              <input
-                type="text"
-          
-                value={advanceDirectivesResidentAddress}
-                placeholder="Enter Name"
-                required
-                onChange={(e) =>
-                  setAdvanceDirectivesResidentAddress(e.target.value)
-                }
-              />
-            </div>
-            <div className="form-field">
               <label className="label-review-resitent">Select Gender</label>
               <div className="genderdiv">
                 <div className="genderbox">
@@ -2038,6 +2053,20 @@ inputStyle={{ border: "none", outline: "none" }}
                 }
               />
             </div>
+            <div className="form-field">
+              <label className="label-review-resitent">Address</label>
+              <input
+                type="text"
+          
+                value={advanceDirectivesResidentAddress}
+                placeholder="Enter Name"
+                required
+                onChange={(e) =>
+                  setAdvanceDirectivesResidentAddress(e.target.value)
+                }
+              />
+            </div>
+           
             {/* <div className="form-field">
               <label htmlFor="dateOfadress">Address</label>
               <input
@@ -2138,7 +2167,7 @@ onChange={(e) =>
             </div>
             <div className="yeschechbox2">
               <span>Resident has developed an Advanced Directive:</span>
-              <div>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
                 <input
                   type="checkbox"
                   id="yesRadio"
@@ -2147,9 +2176,9 @@ onChange={(e) =>
                   checked={advanceDirectivesDeveloped === "yes"}
                   onChange={() => setAdvanceDirectivesDeveloped("yes")}
                 />
-                <label htmlFor="yesRadio">Yes</label>
+                <span htmlFor="yesRadio">Yes</span>
               </div>
-              <div>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}} >
                 <input
                 type="checkbox"
                   id="noRadio"
@@ -2158,7 +2187,7 @@ onChange={(e) =>
                   checked={advanceDirectivesDeveloped === "no"}
                   onChange={() => setAdvanceDirectivesDeveloped("no")}
                 />
-                <label htmlFor="noRadio">No</label>
+                <span htmlFor="noRadio">No</span>
               </div>
             </div>
             {advanceDirectivesDeveloped === "no" && (
@@ -2190,7 +2219,7 @@ onChange={(e) =>
                   checked={advanceDirectivesExecutedInRecord === "yes"}
                   onChange={() => setAdvanceDirectivesExecutedInRecord("yes")}
                 />
-                <label htmlFor="yesCheckbox">Yes</label>
+                <span htmlFor="yesCheckbox">Yes</span>
               </div>
               <div>
                 <input
@@ -2199,7 +2228,7 @@ onChange={(e) =>
                   checked={advanceDirectivesExecutedInRecord === "no"}
                   onChange={() => setAdvanceDirectivesExecutedInRecord("no")}
                 />
-                <label htmlFor="noCheckbox">No</label>
+                <span htmlFor="noCheckbox">No</span>
               </div>
             </div>
             {advanceDirectivesExecutedInRecord === "no" && (
@@ -2293,7 +2322,7 @@ onChange={(e) =>
                     setAdvanceDirectivesCoordinationOfCareCopySentToPCP("yes")
                   }
                 />
-                <label htmlFor="yesCheckbox">Yes</label>
+                <span htmlFor="yesCheckbox">Yes</span>
               </div>
               <div>
                 <input
@@ -2306,7 +2335,7 @@ onChange={(e) =>
                     setAdvanceDirectivesCoordinationOfCareCopySentToPCP("no")
                   }
                 />
-                <label htmlFor="noCheckbox">No</label>
+                <span htmlFor="noCheckbox">No</span>
               </div>
             </div>
             <div className="yeschechbox2">
@@ -2324,7 +2353,7 @@ onChange={(e) =>
                     setAdvanceDirectivesCoordinationOfCareActedOn("yes")
                   }
                 />
-                <label htmlFor="yesCheckbox">Yes</label>
+                <span htmlFor="yesCheckbox">Yes</span>
               </div>
               <div>
                 <input
@@ -2335,7 +2364,7 @@ onChange={(e) =>
                     setAdvanceDirectivesCoordinationOfCareActedOn("no")
                   }
                 />
-                <label htmlFor="noCheckbox">No</label>
+                <span htmlFor="noCheckbox">No</span>
               </div>
             </div>
             <div className="yeschechbox2">
@@ -3045,7 +3074,7 @@ onChange={(e) =>
              <AutosizeInput
 inputStyle={{ border: "none", outline: "none",width:"auto" }}
 type="text"
-placeholder="City"
+placeholder="____________________________"
 value={insuranceInformationPrimaryInsurancePolicyholderCity}
 onChange={(e) =>
   setInsuranceInformationPrimaryInsurancePolicyholderCity(
@@ -3059,7 +3088,7 @@ onChange={(e) =>
              <AutosizeInput
 inputStyle={{ border: "none", outline: "none",width:"auto" }}
 type="text"
-placeholder="State"
+placeholder="____________________________"
 value={insuranceInformationPrimaryInsurancePolicyholderState}
 onChange={(e) =>
   setInsuranceInformationPrimaryInsurancePolicyholderState(
@@ -3075,7 +3104,7 @@ onChange={(e) =>
              <AutosizeInput
 inputStyle={{ border: "none", outline: "none",width:"auto" }}
 type="text"
-placeholder="Zip"
+placeholder="____________________________"
 value={insuranceInformationPrimaryInsurancePolicyholderZip}
 onChange={(e) =>
   setInsuranceInformationPrimaryInsurancePolicyholderZip(
@@ -3497,12 +3526,17 @@ inputStyle={{ border: "none", outline: "none",width:"auto" }}
               />
             </div>
           </div>
-          <div className="form-actions">
+          {/* <div className="form-actions-next">
             <button type="submit" className="initalsubmit">
-              SUBMIT DETAILS
+              Next Page
+            </button>
+          </div> */}
+        </form>
+        <div className="form-actions-next">
+            <button type="button" className="initalsubmitRisistent" onClick={handleNextPage}>
+              Next Page
             </button>
           </div>
-        </form>
       </div>
       {
         draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)

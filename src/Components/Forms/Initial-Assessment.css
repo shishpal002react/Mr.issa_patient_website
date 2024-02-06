@@ -60,9 +60,14 @@ select {
   margin-top: 0.8rem;
 }
 
-.initalsubmit {
-  width: 453.85px;
-  height: 45.87px;
+.form-actions-next{
+  width: 100%;
+  text-align: right;
+}
+
+.initalsubmitRisistent {
+  width: 150px;
+  height: 30px;
   border-radius: 5px;
   background-color: #1a9fb2;
   color: #fff;
@@ -70,6 +75,8 @@ select {
   margin-top: 20px;
   font-weight: 400;
   font-size: 20px;
+  margin-bottom: 2rem;
+  padding-bottom: 8px;
 }
 
 .backbutton {
@@ -164,6 +171,14 @@ input[type="checkbox"] {
   justify-content: space-between;
   width: 50%;
   margin-bottom: 20px;
+}
+
+.yeschechbox-significant{
+  display: flex;
+  justify-content: space-between;
+  width: 63%;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
 .yeschechboxFall-risk{
@@ -283,10 +298,12 @@ input[type="checkbox"] {
 
 .file-upload-box {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   /* background-color: rgba(26, 159, 178, 0.1); */
   /* padding: 10px; */
+  border: 1;
   border-radius: 8px;
   width: 354px;
   height: auto;
@@ -294,15 +311,17 @@ input[type="checkbox"] {
   box-shadow: rgba(26, 159, 178, 0.1);
 }
 
+
 .upload-button1 {
   background: transparent;
   color: #0c5c75;
   padding: 8px 16px;
   margin-right: 10px;
-  border-radius: 4px;
+
   cursor: pointer;
   border: 1px solid #0c5c75;
   width: 150px;
+  border-radius: 10px;
   height: 40px;
   margin-bottom: 15px;
   font-weight: 500;
@@ -313,10 +332,11 @@ input[type="checkbox"] {
   height: 40px;
   background-color: #0c5c75;
   color: #fff;
+  border-radius: 10px;
   padding: 8px;
   margin-right: 10px;
   border: none;
-  border-radius: 4px;
+
   cursor: pointer;
   font-weight: 500;
   font-size: 12px;

@@ -41,7 +41,7 @@ const FaceSheet = () => {
   const [
     primaryCareProviderOtherSpecialists,
     setPrimaryCareProviderOtherSpecialists,
-  ] = useState([]);
+  ] = useState("");
   const [psychiatricProviderName, setPsychiatricProviderName] = useState("");
   const [psychiatricProviderPhone, setPsychiatricProviderPhone] = useState("");
   const [psychiatricProviderAddress, setPsychiatricProviderAddress] =
@@ -49,7 +49,7 @@ const FaceSheet = () => {
   const [
     psychiatricProviderOtherSpecialists,
     setPsychiatricProviderOtherSpecialists,
-  ] = useState([]);
+  ] = useState("");
   const [preferredHospitalName, setPreferredHospitalName] = useState("");
   const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("");
   const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("");
@@ -470,7 +470,7 @@ const FaceSheet = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Mobile Number:</label>
+              <label htmlFor="AHCCCS">Phone Number:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -491,17 +491,25 @@ const FaceSheet = () => {
                 onChange={(e) => setPrimaryCareProviderAddress(e.target.value)}
               />
             </div>
-            {/* <div className="form-field">
+            <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <select
+              <input
+                type="text"
+                id="AHCCCS"
+                value={primaryCareProviderOtherSpecialists}
+                placeholder="Type Here....."
+                required
+                onChange={(e) => setPrimaryCareProviderOtherSpecialists(e.target.value)}
+              />
+              {/* <select
                 required
                 onChange={handlePrimaryCareProviderOtherSpecialists}
               >
                 <option value="">Select Option</option>
                 <option value="Dermatologist">Dermatologist</option>
                 <option value="Cardiologist">Cardiologist</option>
-              </select>
-            </div> */}
+              </select> */}
+            </div>
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <input
@@ -527,7 +535,7 @@ const FaceSheet = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Mobile Number:</label>
+              <label htmlFor="AHCCCS">Phone Number:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -548,16 +556,17 @@ const FaceSheet = () => {
                 onChange={(e) => setPsychiatricProviderAddress(e.target.value)}
               />
             </div>
-            {/* <div className="form-field">
+            <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <input
                 type="text"
                 id="AHCCCS"
-                value=""
+                value={psychiatricProviderOtherSpecialists}
                 placeholder="Type Here....."
                 required
+                onChange={(e)=>setPsychiatricProviderOtherSpecialists(e.target.value)}
               />
-            </div> */}
+            </div>
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
               <select

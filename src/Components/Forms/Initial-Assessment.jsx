@@ -12,7 +12,7 @@ import { user_detail, initialAssestment_form } from "../../Api_Collection/Api";
 import Select from "react-select";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
-
+import AutosizeInput from 'react-input-autosize';
 
 
 const InitialAssessment = () => {
@@ -1190,47 +1190,48 @@ useEffect(() => {
       <div className="form-container">
         <FormUpper />
         <p>
-          <div className="inLine_box_style">
-            <div>
-              <input
-                placeholder="Company name"
-                id="input-text_value1"
-                type="text"
-                value={companyName}
-                required
-                onChange={(e) => setCompanyName(e.target.value)}
-              />
-            </div>
-            <p style={{ height: "10px" }}>has notified</p>
-            <div>
-              <input
-                style={{ outline: "none", border: "none" }}
-                type="text"
-                value={hasNotified}
-                placeholder="______________"
-                onChange={(e) => setHasNotified(e.target.value)}
-                id="input-text_value2"
-              />{" "}
-            </div>
-            <p style={{ height: "10px" }}>
-              to participate in his/her Service Treatment Plan/Initial
+
+        <span>
+             
+             <AutosizeInput
+             type="text"
+
+placeholder="Company name"
+ value={companyName}
+ onChange={(e) => setCompanyName(e.target.value)}
+/>
+               </span>
+
+               <span style={{paddingLeft:"10px"}}>has notified</span>
+
+               <span>
+             
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="______________"
+ value={hasNotified}
+ onChange={(e) => setHasNotified(e.target.value)}
+/>
+               </span>
+               to participate in his/her Service Treatment Plan/Initial
               Assessment on
-            </p>
-            <div>
-              <input
-                style={{ outline: "none", border: "none" }}
-                type="text"
-                value={assessmentOn}
-                placeholder="_________"
-                className="input-text_value"
-                onChange={(e) => setAssessmentOn(e.target.value)}
-              />
-            </div>
-          </div>
+
+              <span>
+             
+             <AutosizeInput
+             type="text"
+inputStyle={{ border: "none", outline: "none" }}
+ placeholder="______________"
+ value={assessmentOn}
+ onChange={(e) => setAssessmentOn(e.target.value)}
+/>
+               </span>
+          
         </p>
         <form
           onSubmit={handleSubmit}
-          style={{ marginTop: "8rem" }}
+          style={{ marginTop: "2rem" }}
         >
           <h5>Section - 1</h5>
           <div className="form-section">
@@ -5287,7 +5288,7 @@ useEffect(() => {
               </div>
             )}
 
-            <div className="yeschechbox">
+            <div className="yeschechbox-significant">
               <label htmlFor="">Significant recent losses:</label>
               <div
                 className="Significant-losses"
@@ -5310,10 +5311,12 @@ useEffect(() => {
                   onChange={() => setSetNoAndYes(false)}
                 />
                 <label htmlFor="setSetNoAndYesno">No</label>
+                <span style={{paddingLeft:"10px",marginBottom:"6px"}}>If yes, please check applicable loss(es):</span>
               </div>
+              
             </div>
             <div className="formsheading">
-              <h6>If yes, please check applicable loss(es):</h6>
+              {/* <h6>If yes, please check applicable loss(es):</h6> */}
             </div>
             <div class="checkbox-container">
               <div class="chechbox12-correct">
@@ -5446,8 +5449,9 @@ useEffect(() => {
                 required
               />
             </div>
+            
             <div className="form-field">
-              <label htmlFor="approvedby">Staff name:</label>
+              <label htmlFor="approvedby">Staff Name:</label>
               <input
                 type="text"
                 id="approvedby"
@@ -5457,6 +5461,17 @@ useEffect(() => {
                 onChange={(e) => setStaffName(e.target.value)}
               />
             </div>
+
+            <div className="form-field">
+              <label htmlFor="">Enter Staff Title</label>
+              <input
+                type="text"
+                required
+                value={staffTitle}
+                onChange={(e) => setStaffTitle(e.target.value)}
+              />
+            </div>
+          
             <div class="file-upload-box">
               
               <div style={{ display: "block" }}>
@@ -5486,17 +5501,9 @@ useEffect(() => {
                 onChange={(e) => setStaffSignature(e.target.vaue)}
               />
             </div> */}
-            <div className="form-field">
-              <label htmlFor="">Enter Staff Title</label>
-              <input
-                type="text"
-                required
-                value={staffTitle}
-                onChange={(e) => setStaffTitle(e.target.value)}
-              />
-            </div>
+           
           
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
@@ -5506,9 +5513,9 @@ useEffect(() => {
                 required
                 onChange={(e) => setStaffDate(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
-              <label htmlFor="approvedby">BHP</label>
+              <label htmlFor="approvedby">BHP Name</label>
               <input
                 type="text"
                 id="approvedby"
@@ -5529,14 +5536,23 @@ useEffect(() => {
             </div>
             <div class="file-upload-box">
               
-              <div style={{ display: "block" }}>
+               <div >
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
+                </div>
+                <div>
                 <button className="upload-button" type="button" onClick={() => setSigInModel7(true)}>
                   SAVED AND SIGNED
                 </button>
-              </div>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel7(true)}>
+                  PRINT THIS FORM
+                </button>
+                </div>
+                
+              
             </div>
 
             {
@@ -5557,7 +5573,7 @@ useEffect(() => {
               />
             </div> */}
 
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
@@ -5567,17 +5583,17 @@ useEffect(() => {
                 required
                 onChange={(e) => setBhpDate(e.target.value)}
               />
-            </div>
+            </div> */}
           </div>
 
-          <div className="form-actions">
+          {/* <div className="form-actions">
             <button
               type="submit"
               className="initalsubmit"
             >
               SUBMIT DETAILS
             </button>
-          </div>
+          </div> */}
         </form>
       </div>
       {

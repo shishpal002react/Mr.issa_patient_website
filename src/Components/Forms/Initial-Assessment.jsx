@@ -13,6 +13,7 @@ import Select from "react-select";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
 import AutosizeInput from 'react-input-autosize';
+import { Preview, print } from 'react-html2pdf';
 
 
 const InitialAssessment = () => {
@@ -5474,7 +5475,8 @@ inputStyle={{ border: "none", outline: "none" }}
           
             <div class="file-upload-box">
               
-              <div style={{ display: "block" }}>
+              
+                <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
@@ -5482,6 +5484,14 @@ inputStyle={{ border: "none", outline: "none" }}
                   SAVED AND SIGNED
                 </button>
               </div>
+              <div>
+                {
+                  staffSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {staffSignature}</p>
+                  )
+                }
+              </div>
+
             </div>
 
             {
@@ -5536,6 +5546,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
             <div class="file-upload-box">
               
+              <div className="file-upload-box-child">
                <div >
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -5547,11 +5558,18 @@ inputStyle={{ border: "none", outline: "none" }}
                 </button>
                 </div>
                 <div>
-                <button className="upload-button" type="button" onClick={() => setSigInModel7(true)}>
+                <button className="upload-button" type="button" onClick={()=>print('a', 'jsx-template')}>
                   PRINT THIS FORM
                 </button>
                 </div>
-                
+              </div> 
+              <div>
+                {
+                  bhpSignature && (
+                    <p className="signature_name_print">Digitally Sign by {bhpSignature}</p>
+                  )
+                }
+              </div>
               
             </div>
 

@@ -14,10 +14,15 @@ import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
 import AutosizeInput from 'react-input-autosize';
 import { Preview, print } from 'react-html2pdf';
+import { useReactToPrint } from "react-to-print";
 
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
+  const componentRef = React.useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   //singin model
   const [draftModel,setDraftModel]=useState(false)
@@ -323,17 +328,17 @@ const [medicalConditions, setMedicalConditions] = useState([]);
     //mental state value
 
     //apparentAge
-    const [consistent, setConsistent] = useState(true);
+    const [consistent, setConsistent] = useState(false);
   const [younger, setYounger] = useState(false);
   const [older, setOlder] = useState(false);
 
   //height
-  const [averageHeight, setAverageHeight] = useState(true);
+  const [averageHeight, setAverageHeight] = useState(false);
   const [short, setShort] = useState(false);
   const [tall, setTall] = useState(false);
 
   //Weight
-  const [averageWeight, setAverageWeight] = useState(true);
+  const [averageWeight, setAverageWeight] = useState(false);
   const [obese, setObese] = useState(false);
   const [overweight, setOverweight] = useState(false);
   const [thin, setThin] = useState(false);
@@ -1177,6 +1182,7 @@ useEffect(() => {
 
   return (
     <>
+    <div  ref={componentRef} >
       <div className="backbutton">
         <IoArrowBackCircle
           style={{
@@ -1617,15 +1623,6 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            {/* <div className="form-field">
-            
-              <select required onChange={(e)=>setAgreementWithPlan(e.target.value)}>
-                
-                <option value={true}>Yes</option>
-                <option value={false}>No</option>
-              </select>
-            </div> */}
-
             <div class="checkbox-container1">
               <div class="checkoptions1" style={{marginTop:"1.2rem"}}>
                 {/* <label >Agreement With Plan</label> */}
@@ -1677,15 +1674,21 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            <div class="file-upload-box">
-              
-              <div style={{ display: "block" }}>
+            <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 <button className="upload-button" type="button" onClick={() => setSigInModel1(true)}>
                   SAVED AND SIGNED
                 </button>
+              </div>
+              <div>
+                {
+                  residentGuardianAgreementSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {residentGuardianAgreementSignature}</p>
+                  )
+                }
               </div>
             </div>
 
@@ -1710,7 +1713,7 @@ inputStyle={{ border: "none", outline: "none" }}
             />
             </div> */}
            
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
@@ -1722,9 +1725,9 @@ inputStyle={{ border: "none", outline: "none" }}
                   setResidentGuardianAgreementDate(e.target.value)
                 }
               />
-            </div>
+            </div> */}
             <div className="form-field">
-              <label htmlFor="approvedby">Staff name:</label>
+              <label htmlFor="approvedby">Staff Name, Title :</label>
               <input
                 type="text"
                 id="approvedby"
@@ -1734,15 +1737,21 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setStaffAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              
-              <div style={{ display: "block" }}>
+            <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 <button className="upload-button" type="button" onClick={() => setSigInModel2(true)}>
                   SAVED AND SIGNED
                 </button>
+              </div>
+              <div>
+                {
+                  staffAgreementSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {staffAgreementSignature}</p>
+                  )
+                }
               </div>
             </div>
 
@@ -1782,7 +1791,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 </button>
               </div>
             </div> */}
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
@@ -1792,9 +1801,9 @@ inputStyle={{ border: "none", outline: "none" }}
                 required
                 onChange={(e) => setStaffAgreementDate(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
-              <label htmlFor="approvedby">BHP name, credentials:</label>
+              <label htmlFor="approvedby">BHP Name, Credentials:</label>
               <input
                 type="text"
                 id="approvedby"
@@ -1804,15 +1813,21 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setBhpAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              
-              <div style={{ display: "block" }}>
+            <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 <button className="upload-button" type="button" onClick={() => setSigInModel3(true)}>
                   SAVED AND SIGNED
                 </button>
+              </div>
+              <div>
+                {
+                  bhpAgreementSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {bhpAgreementSignature}</p>
+                  )
+                }
               </div>
             </div>
 
@@ -1851,7 +1866,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 </button>
               </div>
             </div> */}
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="todaydate">Date</label>
               <input
                 type="date"
@@ -1861,9 +1876,9 @@ inputStyle={{ border: "none", outline: "none" }}
                 required
                 onChange={(e) => setBhpAgreementDate(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
-              <label htmlFor="approvedby">Other name:</label>
+              <label htmlFor="approvedby">Other Name:</label>
               <input
                 type="text"
                 id="approvedby"
@@ -1873,53 +1888,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setOtherName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" type="button" onClick={() => setSigInModel4(true)}>
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div>
 
-            {
-              signInModel4 && (<SingInUpdateModel 
-                onClose={()=>setSigInModel4(false)}
-                singin={otherSignature}
-                setSingIn={setOtherSignature}
-                
-                />)
-            }
-            {/* <div className="form-field">
-            <label htmlFor="">Signature</label>
-            <input
-              type="text"
-              required
-              value={otherSignature}
-              onChange={(e) => setOtherSignature(e.target.value)}
-            />
-            </div> */}
-            {/* <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-              <div class="upload-icon">
-                <img
-                  src={formupload}
-                  alt=""
-                  style={{ width: "74px", height: "74px" }}
-                />
-              </div>
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" onclick="uploadFile()">
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" onclick="uploadFile()">
-                  SAVED AND SIGNED
-                </button>
-              </div>
-            </div> */}
             <div className="form-field">
               <label htmlFor="approvedby">Relationship to Resident</label>
               <input
@@ -1931,15 +1900,21 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setOtherRelationship(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              
-              <div style={{ display: "block" }}>
+            <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 <button className="upload-button" type="button" onClick={() => setSigInModel5(true)}>
                   SAVED AND SIGNED
                 </button>
+              </div>
+              <div>
+                {
+                  otherSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {otherSignature}</p>
+                  )
+                }
               </div>
             </div>
 
@@ -1962,7 +1937,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setOtherSignature(e.target.value)}
               />
             </div> */}
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="approvedby">Other Date:</label>
               <input
                 type="date"
@@ -1972,7 +1947,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 required
                 onChange={(e) => setOtherDate(e.target.value)}
               />
-            </div>
+            </div> */}
             <h5 style={{marginTop:"1.5rem"}}>Section - 2</h5>
             <div className="formsheading">
               <p>
@@ -4006,6 +3981,7 @@ inputStyle={{ border: "none", outline: "none" }}
               </div>
             </div>
             <div className="yeschechbox1" style={{marginTop:"1.5rem"}}>
+            <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <label htmlFor="" >Orientation to Person:</label>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <input type="checkbox" id="person" checked={person===true} onChange={()=>setPerson(true)}/>
@@ -4015,6 +3991,8 @@ inputStyle={{ border: "none", outline: "none" }}
               <input type="checkbox" id="personno" checked={person===false} onChange={()=>setPerson(false)}/>
                     <label htmlFor="personno">No</label>
               </div>
+              </div>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <label htmlFor="">Place:</label>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <input type="checkbox" id="place" checked={place===true} onChange={()=>setPlace(true)}/>
@@ -4024,6 +4002,8 @@ inputStyle={{ border: "none", outline: "none" }}
               <input type="checkbox" id="placeno" checked={place===false} onChange={()=>setPlace(false)}/>
                     <label htmlFor="placeno">No</label>
               </div>
+              </div>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <label htmlFor="">Time:</label>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <input type="checkbox" id="placeno" checked={time===true} onChange={()=>setTime(true)}/>
@@ -4033,6 +4013,8 @@ inputStyle={{ border: "none", outline: "none" }}
               <input type="checkbox" id="timeno" checked={time===false} onChange={()=>setTime(false)}/>
                     <label htmlFor="timeno">No</label>
               </div>
+              </div>
+              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <label htmlFor="">Circumstances:</label>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <input type="checkbox" id="circumstances" checked={circumstances===true} onChange={()=>setCircumstances(true)}/>
@@ -4041,6 +4023,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <input type="checkbox" id="circumstancesno" checked={circumstances===true} onChange={()=>setCircumstances(false)}/>
                     <label htmlFor="circumstancesno">No</label>
+              </div>
               </div>
             </div>
             <div className="yeschechbox">
@@ -5312,7 +5295,7 @@ inputStyle={{ border: "none", outline: "none" }}
                   onChange={() => setSetNoAndYes(false)}
                 />
                 <label htmlFor="setSetNoAndYesno">No</label>
-                <span style={{paddingLeft:"10px",marginBottom:"6px"}}>If yes, please check applicable loss(es):</span>
+                <label style={{paddingLeft:"10px",marginBottom:"6px"}}>If yes, please check applicable loss(es):</label>
               </div>
               
             </div>
@@ -5439,9 +5422,9 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div> */}
             <div className="form-field">
-              <label htmlFor="programlocation&address">Additional Notes:</label>
+              <label >Additional Notes:</label>
               <textarea
-                id="programlocation&address"
+               
                 value={additionalNotes}
                 placeholder="Enter text"
                 rows={2}
@@ -5450,6 +5433,8 @@ inputStyle={{ border: "none", outline: "none" }}
                 required
               />
             </div>
+
+            <hr style={{border: "1px solid black",opacity:"0.7"}}/>
             
             <div className="form-field">
               <label htmlFor="approvedby">Staff Name:</label>
@@ -5473,9 +5458,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
           
-            <div class="file-upload-box">
-              
-              
+            <div class="file-upload-box"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -5491,7 +5474,6 @@ inputStyle={{ border: "none", outline: "none" }}
                   )
                 }
               </div>
-
             </div>
 
             {
@@ -5558,7 +5540,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 </button>
                 </div>
                 <div>
-                <button className="upload-button" type="button" onClick={()=>print('a', 'jsx-template')}>
+                <button className="upload-button" type="button" onClick={handlePrint}>
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -5617,6 +5599,7 @@ inputStyle={{ border: "none", outline: "none" }}
       {
         draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
       }
+      </div>
     </>
   );
 };

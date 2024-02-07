@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
+import AutosizeInput from "react-input-autosize";
 import body1 from "../../img/body1.png";
 import body2 from "../../img/body2.png";
 import body3 from "../../img/body3.png";
@@ -14,11 +15,18 @@ import Select from "react-select";
 import { user_detail, Nurssing_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
 import Draftinmodel from "../Modal/Draftinmodel";
+import SingInUpdateModel from "../Modal/SingInUpdateModel";
+import { useReactToPrint } from "react-to-print";
+
 
 const NursingAssessment = () => {
   const [showSingInOne, setShowSingInOne] = useState(false);
   const [showSingInTwo, setShowSingInTwo] = useState(false);
   const [draftModel,setDraftModel]=useState(false)
+  const componentRef = React.useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState("");
@@ -315,6 +323,7 @@ const NursingAssessment = () => {
   }
   return (
     <>
+    <div ref={componentRef} >
       <div className="backbutton">
         <IoArrowBackCircle
           style={{
@@ -1079,7 +1088,7 @@ const NursingAssessment = () => {
               onChange={(e)=>setReviewOfSystemsConstitutionalOther(e.target.value)}
             />
           </div>
-          <label htmlFor="" className="label-review">Cardiovascular:</label>
+          <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Cardiovascular:</label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1182,7 +1191,7 @@ const NursingAssessment = () => {
                 onChange={(e)=>setReviewOfSystemsCardiovascularOther(e.target.value)}
               />
             </div>
-            <label htmlFor="" className="label-review">Endocrine:</label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Endocrine:</label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1303,7 +1312,7 @@ const NursingAssessment = () => {
                 onChange={(e)=>setReviewOfSystemsEndocrineOther(e.target.value)}
               />
             </div> 
-            <label htmlFor="" className="label-review">Gastrointestinal:</label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Gastrointestinal:</label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1523,7 +1532,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review" >Hematology/Oncology:</label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Hematology/Oncology:</label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1574,7 +1583,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review">Head, Ear, Nose, Throat: </label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Head, Ear, Nose, Throat: </label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1677,7 +1686,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review">Integumentary:</label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Integumentary:</label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1762,7 +1771,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review" >Musculoskeletal: </label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}} >Musculoskeletal: </label>
           <div className="yeschechbox-review">
             
             <div>
@@ -1846,7 +1855,7 @@ const NursingAssessment = () => {
                 onChange={(e)=>setReviewOfSystemsMusculoskeletalOther(e.target.value)}
               />
             </div> 
-            <label htmlFor="" className="label-review">Psychiatric: </label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Psychiatric: </label>
           <div className="yeschechbox-review">
         
             <div>
@@ -1950,7 +1959,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review">Neurologic: </label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Neurologic: </label>
           <div className="yeschechbox-review">
             
             <div>
@@ -2103,7 +2112,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review">Respiratory: </label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Respiratory: </label>
           <div className="yeschechbox-review">
             
             <div>
@@ -2184,7 +2193,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review">Allergic/Immunologic: </label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Allergic/Immunologic: </label>
           <div className="yeschechbox-review">
             <div>
               <input
@@ -2273,7 +2282,7 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review">Suicidal Risk Assessment:</label>
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Suicidal Risk Assessment:</label>
           <div className="yeschechbox-review">
             <div>
               <input
@@ -2292,7 +2301,7 @@ const NursingAssessment = () => {
             </div>
           </div>
 
-          <label htmlFor="" className="label-review">Behavioral symptoms: </label>
+          <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Behavioral symptoms: </label>
           <div className="yeschechbox-review">
             <div>
               <input
@@ -2365,7 +2374,7 @@ const NursingAssessment = () => {
             </div>
           </div>
             
-          <label htmlFor="" className="label-review">Physical symptoms:</label>
+          <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Physical symptoms:</label>
           <div className="yeschechbox-review">
             <div>
               <input
@@ -2413,9 +2422,8 @@ const NursingAssessment = () => {
               <label htmlFor="panicAttacks">Panic attacks</label>
             </div>
           </div>
-          <label htmlFor="" className="label-review">Psychosocial symptoms:</label>
+          <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Psychosocial symptoms:</label>
           <div className="yeschechbox-review">
-            
             <div>
               <input
                 type="checkbox"
@@ -2510,12 +2518,14 @@ const NursingAssessment = () => {
             </div>
           </div>
 
-          <label htmlFor="" className="yeschechbox-review">Current Medications:</label>
-          <div className="yeschechbox-review">
-            <div>
+          
+          <div className="yeschechbox-review-Current">
+            <div><label htmlFor="" >Current Medications:</label></div>
+          
+            <div  style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
                 type="checkbox"
-                id="currentMedications"
+            
                 checked={currentMedications}
                 onChange={() => setCurrentMedications(!currentMedications)}
               />
@@ -2525,9 +2535,13 @@ const NursingAssessment = () => {
               </label>
             </div>
           </div>
-          <label htmlFor="" className="yeschechbox-review">Nutrition: Diet: </label>
-          <div className="yeschechbox-review">
+       
+          <div className="yeschechbox-review-Nutrition">
+            <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
             <div>
+              <label htmlFor="" >Nutrition: Diet: </label>
+            </div>
+            <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
                 type="checkbox"
                 id="As tolerated"
@@ -2536,20 +2550,39 @@ const NursingAssessment = () => {
               />
               <label htmlFor="As tolerated">As tolerated</label>
             </div>
-            <div>
+            <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
                 type="checkbox"
                 id="Special diet"
                 checked={nutritionDiet === "Special diet"}
                 onChange={() => setNutritionDiet("Special diet")}
               />
-              <label htmlFor="Special diet">Special diet</label>
+              <label htmlFor="Special diet">Special diet ordered</label>
             </div>
-          </div>
+            </div>
 
-          <label htmlFor="" className="yeschechbox-review">Fluid restrictions?</label>
-          <div className="yeschechbox-review">
+            {/* <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
             <div>
+            <label >Nutrition Special Diet Order :</label>
+            </div>
+            <div>
+            <span>
+                      <AutosizeInput
+                      type="text"
+                        inputStyle={{ border: "none", outline: "none" }}
+                        placeholder="___________"
+                        value={nutritionSpecialDietOrder}
+                        onChange={(e) => setNutritionSpecialDietOrder(e.target.value)}
+                      />
+                    </span>
+                    </div>
+            </div> */}
+          
+            <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
+            <div>
+            <label htmlFor="" >Fluid restrictions?</label>
+            </div>
+            <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
                 type="checkbox"
                 id="nutritionFluidRestrictions"
@@ -2558,7 +2591,7 @@ const NursingAssessment = () => {
               />
               <label htmlFor="nutritionFluidRestrictions">Yes</label>
             </div>
-            <div>
+            <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
                 type="checkbox"
                 id="nutritionFluidRestrictionsno"
@@ -2568,6 +2601,10 @@ const NursingAssessment = () => {
               <label htmlFor="nutritionFluidRestrictionsno">No</label>
             </div>
           </div>
+          </div>
+
+
+      
 
           {/* <div className="yeschechbox2">
             <label htmlFor="">
@@ -2583,7 +2620,7 @@ const NursingAssessment = () => {
           </div> */}
 
           <div className="form-field">
-            <label htmlFor="AHCCCS">Nutrition Special Diet Order :</label>
+            <label >Nutrition Special Diet Order :</label>
             <input
               type="text"
              
@@ -2786,9 +2823,10 @@ const NursingAssessment = () => {
             value={bhtSignature}
             onChange={(e) => setBhtSignature(e.target.value)}
           /> */}
-          <div class="file-upload-box">
-              
-              <div style={{ display: "block" }}>
+
+
+            <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
@@ -2796,7 +2834,23 @@ const NursingAssessment = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
+              <div>
+                {
+                  bhtSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {bhtSignature}</p>
+                  )
+                }
+              </div>
             </div>
+
+            {
+              showSingInOne && (<SingInUpdateModel 
+                onClose={()=>setShowSingInOne(false)}
+                singin={bhtSignature}
+                setSingIn={setBhtSignature}
+                
+                />)
+            }
           <div className="form-field">
             <label htmlFor="AHCCCS">RN Name:</label>
             <input
@@ -2812,27 +2866,45 @@ const NursingAssessment = () => {
 
           <div class="file-upload-box">
               
-              <div style={{ display: "block" }}>
+              <div className="file-upload-box-child">
+               <div >
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
+                </div>
+                <div>
                 <button className="upload-button" type="button" onClick={() => setShowSingInTwo(true)}>
                   SAVED AND SIGNED
                 </button>
+                </div>
+                <div>
+                <button onClick={handlePrint} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                {
+                  rnSignature && (
+                    <p className="signature_name_print">Digitally Sign by {rnSignature}</p>
+                  )
+                }
               </div>
+              
             </div>
 
-          <div className="form-actions">
-            <button
-              type="submit"
-              className="initalsubmit"
-            >
-              SUBMIT DETAILS
-            </button>
-          </div>
+            {
+              showSingInTwo && (<SingInUpdateModel 
+                onClose={()=>setShowSingInTwo(false)}
+                singin={rnSignature}
+                setSingIn={setRnSignature}
+                
+                />)
+            }
+
         </form>
       </div>
-      {
+      {/* {
         draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
       }
       {showSingInOne && (
@@ -2853,8 +2925,8 @@ const NursingAssessment = () => {
             </button>
           </div>
         </SingInModel>
-      )}
-           {showSingInTwo && (
+      )} */}
+           {/* {showSingInTwo && (
         <SingInModel onClose={() => setShowSingInTwo(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
@@ -2872,7 +2944,12 @@ const NursingAssessment = () => {
             </button>
           </div>
         </SingInModel>
-      )}
+      )} */}
+
+{
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
+      </div>
     </>
   );
 };

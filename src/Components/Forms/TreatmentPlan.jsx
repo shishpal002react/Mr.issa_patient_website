@@ -5,9 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { user_detail, patient_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
 import Select from "react-select";
+import Draftinmodel from "../Modal/Draftinmodel";
+import SingInUpdateModel from "../Modal/SingInUpdateModel";
+import { useReactToPrint } from "react-to-print";
+
 
 const TreatmentPlan = () => {
+  const componentRef = React.useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
   // model data
+  const [draftModel,setDraftModel]=useState(false);
   const [signatureModel1, setSignatureModel1] = useState(false);
   const [signatureModel2, setSignatureModel2] = useState(false);
   const [signatureModel3, setSignatureModel3] = useState(false);
@@ -739,6 +748,7 @@ const clinicalSummaryHandler=(optionValue)=>{
 
   return (
     <>
+    <div ref={componentRef} >
       <div className="backbutton">
         <IoArrowBackCircle
           style={{
@@ -2207,93 +2217,104 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onChange={(e)=>setComment8(e.target.value)}
               />
             </div>
-            <label htmlFor="" className="label-review">
+           
+           
+            <div className="yeschechbox-review-treatment">
+            <div>
+            <label style={{fontSize:"1.2rem"}} >
               Resident overall participation in treatment:{" "}
             </label>
-            <div className="yeschechbox-review">
-              <div>
+            </div>
+            <div className="yeschechbox-review-treatment-child">
+              <div className="checkbox-style-data">
                 <input type="checkbox" id="100%" checked={residentParticipation==="100%"} onChange={()=>setResidentParticipation("100%")} />
                 <label htmlFor="100%">100%</label>
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="75%" checked={residentParticipation==="75%"} onChange={()=>setResidentParticipation("75%")} />
                 <label htmlFor="100%">75%</label>
                 
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="50%" checked={residentParticipation==="50%"} onChange={()=>setResidentParticipation("50%")} />
                 <label htmlFor="50%">50%</label>
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="25%" checked={residentParticipation==="25%"} onChange={()=>setResidentParticipation("25%")} />
                 <label htmlFor="25%">25%</label>
                 
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="≤5%" checked={residentParticipation==="≤5%"} onChange={()=>setResidentParticipation("≤5%")} />
                 <label htmlFor="≤5%">≤5%</label>
-              
+              </div>
               </div>
             </div>
 
-            <label htmlFor="" className="label-review">
+            
+            <div className="yeschechbox-review-treatment">
+              <div><label style={{fontSize:"1.2rem"}} >
               Resident Attitude:
-            </label>
-            <div className="yeschechbox-review">
-              <div>
+            </label></div>
+            <div  className="yeschechbox-review-treatment-child ">
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Attentive" checked={residentAttitute==="Attentive"} onChange={()=>setResidentAttitute("Attentive")} />
                 <label htmlFor="Attentive">Attentive</label>
                 
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Supportive" checked={residentAttitute==="Supportive"} onChange={()=>setResidentAttitute("Supportive")} />
                 <label htmlFor="Supportive">Supportive</label>
                 
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Sharing" checked={residentAttitute==="Sharing"} onChange={()=>setResidentAttitute("Sharing")} />
                 <label htmlFor="Sharing">Sharing</label>
               
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Intrusive" checked={residentAttitute==="Intrusive"} onChange={()=>setResidentAttitute("Intrusive")} />
                 <label htmlFor="Intrusive">Intrusive</label>
-               
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Resistant" checked={residentAttitute==="Resistant"} onChange={()=>setResidentAttitute("Resistant")} />
                 <label htmlFor="Resistant">Resistant</label>
-              
+              </div>
               </div>
             </div>
-            <label htmlFor="" className="label-review">
+            
+            <div className="yeschechbox-review-treatment">
+              <div>
+              <label style={{fontSize:"1.2rem",marginTop:"0.5rem"}} >
               Resident progress:
             </label>
-            <div className="yeschechbox-review">
-              <div>
+              </div>
+              <div className="yeschechbox-review-treatment-progress">
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Deterioration" checked={residentProgress==="Deterioration"} onChange={()=>setResidentProgress("Deterioration")} />
                 <label htmlFor="Deterioration">Deterioration</label>
                
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="No Progress" checked={residentProgress==="No Progress"} onChange={()=>setResidentProgress("No Progress")} />
                 <label htmlFor="No Progress">No Progress</label>
                
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Small progress" checked={residentProgress==="Small progress"} onChange={()=>setResidentProgress("Small progress")} />
                 <label htmlFor="Small progress">Small progress</label>
              
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Good Progress" checked={residentProgress==="Good Progress"} onChange={()=>setResidentProgress("Good Progress")} />
                 <label htmlFor="Good Progress">Good Progress</label>
               
               </div>
-              <div>
+              <div className="checkbox-style-data">
               <input type="checkbox" id="Goal achieved" checked={residentProgress==="Goal achieved"} onChange={()=>setResidentProgress("Goal achieved")} />
                 <label htmlFor="Goal achieved">Goal achieved</label>
                 
+              </div>
               </div>
             </div>
             <label htmlFor="" className="label-review">
@@ -2693,34 +2714,40 @@ const clinicalSummaryHandler=(optionValue)=>{
             <label htmlFor="" className="label-review">
               Resident / Representative
             </label>
-            <div className="yeschechbox-review">
+            <div className="yeschechbox-review-yes-no">
               <div>
                 <input type="checkbox" id="isReason" checked={isReason==="yes"} onChange={()=>setIsReason(isReason === "yes" ? "no" :"yes")}/>
-                <label htmlFor="isReason">Yes </label>
+                <label htmlFor="isReason">Yes  <span>
+                  I am in the agreement with the services included in this
+                  treatment Plan
+                </span></label>
               </div>
             </div>
-            <div className="yeschechbox2">
+            {/* <div className="yeschechbox2">
               <div>
                 <span>
                   I am in the agreement with the services included in this
                   treatment Plan
                 </span>
               </div>
-            </div>
-            <div className="yeschechbox-review">
+            </div> */}
+            <div className="yeschechbox-review-yes-no">
               <div>
                 <input type="checkbox" id="refusalReason" checked={refusalReason === "Not applicable"} onChange={()=>setrefusalReason(refusalReason === "Not applicable" ? "" : "Not applicable")} />
-                <label htmlFor="refusalReason">No</label>
+                <label htmlFor="refusalReason">No   <span>
+                  I am in the agreement with the services included in this
+                  treatment Plan
+                </span></label>
               </div>
             </div>
-            <div className="yeschechbox2">
+            {/* <div className="yeschechbox2">
               <div>
                 <span>
                   I am in the agreement with the services included in this
                   treatment Plan
                 </span>
               </div>
-            </div>
+            </div> */}
             {/* /"signaturesResident */}
 
             <div className="formsheading">
@@ -2753,15 +2780,34 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onChange={(e) => setCredentialsResident(e.target.value)}
               />
             </div>
-            <div class="file-upload-box">
-              <input type="file" id="fileInput" style={{ display: "none" }} />
-            
-              <div style={{ display: "block" }}>
-                <button className="upload-button1" type="button" onClick={() => setSignatureModel1(true)}>SAVED AS DRAFT</button>
-                <button className="upload-button" type="button" onClick={() => setSignatureModel1(true)}>SAVED AND SIGNED</button>
+          
+            <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSignatureModel1(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+              <div>
+                {
+                  signatureResident  && (
+                    <p className="signature_name_print">Digitally Sign by {signatureResident}</p>
+                  )
+                }
               </div>
             </div>
-            <div className="form-field">
+
+            {
+              signatureModel1 && (<SingInUpdateModel 
+                onClose={()=>setSignatureModel1(false)}
+                singin={signatureResident}
+                setSingIn={setsignatureResident}
+                
+                />)
+            }
+            {/* <div className="form-field">
               <label>Date:</label>
               <input
                 style={{ color: "#1A9FB2" }}
@@ -2771,12 +2817,12 @@ const clinicalSummaryHandler=(optionValue)=>{
                 required
                 onChange={(e) => setDateResident(e.target.value)}
               />
-            </div>
+            </div> */}
           </div>
           {/*   "signaturesFacilityRep": */}
           <div className="formsheading">
             <h6>
-              signatures FacilityRep participation and informed consent for
+              signatures Facility Representative participation and informed consent for
               treatment services.
             </h6>
           </div>
@@ -2804,15 +2850,35 @@ const clinicalSummaryHandler=(optionValue)=>{
               onChange={(e) => setCredentialsFacilityRep(e.target.value)}
             />
           </div>
-          <div class="file-upload-box">
-            <input type="file" id="fileInput" style={{ display: "none" }} />
-         
-            <div style={{ display: "block" }}>
-              <button className="upload-button1" type="button" onClick={() => setSignatureModel2(true)}>SAVED AS DRAFT</button>
-              <button className="upload-button" type="button" onClick={() => setSignatureModel2(true)}>SAVED AND SIGNED</button>
+       
+
+          <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSignatureModel2(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+              <div>
+                {
+                  signatureFacilityRep  && (
+                    <p className="signature_name_print">Digitally Sign by {signatureFacilityRep}</p>
+                  )
+                }
+              </div>
             </div>
-          </div>
-          <div className="form-field">
+
+            {
+              signatureModel2 && (<SingInUpdateModel 
+                onClose={()=>setSignatureModel2(false)}
+                singin={signatureFacilityRep}
+                setSingIn={setsignatureFacilityRep}
+                
+                />)
+            }
+          {/* <div className="form-field">
             <label htmlFor="dateOfBirth">Date:</label>
             <input
               style={{ color: "#1A9FB2" }}
@@ -2823,7 +2889,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               required
               onChange={(e) => setDateFacilityRep(e.target.value)}
             />
-          </div>
+          </div> */}
 
           <div className="formsheading">
             <h6>
@@ -2855,15 +2921,46 @@ const clinicalSummaryHandler=(optionValue)=>{
               onChange={(e) => setCredentialsBhp(e.target.value)}
             />
           </div>
+        
+
           <div class="file-upload-box">
-            <input type="file" id="fileInput" style={{ display: "none" }} />
-         
-            <div style={{ display: "block" }}>
-              <button className="upload-button1" type="button"  onClick={() => setSignatureModel3(true)}>SAVED AS DRAFT</button>
-              <button className="upload-button" type="button"  onClick={() => setSignatureModel3(true)}>SAVED AND SIGNED</button>
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSignatureModel3(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={handlePrint}>
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                {
+                  signatureBhp && (
+                    <p className="signature_name_print">Digitally Sign by {signatureBhp}</p>
+                  )
+                }
+              </div>
+              
             </div>
-          </div>
-          <div className="form-field">
+
+            {
+              signatureModel3 && (<SingInUpdateModel 
+                onClose={()=>setSignatureModel3(false)}
+                singin={signatureBhp}
+                setSingIn={setsignatureBhp}
+                
+                />)
+            }
+          {/* <div className="form-field">
             <label htmlFor="dateOfBirth">Date:</label>
             <input
               style={{ color: "#1A9FB2" }}
@@ -2874,16 +2971,16 @@ const clinicalSummaryHandler=(optionValue)=>{
               required
               onChange={(e) => setDateBhp(e.target.value)}
             />
-          </div>
-          <div className="form-actions">
+          </div> */}
+          {/* <div className="form-actions">
             <button type="submit" className="initalsubmit">
               SUBMIT DETAILS
             </button>
-          </div>
+          </div> */}
         </form>
       </div>
       {/* signature 1 */}
-      {signatureModel1 && (
+      {/* {signatureModel1 && (
         <SingInModel onClose={() => setSignatureModel1(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
@@ -2901,9 +2998,9 @@ const clinicalSummaryHandler=(optionValue)=>{
             </button>
           </div>
         </SingInModel>
-      )}
+      )} */}
       {/* signature 2 */}
-      {signatureModel2 && (
+      {/* {signatureModel2 && (
         <SingInModel onClose={() => setSignatureModel2(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
@@ -2921,9 +3018,9 @@ const clinicalSummaryHandler=(optionValue)=>{
             </button>
           </div>
         </SingInModel>
-      )}
+      )} */}
       {/* signature3 */}
-      {signatureModel3 && (
+      {/* {signatureModel3 && (
         <SingInModel onClose={() => setSignatureModel3(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
@@ -2941,7 +3038,12 @@ const clinicalSummaryHandler=(optionValue)=>{
             </button>
           </div>
         </SingInModel>
-      )}
+      )} */}
+
+{
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
+      </div>
     </>
   );
 };

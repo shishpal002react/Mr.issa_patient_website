@@ -6,8 +6,17 @@ import { CiCirclePlus } from "react-icons/ci";
 import { user_detail, safety_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
 import Select from "react-select";
+import Draftinmodel from "../Modal/Draftinmodel";
+import SingInUpdateModel from "../Modal/SingInUpdateModel";
+import { useReactToPrint } from "react-to-print";
 
 const SafetyPlan = () => {
+  const [draftModel,setDraftModel]=useState(false);
+  const componentRef = React.useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   //singIn model state
   const [showSingIn, setShowSingIn] = useState(false);
   const [userDetail, setUserDetail] = useState("");
@@ -155,6 +164,7 @@ const SafetyPlan = () => {
 
   return (
     <>
+    <div ref={componentRef}>
       <div className="backbutton">
         <IoArrowBackCircle
           style={{
@@ -570,6 +580,43 @@ const SafetyPlan = () => {
               />
             </div>
             <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setShowSingIn(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={handlePrint}>
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                {
+                  singin && (
+                    <p className="signature_name_print">Digitally Sign by {singin}</p>
+                  )
+                }
+              </div>
+              
+            </div>
+
+            {
+              showSingIn && (<SingInUpdateModel 
+                onClose={()=>setShowSingIn(false)}
+                singin={singin}
+                setSingIn={setSingIn}
+                
+                />)
+            }
+            {/* <div class="file-upload-box">
               <div style={{ display: "block" }}>
                 <button className="upload-button1" type="button" onClick={() => setShowSingIn(true)}>
                   SAVED AS DRAFT
@@ -578,16 +625,16 @@ const SafetyPlan = () => {
                   SAVED AND SIGNED
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="form-actions">
+          {/* <div className="form-actions">
             <button type="submit"  className="initalsubmit">
               SUBMIT DETAILS
             </button>
-          </div>
+          </div> */}
         </form>
       </div>
-      {showSingIn && (
+      {/* {showSingIn && (
         <SingInModel onClose={() => setShowSingIn(false)}>
           <div className="input_singin_button">
             <p style={{ color: "white" }}>Digitally Sign by employee name</p>
@@ -605,7 +652,13 @@ const SafetyPlan = () => {
             </button>
           </div>
         </SingInModel>
-      )}
+      )} */}
+
+
+      {
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
+      </div>
     </>
   );
 };

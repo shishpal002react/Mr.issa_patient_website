@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React ,{ useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
@@ -7,8 +7,18 @@ import {
   faceSheet_form,
   Nurssing_form,
 } from "../../Api_Collection/Api";
+import Draftinmodel from "../Modal/Draftinmodel";
+import { useReactToPrint } from "react-to-print";
 
 const FaceSheet = () => {
+  //draft model
+  const [draftModel,setDraftModel]=useState(false);
+  const componentRef = React.useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+
   const [patientName, setPatientName] = useState("");
   const [userDetail, setUserDetail] = useState("");
   const navigate = useNavigate();
@@ -207,6 +217,7 @@ const FaceSheet = () => {
 
   return (
     <>
+    <div ref={componentRef}>
       <div className="backbutton">
         <IoArrowBackCircle
           style={{
@@ -771,12 +782,36 @@ const FaceSheet = () => {
               </div>
             </div> */}
           </div>
-          <div className="form-actions">
+          <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+
+                <div>
+                <button className="upload-button" type="button" onClick={handlePrint}>
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+             
+              </div>
+              
+            </div>
+          {/* <div className="form-actions">
             <button type="submit" className="initalsubmit">
               SUBMIT DETAILS
             </button>
-          </div>
+          </div> */}
         </form>
+      </div>
+      {
+        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
+      }
       </div>
     </>
   );

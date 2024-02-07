@@ -7,7 +7,7 @@ import { user_detail, Resident_form } from "../../Api_Collection/Api";
 import AutosizeInput from "react-input-autosize";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
-import Accordion from "react-bootstrap/Accordion";
+
 
 const ResidentIntakes = () => {
   const navigate = useNavigate();
@@ -935,7 +935,33 @@ const ResidentIntakes = () => {
                 Resident Signature
               </label>
 
-              <div class="file-upload-box">
+              <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel1(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+              <div>
+                {
+                  residentSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {residentSignature}</p>
+                  )
+                }
+              </div>
+            </div>
+
+            {
+              signInModel1 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel1(false)}
+                singin={residentSignature}
+                setSingIn={setResidentSignature}
+                
+                />)
+            }
+              {/* <div class="file-upload-box">
                 <div style={{ display: "block" }}>
                   <button
                     className="upload-button1"
@@ -952,15 +978,15 @@ const ResidentIntakes = () => {
                     SAVED AND SIGNED
                   </button>
                 </div>
-              </div>
+              </div> */}
 
-              {signInModel1 && (
+              {/* {signInModel1 && (
                 <SingInUpdateModel
                   onClose={() => setSigInModel1(false)}
                   singin={residentSignature}
                   setSingIn={setResidentSignature}
                 />
-              )}
+              )} */}
 
               {/* <input
               type="text"
@@ -968,7 +994,7 @@ const ResidentIntakes = () => {
               onChange={(e) => setResidentSignature(e.target.value)}
             /> */}
               <div className="form-field">
-                <label htmlFor="dateOfBirth" className="label-review-resitent">
+                {/* <label htmlFor="dateOfBirth" className="label-review-resitent">
                   Date:
                 </label>
                 <input
@@ -979,7 +1005,7 @@ const ResidentIntakes = () => {
                   placeholder="DD/MM/YYYY"
                   required
                   onChange={(e) => setResidentDate(e.target.value)}
-                />
+                /> */}
               </div>
               <h2
                 style={{
@@ -1013,32 +1039,33 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian / Representative Signature
               </label>
-              <div class="file-upload-box">
-                <div style={{ display: "block" }}>
-                  <button
-                    className="upload-button1"
-                    type="button"
-                    onClick={() => setDraftModel(true)}
-                  >
-                    SAVED AS DRAFT
-                  </button>
-                  <button
-                    className="upload-button"
-                    type="button"
-                    onClick={() => setSigInModel2(true)}
-                  >
-                    SAVED AND SIGNED
-                  </button>
-                </div>
+              <div class="file-upload-box"> 
+                <div className="file-upload-box-child">
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel2(true)}>
+                  SAVED AND SIGNED
+                </button>
               </div>
+              <div>
+                {
+                  guardianRepresentativeSignature  && (
+                    <p className="signature_name_print">Digitally Sign by {guardianRepresentativeSignature}</p>
+                  )
+                }
+              </div>
+            </div>
 
-              {signInModel2 && (
-                <SingInUpdateModel
-                  onClose={() => setSigInModel2(false)}
-                  singin={guardianRepresentativeSignature}
-                  setSingIn={setGuardianRepresentativeSignature}
-                />
-              )}
+            {
+              signInModel2 && (<SingInUpdateModel 
+                onClose={()=>setSigInModel2(false)}
+                singin={guardianRepresentativeSignature}
+                setSingIn={setGuardianRepresentativeSignature}
+                
+                />)
+            }
+         
 
               {/* <input
               type="text"
@@ -1048,7 +1075,7 @@ const ResidentIntakes = () => {
               }
             /> */}
 
-              <div className="form-field">
+              {/* <div className="form-field">
                 <label htmlFor="dateOfBirth" className="label-review-resitent">
                   Date:{" "}
                 </label>
@@ -1063,7 +1090,7 @@ const ResidentIntakes = () => {
                     setGuardianRepresentativeDate(e.target.value)
                   }
                 />
-              </div>
+              </div> */}
               <h2
                 style={{
                   fontWeight: "500",

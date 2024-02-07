@@ -866,6 +866,7 @@ input[type="checkbox"] {
 .label-review{
   margin-top: 1.5rem;
   font-size: 1.2rem;
+
 }
 
 .yeschechbox-review{
@@ -877,10 +878,61 @@ input[type="checkbox"] {
   grid-template-columns: repeat(5, 20%);
 }
 
+.yeschechbox-review-yes-no{
+  display: flex;
+  gap: 20px;
+}
+
+.yeschechbox-review-yes-no div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .yeschechbox-review div{
   display: flex;
   gap: 10px;
   align-items: center;
+}
+.yeschechbox-review-Current{
+  display: flex;
+  width: 100%;
+  gap: 5%;
+  margin-top: 1.5rem;
+}
+
+.yeschechbox-review-Nutrition{
+  display: flex;
+  width: 100%;
+  gap: 10%;
+  margin-top: 1.5rem;
+  /* justify-content: space-between; */
+}
+
+.checkbox-style-data {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.yeschechbox-review-treatment{
+  display: flex;
+  width: 100%;
+  gap: 2%;
+  margin-top: 1.5rem;
+}
+
+.yeschechbox-review-treatment-child {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+}
+
+.yeschechbox-review-treatment-progress{
+  display: flex;
+  align-items: center;
+  gap: 5%;
+
 }
 
 input[type="checkbox"] {

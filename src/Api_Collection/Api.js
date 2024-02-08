@@ -39,6 +39,15 @@ export const login_user = async (payLoad, navigate) => {
 };
 
 
+export const vital_data = async (patient_id, setVitalData ) => {
+  try {
+    const res = await axios.get(`${BaseUrl}employee/getPatientVitalsByPatientId/${patient_id}?for=week`,Token);
+    setVitalData(res?.data);
+  } catch (e) {
+   
+  }
+};
+
 
 export const user_detail = async (setUser) => {
   try {

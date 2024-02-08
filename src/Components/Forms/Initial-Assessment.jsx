@@ -528,6 +528,8 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
   // Arrested History (Multiple Fields)
   const [selectedValue, setSelectedValue] = useState([]);
 
+
+
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState([]);
   const [typesOfActivityOther,setTypesOfActivityOther]=useState("")
@@ -550,6 +552,23 @@ useEffect(() => {
   const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
     useState();
   const [bathingShoweringComments, setBathingShoweringComments] = useState("");
+
+  const [handleRiskFactorActivityArray,setHandleRiskFactorActivityArray]=useState([]);
+
+const handleRiskFactorActivity=()=>{
+  const newData={
+    bathingShoweringGood,
+    bathingShoweringFair,
+    bathingShoweringNeedAssist,
+    bathingShoweringComments
+  }
+  setHandleRiskFactorActivityArray((prev)=> [...prev,newData]);
+  setBathingShoweringGood([]);
+  setBathingShoweringFair();
+  setBathingShoweringNeedAssist();
+  setBathingShoweringComments("");
+}
+
 
   const [triggers, setTriggers] = useState("");
   const [fallRisk, setFallRisk] = useState("");
@@ -4414,6 +4433,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <label htmlFor="programlocation&address">Comments</label>
               <textarea
                 id="programlocation&address"
+                type="text"
                 value={bathingShoweringComments}
                 placeholder="Enter text"
                 rows={2}
@@ -4422,6 +4442,51 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e)=>setBathingShoweringComments(e.target.value)}
               />
             </div>
+            
+            <div className="form-actions">
+              <button
+                type="button"
+                className="safetybutton"
+                onClick={handleRiskFactorActivity}
+              >
+                Add
+              </button>
+            </div>
+
+            <div className="needs-interventions-container">
+  <div className="needs-interventions-column3">
+    {handleRiskFactorActivityArray.length > 0 && (
+      <table>
+        <thead>
+          <tr>
+            <th>Type of Activity</th>
+            <th>Good</th>
+            <th>Fair</th>
+            <th>Need assist</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          {handleRiskFactorActivityArray?.map((i, index) => (
+            <tr key={index}>
+              <td>
+                <ol>
+                  {i?.bathingShoweringGood?.map((item) => (
+                    <li key={item?.value}>{item?.value}</li>
+                  ))}
+                </ol>
+              </td>
+              <td>{`${index + 1}. ${i.bathingShoweringFair === true ? "Yes" : "No"}`} </td>
+              <td>{`${index + 1}. ${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td>
+              <td>{`${index + 1}. ${i.bathingShoweringNeedAssist === true ? "Yes" : "No"}`} </td>
+              <td>{`${index + 1}. ${i.bathingShoweringComments}`} </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+</div>
             {/* start working  */}
             <div className="formsheading">
               <h6>Triggers:</h6>

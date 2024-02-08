@@ -109,6 +109,12 @@ const Vitals = () => {
       name: "Settings",
       newIcon: <img src=" /Dashboard/New folder/user.png" alt="fdn" />,
     },
+    {
+      icon: <img src="/Dashboard2/setting.png" alt="fdn" />,
+      // link: "/employee/settings",
+      name: "Settings",
+      newIcon: <img src=" /Dashboard/New folder/hieght.png" alt="fdn" />,
+    },
   ];
 
   useEffect(() => {
@@ -467,6 +473,40 @@ const Vitals = () => {
             }}
           >
             Blood Glucose Level
+          </p>
+          <p style={{ color: "#1A9FB2", fontSize: "1rem", fontWeight: "bold" }}>
+            {patientData?.bloodGlucoseLevel}
+          </p>
+        </div>
+        <div
+          style={{
+            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            padding: ".5rem 1rem",
+            borderRadius: "10px",
+          }}
+        >
+          <img
+            style={{
+              width: "auto",
+              maxWidth: "90px",
+              margin: "auto",
+              height: "auto",
+              maxHeight: "70px",
+            }}
+            // onClick={() => navigate("/employee/training/on-site ")}
+            src="/Dashboard2/Vitals/hieght.png"
+            alt="Employment"
+          />
+          <p
+            style={{
+              fontWeight: "bold",
+              fontSize: ".9rem",
+              lineHeight: ".8rem",
+              marginTop: "1rem",
+              color: "black",
+            }}
+          >
+            Height
           </p>
           <p style={{ color: "#1A9FB2", fontSize: "1rem", fontWeight: "bold" }}>
             {patientData?.bloodGlucoseLevel}

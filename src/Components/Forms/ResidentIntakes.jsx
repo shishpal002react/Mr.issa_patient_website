@@ -825,7 +825,7 @@ const ResidentIntakes = () => {
 
           {page === 1 && (
             <>
-            <div ref={componentRef1}>
+            <div ref={componentRef1} style={{width:"95%",margin:"auto"}}>
               <div className="residentdiv">
                 <h6
                   style={{
@@ -1248,7 +1248,7 @@ const ResidentIntakes = () => {
           {/* second session2 */}
           {page === 2 && (
             <> 
-            <div ref={componentRef2}>
+            <div ref={componentRef2} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "500",
@@ -1931,9 +1931,9 @@ const ResidentIntakes = () => {
           )}
 
           {/* section 3 */}
-          {page === 3 && (
+          {page === 3 &&  (
             <>
-            <div ref={componentRef3}>
+            <div ref={componentRef3} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -2230,7 +2230,7 @@ const ResidentIntakes = () => {
           {/* section4 */}
           {page === 4 && (
             <>
-        <div ref={componentRef4}>
+        <div ref={componentRef4} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -2785,7 +2785,7 @@ const ResidentIntakes = () => {
           {/* section 5 */}
           {page === 5 && (
             <>
-            <div ref={componentRef5}>
+            <div ref={componentRef5} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -3004,7 +3004,7 @@ const ResidentIntakes = () => {
           {/* section 6 */}
           {page === 6 && (
             <>
-            <div ref={componentRef6}>
+            <div ref={componentRef6} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -3187,7 +3187,7 @@ const ResidentIntakes = () => {
           {/* section 7 */}
           {page === 7 && (
             <>
-            <div ref={componentRef7}>
+            <div ref={componentRef7} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -3481,7 +3481,7 @@ const ResidentIntakes = () => {
           {/* section 8 */}
           {page === 8 && (
             <>
-            <div ref={componentRef8}>
+            <div ref={componentRef8} style={{width:"95%",margin:"auto"}}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -4119,11 +4119,11 @@ const ResidentIntakes = () => {
                   PRINT THIS FORM
                 </button>
                 </div>
-                <div>
+                {/* <div>
                 <button onClick={handlePrint9} className="upload-button-complete-form" type="button" >
                   PRINT COMPLETE FORM
                 </button>
-                </div>
+                </div> */}
               </div> 
               <div>
                    {

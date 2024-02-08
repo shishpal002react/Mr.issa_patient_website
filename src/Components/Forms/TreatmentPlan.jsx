@@ -921,7 +921,7 @@ const clinicalSummaryHandler=(optionValue)=>{
             <div className="formsheading">
               <h6>Diagonsis</h6>
             </div>
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               Mental Status:
             </label>
             <div className="yeschechbox-review">
@@ -978,7 +978,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 />
               </div>
             )}
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               Mood Level:
             </label>
             <div className="yeschechbox-review">
@@ -1042,7 +1042,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 />
               </div>
             )}
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               ADLS:
             </label>
             <div className="yeschechbox-review">

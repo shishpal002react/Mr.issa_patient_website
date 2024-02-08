@@ -156,8 +156,22 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
               >
                 SIGN OUT
               </button>
+              <button
+                className="profilemodalbutton"
+                style={{ cursor: "pointer",marginTop:"1rem" }}
+                onClick={() => {
+                  show_notification(
+                    "success! ",
+                    "LogOut Successfully",
+                    "success"
+                  );
+                  
+                }}
+              >
+                Edit ProFile
+              </button>
             </div>
-            <div className="personalmodal-info">
+            {/* <div className="personalmodal-info">
               <p>
                 {" "}
                 <IoDocumentTextOutline />
@@ -179,7 +193,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
                 {" "}
                 <IoSettingsOutline /> Settings
               </p>
-            </div>
+            </div> */}
           </div>
         </ProfileModal>
       )}

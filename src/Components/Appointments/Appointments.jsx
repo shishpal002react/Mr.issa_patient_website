@@ -11,7 +11,9 @@ import {
   appointment_Upcoming,
   appointment_get,medication_get,user_detail,getAllPatientMedication
 } from "../../Api_Collection/Api";
-import Vitals from "../Vitals/Vitals";
+import Vital from "../VitalNew/Vital";
+// import Vitals from "../Vitals/Vitals";
+
 
 const Appointments = () => {
   const [appoinmentUpcoming, setAppoinmentUpcoming] = useState("");
@@ -50,7 +52,7 @@ const Appointments = () => {
     <div className="appointmentcontainer">
     <div >
  
-      <Vitals/></div>
+      <Vital/></div>
 
       <div className="appointmentcontent">
         <p>Upcoming Appointments</p>

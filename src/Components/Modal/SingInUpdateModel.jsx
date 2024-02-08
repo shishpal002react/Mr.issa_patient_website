@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./SingInModel.css"; // Import your modal styles if needed
 import { IoMdClose } from "react-icons/io";
 
-const SingInUpdateModel = ({ onClose, singin, setSingIn }) => {
+const SingInUpdateModel = ({ onClose, singin, setSingIn,setDateAndTime }) => {
   const [date,setDate]=useState("")
   const [time,setTime]=useState();
   //handle state data
@@ -33,7 +33,7 @@ setDate(`0${day}/0${month}/${year}`);
   useEffect(() => {
     // Update time every second
     const intervalId = setInterval(() => {
-      setTime(new Date());
+      setTime(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`);
     }, 1000);
 
     // Clean up the interval on component unmount
@@ -49,7 +49,7 @@ setDate(`0${day}/0${month}/${year}`);
    
         <div className="input_singin_button">
        {signatureData ? <p style={{ color: "white" }}>Digitally Sign by {signatureData}</p> : <p style={{ color: "white" }}>Digitally Sign by Employee Name</p> } 
-          <p style={{ color: "white" }}>Date: {date} Time: {new Date().getHours()}:{new Date().getMinutes()}:{new Date().getSeconds()} </p>
+          <p style={{ color: "white" }}>Date: {date} Time: {time} </p>
           {/* <p style={{ color: "white" }}>{time}</p> */}
           
           <input
@@ -64,6 +64,7 @@ setDate(`0${day}/0${month}/${year}`);
         <div className="sing_in_submit_button">
           <button type="button" onClick={()=>{
             setSingIn(signatureData);
+            setDateAndTime(`${date} ${time}`);
             onClose(false);
           }}>
             Submit

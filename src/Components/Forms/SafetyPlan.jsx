@@ -49,6 +49,7 @@ const SafetyPlan = () => {
   const [enviromentAdress, setEnviromentAdress] = useState();
   //singin
   const [singin, setSingIn] = useState("");
+  const [signInDate,setSignInDate]=useState("");
 
   useEffect(() => {
     setUserId(userDetail?._id);
@@ -601,7 +602,7 @@ const SafetyPlan = () => {
               <div>
                 {
                   singin && (
-                    <p className="signature_name_print">Digitally Sign by {singin}</p>
+                    <p className="signature_name_print">Digitally Sign by {singin} {signInDate}</p>
                   )
                 }
               </div>
@@ -613,7 +614,7 @@ const SafetyPlan = () => {
                 onClose={()=>setShowSingIn(false)}
                 singin={singin}
                 setSingIn={setSingIn}
-                
+                setDateAndTime={setSignInDate}
                 />)
             }
             {/* <div class="file-upload-box">

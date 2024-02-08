@@ -13,9 +13,8 @@ import Select from "react-select";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
 import AutosizeInput from 'react-input-autosize';
-import { Preview, print } from 'react-html2pdf';
-import { useReactToPrint } from "react-to-print";
 
+import { useReactToPrint } from "react-to-print";
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
@@ -1686,7 +1685,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div>
                 {
                   residentGuardianAgreementSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {residentGuardianAgreementSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {residentGuardianAgreementSignature} {residentGuardianAgreementDate}</p>
                   )
                 }
               </div>
@@ -1697,7 +1696,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onClose={()=>setSigInModel1(false)}
                 singin={residentGuardianAgreementSignature}
                 setSingIn={setResidentGuardianAgreementSignature}
-                
+                setDateAndTime={setResidentGuardianAgreementDate}
                 />)
             }
 
@@ -1749,7 +1748,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div>
                 {
                   staffAgreementSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {staffAgreementSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {staffAgreementSignature} {staffAgreementDate}</p>
                   )
                 }
               </div>
@@ -1760,7 +1759,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onClose={()=>setSigInModel2(false)}
                 singin={staffAgreementSignature}
                 setSingIn={setStaffAgreementSignature}
-                
+                setDateAndTime={setStaffAgreementDate}
                 />)
             }
             {/* <div className="form-field">
@@ -1825,7 +1824,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div>
                 {
                   bhpAgreementSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {bhpAgreementSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {bhpAgreementSignature} {bhpAgreementDate}</p>
                   )
                 }
               </div>
@@ -1836,7 +1835,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onClose={()=>setSigInModel3(false)}
                 singin={bhpAgreementSignature}
                 setSingIn={setBhpAgreementSignature}
-                
+                setDateAndTime={setBhpAgreementDate}
                 />)
             }
             {/* <div className="form-field">
@@ -1912,7 +1911,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div>
                 {
                   otherSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {otherSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {otherSignature} {otherDate}</p>
                   )
                 }
               </div>
@@ -1923,7 +1922,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onClose={()=>setSigInModel5(false)}
                 singin={otherSignature}
                 setSingIn={setOtherSignature}
-                
+                setDateAndTime={setOtherDate}
                 />)
             }
             {/* <div className="form-field">
@@ -5470,7 +5469,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div>
                 {
                   staffSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {staffSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {staffSignature} {staffDate}</p>
                   )
                 }
               </div>
@@ -5481,7 +5480,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onClose={()=>setSigInModel6(false)}
                 singin={staffSignature}
                 setSingIn={setStaffSignature}
-                
+                setDateAndTime={setStaffDate}
                 />)
             }
             {/* <div className="form-field">
@@ -5548,7 +5547,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <div>
                 {
                   bhpSignature && (
-                    <p className="signature_name_print">Digitally Sign by {bhpSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {bhpSignature} {bhpDate}</p>
                   )
                 }
               </div>
@@ -5560,7 +5559,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onClose={()=>setSigInModel7(false)}
                 singin={bhpSignature}
                 setSingIn={setBhpSignature}
-                
+                setDateAndTime={setBhpDate}
                 />)
             }
             {/* <div className="form-field">

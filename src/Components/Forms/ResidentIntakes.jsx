@@ -7,10 +7,55 @@ import { user_detail, Resident_form } from "../../Api_Collection/Api";
 import AutosizeInput from "react-input-autosize";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
-
+import { useReactToPrint } from "react-to-print";
 
 const ResidentIntakes = () => {
   const navigate = useNavigate();
+  //section 1
+  const componentRef1 = React.useRef();
+  const handlePrint1 = useReactToPrint({
+    content: () => componentRef1.current,
+  });
+  //section 2
+  const componentRef2 = React.useRef();
+  const handlePrint2 = useReactToPrint({
+    content: () => componentRef2.current,
+  });
+  //section 3
+  const componentRef3 = React.useRef();
+  const handlePrint3 = useReactToPrint({
+    content: () => componentRef3.current,
+  });
+  //section 4
+  const componentRef4 = React.useRef();
+  const handlePrint4 = useReactToPrint({
+    content: () => componentRef4.current,
+  });
+  //section 5
+  const componentRef5 = React.useRef();
+  const handlePrint5 = useReactToPrint({
+    content: () => componentRef5.current,
+  });
+  //section 6
+  const componentRef6 = React.useRef();
+  const handlePrint6 = useReactToPrint({
+    content: () => componentRef6.current,
+  });
+  //section 7
+  const componentRef7 = React.useRef();
+  const handlePrint7 = useReactToPrint({
+    content: () => componentRef7.current,
+  });
+  //section 8
+  const componentRef8 = React.useRef();
+  const handlePrint8 = useReactToPrint({
+    content: () => componentRef8.current,
+  });
+  //section 9
+  const componentRef9 = React.useRef();
+  const handlePrint9 = useReactToPrint({
+    content: () => componentRef9.current,
+  });
 
   //page state
   const [page, setPage] = useState(1);
@@ -37,6 +82,18 @@ const ResidentIntakes = () => {
   const [signInModel5, setSigInModel5] = useState(false);
   const [signInModel6, setSigInModel6] = useState(false);
   const [signInModel7, setSigInModel7] = useState(false);
+  const [signInModel8, setSigInModel8] = useState(false);
+  const [signInModel9, setSigInModel9] = useState(false);
+  const [signInModel10, setSigInModel10] = useState(false);
+  const [signInModel11, setSigInModel11] = useState(false);
+  const [signInModel12, setSigInModel12] = useState(false);
+  const [signInModel13, setSigInModel13] = useState(false);
+  const [signInModel14, setSigInModel14] = useState(false);
+  const [signInModel15, setSigInModel15] = useState(false);
+  const [signInModel16, setSigInModel16] = useState(false);
+  const [signInModel17, setSigInModel17] = useState(false);
+  const [signInModel18, setSigInModel18] = useState(false);
+  const [signInModel19, setSigInModel19] = useState(false);
 
   //state
   const [userDetail, setUserDetail] = useState("");
@@ -743,6 +800,7 @@ const ResidentIntakes = () => {
 
   return (
     <>
+    <div ref={componentRef9}>
       <div className="backbutton">
         <IoArrowBackCircle
           style={{
@@ -764,8 +822,10 @@ const ResidentIntakes = () => {
         </div>
 
         <form onSubmit={submitHandler}>
+
           {page === 1 && (
             <>
+            <div ref={componentRef1}>
               <div className="residentdiv">
                 <h6
                   style={{
@@ -947,7 +1007,7 @@ const ResidentIntakes = () => {
               <div>
                 {
                   residentSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {residentSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {residentSignature} {residentDate}</p>
                   )
                 }
               </div>
@@ -958,7 +1018,7 @@ const ResidentIntakes = () => {
                 onClose={()=>setSigInModel1(false)}
                 singin={residentSignature}
                 setSingIn={setResidentSignature}
-                
+                setDateAndTime={setResidentDate}
                 />)
             }
               {/* <div class="file-upload-box">
@@ -1051,8 +1111,8 @@ const ResidentIntakes = () => {
               <div>
                 {
                   guardianRepresentativeSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {guardianRepresentativeSignature}</p>
-                  )
+                    <p className="signature_name_print">Digitally Sign by {guardianRepresentativeSignature} {guardianRepresentativeDate}</p>
+                  ) 
                 }
               </div>
             </div>
@@ -1062,7 +1122,7 @@ const ResidentIntakes = () => {
                 onClose={()=>setSigInModel2(false)}
                 singin={guardianRepresentativeSignature}
                 setSingIn={setGuardianRepresentativeSignature}
-                
+                setDateAndTime={setGuardianRepresentativeDate}
                 />)
             }
          
@@ -1115,47 +1175,46 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Staff Signature
               </label>
+              
               <div class="file-upload-box">
-                <div style={{ display: "block" }}>
-                  <button
-                    className="upload-button1"
-                    type="button"
-                    onClick={() => setDraftModel(true)}
-                  >
-                    SAVED AS DRAFT
-                  </button>
-                  <button
-                    className="upload-button"
-                    type="button"
-                    onClick={() => setSigInModel3(true)}
-                  >
-                    SAVED AND SIGNED
-                  </button>
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
                 </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel3(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint1} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                {
+                  staffSignature && (
+                    <p className="signature_name_print">Digitally Sign by {staffSignature} {staffDate}</p>
+                  )
+                }
               </div>
+              
+            </div>
 
-              {signInModel3 && (
-                <SingInUpdateModel
-                  onClose={() => setSigInModel3(false)}
+            {
+              signInModel3 && (<SingInUpdateModel 
+                onClose={() => setSigInModel3(false)}
                   singin={staffSignature}
                   setSingIn={setStaffSignature}
-                />
-              )}
-              {/* <input
-              type="text"
-              value={staffSignature}
-              onChange={(e) => setStaffSignature(e.target.value)}
-            /> */}
-              <div className="form-field">
-                <label className="label-review-resitent">Date:</label>
-                <input
-                  type="date"
-                  value={staffDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) => setStaffDate(e.target.value)}
-                />
-              </div>
+                  setDateAndTime={setStaffDate}
+                />)
+            }
+
+       
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -1182,12 +1241,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
           {/* second session2 */}
           {page === 2 && (
-            <>
+            <> 
+            <div ref={componentRef2}>
               <h6
                 style={{
                   fontWeight: "500",
@@ -1374,14 +1435,33 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature
               </label>
-              <input
-                type="text"
-                placeholder="Resident signature"
-                value={internalDisclosureListResidentSignature}
-                onChange={(e) =>
-                  setInternalDisclosureListResidentSignature(e.target.value)
-                }
-              />
+                   <div class="file-upload-box"> 
+                   <div className="file-upload-box-child">
+                   <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                     SAVED AS DRAFT
+                   </button>
+                   <button className="upload-button" type="button" onClick={() => setSigInModel4(true)}>
+                     SAVED AND SIGNED
+                   </button>
+                 </div>
+                 <div>
+                   {
+                     internalDisclosureListResidentSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {internalDisclosureListResidentSignature} {internalDisclosureListResidentDate}</p>
+                     )
+                   }
+                 </div>
+               </div>
+   
+               {
+                signInModel4 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel4(false)}
+                   singin={internalDisclosureListResidentSignature}
+                   setSingIn={setInternalDisclosureListResidentSignature}
+                   setDateAndTime={setInternalDisclosureListResidentDate}
+                   />)
+               }
+            
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1400,18 +1480,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
-                <label>Date </label>
-                <input
-                  type="date"
-                  value={internalDisclosureListResidentDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setInternalDisclosureListResidentDate(e.target.value)
-                  }
-                />
-              </div>
+      
               <div className="form-field">
                 <label className="label-review-resitent">
                   Guardian/Representative Full Name
@@ -1432,16 +1501,33 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian / Representative Signature
               </label>
-              <input
-                type="text"
-                value={internalDisclosureListGuardianRepresentativeSignature}
-                placeholder="Signature"
-                onChange={(e) =>
-                  setInternalDisclosureListGuardianRepresentativeSignature(
-                    e.target.value
-                  )
-                }
-              />
+                   <div class="file-upload-box"> 
+                   <div className="file-upload-box-child">
+                   <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                     SAVED AS DRAFT
+                   </button>
+                   <button className="upload-button" type="button" onClick={() => setSigInModel5(true)}>
+                     SAVED AND SIGNED
+                   </button>
+                 </div>
+                 <div>
+                   {
+                     internalDisclosureListGuardianRepresentativeSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {internalDisclosureListGuardianRepresentativeSignature} {internalDisclosureListGuardianRepresentativeDate}</p>
+                     )
+                   }
+                 </div>
+               </div>
+   
+               {
+                signInModel5 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel5(false)}
+                   singin={internalDisclosureListGuardianRepresentativeSignature}
+                   setSingIn={setInternalDisclosureListGuardianRepresentativeSignature}
+                   setDateAndTime={setInternalDisclosureListGuardianRepresentativeDate}
+                   />)
+               }
+            
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1460,20 +1546,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">Date </label>
-                <input
-                  type="date"
-                  value={internalDisclosureListGuardianRepresentativeDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setInternalDisclosureListGuardianRepresentativeDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+    
               {/* <label
               htmlFor=""
               className="label-review-resitent"
@@ -1490,29 +1563,34 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Staff Signature
               </label>
-              <input
-                type="text"
-                value={internalDisclosureListStaffSignature}
-                placeholder="Staff signature"
-                onChange={(e) =>
-                  setInternalDisclosureListStaffSignature(e.target.value)
-                }
-              />
-              <div className="form-field">
-                <label className="label-review-resitent">
-                  Date of Signature Obtained
-                </label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="date"
-                  value={internalDisclosureListStaffDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setInternalDisclosureListStaffDate(e.target.value)
-                  }
-                />
-              </div>
+                     <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel6(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       internalDisclosureListStaffSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {internalDisclosureListStaffSignature} {internalDisclosureListStaffDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel6 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel6(false)}
+                     singin={internalDisclosureListStaffSignature}
+                     setSingIn={setInternalDisclosureListStaffSignature}
+                     setDateAndTime={setInternalDisclosureListStaffDate}
+                     />)
+                 }
+         
+          
               <h6
                 style={{
                   fontWeight: "600",
@@ -1743,27 +1821,34 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature
               </label>
-              <input
-                type="text"
-                value={residentRightsResidentSignatureValue}
-                placeholder="Signature"
-                onChange={(e) =>
-                  setResidentRightsResidentSignatureValue(e.target.value)
-                }
-              />
-              <div className="form-field">
-                <label className="label-review-resitent">Date </label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="date"
-                  value={residentRightsResidentSignatureValueDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setResidentRightsResidentSignatureValueDate(e.target.value)
-                  }
-                />
-              </div>
+                     <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel7(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       residentRightsResidentSignatureValue  && (
+                         <p className="signature_name_print">Digitally Sign by {residentRightsResidentSignatureValue} {residentRightsResidentSignatureValueDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel7 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel7(false)}
+                     singin={residentRightsResidentSignatureValue}
+                     setSingIn={setResidentRightsResidentSignatureValue}
+                     setDateAndTime={setResidentRightsResidentSignatureValueDate}
+                     />)
+                 }
+           
+        
               <label htmlFor="" className="label-review-resitent">
                 Guardian/Representative Name
               </label>
@@ -1776,27 +1861,45 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian/Representative Signature
               </label>
-              <input
-                type="text"
-                value={residentRightsResidentSignature}
-                placeholder="Signature"
-                onChange={(e) =>
-                  setResidentRightsResidentSignature(e.target.value)
-                }
-              />
-              <div className="form-field">
-                <label className="label-review-resitent">Date</label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="date"
-                  value={residentRightsResidentDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setResidentRightsResidentDate(e.target.value)
+                 <div class="file-upload-box">
+              
+                 <div className="file-upload-box-child">
+                  <div >
+                   <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                     SAVED AS DRAFT
+                   </button>
+                   </div>
+                   <div>
+                   <button className="upload-button" type="button" onClick={() => setSigInModel8(true)}>
+                     SAVED AND SIGNED
+                   </button>
+                   </div>
+                   <div>
+                   <button onClick={handlePrint2} className="upload-button" type="button" >
+                     PRINT THIS FORM
+                   </button>
+                   </div>
+                 </div> 
+                 <div>
+                      {
+                        residentRightsResidentSignature  && (
+                          <p className="signature_name_print">Digitally Sign by {residentRightsResidentSignature} {residentRightsResidentDate}</p>
+                        )
+                      }
+                    </div>
+                 
+               </div>
+      
+                  {
+                    signInModel8 && (<SingInUpdateModel 
+                      onClose={()=>setSigInModel8(false)}
+                      singin={residentRightsResidentSignature}
+                      setSingIn={setResidentRightsResidentSignature}
+                      setDateAndTime={setResidentRightsResidentDate}
+                      />)
                   }
-                />
-              </div>
+        
+          
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -1823,12 +1926,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
           {/* section 3 */}
           {page === 3 && (
             <>
+            <div ref={componentRef3}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -1956,14 +2061,33 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature
               </label>
-              <input
-                type="text"
-                value={photoVideoConsentResidentSignature}
-                placeholder="Signature"
-                onChange={(e) =>
-                  setPhotoVideoConsentResidentSignature(e.target.value)
-                }
-              />
+              <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel9(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       photoVideoConsentResidentSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {photoVideoConsentResidentSignature} {photoVideoConsentResidentDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel9 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel9(false)}
+                     singin={photoVideoConsentResidentSignature}
+                     setSingIn={setPhotoVideoConsentResidentSignature}
+                     setDateAndTime={setPhotoVideoConsentResidentDate}
+                     />)
+                 }
+           
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -1982,7 +2106,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
+              {/* <div className="form-field">
                 <label className="label-review-resitent">
                   Date of Signature Obtained
                 </label>
@@ -1996,7 +2120,7 @@ const ResidentIntakes = () => {
                     setPhotoVideoConsentResidentDate(e.target.value)
                   }
                 />
-              </div>
+              </div> */}
               <div className="form-field">
                 <label className="label-review-resitent">
                   Guardian/Representative Name:
@@ -2014,18 +2138,46 @@ const ResidentIntakes = () => {
                 />
               </div>
               <label htmlFor="" className="label-review-resitent">
-                Guardian/Representative Signature Date
+                Guardian/Representative Signature 
               </label>
-              <input
-                type="text"
-                placeholder="Representative Signature"
-                value={photoVideoConsentGuardianRepresentativeSignature}
-                onChange={(e) =>
-                  setPhotoVideoConsentGuardianRepresentativeSignature(
-                    e.target.value
-                  )
-                }
-              />
+              <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel10(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint3} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                   {
+                     photoVideoConsentGuardianRepresentativeSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {photoVideoConsentGuardianRepresentativeSignature} {photoVideoConsentGuardianRepresentativeDate}</p>
+                     )
+                   }
+                 </div>
+              
+            </div>
+   
+               {
+                 signInModel10 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel10(false)}
+                   singin={photoVideoConsentGuardianRepresentativeSignature}
+                   setSingIn={setPhotoVideoConsentGuardianRepresentativeSignature}
+                   setDateAndTime={setPhotoVideoConsentGuardianRepresentativeDate}
+                   />)
+               }
+          
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -2044,23 +2196,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">
-                  Date of Signature Obtained
-                </label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="date"
-                  value={photoVideoConsentGuardianRepresentativeDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setPhotoVideoConsentGuardianRepresentativeDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+       
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -2087,12 +2223,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
           {/* section4 */}
           {page === 4 && (
             <>
+        <div ref={componentRef4}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -2593,6 +2731,22 @@ const ResidentIntakes = () => {
                   )}
                 </div>
               </div>
+              <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+             
+                <div>
+                <button onClick={handlePrint4} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+                </div>  
+
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -2605,6 +2759,7 @@ const ResidentIntakes = () => {
                     </button>
                   </div>
                 )}
+
 
                 {page !== 8 &&
                   (
@@ -2619,12 +2774,18 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+
+            
+                 
+            </div>
+            </div>
             </>
           )}
 
           {/* section 5 */}
           {page === 5 && (
             <>
+            <div ref={componentRef5}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -2659,7 +2820,7 @@ const ResidentIntakes = () => {
                 85007 Phone: 602-364-3030
               </p>
               <p style={{ color: "#000000" }}>
-                https://azdhs.gov/licensing/index.php?
+                <a href="https://azdhs.gov/licensing/index.php?">https://azdhs.gov/licensing/index.php?</a>
               </p>
               <p style={{ color: "#000000" }}>
                 By signing below, resident acknowledge to have been informed of
@@ -2687,16 +2848,33 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature
               </label>
-              <input
-                type="text"
-                placeholder="Signature"
-                value={complaintProcessAcknowledgementResidentSignature}
-                onChange={(e) =>
-                  setComplaintProcessAcknowledgementResidentSignature(
-                    e.target.value
-                  )
-                }
-              />
+              <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel11(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       complaintProcessAcknowledgementResidentSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {complaintProcessAcknowledgementResidentSignature} {complaintProcessAcknowledgementResidentDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel11 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel11(false)}
+                     singin={complaintProcessAcknowledgementResidentSignature}
+                     setSingIn={setComplaintProcessAcknowledgementResidentSignature}
+                     setDateAndTime={setComplaintProcessAcknowledgementResidentDate}
+                     />)
+                 }
+         
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -2715,20 +2893,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">Date: </label>
-                <input
-                  type="date"
-                  value={complaintProcessAcknowledgementResidentDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setComplaintProcessAcknowledgementResidentDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+       
               <div className="form-field">
                 <label className="label-review-resitent">
                   Guardian/Representative Name:
@@ -2750,18 +2915,43 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian/Representative Signature:
               </label>
-              <input
-                type="text"
-                value={
-                  complaintProcessAcknowledgementGuardianRepresentativeSignature
-                }
-                placeholder="Signature"
-                onChange={(e) =>
-                  setComplaintProcessAcknowledgementGuardianRepresentativeSignature(
-                    e.target.value
-                  )
-                }
-              />
+              <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel12(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint5} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                   {
+                     complaintProcessAcknowledgementGuardianRepresentativeSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {complaintProcessAcknowledgementGuardianRepresentativeSignature} {complaintProcessAcknowledgementGuardianRepresentativeDate}</p>
+                     )
+                   }
+                 </div>
+            </div>
+   
+               {
+                 signInModel12 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel12(false)}
+                   singin={complaintProcessAcknowledgementGuardianRepresentativeSignature}
+                   setSingIn={setComplaintProcessAcknowledgementGuardianRepresentativeSignature}
+                   setDateAndTime={setComplaintProcessAcknowledgementGuardianRepresentativeDate}
+                   />)
+               }
+            
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
               <div class="upload-icon">
@@ -2780,23 +2970,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">Date:</label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="date"
-                  value={
-                    complaintProcessAcknowledgementGuardianRepresentativeDate
-                  }
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setComplaintProcessAcknowledgementGuardianRepresentativeDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+        
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -2823,12 +2997,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
           {/* section 6 */}
           {page === 6 && (
             <>
+            <div ref={componentRef6}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -2875,14 +3051,33 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature:
               </label>
-              <input
-                type="text"
-                value={orientationToAgencyResidentSignature}
-                placeholder="Signature"
-                onChange={(e) =>
-                  setOrientationToAgencyResidentSignature(e.target.value)
-                }
-              />
+              <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel13(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       orientationToAgencyResidentSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {orientationToAgencyResidentSignature} {orientationToAgencyResidentDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel13 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel13(false)}
+                     singin={orientationToAgencyResidentSignature}
+                     setSingIn={setOrientationToAgencyResidentSignature}
+                     setDateAndTime={setOrientationToAgencyResidentDate}
+                     />)
+                 }
+        
 
               {/* <div class="file-upload-box">
               <input type="file" id="fileInput" style={{ display: "none" }} />
@@ -2902,18 +3097,7 @@ const ResidentIntakes = () => {
                 </button>
               </div>
             </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">Date: </label>
-                <input
-                  type="date"
-                  value={orientationToAgencyResidentDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setOrientationToAgencyResidentDate(e.target.value)
-                  }
-                />
-              </div>
+      
               <div className="form-field">
                 <label className="label-review-resitent">
                   Guardian/Representative Name:
@@ -2933,29 +3117,43 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian/Representative Signature:
               </label>
-              <input
-                value={orientationToAgencyGuardianRepresentativeSignature}
-                type="text"
-                onChange={(e) =>
-                  setOrientationToAgencyGuardianRepresentativeSignature(
-                    e.target.value
-                  )
-                }
-              />
-              <div className="form-field">
-                <label className="label-review-resitent">Date: </label>
-                <input
-                  type="date"
-                  value={orientationToAgencyGuardianRepresentativeDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setOrientationToAgencyGuardianRepresentativeDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+              <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel14(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint6} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                   {
+                     orientationToAgencyGuardianRepresentativeSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {orientationToAgencyGuardianRepresentativeSignature} {orientationToAgencyGuardianRepresentativeDate}</p>
+                     )
+                   }
+                 </div>
+            </div>
+   
+               {
+                 signInModel14 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel14(false)}
+                   singin={orientationToAgencyGuardianRepresentativeSignature}
+                   setSingIn={setOrientationToAgencyGuardianRepresentativeSignature}
+                   setDateAndTime={setOrientationToAgencyGuardianRepresentativeDate}
+                   />)
+               }
+
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -2982,12 +3180,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
           {/* section 7 */}
           {page === 7 && (
             <>
+            <div ref={componentRef7}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -3118,27 +3318,34 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature:
               </label>
-              <input
-                placeholder="Signature"
-                value={lockBoxKeyIssueReturnResidentSignature}
-                type="text"
-                onChange={(e) =>
-                  setLockBoxKeyIssueReturnResidentSignature(e.target.value)
-                }
-              />
+              <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel15(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       lockBoxKeyIssueReturnResidentSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {lockBoxKeyIssueReturnResidentSignature} {lockBoxKeyIssueReturnResidentDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel15 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel15(false)}
+                     singin={lockBoxKeyIssueReturnResidentSignature}
+                     setSingIn={setLockBoxKeyIssueReturnResidentSignature}
+                     setDateAndTime={setLockBoxKeyIssueReturnResidentDate}
+                     />)
+                 }
+        
 
-              <div className="form-field">
-                <label className="label-review-resitent">Date: </label>
-                <input
-                  type="date"
-                  value={lockBoxKeyIssueReturnResidentDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setLockBoxKeyIssueReturnResidentDate(e.target.value)
-                  }
-                />
-              </div>
               <div className="form-field">
                 <label className="label-review-resitent">
                   Guardian/Representative Name:
@@ -3158,31 +3365,34 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian/Representative Signature:
               </label>
-              <input
-                type="text"
-                placeholder="Signature"
-                value={lockBoxKeyIssueReturnGuardianRepresentativeSignature}
-                onChange={(e) =>
-                  setLockBoxKeyIssueReturnGuardianRepresentativeSignature(
-                    e.target.value
-                  )
-                }
-              />
-              <div className="form-field">
-                <label htmlFor="dateOfBirth">Date of Signature Obtained</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  value={lockBoxKeyIssueReturnGuardianRepresentativeDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setLockBoxKeyIssueReturnGuardianRepresentativeDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+              <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel16(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       lockBoxKeyIssueReturnGuardianRepresentativeSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {lockBoxKeyIssueReturnGuardianRepresentativeSignature} {lockBoxKeyIssueReturnGuardianRepresentativeDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel16 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel16(false)}
+                     singin={lockBoxKeyIssueReturnGuardianRepresentativeSignature}
+                     setSingIn={setLockBoxKeyIssueReturnGuardianRepresentativeSignature}
+                     setDateAndTime={setLockBoxKeyIssueReturnGuardianRepresentativeDate}
+                     />)
+                 }
+        
+        
               <div className="form-field">
                 <label className="label-review-resitent">Staff Witness</label>
                 <input
@@ -3199,29 +3409,45 @@ const ResidentIntakes = () => {
                 <label className="label-review-resitent">
                   Signature Witness
                 </label>
-                <input
-                  type="text"
-                  value={lockBoxKeyIssueReturnStaffSignature}
-                  placeholder="Enter signature"
-                  required
-                  onChange={(e) =>
-                    setLockBoxKeyIssueReturnStaffSignature(e.target.value)
-                  }
-                />
+                <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel17(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint7} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                   {
+                     lockBoxKeyIssueReturnStaffSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {lockBoxKeyIssueReturnStaffSignature} {lockBoxKeyIssueReturnStaffDate}</p>
+                     )
+                   }
+                 </div>
+            </div>
+   
+               {
+                 signInModel17 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel17(false)}
+                   singin={lockBoxKeyIssueReturnStaffSignature}
+                   setSingIn={setLockBoxKeyIssueReturnStaffSignature}
+                   setDateAndTime={setLockBoxKeyIssueReturnStaffDate}
+                   />)
+               }
+           
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Date</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  value={lockBoxKeyIssueReturnStaffDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setLockBoxKeyIssueReturnStaffDate(e.target.value)
-                  }
-                />
-              </div>
+          
               <div className="form-actions-next">
                 {page !== 1 && (
                   <div>
@@ -3248,12 +3474,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
           {/* section 8 */}
           {page === 8 && (
             <>
+            <div ref={componentRef8}>
               <h6
                 style={{
                   fontWeight: "600",
@@ -3826,27 +4054,34 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature:
               </label>
-              <input
-                type="text"
-                value={obligationsAndAuthorizationResidentSignature}
-                onChange={(e) =>
-                  setObligationsAndAuthorizationResidentSignature(
-                    e.target.value
-                  )
-                }
-              />
-              <div className="form-field">
-                <label className="label-review-resitent">Date: </label>
-                <input
-                  type="date"
-                  value={obligationsAndAuthorizationResidentDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setObligationsAndAuthorizationResidentDate(e.target.value)
-                  }
-                />
-              </div>
+              <div class="file-upload-box"> 
+                     <div className="file-upload-box-child">
+                     <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                       SAVED AS DRAFT
+                     </button>
+                     <button className="upload-button" type="button" onClick={() => setSigInModel18(true)}>
+                       SAVED AND SIGNED
+                     </button>
+                   </div>
+                   <div>
+                     {
+                       obligationsAndAuthorizationResidentSignature  && (
+                         <p className="signature_name_print">Digitally Sign by {obligationsAndAuthorizationResidentSignature} {obligationsAndAuthorizationResidentDate}</p>
+                       )
+                     }
+                   </div>
+                 </div>
+     
+                 {
+                  signInModel18 && (<SingInUpdateModel 
+                     onClose={()=>setSigInModel18(false)}
+                     singin={obligationsAndAuthorizationResidentSignature}
+                     setSingIn={setObligationsAndAuthorizationResidentSignature}
+                     setDateAndTime={setObligationsAndAuthorizationResidentDate}
+                     />)
+                 }
+          
+          
               <div className="form-field">
                 <label className="label-review-resitent">
                   Guardian/Representative Name:
@@ -3866,31 +4101,48 @@ const ResidentIntakes = () => {
               <label htmlFor="" className="label-review-resitent">
                 Guardian/Representative Signature:
               </label>
-              <input
-                type="text"
-                value={
-                  obligationsAndAuthorizationGuardianRepresentativeSignature
-                }
-                onChange={(e) =>
-                  setObligationsAndAuthorizationGuardianRepresentativeSignature(
-                    e.target.value
-                  )
-                }
-              />
-              <div className="form-field">
-                <label className="label-review-resitent">Date: </label>
-                <input
-                  type="date"
-                  value={obligationsAndAuthorizationGuardianRepresentativeDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) =>
-                    setObligationsAndAuthorizationGuardianRepresentativeDate(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+              <div class="file-upload-box">
+              
+              <div className="file-upload-box-child">
+               <div >
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                </div>
+                <div>
+                <button className="upload-button" type="button" onClick={() => setSigInModel19(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint8} className="upload-button" type="button" >
+                  PRINT THIS FORM
+                </button>
+                </div>
+                <div>
+                <button onClick={handlePrint9} className="upload-button-complete-form" type="button" >
+                  PRINT COMPLETE FORM
+                </button>
+                </div>
+              </div> 
+              <div>
+                   {
+                     obligationsAndAuthorizationGuardianRepresentativeSignature  && (
+                       <p className="signature_name_print">Digitally Sign by {obligationsAndAuthorizationGuardianRepresentativeSignature} {obligationsAndAuthorizationGuardianRepresentativeDate}</p>
+                     )
+                   }
+                 </div>
+            </div>
+   
+               {
+                 signInModel19 && (<SingInUpdateModel 
+                   onClose={()=>setSigInModel19(false)}
+                   singin={obligationsAndAuthorizationGuardianRepresentativeSignature}
+                   setSingIn={setObligationsAndAuthorizationGuardianRepresentativeSignature}
+                   setDateAndTime={setObligationsAndAuthorizationGuardianRepresentativeDate}
+                   />)
+               }
+       
 
               <div className="form-actions-next">
                 {page !== 1 && (
@@ -3918,12 +4170,14 @@ const ResidentIntakes = () => {
                     </div>
                   )}
               </div>
+              </div>
             </>
           )}
 
         </form>
       </div>
       {draftModel && <Draftinmodel onClose={() => setDraftModel(false)} />}
+      </div>
     </>
   );
 };

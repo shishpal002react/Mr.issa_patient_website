@@ -167,8 +167,10 @@ const NursingAssessment = () => {
   const [legRight, setLegRight] = useState(false);
   const [bhtName, setBhtName] = useState("");
   const [bhtSignature, setBhtSignature] = useState("");
+  const [bhtDate,setbhtDate]=useState("")
   const [rnName, setRnName] = useState("");
   const [rnSignature, setRnSignature] = useState("");
+  const [rnDate,setrnDate]=useState("");
 
   useEffect(() => {
     setUserId(userDetail?._id);
@@ -1427,7 +1429,7 @@ const NursingAssessment = () => {
             </div> 
 
           {/* jojfdf */}
-          <label htmlFor="" className="label-review">Genitourinary:</label>
+          <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Genitourinary:</label>
           <div className="yeschechbox-review">
            
             <div>
@@ -2837,7 +2839,7 @@ const NursingAssessment = () => {
               <div>
                 {
                   bhtSignature  && (
-                    <p className="signature_name_print">Digitally Sign by {bhtSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {bhtSignature} {bhtDate}</p>
                   )
                 }
               </div>
@@ -2848,7 +2850,7 @@ const NursingAssessment = () => {
                 onClose={()=>setShowSingInOne(false)}
                 singin={bhtSignature}
                 setSingIn={setBhtSignature}
-                
+                setDateAndTime={setbhtDate}
                 />)
             }
           <div className="form-field">
@@ -2886,7 +2888,7 @@ const NursingAssessment = () => {
               <div>
                 {
                   rnSignature && (
-                    <p className="signature_name_print">Digitally Sign by {rnSignature}</p>
+                    <p className="signature_name_print">Digitally Sign by {rnSignature} {rnDate}</p>
                   )
                 }
               </div>
@@ -2897,8 +2899,8 @@ const NursingAssessment = () => {
               showSingInTwo && (<SingInUpdateModel 
                 onClose={()=>setShowSingInTwo(false)}
                 singin={rnSignature}
-                setSingIn={setRnSignature}
-                
+                setSingIn={rnDate}
+                setDateAndTime={setrnDate}
                 />)
             }
 

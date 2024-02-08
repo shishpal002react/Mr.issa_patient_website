@@ -2793,7 +2793,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div>
                 {
                   signatureResident  && (
-                    <p className="signature_name_print">Digitally Sign by {signatureResident}</p>
+                    <p className="signature_name_print">Digitally Sign by {signatureResident} {dateResident}</p>
                   )
                 }
               </div>
@@ -2804,7 +2804,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onClose={()=>setSignatureModel1(false)}
                 singin={signatureResident}
                 setSingIn={setsignatureResident}
-                
+                setDateAndTime={setDateResident}
                 />)
             }
             {/* <div className="form-field">
@@ -2864,7 +2864,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div>
                 {
                   signatureFacilityRep  && (
-                    <p className="signature_name_print">Digitally Sign by {signatureFacilityRep}</p>
+                    <p className="signature_name_print">Digitally Sign by {signatureFacilityRep} {dateFacilityRep}</p>
                   )
                 }
               </div>
@@ -2875,7 +2875,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onClose={()=>setSignatureModel2(false)}
                 singin={signatureFacilityRep}
                 setSingIn={setsignatureFacilityRep}
-                
+                setDateAndTime={setDateFacilityRep}
                 />)
             }
           {/* <div className="form-field">
@@ -2893,7 +2893,7 @@ const clinicalSummaryHandler=(optionValue)=>{
 
           <div className="formsheading">
             <h6>
-              Signatures Bhp participation and informed consent for treatment
+              Signatures BHP participation and informed consent for treatment
               services.
             </h6>
           </div>
@@ -2909,12 +2909,12 @@ const clinicalSummaryHandler=(optionValue)=>{
             />
           </div>
           <div className="form-field">
-            <label htmlFor="AHCCCS">
+            <label >
             Behavioral Health Professional
             </label>
             <input
               type="text"
-              id="AHCCCS"
+              
               value={credentialsBhp}
               placeholder="Enter your Lorem Ipsum"
               required
@@ -2945,7 +2945,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div>
                 {
                   signatureBhp && (
-                    <p className="signature_name_print">Digitally Sign by {signatureBhp}</p>
+                    <p className="signature_name_print">Digitally Sign by {signatureBhp} {dateBhp}</p>
                   )
                 }
               </div>
@@ -2957,7 +2957,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onClose={()=>setSignatureModel3(false)}
                 singin={signatureBhp}
                 setSingIn={setsignatureBhp}
-                
+                setDateAndTime={setDateBhp}
                 />)
             }
           {/* <div className="form-field">

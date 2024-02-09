@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
 import formupload from "../../img/formupload.png";
 import { Update_Profile,user_detail } from "../../Api_Collection/Api";
@@ -110,14 +110,22 @@ const UpdateProfile = () => {
               </div>
               <div className="form-field">
                 <label htmlFor="AHCCCS">Gender</label>
-                <input
+                <select  value={gender} onChange={(e) => setGender(e.target.value)}>
+      <option>Open this select menu</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+                
+                {/* <input
                   type="text"
                   id="AHCCCS"
                   value={gender}
                   placeholder="Type Here....."
                   required
                   onChange={(e) => setGender(e.target.value)}
-                />
+                /> */}
               </div>
              
               <h2>Choose your Slot</h2>

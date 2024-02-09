@@ -9,8 +9,10 @@ import {
 } from "../../Api_Collection/Api";
 import Draftinmodel from "../Modal/Draftinmodel";
 import { useReactToPrint } from "react-to-print";
+import SingInUpdateModel from "../Modal/SingInUpdateModel";
 
 const FaceSheet = () => {
+  const [showSignature,setShowSignature]=useState(false);
   //draft model
   const [draftModel,setDraftModel]=useState(false);
   const componentRef = React.useRef();
@@ -83,6 +85,10 @@ const FaceSheet = () => {
   const [mentalHealthDiagnoses, setMentalHealthDiagnoses] = useState("");
   const [medicalDiagnosesHistory, setMedicalDiagnosesHistory] = useState("");
   const [pastSurgeries, setPastSurgeries] = useState("");
+
+  //signature and also date
+  const [signature,setSignature]=useState("");
+  const [signatureDate,setSignatureDate]=useState("");
 
   useEffect(() => {
     setPatientId(userDetail?._id);
@@ -790,7 +796,11 @@ const FaceSheet = () => {
                   SAVED AS DRAFT
                 </button>
                 </div>
-
+                <div>
+                <button className="upload-button" type="button" onClick={() => setShowSignature(true)}>
+                  SAVED AND SIGNED
+                </button>
+                </div>
                 <div>
                 <button className="upload-button" type="button" onClick={handlePrint}>
                   PRINT THIS FORM
@@ -798,10 +808,24 @@ const FaceSheet = () => {
                 </div>
               </div> 
               <div>
-             
+                {
+                  signature && (
+                    <p className="signature_name_print">Digitally Sign by {signature} {signatureDate}</p>
+                  )
+                }
               </div>
               
             </div>
+
+            {
+              showSignature && (<SingInUpdateModel 
+                onClose={()=>setShowSignature(false)}
+                singin={signature}
+                setSingIn={setSignature}
+                setDateAndTime={setSignatureDate}
+                />)
+            }
+    
           {/* <div className="form-actions">
             <button type="submit" className="initalsubmit">
               SUBMIT DETAILS

@@ -816,9 +816,8 @@ input[type="checkbox"] {
 }
 
 .safetyRiskFactor{
- 
   margin-top: 1rem;
-  width: 50%;
+  width: 30%;
   display: flex;
   gap: 2rem;
   justify-content: space-between;

@@ -4666,7 +4666,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 <label htmlFor="suicidalIdeationUrgency">Yes</label>
               </div>
               <div
-                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
+                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"30px" }}
               >
                 <input
                   type="checkbox"
@@ -4693,7 +4693,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
               </div>
               <div
-                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"10px" }}
+                style={{ display: "flex", gap: "7px", alignItems: "center",marginLeft:"30px" }}
               >
                 <input
                   type="checkbox"

@@ -70,6 +70,19 @@ export const getAllPatientMedication = async (setScript) => {
   }
 };
 
+export const Update_Profile = async (payLoad) => {
+  try {
+    const res = await axios.put(
+      `${BaseUrl}Patient/updateProfile`,
+      payLoad,
+      Token
+    );
+    show_notification("Success !", "User Update Profile Successfully", "success");
+    return res;
+  } catch (e) {
+    show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
 
 export const safety_form = async (payLoad) => {
   try {

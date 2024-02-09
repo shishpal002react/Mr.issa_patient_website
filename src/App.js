@@ -23,6 +23,7 @@ import AppointmentHistory from "./Components/Forms/AppointmentHistory";
 import ManageAppointments from "./Components/Forms/ManageAppointments";
 import CancelAppointment from "./Components/Forms/CancelAppointment";
 import Login from "./Pages/Login";
+import UpdateProfile from "./Components/Forms/UpdateProfile";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/Residentintakes" element={<ResidentIntakes />} />
         <Route path="/booknewappointment" element={<BookAppointment />} />
         <Route path="/appointmenthistory" element={<AppointmentHistory />} />
+        <Route path="/update-profile" element={<UpdateProfile />} />
         <Route path="/manageappointment" element={<ManageAppointments />} />
         <Route path="/cancel_appointment" element={<CancelAppointment />} />
       </Routes>

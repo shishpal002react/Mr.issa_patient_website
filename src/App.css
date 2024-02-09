@@ -7,6 +7,15 @@
   pointer-events: none;
 }
 
+.initalsubmit{
+  background-color: #4f8ea1;
+  width: 30%;
+  color: white;
+  height: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

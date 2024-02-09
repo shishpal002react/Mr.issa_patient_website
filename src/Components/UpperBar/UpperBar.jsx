@@ -25,12 +25,15 @@ import { IoSearchSharp } from "react-icons/io5";
 import intake from "../../img/Mask group.png";
 import { user_detail, show_notification,notification_get } from "../../Api_Collection/Api";
 
+
+
 const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   const navigate = useNavigate();
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
   const [isNotificationModalOpen, setNotificationModalOpen] = useState(false);
   const [ischattingModalOpen, setChattingModalOpen] = useState(false);
   const [user, setUser] = useState("");
+  const [modalShow, setModalShow] = React.useState(false);
 
   //notification
   const [notification,setNotification]=useState([]);
@@ -111,6 +114,9 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   //   navigate('/intake');
   // };
 
+
+
+
   return (
     <>
       <div className="navbar1">
@@ -158,15 +164,8 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
               </button>
               <button
                 className="profilemodalbutton"
-                style={{ cursor: "pointer",marginTop:"1rem" }}
-                onClick={() => {
-                  show_notification(
-                    "success! ",
-                    "LogOut Successfully",
-                    "success"
-                  );
-                  
-                }}
+                style={{ cursor: "pointer",marginTop:"1rem" }}        
+                  onClick={() => navigate("/update-profile")}           
               >
                 Edit ProFile
               </button>
@@ -278,6 +277,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
           </div>
         </CompleteIntake>
       )} */}
+    
     </>
   );
 };

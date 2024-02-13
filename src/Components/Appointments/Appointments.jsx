@@ -82,11 +82,11 @@ const Appointments = () => {
   }
 </div>
 
-      <div className="appointmentcontent">
+      {/* <div className="appointmentcontent">
         <p>Ongoing Medications</p>
         <p onClick={()=>setView1(!view1)}>VIEW ALL</p>
-      </div>
-      <div className="appointmentCard">
+      </div> */}
+      {/* <div className="appointmentCard">
         {
           view1 ?  medication?.data?.map((appointment, index) => (
             <MedicationsCard
@@ -109,7 +109,7 @@ const Appointments = () => {
           ))
         }
 
-      </div>
+      </div> */}
       <div className="appointmentcontent">
         <p>View your script</p>
       </div>

@@ -24,13 +24,14 @@ import ManageAppointments from "./Components/Forms/ManageAppointments";
 import CancelAppointment from "./Components/Forms/CancelAppointment";
 import Login from "./Pages/Login";
 import UpdateProfile from "./Components/Forms/UpdateProfile";
+import { LoginForm } from "./Components/form/LoginForm";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route
           path="/patient_panel"
           element={<Home Wcomponenet={Appointments} />}

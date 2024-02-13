@@ -1979,7 +1979,7 @@ inputStyle={{ border: "none", outline: "none" }}
     
 
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Diabetes</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Diabetes:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -4796,8 +4796,7 @@ inputStyle={{ border: "none", outline: "none" }}
         <thead>
           <tr>
             <th>Select risk factors that apply</th>
-            <th>Yes</th>
-            <th>No</th>
+            <th>Checked</th>
             <th>Comments</th>
           </tr>
         </thead>
@@ -4805,15 +4804,14 @@ inputStyle={{ border: "none", outline: "none" }}
           {riskFactorArray?.map((i, index) => (
             <tr key={index}>
               <td>
-                <ol>
+                
                   {i?.selectedValueRiskFactors?.map((item) => (
                     <li key={item?.value}>{item?.value}</li>
                   ))}
-                </ol>
+                
               </td>
-              <td>{`${index + 1}. ${i.riskYesNo === true ? "True" : "False"}`} </td>
-              <td>{`${index + 1}. ${i.riskYesNo === true ? "False" : "True"}`} </td>
-              <td>{`${index + 1}. ${i.riskComment}`} </td>
+              <td>{` ${i.riskYesNo === true ? "YES" : "NO"}`} </td>
+              <td>{` ${i.riskComment}`} </td>
             </tr>
           ))}
         </tbody>
@@ -4891,8 +4889,8 @@ inputStyle={{ border: "none", outline: "none" }}
                   ))}
                 </ol>
               </td>
-              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "True" : "False"}`} </td>
-              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "False" : "True"}`} </td>
+              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "YES" : "NO"}`} </td>
+              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "NO" : "YES"}`} </td>
               <td>{`${index + 1}. ${i.protectiveComment}`} </td>
             </tr>
           ))}

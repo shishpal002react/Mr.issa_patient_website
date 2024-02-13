@@ -1,7 +1,8 @@
 import axios,{useState} from "axios";
 import { Store } from "react-notifications-component";
 
-const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+export const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+
 
 const Token = {
   headers: {
@@ -41,8 +42,8 @@ export const login_user = async (payLoad, navigate) => {
 
 export const vital_data = async (patient_id, setVitalData ) => {
   try {
-    const res = await axios.get(`${BaseUrl}employee/getPatientVitalsByPatientId/${patient_id}?for=week`,Token);
-    setVitalData(res?.data);
+    const res = await axios.get(`${BaseUrl}employee/getPatientVitalsByPatientId/${patient_id?._id}?for=week`,Token);
+    setVitalData(res?.data?.data);
   } catch (e) {
    
   }
@@ -63,7 +64,7 @@ export const getAllPatientMedication = async (setScript) => {
   try {
     const res = await axios.get(`${BaseUrl}Patient/getAllPatientMedication`, Token);
     setScript(res?.data);
-    console.log(res?.data,"script data")
+    
     
   } catch (e) {
     // show_notification("fail !", `${e?.response?.data?.message}`, "danger");

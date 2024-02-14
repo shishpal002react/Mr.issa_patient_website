@@ -41,6 +41,21 @@ const TreatmentPlan = () => {
   const [physicalService, setPhysicalService] = useState(false);
   const [behavior, setBehavior] = useState(false);
   const [presentingPrice, setPresentingPrice] = useState([]);
+  const [presentingPriceBoolean,setPresentingPriceBoolean]=useState(false)
+  const [presentingPriceBooleanType,setpresentingPriceBooleanType]=useState("")
+
+  useEffect(() => {
+    // setTypeOfOtherBoolean()
+    for (let i = 0; i < presentingPrice.length; i++) {
+      if (presentingPrice[i].value === "Other") {
+        setPresentingPriceBoolean(true);
+        break; 
+      }else{
+        setPresentingPriceBoolean(false);
+      }
+    }
+  }, [presentingPrice]);
+
   // Mental Status
   const [mendelHealth, setMentelHealth] = useState("");
   const [mentelText, setMentelText] = useState("");
@@ -390,6 +405,7 @@ const [comments8,setComment8]=useState("");
     { label: "Social Withdrawals", value: "Social Withdrawals" },
     { label: "Changes in Eating habits", value: "Changes in Eating habits" },
     { label: "Feeling of anger", value: "Feeling of anger" },
+    { label: "Other", value: "Other" },
   ];
 
   const presentingPriceHandler = (optionValue) => {
@@ -871,7 +887,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onChange={(e) => setAdminDate(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="AHCCCS">Care:</label>
               <textarea
                 type="text"
@@ -883,7 +899,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 required
                 onChange={(e) => setCare(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <div className="genderdiv">
                 <div className="genderbox">
@@ -918,6 +934,24 @@ const clinicalSummaryHandler=(optionValue)=>{
                 options={presentingPriceOption}
               />
             </div>
+
+            {
+  presentingPriceBoolean && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <textarea
+      value={presentingPriceBooleanType}
+      onChange={(e)=>setpresentingPriceBooleanType(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+
+}
+
             <div className="formsheading">
               <h6>Diagonsis</h6>
             </div>

@@ -413,7 +413,7 @@ const FaceSheet = () => {
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">
-                Family/Guardian Emergency Name and Contact:
+                Family/Guardian Emergency Name and Contact Number:
               </label>
               <input
                 type="text"
@@ -424,8 +424,8 @@ const FaceSheet = () => {
                 onChange={(e) => setFamilyGuardianEmergencyName(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Facility Emergency Contact:</label>
+            {/* <div className="form-field">
+              <label htmlFor="AHCCCS">Facility Emergency Contact Number:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -436,9 +436,9 @@ const FaceSheet = () => {
                   setFamilyGuardianEmergencyContact(e.target.value)
                 }
               />
-            </div>
+            </div> */}
             <div className="form-field">
-              <label htmlFor="AHCCCS">Facility Emergency Contact:</label>
+              <label htmlFor="AHCCCS">Facility Emergency Contact Number:</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -617,7 +617,7 @@ const FaceSheet = () => {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="AHCCCS">Preferred Hospital Phone:</label>
+              <label htmlFor="AHCCCS">Preferred Hospital Phone Number:</label>
               <input
                 type="text"
                 id="AHCCCS"

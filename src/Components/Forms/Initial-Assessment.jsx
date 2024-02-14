@@ -60,10 +60,40 @@ const InitialAssessment = () => {
     useState("");
   const [approvedBy, setApprovedBy] = useState("");
   const [reasonForAdmission, setReasonForAdmission] = useState([]);
+  const [reasonForAdmissionBoolean,setReasonForAdmissionBoolean]=useState(false)
+  const [reasonForAdmissionOther,setReasonForAdmissionOther]=useState("")
   const [residentGoals, setResidentGoals] = useState("");
+
+  useEffect(() => {
+    // setTypeOfOtherBoolean()
+    for (let i = 0; i < reasonForAdmission.length; i++) {
+      if (reasonForAdmission[i].value === "Other") {
+        setReasonForAdmissionBoolean(true);
+        break; 
+      }else{
+        setReasonForAdmissionBoolean(false);
+        break; 
+      }
+    }
+  }, [reasonForAdmission]);
 
   // Resident Strengths (Array)
   const [residentStrengths, setResidentStrengths] = useState([]);
+  const [residentStrengthsOther,setResidentStrengthsOther]=useState("")
+  const [residentStrengthsBoolean,setResidentStrengthsBoolean]=useState(false)
+
+  useEffect(() => {
+    // setTypeOfOtherBoolean()
+    for (let i = 0; i < residentStrengths.length; i++) {
+      if (residentStrengths[i].value === "Other") {
+        setResidentStrengthsBoolean(true);
+        break; 
+      }else{
+        setResidentStrengthsBoolean(false);
+        break; 
+      }
+    }
+  }, [residentStrengths]);
 
   const [residentLimitations, setResidentLimitations] = useState("");
   const [currentBehavioralIssues, setCurrentBehavioralIssues] = useState("");
@@ -247,6 +277,23 @@ const [healthConditionsYesComment,sethealthConditionsYesComment]=useState("")
 // Infection or Diseases
 const [InfectionYes,setInfectionYes]=useState();
 // drop down c
+const [infectionDiseases, setInfectionDiseases] = useState([]);
+const [infectionDiseasesBoolean,setInfectionDiseasesBoolean]=useState(false)
+const [infectionDiseasesOther,setInfectionDiseasesOther]=useState("")
+
+useEffect(() => {
+  // setTypeOfOtherBoolean()
+  for (let i = 0; i < infectionDiseases.length; i++) {
+    if (infectionDiseases[i].value === "Other") {
+      setInfectionDiseasesBoolean(true);
+      break; 
+    }else{
+      setInfectionDiseasesBoolean(false);
+      break; 
+    }
+  }
+}, [infectionDiseases]);
+
 
 const [medicalConditions, setMedicalConditions] = useState([]);
 
@@ -255,11 +302,44 @@ const [medicalConditions, setMedicalConditions] = useState([]);
     SignificantFamilyMedicalPsychiatricHistory,
     setSignificantFamilyMedicalPsychiatricHistory,
   ] = useState([]);
-  //mental Health
+  const [significantFamilyMedicalPsychiatricHistoryBoolean,setSignificantFamilyMedicalPsychiatricHistoryBoolean]=useState(false);
+  const [SignificantFamilyMedicalPsychiatricHistoryType,setSignificantFamilyMedicalPsychiatricHistoryType]=useState("")
+ 
+  useEffect(() => {
+    
+    for (let i = 0; i < SignificantFamilyMedicalPsychiatricHistory.length; i++) {
+      if (SignificantFamilyMedicalPsychiatricHistory[i].value === "Other") {
+        setSignificantFamilyMedicalPsychiatricHistoryBoolean(true);
+        break; 
+      }else{
+        setSignificantFamilyMedicalPsychiatricHistoryBoolean(false);
+        break; 
+      }
+    }
+  }, [SignificantFamilyMedicalPsychiatricHistory]);
+
+
   const [
     mentalHealthTreatmentHistoryTypeOfService,
     setMentalHealthTreatmentHistoryTypeOfService,
   ] = useState([]);
+  const [mentalHealthTreatmentHistoryTypeOfServiceType,setMentalHealthTreatmentHistoryTypeOfServiceType]=useState("")
+  const [mentalHealthTreatmentHistoryTypeOfServiceBoolean,setMentalHealthTreatmentHistoryTypeOfServiceBoolean]=useState(false)
+
+  useEffect(() => {
+    
+    for (let i = 0; i < mentalHealthTreatmentHistoryTypeOfService.length; i++) {
+      if (mentalHealthTreatmentHistoryTypeOfService[i].value === "Other") {
+        setMentalHealthTreatmentHistoryTypeOfServiceBoolean(true);
+        break; 
+      }else{
+        setMentalHealthTreatmentHistoryTypeOfServiceBoolean(false);
+        break; 
+      }
+    }
+  }, [mentalHealthTreatmentHistoryTypeOfService]);
+
+
   const [
     mentalHealthTreatmentHistoryWhere,
     setMentalHealthTreatmentHistoryWhere,
@@ -272,13 +352,47 @@ const [medicalConditions, setMedicalConditions] = useState([]);
     mentalHealthTreatmentHistoryDiagnosisReason,
     setMentalHealthTreatmentHistoryDiagnosisReason,
   ] = useState([]);
-  const [mentalHealthTreatmentHistory, setMentalHealthTreatmentHistory] =
-    useState([]);
+  const [mentalHealthTreatmentHistoryDiagnosisReasonBoolean,setMentalHealthTreatmentHistoryDiagnosisReasonBoolean]=useState(false)
+  const [mentalHealthTreatmentHistoryDiagnosisReasonType,setMentalHealthTreatmentHistoryDiagnosisReasonType]=useState("")
+
+  useEffect(() => {
+    
+    for (let i = 0; i < mentalHealthTreatmentHistoryDiagnosisReason.length; i++) {
+      if (mentalHealthTreatmentHistoryDiagnosisReason[i].value === "DTS/DTO Other (Please specify)") {
+        setMentalHealthTreatmentHistoryDiagnosisReasonBoolean(true);
+        break; 
+      }else{
+        setMentalHealthTreatmentHistoryDiagnosisReasonBoolean(false);
+        break; 
+      }
+    }
+  }, [mentalHealthTreatmentHistoryDiagnosisReason]);
+
+
+  // const [mentalHealthTreatmentHistory, setMentalHealthTreatmentHistory] =
+  //   useState([]);
+
   const [substanceAbuseHistory, setSubstanceAbuseHistory] = useState("");
   const [substanceAbuseDenies, setSubstanceAbuseDenies] = useState("");
   // substanceAbuseHistoryData array
   const [substanceAbuseHistoryDataTypes, setSubstanceAbuseHistoryDataTypes] =
     useState([]);
+  const [substanceAbuseHistoryDataTypesBoolean,setSubstanceAbuseHistoryDataTypesBoolean]=useState(false);
+  const [substanceAbuseHistoryDataTypesType,setSubstanceAbuseHistoryDataTypesType]=useState("");
+
+  useEffect(() => {
+    
+    for (let i = 0; i < substanceAbuseHistoryDataTypes.length; i++) {
+      if (substanceAbuseHistoryDataTypes[i].value === "Other") {
+        setSubstanceAbuseHistoryDataTypesBoolean(true);
+        break; 
+      }else{
+        setSubstanceAbuseHistoryDataTypesBoolean(false);
+        break; 
+      }
+    }
+  }, [substanceAbuseHistoryDataTypes]);
+
   const [
     substanceAbuseHistoryDataAgeOfFirstUse,
     setSubstanceAbuseHistoryDataAgeOfFirstUse,
@@ -309,6 +423,8 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [Anxiety, setAnxiety] = useState(false);
   const [Tremors, setTremors] = useState(false);
   const [VisualDisturbances, setVisualDisturbances] = useState(false);
+  const [VisualDisturbancesOtherBoolean,setVisualDisturbancesOtherBoolean]=useState(false)
+  const [VisualDisturbancesOtherType,setVisualDisturbancesOtherType]=useState()
   // const [AuditoryDisturbances, setAuditoryDisturbances] = useState(false);
   const [Sweats, setSweats] = useState(false);
   const [Paranoia, setParanoia] = useState(false);
@@ -319,6 +435,8 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [Seizures, setSeizures] = useState(false);
   const [LossofMuscleCoordination, setLossofMuscleCoordination] =
     useState(false);
+  const [LossofMuscleCoordinationOtherBoolean,setLossofMuscleCoordinationBoolean]=useState(false)
+  const [LossofMuscleCoordinationOtherType,setLossofMuscleCoordinationType]=useState("")
 
   const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
 
@@ -363,6 +481,8 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [depressedMood, setDepressedMood] = useState(false);
   const [anxious, setAnxious] = useState(false);
 
+  const [euthymicOtherBoolean,seteuthymicOtherBoolean]=useState(false);
+  const [euthymicOtherBooleanType,seteuthymicOtherBooleanType]=useState("");
   //Affect
   const [normalRange, setNormalRange] = useState(false);
   const [depressedAffect, setDepressedAffect] = useState(false);
@@ -392,27 +512,38 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [mumbled, setMumbled] = useState(false);
   const [slurred, setSlurred] = useState(false);
   const [stuttered, setStuttered] = useState(false);
-
+  
+  const [ArticulationOtherBoolean,setArticulationOtherBoolean]=useState(false)
+  const [ArticulationOtherBooleanOther,setArticulationOtherBooleanOther]=useState("")
   //Tone 
   const [normalTone, setNormalTone] = useState(false);
   const [soft, setSoft] = useState(false);
   const [loud, setLoud] = useState(false);
   const [pressured, setPressured] = useState(false);
 
+  const [ToneOtherBoolean,setToneOtherBoolean]=useState(false)
+  const [ToneOtherBooleanOther,setToneOtherBooleanOther]=useState("")
   //Rate
   const [normalRate, setNormalRate] = useState(false);
   const [slow, setSlow] = useState(false);
   const [fast, setFast] = useState(false);
 
+  const [RateOtherBoolean,setRateOtherBoolean]=useState(false)
+  const [RateOtherBooleanOther,setRateOtherBooleanOther]=useState("")
+
   //Quantity
   const [normalQuantity, setNormalQuantity] = useState(false);
   const [verbose, setVerbose] = useState(false);
   const [mutism, setMutism] = useState(false);
+  const [QuantityOtherBoolean,setQuantityOtherBoolean]=useState(false)
+  const [QuantityOtherBooleanOther,setQuantityOtherBooleanOther]=useState("")
 
 //responseLatency
 const [normalresponseLatency, setNormalresponseLatency] = useState(false);
   const [delayed, setDelayed] = useState(false);
   const [shortened, setShortened] = useState(false);
+  const [responseLatencyOtherBoolean,setresponseLatencyOtherBoolean]=useState(false)
+  const [responseLatencyOtherBooleanOther,setresponseLatencyOtherBooleanOther]=useState("")
 
 // sesion 3 Cognition
   // thoughtContent
@@ -493,6 +624,9 @@ const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(fal
 
  //AbilityToConcentration
  const [intactAbilityToConcentration, setIntactAbilityToConcentration] = useState(false);
+ const [intactAbilityToConcentrationOtherBoolean,setIntactAbilityToConcentrationOtherBoolean]=useState(false)
+
+
   const [otherAbilityToConcentration, setOtherAbilityToConcentration] = useState('');
 
   const [mentalStatusExam, setMentalStatusExam] = useState();
@@ -578,8 +712,20 @@ const handleRiskFactorActivity=()=>{
 
   // Medical Equipment
   const [selectedValueMedical, setSelectedValueMedical] = useState([]);
+  const [selectedValueMedicalBoolean,setselectedValueMedicalBoolean]=useState(false)
+  const [selectedValueMedicalType,setselectedValueMedicalType]=useState("")
 
-
+  useEffect(() => {
+    // setTypeOfOtherBoolean()
+    for (let i = 0; i < selectedValueMedical.length; i++) {
+      if (selectedValueMedical[i].value === "Other") {
+        setselectedValueMedicalBoolean(true);
+        break; 
+      }else{
+        setselectedValueMedicalBoolean(false);
+      }
+    }
+  }, [selectedValueMedical]);
   // Special Precautions (Nested Object)
   const [selectedValueSpecialPrecautions, setSelectedValueSpecialPrecautions] =
     useState([]);
@@ -742,6 +888,8 @@ const handleRiskFactorActivity=()=>{
   const [accidentInjury, setAccidentInjury] = useState(false);
   const [otherSignificantRecentLosses, setOtherSignificantRecentLosses] =
     useState(false);
+    const [otherSignificantRecentLossesType, setOtherSignificantRecentLossesType] =
+    useState("");
   // const [significantRecentLosses, setSignificantRecentLosses] = useState({});
 
   const [additionalNotes, setAdditionalNotes] = useState("");
@@ -786,6 +934,7 @@ const handleRiskFactorActivity=()=>{
     { label: "Writing", value: "Writing" },
     { label: "Coloring", value: "Coloring" },
     { label: "Art", value: "Art" },
+    { label: "Other", value: "Other" },
   ];
 
   const handleSelectChange = (selectedOptions) => {
@@ -847,7 +996,7 @@ const handleRiskFactorActivity=()=>{
         date: otherDate,
       },
       // missing
-      mentalHealthTreatmentHistory,
+      // mentalHealthTreatmentHistory,
 
       //missing
 
@@ -932,6 +1081,7 @@ const handleRiskFactorActivity=()=>{
     { label: "Psychosis", value: "Psychosis" },
     { label: "Abused", value: "Abused" },
     { label: "Assaulted", value: "Assaulted" },
+    { label: "Other", value: "Other" },
   ];
 
   const handleSelectChangeAdmissionReasonForAdmission = (selectedOption) => {
@@ -950,7 +1100,6 @@ const handleRiskFactorActivity=()=>{
   };
 
   // Infection or Diseases<
-  const [infectionDiseases, setInfectionDiseases] = useState([]);
 
   const infectionDiseasesOptions = [
     { label: "HIV/Aids", value: "HIV/Aids" },
@@ -966,6 +1115,9 @@ const handleRiskFactorActivity=()=>{
     { label: "Mumps", value: "Mumps" },
     { label: "Signs of active TB", value: "Signs of active TB" },
     { label: "Scabies", value: "Scabies" },
+    {
+      label:"Other",value:"Other"
+    }
   ];
 
   const infectionDiseasesHandler = (selectedOptions) => {
@@ -984,6 +1136,7 @@ const handleRiskFactorActivity=()=>{
     { label: "Aunt", value: "Aunt" },
     { label: "Uncle", value: "Uncle" },
     { label: "Grandfather", value: "Grandfather" },
+    {label: "Other",value:"Other"}
   ];
 
   const SignificantFamilyMedicalPsychiatricHistoryHandler = (
@@ -999,6 +1152,7 @@ const handleRiskFactorActivity=()=>{
     { label: "OP", value: "OP" },
     { label: "PHP", value: "PHP" },
     { label: "IOP", value: "IOP" },
+    {label:"Other",value:"Other"}
   ];
 
   const mentalHealthTreatmentHistoryTypeOfServiceHandler = (
@@ -1045,7 +1199,7 @@ const handleRiskFactorActivity=()=>{
     { label: "PCP (angel dust)", value: "PCP (angel dust)" },
     { label: "Prescription medicine", value: "Prescription medicine" },
     { label: "OTC medicine", value: "OTC medicine" },
-    { label: "other", value: "other" },
+    { label: "Other", value: "Other" },
   ];
 
   const substanceAbuseHistoryDataTypesHandler = (selectedOptions) => {
@@ -1145,6 +1299,7 @@ const handleRiskFactorActivity=()=>{
     { label: "Oxygen tank", value: "Oxygen tank" },
     { label: "CPAP Machine", value: "CPAP Machine" },
     { label: "Shower chair", value: "Shower chair" },
+    { label: "None", value: "None" },
     { label: "Other", value: "Other" },
   ]
 
@@ -1480,11 +1635,30 @@ inputStyle={{ border: "none", outline: "none" }}
               </label>
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={reasonForAdmission}
                 onChange={handleSelectChangeAdmissionReasonForAdmission}
                 options={option_value_ReasonForAdmission}
               />
             </div>
+
+            {
+              reasonForAdmissionBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={reasonForAdmissionOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setReasonForAdmissionOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
             <div className="form-field">
               <label htmlFor="programlocation&address">Resident’s Goals:</label>
               <textarea
@@ -1502,39 +1676,33 @@ inputStyle={{ border: "none", outline: "none" }}
               <label htmlFor="reasonadmission">Resident’s Strength</label>
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={residentStrengths}
                 onChange={handleSelectChange}
                 options={qualitiesOptions}
               />
-              {/* <div>
-        Selected Options:
-        {qualitiesOptions.map((option) => (
-          <span key={option.value}>{option.label}, </span>
-        ))}
-      </div> */}
-              {/* <select id="reasonadmission" value="" required>
-                <option value="Enter text">Enter text</option>
-                <option value="Enter text">Self motivated</option>
-                <option value="Enter text">Loving</option>
-                <option value="Enter text">Honesty</option>
-                <option value="Enter text">Helping others</option>
-                <option value="Enter text">Communication</option>
-                <option value="Enter text">Creative</option>
-                <option value="Enter text">Patient</option>
-                <option value="Enter text">Dedication</option>
-                <option value="Enter text">Coloring</option>
-                <option value="Enter text">Decision making</option>
-                <option value="Enter text">Team work</option>
-                <option value="Enter text">Family</option>
-                <option value="Enter text">Writing</option>
-                <option value="Enter text">Coloring</option>
-                <option value="Enter text">Art</option>
- 
-              </select> */}
+   
             </div>
+
+            {
+              residentStrengthsBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={residentStrengthsOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setResidentStrengthsOther(e.target.value)}
+              />
+            </div>
+              )
+            }
             <div className="form-field">
               <label htmlFor="programlocation&address">
-                Resident’s Limitation(s)
+                Resident’s Barriers
               </label>
               <textarea
                 id="programlocation&address"
@@ -1609,8 +1777,8 @@ inputStyle={{ border: "none", outline: "none" }}
                       {behavioralInterventionsArray?.map((i, index) => (
                         <tr>
   
-                          <td>{`${index + 1}. ${i.need}`} </td>
-                          <td>{`${index + 1}. ${i.intervention}`} </td>
+                          <td>{`${i.need}`} </td>
+                          <td>{`${i.intervention}`} </td>
                         </tr>
                       ))}
                     </tbody>
@@ -2051,7 +2219,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of stroke</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of stroke:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2086,7 +2254,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>High Blood Pressure</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>High Blood Pressure:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2122,7 +2290,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
             <div className="yeschechbox">
               <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>
-                Lung disease (ie asthma, COPD, emphysema)
+                Lung disease (ie asthma, COPD, emphysema):
               </label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
@@ -2158,7 +2326,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Seizures</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Seizures:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2193,7 +2361,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Cancer</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Cancer:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2228,7 +2396,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Liver/kidney disease</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Liver/kidney disease:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2263,7 +2431,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Thyroid disorder</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Thyroid disorder:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2287,7 +2455,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
             <div className="form-field">
               <label htmlFor="programlocation&address" style={{fontSize:"20px",marginTop:"1.5rem"}}>
-                Select thyroid disorder{" "}
+                Select thyroid disorder:{" "}
               </label>
               {/* <select name="" id="">
                 <option value="">Select any one</option>
@@ -2302,7 +2470,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox" style={{marginTop:"1.5rem"}}>
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of head trauma/traumatic brain</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>History of head trauma/traumatic brain:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2337,7 +2505,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Injury</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Injury:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2371,7 +2539,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Chronic pain</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Chronic pain:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2406,7 +2574,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
             <div className="yeschechbox">
               <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>
-                Allergies (food, environment, medications)
+                Allergies (food, environment, medications):
               </label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
@@ -2441,7 +2609,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Surgeries</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Surgeries:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2475,7 +2643,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Number of pregnancies / births</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Number of pregnancies / births:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2509,7 +2677,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Substance use disorder (please specify)</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Substance use disorder (please specify):</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2543,7 +2711,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Depression</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Depression:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2577,7 +2745,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Anxiety/panic attacks</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Anxiety/panic attacks:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2611,7 +2779,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Insomnia</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Insomnia:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2645,7 +2813,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Bipolar disorder</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Bipolar disorder:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2679,7 +2847,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Schizophrenia</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Schizophrenia:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2713,7 +2881,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Obsessive compulsive disorder</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Obsessive compulsive disorder:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2747,7 +2915,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Personality disorder (please specify)</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Personality disorder (please specify):</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2815,7 +2983,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Any other health conditions</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Any other health conditions:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2849,7 +3017,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             <div className="yeschechbox">
-              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Infection or Diseases</label>
+              <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Infection or Diseases:</label>
               <div className="checkbox654">
                 <div className="checkBox-aligment">
                   <input
@@ -2878,11 +3046,30 @@ inputStyle={{ border: "none", outline: "none" }}
 
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={infectionDiseases}
                 onChange={infectionDiseasesHandler}
                 options={infectionDiseasesOptions}
               />
             </div>
+
+            {
+              infectionDiseasesBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={infectionDiseasesOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setInfectionDiseasesOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
             <div className="form-field">
               <label htmlFor="reasonadmission">
                 Significant Family Medical/Psychiatric History:
@@ -2890,11 +3077,29 @@ inputStyle={{ border: "none", outline: "none" }}
 
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={SignificantFamilyMedicalPsychiatricHistory}
                 onChange={SignificantFamilyMedicalPsychiatricHistoryHandler}
                 options={SignificantFamilyMedicalPsychiatricHistoryOptions}
               />
             </div>
+
+            {
+              significantFamilyMedicalPsychiatricHistoryBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={SignificantFamilyMedicalPsychiatricHistoryType}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setSignificantFamilyMedicalPsychiatricHistoryType(e.target.value)}
+              />
+            </div>
+              )
+            }
             <div className="formsheading">
               <h6 style={{marginTop:"2rem"}}>
                 Mental Health Treatment History (in Resident hospitalization,
@@ -2906,11 +3111,29 @@ inputStyle={{ border: "none", outline: "none" }}
 
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={mentalHealthTreatmentHistoryTypeOfService}
                 onChange={mentalHealthTreatmentHistoryTypeOfServiceHandler}
                 options={mentalHealthTreatmentHistoryTypeOfServiceOption}
               />
             </div>
+
+            {
+              mentalHealthTreatmentHistoryTypeOfServiceBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={mentalHealthTreatmentHistoryTypeOfServiceType}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setMentalHealthTreatmentHistoryTypeOfServiceType(e.target.value)}
+              />
+            </div>
+              )
+            }
             <div className="form-field">
               <label htmlFor="approvedby">Where</label>
               <input
@@ -2927,7 +3150,7 @@ inputStyle={{ border: "none", outline: "none" }}
             <div className="form-field">
               <label htmlFor="approvedby">Dates</label>
               <input
-                type="text"
+                type="date"
                 id="approvedby"
                 value={mentalHealthTreatmentHistoryDates}
                 placeholder="Enter text"
@@ -2944,11 +3167,29 @@ inputStyle={{ border: "none", outline: "none" }}
 
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={mentalHealthTreatmentHistoryDiagnosisReason}
                 onChange={mentalHealthTreatmentHistoryDiagnosisReasonHandler}
                 options={mentalHealthTreatmentHistoryDiagnosisReasonOption}
               />
             </div>
+
+            {
+              mentalHealthTreatmentHistoryDiagnosisReasonBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={mentalHealthTreatmentHistoryDiagnosisReasonType}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setMentalHealthTreatmentHistoryDiagnosisReasonType(e.target.value)}
+              />
+            </div>
+              )
+            }
 
             <div style={{ display: "flex", gap: "10px" }}>
               <div className="yeschechbox235" style={{marginTop:"1.5rem"}}>
@@ -2990,11 +3231,31 @@ inputStyle={{ border: "none", outline: "none" }}
               <label htmlFor="reasonadmission">Type</label>
               <Select
                 isMulti
+                placeholder="Select Multiple Type"
                 value={substanceAbuseHistoryDataTypes}
                 onChange={substanceAbuseHistoryDataTypesHandler}
                 options={substanceAbuseHistoryDataTypesOption}
               />
             </div>
+
+            {
+              substanceAbuseHistoryDataTypesBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={substanceAbuseHistoryDataTypesType}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setSubstanceAbuseHistoryDataTypesType(e.target.value)}
+              />
+            </div>
+              )
+            }
+
+
             <div className="form-field">
               <label>Age of First use</label>
               <input
@@ -3039,7 +3300,7 @@ inputStyle={{ border: "none", outline: "none" }}
 
             <div class="checkbox-container">
               <label>Active Withdrawal Symptoms:</label>
-              <div class="chechbox12-correct">
+              <div class="chechbox12-aligment411">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
@@ -3143,13 +3404,42 @@ inputStyle={{ border: "none", outline: "none" }}
                     />
                     <label htmlFor="VisualDisturbances">Visual Disturbances</label>
                   </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="VisualDisturbances"
+                      value={VisualDisturbances}
+                      checked={VisualDisturbancesOtherBoolean}
+                      onChange={() =>
+                        setVisualDisturbancesOtherBoolean(!VisualDisturbancesOtherBoolean)
+                      }
+                    />
+                    <label htmlFor="VisualDisturbances">Other</label>
+                  </div>
                 </div>
               </div>
             </div>
 
+            {
+  VisualDisturbancesOtherBoolean && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <textarea
+      value={VisualDisturbancesOtherType}
+      onChange={(e)=>setVisualDisturbancesOtherType(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+
+}
+
             <div class="checkbox-container">
               <label>Auditory Disturbances</label>
-              <div class="chechbox12-aligment411">
+              <div class="chechbox12">
                 <div class="checkoptions">
                   <div class="checkboxitem">
                     <input
@@ -3235,9 +3525,38 @@ inputStyle={{ border: "none", outline: "none" }}
                     />
                     <label htmlFor="LossofMuscleCoordination">Loss of muscle coordination</label>
                   </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="LossofMuscleCoordination"
+                      value={LossofMuscleCoordinationOtherBoolean}
+                      checked={LossofMuscleCoordinationOtherBoolean}
+                      onChange={() =>
+                        setLossofMuscleCoordinationBoolean(!LossofMuscleCoordinationOtherBoolean)
+                      }
+                    />
+                    <label htmlFor="LossofMuscleCoordination">Other</label>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {
+  LossofMuscleCoordinationOtherBoolean && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <textarea
+      value={LossofMuscleCoordinationOtherType}
+      onChange={(e)=>setLossofMuscleCoordinationType(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+}
+
             <div className="formsheading">
               <h6>Mental Status Exam/Behavioral Observations:</h6>
               <h6>General Appearance</h6>
@@ -3519,13 +3838,51 @@ inputStyle={{ border: "none", outline: "none" }}
                   
                   </div>
                 </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="euthymicOtherBoolean" checked={euthymicOtherBoolean} onChange={()=>seteuthymicOtherBoolean(!euthymicOtherBoolean)}/>
+                    <label htmlFor="euthymicOtherBoolean">Other</label>
+             
+                  </div>
+                  <div class="checkboxitem">
+                  {/* <input type="checkbox" id="other" checked={other} onChange={()=>setOther(!other)}/>
+                    <label htmlFor="other">Other</label> */}
+                 
+                  </div>
+                  <div class="checkboxitem">
+                    {/* <input type="checkbox" />
+                                        <span>Adequate</span> */}
+                  </div>
+                  <div class="checkboxitem">
+                  {/* <input type="checkbox" id="indifferent" checked={indifferent} onChange={()=>setIndifferent(!indifferent)}/>
+                    <label htmlFor="indifferent">Indifferent</label> */}
+                  
+                  </div>
+                </div>
               </div>
             </div>
+
+            {
+  euthymicOtherBoolean && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Mood Comments</label>
+    <textarea
+      value={euthymicOtherBooleanType}
+      onChange={(e)=>seteuthymicOtherBooleanType(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+
+}
 
 {
   other && (
     <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Affect Comments</label>
     <textarea
       value={otherText}
       onChange={(e)=>setOtherText(e.target.value)}
@@ -3661,16 +4018,16 @@ inputStyle={{ border: "none", outline: "none" }}
                     
                   </div>
                   <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Adequate</span> */}
+                  <input type="checkbox" id="RateOtherBoolean" checked={RateOtherBoolean} onChange={()=>setRateOtherBoolean(!RateOtherBoolean)}/>
+                    <label htmlFor="RateOtherBoolean">Other</label>
                   </div>
                   <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Defensive</span> */}
+                  <input type="checkbox" id="QuantityOtherBoolean" checked={QuantityOtherBoolean} onChange={()=>setQuantityOtherBoolean(!QuantityOtherBoolean)}/>
+                    <label htmlFor="QuantityOtherBoolean">Other</label>
                   </div>
                   <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Defensive</span> */}
+                  <input type="checkbox" id="responseLatencyOtherBoolean" checked={responseLatencyOtherBoolean} onChange={()=>setresponseLatencyOtherBoolean(!responseLatencyOtherBoolean)}/>
+                    <label htmlFor="responseLatencyOtherBoolean">Other</label>
                   </div>
                 </div>
                 <div class="checkoptions">
@@ -3680,8 +4037,31 @@ inputStyle={{ border: "none", outline: "none" }}
             
                   </div>
                   <div class="checkboxitem">
+                  <input type="checkbox" id="ToneOtherBoolean" checked={ToneOtherBoolean} onChange={()=>setToneOtherBoolean(!ToneOtherBoolean)}/>
+                    <label htmlFor="ToneOtherBoolean">Other</label>
+                  </div>
+                  <div class="checkboxitem">
                     {/* <input type="checkbox" />
-                                        <span>Other</span> */}
+                                        <span>Adequate</span> */}
+                  </div>
+                  <div class="checkboxitem">
+                    {/* <input type="checkbox" />
+                                        <span>Indifferent</span> */}
+                  </div>
+                  <div class="checkboxitem">
+                    {/* <input type="checkbox" />
+                                        <span>Indifferent</span> */}
+                  </div>
+                </div>
+                <div class="checkoptions">
+                  <div class="checkboxitem">
+                  <input type="checkbox" id="ArticulationOtherBoolean" checked={ArticulationOtherBoolean} onChange={()=>setArticulationOtherBoolean(!ArticulationOtherBoolean)}/>
+                    <label htmlFor="ArticulationOtherBoolean">Other</label>
+            
+                  </div>
+                  <div class="checkboxitem">
+                  {/* <input type="checkbox" id="pressured" checked={pressured} onChange={()=>setPressured(!pressured)}/>
+                    <label htmlFor="pressured">Other</label> */}
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
@@ -3698,6 +4078,98 @@ inputStyle={{ border: "none", outline: "none" }}
                 </div>
               </div>
             </div>
+
+            { 
+            ArticulationOtherBoolean && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>Articulation Comments</label>
+              <textarea
+                value={ArticulationOtherBooleanOther}
+                onChange={(e)=>setArticulationOtherBooleanOther(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
+
+{ 
+            ToneOtherBoolean && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>Tone Comments</label>
+              <textarea
+                value={ToneOtherBooleanOther}
+                onChange={(e)=>setToneOtherBooleanOther(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
+
+{ 
+            RateOtherBoolean && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>Rate Comments</label>
+              <textarea
+                value={RateOtherBooleanOther}
+                onChange={(e)=>setRateOtherBooleanOther(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
+
+{ 
+            QuantityOtherBoolean && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>Quantity Comments</label>
+              <textarea
+                value={QuantityOtherBooleanOther}
+                onChange={(e)=>setQuantityOtherBooleanOther(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
+
+{ 
+            responseLatencyOtherBoolean && (
+              <div className="form-field">
+              <label  style={{fontSize:"16px"}}>ResponseLatency Comments</label>
+              <textarea
+                value={responseLatencyOtherBooleanOther}
+                onChange={(e)=>setresponseLatencyOtherBooleanOther(e.target.value)}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+              />
+            </div>
+            )
+            }
+
+
+
+
+
+
+
+
+
+
+
+
             <div className="formsheading">
               <h6>Cognition</h6>
             </div>
@@ -4109,19 +4581,36 @@ inputStyle={{ border: "none", outline: "none" }}
                 />
                 <label htmlFor="intact">Intact</label>
               </div>
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="intact"
+                  checked={intactAbilityToConcentrationOtherBoolean}
+                  onChange={()=>setIntactAbilityToConcentrationOtherBoolean(!intactAbilityToConcentrationOtherBoolean)}
+                />
+                <label htmlFor="intact">Other</label>
+              </div>
               </div>
             </div>
-            <div className="form-field">
-              <label htmlFor="otherintact">Other (please specify):</label>
-              <input
-                type="text"
-                id="otherintact"
-                value={otherAbilityToConcentration}
-                placeholder="please specify"
-                required
-                onChange={(e)=>setOtherAbilityToConcentration(e.target.value)}
-              />
-            </div>
+            {
+              intactAbilityToConcentrationOtherBoolean && (
+                <div className="form-field">
+                <label htmlFor="otherintact">Other (please specify):</label>
+                <input
+                  type="text"
+                  id="otherintact"
+                  value={otherAbilityToConcentration}
+                  placeholder="please specify"
+                  required
+                  onChange={(e)=>setOtherAbilityToConcentration(e.target.value)}
+                />
+              </div>
+              )
+            }
+
+
+            
+          
             <div className="form-field">
               <label htmlFor="approvedby">
                 Significant Social/Developmental History:
@@ -4558,6 +5047,23 @@ inputStyle={{ border: "none", outline: "none" }}
               options={selectedValueMedicalOption}
               />
             </div>
+
+            {
+  selectedValueMedicalBoolean && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <textarea
+      value={selectedValueMedicalType}
+      onChange={(e)=>setselectedValueMedicalType(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+
+}
             <div className="form-field">
               <label htmlFor="reasonadmission">Special Precautions:</label>
               <Select
@@ -5322,6 +5828,7 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
             {otherBoolean && (
               <div className="form-field">
+                <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
                 <textarea
                   id="programlocation&address"
                   value={otherStressors}
@@ -5473,16 +5980,23 @@ inputStyle={{ border: "none", outline: "none" }}
                 </div>
               </div>
             </div>
-            {/* <div className="form-field">
-              <textarea
-                id="programlocation&address"
-                value=""
-                placeholder="Enter text"
-                rows={5}
-                cols={82}
-                required
-              />
-            </div> */}
+
+            {
+  otherSignificantRecentLosses && (
+    <div className="form-field">
+    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
+    <textarea
+      value={otherSignificantRecentLossesType}
+      onChange={(e)=>setOtherSignificantRecentLossesType(e.target.value)}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+    />
+  </div>
+  )
+
+}
             <div className="form-field">
               <label >Additional Notes:</label>
               <textarea
@@ -5499,7 +6013,7 @@ inputStyle={{ border: "none", outline: "none" }}
             <hr style={{border: "1px solid black",opacity:"0.7"}}/>
             
             <div className="form-field">
-              <label htmlFor="approvedby">Staff Name:</label>
+              <label htmlFor="approvedby">Resident Name:</label>
               <input
                 type="text"
                 id="approvedby"

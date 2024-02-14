@@ -26,7 +26,7 @@ var year = currentDate.getFullYear();
 
 
 // Display the extracted information
-setDate(`0${day}/0${month}/${year}`);
+{day>9?setDate(`${day}/0${month}/${year}`):setDate(`0${day}/0${month}/${year}`);}
 
   },[])
 

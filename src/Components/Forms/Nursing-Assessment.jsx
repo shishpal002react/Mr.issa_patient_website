@@ -165,6 +165,8 @@ const NursingAssessment = () => {
   const [legBack, setLegBack] = useState(false);
   const [legLeft, setLegLeft] = useState(false);
   const [legRight, setLegRight] = useState(false);
+  const [commentFigure,setCommentFigure]=useState("")
+
   const [bhtName, setBhtName] = useState("");
   const [bhtSignature, setBhtSignature] = useState("");
   const [bhtDate,setbhtDate]=useState("")
@@ -2808,6 +2810,21 @@ const NursingAssessment = () => {
               </div>
             </div>
           </div>
+
+          <div className="form-field">
+            <label htmlFor="reviewOfSystemsConstitutionalOther&address">Comment:</label>
+            <textarea
+              id="reviewOfSystemsConstitutionalOther&address"
+              value={commentFigure}
+              placeholder="Enter text"
+              rows={2}
+              cols={82}
+              required
+              onChange={(e)=>setCommentFigure(e.target.value)}
+            />
+          </div>
+
+
           <div className="form-field">
             <label htmlFor="AHCCCS">BHT Name:</label>
             <input

@@ -70,19 +70,132 @@ const TreatmentPlan = () => {
   const [Btext, setBtext] = useState("");
   //Primary Care Provider:
   const [primaryCare, setPrimaryCare] = useState("");
+  const [psychiatricProvider,setPsychiatricProvider]=useState("")
+
   //Resident Goals
+  const [residentGoal,setResidentGoal]=useState("")
   const [allergies, setAllergies] = useState("");
   const [Triggers, setTriggers] = useState("");
   const [goalAllergies, setGoalAllergies] = useState("");
   const [strengths, setStrengths] = useState([]);
-  const [limitation, setLimitation] = useState("");
+  const [strengthsBoolean,setStrengthsBoolean]=useState(false);
+  const [strengthsType,setStrengthsType]=useState("");
+
+  useEffect(() => {
+
+    for (let i = 0; i < strengths.length; i++) {
+      if (strengths[i].value === "Other") {
+        setStrengthsBoolean(true);
+        break; 
+      }else{
+        setStrengthsBoolean(false);
+
+      }
+    }
+  }, [strengths]);
+
   const [Barriers, setBarriers] = useState([]);
+  const [BarriersBoolean,setBarriersBoolean]=useState(false);
+  const [BarriersOther,setBarriersOther]=useState("")
+
+  useEffect(() => {
+  // Check if "Other" is present in the Barriers array
+  const isOtherSelected = Barriers.some((barrier) => barrier.value === "Other");
+
+  // Set BarriersBoolean accordingly
+  setBarriersBoolean(isOtherSelected);
+
+  // Update BarriersOther only when "Other" is selected
+  if (!isOtherSelected) {
+    setBarriersOther("");
+  }
+  }, [Barriers]);
+
   // Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
   const [behavioralSymptoms, setBehavioralSymptoms] = useState([]);
+  const [behavioralSymptomsBoolean,setBehavioralSymptomsBoolean]=useState(false)
+  const [behavioralSymptomsOther,setBehavioralSymptomsOther]=useState("")
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = behavioralSymptoms.some((behavioral) => behavioral=== "Other");
+  
+    // Set BarriersBoolean accordingly
+    setBehavioralSymptomsBoolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setBehavioralSymptomsOther("");
+    }
+    }, [behavioralSymptoms]);
+
   const [physicalSymptoms, setPhysicalSymptoms] = useState([]);
+  const [physicalSymptomsBoolean,setPhysicalSymptomsBoolean]=useState(false)
+  const [physicalSymptomsOther,setPhysicalSymptomsOther]=useState("")
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = physicalSymptoms.some((behavioral) => behavioral=== "Other");
+  
+    // Set BarriersBoolean accordingly
+    setPhysicalSymptomsBoolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setPhysicalSymptomsOther("");
+    }
+    }, [physicalSymptoms]);
+
   const [consnotiveSymptoms, setConsnotiveSymptoms] = useState([]);
+  const [consnotiveSymptomsBoolean,setConsnotiveSymptomsBoolean]=useState(false)
+  const [consnotiveSymptomsOther,setConsnotiveSymptomsOther]=useState("")
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = consnotiveSymptoms.some((behavioral) => behavioral=== "Other");
+  
+    // Set BarriersBoolean accordingly
+    setConsnotiveSymptomsBoolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setConsnotiveSymptomsOther("");
+    }
+    }, [consnotiveSymptoms]);
+
   const [psychosocialSymptoms, setPsychosocialSymptoms] = useState([]);
+  const [psychosocialSymptomsBoolean,setPsychosocialSymptomsBoolean]=useState(false)
+  const [psychosocialSymptomssOther,setPsychosocialSymptomsOther]=useState("")
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = psychosocialSymptoms.some((behavioral) => behavioral=== "Other");
+  
+    // Set BarriersBoolean accordingly
+    setPsychosocialSymptomsBoolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setPsychosocialSymptomsOther("");
+    }
+    }, [psychosocialSymptoms]);
+
   const [interventionsImplemented, setInterventionsImplemented] = useState([]);
+  const [interventionsImplementedBoolean,setInterventionsImplementedBoolean]=useState(false)
+  const [interventionsImplementedOther,setInterventionsImplementedOther]=useState("")
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = interventionsImplemented.some((behavioral) => behavioral=== "Other");
+  
+    // Set BarriersBoolean accordingly
+    setInterventionsImplementedBoolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setInterventionsImplementedOther("");
+    }
+    }, [interventionsImplemented]);
  
 // Counseling and Frequency : Total of minimum Blank ___hours daily
 const [minimumHoure,setMinimumHoure]=useState("")
@@ -92,6 +205,22 @@ const [counselingOptionsTextBoolean,setCounselingOptionsTextBoolean]=useState(fa
 
   //Goals for Changes in the Resident Phychorial Interaction or Behaviour
   const [option1, setOption1] = useState([]);
+  const [option1Boolean,setOption1Boolean]=useState(false)
+  const [option1Other,setoption1Other]=useState("");
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = option1.some((barrier) => barrier.value === "Other");
+  
+    // Set BarriersBoolean accordingly
+    setOption1Boolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setoption1Other("");
+    }
+    }, [option1]);
+
   const [option2, setOption2] = useState([]);
   const [option3, setOption3] = useState([]);
   const [option4, setOption4] = useState([]);
@@ -156,6 +285,7 @@ const [comments8,setComment8]=useState("");
   const [residentAttitute, setResidentAttitute] = useState("");
   const [residentProgress, setResidentProgress] = useState("");
   const [supportSystem, setSupportSystem] = useState([]);
+  const [supportSystemPhone,setSupportSystemPhone]=useState("");
   const [supportSystemOtherText,setSupportSystemOtherText]=useState("")
   const [supportSystemOtherTextBoolean,setSupportSystemOtherTextBoolean]=useState(false)
   const [currentMedications,setCurrentMedications]=useState("")
@@ -425,6 +555,7 @@ const [comments8,setComment8]=useState("");
     { label: "Coloring", value: "Coloring" },
     { label: "Decision Making", value: "Decision Making" },
     { label: "Team Work", value: "Team Work" },
+    {label :"Other",value:"Other"}
   ];
 
   const strengthsHandler = (optionValue) => {
@@ -451,6 +582,7 @@ const [comments8,setComment8]=useState("");
       label: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
       value: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
     },
+    {label :"Other",value:"Other"}
   ];
 
   const BarriersHandler = (optionValue) => {
@@ -523,6 +655,10 @@ const [comments8,setComment8]=useState("");
     {
       label: "Resident will refrain from drug seeking behaviors",
       value: "Resident will refrain from drug seeking behaviors",
+    },
+    {
+      label: "Other",
+      value: "Other",
     },
   ];
 
@@ -623,10 +759,6 @@ const [comments8,setComment8]=useState("");
         "Resident will brush teeth at least every other day without prompt",
       value:
         "Resident will brush teeth at least every other day without prompt",
-    },
-    {
-      label: "Complete laundry independently",
-      value: "Complete laundry independently",
     },
     {
       label:
@@ -1168,6 +1300,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               <label className="label-review">Primary Care Provider:</label>
               <input
                 type="text"
+                placeholder="Enter text."
                 value={primaryCare}
                 required
                 onChange={(e) => setPrimaryCare(e.target.value)}
@@ -1175,7 +1308,15 @@ const clinicalSummaryHandler=(optionValue)=>{
             </div>
             <div className="form-field">
               <label className="label-review">Psychiatric Provider:</label>
-              <p>
+              <input
+                type="text"
+                placeholder="Enter text."
+                value={psychiatricProvider}
+                required
+                onChange={(e) => setPsychiatricProvider(e.target.value)}
+              />
+    
+              <p style={{marginTop:"1rem"}}>
                 Resident to receive treatment services from above provider(s)
                 every 1 to 2 months or earlier as needed. Specialty providers
                 are to be managed and referred per primary care medical
@@ -1183,12 +1324,23 @@ const clinicalSummaryHandler=(optionValue)=>{
               </p>
             </div>
             <div className="formsheading">
-              <h6>Resident Goals</h6>
-            </div>
-            <div className="form-field">
-              <label className="label-review">Allergies</label>
+              
+              <label className="label-review">Resident Goals:</label>
               <textarea
                 type="text"
+                placeholder="Enter text."
+                value={residentGoal}
+                rows={2}
+                cols={130}
+                required
+                onChange={(e) => setResidentGoal(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label className="label-review">Allergies:</label>
+              <textarea
+                type="text"
+                placeholder="Enter text."
                 value={allergies}
                 rows={2}
                 cols={130}
@@ -1197,9 +1349,10 @@ const clinicalSummaryHandler=(optionValue)=>{
               />
             </div>
             <div className="form-field">
-              <label className="label-review">Triggers</label>
+              <label className="label-review">Triggers:</label>
               <textarea
                 type="text"
+                placeholder="Enter text."
                 value={Triggers}
                 rows={2}
                 cols={130}
@@ -1210,7 +1363,7 @@ const clinicalSummaryHandler=(optionValue)=>{
 
             <div className="form-field">
               <label htmlFor="" className="label-review">
-                Strengths
+                Strengths:
               </label>
 
               <Select
@@ -1220,17 +1373,25 @@ const clinicalSummaryHandler=(optionValue)=>{
                 value={strengths}
               />
             </div>
-            {/* <div className="form-field">
-              <label htmlFor="programlocation&address">Limitation</label>
+
+            {
+              strengthsBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
               <textarea
-                id="programlocation&address"
-                value={limitation}
-                rows={5}
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={strengthsType}
+                placeholder="Enter text"
+                rows={2}
                 cols={82}
                 required
-                onChange={(e) => setLimitation(e.target.value)}
+                onChange={(e)=>setStrengthsType(e.target.value)}
               />
-            </div> */}
+            </div>
+              )
+            }
+
+         
             <div className="form-field">
               <label className="label-review">Barriers:</label>
 
@@ -1241,6 +1402,27 @@ const clinicalSummaryHandler=(optionValue)=>{
                 options={BarriersOption}
               />
             </div>
+
+            
+            {
+              BarriersBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={BarriersOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setBarriersOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
+
+
             <div className="formsheading">
               <h6>
                 Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
@@ -1330,7 +1512,45 @@ const clinicalSummaryHandler=(optionValue)=>{
                 />
                 <label htmlFor="aboutdeath">About death </label>
               </div>
+              {/* add paremeter */}
+              <div>
+                <input
+                  type="checkbox"
+                  id="Nonereported"
+                  checked={behavioralSymptoms.includes("Nonereported")}
+                  onChange={() => handleCheckboxChangeBehavioral("Nonereported")}
+                />
+                <label htmlFor="Nonereported">None reported</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="other"
+                  checked={behavioralSymptoms.includes("Other")}
+                  onChange={() => handleCheckboxChangeBehavioral("Other")}
+                />
+                <label htmlFor="other">Other</label>
+              </div>
             </div>
+
+  
+            {
+              behavioralSymptomsBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={behavioralSymptomsOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setBehavioralSymptomsOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
             <label htmlFor="" className="label-review">
               Physical Symptoms:
             </label>
@@ -1384,7 +1604,47 @@ const clinicalSummaryHandler=(optionValue)=>{
                 />
                 <label htmlFor="panicAttacks">Panic attacks</label>
               </div>
+
+              <div>
+                <input
+                  type="checkbox"
+                  id="Nonereported"
+                  checked={physicalSymptoms.includes("Nonereported")}
+                  onChange={() => handleCheckboxChangePhysical("Nonereported")}
+                />
+                <label htmlFor="Nonereported">None reported</label>
+              </div>
+
+              <div>
+                <input
+                  type="checkbox"
+                  id="Other"
+                  checked={physicalSymptoms.includes("Other")}
+                  onChange={() => handleCheckboxChangePhysical("Other")}
+                />
+                <label htmlFor="Other">Other</label>
+              </div>
+
+
             </div>
+
+ {
+              physicalSymptomsBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={physicalSymptomsOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setPhysicalSymptomsOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
             <label htmlFor="cognitiveSymptoms" className="label-review">
               Cognitive Symptoms:
             </label>
@@ -1461,7 +1721,48 @@ const clinicalSummaryHandler=(optionValue)=>{
                 />
                 <label htmlFor="inabilityToFocus">Specific tasks</label>
               </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Nonereported"
+                  checked={consnotiveSymptoms.includes("Nonereported")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("Nonereported")
+                  }
+                />
+                <label htmlFor="Nonereported">None reported</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Other"
+                  checked={consnotiveSymptoms.includes("Other")}
+                  onChange={() =>
+                    handleCheckboxChangeCognitive("Other")
+                  }
+                />
+                <label htmlFor="Other">Other</label>
+              </div>
             </div>
+
+            {
+              consnotiveSymptomsBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={consnotiveSymptomsOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setConsnotiveSymptomsOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
+
             <label htmlFor="" className="label-review">
               Psychosocial Symptoms:{" "}
             </label>
@@ -1530,7 +1831,47 @@ const clinicalSummaryHandler=(optionValue)=>{
                 />
                 <label htmlFor="irritability">Irritability</label>
               </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Nonereported"
+                  checked={psychosocialSymptoms.includes("Nonereported")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("Nonereported")
+                  }
+                />
+                <label htmlFor="Nonereported">None reported</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="OtherpsychosocialSymptoms"
+                  checked={psychosocialSymptoms.includes("Other")}
+                  onChange={() =>
+                    handleCheckboxChangePsychosocial("Other")
+                  }
+                />
+                <label htmlFor="OtherpsychosocialSymptoms">Other</label>
+              </div>
             </div>
+
+            {
+              psychosocialSymptomsBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={psychosocialSymptomssOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setPsychosocialSymptomsOther(e.target.value)}
+              />
+            </div>
+              )
+            }
+
             <label htmlFor="" className="label-review">
               Interventions that are being implemented:
             </label>
@@ -1552,6 +1893,8 @@ const clinicalSummaryHandler=(optionValue)=>{
           "Exploring feelings",
           "Distraction",
           "Redirection",
+          "None reported",
+          "Other"
         ].map((intervention, index) => (
           <div key={index}>
             <input
@@ -1564,6 +1907,23 @@ const clinicalSummaryHandler=(optionValue)=>{
           </div>
         ))}
             </div>
+
+            {
+              interventionsImplementedBoolean && (
+                <div className="form-field">
+              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
+              <textarea
+                id="programlocation&addresstypeOfOtherBoolean"
+                value={interventionsImplementedOther}
+                placeholder="Enter text"
+                rows={2}
+                cols={82}
+                required
+                onChange={(e)=>setInterventionsImplementedOther(e.target.value)}
+              />
+            </div>
+              )
+            }
 
             <div className="formsheading">
               <h6>Counseling Frequency</h6>
@@ -1605,7 +1965,9 @@ const clinicalSummaryHandler=(optionValue)=>{
           "3 times a day",
           "4 times a day",
           "Individual Counseling: Minimum 1 hour session per week",
+          "Individual Counseling: Minimum 1 hour session every 2 weeks",
           "Individual Therapy: As needed",
+          "Individual Therapy: Please Specify",
           "Resident decline individual therapy services",
           "Family Counseling",
           "NA",
@@ -1677,6 +2039,22 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onChange={option1Handler}
               />
             </div>
+
+            {
+  option1Boolean && (
+    <div className="form-field">
+    <label>Comment:</label>
+    <textarea
+      value={option1Other}
+      placeholder="Enter text"
+      rows={2}
+      cols={82}
+      required
+      onChange={(e)=>setoption1Other(e.target.value)}
+    />
+  </div>
+  )
+}
             
             <div className="form-field">
               <label>Admission Messure</label>
@@ -2276,11 +2654,14 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div className="checkbox-style-data">
               <input type="checkbox" id="25%" checked={residentParticipation==="25%"} onChange={()=>setResidentParticipation("25%")} />
                 <label htmlFor="25%">25%</label>
-                
               </div>
               <div className="checkbox-style-data">
               <input type="checkbox" id="≤5%" checked={residentParticipation==="≤5%"} onChange={()=>setResidentParticipation("≤5%")} />
                 <label htmlFor="≤5%">≤5%</label>
+              </div>
+              <div className="checkbox-style-data">
+              <input type="checkbox" id="Initial" checked={residentParticipation==="Initial"} onChange={()=>setResidentParticipation("Initial")} />
+                <label htmlFor="Initial">Initial</label>
               </div>
               </div>
             </div>
@@ -2313,6 +2694,10 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div className="checkbox-style-data">
               <input type="checkbox" id="Resistant" checked={residentAttitute==="Resistant"} onChange={()=>setResidentAttitute("Resistant")} />
                 <label htmlFor="Resistant">Resistant</label>
+              </div>
+              <div className="checkbox-style-data">
+              <input type="checkbox" id="Initialgfud" checked={residentAttitute==="Initial"} onChange={()=>setResidentAttitute("Initial")} />
+                <label htmlFor="Initialgfud">Initial</label>
               </div>
               </div>
             </div>
@@ -2347,7 +2732,10 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div className="checkbox-style-data">
               <input type="checkbox" id="Goal achieved" checked={residentProgress==="Goal achieved"} onChange={()=>setResidentProgress("Goal achieved")} />
                 <label htmlFor="Goal achieved">Goal achieved</label>
-                
+              </div>
+              <div className="checkbox-style-data">
+              <input type="checkbox" id="InitialGoal" checked={residentProgress==="Initial"} onChange={()=>setResidentProgress("Initial")} />
+                <label htmlFor="InitialGoal">Initial</label>
               </div>
               </div>
             </div>
@@ -2358,9 +2746,10 @@ const clinicalSummaryHandler=(optionValue)=>{
         {[
           "Family",
           "Friends",
-          "BHRF Staff",
-          "Clinical Team",
+          "BHRF staff",
+          "Clinical seam",
           "Guardian",
+          "Sponsor name",
           "Other",
         ].map((support, index) => (
           <div key={index}>
@@ -2374,6 +2763,7 @@ const clinicalSummaryHandler=(optionValue)=>{
           </div>
         ))}
       </div>
+
       {
         supportSystemOtherTextBoolean && (
           <div className="form-field">
@@ -2390,6 +2780,19 @@ const clinicalSummaryHandler=(optionValue)=>{
         </div>
         )
       }
+
+      <div className="form-field">
+      <label htmlFor="phoneNumber">Phone Number: </label>
+      <input
+        placeholder="Type number"
+        type="number"
+        id="phoneNumber"
+        value={supportSystemPhone}
+        
+        required
+        onChange={(e) => setSupportSystemPhone(e.target.value)}
+      />
+    </div>
            
           <div className="form-field">
             <label htmlFor="admissionDate">Current List of medication: </label>

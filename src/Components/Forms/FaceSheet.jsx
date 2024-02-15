@@ -54,6 +54,24 @@ const FaceSheet = () => {
     primaryCareProviderOtherSpecialists,
     setPrimaryCareProviderOtherSpecialists,
   ] = useState("");
+  const [primaryCareProviderArray,setPrimaryCareProviderArray]=useState([])
+
+  const handlePrimaryCareArray=()=>{
+    const newData={
+      primaryCareProviderOtherSpecialists,
+      primaryCareProviderName,
+      primaryCareProviderPhone,
+      primaryCareProviderAddress
+    }
+    setPrimaryCareProviderArray((prev)=> [...prev,newData]);
+    setPrimaryCareProviderOtherSpecialists("")
+    setPrimaryCareProviderName("");
+    setPrimaryCareProviderPhone("");
+    setPrimaryCareProviderAddress("");
+  }
+
+
+
   const [psychiatricProviderName, setPsychiatricProviderName] = useState("");
   const [psychiatricProviderPhone, setPsychiatricProviderPhone] = useState("");
   const [psychiatricProviderAddress, setPsychiatricProviderAddress] =
@@ -62,6 +80,23 @@ const FaceSheet = () => {
     psychiatricProviderOtherSpecialists,
     setPsychiatricProviderOtherSpecialists,
   ] = useState("");
+
+  const [psychiatricArray,setPsychiatricArray]=useState([])
+  
+  const handlePsychiatricArray=()=>{
+    const newData={
+      psychiatricProviderName,
+      psychiatricProviderPhone,
+      psychiatricProviderAddress,
+      psychiatricProviderOtherSpecialists
+    }
+    setPsychiatricArray((prev)=> [...prev,newData]);
+    setPsychiatricProviderName("")
+    setPsychiatricProviderPhone("");
+    setPsychiatricProviderAddress("");
+    setPsychiatricProviderOtherSpecialists("");
+  }
+
   const [preferredHospitalName, setPreferredHospitalName] = useState("");
   const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("");
   const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("");
@@ -482,18 +517,18 @@ const FaceSheet = () => {
                 id="AHCCCS"
                 value={primaryCareProviderName}
                 placeholder="Type Here....."
-                required
+                
                 onChange={(e) => setPrimaryCareProviderName(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">Phone Number:</label>
               <input
-                type="text"
+                type="number"
                 id="AHCCCS"
                 value={primaryCareProviderPhone}
-                placeholder="Type Here....."
-                required
+                placeholder="Type number....."
+                
                 onChange={(e) => setPrimaryCareProviderPhone(e.target.value)}
               />
             </div>
@@ -504,7 +539,7 @@ const FaceSheet = () => {
                 id="AHCCCS"
                 value={primaryCareProviderAddress}
                 placeholder="Type Here....."
-                required
+                
                 onChange={(e) => setPrimaryCareProviderAddress(e.target.value)}
               />
             </div>
@@ -515,28 +550,51 @@ const FaceSheet = () => {
                 id="AHCCCS"
                 value={primaryCareProviderOtherSpecialists}
                 placeholder="Type Here....."
-                required
+                
                 onChange={(e) => setPrimaryCareProviderOtherSpecialists(e.target.value)}
               />
-              {/* <select
-                required
-                onChange={handlePrimaryCareProviderOtherSpecialists}
-              >
-                <option value="">Select Option</option>
-                <option value="Dermatologist">Dermatologist</option>
-                <option value="Cardiologist">Cardiologist</option>
-              </select> */}
             </div>
-            {/* <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value=""
-                placeholder="Type Here....."
-                required
-              />
-            </div> */}
+
+<div className="form-actions">
+              <button
+                type="button"
+                className="safetybutton"
+                onClick={handlePrimaryCareArray}
+              >
+                Add
+              </button>
+            </div>
+
+            <div className="needs-interventions-container">
+  <div className="needs-interventions-column3">
+    {primaryCareProviderArray.length > 0 && (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Other Specify</th>
+          </tr>
+        </thead>
+        <tbody>
+          {primaryCareProviderArray?.map((i, index) => (
+            <tr key={index}>
+              <td>
+                {i?.primaryCareProviderName}
+              </td>
+         
+              <td> {i?.primaryCareProviderPhone} </td>
+              <td>  {i?.primaryCareProviderAddress}</td>
+              <td>  {i?.primaryCareProviderOtherSpecialists}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+</div>
+            
             <div className="formsheading">
               <h6>Psychiatric Provider</h6>
             </div>
@@ -547,18 +605,18 @@ const FaceSheet = () => {
                 id="AHCCCS"
                 value={psychiatricProviderName}
                 placeholder="Type Here....."
-                required
+                
                 onChange={(e) => setPsychiatricProviderName(e.target.value)}
               />
             </div>
             <div className="form-field">
               <label htmlFor="AHCCCS">Phone Number:</label>
               <input
-                type="text"
+                type="number"
                 id="AHCCCS"
                 value={psychiatricProviderPhone}
-                placeholder="Type Here....."
-                required
+                placeholder="Type number....."
+                
                 onChange={(e) => setPsychiatricProviderPhone(e.target.value)}
               />
             </div>
@@ -569,7 +627,7 @@ const FaceSheet = () => {
                 id="AHCCCS"
                 value={psychiatricProviderAddress}
                 placeholder="Type Here....."
-                required
+                
                 onChange={(e) => setPsychiatricProviderAddress(e.target.value)}
               />
             </div>
@@ -580,31 +638,52 @@ const FaceSheet = () => {
                 id="AHCCCS"
                 value={psychiatricProviderOtherSpecialists}
                 placeholder="Type Here....."
-                required
+                
                 onChange={(e)=>setPsychiatricProviderOtherSpecialists(e.target.value)}
               />
             </div>
-            {/* <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <select
-                required
-                onChange={handlePsychiatricProviderOtherSpecialists}
+
+            <div className="form-actions">
+              <button
+                type="button"
+                className="safetybutton"
+                onClick={handlePsychiatricArray}
               >
-                <option value="">Select Option</option>
-                <option value="Therapist">Therapist</option>
-                <option value="Neuropsychiatrist">Neuropsychiatrist</option>
-              </select>
-            </div> */}
-            {/* <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value=""
-                placeholder="Type Here....."
-                required
-              />
-            </div> */}
+                Add
+              </button>
+            </div>
+
+
+            <div className="needs-interventions-container">
+  <div className="needs-interventions-column3">
+    {psychiatricArray.length > 0 && (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Other Specify</th>
+          </tr>
+        </thead>
+        <tbody>
+          {psychiatricArray?.map((i, index) => (
+            <tr key={index}>
+              <td>
+                {i?.psychiatricProviderName}
+              </td>
+         
+              <td> {i?.psychiatricProviderPhone} </td>
+              <td>  {i?.psychiatricProviderAddress}</td>
+              <td>  {i?.psychiatricProviderOtherSpecialists}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+</div>
+       
             <div className="form-field">
               <label htmlFor="AHCCCS">Preferred Hospital Name:</label>
               <input

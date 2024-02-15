@@ -72,7 +72,7 @@ const InitialAssessment = () => {
         break; 
       }else{
         setReasonForAdmissionBoolean(false);
-        break; 
+        
       }
     }
   }, [reasonForAdmission]);

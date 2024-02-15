@@ -300,6 +300,8 @@ const ResidentIntakes = () => {
   ] = useState("");
   const [orientationToAgencyCompany, setOrientationToAgencyCompany] =
     useState("");
+
+  const [ORIENTATIONDropDown,setORIENTATIONDropDown]=useState("")
   const [orientationToAgencyResidentName, setOrientationToAgencyResidentName] =
     useState("");
   const [
@@ -1356,11 +1358,11 @@ const ResidentIntakes = () => {
                       <tbody>
                         {internalDisclosureList?.map((i, index) => (
                           <tr>
-                            <td>{`${index + 1}. ${i.internalName}`} </td>
+                            <td>{` ${i.internalName}`} </td>
                             <td>
-                              {`${index + 1}. ${i.internalRelationship}`}{" "}
+                              {` ${i.internalRelationship}`}{" "}
                             </td>
-                            <td>{`${index + 1}. ${i.internalContect}`} </td>
+                            <td>{` ${i.internalContect}`} </td>
                           </tr>
                         ))}
                       </tbody>
@@ -2815,12 +2817,14 @@ const ResidentIntakes = () => {
                 Arizona Department of Residential Licensing when complaint can
                 not be resolved with the facility.
               </p>
+              <label htmlFor="" className="label-review-resitent">
+              Bureau of Residential Facilities Licensing Team
+              </label>
               <p style={{ color: "#000000" }}>
-                Licensing Services Division: 150 N 18th Ave #450, Phoenix, AZ
-                85007 Phone: 602-364-3030
+                Arizone Department of Health Services 150 North 18th Avenue, Suite 420, Phonenix, AZ 85007
               </p>
               <p style={{ color: "#000000" }}>
-                <a href="https://azdhs.gov/licensing/index.php?">https://azdhs.gov/licensing/index.php?</a>
+                <a href="www.azdhs.gov/residentialfacilities">www.azdhs.gov/residentialfacilities</a>
               </p>
               <p style={{ color: "#000000" }}>
                 By signing below, resident acknowledge to have been informed of
@@ -3033,20 +3037,21 @@ const ResidentIntakes = () => {
                   received an orientation by facility by staff. The orientation
                   included but not limited to the following:
                 </p>
-                <p>
-                  1. An explanation of the behavioral health services the agency
-                  provides;
-                </p>
-                <p>
-                  2. A description of the expectations for resident behavior and
-                  program rules;
-                </p>
-                <p>
-                  3. A tour of the premises and identification of the evacuation
-                  path;
-                </p>
-                <p>4. A schedule of planned activities for residents; and</p>
-                <p>5. Introductions to staff members and employees.</p>
+                <select  value={ORIENTATIONDropDown} onChange={(e)=>setORIENTATIONDropDown(e.target.value)}>
+                  <option value="">Select</option>
+                <option value="An explanation of the behavioral health services the agency
+                  provides;">An explanation of the behavioral health services the agency
+                  provides;</option>
+                  <option value="A description of the expectations for resident behavior and
+                  program rules;">A description of the expectations for resident behavior and
+                  program rules;</option>
+                  <option value="A tour of the premises and identification of the evacuation
+                  path;">A tour of the premises and identification of the evacuation
+                  path;</option>
+                  <option value="A schedule of planned activities for residents; and">A schedule of planned activities for residents; and</option>
+                  <option value="Introductions to staff members and employees.">Introductions to staff members and employees.</option>
+                </select>
+               
               </div>
               <label htmlFor="" className="label-review-resitent">
                 Resident Signature:
@@ -3197,7 +3202,7 @@ const ResidentIntakes = () => {
                   marginTop: "1.5rem",
                 }}
               >
-                Resident Lock Box Key Issue and Return
+                Resident Lock Box Key Issue and Return Optional
               </h6>
               <div className="form-field">
                 <label className="label-review-resitent">Resident’s Name</label>

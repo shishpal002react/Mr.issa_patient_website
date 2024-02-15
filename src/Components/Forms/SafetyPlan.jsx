@@ -328,9 +328,9 @@ const SafetyPlan = () => {
                     <tbody>
                       {socialArray?.map((i, index) => (
                         <tr>
-                          <td>{`${index + 1}. ${i.name}`} </td>
-                          <td>{`${index + 1}. ${i.phone}`} </td>
-                          <td>{`${index + 1}. ${i.relationship}`} </td>
+                          <td>{` ${i.name}`} </td>
+                          <td>{` ${i.phone}`} </td>
+                          <td>{` ${i.relationship}`} </td>
                         </tr>
                       ))}
                     </tbody>
@@ -439,9 +439,9 @@ const SafetyPlan = () => {
                     <tbody>
                       {helpArray?.map((i, index) => (
                         <tr>
-                          <td>{`${index + 1}. ${i.name}`} </td>
-                          <td>{`${index + 1}. ${i.phone}`} </td>
-                          <td>{`${index + 1}. ${i.relationship}`} </td>
+                          <td>{` ${i.name}`} </td>
+                          <td>{` ${i.phone}`} </td>
+                          <td>{` ${i.relationship}`} </td>
                         </tr>
                       ))}
                     </tbody>
@@ -519,9 +519,9 @@ const SafetyPlan = () => {
                     <tbody>
                       {crisisArray?.map((i, index) => (
                         <tr>
-                          <td>{`${index + 1}. ${i.clinicianName}`} </td>
-                          <td>{`${index + 1}. ${i.phone}`} </td>
-                          <td>{`${index + 1}. ${i.relationship}`} </td>
+                          <td>{` ${i.clinicianName}`} </td>
+                          <td>{` ${i.phone}`} </td>
+                          <td>{` ${i.relationship}`} </td>
                         </tr>
                       ))}
                     </tbody>

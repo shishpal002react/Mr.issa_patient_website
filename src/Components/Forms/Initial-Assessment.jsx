@@ -388,7 +388,7 @@ const [medicalConditions, setMedicalConditions] = useState([]);
         break; 
       }else{
         setSubstanceAbuseHistoryDataTypesBoolean(false);
-        break; 
+        
       }
     }
   }, [substanceAbuseHistoryDataTypes]);
@@ -4965,10 +4965,10 @@ inputStyle={{ border: "none", outline: "none" }}
                   ))}
                 </ol>
               </td>
-              <td>{`${index + 1}. ${i.bathingShoweringFair === true ? "Yes" : "No"}`} </td>
-              <td>{`${index + 1}. ${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td>
-              <td>{`${index + 1}. ${i.bathingShoweringNeedAssist === true ? "Yes" : "No"}`} </td>
-              <td>{`${index + 1}. ${i.bathingShoweringComments}`} </td>
+              <td>{`${i.bathingShoweringFair === true ? "Yes" : "No"}`} </td>
+              <td>{`${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td>
+              <td>{` ${i.bathingShoweringNeedAssist === true ? "Yes" : "No"}`} </td>
+              <td> {i.bathingShoweringComments} </td>
             </tr>
           ))}
         </tbody>
@@ -5395,9 +5395,9 @@ inputStyle={{ border: "none", outline: "none" }}
                   ))}
                 </ol>
               </td>
-              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "YES" : "NO"}`} </td>
-              <td>{`${index + 1}. ${i.protectiveYesNo === true ? "NO" : "YES"}`} </td>
-              <td>{`${index + 1}. ${i.protectiveComment}`} </td>
+              <td>{` ${i.protectiveYesNo === true ? "YES" : "NO"}`} </td>
+              <td>{` ${i.protectiveYesNo === true ? "NO" : "YES"}`} </td>
+              <td>{` ${i.protectiveComment}`} </td>
             </tr>
           ))}
         </tbody>

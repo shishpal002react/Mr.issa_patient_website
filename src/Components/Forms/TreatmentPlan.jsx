@@ -297,6 +297,22 @@ const [comments8,setComment8]=useState("");
   const [dischargePlanning,setDischargePlanning]=useState("")
   const [additionalComment,setAdditionalComment]=useState("");
   const [recommendationsForFurtherPrograms,setRecommendationsForFurtherPrograms]=useState([])
+  const [recommendationsForFurtherProgramsBoolean,setrecommendationsForFurtherProgramsBoolean]=useState(false);
+  const [recommendationsForFurtherProgramsOther,setRecommendationsForFurtherProgramsOther]=useState("")
+
+  useEffect(() => {
+    // Check if "Other" is present in the Barriers array
+    const isOtherSelected = recommendationsForFurtherPrograms.some((barrier) => barrier === "Other");
+  
+    // Set BarriersBoolean accordingly
+    setrecommendationsForFurtherProgramsBoolean(isOtherSelected);
+  
+    // Update BarriersOther only when "Other" is selected
+    if (!isOtherSelected) {
+      setRecommendationsForFurtherProgramsOther("");
+    }
+    }, [recommendationsForFurtherPrograms]);
+
   const [afterCareAndTransitionPlanning,setAfterCareAndTransitionPlanning]=useState([])
   
   //Clinical Summary/Recommendations/Intervention:
@@ -308,6 +324,7 @@ const [comments8,setComment8]=useState("");
   const [guardian, setGuardian] = useState("");
   const [staff, setStaff] = useState("");
   const [bpn, setBph] = useState("");
+  const [commentIndividual,setCommentIndividual]=useState("")
   //isReason
   const [isReason,setIsReason]=useState("no");
   const [refusalReason,setrefusalReason]=useState("");
@@ -888,6 +905,7 @@ const clinicalSummaryOption=[
   {label  :"Resident to continue to attend treatment with the facility" , value:"Resident to continue to attend treatment with the facility"},
   {label  :"Resident to continue to attend schedule appointments with PCP, Psychiatric provider, and specialist" , value:"Resident to continue to attend schedule appointments with PCP, Psychiatric provider, and specialist"},
   {label  :"Resident will contract for safety while in the program" , value:"Resident will contract for safety while in the program"},
+  {label :"The mirrors in the facility are SHATTERPROOF, and if they were standard mirrors it would not present as a current safety risk to this resident.",value:"The mirrors in the facility are SHATTERPROOF, and if they were standard mirrors it would not present as a current safety risk to this resident."}
 ]
 
 const clinicalSummaryHandler=(optionValue)=>{
@@ -1428,7 +1446,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                 Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations
               </h6>
             </div>
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               Behavioral Symptoms:
             </label>
             <div className="yeschechbox-review">
@@ -1551,7 +1569,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               )
             }
 
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               Physical Symptoms:
             </label>
             <div className="yeschechbox-review">
@@ -1645,7 +1663,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               )
             }
 
-            <label htmlFor="cognitiveSymptoms" className="label-review">
+            <label htmlFor="cognitiveSymptoms" className="label-review" style={{fontWeight:"bold"}}>
               Cognitive Symptoms:
             </label>
             <div className="yeschechbox-review">
@@ -1763,7 +1781,7 @@ const clinicalSummaryHandler=(optionValue)=>{
             }
 
 
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               Psychosocial Symptoms:{" "}
             </label>
             <div className="yeschechbox-review">
@@ -1872,7 +1890,7 @@ const clinicalSummaryHandler=(optionValue)=>{
               )
             }
 
-            <label htmlFor="" className="label-review">
+            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>
               Interventions that are being implemented:
             </label>
             <div className="yeschechbox-review">
@@ -2867,16 +2885,20 @@ const clinicalSummaryHandler=(optionValue)=>{
             }
            
           <div className="form-field">
-            <label htmlFor="admissionDate">Nutrition and wellness Planning: </label>
-            <input
+            <label htmlFor="nutritionAndWellnessPlanning">Nutrition and wellness Planning: </label>
+            <select id="nutritionAndWellnessPlanning" value={nutritionAndWellnessPlanning} onChange={(e) => setNutritionAndWellnessPlanning(e.target.value)}>
+              <option value="">Select</option>
+              <option value="eating a balanced diet, drinking adequate fluid, ongoing health maintenance">Eating a balanced diet, drinking adequate fluid, ongoing health maintenance</option>
+            </select>
+            {/* <input
               style={{ color: "#1A9FB2" }}
               type="text"
-              id="dateOfBirth"
+              id=""
               value={nutritionAndWellnessPlanning}
               placeholder="Enter name"
               required
               onChange={(e) => setNutritionAndWellnessPlanning(e.target.value)}
-            />
+            /> */}
           </div>
           <label className="label-review">Recommendation to extend residential treatment for : </label>
           <div className="yeschechbox-review">
@@ -2891,6 +2913,10 @@ const clinicalSummaryHandler=(optionValue)=>{
               <div>
               <input type="checkbox" id="90 Day" checked={recommendationToExtendResidentialTreatment==="90 Day"} onChange={()=>setRecommendationToExtendResidentialTreatment("90 Day")} />
                 <label htmlFor="90 Day">90 Day</label>
+              </div>
+              <div>
+              <input type="checkbox" id="Initialhhg" checked={recommendationToExtendResidentialTreatment==="Initial"} onChange={()=>setRecommendationToExtendResidentialTreatment("Initial")} />
+                <label htmlFor="Initialhhg">Initial</label>
               </div>
             </div>
             <div className="yeschechbox2-horizontal">
@@ -2937,7 +2963,14 @@ const clinicalSummaryHandler=(optionValue)=>{
                 <label htmlFor="Continue with case manager for additional support and
                   resources">Continue with case manager for additional support and
                   resources</label>
-               
+              </div>
+            </div>
+
+            <div className="yeschechbox2-horizontal">
+              <div>
+              <input type="checkbox" id="Continue counseling with assigned Clinic at least once a month" checked={dischargePlanning==="Continue counseling with assigned Clinic at least once a month"} onChange={()=>setDischargePlanning("Continue counseling with assigned Clinic at least once a month")} />
+                <label htmlFor="Continue counseling with assigned Clinic at least once a month">Continue counseling with assigned Clinic at least once a month</label>
+                
               </div>
             </div>
             <div className="form-field">
@@ -2970,6 +3003,7 @@ const clinicalSummaryHandler=(optionValue)=>{
           "Flex Care 23.9",
           "Flex Care 16",
           "Flex Care 8",
+          "Other",
         ].map((recommendation, index) => (
           <div key={index}>
             <input
@@ -2982,6 +3016,23 @@ const clinicalSummaryHandler=(optionValue)=>{
           </div>
         ))}
       </div>
+
+      {
+              recommendationsForFurtherProgramsBoolean && (
+                <div className="form-field">
+                <label htmlFor="programlocation&address">Comment:</label>
+                <textarea
+                  id="programlocation&address"
+                  value={recommendationsForFurtherProgramsOther}
+                  placeholder="Enter text"
+                  rows={2}
+                  cols={82}
+                  required
+                  onChange={(e)=>setRecommendationsForFurtherProgramsOther(e.target.value)}
+                />
+              </div>
+              )
+            }
            
             <label htmlFor="" className="label-review">
               After care and Transition planning / Community Resources:
@@ -3032,7 +3083,7 @@ const clinicalSummaryHandler=(optionValue)=>{
                   receives physical health services or behavioral health
                   services or within 48hours after the initial assessment is
                   completed. It will be review and updated on an on-going basis
-                  according to the review date (Every 30days) specified in the
+                  according to the review date __________ specified in the
                   treatment plan, when a treatment goal is accomplished or
                   changed, when additional information that affects the
                   resident’s behavioral health assessment is identified and when
@@ -3059,13 +3110,13 @@ const clinicalSummaryHandler=(optionValue)=>{
             </div>
             
             
-            <div className="formsheading">
+            {/* <div className="formsheading">
               <p>
                 The mirrors in the facility are SHATTERPROOF, and if they were
                 standard mirrors it would not present as a current safety risk
                 to this resident.
               </p>
-            </div>
+            </div> */}
             <div className="form-field">
               <label className="label-review">
                 Treatment plan review date
@@ -3147,6 +3198,19 @@ const clinicalSummaryHandler=(optionValue)=>{
                 onChange={(e) => setBph(e.target.value)}
               />
             </div>
+
+            <div className="form-field">
+                <label htmlFor="programlocation&addressComment">Comment:</label>
+                <textarea
+                  id="programlocation&addressComment"
+                  value={commentIndividual}
+                  placeholder="Enter text"
+                  rows={2}
+                  cols={82}
+                  required
+                  onChange={(e)=>setCommentIndividual(e.target.value)}
+                />
+              </div>
         
             <label htmlFor="" className="label-review">
               Resident / Representative

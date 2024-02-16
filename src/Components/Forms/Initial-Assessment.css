@@ -525,8 +525,8 @@ input[type="checkbox"] {
 /* safetyPlan */
 .safetyplandiv {
   align-items: center;
-  background-color: rgba(26, 159, 178, 0.1);
-  padding: 10px;
+  /* background-color: rgba(26, 159, 178, 0.1); */
+  /* padding: 10px; */
   border-radius: 8px;
   width: 1083px;
   height: auto;

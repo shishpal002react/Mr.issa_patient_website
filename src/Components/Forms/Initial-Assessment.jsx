@@ -497,12 +497,18 @@ const [medicalConditions, setMedicalConditions] = useState([]);
   const [poor, setPoor] = useState(false);
   const [adequateEyeContact, setAdequateEyeContact] = useState(false);
 
+  const [EyeContactOtherBoolean,setEyeContactOtherBoolean]=useState(false);
+  const [EyeContactOtherBooleanType,setEyeContactOtherBooleanType]=useState("");
+
   //Cooperation
   const [appropriateCooperation, setAppropriateCooperation] = useState(false);
   const [hostile, setHostile] = useState(false);
   const [evasive, setEvasive] = useState(false);
   const [defensive, setDefensive] = useState(false);
   const [indifferent, setIndifferent] = useState(false);
+
+  const [CooperationOtherBoolean,setCooperationOtherBoolean]=useState(false);
+  const [CooperationOtherBooleanType,setCooperationOtherBooleanType]=useState("");
 
   //Speech section 3 
 
@@ -563,14 +569,14 @@ const [logicalCoherent, setLogicalCoherent] = useState(false);
   const [yesPersecutory, setYesPersecutory] = useState(false);
   const [yesSomatic, setYesSomatic] = useState(false);
   const [yesGrandiose, setYesGrandiose] = useState(false);
-  const [yesOtherDelusions, setYesOtherDelusions] = useState('');
+  const [yesOtherDelusionsBoolean, setYesOtherDelusionsBoolean] = useState(false);
   const [yesOtherDelusionsText,setYesOtherDelusionsText]=useState("")
 //Hallucinations
 const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(false);
   const [visualHallucinations, setVisualHallucinations] = useState(false);
   const [auditoryHallucinations, setAuditoryHallucinations] = useState(false);
   const [tactileHallucinations, setTactileHallucinations] = useState(false);
-  const [yesOtherHallucinations, setYesOtherHallucinations] = useState('');
+  const [yesOtherHallucinationsBoolean, setYesOtherHallucinationsBoolean] = useState(false);
   const [yesOtherHallucinationsText,setYesOtherHallucinationsText]=useState("")
 // Motor activity
   //Gait
@@ -784,12 +790,13 @@ const handleRiskFactorActivity=()=>{
   const [riskLevel, setRiskLevel] = useState("");
 
   // State variables for psychiatricDiagnoses
+  const [psychiatricOption,setPsychiatricOption]=useState("")
   const [icdCode, setIcdCode] = useState("");
   const [description, setDescription] = useState("");
-  const [primary, setPrimary] = useState("");
-  const [secondary, setSecondary] = useState("");
-  const [tertiary, setTertiary] = useState("");
-  const [additional, setAdditional] = useState("");
+  // const [primary, setPrimary] = useState("");
+  // const [secondary, setSecondary] = useState("");
+  // const [tertiary, setTertiary] = useState("");
+  // const [additional, setAdditional] = useState("");
   const [psychiatricDiagnoses, setPsychiatricDiagnoses] = useState([]);
 
 
@@ -797,20 +804,23 @@ const handleRiskFactorActivity=()=>{
     setPsychiatricDiagnoses((prev)=>[...prev,{
       icdCode,
       description,
-      primary,
-      secondary,
-      tertiary,
-      additional
+      psychiatricOption
+      // primary,
+      // secondary,
+      // tertiary,
+      // additional
     }])
     setIcdCode("")
     setDescription("")
-    setPrimary("")
-    setSecondary("")
-    setTertiary("")
-    setAdditional("")
+    setPsychiatricOption("")
+    // setPrimary("")
+    // setSecondary("")
+    // setTertiary("")
+    // setAdditional("")
   }
 
   // State variables for medicalDiagnoses
+  const [MedicalOption,setMedicalOption]=useState("");
   const [icdCodeMedicalDiagnoses, setIcdCodeMedicalDiagnoses] = useState("");
   const [descriptionMedicalDiagnoses, setDescriptionMedicalDiagnoses] =
     useState("");
@@ -827,17 +837,19 @@ const handleRiskFactorActivity=()=>{
     setMedicalDiagnoses((prev)=>[...prev,{
       icdCodeMedicalDiagnoses,
       descriptionMedicalDiagnoses,
-      primaryMedicalDiagnoses,
-      secondaryMedicalDiagnoses,
-      tertiaryMedicalDiagnoses,
-      additionalMedicalDiagnoses
+      MedicalOption
+      // primaryMedicalDiagnoses,
+      // secondaryMedicalDiagnoses,
+      // tertiaryMedicalDiagnoses,
+      // additionalMedicalDiagnoses
     }])
     setIcdCodeMedicalDiagnoses("")
     setDescriptionMedicalDiagnoses("")
-    setPrimaryMedicalDiagnoses("")
-    setSecondaryMedicalDiagnoses("")
-    setTertiaryMedicalDiagnoses("")
-    setAdditionalMedicalDiagnoses("")
+    setMedicalOption("")
+    // setPrimaryMedicalDiagnoses("")
+    // setSecondaryMedicalDiagnoses("")
+    // setTertiaryMedicalDiagnoses("")
+    // setAdditionalMedicalDiagnoses("")
   }
 
   // State variable for additionalDiagnoses
@@ -934,8 +946,40 @@ const handleRiskFactorActivity=()=>{
     { label: "Writing", value: "Writing" },
     { label: "Coloring", value: "Coloring" },
     { label: "Art", value: "Art" },
-    { label: "Other", value: "Other" },
+   
   ];
+
+  const handleKeyDownResidentStrength=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = qualitiesOptions.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...qualitiesOptions,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setResidentStrengths(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...residentStrengths,
+          { value: inputValue, label: inputValue }
+        ];
+        setResidentStrengths(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
 
   const handleSelectChange = (selectedOptions) => {
     setResidentStrengths(selectedOptions);
@@ -1081,8 +1125,43 @@ const handleRiskFactorActivity=()=>{
     { label: "Psychosis", value: "Psychosis" },
     { label: "Abused", value: "Abused" },
     { label: "Assaulted", value: "Assaulted" },
-    { label: "Other", value: "Other" },
+    
   ];
+
+
+
+  const handleKeyDownReasionForAdmission = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = option_value_ReasonForAdmission.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option_value_ReasonForAdmission,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setReasonForAdmission(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...reasonForAdmission,
+          { value: inputValue, label: inputValue }
+        ];
+        setReasonForAdmission(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+  
 
   const handleSelectChangeAdmissionReasonForAdmission = (selectedOption) => {
     setReasonForAdmission(selectedOption);
@@ -1115,10 +1194,40 @@ const handleRiskFactorActivity=()=>{
     { label: "Mumps", value: "Mumps" },
     { label: "Signs of active TB", value: "Signs of active TB" },
     { label: "Scabies", value: "Scabies" },
-    {
-      label:"Other",value:"Other"
-    }
+   
   ];
+
+  const handleKeyInfectionDiseases=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = infectionDiseasesOptions.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...infectionDiseasesOptions,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setInfectionDiseases(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...infectionDiseases,
+          { value: inputValue, label: inputValue }
+        ];
+        setInfectionDiseases(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
 
   const infectionDiseasesHandler = (selectedOptions) => {
     setInfectionDiseases(selectedOptions);
@@ -1136,8 +1245,39 @@ const handleRiskFactorActivity=()=>{
     { label: "Aunt", value: "Aunt" },
     { label: "Uncle", value: "Uncle" },
     { label: "Grandfather", value: "Grandfather" },
-    {label: "Other",value:"Other"}
   ];
+
+  const handleKeySignificantFamilyMedicalPsychiatricHistory=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = SignificantFamilyMedicalPsychiatricHistoryOptions.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...SignificantFamilyMedicalPsychiatricHistoryOptions,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setSignificantFamilyMedicalPsychiatricHistory(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...SignificantFamilyMedicalPsychiatricHistory,
+          { value: inputValue, label: inputValue }
+        ];
+        setSignificantFamilyMedicalPsychiatricHistory(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
 
   const SignificantFamilyMedicalPsychiatricHistoryHandler = (
     selectedOptions
@@ -1152,8 +1292,40 @@ const handleRiskFactorActivity=()=>{
     { label: "OP", value: "OP" },
     { label: "PHP", value: "PHP" },
     { label: "IOP", value: "IOP" },
-    {label:"Other",value:"Other"}
+ 
   ];
+
+  const handleKeyMentalHealthTreatmentHistoryTypeOfService=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = mentalHealthTreatmentHistoryTypeOfServiceOption.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...mentalHealthTreatmentHistoryTypeOfServiceOption,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setMentalHealthTreatmentHistoryTypeOfService(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...mentalHealthTreatmentHistoryTypeOfService,
+          { value: inputValue, label: inputValue }
+        ];
+        setMentalHealthTreatmentHistoryTypeOfService(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
 
   const mentalHealthTreatmentHistoryTypeOfServiceHandler = (
     selectedOptions
@@ -1199,8 +1371,41 @@ const handleRiskFactorActivity=()=>{
     { label: "PCP (angel dust)", value: "PCP (angel dust)" },
     { label: "Prescription medicine", value: "Prescription medicine" },
     { label: "OTC medicine", value: "OTC medicine" },
-    { label: "Other", value: "Other" },
+   
   ];
+
+  
+  const handleKeySubstanceAbuseHistoryDataTypes=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = substanceAbuseHistoryDataTypesOption.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...substanceAbuseHistoryDataTypesOption,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setSubstanceAbuseHistoryDataTypes(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...substanceAbuseHistoryDataTypes,
+          { value: inputValue, label: inputValue }
+        ];
+        setSubstanceAbuseHistoryDataTypes(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
 
   const substanceAbuseHistoryDataTypesHandler = (selectedOptions) => {
     setSubstanceAbuseHistoryDataTypes(selectedOptions);
@@ -1286,8 +1491,39 @@ const handleRiskFactorActivity=()=>{
     { label: "Preparing food", value: "Preparing food" },
     { label: "Eating", value: "Eating" },
     { label: "Toileting", value: "Toileting" },
-    { label: "Other(specify)", value: "Other(specify)" }
   ]
+
+  const handleKeyBathingShoweringGood=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = bathingShoweringGoodOptions.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...bathingShoweringGoodOptions,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setBathingShoweringGood(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...bathingShoweringGood,
+          { value: inputValue, label: inputValue }
+        ];
+        setBathingShoweringGood(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
   
   const bathingShoweringGoodJHandler=(optionValue)=>{
     setBathingShoweringGood(optionValue);
@@ -1300,8 +1536,40 @@ const handleRiskFactorActivity=()=>{
     { label: "CPAP Machine", value: "CPAP Machine" },
     { label: "Shower chair", value: "Shower chair" },
     { label: "None", value: "None" },
-    { label: "Other", value: "Other" },
+
   ]
+
+  const handleKeySelectedValueMedical=(event)=>{
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+      
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueMedicalOption.some(
+        (option) => option.value === inputValue
+      );
+  
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueMedicalOption,
+          { value: inputValue, label: inputValue }
+        ];
+  
+        // Update the state with the new options
+        setSelectedValueMedical(newOptions);
+        
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...selectedValueMedical,
+          { value: inputValue, label: inputValue }
+        ];
+        setSelectedValueMedical(newSelectedValues);
+      }
+  
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
 
   const selectedValueMedicalHandler=(optionValue)=>{
     setSelectedValueMedical(optionValue);
@@ -1529,6 +1797,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 <option value="Hindi">Hindi</option>
              
               </select> */}
+              
             </div>
             <div className="form-field">
               <label htmlFor="ethnicity">Ethnicity</label>
@@ -1573,8 +1842,35 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            <div className="form-field">
+            <div className="yeschechbox">
+              <label htmlFor="">Guardianship:</label>
+              <div className="yesNoAligment">
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="guardianship"
+                  checked={guardianship===true}
+                  onChange={()=>setGuardianship(true)}
+
+                />
+               <label htmlFor="guardianship">Yes</label>
+              </div>
+              <div className="checkboxitem">
+                <input
+                  type="checkbox"
+                  id="guardianshipno"
+                  checked={guardianship===false}
+                  onChange={()=>setGuardianship(false)}
+
+                />
+               <label htmlFor="guardianshipno">No</label>
+              </div>
+              </div>
+            </div>
+
+            {/* <div className="form-field">
               <label htmlFor="guardianship">Guardianship:</label>
+
               <input
                 type="text"
                 id="guardianship"
@@ -1583,7 +1879,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 required
                 onChange={(e) => setGuardianship(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="form-field">
               <label htmlFor="attorneystatus">Power of Attorney Status:</label>
               <input
@@ -1630,34 +1926,20 @@ inputStyle={{ border: "none", outline: "none" }}
             </div>
             <h2 style={{marginTop:"1.5rem"}}>Other Details</h2>
             <div className="form-field">
+          
               <label htmlFor="reasonadmission">
                 Reason for Admission to Services
               </label>
               <Select
                 isMulti
-                placeholder="Select Multiple Type"
+                
                 value={reasonForAdmission}
                 onChange={handleSelectChangeAdmissionReasonForAdmission}
                 options={option_value_ReasonForAdmission}
+                isCreatable={true}
+                onKeyDown={handleKeyDownReasionForAdmission} 
               />
             </div>
-
-            {
-              reasonForAdmissionBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={reasonForAdmissionOther}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e)=>setReasonForAdmissionOther(e.target.value)}
-              />
-            </div>
-              )
-            }
 
             <div className="form-field">
               <label htmlFor="programlocation&address">Resident’s Goals:</label>
@@ -1676,12 +1958,12 @@ inputStyle={{ border: "none", outline: "none" }}
               <label htmlFor="reasonadmission">Resident’s Strength</label>
               <Select
                 isMulti
-                placeholder="Select Multiple Type"
                 value={residentStrengths}
                 onChange={handleSelectChange}
                 options={qualitiesOptions}
+                isCreatable={true}
+                onKeyDown={handleKeyDownResidentStrength} 
               />
-   
             </div>
 
             {
@@ -3050,25 +3332,12 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={infectionDiseases}
                 onChange={infectionDiseasesHandler}
                 options={infectionDiseasesOptions}
+                isCreatable={true}
+                onKeyDown={handleKeyInfectionDiseases}
               />
             </div>
 
-            {
-              infectionDiseasesBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={infectionDiseasesOther}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e)=>setInfectionDiseasesOther(e.target.value)}
-              />
-            </div>
-              )
-            }
+      
 
             <div className="form-field">
               <label htmlFor="reasonadmission">
@@ -3077,29 +3346,15 @@ inputStyle={{ border: "none", outline: "none" }}
 
               <Select
                 isMulti
-                placeholder="Select Multiple Type"
+                
                 value={SignificantFamilyMedicalPsychiatricHistory}
                 onChange={SignificantFamilyMedicalPsychiatricHistoryHandler}
                 options={SignificantFamilyMedicalPsychiatricHistoryOptions}
+                isCreatable={true}
+                onKeyDown={handleKeySignificantFamilyMedicalPsychiatricHistory}
               />
             </div>
 
-            {
-              significantFamilyMedicalPsychiatricHistoryBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={SignificantFamilyMedicalPsychiatricHistoryType}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e)=>setSignificantFamilyMedicalPsychiatricHistoryType(e.target.value)}
-              />
-            </div>
-              )
-            }
             <div className="formsheading">
               <h6 style={{marginTop:"2rem"}}>
                 Mental Health Treatment History (in Resident hospitalization,
@@ -3111,29 +3366,16 @@ inputStyle={{ border: "none", outline: "none" }}
 
               <Select
                 isMulti
-                placeholder="Select Multiple Type"
+
                 value={mentalHealthTreatmentHistoryTypeOfService}
                 onChange={mentalHealthTreatmentHistoryTypeOfServiceHandler}
                 options={mentalHealthTreatmentHistoryTypeOfServiceOption}
+                isCreatable={true}
+                onKeyDown={handleKeyMentalHealthTreatmentHistoryTypeOfService}
               />
             </div>
 
-            {
-              mentalHealthTreatmentHistoryTypeOfServiceBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={mentalHealthTreatmentHistoryTypeOfServiceType}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e)=>setMentalHealthTreatmentHistoryTypeOfServiceType(e.target.value)}
-              />
-            </div>
-              )
-            }
+
             <div className="form-field">
               <label htmlFor="approvedby">Where</label>
               <input
@@ -3235,25 +3477,12 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={substanceAbuseHistoryDataTypes}
                 onChange={substanceAbuseHistoryDataTypesHandler}
                 options={substanceAbuseHistoryDataTypesOption}
+                isCreatable={true}
+                onKeyDown={handleKeySubstanceAbuseHistoryDataTypes}
               />
             </div>
 
-            {
-              substanceAbuseHistoryDataTypesBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={substanceAbuseHistoryDataTypesType}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e)=>setSubstanceAbuseHistoryDataTypesType(e.target.value)}
-              />
-            </div>
-              )
-            }
+     
 
 
             <div className="form-field">
@@ -3404,6 +3633,9 @@ inputStyle={{ border: "none", outline: "none" }}
                     />
                     <label htmlFor="VisualDisturbances">Visual Disturbances</label>
                   </div>
+
+                
+    
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
@@ -3415,27 +3647,23 @@ inputStyle={{ border: "none", outline: "none" }}
                       }
                     />
                     <label htmlFor="VisualDisturbances">Other</label>
+                      {
+                        VisualDisturbancesOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="______________"
+            value={VisualDisturbancesOtherType}
+            onChange={(e) => setVisualDisturbancesOtherType(e.target.value)}
+           />
+                      }          
+
                   </div>
+
                 </div>
               </div>
             </div>
 
-            {
-  VisualDisturbancesOtherBoolean && (
-    <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-    <textarea
-      value={VisualDisturbancesOtherType}
-      onChange={(e)=>setVisualDisturbancesOtherType(e.target.value)}
-      placeholder="Enter text"
-      rows={2}
-      cols={82}
-      required
-    />
-  </div>
-  )
-
-}
+  
 
             <div class="checkbox-container">
               <label>Auditory Disturbances</label>
@@ -3536,26 +3764,21 @@ inputStyle={{ border: "none", outline: "none" }}
                       }
                     />
                     <label htmlFor="LossofMuscleCoordination">Other</label>
+                    {
+                        LossofMuscleCoordinationOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="______________"
+            value={LossofMuscleCoordinationOtherType}
+            onChange={(e) => setLossofMuscleCoordinationType(e.target.value)}
+           />
+                      } 
                   </div>
                 </div>
               </div>
             </div>
 
-            {
-  LossofMuscleCoordinationOtherBoolean && (
-    <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-    <textarea
-      value={LossofMuscleCoordinationOtherType}
-      onChange={(e)=>setLossofMuscleCoordinationType(e.target.value)}
-      placeholder="Enter text"
-      rows={2}
-      cols={82}
-      required
-    />
-  </div>
-  )
-}
+       
 
             <div className="formsheading">
               <h6>Mental Status Exam/Behavioral Observations:</h6>
@@ -3826,11 +4049,28 @@ inputStyle={{ border: "none", outline: "none" }}
                   <div class="checkboxitem">
                   <input type="checkbox" id="other" checked={other} onChange={()=>setOther(!other)}/>
                     <label htmlFor="other">Other</label>
-                 
+                    {
+                        other &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={otherText}
+            onChange={(e) => setOtherText(e.target.value)}
+           />
+                      }
                   </div>
                   <div class="checkboxitem">
-                    {/* <input type="checkbox" />
-                                        <span>Adequate</span> */}
+                  <input type="checkbox" id="other" checked={EyeContactOtherBoolean} onChange={()=>setEyeContactOtherBoolean(!EyeContactOtherBoolean)}/>
+                    <label htmlFor="other">Other</label>
+                    {
+                        EyeContactOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={EyeContactOtherBooleanType}
+            onChange={(e) => setEyeContactOtherBooleanType(e.target.value)}
+           />
+                      } 
                   </div>
                   <div class="checkboxitem">
                   <input type="checkbox" id="indifferent" checked={indifferent} onChange={()=>setIndifferent(!indifferent)}/>
@@ -3842,7 +4082,15 @@ inputStyle={{ border: "none", outline: "none" }}
                   <div class="checkboxitem">
                   <input type="checkbox" id="euthymicOtherBoolean" checked={euthymicOtherBoolean} onChange={()=>seteuthymicOtherBoolean(!euthymicOtherBoolean)}/>
                     <label htmlFor="euthymicOtherBoolean">Other</label>
-             
+                    {
+                        euthymicOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={euthymicOtherBooleanType}
+            onChange={(e) => seteuthymicOtherBooleanType(e.target.value)}
+           />
+                      } 
                   </div>
                   <div class="checkboxitem">
                   {/* <input type="checkbox" id="other" checked={other} onChange={()=>setOther(!other)}/>
@@ -3854,47 +4102,24 @@ inputStyle={{ border: "none", outline: "none" }}
                                         <span>Adequate</span> */}
                   </div>
                   <div class="checkboxitem">
-                  {/* <input type="checkbox" id="indifferent" checked={indifferent} onChange={()=>setIndifferent(!indifferent)}/>
-                    <label htmlFor="indifferent">Indifferent</label> */}
+                  <input type="checkbox" id="other" checked={CooperationOtherBoolean} onChange={()=>setCooperationOtherBoolean(!CooperationOtherBoolean)}/>
+                    <label htmlFor="other">Other</label>
+                    {
+                        CooperationOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={CooperationOtherBooleanType}
+            onChange={(e) => setCooperationOtherBooleanType(e.target.value)}
+           />
+                      } 
                   
                   </div>
                 </div>
               </div>
             </div>
 
-            {
-  euthymicOtherBoolean && (
-    <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Mood Comments</label>
-    <textarea
-      value={euthymicOtherBooleanType}
-      onChange={(e)=>seteuthymicOtherBooleanType(e.target.value)}
-      placeholder="Enter text"
-      rows={2}
-      cols={82}
-      required
-    />
-  </div>
-  )
-
-}
-
-{
-  other && (
-    <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Affect Comments</label>
-    <textarea
-      value={otherText}
-      onChange={(e)=>setOtherText(e.target.value)}
-      placeholder="Enter text"
-      rows={2}
-      cols={82}
-      required
-    />
-  </div>
-  )
-
-}
+   
 
          
 
@@ -4020,14 +4245,42 @@ inputStyle={{ border: "none", outline: "none" }}
                   <div class="checkboxitem">
                   <input type="checkbox" id="RateOtherBoolean" checked={RateOtherBoolean} onChange={()=>setRateOtherBoolean(!RateOtherBoolean)}/>
                     <label htmlFor="RateOtherBoolean">Other</label>
+                    {
+                        RateOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={RateOtherBooleanOther}
+            onChange={(e) => setRateOtherBooleanOther(e.target.value)}
+           />
+                      } 
+
                   </div>
                   <div class="checkboxitem">
                   <input type="checkbox" id="QuantityOtherBoolean" checked={QuantityOtherBoolean} onChange={()=>setQuantityOtherBoolean(!QuantityOtherBoolean)}/>
                     <label htmlFor="QuantityOtherBoolean">Other</label>
+                    {
+                        QuantityOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={QuantityOtherBooleanOther}
+            onChange={(e) => setQuantityOtherBooleanOther(e.target.value)}
+           />
+                      } 
                   </div>
                   <div class="checkboxitem">
                   <input type="checkbox" id="responseLatencyOtherBoolean" checked={responseLatencyOtherBoolean} onChange={()=>setresponseLatencyOtherBoolean(!responseLatencyOtherBoolean)}/>
                     <label htmlFor="responseLatencyOtherBoolean">Other</label>
+                    {
+                        responseLatencyOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={responseLatencyOtherBooleanOther}
+            onChange={(e) => setresponseLatencyOtherBooleanOther(e.target.value)}
+           />
+                      } 
                   </div>
                 </div>
                 <div class="checkoptions">
@@ -4039,6 +4292,15 @@ inputStyle={{ border: "none", outline: "none" }}
                   <div class="checkboxitem">
                   <input type="checkbox" id="ToneOtherBoolean" checked={ToneOtherBoolean} onChange={()=>setToneOtherBoolean(!ToneOtherBoolean)}/>
                     <label htmlFor="ToneOtherBoolean">Other</label>
+                    {
+                        ToneOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={ToneOtherBooleanOther}
+            onChange={(e) => setToneOtherBooleanOther(e.target.value)}
+           />
+                      } 
                   </div>
                   <div class="checkboxitem">
                     {/* <input type="checkbox" />
@@ -4057,6 +4319,15 @@ inputStyle={{ border: "none", outline: "none" }}
                   <div class="checkboxitem">
                   <input type="checkbox" id="ArticulationOtherBoolean" checked={ArticulationOtherBoolean} onChange={()=>setArticulationOtherBoolean(!ArticulationOtherBoolean)}/>
                     <label htmlFor="ArticulationOtherBoolean">Other</label>
+                    {
+                        ArticulationOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={ArticulationOtherBooleanOther}
+            onChange={(e) => setArticulationOtherBooleanOther(e.target.value)}
+           />
+                      } 
             
                   </div>
                   <div class="checkboxitem">
@@ -4079,7 +4350,7 @@ inputStyle={{ border: "none", outline: "none" }}
               </div>
             </div>
 
-            { 
+            {/* { 
             ArticulationOtherBoolean && (
               <div className="form-field">
               <label  style={{fontSize:"16px"}}>Articulation Comments</label>
@@ -4093,9 +4364,9 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
+            } */}
 
-{ 
+{/* { 
             ToneOtherBoolean && (
               <div className="form-field">
               <label  style={{fontSize:"16px"}}>Tone Comments</label>
@@ -4109,9 +4380,9 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
+            } */}
 
-{ 
+{/* { 
             RateOtherBoolean && (
               <div className="form-field">
               <label  style={{fontSize:"16px"}}>Rate Comments</label>
@@ -4125,9 +4396,9 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
+            } */}
 
-{ 
+{/* { 
             QuantityOtherBoolean && (
               <div className="form-field">
               <label  style={{fontSize:"16px"}}>Quantity Comments</label>
@@ -4141,15 +4412,15 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
+            } */}
 
-{ 
+{/* { 
             responseLatencyOtherBoolean && (
               <div className="form-field">
               <label  style={{fontSize:"16px"}}>ResponseLatency Comments</label>
               <textarea
-                value={responseLatencyOtherBooleanOther}
-                onChange={(e)=>setresponseLatencyOtherBooleanOther(e.target.value)}
+                value={responseLatencyOtherBoolean}
+                onChange={(e)=>responseLatencyOtherBooleanOther(e.target.value)}
                 placeholder="Enter text"
                 rows={2}
                 cols={82}
@@ -4157,7 +4428,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
+            } */}
 
 
 
@@ -4292,19 +4563,36 @@ inputStyle={{ border: "none", outline: "none" }}
                                         <span>Other</span> */}
                   </div>
                   <div class="checkboxitem">
-                  <input type="checkbox" id="yesOtherDelusions" checked={yesOtherDelusions} onChange={()=>setYesOtherDelusions(!yesOtherDelusions)}/>
+                  <input type="checkbox" id="yesOtherDelusions" checked={yesOtherDelusionsBoolean} onChange={()=>setYesOtherDelusionsBoolean(!yesOtherDelusionsBoolean)}/>
                     <label htmlFor="yesOtherDelusions">Yes, other</label>
-                 
+                    {
+                        yesOtherDelusionsBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={yesOtherDelusionsText}
+            onChange={(e) => setYesOtherDelusionsText(e.target.value)}
+           />
+                      } 
                   </div>
                   <div class="checkboxitem">
-                  <input type="checkbox" id="yesOtherHallucinations" checked={yesOtherHallucinations} onChange={()=>setYesOtherHallucinations(!yesOtherHallucinations)}/>
+                  <input type="checkbox" id="yesOtherHallucinations" checked={yesOtherHallucinationsBoolean} onChange={()=>setYesOtherHallucinationsBoolean(!yesOtherHallucinationsBoolean)}/>
                     <label htmlFor="yesOtherHallucinations">Yes, other</label>
+                    {
+                        yesOtherHallucinationsBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={yesOtherHallucinationsText}
+            onChange={(e) => setYesOtherHallucinationsText(e.target.value)}
+           />
+                      } 
                   </div>
                 </div>
               </div>
             </div>
 
-            { 
+            {/* { 
             yesOtherDelusions && (
               <div className="form-field">
               <label  style={{fontSize:"16px"}}>Delusions Comments</label>
@@ -4318,8 +4606,8 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
-
+            } */}
+{/* 
             { 
             yesOtherHallucinations && (
               <div className="form-field">
@@ -4334,7 +4622,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             )
-            }
+            } */}
             <div className="formsheading">
               <h6>Motor activity</h6>
             </div>
@@ -4589,33 +4877,38 @@ inputStyle={{ border: "none", outline: "none" }}
                   onChange={()=>setIntactAbilityToConcentrationOtherBoolean(!intactAbilityToConcentrationOtherBoolean)}
                 />
                 <label htmlFor="intact">Other</label>
+                {
+                        intactAbilityToConcentrationOtherBoolean &&   <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={otherAbilityToConcentration}
+            onChange={(e) => setOtherAbilityToConcentration(e.target.value)}
+           />
+                      } 
               </div>
               </div>
             </div>
-            {
-              intactAbilityToConcentrationOtherBoolean && (
-                <div className="form-field">
-                <label htmlFor="otherintact">Other (please specify):</label>
-                <input
-                  type="text"
-                  id="otherintact"
-                  value={otherAbilityToConcentration}
-                  placeholder="please specify"
-                  required
-                  onChange={(e)=>setOtherAbilityToConcentration(e.target.value)}
-                />
-              </div>
-              )
-            }
+    
 
 
             
           
             <div className="form-field">
-              <label htmlFor="approvedby">
+              <label >
                 Significant Social/Developmental History:
               </label>
-              <p>Child</p>
+                      {/* <span>
+              <AutosizeInput
+                        type="text"
+           inputStyle={{ border: "none", outline: "none" }}
+            placeholder="________"
+            value={significantSocialDevelopmentalHistory}
+            onChange={(e) => setSignificantSocialDevelopmentalHistory(e.target.value)}
+           />
+           </span> */}
+                      
+              
               <input
                 type="text"
                 id="approvedby"
@@ -4853,24 +5146,12 @@ inputStyle={{ border: "none", outline: "none" }}
               value={bathingShoweringGood}
               isMulti
               onChange={bathingShoweringGoodJHandler}
-              options={bathingShoweringGoodOptions}/>
-            </div>
-            {
-              typeOfOtherBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={typesOfActivityOther}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e)=>setTypesOfActivityOther(e.target.value)}
+              options={bathingShoweringGoodOptions}
+              isCreatable={true}
+              onKeyDown={handleKeyBathingShoweringGood}
               />
             </div>
-              )
-            }
+    
             
             <div className="yeschechbox employment-Aligmantfall-risk">
               <div>
@@ -5045,6 +5326,8 @@ inputStyle={{ border: "none", outline: "none" }}
               isMulti
               onChange={selectedValueMedicalHandler}
               options={selectedValueMedicalOption}
+              isCreatable={true}
+              onKeyDown={handleKeySelectedValueMedical}
               />
             </div>
 
@@ -5465,16 +5748,19 @@ inputStyle={{ border: "none", outline: "none" }}
             <div className="formsheading">
               <h6>Psychiatric Diagnoses</h6>
             </div>
-            {/* <div className="form-field">
-              <label htmlFor="approvedby">Primary*</label>
-              <input
-                type="text"
-                id="approvedby"
-                value=""
-                placeholder="Enter text"
-                required
-              />
-            </div> */}
+           
+           <div className="form-field">
+            <label htmlFor="icdCode">Psychiatric Diagnoses:</label>
+            <select value={psychiatricOption} onChange={(e)=>setPsychiatricOption(e.target.value)}>
+            <option value="">Select</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="Tertiary">Tertiary</option>
+            <option value="Additional">Additional</option>
+           </select>
+           </div>
+           
+           
             <div className="form-field">
               <label htmlFor="icdCode">ICD Code:</label>
               <input
@@ -5495,7 +5781,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="primary">Primary:</label>
               <input
                 type="text"
@@ -5535,7 +5821,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={additional}
                 onChange={(e) => setAdditional(e.target.value)}
               />
-            </div>
+            </div> */}
 
             <div className="form-actions">
               <button
@@ -5552,22 +5838,24 @@ inputStyle={{ border: "none", outline: "none" }}
                 {psychiatricDiagnoses.length > 0 && (
                   <table>
                     <thead>
+                      <th>Psychiatric Diagnoses</th>
                     <th>icdCode</th>
                       <th>Description</th>
-                      <th>Primary</th>
+                      {/* <th>Primary</th>
                       <th>Secondary</th>
                       <th>Tertiary</th>
-                      <th>Additional</th>
+                      <th>Additional</th> */}
                     </thead>
                     <tbody>
                       {psychiatricDiagnoses?.map((i, index) => (
                         <tr>
+                          <td>{`${i.psychiatricOption}`} </td>
                           <td>{`${i.icdCode}`} </td>
                           <td>{`${i.description}`} </td>
-                          <td>{`${i.primary}`} </td>
+                          {/* <td>{`${i.primary}`} </td>
                           <td>{`${i.seco}`}</td>
                           <td>{`${i.tertiary}`} </td>
-                          <td>{`${i.additional}`} </td>
+                          <td>{`${i.additional}`} </td> */}
                         </tr>
                       ))}
                     </tbody>
@@ -5582,6 +5870,18 @@ inputStyle={{ border: "none", outline: "none" }}
             <div className="formsheading">
               <h6>Medical Diagnoses</h6>
             </div>
+
+            <div className="form-field">
+            <label htmlFor="icdCode">Medical Diagnoses:</label>
+            <select value={MedicalOption} onChange={(e)=>setMedicalOption(e.target.value)}>
+            <option value="">Select</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="Tertiary">Tertiary</option>
+            <option value="Additional">Additional</option>
+           </select>
+           </div>
+
             <div className="form-field">
               <label htmlFor="icdCode">ICD Code:</label>
               <input
@@ -5602,7 +5902,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setDescriptionMedicalDiagnoses(e.target.value)}
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="primary">Primary:</label>
               <input
                 type="text"
@@ -5642,7 +5942,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={additionalMedicalDiagnoses}
                 onChange={(e) => setAdditionalMedicalDiagnoses(e.target.value)}
               />
-            </div>
+            </div> */}
 
             <div className="form-actions">
               <button
@@ -5660,22 +5960,24 @@ inputStyle={{ border: "none", outline: "none" }}
                 {medicalDiagnoses.length > 0 && (
                   <table>
                     <thead>
-                    <th>icdCode</th>
+                     <th>Medical Diagnoses</th>
+                      <th>icdCode</th>
                       <th>Description</th>
-                      <th>Primary</th>
+                      {/* <th>Primary</th>
                       <th>Secondary</th>
                       <th>Tertiary</th>
-                      <th>Additional</th>
+                      <th>Additional</th> */}
                     </thead>
                     <tbody>
                       {medicalDiagnoses?.map((i, index) => (
                         <tr>
+                          <td>{`${i.MedicalOption}`} </td>
                           <td>{`${i.icdCodeMedicalDiagnoses}`} </td>
                           <td>{`${i.descriptionMedicalDiagnoses}`} </td>
-                          <td>{`${i.primaryMedicalDiagnoses}`} </td>
+                          {/* <td>{`${i.primaryMedicalDiagnoses}`} </td>
                           <td>{`${i.secondaryMedicalDiagnoses}`} </td>
                           <td>{`${i.tertiaryMedicalDiagnoses}`} </td>
-                          <td>{`${i.additionalMedicalDiagnoses}`} </td>
+                          <td>{`${i.additionalMedicalDiagnoses}`} </td> */}
                         </tr>
                       ))}
                     </tbody>

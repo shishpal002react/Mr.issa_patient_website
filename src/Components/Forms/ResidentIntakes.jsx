@@ -8,6 +8,7 @@ import AutosizeInput from "react-input-autosize";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
 import { useReactToPrint } from "react-to-print";
+import Select from "react-select";
 
 const ResidentIntakes = () => {
   const navigate = useNavigate();
@@ -792,6 +793,20 @@ const ResidentIntakes = () => {
     obligationsAndAuthorizationGuardianRepresentativeSignature,
     obligationsAndAuthorizationGuardianRepresentativeDate,
   };
+
+  const presentingPriceOption = [
+    { label: "Depression", value: "Depression" },
+    { label: "Mood Changes", value: "Mood Changes" },
+    {
+      label: "Trouble Falling / staying Asleep",
+      value: "Trouble Falling / staying Asleep",
+    },
+    { label: "Mood Swings", value: "Mood Swings" },
+    { label: "Social Withdrawals", value: "Social Withdrawals" },
+    { label: "Changes in Eating habits", value: "Changes in Eating habits" },
+    { label: "Feeling of anger", value: "Feeling of anger" },
+  ];
+
 
   const submitHandler = (e) => {
     e.preventDefault();

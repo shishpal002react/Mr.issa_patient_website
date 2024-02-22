@@ -322,6 +322,38 @@ const NursingAssessment = () => {
     {label:"DNR", value:"DNR"}
   ]
 
+  const handleKeyCodeStatus = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = codeStatusOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...codeStatusOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setCodeStatus(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...codeStatus,
+          { value: inputValue, label: inputValue }
+        ];
+        setCodeStatus(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const codeStatusHandler=(optionValue)=>{
     setCodeStatus(optionValue)
   }
@@ -421,7 +453,7 @@ const NursingAssessment = () => {
             >
               <option>Select Gender</option>
               <option value="Male">Male</option>
-              <option value="Female">False</option>
+                <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -491,6 +523,8 @@ const NursingAssessment = () => {
             onChange={codeStatusHandler}
             options={codeStatusOption}
             value={codeStatus}
+                isCreatable={true}
+                onKeyDown={handleKeyCodeStatus}
             />
             
           </div>

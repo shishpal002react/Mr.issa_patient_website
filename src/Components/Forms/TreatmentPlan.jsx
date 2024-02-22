@@ -647,8 +647,40 @@ const TreatmentPlan = () => {
     { label: "Coloring", value: "Coloring" },
     { label: "Decision Making", value: "Decision Making" },
     { label: "Team Work", value: "Team Work" },
-    { label: "Other", value: "Other" },
+
   ];
+
+  const handleKeyStrengths = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = strengthsOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...strengthsOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setStrengths(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...strengths,
+          { value: inputValue, label: inputValue }
+        ];
+        setStrengths(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const strengthsHandler = (optionValue) => {
     setStrengths(optionValue);
@@ -674,8 +706,40 @@ const TreatmentPlan = () => {
       label: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
       value: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
     },
-    { label: "Other", value: "Other" },
+
   ];
+
+  const handleKeyBarriers = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = BarriersOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...BarriersOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setBarriers(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...Barriers,
+          { value: inputValue, label: inputValue }
+        ];
+        setBarriers(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const BarriersHandler = (optionValue) => {
     setBarriers(optionValue);
@@ -844,6 +908,38 @@ const TreatmentPlan = () => {
     },
   ];
 
+  const handleKeyOption2 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option2Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option2Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption2(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option2,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption2(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const option2Handler = (optionValue) => {
     setOption2(optionValue);
   };
@@ -860,6 +956,38 @@ const TreatmentPlan = () => {
       value: "Resident to learn mock interview",
     },
   ];
+
+  const handleKeyOption3 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option3Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option3Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption3(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option3,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption3(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const option3Handler = (optionValue) => {
     setOption3(optionValue);
@@ -888,6 +1016,38 @@ const TreatmentPlan = () => {
     },
     ,
   ];
+
+  const handleKeyOption4 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option4Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option4Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption4(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option4,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption4(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const option4Handler = (optionValue) => {
     setOption4(optionValue);
@@ -922,6 +1082,38 @@ const TreatmentPlan = () => {
     },
   ];
 
+  const handleKeyOption5 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option5Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option5Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption5(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option5,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption5(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const option5Handler = (optionValue) => {
     setOption5(optionValue);
   };
@@ -953,6 +1145,38 @@ const TreatmentPlan = () => {
     },
   ];
 
+  const handleKeyOption6 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option6Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option6Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption6(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option6,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption6(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const option6Handler = (optionValue) => {
     setOption6(optionValue);
   };
@@ -982,6 +1206,38 @@ const TreatmentPlan = () => {
     },
   ];
 
+  const handleKeyOption7 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option7Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option7Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption7(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option7,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption7(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const option7Handler = (optionValue) => {
     setOption7(optionValue);
   };
@@ -998,6 +1254,38 @@ const TreatmentPlan = () => {
         "Resident will attend all scheduled appointment with probation/parole officer",
     },
   ];
+
+  const handleKeyOption8 = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option8Option.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option8Option,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setOption8(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...option8,
+          { value: inputValue, label: inputValue },
+        ];
+        setOption8(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const option8Handler = (optionValue) => {
     setOption8(optionValue);
@@ -1027,6 +1315,38 @@ const TreatmentPlan = () => {
     },
   ];
 
+  const handleKeyClinicalSummary = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = clinicalSummaryOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...clinicalSummaryOption,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setClinicalSummary(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...clinicalSummary,
+          { value: inputValue, label: inputValue },
+        ];
+        setClinicalSummary(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const clinicalSummaryHandler = (optionValue) => {
     setClinicalSummary(optionValue);
   };
@@ -1049,6 +1369,7 @@ const TreatmentPlan = () => {
           <div className="formheading1">
             <div className="formsheading2">
               <h1>TREATMENT PLAN</h1>
+
             </div>
           </div>
           <form onSubmit={handlePost}>
@@ -1530,10 +1851,12 @@ const TreatmentPlan = () => {
                   options={strengthsOption}
                   onChange={strengthsHandler}
                   value={strengths}
+                  isCreatable={true}
+                  onKeyDown={handleKeyStrengths}
                 />
               </div>
 
-              {strengthsBoolean && (
+              {/* {strengthsBoolean && (
                 <div className="form-field">
                   <label htmlFor="programlocation&addresstypeOfOtherBoolean">
                     Comments
@@ -1548,7 +1871,7 @@ const TreatmentPlan = () => {
                     onChange={(e) => setStrengthsType(e.target.value)}
                   />
                 </div>
-              )}
+              )} */}
 
               <div className="form-field">
                 <label className="label-review">Barriers:</label>
@@ -1558,10 +1881,12 @@ const TreatmentPlan = () => {
                   onChange={BarriersHandler}
                   value={Barriers}
                   options={BarriersOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyBarriers}
                 />
               </div>
 
-              {BarriersBoolean && (
+              {/* {BarriersBoolean && (
                 <div className="form-field">
                   <label htmlFor="programlocation&addresstypeOfOtherBoolean">
                     Comments
@@ -1576,7 +1901,7 @@ const TreatmentPlan = () => {
                     onChange={(e) => setBarriersOther(e.target.value)}
                   />
                 </div>
-              )}
+              )} */}
 
               <div className="formsheading">
                 <h6>
@@ -2072,7 +2397,7 @@ const TreatmentPlan = () => {
                     />
                   )}
                 </div>
-              </div>
+              </div>             
               {/* 
             {
               psychosocialSymptomsBoolean && (
@@ -2098,7 +2423,204 @@ const TreatmentPlan = () => {
               >
                 Interventions that are being implemented:
               </label>
+
               <div className="yeschechbox-review">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Psychiatric services"
+                    checked={interventionsImplemented.includes("Psychiatric services")}
+                    onChange={() =>
+                      handleCheckboxChange("Psychiatric services")
+                    }
+                  />
+                  <label htmlFor="Psychiatric services">Psychiatric services</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Communication Skills"
+                    checked={interventionsImplemented.includes("Communication Skills")}
+                    onChange={() =>
+                      handleCheckboxChange("Communication Skills")
+                    }
+                  />
+                  <label htmlFor="Communication Skills">Communication Skills</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Verbal Prompt"
+                    checked={interventionsImplemented.includes("Verbal Prompt")}
+                    onChange={() =>
+                      handleCheckboxChange("Verbal Prompt")
+                    }
+                  />
+                  <label htmlFor="Verbal Prompt">Verbal Prompt</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Interactive Feedback"
+                    checked={interventionsImplemented.includes("Interactive Feedback")}
+                    onChange={() => handleCheckboxChange("Interactive Feedback")}
+                  />
+                  <label htmlFor="Interactive Feedback">Interactive Feedback</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Encouragement"
+                    checked={interventionsImplemented.includes("Encouragement")}
+                    onChange={() =>
+                      handleCheckboxChange("Encouragement")
+                    }
+                  />
+                  <label htmlFor="Encouragement">Encouragement</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Role-Play"
+                    checked={interventionsImplemented.includes("Role-Play")}
+                    onChange={() =>
+                      handleCheckboxChange("Role-Play")
+                    }
+                  />
+                  <label htmlFor="Role-Play">Role-Play</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Review of Treatment Plan"
+                    checked={interventionsImplemented.includes("Review of Treatment Plan")}
+                    onChange={() =>
+                      handleCheckboxChange("Review of Treatment Plan")
+                    }
+                  />
+                  <label htmlFor="Review of Treatment Plan">Review of Treatment Plan</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Relaxation techniques"
+                    checked={interventionsImplemented.includes("Relaxation techniques")}
+                    onChange={() =>
+                      handleCheckboxChange("Relaxation techniques")
+                    }
+                  />
+                  <label htmlFor="Relaxation techniques">Relaxation techniques</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Reframing"
+                    checked={interventionsImplemented.includes("Reframing")}
+                    onChange={() =>
+                      handleCheckboxChange("Reframing")
+                    }
+                  />
+                  <label htmlFor="Reframing">Reframing</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Conflict resolution"
+                    checked={interventionsImplemented.includes("Conflict resolution")}
+                    onChange={() =>
+                      handleCheckboxChange("Conflict resolution")
+                    }
+                  />
+                  <label htmlFor="Conflict resolution">Conflict resolution</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Rehearsal, Spiritual exploration"
+                    checked={interventionsImplemented.includes("Rehearsal, Spiritual exploration")}
+                    onChange={() =>
+                      handleCheckboxChange("Rehearsal, Spiritual exploration")
+                    }
+                  />
+                  <label htmlFor="Rehearsal, Spiritual exploration">Rehearsal, Spiritual exploration</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Values clarification, Psycho-education"
+                    checked={interventionsImplemented.includes("Values clarification, Psycho-education")}
+                    onChange={() =>
+                      handleCheckboxChange("Values clarification, Psycho-education")
+                    }
+                  />
+                  <label htmlFor="Values clarification, Psycho-education">Values clarification, Psycho-education</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Exploring feelings"
+                    checked={interventionsImplemented.includes("Exploring feelings")}
+                    onChange={() =>
+                      handleCheckboxChange("Exploring feelings")
+                    }
+                  />
+                  <label htmlFor="Exploring feelings">Exploring feelings</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Distraction"
+                    checked={interventionsImplemented.includes("Distraction")}
+                    onChange={() =>
+                      handleCheckboxChange("Distraction")
+                    }
+                  />
+                  <label htmlFor="Distraction">Distraction</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Redirection"
+                    checked={interventionsImplemented.includes("Redirection")}
+                    onChange={() =>
+                      handleCheckboxChange("Redirection")
+                    }
+                  />
+                  <label htmlFor="Redirection">Redirection</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="None reported"
+                    checked={interventionsImplemented.includes("None reported")}
+                    onChange={() =>
+                      handleCheckboxChange("None reported")
+                    }
+                  />
+                  <label htmlFor="None reported">None reported</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="OtherpsychosocialSymptoms"
+                    checked={interventionsImplemented.includes("Other")}
+                    onChange={() => handleCheckboxChange("Other")}
+                  />
+                  <label htmlFor="OtherpsychosocialSymptoms">Other</label>
+                  {interventionsImplementedBoolean && (
+                    <AutosizeInput
+                      type="text"
+                      inputStyle={{ border: "none", outline: "none" }}
+                      placeholder="________"
+                      value={interventionsImplementedOther}
+                      onChange={(e) =>
+                        setInterventionsImplementedOther(e.target.value)
+                      }
+                    />
+                  )}
+                </div>
+              </div>
+              {/* <div className="yeschechbox-review">
                 {[
                   "Psychiatric services",
                   "Communication Skills",
@@ -2150,7 +2672,7 @@ const TreatmentPlan = () => {
                     }
                   />
                 </div>
-              )}
+              )} */}
 
               <div className="formsheading">
                 <h6>Counseling Frequency</h6>
@@ -2187,7 +2709,170 @@ const TreatmentPlan = () => {
                 <span>Minimum 1 hour session per week</span>
               </div>
             </div> */}
-              <div>
+              <div className="yeschechbox-review">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Group"
+                    checked={counselingOptions.includes("Group")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Group")
+                    }
+                  />
+                  <label htmlFor="Group">Group</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="3 times a day"
+                    checked={counselingOptions.includes("3 times a day")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("3 times a day")
+                    }
+                  />
+                  <label htmlFor="3 times a day">3 times a day</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="4 times a day"
+                    checked={counselingOptions.includes("4 times a day")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("4 times a day")
+                    }
+                  />
+                  <label htmlFor="4 times a day">4 times a day</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Individual Counseling: Minimum 1 hour session per week"
+                    checked={counselingOptions.includes("Individual Counseling: Minimum 1 hour session per week")}
+                    onChange={() => handleCheckboxChangeCounsiling("Individual Counseling: Minimum 1 hour session per week")}
+                  />
+                  <label htmlFor="Individual Counseling: Minimum 1 hour session per week">Individual Counseling: Minimum 1 hour session per week</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Individual Counseling: Minimum 1 hour session every 2 weeks"
+                    checked={counselingOptions.includes("Individual Counseling: Minimum 1 hour session every 2 weeks")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Individual Counseling: Minimum 1 hour session every 2 weeks")
+                    }
+                  />
+                  <label htmlFor="Individual Counseling: Minimum 1 hour session every 2 weeks">Individual Counseling: Minimum 1 hour session every 2 weeks</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Individual Therapy: As needed"
+                    checked={counselingOptions.includes("Individual Therapy: As needed")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Individual Therapy: As needed")
+                    }
+                  />
+                  <label htmlFor="Individual Therapy: As needed">Individual Therapy: As needed</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Individual Therapy: Please Specify"
+                    checked={counselingOptions.includes("Individual Therapy: Please Specify")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Individual Therapy: Please Specify")
+                    }
+                  />
+                  <label htmlFor="Individual Therapy: Please Specify">Individual Therapy: Please Specify</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Nonereported"
+                    checked={counselingOptions.includes("Resident decline individual therapy services")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Resident decline individual therapy services")
+                    }
+                  />
+                  <label htmlFor="Resident decline individual therapy services">Resident decline individual therapy services</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Family Counseling"
+                    checked={counselingOptions.includes("Family Counseling")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Family Counseling")
+                    }
+                  />
+                  <label htmlFor="Family Counseling">Family Counseling</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="NA"
+                    checked={counselingOptions.includes("NA")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("NA")
+                    }
+                  />
+                  <label htmlFor="NA">NA</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="AA"
+                    checked={counselingOptions.includes("AA")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Nonereported")
+                    }
+                  />
+                  <label htmlFor="AA">AA</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Month ART Meeting/Staffing"
+                    checked={counselingOptions.includes("Month ART Meeting/Staffing")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Month ART Meeting/Staffing")
+                    }
+                  />
+                  <label htmlFor="Month ART Meeting/Staffing">Month ART Meeting/Staffing</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Weekly ART Meeting/Staffing"
+                    checked={counselingOptions.includes("Weekly ART Meeting/Staffing")}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling("Weekly ART Meeting/Staffing")
+                    }
+                  />
+                  <label htmlFor="Weekly ART Meeting/Staffing">Weekly ART Meeting/Staffing</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="OtherpsychosocialSymptoms"
+                    checked={counselingOptions.includes("Other")}
+                    onChange={() => handleCheckboxChangeCounsiling("Other")}
+                  />
+                  <label htmlFor="OtherpsychosocialSymptoms">Other</label>
+                  {counselingOptionsTextBoolean && (
+                    <AutosizeInput
+                      type="text"
+                      inputStyle={{ border: "none", outline: "none" }}
+                      placeholder="________"
+                      value={counselingOptionsText}
+                      onChange={(e) =>
+                        setCounselingOptionsOther(e.target.value)
+                      }
+                    />
+                  )}
+                </div>
+              </div>
+              {/* <div>
                 <div className="yeschechbox-review">
                   {[
                     "Group",
@@ -2218,9 +2903,9 @@ const TreatmentPlan = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              {counselingOptionsTextBoolean && (
+              {/* {counselingOptionsTextBoolean && (
                 <div className="form-field">
                   <label>Comment:</label>
                   <textarea
@@ -2232,7 +2917,7 @@ const TreatmentPlan = () => {
                     onChange={(e) => setCounselingOptionsOther(e.target.value)}
                   />
                 </div>
-              )}
+              )} */}
 
               {/* <div className="yeschechbox-review">
               <label htmlFor="">Individual: </label>
@@ -2271,7 +2956,7 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              {option1Boolean && (
+              {/* {option1Boolean && (
                 <div className="form-field">
                   <label>Comment:</label>
                   <textarea
@@ -2283,7 +2968,7 @@ const TreatmentPlan = () => {
                     onChange={(e) => setoption1Other(e.target.value)}
                   />
                 </div>
-              )}
+              )} */}
 
               <div className="form-field">
                 <label>Admission Messure</label>
@@ -2358,6 +3043,8 @@ const TreatmentPlan = () => {
                   options={option2Option}
                   value={option2}
                   onChange={option2Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption2}
                 />
               </div>
 
@@ -2434,6 +3121,8 @@ const TreatmentPlan = () => {
                   options={option3Option}
                   value={option3}
                   onChange={option3Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption3}
                 />
               </div>
 
@@ -2510,6 +3199,8 @@ const TreatmentPlan = () => {
                   options={option4Option}
                   value={option4}
                   onChange={option4Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption4}
                 />
               </div>
 
@@ -2586,6 +3277,8 @@ const TreatmentPlan = () => {
                   options={option5Option}
                   value={option5}
                   onChange={option5Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption5}
                 />
               </div>
 
@@ -2662,6 +3355,8 @@ const TreatmentPlan = () => {
                   options={option6Option}
                   value={option6}
                   onChange={option6Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption6}
                 />
               </div>
 
@@ -2738,6 +3433,8 @@ const TreatmentPlan = () => {
                   options={option7Option}
                   value={option7}
                   onChange={option7Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption7}
                 />
               </div>
 
@@ -2814,6 +3511,8 @@ const TreatmentPlan = () => {
                   options={option8Option}
                   value={option8}
                   onChange={option8Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption8}
                 />
               </div>
 
@@ -3069,7 +3768,95 @@ const TreatmentPlan = () => {
               <label htmlFor="" className="label-review">
                 Support System:
               </label>
+
               <div className="yeschechbox-review">
+
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Family"
+                    checked={supportSystem.includes("Family")}
+                    onChange={() =>
+                      handleCheckboxChangeSupportSystem("Family")
+                    }
+                  />
+                  <label htmlFor="Family">Family</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Friends"
+                    checked={supportSystem.includes("Friends")}
+                    onChange={() =>
+                      handleCheckboxChangeSupportSystem("Friends")
+                    }
+                  />
+                  <label htmlFor="Friends">Friends</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="BHRF staff"
+                    checked={supportSystem.includes("BHRF staff")}
+                    onChange={() => handleCheckboxChangeSupportSystem("BHRF staff")}
+                  />
+                  <label htmlFor="BHRF staff">BHRF staff</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Clinical seam"
+                    checked={supportSystem.includes("Clinical seam")}
+                    onChange={() =>
+                      handleCheckboxChangeSupportSystem("Clinical seam")
+                    }
+                  />
+                  <label htmlFor="Clinical seam">Clinical seam</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Guardian"
+                    checked={supportSystem.includes("Guardian")}
+                    onChange={() =>
+                      handleCheckboxChangeSupportSystem("Guardian")
+                    }
+                  />
+                  <label htmlFor="Guardian">Guardian</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Sponsor name"
+                    checked={supportSystem.includes("Sponsor name")}
+                    onChange={() =>
+                      handleCheckboxChangeSupportSystem("Sponsor name")
+                    }
+                  />
+                  <label htmlFor="Sponsor name">Sponsor name</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="OtherpsychosocialSymptoms"
+                    checked={supportSystem.includes("Other")}
+                    onChange={() => handleCheckboxChangeSupportSystem("Other")}
+                  />
+                  <label htmlFor="OtherpsychosocialSymptoms">Other</label>
+                  {supportSystemOtherTextBoolean && (
+                    <AutosizeInput
+                      type="text"
+                      inputStyle={{ border: "none", outline: "none" }}
+                      placeholder="________"
+                      value={supportSystemOtherText}
+                      onChange={(e) =>
+                        setSupportSystemOtherText(e.target.value)
+                      }
+                    />
+                  )}
+                </div>
+              </div>
+              {/* <div className="yeschechbox-review">
                 {[
                   "Family",
                   "Friends",
@@ -3093,9 +3880,9 @@ const TreatmentPlan = () => {
                     </label>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
-              {supportSystemOtherTextBoolean && (
+              {/* {supportSystemOtherTextBoolean && (
                 <div className="form-field">
                   <label htmlFor="supportSystemOtherText">Comment:</label>
                   <textarea
@@ -3108,7 +3895,7 @@ const TreatmentPlan = () => {
                     onChange={(e) => setSupportSystemOtherText(e.target.value)}
                   />
                 </div>
-              )}
+              )} */}
 
               <div className="form-field">
                 <label htmlFor="phoneNumber">Phone Number: </label>
@@ -3465,7 +4252,108 @@ const TreatmentPlan = () => {
               <label htmlFor="" className="label-review">
                 Recommendations for further programs upon discharge:
               </label>
+
               <div className="yeschechbox-review">
+
+                <div>
+                  <input
+                    type="checkbox"
+                    id="PHP"
+                    checked={recommendationsForFurtherPrograms.includes("PHP")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms("PHP")
+                    }
+                  />
+                  <label htmlFor="PHP">PHP</label>
+                </div>
+
+                <div>
+                  <input
+                    type="checkbox"
+                    id="IOP"
+                    checked={recommendationsForFurtherPrograms.includes("IOP")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms("IOP")
+                    }
+                  />
+                  <label htmlFor="IOP">IOP</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Sober living"
+                    checked={recommendationsForFurtherPrograms.includes("Sober living")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms("Sober living")
+                    }
+                  />
+                  <label htmlFor="Sober living">Sober living</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Home"
+                    checked={recommendationsForFurtherPrograms.includes("Home")}
+                    onChange={() => handleCheckboxChangerecommendationsForFurtherPrograms("Home")}
+                  />
+                  <label htmlFor="Home">Home</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Flex Care 23.9"
+                    checked={recommendationsForFurtherPrograms.includes("Flex Care 23.9")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms("Flex Care 23.9")
+                    }
+                  />
+                  <label htmlFor="Flex Care 23.9">Flex Care 23.9</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Flex Care 16"
+                    checked={recommendationsForFurtherPrograms.includes("Flex Care 16")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms("Flex Care 16")
+                    }
+                  />
+                  <label htmlFor="Flex Care 16">Flex Care 16</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="Flex Care 8"
+                    checked={recommendationsForFurtherPrograms.includes("Flex Care 8")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms("Flex Care 8")
+                    }
+                  />
+                  <label htmlFor="Flex Care 8">Flex Care 8</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="OtherpsychosocialSymptoms"
+                    checked={recommendationsForFurtherPrograms.includes("Other")}
+                    onChange={() => handleCheckboxChangerecommendationsForFurtherPrograms("Other")}
+                  />
+                  <label htmlFor="OtherpsychosocialSymptoms">Other</label>
+                  {recommendationsForFurtherProgramsBoolean && (
+                    <AutosizeInput
+                      type="text"
+                      inputStyle={{ border: "none", outline: "none" }}
+                      placeholder="________"
+                      value={recommendationsForFurtherProgramsOther}
+                      onChange={(e) =>
+                        setRecommendationsForFurtherProgramsOther(e.target.value)
+                      }
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* <div className="yeschechbox-review">
                 {[
                   "PHP",
                   "IOP",
@@ -3494,8 +4382,8 @@ const TreatmentPlan = () => {
                     </label>
                   </div>
                 ))}
-              </div>
-
+              </div> */}
+              {/*
               {recommendationsForFurtherProgramsBoolean && (
                 <div className="form-field">
                   <label htmlFor="programlocation&address">Comment:</label>
@@ -3511,7 +4399,7 @@ const TreatmentPlan = () => {
                     }
                   />
                 </div>
-              )}
+              )} */}
 
               <label htmlFor="" className="label-review">
                 After care and Transition planning / Community Resources:
@@ -3615,6 +4503,8 @@ const TreatmentPlan = () => {
                   value={clinicalSummary}
                   options={clinicalSummaryOption}
                   onChange={clinicalSummaryHandler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyClinicalSummary}
                 />
               </div>
 

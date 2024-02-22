@@ -1,4 +1,7 @@
 /* ResidentForm.css */
+* {
+  font-family: 'Quicksand', sans-serif;
+}
 
 .form-container {
   width: 80%;
@@ -9,10 +12,12 @@
   font-size: 16px;
   font-weight: 500;
 }
+
 .form-container h5 {
   font-weight: 600;
   font-size: 24px;
 }
+
 .form-section {
   margin-bottom: 20px;
 }
@@ -27,6 +32,90 @@
 .form-field {
   margin-top: 1rem;
 }
+
+/* update css  new*/
+.form-field-update {
+  display: flex;
+  grid-gap: 20px;
+  justify-content: space-between;
+}
+
+
+.form-field-child {
+  margin-top: 1rem;
+  display: flex;
+
+  align-items: center;
+
+}
+
+.form-field-update label {
+  font-weight: bold;
+}
+
+.form-field-child input {
+  border: none;
+  width: auto;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
+}
+
+.form-field-update-date {
+  display: flex;
+  grid-gap: 20px;
+  /* justify-content: space-between; */
+}
+
+.form-field-update-date input {
+  border: none;
+  width: 200px;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
+}
+
+.form-field-single-update {
+  display: flex;
+  margin-top: 1rem;
+  align-items: ceter;
+}
+
+.form-field-single-update label {
+  font-weight: bold;
+}
+
+.form-field-single-update input {
+  border: none;
+  width: auto;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
+}
+
+
+.form-field-single-update select {
+  border: none;
+  width: 100%;
+  flex: 1;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
+
+}
+
 
 .form-field1 {
   margin-bottom: 15px;
@@ -60,17 +149,17 @@ select {
   margin-top: 0.8rem;
 }
 
-.form-actions-next{
+.form-actions-next {
   width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: flex;
-  gap:10px;
+  gap: 10px;
   justify-content: right;
 }
 
 .initalsubmitRisistent {
-  gap : 10px;
+  gap: 10px;
   width: 80px;
   height: 30px;
   border-radius: 5px;
@@ -109,7 +198,7 @@ select {
   align-content: center;
   width: calc(20% - 10px);
   margin-bottom: 10px;
-  gap:10px
+  gap: 10px
 }
 
 /* Styling for checkbox input */
@@ -147,8 +236,8 @@ input[type="checkbox"] {
 .checkboxitem12 {
   display: flex;
   align-items: flex-start;
- 
-  
+
+
   /* width: calc(20% - 10px); */
   margin-bottom: 10px;
   margin-bottom: 20px;
@@ -168,7 +257,8 @@ input[type="checkbox"] {
 input[type="checkbox"] {
   margin-right: 5px;
   width: auto;
-  transform: scale(1.5); /* Adjust the scale factor as needed */
+  transform: scale(1.5);
+  /* Adjust the scale factor as needed */
 }
 
 .yeschechbox {
@@ -178,7 +268,7 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
-.yeschechbox-significant{
+.yeschechbox-significant {
   display: flex;
   justify-content: space-between;
   width: 63%;
@@ -186,7 +276,7 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-.yeschechboxFall-risk{
+.yeschechboxFall-risk {
   display: flex;
   justify-content: space-between;
   width: 20%;
@@ -221,6 +311,13 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
+.yeschechboxOrientation {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
 .yeschechbox1 span {
   font-size: 14px;
   color: #00000099;
@@ -229,7 +326,7 @@ input[type="checkbox"] {
 
 .yeschechbox2 {
   display: flex;
-  grid-gap: 10px; 
+  grid-gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -245,6 +342,7 @@ input[type="checkbox"] {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .formsheading h6 {
   font-weight: 500;
   font-size: 20px;
@@ -269,17 +367,21 @@ input[type="checkbox"] {
   .checkboxitem {
     width: 100%;
   }
+
   .yeschechbox {
     width: 100%;
   }
+
   .yeschechbox label {
     font-size: 14px;
   }
+
   .yeschechbox1 {
     display: block;
     justify-content: space-between;
     width: 100%;
   }
+
   .yeschechbox2 {
     display: block;
     justify-content: space-between;
@@ -287,14 +389,14 @@ input[type="checkbox"] {
   }
 }
 
-@media (max-width: 900px) {
-}
+@media (max-width: 900px) {}
+
 @media (max-width: 568px) {
   .form-container {
     width: 90%;
   }
-  .check1 {
-  }
+
+  .check1 {}
 
   .initalsubmit {
     width: 200px;
@@ -317,7 +419,7 @@ input[type="checkbox"] {
   box-shadow: rgba(26, 159, 178, 0.1);
 }
 
-.file-upload-box-child{
+.file-upload-box-child {
   display: flex;
   /* flex-direction: column; */
   /* align-items: center; */
@@ -331,7 +433,7 @@ input[type="checkbox"] {
   box-shadow: rgba(26, 159, 178, 0.1);
 }
 
-.signature_name_print{
+.signature_name_print {
   background: transparent;
   color: #0c5c75;
   padding: 8px 16px;
@@ -360,6 +462,7 @@ input[type="checkbox"] {
   font-weight: 500;
   font-size: 12px;
 }
+
 .upload-button {
   width: 150px;
   height: 40px;
@@ -375,7 +478,7 @@ input[type="checkbox"] {
   font-size: 12px;
 }
 
-.upload-button-complete-form{
+.upload-button-complete-form {
   width: 180px;
   height: 40px;
   background-color: #0c5c75;
@@ -398,39 +501,47 @@ input[type="checkbox"] {
 
 .needs-interventions-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
   margin: 20px 0;
 }
 
 .needs-interventions-table {
   border-collapse: collapse;
-  width: 90%; /* Adjust the width as needed */
+  width: 90%;
+  /* Adjust the width as needed */
 }
 
 .needs-interventions-column {
-  width: 50%; /* Equal width for both columns */
+  width: 50%;
+  /* Equal width for both columns */
   border: 1px solid black;
 }
 
 .needs-interventions-column1 {
-  width: 100%; /* Equal width for both columns */
+  width: 100%;
+  /* Equal width for both columns */
   /* border: 1px solid black; */
 }
-.needs-interventions-column1 table{
-  width: 100%; /* Equal width for both columns */
+
+.needs-interventions-column1 table {
+  width: 100%;
+  /* Equal width for both columns */
   border: 1px solid black;
 }
 
-.needs-interventions-column1 table tr{
+.needs-interventions-column1 table tr {
   border: 1px solid black;
 }
-.needs-interventions-column1 table tr td{
+
+.needs-interventions-column1 table tr td {
   padding: 10px;
   border: 1px solid black;
 }
 
-.needs-interventions-column1 table thead th{
+.needs-interventions-column1 table thead th {
   border: 1px solid black;
   padding: 10px;
   width: 50%;
@@ -438,56 +549,64 @@ input[type="checkbox"] {
 
 .needs-interventions-container2 {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
   margin: 20px 0;
   width: 100%;
 }
 
-.needs-interventions-column2{
+.needs-interventions-column2 {
   width: 100%;
 }
 
-.needs-interventions-column2 table{
-  width: 100%; /* Equal width for both columns */
+.needs-interventions-column2 table {
+  width: 100%;
+  /* Equal width for both columns */
   border: 1px solid black;
 }
 
-.needs-interventions-column2 table tr{
+.needs-interventions-column2 table tr {
   border: 1px solid black;
 }
-.needs-interventions-column2 table tr td{
+
+.needs-interventions-column2 table tr td {
   padding: 10px;
   border: 1px solid black;
 }
 
-.needs-interventions-column2 table thead th{
+.needs-interventions-column2 table thead th {
   border: 1px solid black;
   padding: 10px;
 }
 
 /* safety plane */
 .needs-interventions-column3 {
-  width: 100%; /* Equal width for both columns */
+  width: 100%;
+  /* Equal width for both columns */
   /* border: 1px solid black; */
 }
-.needs-interventions-column3 table{
-  width: 100%; /* Equal width for both columns */
+
+.needs-interventions-column3 table {
+  width: 100%;
+  /* Equal width for both columns */
   border: 1px solid black;
 }
 
-.needs-interventions-column3 table tr{
+.needs-interventions-column3 table tr {
   border: 1px solid black;
 }
-.needs-interventions-column3 table tr td{
+
+.needs-interventions-column3 table tr td {
   padding: 10px;
   border: 1px solid black;
 }
 
-.needs-interventions-column3 table thead th{
+.needs-interventions-column3 table thead th {
   border: 1px solid black;
   padding: 10px;
-  
+
 }
 
 
@@ -495,8 +614,10 @@ input[type="checkbox"] {
   color: #000000;
   font-weight: 500;
   font-size: 20px;
-  text-align: center; /* Center the heading */
-  margin: 10px 0; /* Add some space above and below the heading */
+  text-align: center;
+  /* Center the heading */
+  margin: 10px 0;
+  /* Add some space above and below the heading */
 }
 
 .needs-interventions-column ul {
@@ -511,8 +632,10 @@ input[type="checkbox"] {
   font-size: 16px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  padding: 8px; /* Add padding for better readability */
+  padding: 8px;
+  /* Add padding for better readability */
 }
+
 .checkbox-labels {
   margin-left: 10px;
   display: flex;
@@ -577,14 +700,17 @@ input[type="checkbox"] {
     width: 100%;
   }
 }
+
 @media (max-width: 568px) {
   .bodydiv {
     display: block;
     margin-bottom: 20px;
   }
+
   .bodyiamge {
     margin-bottom: 20px;
   }
+
   .safetyplandiv {
     width: 100%;
   }
@@ -599,10 +725,10 @@ input[type="checkbox"] {
   align-items: center;
   display: flex;
   padding-left: 10px;
-  width: 150px;
+  width: 80px;
   height: 50px;
-  border: 2px solid #1e1e1e99;
-  border-radius: 5px;
+  /* border: 2px solid #1e1e1e99; */
+  /* border-radius: 5px; */
   transition: border-color 0.3s;
 }
 
@@ -618,7 +744,7 @@ input[type="checkbox"] {
   margin-bottom: 6px;
 }
 
-.custom-radio:checked + label {
+.custom-radio:checked+label {
   color: #1a9fb2;
 }
 
@@ -629,7 +755,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-.custom-radio:checked + .genderbox {
+.custom-radio:checked+.genderbox {
   border-color: #1a9fb2;
 }
 
@@ -640,6 +766,7 @@ input[type="checkbox"] {
   margin-bottom: 20px;
   color: #1e1e1eb2;
 }
+
 .residentdiv h6 {
   font-weight: 400;
   font-size: 16px;
@@ -676,8 +803,10 @@ input[type="checkbox"] {
   border: 2px solid #ffff;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Same box shadow as .booking-container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Same box shadow as .booking-container */
 }
+
 .booking-section h2 {
   font-weight: 500;
   font-size: 22px;
@@ -703,7 +832,7 @@ input[type="checkbox"] {
 
 /* /text box width */
 
-.inLine_box_style{
+.inLine_box_style {
   display: flex;
   height: 10px;
   gap: 10px;
@@ -711,67 +840,68 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-#input-text_value1{
+#input-text_value1 {
   width: 200px;
   font-size: auto;
 }
 
-#input-text_value2{
+#input-text_value2 {
   width: 200px;
 }
-#input-text_value3{
+
+#input-text_value3 {
   width: 100px;
 }
 
-.checkBox-aligment{
+.checkBox-aligment {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
 
-.checkbox654{
+.checkbox654 {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   margin-top: 1.5rem;
 }
 
-.chechbox12-correct{
+.chechbox12-correct {
   display: block;
   justify-content: space-between;
   width: 49%;
   margin-top: 1.5rem;
 }
 
-.chechbox12-aligment4{
+.chechbox12-aligment4 {
   display: block;
   justify-content: space-between;
   width: 75%;
   margin-top: 1.5rem;
 }
 
-.chechbox12-aligment411{
+.chechbox12-aligment411 {
   display: block;
   justify-content: space-between;
   width: 75%;
   margin-top: 1.5rem;
 }
 
-.yesNoAligment{
+.yesNoAligment {
   /* margin-left: 20%; */
   width: 47%;
   display: flex;
   gap: 30px
 }
 
-.employment-Aligmant{
+.employment-Aligmant {
   width: 50%;
   display: flex;
   gap: 50px
 }
 
-.employment-Aligmantfall-risk{
+.employment-Aligmantfall-risk {
   width: 40%;
   display: flex;
   gap: 50px;
@@ -785,38 +915,38 @@ input[type="checkbox"] {
 }
 
 
-.riskAndSafityAligment{
+.riskAndSafityAligment {
   display: flex;
   width: 45%;
-  gap:1rem
+  gap: 1rem
 }
 
-.employment-Aligmant-location{
+.employment-Aligmant-location {
   width: 90%;
   display: flex;
   gap: 50px
 }
 
 
-.increasingClass{
+.increasingClass {
   display: flex;
-  gap:2rem
+  gap: 2rem
 }
 
-.increasingClassInternal{
+.increasingClassInternal {
   width: 40%;
   display: flex;
-  gap:50px;
+  gap: 50px;
   justify-content: space-between;
 }
 
-.safetyRiskLast{
+.safetyRiskLast {
   width: 40%;
   display: flex;
   gap: 2rem;
 }
 
-.safetyRiskFactor{
+.safetyRiskFactor {
   margin-top: 1rem;
   width: 30%;
   display: flex;
@@ -824,7 +954,7 @@ input[type="checkbox"] {
   justify-content: space-between;
 }
 
-.safetyRiskFactor-child{
+.safetyRiskFactor-child {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -837,22 +967,22 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
-.Significant-losses{
+.Significant-losses {
   display: flex;
-  gap:10px;
+  gap: 10px;
   align-items: Center;
   justify-content: space-around;
   /* width: 20%; */
 }
 
-.checkboxitemBlock{
+.checkboxitemBlock {
   display: flex;
-  gap:"10px"
+  gap: "10px"
 }
 
 
 /* nursing assaestmet form */
-.parent-div-screening{
+.parent-div-screening {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -860,18 +990,18 @@ input[type="checkbox"] {
 
 .yeschechbox-screening {
   display: flex;
-  grid-gap: 10px; 
+  grid-gap: 10px;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
 }
 
-.screening-child{
+.screening-child {
   display: flex;
   gap: 10px;
 }
 
-.screening-child div{
+.screening-child div {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -879,13 +1009,13 @@ input[type="checkbox"] {
 
 /* reivew of systems */
 
-.label-review{
+.label-review {
   margin-top: 1.5rem;
   font-size: 1.2rem;
 
 }
 
-.yeschechbox-review{
+.yeschechbox-review {
   display: grid;
   grid-gap: 0.5rem;
   column-gap: auto;
@@ -894,7 +1024,7 @@ input[type="checkbox"] {
   grid-template-columns: repeat(5, 20%);
 }
 
-.yeschechbox-review-yes-no{
+.yeschechbox-review-yes-no {
   display: flex;
   gap: 20px;
 }
@@ -905,19 +1035,20 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-.yeschechbox-review div{
+.yeschechbox-review div {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.yeschechbox-review-Current{
+
+.yeschechbox-review-Current {
   display: flex;
   width: 100%;
   gap: 5%;
   margin-top: 1.5rem;
 }
 
-.yeschechbox-review-Nutrition{
+.yeschechbox-review-Nutrition {
   display: flex;
   width: 100%;
   gap: 10%;
@@ -931,7 +1062,7 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-.yeschechbox-review-treatment{
+.yeschechbox-review-treatment {
   display: flex;
   width: 100%;
   gap: 2%;
@@ -944,7 +1075,7 @@ input[type="checkbox"] {
   gap: 10%;
 }
 
-.yeschechbox-review-treatment-progress{
+.yeschechbox-review-treatment-progress {
   display: flex;
   align-items: center;
   gap: 5%;
@@ -959,39 +1090,41 @@ input[type="checkbox"] {
   height: 10px;
 }
 
-.yeschechbox-skin-check{
+.yeschechbox-skin-check {
   display: flex;
   margin-top: 1rem;
-  gap : 10%;
+  gap: 10%;
 }
 
-.yeschechbox-skin-check div{
+.yeschechbox-skin-check div {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.label-review-resitent-title{
+.label-review-resitent-title {
   margin-top: 1.5rem;
   font-size: 1.2rem;
 }
 
-.label-review-resitent{
+.label-review-resitent {
   margin-top: 1.5rem;
   font-size: 1rem;
 }
 
-@media screen and (max-width: 767px){
-  .parent-div-screening{
+@media screen and (max-width: 767px) {
+  .parent-div-screening {
     display: block;
     margin-top: 2rem;
     width: 100%;
   }
-  .label-review{
+
+  .label-review {
     margin-top: 1.5rem;
     font-size: 1.5rem;
   }
-  .yeschechbox-review{
+
+  .yeschechbox-review {
     display: grid;
     grid-gap: 0.5rem;
     column-gap: auto;
@@ -999,7 +1132,8 @@ input[type="checkbox"] {
     margin-right: 10px;
     grid-template-columns: repeat(3, 30%);
   }
-  .yeschechbox2-horizontal div{
+
+  .yeschechbox2-horizontal div {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -1027,17 +1161,18 @@ input[type="checkbox"] {
     transition: border-color 0.3s;
   }
 
-  .parent-div-screening{
+  .parent-div-screening {
     display: block;
     margin-top: 2rem;
     width: 100%;
   }
 
-  .label-review{
+  .label-review {
     margin-top: 1.5rem;
     font-size: 1.7rem;
   }
-  .yeschechbox-review{
+
+  .yeschechbox-review {
     display: grid;
     grid-gap: 0.5rem;
     column-gap: auto;
@@ -1045,7 +1180,8 @@ input[type="checkbox"] {
     margin-right: 10px;
     grid-template-columns: repeat(1, 100%);
   }
-  .yeschechbox2-horizontal div{
+
+  .yeschechbox2-horizontal div {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -1056,7 +1192,7 @@ input[type="checkbox"] {
 /* treatment form */
 /* Discharge planning & Re-evaluation of initial symptoms,
                 behaviours & Goals */
-.yeschechbox2-horizontal div{
+.yeschechbox2-horizontal div {
   display: flex;
   gap: 10px;
   align-items: center;

@@ -24,10 +24,10 @@ const Appointment_Scheduling = () => {
       
     return (
         <div className='Appointment_Schedulingcontainer'>
-            <div className='appointmentcontent'>
+            {/* <div className='appointmentcontent'>
                 <p>Appointment Scheduling</p>
-            </div>
-            <div className='Schedulingcards'>
+            </div> */}
+            {/* <div className='Schedulingcards'>
                 <div className="Scheduling-card">
                     <img src={scheduling1} alt="Icon" className="card-icon" />
                     <Link to={'/booknewappointment'}>
@@ -46,7 +46,7 @@ const Appointment_Scheduling = () => {
                     <p>Manage Appointments</p>
                     </Link>
                 </div>
-            </div>
+            </div> */}
             <div className='appointmentcontent'>
                 <p>Upcoming Appointments</p>
             </div>

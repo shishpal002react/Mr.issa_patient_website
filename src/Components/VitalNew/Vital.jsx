@@ -29,8 +29,8 @@ const Vital = () => {
     return (
         <>
             <div className='intakecontainer'>
-                <div className='intakecontent121'>
-                    <h6>Vitals</h6>
+                <div className='appointmentcontent'>
+                    <p>Vitals</p>
                 </div>
                 <div className='intakecardsVital'>
                 <div className="small-card2121">

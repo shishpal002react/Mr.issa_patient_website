@@ -794,19 +794,18 @@ const ResidentIntakes = () => {
     obligationsAndAuthorizationGuardianRepresentativeDate,
   };
 
-  const presentingPriceOption = [
-    { label: "Depression", value: "Depression" },
-    { label: "Mood Changes", value: "Mood Changes" },
-    {
-      label: "Trouble Falling / staying Asleep",
-      value: "Trouble Falling / staying Asleep",
-    },
-    { label: "Mood Swings", value: "Mood Swings" },
-    { label: "Social Withdrawals", value: "Social Withdrawals" },
-    { label: "Changes in Eating habits", value: "Changes in Eating habits" },
-    { label: "Feeling of anger", value: "Feeling of anger" },
+  const optionValue = [
+    { label: "An explanation of the behavioral health services the agency provides", value: "An explanation of the behavioral health services the agency provides" },
+    { label: "A description of the expectations for resident behavior and rules", value: "A description of the expectations for resident behavior and rules" },
+    { label: "A tour of the premises and identification of the evacuation path", value: "A tour of the premises and identification of the evacuation path" },
+    { label: "A schedule of planned activities for residents", value: "A schedule of planned activities for residents" },
+    { label: "Introductions to staff members and employees.", value: "Introductions to staff members and employees." },
+
   ];
 
+  const optionHandler = (optionValue) => {
+    setORIENTATIONDropDown(optionValue);
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -3052,20 +3051,28 @@ const ResidentIntakes = () => {
                   received an orientation by facility by staff. The orientation
                   included but not limited to the following:
                 </p>
-                <select  value={ORIENTATIONDropDown} onChange={(e)=>setORIENTATIONDropDown(e.target.value)}>
+
+
+                    <Select
+                      isMulti
+                      options={optionValue}
+                      value={ORIENTATIONDropDown}
+                      onChange={optionHandler}
+                    />
+                    {/* <select  value={ORIENTATIONDropDown} onChange={(e)=>setORIENTATIONDropDown(e.target.value)}>
                   <option value="">Select</option>
                 <option value="An explanation of the behavioral health services the agency
-                  provides;">An explanation of the behavioral health services the agency
-                  provides;</option>
+                  provides;">An explanation of the behavioral health services the agency provides
+                        ;</option>
                   <option value="A description of the expectations for resident behavior and
-                  program rules;">A description of the expectations for resident behavior and
-                  program rules;</option>
-                  <option value="A tour of the premises and identification of the evacuation
-                  path;">A tour of the premises and identification of the evacuation
+                  program rules;">A description of the expectations for resident behavior and rules
+                        program ;</option>
+                      <option value="A tour of the premises and identification of the evacuation path
+                  ;">A tour of the premises and identification of the evacuation
                   path;</option>
                   <option value="A schedule of planned activities for residents; and">A schedule of planned activities for residents; and</option>
                   <option value="Introductions to staff members and employees.">Introductions to staff members and employees.</option>
-                </select>
+                </select> */}
                
               </div>
               <label htmlFor="" className="label-review-resitent">

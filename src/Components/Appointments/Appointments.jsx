@@ -7,11 +7,15 @@ import cards from "../../img/card1.png";
 import Medications from "../../img/Medications.png";
 import upload from "../../img/upload.png"
 import nurse1 from "../../img/nurse (1).png";
+import scheduling1 from '../../img/sheduling1 (1).png'
+import scheduling2 from '../../img/sheduling1 (2).png'
+import scheduling3 from '../../img/sheduling1 (3).png'
 import {
   appointment_Upcoming,
   appointment_get,medication_get,user_detail,getAllPatientMedication
 } from "../../Api_Collection/Api";
 import Vital from "../VitalNew/Vital";
+import { Link } from "react-router-dom";
 // import Vitals from "../Vitals/Vitals";
 
 
@@ -50,8 +54,30 @@ const Appointments = () => {
 
   return (
     <div className="appointmentcontainer">
-    <div >
- 
+      <div className='appointmentcontent'>
+        <p>Appointment Scheduling</p>
+      </div>
+      <div className='Schedulingcards'>
+        <div className="Scheduling-card">
+          <img src={scheduling1} alt="Icon" className="card-icon" />
+          <Link to={'/booknewappointment'}>
+            <p>Book New Appointment</p>
+          </Link>
+        </div>
+        <div className="Scheduling-card">
+          <img src={scheduling2} alt="Icon" className="card-icon" />
+          <Link to={'/appointmenthistory'}>
+            <p>Appointment History</p>
+          </Link>
+        </div>
+        <div className="Scheduling-card">
+          <img src={scheduling3} alt="Icon" className="card-icon" />
+          <Link to={'/manageappointment'}>
+            <p>Manage Appointments</p>
+          </Link>
+        </div>
+      </div>
+      <div >
       <Vital/></div>
 
       <div className="appointmentcontent">

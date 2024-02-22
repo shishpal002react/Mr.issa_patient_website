@@ -69,7 +69,7 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
           Appointment Scheduling
         </div>
       </div>
-      <div
+      {/* <div
         className={`menu-item ${isItemActive("profile")}`}
         onClick={() => handleItemClick("profile")}
       >
@@ -79,7 +79,7 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
           </div>
         </Link>
         <div className={`text ${isItemActive("home")}`}>Profile</div>
-      </div>
+      </div> */}
       <div
         className={`menu-item ${isItemActive("logout")}`}
         onClick={() => handleItemClick("logout")}

@@ -30,8 +30,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/" element={<LoginForm />} />
+        {/* <Route path="/login" element={<LoginForm />} /> */}
         <Route
           path="/patient_panel"
           element={<Home Wcomponenet={Appointments} />}

@@ -14,6 +14,7 @@ import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
 import AutosizeInput from 'react-input-autosize';
 
+
 import { useReactToPrint } from "react-to-print";
 
 const InitialAssessment = () => {
@@ -22,6 +23,26 @@ const InitialAssessment = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+  const handlePrint2 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+
+    // Trigger the print action
+    handlePrint();
+
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+
 
   //singin model
   const [draftModel,setDraftModel]=useState(false)
@@ -1068,6 +1089,38 @@ const handleRiskFactorActivity=()=>{
     { label: "Court Ordered Treatment", value: "Court Ordered Treatment" },
   ];
 
+  const handleKeyDownAdmissionStatus = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = option_value_Admission.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...option_value_Admission,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setAdmissionStatus(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...admissionStatus,
+          { value: inputValue, label: inputValue }
+        ];
+        setAdmissionStatus(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const handleSelectChangeAdmission = (selectedOptions) => {
     setAdmissionStatus(selectedOptions);
   };
@@ -1345,6 +1398,38 @@ const handleRiskFactorActivity=()=>{
     },
   ];
 
+  const handleKeyDownMentalHealthTreatmentHistoryDiagnosisReason = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = mentalHealthTreatmentHistoryDiagnosisReasonOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...mentalHealthTreatmentHistoryDiagnosisReasonOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setMentalHealthTreatmentHistoryDiagnosisReason(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...mentalHealthTreatmentHistoryDiagnosisReason,
+          { value: inputValue, label: inputValue }
+        ];
+        setMentalHealthTreatmentHistoryDiagnosisReason(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
   const mentalHealthTreatmentHistoryDiagnosisReasonHandler = (
     selectedOptions
   ) => {
@@ -1421,6 +1506,38 @@ const handleRiskFactorActivity=()=>{
     { label: "Unsure", value: "Unsure" },
   ];
 
+
+  const handleKeyDownSubstanceAbuseHistoryDataLastUse = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = substanceAbuseHistoryDataLastUseOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...substanceAbuseHistoryDataLastUseOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSubstanceAbuseHistoryDataLastUse(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...substanceAbuseHistoryDataLastUse,
+          { value: inputValue, label: inputValue }
+        ];
+        setSubstanceAbuseHistoryDataLastUse(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
   const substanceAbuseHistoryDataLastUseHandler = (selectedOptions) => {
     setSubstanceAbuseHistoryDataLastUse(selectedOptions);
   };
@@ -1437,6 +1554,39 @@ const handleRiskFactorActivity=()=>{
     { label: "Few times a month", value: "Few times a month" },
   ];
 
+  const handleKeyDownSubstanceAbuseHistoryDataFrequency = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = substanceAbuseHistoryDataFrequencyOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...substanceAbuseHistoryDataFrequency,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSubstanceAbuseHistoryDataFrequency(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...substanceAbuseHistoryDataFrequency,
+          { value: inputValue, label: inputValue }
+        ];
+        setSubstanceAbuseHistoryDataFrequency(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
+
   const substanceAbuseHistoryDataFrequencyHandler = (selectedOptions) => {
     setSubstanceAbuseHistoryDataFrequency(selectedOptions);
   };
@@ -1452,6 +1602,38 @@ const handleRiskFactorActivity=()=>{
     { label: "One year", value: "One year" },
     { label: "Two years", value: "Two years" },
   ];
+
+  const handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = substanceAbuseHistoryDataLengthOfSobrietyOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...substanceAbuseHistoryDataLengthOfSobrietyOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSubstanceAbuseHistoryDataLengthOfSobriety(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...substanceAbuseHistoryDataLengthOfSobriety,
+          { value: inputValue, label: inputValue }
+        ];
+        setSubstanceAbuseHistoryDataLengthOfSobriety(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const substanceAbuseHistoryDataLengthOfSobrietyHandler = (selectedOptions) => {
     setSubstanceAbuseHistoryDataLengthOfSobriety(selectedOptions);
@@ -1474,6 +1656,38 @@ const handleRiskFactorActivity=()=>{
     { label: "Needs Legal Aid", value: "Needs Legal Aid" },
     { label: "Incarcerated", value: "Incarcerated" },
   ]
+
+  const handleKeyDownSelectedValue = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSelectedValue(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...selectedValue,
+          { value: inputValue, label: inputValue }
+        ];
+        setSelectedValue(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
 
   const selectedValueHandler = (selectedOptions) => {
     setSelectedValue(selectedOptions);
@@ -1584,6 +1798,38 @@ const handleRiskFactorActivity=()=>{
     { label: "Substance use", value: "Substance use" },
     { label: "None", value: "None" },
   ]
+
+  const handleKeySelectedValueSpecialPrecautions = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueSpecialPrecautionsOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueSpecialPrecautionsOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSelectedValueSpecialPrecautions(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...selectedValueSpecialPrecautions,
+          { value: inputValue, label: inputValue }
+        ];
+        setSelectedValueSpecialPrecautions(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
   const selectedValueSpecialPrecautionsHandler=(optionValue)=>{
     setSelectedValueSpecialPrecautions(optionValue)
   }
@@ -1602,6 +1848,37 @@ const handleRiskFactorActivity=()=>{
     { label: "Chronic pain", value: "Chronic pain" },
   ]
 
+  const handleKeySelectedValueRiskFactors = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueRiskFactorsOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueRiskFactorsOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSelectedValueRiskFactors(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...selectedValueRiskFactors,
+          { value: inputValue, label: inputValue }
+        ];
+        setSelectedValueRiskFactors(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
   const selectedValueRiskFactorsHandler=(optionValue)=>{
     setSelectedValueRiskFactors(optionValue)
   }
@@ -1617,6 +1894,37 @@ const handleRiskFactorActivity=()=>{
 
   ]
 
+  const handleKeySelectedValueProtectiveFactors = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueProtectiveFactorsOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueProtectiveFactorsOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSelectedValueProtectiveFactors(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...selectedValueProtectiveFactors,
+          { value: inputValue, label: inputValue }
+        ];
+        setSelectedValueProtectiveFactors(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
   const selectedValueProtectiveFactorsHandler=(optionValue)=>{
     setSelectedValueProtectiveFactors(optionValue)
   }
@@ -1695,21 +2003,23 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setCompanyName(e.target.value)}
               />
             </div> */}
-            <div className="form-field">
-              <label htmlFor="residentFullName">Resident Full Name</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label htmlFor="residentFullName">Resident Full Name:</label>
               <input
                 type="text"
                 id="residentFullName"
                 // value={user}
+                    className="borderless_input"
                 value={residentName}
-                placeholder="Enter full name"
+                    // placeholder="Enter full name"
                 required
                 // onChange={(e) => setUser(e.target.value)}
                 onChange={(e) => setResidentName(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="residentFullName">Gender</label>
+                <div className="form-field-child">
+                  <label htmlFor="residentFullName">Gender:</label>
 
               <div className="genderdiv">
                 <div className="genderbox">
@@ -1744,19 +2054,23 @@ inputStyle={{ border: "none", outline: "none" }}
                 </div>
               </div>
             </div>
-            <div className="form-field">
-              <label htmlFor="dateOfBirth">Date of Birth</label>
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label htmlFor="dateOfBirth">Date of Birth:</label>
               <input
                 style={{ color: "#1A9FB2" }}
                 type="date"
                 id="dateOfBirth"
+                    className="borderless_input"
                 value={dob}
                 placeholder="DD/MM/YYYY"
                 required
                 onChange={(e) => setDob(e.target.value)}
               />
             </div>
-            <div className="form-field">
+                <div className="form-field-child">
               <label htmlFor="admissionDate">Admission Date:</label>
               <input
                 type="date"
@@ -1767,8 +2081,12 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setDateOfAssessment(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">AHCCCS</label>
+
+              </div>
+
+
+              <div className="form-field-single-update">
+                <label htmlFor="AHCCCS">AHCCCS :</label>
               <input
                 type="text"
                 id="AHCCCS"
@@ -1778,59 +2096,65 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setAhcccsNumber(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="preferredlanguage">Preferred Language</label>
+
+
+              <div className="form-field-update">
+
+                <div className="form-field-child">
+                  <label htmlFor="preferredlanguage">Preferred Language:</label>
               <input
                 type="text"
                 required
                 value={preferredLanguage}
                 onChange={(e) => setPreferredLanguage(e.target.value)}
-              />
-              {/* <select
-                style={{ color: "#1A9FB2" }}
-                id="preferredlanguage"
-                value={preferredLanguage}
-                required
-                onChange={(e)=>setPreferredLanguage(e.target.value)}
-              >
-                <option value="English">English</option>
-                <option value="Hindi">Hindi</option>
-             
-              </select> */}
-              
-            </div>
+                  />
+                </div>
+
+                <div className="form-field-child">
+                  <label htmlFor="ethnicity">Ethnicity: </label>
+                  <input
+                    type="text"
+                    required
+                    value={ethnicity}
+                    onChange={(e) => setEthnicity(e.target.value)}
+                  />
+                </div>
+
+              </div>
+
+
+
             <div className="form-field">
-              <label htmlFor="ethnicity">Ethnicity</label>
-              <input
-                type="text"
-                required
-                value={ethnicity}
-                onChange={(e) => setEthnicity(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="admissionstatus">Admission Status</label>
+                <label style={{ fontWeight: "bold" }}>Admission Status:</label>
 
               <Select
                 isMulti
                 value={admissionStatus}
                 onChange={handleSelectChangeAdmission}
                 options={option_value_Admission}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownAdmissionStatus}
               />
             </div>
-            <div className="form-field">
+              <div className="form-field-single-update">
               <label
                 htmlFor="programlocation&address"
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                Program Location & Address{" "}
-                <img
+                  Program Location & Address:{" "}
+                  {/* <img
                   src={locate}
                   alt=""
                   style={{ width: "92px", height: "29px" }}
-                />
+                /> */}
               </label>
-              <textarea
+                <input
+                  type="text"
+                  required
+                  value={programLocation}
+                  onChange={(e) => setProgramLocation(e.target.value)}
+                />
+                {/* <textarea
                 id="programlocation&address"
                 type="text"
                 value={programLocation}
@@ -1839,12 +2163,22 @@ inputStyle={{ border: "none", outline: "none" }}
                 placeholder="Enter Full Address"
                 required
                 onChange={(e) => setProgramLocation(e.target.value)}
-              />
+              /> */}
             </div>
 
-            <div className="yeschechbox">
+              <div className="form-field-update">
+
+                <div className="form-field-child">
               <label htmlFor="">Guardianship:</label>
-              <div className="yesNoAligment">
+                  <input
+                    type="text"
+                    id="attorneystatus"
+                    value={guardianship}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setGuardianship(e.target.value)}
+                  />
+                  {/* <div className="yesNoAligment">
               <div className="checkboxitem">
                 <input
                   type="checkbox"
@@ -1865,8 +2199,23 @@ inputStyle={{ border: "none", outline: "none" }}
                 />
                <label htmlFor="guardianshipno">No</label>
               </div>
+              </div> */}
+                </div>
+
+                <div className="form-field-child">
+                  <label htmlFor="attorneystatus">Power of Attorney Status:</label>
+                  <input
+                    type="text"
+                    id="attorneystatus"
+                    value={powerOfAttorneyStatus}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setPowerOfAttorneyStatus(e.target.value)}
+                  />
+                </div>
+
               </div>
-            </div>
+
 
             {/* <div className="form-field">
               <label htmlFor="guardianship">Guardianship:</label>
@@ -1880,18 +2229,8 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setGuardianship(e.target.value)}
               />
             </div> */}
-            <div className="form-field">
-              <label htmlFor="attorneystatus">Power of Attorney Status:</label>
-              <input
-                type="text"
-                id="attorneystatus"
-                value={powerOfAttorneyStatus}
-                placeholder="Enter text"
-                required
-                onChange={(e) => setPowerOfAttorneyStatus(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
+
+              <div className="form-field-single-update">
               <label htmlFor="todaydate">Today’s Date:</label>
               <input
                 type="date"
@@ -1902,7 +2241,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setTodayDate(e.target.value)}
               />
             </div>
-            <div className="form-field">
+              <div className="form-field-single-update">
               <label htmlFor="fidname">Guardianship/POA/PUB FID Name:</label>
               <input
                 type="text"
@@ -1913,22 +2252,22 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setGuardianshipPoaPubFidName(e.target.value)}
               />
             </div>
-            <div className="form-field">
+              <div className="form-field-single-update">
               <label htmlFor="approvedby">Approved By:</label>
               <input
                 type="text"
                 id="approvedby"
                 value={approvedBy}
-                placeholder="Enter name"
+                  placeholder="Enter text"
                 required
                 onChange={(e) => setApprovedBy(e.target.value)}
               />
             </div>
-            <h2 style={{marginTop:"1.5rem"}}>Other Details</h2>
+              <h2 style={{ marginTop: "1.5rem", fontWeight: "bold" }}>Other Details:</h2>
             <div className="form-field">
           
-              <label htmlFor="reasonadmission">
-                Reason for Admission to Services
+                <label style={{ fontWeight: "bold" }}>
+                  Reason for Admission to Services:
               </label>
               <Select
                 isMulti
@@ -1941,9 +2280,17 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            <div className="form-field">
-              <label htmlFor="programlocation&address">Resident’s Goals:</label>
-              <textarea
+              <div className="form-field-single-update">
+                <label >Resident’s Goals:</label>
+                <input
+                  type="text"
+                  id="approvedby"
+                  value={residentGoals}
+                  placeholder="Enter goal"
+                  required
+                  onChange={(e) => setResidentGoals(e.target.value)}
+                />
+                {/* <textarea
                 id="programlocation&address"
                 type="text"
                 value={residentGoals}
@@ -1952,10 +2299,10 @@ inputStyle={{ border: "none", outline: "none" }}
                 cols={82}
                 required
                 onChange={(e) => setResidentGoals(e.target.value)}
-              />
+              /> */}
             </div>
             <div className="form-field">
-              <label htmlFor="reasonadmission">Resident’s Strength</label>
+                <label style={{ fontWeight: "bold" }}>Resident’s Strength:</label>
               <Select
                 isMulti
                 value={residentStrengths}
@@ -1966,27 +2313,20 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            {
-              residentStrengthsBoolean && (
-                <div className="form-field">
-              <label htmlFor="programlocation&addresstypeOfOtherBoolean">Comments</label>
-              <textarea
-                id="programlocation&addresstypeOfOtherBoolean"
-                value={residentStrengthsOther}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
+
+              <div className="form-field-single-update">
+                <label >
+                  Resident’s Barriers
+                </label>
+                <input
+                  type="text"
+                  id="approvedby"
+                  value={residentLimitations}
+                  placeholder="Enter text"
                 required
-                onChange={(e)=>setResidentStrengthsOther(e.target.value)}
+                  onChange={(e) => setResidentLimitations(e.target.value)}
               />
-            </div>
-              )
-            }
-            <div className="form-field">
-              <label htmlFor="programlocation&address">
-                Resident’s Barriers
-              </label>
-              <textarea
+                {/* <textarea
                 id="programlocation&address"
                 value={residentLimitations}
                 placeholder="Enter text"
@@ -1994,13 +2334,21 @@ inputStyle={{ border: "none", outline: "none" }}
                 cols={82}
                 required
                 onChange={(e) => setResidentLimitations(e.target.value)}
-              />
+              /> */}
             </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">
+              <div className="form-field-single-update">
+                <label >
                 Current Behavioral Issues / Symptoms Reported by the Resident:
               </label>
-              <textarea
+                <input
+                  type="text"
+
+                  value={currentBehavioralIssues}
+                  placeholder="Enter text"
+                  onChange={(e) => setCurrentBehavioralIssues(e.target.value)}
+                />
+
+                {/* <textarea
                 id="programlocation&address"
                 value={currentBehavioralIssues}
                 placeholder="Enter text"
@@ -2008,7 +2356,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 cols={82}
                 required
                 onChange={(e) => setCurrentBehavioralIssues(e.target.value)}
-              />
+              /> */}
             </div>
             <label className="label-review">
               Identified Needs/targeted Behaviors Intervention(s) to Meet
@@ -2142,7 +2490,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            <div class="file-upload-box"> 
+              <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -2205,7 +2553,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setStaffAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box"> 
+              <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -2281,7 +2629,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setBhpAgreementName(e.target.value)}
               />
             </div>
-            <div class="file-upload-box"> 
+              <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -2368,7 +2716,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setOtherRelationship(e.target.value)}
               />
             </div>
-            <div class="file-upload-box"> 
+              <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -2428,9 +2776,9 @@ inputStyle={{ border: "none", outline: "none" }}
 
     
 
-            <div className="yeschechbox">
+              <div className="form-field-update">
               <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Diabetes:</label>
-              <div className="checkbox654">
+                <div className="form-field-child">
                 <div className="checkBox-aligment">
                   <input
                     type="checkbox"
@@ -2450,20 +2798,18 @@ inputStyle={{ border: "none", outline: "none" }}
                   <label htmlFor="diabetesno">No</label>
                 </div>
               </div>
+                <div className="form-field-child">
+                  <label  >Comments:</label>
+                  <input
+                    type="text"
+                    placeholder="Enter comment"
+                    value={commentDiabety}
+                    onChange={(e) => setCommentDeabetes(e.target.value)}
+                  />
             </div>
 
-            <div className="form-field">
-              <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-              <textarea
-                id="programlocation&address"
-                value={commentDiabety}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                onChange={(e) => setCommentDeabetes(e.target.value)}
-                required
-              />
-            </div>
+
+              </div>
             <div className="yeschechbox">
               <label htmlFor="" style={{fontSize:"20px",marginTop:"1.5rem"}}>Heart disease / heart attack</label>
               <div className="checkbox654">
@@ -3360,19 +3706,23 @@ inputStyle={{ border: "none", outline: "none" }}
                 Mental Health Treatment History (in Resident hospitalization,
                 partial hospitalization, out Resident, etc):
               </h6>
-            </div>
-            <div className="form-field">
-              <label htmlFor="reasonadmission">Type of Service</label>
+              </div>
 
-              <Select
+              <div className="form-field-update">
+                <div >
+                  <label style={{ width: "100%" }}>Type of Service:</label>
+                </div>
+                <div style={{ width: "100%" }}>  <Select
                 isMulti
-
+                  style={{ border: "none", outline: "none" }}
                 value={mentalHealthTreatmentHistoryTypeOfService}
                 onChange={mentalHealthTreatmentHistoryTypeOfServiceHandler}
                 options={mentalHealthTreatmentHistoryTypeOfServiceOption}
                 isCreatable={true}
                 onKeyDown={handleKeyMentalHealthTreatmentHistoryTypeOfService}
-              />
+                /></div>
+
+
             </div>
 
 
@@ -3413,6 +3763,8 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={mentalHealthTreatmentHistoryDiagnosisReason}
                 onChange={mentalHealthTreatmentHistoryDiagnosisReasonHandler}
                 options={mentalHealthTreatmentHistoryDiagnosisReasonOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownMentalHealthTreatmentHistoryDiagnosisReason}
               />
             </div>
 
@@ -3506,6 +3858,8 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={substanceAbuseHistoryDataLastUse}
                 onChange={substanceAbuseHistoryDataLastUseHandler}
                 options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
               />
             </div>
             <div className="form-field">
@@ -3515,6 +3869,8 @@ inputStyle={{ border: "none", outline: "none" }}
                 value={substanceAbuseHistoryDataFrequency}
                 onChange={substanceAbuseHistoryDataFrequencyHandler}
                 options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
               />
             </div>
             <div className="form-field">
@@ -3524,6 +3880,8 @@ inputStyle={{ border: "none", outline: "none" }}
               isMulti
               onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
               options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
               />
             </div>
 
@@ -4758,7 +5116,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 </div>
               </div>
             </div>
-            <div className="yeschechbox1" style={{marginTop:"1.5rem"}}>
+              <div className="yeschechboxOrientation" style={{ marginTop: "1.5rem" }}>
             <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <label htmlFor="" >Orientation to Person:</label>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
@@ -4792,18 +5150,36 @@ inputStyle={{ border: "none", outline: "none" }}
                     <label htmlFor="timeno">No</label>
               </div>
               </div>
-              <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
+                {/* <div style={{ display: "flex", gap: "10px", alignItems: "center", display: "none" }}>
               <label htmlFor="">Circumstances:</label>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
               <input type="checkbox" id="circumstances" checked={circumstances===true} onChange={()=>setCircumstances(true)}/>
                     <label htmlFor="circumstances">Yes</label>
               </div>
               <div style={{display:"flex",gap:"10px",alignItems:"center"}}>
-              <input type="checkbox" id="circumstancesno" checked={circumstances===true} onChange={()=>setCircumstances(false)}/>
+                    <input type="checkbox" id="circumstancesno" checked={circumstances === false} onChange={() => setCircumstances(false)} />
                     <label htmlFor="circumstancesno">No</label>
               </div>
+                </div> */}
               </div>
-            </div>
+
+              <div className="yeschechbox">
+                <label htmlFor="">Circumstances:</label>
+                <div className="yesNoAligment">
+                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                    <input type="checkbox" id="circumstances" checked={circumstances === true} onChange={() => setCircumstances(true)} />
+                    <label htmlFor="circumstances">Yes</label>
+                  </div>
+                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                    <input type="checkbox" id="circumstancesno" checked={circumstances === false} onChange={() => setCircumstances(false)} />
+                    <label htmlFor="circumstancesno">No</label>
+
+                  </div>
+
+                </div>
+              </div>
+
+
             <div className="yeschechbox">
               <label htmlFor="">Judgment:</label>
               <div className="yesNoAligment">
@@ -5134,6 +5510,8 @@ inputStyle={{ border: "none", outline: "none" }}
               value={selectedValue}
               onChange={selectedValueHandler}
               options={selectedValueOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSelectedValue}
               />
               
             </div>
@@ -5213,7 +5591,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
             
-            <div className="form-actions">
+              <div className="form-actions  hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -5240,11 +5618,11 @@ inputStyle={{ border: "none", outline: "none" }}
           {handleRiskFactorActivityArray?.map((i, index) => (
             <tr key={index}>
               <td>
-                <ol>
+
                   {i?.bathingShoweringGood?.map((item) => (
-                    <li key={item?.value}>{item?.value}</li>
+                    <p key={item?.value}>{item?.value}</p>
                   ))}
-                </ol>
+
               </td>
               <td>{`${i.bathingShoweringFair === true ? "Yes" : "No"}`} </td>
               <td>{`${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td>
@@ -5331,7 +5709,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            {
+              {/* {
   selectedValueMedicalBoolean && (
     <div className="form-field">
     <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
@@ -5346,7 +5724,7 @@ inputStyle={{ border: "none", outline: "none" }}
   </div>
   )
 
-}
+} */}
             <div className="form-field">
               <label htmlFor="reasonadmission">Special Precautions:</label>
               <Select
@@ -5354,6 +5732,8 @@ inputStyle={{ border: "none", outline: "none" }}
               isMulti
               onChange={selectedValueSpecialPrecautionsHandler}
               options={selectedValueSpecialPrecautionsOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeySelectedValueSpecialPrecautions}
               />
             </div>
             <div className="formsheading">
@@ -5540,7 +5920,10 @@ inputStyle={{ border: "none", outline: "none" }}
               value={selectedValueRiskFactors}
               isMulti
               options={selectedValueRiskFactorsOption}
-              onChange={selectedValueRiskFactorsHandler}/>
+                  onChange={selectedValueRiskFactorsHandler}
+                  isCreatable={true}
+                  onKeyDown={handleKeySelectedValueRiskFactors}
+                />
             </div>
             <div className="yeschechbox">
               <div className="safetyRiskFactor">
@@ -5567,7 +5950,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            <div className="form-actions">
+              <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -5595,7 +5978,7 @@ inputStyle={{ border: "none", outline: "none" }}
               <td>
                 
                   {i?.selectedValueRiskFactors?.map((item) => (
-                    <li key={item?.value}>{item?.value}</li>
+                    <p key={item?.value}>{item?.value}</p>
                   ))}
                 
               </td>
@@ -5610,7 +5993,7 @@ inputStyle={{ border: "none", outline: "none" }}
 </div>
 
             <div className="form-field">
-              <label htmlFor="reasonadmission">
+                <label >
                 Protective factors that apply:
               </label>
               <Select
@@ -5618,6 +6001,8 @@ inputStyle={{ border: "none", outline: "none" }}
               isMulti
               onChange={selectedValueProtectiveFactorsHandler}
               options={selectedValueProtectiveFactorsOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeySelectedValueProtectiveFactors}
               />
            
             </div>
@@ -5646,7 +6031,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
 
-            <div className="form-actions">
+              <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -5672,11 +6057,11 @@ inputStyle={{ border: "none", outline: "none" }}
           {protectiveFactorsArray?.map((i, index) => (
             <tr key={index}>
               <td>
-                <ol>
+
                   {i?.selectedValueProtectiveFactors?.map((item) => (
-                    <li key={item?.value}>{item?.value}</li>
+                    <p key={item?.value}>{item?.value}</p>
                   ))}
-                </ol>
+
               </td>
               <td>{` ${i.protectiveYesNo === true ? "YES" : "NO"}`} </td>
               <td>{` ${i.protectiveYesNo === true ? "NO" : "YES"}`} </td>
@@ -5823,7 +6208,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div> */}
 
-            <div className="form-actions">
+              <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -5944,7 +6329,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div> */}
 
-            <div className="form-actions">
+              <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -6084,6 +6469,17 @@ inputStyle={{ border: "none", outline: "none" }}
                       onChange={() => setOtherBoolean(!otherBoolean)}
                     />
                     <label htmlFor="otherBoolean">Other (please specify)</label>
+                      {otherBoolean && (
+                        <AutosizeInput
+                          type="text"
+                          inputStyle={{ border: "none", outline: "none" }}
+                          placeholder="________"
+                          value={otherStressors}
+                          onChange={(e) =>
+                            setOtherStressors(e.target.value)
+                          }
+                        />
+                      )}
                   </div>
                 </div>
                 <div class="checkoptions">
@@ -6128,20 +6524,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 </div>
               </div>
             </div>
-            {otherBoolean && (
-              <div className="form-field">
-                <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-                <textarea
-                  id="programlocation&address"
-                  value={otherStressors}
-                  placeholder="Enter text"
-                  rows={2}
-                  cols={82}
-                  required
-                  onChange={(e) => setOtherStressors(e.target.value)}
-                />
-              </div>
-            )}
+
 
             <div className="yeschechbox-significant">
               <label htmlFor="">Significant recent losses:</label>
@@ -6278,27 +6661,23 @@ inputStyle={{ border: "none", outline: "none" }}
                     <label htmlFor="otherSignificantRecentLosses">
                       Other (please specify)
                     </label>
+                      {otherSignificantRecentLosses && (
+                        <AutosizeInput
+                          type="text"
+                          inputStyle={{ border: "none", outline: "none" }}
+                          placeholder="________"
+                          value={otherSignificantRecentLossesType}
+                          onChange={(e) =>
+                            setOtherSignificantRecentLossesType(e.target.value)
+                          }
+                        />
+                      )}
                   </div>
                 </div>
               </div>
             </div>
 
-            {
-  otherSignificantRecentLosses && (
-    <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-    <textarea
-      value={otherSignificantRecentLossesType}
-      onChange={(e)=>setOtherSignificantRecentLossesType(e.target.value)}
-      placeholder="Enter text"
-      rows={2}
-      cols={82}
-      required
-    />
-  </div>
-  )
 
-}
             <div className="form-field">
               <label >Additional Notes:</label>
               <textarea
@@ -6336,7 +6715,7 @@ inputStyle={{ border: "none", outline: "none" }}
               />
             </div>
           
-            <div class="file-upload-box"> 
+              <div class="file-upload-box hidePrint" > 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -6404,11 +6783,11 @@ inputStyle={{ border: "none", outline: "none" }}
                 onChange={(e) => setBhpCredentials(e.target.vaue)}
               />
             </div>
-            <div class="file-upload-box">
+              <div class="file-upload-box hidePrint" >
               
-              <div className="file-upload-box-child">
+                <div className="file-upload-box-child">
                <div >
-                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                    <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
                 </button>
                 </div>
@@ -6418,7 +6797,7 @@ inputStyle={{ border: "none", outline: "none" }}
                 </button>
                 </div>
                 <div>
-                <button className="upload-button" type="button" onClick={handlePrint}>
+                    <button className="upload-button" type="button" onClick={handlePrint2}>
                   PRINT THIS FORM
                 </button>
                 </div>

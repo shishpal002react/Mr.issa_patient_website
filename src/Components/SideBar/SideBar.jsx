@@ -26,12 +26,12 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
 
   return (
     <div className="sidebar">
-      <div style={{display:"flex", justifyContent:"center",width:"70%"}}>
+      <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
       <div className="logo" >
-        <img src={logo} alt="" style={{maxHeight:"3rem",paddingLeft:"5px"}}/>
+          <img src={logo} alt="" style={{ maxHeight: "3rem", paddingLeft: "5px" }} />
       </div>
       </div>
-      <span className="close1" onClick={toggleMenu}>
+      <span className="closeButton" onClick={toggleMenu}>
         <MdClose />
       </span>
       <div

@@ -5,11 +5,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden !important;
   font-family: 'Quicksand', sans-serif;
+
 }
 
 code {
   font-family: Quicksand !important;
 }
-*,html {
+
+*,
+html {
   font-family: Quicksand !important;
 }

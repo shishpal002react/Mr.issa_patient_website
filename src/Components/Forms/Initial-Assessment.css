@@ -5,7 +5,8 @@
 
 .form-container {
   width: 80%;
-  margin: 20px auto;
+
+  margin: auto;
 }
 
 .form-container p:nth-child(1) {
@@ -87,6 +88,7 @@
   align-items: ceter;
 }
 
+
 .form-field-single-update label {
   font-weight: bold;
 }
@@ -102,6 +104,30 @@
   margin-left: 1rem;
 }
 
+.form-field-single-update-notBold {
+  display: flex;
+  margin-top: 1rem;
+  align-items: ceter;
+}
+
+.form-field-single-update-notBold input {
+  border: none;
+  width: auto;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
+}
+
+.form-field-single-update-bold {
+  margin-top: 1.5rem;
+}
+
+.form-field-single-update-bold label {
+  font-weight: bold;
+}
 
 .form-field-single-update select {
   border: none;
@@ -116,7 +142,28 @@
 
 }
 
+.yeschechbox-update {
+  display: flex;
+  margin-top: 0.5rem;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 20px;
+}
 
+.select-same-line-update {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+/* old css */
 .form-field1 {
   margin-bottom: 15px;
   display: flex;
@@ -389,11 +436,12 @@ input[type="checkbox"] {
   }
 }
 
-@media (max-width: 900px) {}
+
 
 @media (max-width: 568px) {
   .form-container {
     width: 90%;
+    margin: auto;
   }
 
   .check1 {}

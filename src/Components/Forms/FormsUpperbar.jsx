@@ -12,7 +12,7 @@ const FormUpper = () => {;
   return (
     <>
       <div >
-        <div className='formsheading2' style={{ display: 'flex', justifyContent: "center", textAlign: "center", gap: "2rem", width: "100%" }} >
+        <div className='formsheading2' >
           <div className="checkboxitem125555">
 
             <label>Annual Assessment</label>

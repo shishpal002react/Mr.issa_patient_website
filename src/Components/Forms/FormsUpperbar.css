@@ -3,11 +3,12 @@
   /* align-items: center; */
 }
 
+
 .formsheading2 {
   text-align: center;
-  width: auto;
-  height: auto;
+
   padding: 20px;
+  width: inherit;
   margin-bottom: 20px;
   margin-top: 20px;
   border: 1px solid #ffff;
@@ -15,6 +16,10 @@
   /* Add your preferred box shadow */
   border-radius: 10px;
   background: #ffff;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
 }
 
 .checkboxitem125555 {
@@ -50,15 +55,17 @@
 
 @media(max-width: 900px) {
   .formsheading2 {
-    width: 100%;
+    width: 90%;
     height: auto;
+    margin: auto;
   }
 }
 
 @media(max-width: 568px) {
   .formsheading2 {
-    width: 100%;
+    width: 90%;
     height: auto;
+    margin: auto;
   }
 
   .formsheading2 h1 {

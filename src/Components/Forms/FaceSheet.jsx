@@ -61,13 +61,19 @@ const FaceSheet = () => {
       primaryCareProviderOtherSpecialists,
       primaryCareProviderName,
       primaryCareProviderPhone,
-      primaryCareProviderAddress
+      primaryCareProviderAddress,
+      preferredHospitalName,
+      preferredHospitalPhone,
+      preferredHospitalAddress
     }
     setPrimaryCareProviderArray((prev)=> [...prev,newData]);
     setPrimaryCareProviderOtherSpecialists("")
     setPrimaryCareProviderName("");
     setPrimaryCareProviderPhone("");
     setPrimaryCareProviderAddress("");
+    setPreferredHospitalName("");
+    setPreferredHospitalPhone("");
+    setPreferredHospitalAddress("");
   }
 
 
@@ -88,13 +94,17 @@ const FaceSheet = () => {
       psychiatricProviderName,
       psychiatricProviderPhone,
       psychiatricProviderAddress,
-      psychiatricProviderOtherSpecialists
+      psychiatricProviderOtherSpecialists,
+      healthPlan,
+      healthPlanId
     }
     setPsychiatricArray((prev)=> [...prev,newData]);
     setPsychiatricProviderName("")
     setPsychiatricProviderPhone("");
     setPsychiatricProviderAddress("");
     setPsychiatricProviderOtherSpecialists("");
+    setHealthPlan("");
+    setHealthPlanId("");
   }
 
   const [preferredHospitalName, setPreferredHospitalName] = useState("");
@@ -278,7 +288,9 @@ const FaceSheet = () => {
         </div>
         <form onSubmit={handleData}>
           <div className="form-section">
-            <div className="form-field">
+
+              <div className="form-field-update">
+                <div className="form-field-child">
               <label htmlFor="residentFullName">Resident Name:</label>
               <input
                 type="text"
@@ -289,10 +301,11 @@ const FaceSheet = () => {
                 onChange={(e) => setResidentName(e.target.value)}
               />
             </div>
-            <div className="form-field">
+
+                <div className="form-field-child">
               <label htmlFor="dateOfBirth">Date of Birth:</label>
               <input
-                style={{ color: "#1A9FB2" }}
+
                 type="date"
                 id="dateOfBirth"
                 value={dob}
@@ -301,10 +314,12 @@ const FaceSheet = () => {
                 onChange={(e) => setDob(e.target.value)}
               />
             </div>
-            <div className="form-field">
+
+
+                <div className="form-field-child">
               <label htmlFor="admissionDate">Admit Date:</label>
               <input
-                style={{ color: "#1A9FB2" }}
+
                 type="date"
                 id="dateOfBirth"
                 value={dateOfAdmit}
@@ -313,7 +328,10 @@ const FaceSheet = () => {
                 onChange={(e) => setDateOfAdmit(e.target.value)}
               />
             </div>
-            <div className="form-field">
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Facility Address:</label>
               <input
                 type="text"
@@ -324,7 +342,8 @@ const FaceSheet = () => {
                 onChange={(e) => setFacilityAddress(e.target.value)}
               />
             </div>
-            <div className="form-field">
+
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Facility Phone Number:</label>
               <input
                 type="text"
@@ -335,7 +354,11 @@ const FaceSheet = () => {
                 onChange={(e) => setFacilityPhoneNumber(e.target.value)}
               />
             </div>
-            <div className="form-field">
+
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Place of Birth:</label>
               <input
                 type="text"
@@ -346,7 +369,7 @@ const FaceSheet = () => {
                 onChange={(e) => setPlaceOfBirth(e.target.value)}
               />
             </div>
-            <div className="form-field">
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Eye Color:</label>
               <input
                 type="text"
@@ -357,7 +380,7 @@ const FaceSheet = () => {
                 onChange={(e) => setEyeColor(e.target.value)}
               />
             </div>
-            <div className="form-field">
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Race:</label>
               <input
                 type="text"
@@ -368,40 +391,47 @@ const FaceSheet = () => {
                 onChange={(e) => setRace(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Height:</label>
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Height:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={height}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setHeight(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Weight:</label>
+                <div className="form-field-child">
+                  <label >Weight:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={weight}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setWeight(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Hair Color:</label>
+
+                <div className="form-field-child">
+                  <label >Hair Color:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={hairColor}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setHairColor(e.target.value)}
               />
             </div>
-            <div className="form-field">
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Identifiable Marks:</label>
               <input
                 type="text"
@@ -412,7 +442,8 @@ const FaceSheet = () => {
                 onChange={(e) => setIdentifiableMarks(e.target.value)}
               />
             </div>
-            <div className="form-field">
+
+                <div className="form-field-child">
               <label htmlFor="AHCCCS">Primary Language:</label>
               <input
                 type="text"
@@ -423,9 +454,10 @@ const FaceSheet = () => {
                 onChange={(e) => setPrimaryLanguage(e.target.value)}
               />
             </div>
-            <div className="yeschechbox2" style={{marginTop:"1rem"}}>
+
+                <div className="form-field-child" style={{ marginTop: "1rem" }}>
               <label htmlFor="AHCCCS">Court Ordered Treatment?</label>
-              <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <input
                   type="checkbox"
                   id="courtOrderedTreatment"
@@ -435,7 +467,7 @@ const FaceSheet = () => {
                 />
                 <label htmlFor="courtOrderedTreatment">Yes</label>
               </div>
-              <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <input
                   type="checkbox"
                   id="courtOrderedTreatmentno"
@@ -446,19 +478,13 @@ const FaceSheet = () => {
                 <label htmlFor="courtOrderedTreatmentno">No</label>
               </div>
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">
-                Family/Guardian Emergency Name and Contact Number:
-              </label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={familyGuardianEmergencyName}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setFamilyGuardianEmergencyName(e.target.value)}
-              />
-            </div>
+
+
+              </div>
+
+
+
+
             {/* <div className="form-field">
               <label htmlFor="AHCCCS">Facility Emergency Contact Number:</label>
               <input
@@ -472,35 +498,49 @@ const FaceSheet = () => {
                 }
               />
             </div> */}
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Facility Emergency Contact Number:</label>
-              <input
-                type="text"
-                id="AHCCCS"
+
+              <div className="form-field-single-update">
+                <label>
+                  Family/Guardian Emergency Name and Contact Number:
+                </label>
+                <input
+                  type="text"
+
+                  value={familyGuardianEmergencyName}
+                  placeholder="Type Here....."
+                  required
+                  onChange={(e) => setFamilyGuardianEmergencyName(e.target.value)}
+                />
+              </div>
+              <div className="form-field-single-update">
+                <label >Facility Emergency Contact Number:</label>
+                <input
+                  type="text"
+
                 value={facilityEmergencyContact}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setFacilityEmergencyContact(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">MEDICATION Allergies:</label>
+              <div className="form-field-single-update">
+                <label >MEDICATION Allergies:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={medicationAllergies}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setMedicationAllergies(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">
-                Other Allergies (animal, food, environment)
+              <div className="form-field-single-update">
+                <label>
+                  Other Allergies (animal, food, environment):
               </label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={otherAllergies}
                 placeholder="Type Here....."
                 required
@@ -508,52 +548,96 @@ const FaceSheet = () => {
               />
             </div>
             <div className="formsheading">
-              <h6>Primary Care Provider</h6>
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Name:</label>
+                <h6 style={{ fontWeight: "bold" }}>Primary Care Provider:</h6>
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Name:</label>
               <input
-                type="text"
-                id="AHCCCS"
+                    type="text"
                 value={primaryCareProviderName}
                 placeholder="Type Here....."
                 
                 onChange={(e) => setPrimaryCareProviderName(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Phone Number:</label>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
               <input
                 type="number"
-                id="AHCCCS"
+
                 value={primaryCareProviderPhone}
                 placeholder="Type number....."
                 
                 onChange={(e) => setPrimaryCareProviderPhone(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Address:</label>
+                <div className="form-field-child">
+                  <label >Address:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={primaryCareProviderAddress}
                 placeholder="Type Here....."
                 
                 onChange={(e) => setPrimaryCareProviderAddress(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={primaryCareProviderOtherSpecialists}
-                placeholder="Type Here....."
-                
-                onChange={(e) => setPrimaryCareProviderOtherSpecialists(e.target.value)}
-              />
-            </div>
+
+                <div className="form-field-child">
+                  <label>Other Specialist - please specify:</label>
+                  <input
+                    type="text"
+
+                    value={primaryCareProviderOtherSpecialists}
+                    placeholder="Type Here....."
+
+                    onChange={(e) => setPrimaryCareProviderOtherSpecialists(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child">
+                  <label >Preferred Hospital Name:</label>
+                  <input
+                    type="text"
+
+                    value={preferredHospitalName}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setPreferredHospitalName(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child">
+                  <label >Preferred Hospital Phone Number:</label>
+                  <input
+                    type="text"
+
+                    value={preferredHospitalPhone}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setPreferredHospitalPhone(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child">
+                  <label >Preferred Hospital Address:</label>
+                  <input
+                    type="text"
+
+                    value={preferredHospitalAddress}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setPreferredHospitalAddress(e.target.value)}
+                  />
+                </div>
+
+
+
+              </div>
+
+
 
 <div className="form-actions">
               <button
@@ -575,6 +659,9 @@ const FaceSheet = () => {
             <th>Phone Number</th>
             <th>Address</th>
             <th>Other Specify</th>
+                          <th>Hospital Name</th>
+                          <th>Hospital Phone</th>
+                          <th>Hospital Address</th>
           </tr>
         </thead>
         <tbody>
@@ -587,6 +674,9 @@ const FaceSheet = () => {
               <td> {i?.primaryCareProviderPhone} </td>
               <td>  {i?.primaryCareProviderAddress}</td>
               <td>  {i?.primaryCareProviderOtherSpecialists}</td>
+              <td>  {i?.preferredHospitalName}</td>
+              <td>  {i?.preferredHospitalPhone}</td>
+              <td>  {i?.preferredHospitalAddress}</td>
             </tr>
           ))}
         </tbody>
@@ -596,52 +686,82 @@ const FaceSheet = () => {
 </div>
             
             <div className="formsheading">
-              <h6>Psychiatric Provider</h6>
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Name:</label>
+                <h6 style={{ fontWeight: "bold" }}>Psychiatric Provider:</h6>
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Name:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={psychiatricProviderName}
                 placeholder="Type Here....."
                 
                 onChange={(e) => setPsychiatricProviderName(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Phone Number:</label>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
               <input
                 type="number"
-                id="AHCCCS"
+
                 value={psychiatricProviderPhone}
                 placeholder="Type number....."
                 
                 onChange={(e) => setPsychiatricProviderPhone(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Address:</label>
+
+
+                <div className="form-field-child">
+                  <label >Address:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={psychiatricProviderAddress}
                 placeholder="Type Here....."
                 
                 onChange={(e) => setPsychiatricProviderAddress(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Other Specialist - please specify:</label>
+                <div className="form-field-child">
+                  <label >Other Specialist - please specify:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={psychiatricProviderOtherSpecialists}
                 placeholder="Type Here....."
                 
                 onChange={(e)=>setPsychiatricProviderOtherSpecialists(e.target.value)}
               />
             </div>
+                <div className="form-field-child">
+                  <label >Health Plan:</label>
+                  <input
+                    type="text"
+
+                    value={healthPlan}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setHealthPlan(e.target.value)}
+                  />
+                </div>
+                <div className="form-field-child">
+                  <label >ID #:</label>
+                  <input
+                    type="text"
+
+                    value={healthPlanId}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setHealthPlanId(e.target.value)}
+                  />
+                </div>
+
+              </div>
+
+
 
             <div className="form-actions">
               <button
@@ -664,6 +784,8 @@ const FaceSheet = () => {
             <th>Phone Number</th>
             <th>Address</th>
             <th>Other Specify</th>
+                          <th>Health Plane</th>
+                          <th>Health Plane Id</th>
           </tr>
         </thead>
         <tbody>
@@ -672,10 +794,11 @@ const FaceSheet = () => {
               <td>
                 {i?.psychiatricProviderName}
               </td>
-         
               <td> {i?.psychiatricProviderPhone} </td>
               <td>  {i?.psychiatricProviderAddress}</td>
               <td>  {i?.psychiatricProviderOtherSpecialists}</td>
+              <td>  {i?.healthPlan}</td>
+              <td>  {i?.healthPlanId}</td>
             </tr>
           ))}
         </tbody>
@@ -683,103 +806,54 @@ const FaceSheet = () => {
     )}
   </div>
 </div>
-       
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Preferred Hospital Name:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={preferredHospitalName}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setPreferredHospitalName(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Preferred Hospital Phone Number:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={preferredHospitalPhone}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setPreferredHospitalPhone(e.target.value)}
-              />
-            </div>
 
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Preferred Hospital Address:</label>
+
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Case Manager:</label>
+              <input
+                    type="text"
+
+                    value={caseManagerName}
+                placeholder="Type Here....."
+                required
+                    onChange={(e) => setCaseManagerName(e.target.value)}
+              />
+            </div>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
               <input
                 type="text"
-                id="AHCCCS"
-                value={preferredHospitalAddress}
+
+                    value={caseManagerPhone}
                 placeholder="Type Here....."
                 required
-                onChange={(e) => setPreferredHospitalAddress(e.target.value)}
+                    onChange={(e) => setCaseManagerPhone(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Health Plan:</label>
+                <div className="form-field-child">
+                  <label >E-Mail:</label>
               <input
-                type="text"
-                id="AHCCCS"
-                value={healthPlan}
+                    type="email"
+
+                    value={caseManagerEmail}
                 placeholder="Type Here....."
                 required
-                onChange={(e) => setHealthPlan(e.target.value)}
+                    onChange={(e) => setCaseManagerEmail(e.target.value)}
               />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">ID #:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={healthPlanId}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setHealthPlanId(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Case Manager:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={caseManagerName}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setCaseManagerName(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Phone Number:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={caseManagerPhone}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setCaseManagerPhone(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">E-Mail:</label>
-              <input
-                type="email"
-                id="AHCCCS"
-                value={caseManagerEmail}
-                placeholder="Type Here....."
-                required
-                onChange={(e) => setCaseManagerEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">
+                </div>
+              </div>
+
+              <div className="form-field-update ">
+
+                <div className="form-field-child">
+                  <label >
                 Social Security Representative Payee:
               </label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={socialSecurityRepresentativePayeeName}
                 placeholder="Type Here....."
                 required
@@ -788,11 +862,11 @@ const FaceSheet = () => {
                 }
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Phone Number:</label>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={socialSecurityRepresentativePayeePhone}
                 placeholder="Type Here....."
                 required
@@ -801,11 +875,11 @@ const FaceSheet = () => {
                 }
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">E-Mail:</label>
+                <div className="form-field-child">
+                  <label >E-Mail:</label>
               <input
                 type="email"
-                id="AHCCCS"
+
                 value={socialSecurityRepresentativePayeeEmail}
                 placeholder="Type Here....."
                 required
@@ -814,33 +888,40 @@ const FaceSheet = () => {
                 }
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Mental Health Diagnoses:</label>
+              </div>
+
+
+
+
+
+
+              <div className="form-field-single-update">
+                <label >Mental Health Diagnoses:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={mentalHealthDiagnoses}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setMentalHealthDiagnoses(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Medical Diagnoses Health:</label>
+              <div className="form-field-single-update">
+                <label >Medical Diagnoses Health:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={medicalDiagnosesHistory}
                 placeholder="Type Here....."
                 required
                 onChange={(e) => setMedicalDiagnosesHistory(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">Past Surgeries:</label>
+              <div className="form-field-single-update">
+                <label >Past Surgeries:</label>
               <input
                 type="text"
-                id="AHCCCS"
+
                 value={pastSurgeries}
                 placeholder="Type Here....."
                 required

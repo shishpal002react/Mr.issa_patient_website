@@ -303,60 +303,34 @@ const NursingAssessment = () => {
     navigate("/intake");
   };
 
-  const careProvidedPhysicalServicesOption = [
-    { label: "Physical Services", value: "Physical Services" },
-    {
-      label: "Behavioral Health Services",
-      value: "Behavioral Health Services",
-    },
-  ];
 
-  const careProvidedPhysicalServicesHandler = (optionValue) => {
-    setCareProvidedPhysicalServices(optionValue);
-  };
-
-  //code Status
-  
-  const codeStatusOption=[
-    {label:"Full Code", value:"Full Code"},
-    {label:"DNR", value:"DNR"}
-  ]
-
-  const handleKeyCodeStatus = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
-      const inputValue = event.target.value.trim();
-
-      // Check if the input value already exists in the options array
-      const optionExists = codeStatusOption.some(
-        (option) => option.value === inputValue
+  const careProvidedPhysicalServicesHandler = (status) => {
+    if (careProvidedPhysicalServices.includes(status)) {
+      // If selected, remove it from the array
+      setCareProvidedPhysicalServices((prevStatus) =>
+        prevStatus.filter((item) => item !== status)
       );
-
-      // If the input value doesn't exist, add it to the array
-      if (!optionExists) {
-        const newOptions = [
-          ...codeStatusOption,
-          { value: inputValue, label: inputValue }
-        ];
-
-        // Update the state with the new options
-        setCodeStatus(newOptions);
-
-        // Update the selected values to include the newly created option
-        const newSelectedValues = [
-          ...codeStatus,
-          { value: inputValue, label: inputValue }
-        ];
-        setCodeStatus(newSelectedValues);
-      }
-
-      // Clear the input value after adding the option
-      event.target.value = "";
+    } else {
+      // If not selected, add it to the array
+      setCareProvidedPhysicalServices((prevStatus) => [...prevStatus, status]);
     }
   };
 
-  const codeStatusHandler=(optionValue)=>{
-    setCodeStatus(optionValue)
-  }
+  // status code
+  const handleCodeStatusChange = (status) => {
+    // Check if the status is already selected
+    if (codeStatus.includes(status)) {
+      // If selected, remove it from the array
+      setCodeStatus((prevStatus) =>
+        prevStatus.filter((item) => item !== status)
+      );
+    } else {
+      // If not selected, add it to the array
+      setCodeStatus((prevStatus) => [...prevStatus, status]);
+    }
+  };
+
+
   return (
     <>
     <div ref={componentRef} >
@@ -374,17 +348,19 @@ const NursingAssessment = () => {
       <div className="form-container">
         <div className="formheading1">
           <div className="formsheading2">
-            <h1>Initial Nursing Assessment</h1>
+              {/* <h1>Initial Nursing Assessment</h1> */}
+              <h1> Nursing Assessment</h1>
           </div>
         </div>
         <form onSubmit={handlePost}>
           <div className="form-section">
             <h2>Resident’s Details</h2>
 
-            <div className="form-field">
-              <label htmlFor="dateOfBirth">Today’s Date</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label htmlFor="dateOfBirth">Today’s Date:</label>
               <input
-                style={{ color: "#1A9FB2" }}
+
                 type="date"
                 id="dateOfBirth"
                 value={todayDate}
@@ -393,10 +369,10 @@ const NursingAssessment = () => {
                 onChange={(e) => setTodayDate(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="admissionDate">Admission Date</label>
+                <div className="form-field-child">
+                  <label htmlFor="admissionDate">Admission Date:</label>
               <input
-                style={{ color: "#1A9FB2" }}
+
                 type="date"
                 id="dateOfBirth"
                 value={admissionDate}
@@ -404,36 +380,40 @@ const NursingAssessment = () => {
                 required
                 onChange={(e) => setAdmissionDate(e.target.value)}
               />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="form-field">
-            <label htmlFor="admissionDate">Full Name</label>
+
+
+            <div className="form-field-update">
+              <div className="form-field-child">
+                <label htmlFor="admissionDate">Full Name:</label>
             <input
-              style={{ color: "#1A9FB2" }}
+
               type="text"
               id="dateOfBirth"
               value={name}
               placeholder="Enter name"
               required
               onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="admissionDate">Date of Birth</label>
+                />
+              </div>
+              <div className="form-field-child">
+                <label htmlFor="admissionDate">Date of Birth:</label>
+                <input
+
+                  type="date"
+                  id="dateOfBirth"
+                  value={dateOfBirth}
+                  placeholder="DD/MM/YYYY"
+                  required
+                  onChange={(e) => setDateOfBirth(e.target.value)}
+                />
+              </div>
+              <div className="form-field-child">
+                <label htmlFor="admissionDate">Enter Age:</label>
             <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-              id="dateOfBirth"
-              value={dateOfBirth}
-              placeholder="DD/MM/YYYY"
-              required
-              onChange={(e) => setDateOfBirth(e.target.value)}
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="admissionDate">Enter Age</label>
-            <input
-              style={{ color: "#1A9FB2" }}
+
               type="text"
               id="dateOfBirth"
               value={age}
@@ -442,7 +422,35 @@ const NursingAssessment = () => {
               onChange={(e) => setAge(e.target.value)}
             />
           </div>
-          <div className="form-field">
+
+              <div className="form-field-child">
+                <div>
+                  <label htmlFor="" >Gender: </label>
+                </div>
+                <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={sex === "Male"}
+                    onChange={() => setSex("Male")}
+                  />
+                  <label >M</label>
+                </div>
+                <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={sex === "Female"}
+                    onChange={() => setSex("Female")}
+                  />
+                  <label >F</label>
+                </div>
+              </div>
+            </div>
+
+
+
+            {/* <div className="form-field">
             <label htmlFor="gender">Select Gender</label>
             <select
               type="select"
@@ -456,7 +464,7 @@ const NursingAssessment = () => {
                 <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
-          </div>
+          </div> */}
           {/* <div className="form-field">
                             <label htmlFor="AHCCCS">Resident Full Name</label>
                             <input
@@ -503,43 +511,92 @@ const NursingAssessment = () => {
                                 </div>
                             </div>
                         </div> */}
-          <div className="form-field">
-            <label htmlFor="AHCCCS">Admission Diagnosis</label>
-            <textarea
-              type="text"
-              id="AHCCCS"
-              value={admissionDiagnoses}
-              rows={2}
-              cols={130}
-              placeholder="Enter text."
-              required
-              onChange={(e) => setAdmissionDiagnoses(e.target.value)}
-            />
+            <div className="form-field-single-update">
+              <label htmlFor="AHCCCS">Admission Diagnosis: </label>
+              <input
+
+                type="text"
+
+                value={admissionDiagnoses}
+                placeholder="Enter text"
+                required
+                onChange={(e) => setAdmissionDiagnoses(e.target.value)}
+              />
+
           </div>
-          <div className="form-field">
-            <label htmlFor="gender">Code Status</label>
-            <Select
-            isMulti
-            onChange={codeStatusHandler}
-            options={codeStatusOption}
-            value={codeStatus}
-                isCreatable={true}
-                onKeyDown={handleKeyCodeStatus}
-            />
-            
-          </div>
-          <div className="form-field">
-            <label htmlFor="admissionDate">Date of Last TB Screening</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-              id="dateOfBirth"
+
+
+            <div className="form-field-single-update">
+              <div>
+                <label htmlFor="" >Code Status: </label>
+              </div>
+              <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                <input
+                  type="checkbox"
+
+                  checked={codeStatus.includes("Full Code")}
+                  onChange={() => handleCodeStatusChange("Full Code")}
+                />
+                <label >Full Code</label>
+              </div>
+              <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                <input
+                  type="checkbox"
+
+                  checked={codeStatus.includes("DNR")}
+                  onChange={() => handleCodeStatusChange("DNR")}
+                />
+                <label >DNR</label>
+              </div>
+            </div>
+
+            <div className="form-field-update">
+              <div className="form-field-child">
+                <label >Date of Last TB Screening:</label>
+                <input
+                  type="date"
               value={lastTBScreeningDate}
               placeholder="DD/MM/YYYY"
               required
               onChange={(e) => setLastTBScreeningDate(e.target.value)}
             />
           </div>
+
+              <div className="form-field-child">
+                <div>
+                  <label htmlFor="" >Results: </label>
+                </div>
+                <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Negative"}
+                    onChange={() => setTbScreeningResults("Negative")}
+                  />
+                  <label >Negative</label>
+                </div>
+                <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Positive"}
+                    onChange={() => setTbScreeningResults("Positive")}
+                  />
+                  <label >Positive</label>
+                </div>
+                <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Pending"}
+                    onChange={() => setTbScreeningResults("Pending")}
+                  />
+                  <label >Pending</label>
+                </div>
+              </div>
+
+            </div>
+            {/*
           <div className="form-field">
             <label htmlFor="gender">Results of TB Screening</label>
             <select
@@ -552,8 +609,31 @@ const NursingAssessment = () => {
               <option value="Positive">Positive</option>
               <option value="Pending">Pending</option>
             </select>
-          </div>
-          <div className="form-field">
+          </div> */}
+
+            <div className="form-field-single-update">
+              <div>
+                <label >Care to be provided at Devine Care: </label>
+              </div>
+              <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                <input
+                  type="checkbox"
+
+                  checked={careProvidedPhysicalServices.includes("Physical Services")}
+                  onChange={() => careProvidedPhysicalServicesHandler("Physical Services")}
+                />
+                <label >Physical Services</label>
+              </div>
+              <div style={{ display: 'flex', gap: "10px", alignItems: "center" }}>
+                <input
+                  type="checkbox"
+                  checked={careProvidedPhysicalServices.includes("Behavioral Health Services")}
+                  onChange={() => careProvidedPhysicalServicesHandler("Behavioral Health Services")}
+                />
+                <label >Behavioral Health Services</label>
+              </div>
+            </div>
+            {/* <div className="form-field">
             <label htmlFor="gender">Care to be provided at Devine Care</label>
 
             <Select
@@ -561,9 +641,9 @@ const NursingAssessment = () => {
               value={careProvidedPhysicalServices}
               onChange={careProvidedPhysicalServicesHandler}
               options={careProvidedPhysicalServicesOption}
-            
+
             />
-          </div>
+          </div> */}
           {/* <div className="form-field">
             <label htmlFor="gender">
               Care to be provided at Care Provided Behavioral Health Services
@@ -583,108 +663,107 @@ const NursingAssessment = () => {
             </select>
        
           </div> */}
-          <h2 style={{marginTop:"1rem"}}>Vitals</h2>
-          <div className="form-field1">
-        
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Blood Pressure</label>
+            <h2 style={{ marginTop: "1rem", fontWeight: "bold" }}>Vitals:</h2>
+
+            <div className="form-field-update">
+
+              <div className="form-field-child ">
+                <label htmlFor="AHCCCS">Blood Pressure:</label>
                 <input
                   type="tel"
                   pattern="{0-9}"
                   placeholder="BP "
                   value={vitalsBloodPressure}
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsBloodPressure(e.target.value)}
                 />
               </div>
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Pulse Rate</label>
+
+              <div className="form-field-child">
+                <label htmlFor="AHCCCS">Pulse Rate:</label>
                 <input
                   type="number"
                 
                   value={vitalsPulse}
                   placeholder="BPM"
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsPulse(e.target.value)}
                 />
               </div>
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Respiration Rate</label>
+
+              <div className="form-field-child">
+                <label htmlFor="AHCCCS">Respiration Rate:</label>
                 <input
                   type="number"
                   placeholder="BPM"
                   value={vitalsRespiratoryRate}
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsRespiratoryRate(e.target.value)}
                 />
               </div>
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Body Temperature</label>
+
+            </div>
+
+            <div className="form-field-update">
+
+              <div className="form-field-child ">
+                <label htmlFor="AHCCCS">Body Temperature:</label>
                 <input
                   type="number"
                   placeholder="F"
                   value={vitalsTemperature}
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsTemperature(e.target.value)}
                 />
               </div>
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Blood Oxygen</label>
+              <div className="form-field-child">
+                <label htmlFor="AHCCCS">Blood Oxygen:</label>
                 <input
                   type="number"
                 placeholder="O2%"
                   value={vitalsOxygenLevel}
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsOxygenLevel(e.target.value)}
                 />
               </div>
            
        
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Weight</label>
+              <div className="form-field-child">
+                <label htmlFor="AHCCCS">Weight:</label>
                 <input
                   type="number"
               placeholder="Ibs"
                   value={vitalsWeight}
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsWeight(e.target.value)}
                 />
               </div>
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Height</label>
+            </div>
+
+
+            <div className="form-field-update">
+              <div className="form-field-child">
+                <label htmlFor="AHCCCS">Height:</label>
                 <input
                   type="number"
                 placeholder="Ft/Inche"
                   value={vitalsHeightFeet}
                   required
-                  style={{ width: "166px", height: "50px" }}
+
                   onChange={(e) => setVitalsHeightFeet(e.target.value)}
                 />
               </div>
-              {/* <div style={{ marginRight: "20px" }}>
-                <label htmlFor="AHCCCS">Height Inches</label>
-                <input
-                  type="number"
-                  placeholder="In"
-                  value={vitalsHeightInches}
-                  required
-                  style={{ width: "166px", height: "50px" }}
-                  onChange={(e) => setVitalsHeightInches(e.target.value)}
-                />
-              </div> */}
-       
-          </div>
-          <div className="form-field">
+            </div>
+            <div className="form-field-single-update">
             <label htmlFor="AHCCCS">Allergies:</label>
             <input
-              type="text"
-       
+                type="text"
               value={allergies}
               required
               onChange={(e) => setAllergies(e.target.value)}
@@ -692,11 +771,9 @@ const NursingAssessment = () => {
           </div>
 
           <div className="formsheading">
-            <h6>Covid-19 Screening</h6>
-            <p>
-              Regardless of your vaccination status, have you experienced any of
-              the symptoms bellow in the past 48 hours?
-            </p>
+              <h6>Covid-19 Screening:Regardless of your vaccination status, have you experienced any of
+                the symptoms bellow in the past 48 hours?</h6>
+
           </div>
 
 <div className="parent-div-screening">
@@ -2320,9 +2397,13 @@ const NursingAssessment = () => {
               />
             </div> 
 
-            <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Suicidal Risk Assessment:</label>
-          <div className="yeschechbox-review">
-            <div>
+
+            <div className="form-field-update">
+              <div className="form-field-child">
+                <label htmlFor="" className="label-review" style={{ fontSize: "20px" }}>Suicidal Risk Assessment:</label>
+              </div>
+
+              <div className="form-field-child">
               <input
                 type="checkbox"
                 id="suicidalRiskAssessmentDeniesSymptomsBellow"
@@ -2333,7 +2414,7 @@ const NursingAssessment = () => {
                   )
                 }
               />
-              <label htmlFor="suicidalRiskAssessmentDeniesSymptomsBellow">
+                <label htmlFor="suicidalRiskAssessmentDeniesSymptomsBellow" style={{ fontSize: "20px" }}>
                 Denies Symptoms Bellow
               </label>
             </div>
@@ -2472,7 +2553,7 @@ const NursingAssessment = () => {
                 }
               />
               <label htmlFor="helplessnessHopelessness">
-                Helplessness
+                  Helplessness  
               </label>
             </div>
             <div>
@@ -2845,21 +2926,21 @@ const NursingAssessment = () => {
             </div>
           </div>
 
-          <div className="form-field">
-            <label htmlFor="reviewOfSystemsConstitutionalOther&address">Comment:</label>
-            <textarea
-              id="reviewOfSystemsConstitutionalOther&address"
-              value={commentFigure}
-              placeholder="Enter text"
-              rows={2}
-              cols={82}
-              required
-              onChange={(e)=>setCommentFigure(e.target.value)}
-            />
+            <div className="form-field-single-update">
+              <label >Comment:</label>
+
+              <input
+                type="text"
+                value={commentFigure}
+                placeholder="Enter Comment"
+                required
+                onChange={(e) => setCommentFigure(e.target.value)}
+              />
+
           </div>
 
 
-          <div className="form-field">
+            <div className="form-field-single-update">
             <label htmlFor="AHCCCS">BHT Name:</label>
             <input
               type="text"
@@ -2870,7 +2951,7 @@ const NursingAssessment = () => {
               onChange={(e) => setBhtName(e.target.value)}
             />
           </div>
-          <label style={{marginTop:"1rem"}}>BHT Signature:</label>
+
           {/* <input
             type="text"
             value={bhtSignature}
@@ -2904,18 +2985,17 @@ const NursingAssessment = () => {
                 setDateAndTime={setbhtDate}
                 />)
             }
-          <div className="form-field">
-            <label htmlFor="AHCCCS">RN Name:</label>
+            <div className="form-field-single-update">
+              <label >RN Name:</label>
             <input
               type="text"
-              id="AHCCCS"
+
               value={rnName}
               placeholder="Enter Name"
               required
               onChange={(e) => setRnName(e.target.value)}
             />
-          </div>
-          <label style={{marginTop:"1rem"}}>RN Signature:</label>
+            </div>
 
           <div class="file-upload-box">
               

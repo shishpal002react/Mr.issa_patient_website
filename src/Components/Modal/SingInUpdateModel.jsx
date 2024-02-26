@@ -11,24 +11,26 @@ const SingInUpdateModel = ({ onClose, singin, setSingIn,setDateAndTime }) => {
   
 
 
-  useEffect(()=>{
-    //set state
+  useEffect(() => {
+  // set state
     setSignatureData(singin);
 
-    // setDateAndTime(new Date())
+    // get current date
     var currentDate = new Date();
 
-// Extract date components
-var day = currentDate.getDate();
-var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
-var year = currentDate.getFullYear();
+    // Extract date components
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+    var year = currentDate.getFullYear();
 
+    // Format the date with leading zeros
+    var formattedMonth = month > 9 ? month : `0${month}`;
+    var formattedDay = day > 9 ? day : `0${day}`;
 
+    // Display the extracted information
+    setDate(`${formattedMonth}/${formattedDay}/${year}`);
+  }, []);
 
-// Display the extracted information
-{day>9?setDate(`${day}/0${month}/${year}`):setDate(`0${day}/0${month}/${year}`);}
-
-  },[])
 
   useEffect(() => {
     // Update time every second

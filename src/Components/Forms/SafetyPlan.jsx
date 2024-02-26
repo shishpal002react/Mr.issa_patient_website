@@ -185,8 +185,9 @@ const SafetyPlan = () => {
         </div>
         <form onSubmit={handlePost}>
           <div className="form-section">
-            <div className="form-field">
-              <label htmlFor="residentFullName">Resident Full Name</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label htmlFor="residentFullName">Resident Name:</label>
               <input
                 type="text"
                 id="residentFullName"
@@ -196,10 +197,9 @@ const SafetyPlan = () => {
                 onChange={(e)=>setUser(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="dateOfBirth">Resident’s Date of Birth</label>
-              <input
-                style={{ color: "#1A9FB2" }}
+                <div className="form-field-child">
+                  <label htmlFor="dateOfBirth">DOB:</label>
+                  <input
                 type="date"
                 id="dateOfBirth"
                 value={date}
@@ -208,6 +208,9 @@ const SafetyPlan = () => {
                 onChange={(e) => setDate(e?.target?.value)}
               />
             </div>
+              </div>
+
+
             <h5
               style={{ fontWeight: "700", fontSize: "20px", color: "#000000" ,marginTop:"1.5rem"}}
             >
@@ -216,7 +219,7 @@ const SafetyPlan = () => {
               <span style={{ color: "#000000B2" }}>
                 ( thoughts, images, mood, situation, behavior )
               </span>{" "}
-              that a crisis may be developing{" "}
+                that a crisis may be developing{" "}:
             </h5>
 
             <div className="form-field">
@@ -241,11 +244,11 @@ const SafetyPlan = () => {
             >
               {" "}
               <span style={{ color: "#0C5C75" }}>STEP 2 :</span> Internal Coping
-              Strategies
+                Strategies:
             </h5>
             <p>
               Things I can do to take my mind off my problems without contacting
-              other
+                other:
             </p>
             <div className="form-field">
               <textarea
@@ -269,42 +272,45 @@ const SafetyPlan = () => {
             >
               {" "}
               <span style={{ color: "#0C5C75" }}>STEP 3 :</span> People & Social
-              settings that provide Distraction
+                settings that provide Distraction:
             </h5>
-            <div className="safetyplandiv">
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Name</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Name:</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+
                   value={socialName}
                   placeholder="Enter name"
                   
                   onChange={(e) => setSocialName(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Phone Number</label>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+
                   value={socialPhone}
                   placeholder="Enter number"
                   
                   onChange={(e) => setSocialPhone(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Relationship</label>
+                <div className="form-field-child">
+                  <label >Relationship:</label>
                 <input
                   type="text"
-                  id="AHCCCS"
+
                   value={socialRelationship}
                   placeholder="Enter text"
                   
                   onChange={(e) => setSocialRelationship(e.target.value)}
                 />
               </div>
+
+              </div>
+
               <div className="form-actions">
                 <button
                   type="button"
@@ -314,7 +320,6 @@ const SafetyPlan = () => {
                   Add
                 </button>
               </div>
-            </div>
 
             <div className="needs-interventions-container">
               <div className="needs-interventions-column3">
@@ -339,30 +344,26 @@ const SafetyPlan = () => {
               </div>
             </div>
             
-            <div className="form-field">
-              <label htmlFor="programlocation&address">
+              <div className="form-field-single-update">
+                <label >
                 Destination place :
               </label>
-              <textarea
-                id="programlocation&address"
-                value={address}
-                rows={3}
-                cols={130}
-                placeholder="Enter Full Address"
+                <input
+                  value={address}
+                  placeholder="Enter Address"
                 required
                 onChange={(e) => setAdress(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="programlocation&address">
+              <div className="form-field-single-update">
+                <label >
                 Destination Plane :
               </label>
-              <textarea
-                id="programlocation&address"
+                <input
+
                 value={place}
-                rows={3}
-                cols={130}
-                placeholder="Enter Full Address"
+
+                  placeholder="Enter Address"
                 required
                 onChange={(e) => setPlace(e.target.value)}
               />
@@ -380,11 +381,11 @@ const SafetyPlan = () => {
             >
               {" "}
               <span style={{ color: "#0C5C75" }}>STEP 4 :</span> People whom I
-              can ask for Help
+                can ask for Help:
             </h5>
-            <div className="safetyplandiv">
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Name</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label htmlFor="AHCCCS">Name:</label>
                 <input
                   type="text"
                   id="AHCCCS"
@@ -394,8 +395,8 @@ const SafetyPlan = () => {
                   onChange={(e) => setHelpName(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Phone Number</label>
+                <div className="form-field-child">
+                  <label htmlFor="AHCCCS">Phone Number:</label>
                 <input
                   type="text"
                   id="AHCCCS"
@@ -405,8 +406,8 @@ const SafetyPlan = () => {
                   onChange={(e) => setHelpPhone(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Relationship</label>
+                <div className="form-field-child">
+                  <label htmlFor="AHCCCS">Relationship:</label>
                 <input
                   type="text"
                   id="AHCCCS"
@@ -416,6 +417,9 @@ const SafetyPlan = () => {
                   onChange={(e) => setHelpRelationship(e.target.value)}
                 />
               </div>
+
+              </div>
+
               <div className="form-actions">
                 <button
                   type="button"
@@ -425,7 +429,6 @@ const SafetyPlan = () => {
                   Add
                 </button>
               </div>
-            </div>
 
                <div className="needs-interventions-container">
               <div className="needs-interventions-column3">
@@ -460,11 +463,11 @@ const SafetyPlan = () => {
               }}
             >
               {" "}
-              Professionals or agencies I can contact during Crisis
+                Professionals or agencies I can contact during Crisis:
             </h5>
-            <div className="safetyplandiv">
-              <div className="form-field">
-                <label >Clinic / Facility Name</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Clinic / Facility Name:</label>
                 <input
                   type="text"
                  
@@ -474,8 +477,8 @@ const SafetyPlan = () => {
                   onChange={(e) => setCrisisName(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label >Phone Number</label>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
                 <input
                   type="text"
                
@@ -485,8 +488,34 @@ const SafetyPlan = () => {
                   onChange={(e) => setCrisisPhone(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label >Relationship</label>
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Clinician Name:</label>
+                  <input
+                    type="text"
+
+                    value={crisisName}
+                    placeholder="Enter name"
+
+                    onChange={(e) => setCrisisName(e.target.value)}
+                  />
+                </div>
+                <div className="form-field-child">
+                  <label >Phone:</label>
+                  <input
+                    type="text"
+
+                    value={crisisName}
+                    placeholder="Enter name"
+
+                    onChange={(e) => setCrisisName(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child">
+                  <label >Relationship:</label>
                 <input
                   type="text"
                 
@@ -496,15 +525,44 @@ const SafetyPlan = () => {
                   onChange={(e) => setCrisisRelationship(e.target.value)}
                 />
               </div>
-              <div className="form-actions">
-                <button
-                  type="button"
-                  className="safetybutton"
-                  onClick={handleCrisisArray}
-                >
-                  Add
-                </button>
+
               </div>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Clinician Name:</label>
+                  <input
+                    type="text"
+
+                    value={crisisName}
+                    placeholder="Enter name"
+
+                    onChange={(e) => setCrisisName(e.target.value)}
+                  />
+                </div>
+                <div className="form-field-child">
+                  <label >Phone:</label>
+                  <input
+                    type="text"
+
+                    value={crisisName}
+                    placeholder="Enter name"
+
+                    onChange={(e) => setCrisisName(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child">
+                  <label >Relationship:</label>
+                  <input
+                    type="text"
+
+                    value={crisisRelationship}
+                    placeholder="Enter text"
+
+                    onChange={(e) => setCrisisRelationship(e.target.value)}
+                  />
+              </div>
+
             </div>
 
             <div className="needs-interventions-container">
@@ -542,8 +600,19 @@ const SafetyPlan = () => {
               {" "}
               Suicide Prevention Lifeline: 1-800-273-TALK (8255)
             </h5>
+              <h5
+                style={{
+                  fontWeight: "700",
+                  fontSize: "20px",
+                  color: "#000000",
+                  textAlign: "start",
+                }}
+              >
+                {" "}
+                Emergency: 911
+              </h5>
 
-            <div className="form-field">
+              {/* <div className="form-field">
                 <label >Local Emergency Help: </label>
                 <input
                   type="text"
@@ -551,7 +620,7 @@ const SafetyPlan = () => {
                   placeholder="Enter number"
                   onChange={(e) => setLocalEmergencyNumber(e.target.value)}
                 />
-              </div>
+              </div> */}
 
             {/* <div className="form-actions">
               <button type="button" className="safetybutton1">
@@ -559,8 +628,8 @@ const SafetyPlan = () => {
                 MORE PEOPLE
               </button>
             </div> */}
-            <div className="form-field">
-              <label htmlFor="programlocation&address">
+              <div className="form-field-single-update-bold">
+                <label >
                 Making the Environment Safe :
               </label>
               {/* <textarea

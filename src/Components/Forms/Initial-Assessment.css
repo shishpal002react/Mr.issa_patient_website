@@ -39,6 +39,7 @@
   display: flex;
   grid-gap: 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 
@@ -708,8 +709,7 @@ input[type="checkbox"] {
 
 .safetybutton {
   border: none;
-  width: 163px;
-  height: 50px;
+  padding: 5px 30px;
   color: #ffffff;
   border: 1px solid #1a9fb2;
   background-color: #1a9fb2;
@@ -1060,7 +1060,7 @@ input[type="checkbox"] {
 .label-review {
   margin-top: 1.5rem;
   font-size: 1.2rem;
-
+  font-weight: bold;
 }
 
 .yeschechbox-review {

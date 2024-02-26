@@ -1374,7 +1374,7 @@ const TreatmentPlan = () => {
           </div>
           <form onSubmit={handlePost}>
             <div className="form-section">
-              <div className="form-field">
+              {/* <div className="form-field">
                 <label htmlFor="admissionDate">Name:</label>
                 <input
                   type="text"
@@ -1405,58 +1405,41 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setNumber(e.target.value)}
                 />
-              </div>
-              {/* <h2>Choose your Option</h2>
-            <div className="form-field">
-              <div className="genderdiv" onChange={(e)=>}>
-                <div className="genderbox">
-                  <input
-                    type="radio"
-                    id="maleRadio"
-                    name="gender"
-                    className="custom-radio"
-                  />
-                  <label htmlFor="maleRadio">Initial</label>
-                </div>
-                <div className="genderbox">
-                  <input
-                    type="radio"
-                    id="femaleRadio"
-                    name="gender"
-                    className="custom-radio"
-                  />
-                  <label htmlFor="femaleRadio">Update</label>
-                </div>
-              </div>
-            </div> */}
-              <h2 style={{ marginTop: "1rem" }}>Resident Details</h2>
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Resident Name:</label>
+              </div> */}
+
+              <div className="form-field-update">
+
+                <div className="form-field-child">
+                  <label >Resident Name:</label>
                 <input
-                  type="text"
-                  id="AHCCCS"
+                    type="text"
                   value={residentName}
                   placeholder="Enter age"
                   required
                   onChange={(e) => setResidentName(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label htmlFor="dateOfBirth">Date:</label>
+
+
+                <div className="form-field-child">
+                  <label >Date:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
-                  id="dateOfBirth"
+
                   value={dob}
                   placeholder="DD/MM/YYYY"
                   required
                   onChange={(e) => setDof(e.target.value)}
-                />
+                  />
+                </div>
               </div>
-              <div className="form-field">
+
+              <div className="form-field-update">
+                <div className="form-field-child">
                 <label htmlFor="dateOfBirth">DOB:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   id="dateOfBirth"
                   value={date}
@@ -1465,34 +1448,31 @@ const TreatmentPlan = () => {
                   onChange={(e) => setDate(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label htmlFor="dateOfBirth">Admit Date:</label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="date"
-                  id="dateOfBirth"
-                  value={admitDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) => setAdminDate(e.target.value)}
-                />
+
+                <div className="form-field-child">
+                  <label htmlFor="dateOfBirth">Admit Date:</label>
+                  <input
+
+                    type="date"
+                    id="dateOfBirth"
+                    value={admitDate}
+                    placeholder="DD/MM/YYYY"
+                    required
+                    onChange={(e) => setAdminDate(e.target.value)}
+                  />
+                </div>
+
               </div>
-              {/* <div className="form-field">
-              <label htmlFor="AHCCCS">Care:</label>
-              <textarea
-                type="text"
-                id="AHCCCS"
-                value={care}
-                rows={2}
-                cols={130}
-                placeholder="Enter text."
-                required
-                onChange={(e) => setCare(e.target.value)}
-              />
-            </div> */}
-              <div className="form-field">
-                <div className="genderdiv">
-                  <div className="genderbox">
+
+
+
+
+
+              <div className="form-field-update">
+                <div className="form-field-child"> <label >Care:</label></div>
+
+
+                <div className="form-field-child">
                     <input
                       type="checkbox"
                       checked={physicalService}
@@ -1500,30 +1480,59 @@ const TreatmentPlan = () => {
                       id="behavioralCheckbox"
                     />
                     <label
-                      htmlFor="behavioralCheckbox"
-                      style={{ fontSize: "13px" }}
+
                     >
                       Physical Services
                     </label>
                   </div>
-                  <div className="genderbox">
+                <div className="form-field-child">
+                  <input
+                    type="checkbox"
+                    checked={behavior}
+                    onChange={() => setBehavior(!behavior)}
+                    id="behavioralCheckbox"
+                  />
+                  <label
+
+                  >
+                    Behavioral Services
+                  </label>
+                </div>
+              </div>
+
+              {/* state is duplicated again make the state */}
+              <div>
+                <label style={{ fontSize: "16px", fontWeight: "bold", marginTop: "1.5rem" }}>Medication Services:</label>
+                <div className="form-field-update">
+                  <div className="form-field-child">
                     <input
                       type="checkbox"
-                      checked={behavior}
+
                       onChange={() => setBehavior(!behavior)}
-                      id="behavioralCheckbox"
+
                     />
                     <label
-                      htmlFor="behavioralCheckbox"
-                      style={{ fontSize: "13px" }}
+
                     >
-                      Behavioral Services
+                      Medication Administration
+                    </label>
+                  </div>
+                  <div className="form-field-child">
+                    <input
+                      type="checkbox"
+
+
+                    />
+                    <label
+
+                    >
+                      Assistance in the self-Administration of medication
                     </label>
                   </div>
                 </div>
               </div>
-              <div className="form-field">
-                <label htmlFor="gender">Presenting Problems</label>
+              <div className="form-field-single-update-bold">
+                <label >Presenting Problems:</label>
 
                 <Select
                   isMulti
@@ -1557,7 +1566,7 @@ const TreatmentPlan = () => {
               )}
 
               <div className="formsheading">
-                <h6>Diagonsis</h6>
+                <h5 style={{ fontWeight: "bold" }}>Diagonsis:</h5>
               </div>
               <label
                 htmlFor=""
@@ -1700,7 +1709,7 @@ const TreatmentPlan = () => {
                     checked={adls === "independent"}
                     onChange={() => setAdls("independent")}
                   />
-                  <label htmlFor="independent">Independent</label>
+                  <label htmlFor="independent">Is independent with all ADLS</label>
                 </div>
                 <div>
                   <input
@@ -1709,7 +1718,7 @@ const TreatmentPlan = () => {
                     checked={adls === "personalCareLevel"}
                     onChange={() => setAdls("personalCareLevel")}
                   />
-                  <label htmlFor="personalCareLevel">Personal Care Level</label>
+                  <label htmlFor="personalCareLevel">Personal care level – See Attached personal care treatment plan</label>
                 </div>
               </div>
               <div className="form-field">
@@ -1724,7 +1733,7 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAldsText(e.target.value)}
                 />
               </div>
-              <label htmlFor="" className="label-review">
+              <label className="label-review">
                 Behavioral Health Services:
               </label>
               <div className="yeschechbox-review">
@@ -2674,10 +2683,8 @@ const TreatmentPlan = () => {
                 </div>
               )} */}
 
-              <div className="formsheading">
-                <h6>Counseling Frequency</h6>
-              </div>
 
+              <label className="label-review">Counseling and Frequency:</label>
               <div className="formsheading">
                 <p className="inLine_box_style">
                   <p>Total of minimum </p>{" "}
@@ -3576,7 +3583,7 @@ const TreatmentPlan = () => {
 
               <div className="yeschechbox-review-treatment">
                 <div>
-                  <label style={{ fontSize: "1.2rem" }}>
+                  <label style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
                     Resident overall participation in treatment:{" "}
                   </label>
                 </div>
@@ -3640,7 +3647,7 @@ const TreatmentPlan = () => {
 
               <div className="yeschechbox-review-treatment">
                 <div>
-                  <label style={{ fontSize: "1.2rem" }}>
+                  <label style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
                     Resident Attitude:
                   </label>
                 </div>
@@ -3704,7 +3711,7 @@ const TreatmentPlan = () => {
 
               <div className="yeschechbox-review-treatment">
                 <div>
-                  <label style={{ fontSize: "1.2rem", marginTop: "0.5rem" }}>
+                  <label style={{ fontSize: "1.2rem", marginTop: "0.5rem", fontWeight: "bold" }}>
                     Resident progress:
                   </label>
                 </div>
@@ -3897,25 +3904,25 @@ const TreatmentPlan = () => {
                 </div>
               )} */}
 
-              <div className="form-field">
-                <label htmlFor="phoneNumber">Phone Number: </label>
+              <div className="form-field-single-update">
+                <label>Phone Number: </label>
                 <input
                   placeholder="Type number"
                   type="number"
-                  id="phoneNumber"
+
                   value={supportSystemPhone}
                   required
                   onChange={(e) => setSupportSystemPhone(e.target.value)}
                 />
               </div>
 
-              <div className="form-field">
-                <label htmlFor="admissionDate">
+              <div className="form-field-single-update">
+                <label >
                   Current List of medication:{" "}
                 </label>
                 <input
                   type="text"
-                  id="dateOfBirth"
+
                   value={currentMedications}
                   placeholder="Enter medication"
                   required
@@ -4011,7 +4018,7 @@ const TreatmentPlan = () => {
                 </div>
               </div>
 
-              <div className="form-field">
+              <div className="form-field-single-update-bold">
                 <label htmlFor="nutritionAndWellnessPlanning">
                   Nutrition and wellness Planning:{" "}
                 </label>
@@ -4515,17 +4522,30 @@ const TreatmentPlan = () => {
                 to this resident.
               </p>
             </div> */}
-              <div className="form-field">
-                <label className="label-review">
-                  Treatment plan review date
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >
+                    Treatment plan review date:
                 </label>
                 <input
                   type="text"
                   onChange={(e) => setTreatmentPlanReviewDate(e.target.value)}
                   value={treatmentPlanReviewDate}
-                  placeholder="Enter your Lorem Ipsum"
-                />
+                    placeholder="Enter text"
+                  />
               </div>
+                <div className="form-field-child">
+                  <label >Discharge Plan Date:</label>
+                  <input
+                    type="date"
+                    onChange={(e) => setDischargePlanDate(e.target.value)}
+                    value={dischargePlanDate}
+                    placeholder="Enter text"
+                  />
+                </div>
+
+              </div>
+
               <p
                 style={{
                   fontWeight: "500",
@@ -4538,22 +4558,16 @@ const TreatmentPlan = () => {
                 Note: Earlier review may be performed if resident has a
                 significant change in condition or event that affects treatment.
               </p>
-              <div className="form-field">
-                <label className="label-review">Discharge Plan Date:</label>
-                <input
-                  type="date"
-                  onChange={(e) => setDischargePlanDate(e.target.value)}
-                  value={dischargePlanDate}
-                  placeholder="Enter your Lorem Ipsum"
-                />
-              </div>
+
               <div className="formsheading">
-                <h6>Individual Participating in Developing the Service Plan</h6>
+                <h6 style={{ fontWeight: "bold" }}>Individual Participating in Developing the Service Plan:</h6>
               </div>
-              <div className="form-field">
-                <label>Resident</label>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Resident:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={resident}
                   placeholder="Enter name"
@@ -4561,10 +4575,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setResident(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Guardian</label>
+                <div className="form-field-child">
+                  <label>Guardian:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={guardian}
                   placeholder="Enter name"
@@ -4572,8 +4586,8 @@ const TreatmentPlan = () => {
                   onChange={(e) => setGuardian(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Staff</label>
+                <div className="form-field-child">
+                  <label>Staff:</label>
                 <input
                   style={{ color: "#1A9FB2" }}
                   type="text"
@@ -4583,8 +4597,8 @@ const TreatmentPlan = () => {
                   onChange={(e) => setStaff(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>BHP</label>
+                <div className="form-field-child">
+                  <label>BHP:</label>
                 <input
                   style={{ color: "#1A9FB2" }}
                   type="text"
@@ -4595,17 +4609,20 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label htmlFor="programlocation&addressComment">Comment:</label>
-                <textarea
-                  id="programlocation&addressComment"
+              </div>
+
+              <div className="form-field-single-update">
+                <label >Comment:</label>
+
+                <input
+
+                  type="text"
                   value={commentIndividual}
-                  placeholder="Enter text"
-                  rows={2}
-                  cols={82}
+                  placeholder="Enter comment"
                   required
                   onChange={(e) => setCommentIndividual(e.target.value)}
                 />
+
               </div>
 
               <label htmlFor="" className="label-review">
@@ -4672,33 +4689,35 @@ const TreatmentPlan = () => {
               {/* /"signaturesResident */}
 
               <div className="formsheading">
-                <h6>
+                <h6 style={{ fontWeight: "bold" }}>
                   signatures Resident participation and informed consent for
-                  treatment services.
+                  treatment services:
                 </h6>
               </div>
-              <div className="form-field">
-                <label>First and Last Name</label>
+
+
+              <div className="form-field-single-update">
+                <label>First and Last Name:</label>
                 <input
                   type="text"
                   value={nameResident}
-                  placeholder="Enter "
+                  placeholder="Enter text"
                   required
                   onChange={(e) => setNameResident(e.target.value)}
                 />
               </div>
               <div className="form-field">
-                <label>
+                <label style={{ fontWeight: "bold" }}>
                   Resident or Resident’s representative{" "}
                   <span style={{ fontSize: "15px", color: "gray" }}>
                     (By signing this document, I acknowledge that I was asked,
                     encouraged to participate in the assessment)
-                  </span>
+                  </span>:
                 </label>
                 <input
                   type="text"
                   value={credentialsResident}
-                  placeholder="Enter"
+                  placeholder="Enter text"
                   required
                   onChange={(e) => setCredentialsResident(e.target.value)}
                 />
@@ -4752,31 +4771,37 @@ const TreatmentPlan = () => {
             </div>
             {/*   "signaturesFacilityRep": */}
             <div className="formsheading">
-              <h6>
+              <h6 style={{ fontWeight: "bold" }}>
                 signatures Facility Representative participation and informed
-                consent for treatment services.
+                consent for treatment services:
               </h6>
             </div>
-            <div className="form-field">
-              <label>First and Last Name</label>
+
+            <div className="form-field-update" >
+              <div className="form-field-child">
+                <label>First and Last Name:</label>
               <input
                 type="text"
                 value={nameFacilityRep}
-                placeholder="Enter "
+                  placeholder="Enter text"
                 required
                 onChange={(e) => setNameFacilityRep(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label>Facility Representative</label>
+
+              <div className="form-field-child">
+                <label>Facility Representative:</label>
               <input
                 type="text"
                 value={credentialsFacilityRep}
-                placeholder="Enter your Lorem Ipsum"
+                  placeholder="Enter text"
                 required
                 onChange={(e) => setCredentialsFacilityRep(e.target.value)}
               />
             </div>
+            </div>
+
+
 
             <div class="file-upload-box">
               <div className="file-upload-box-child">
@@ -4826,31 +4851,33 @@ const TreatmentPlan = () => {
           </div> */}
 
             <div className="formsheading">
-              <h6>
+              <h6 style={{ fontWeight: "bold" }}>
                 Signatures BHP participation and informed consent for treatment
-                services.
+                services:
               </h6>
             </div>
-            <div className="form-field">
-              <label htmlFor="AHCCCS">First and Last Name</label>
+
+            <div className="form-field-update">
+              <div className="form-field-child">
+                <label htmlFor="AHCCCS">First and Last Name:</label>
               <input
-                type="text"
-                id="AHCCCS"
+                  type="text"
                 value={nameBhp}
-                placeholder="Enter "
+                  placeholder="Enter text"
                 required
                 onChange={(e) => setNameBhp(e.target.value)}
               />
             </div>
-            <div className="form-field">
-              <label>Behavioral Health Professional</label>
+              <div className="form-field-child">
+                <label>Behavioral Health Professional:</label>
               <input
                 type="text"
                 value={credentialsBhp}
-                placeholder="Enter "
+                  placeholder="Enter text"
                 required
                 onChange={(e) => setCredentialsBhp(e.target.value)}
               />
+            </div>
             </div>
 
             <div class="file-upload-box">

@@ -54,6 +54,7 @@ const InitialAssessment = () => {
   const [signInModel5, setSigInModel5] = useState(false);
   const [signInModel6, setSigInModel6] = useState(false);
   const [signInModel7, setSigInModel7] = useState(false);
+  const [signInModel8, setSigInModel8] = useState(false);
 
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState("");
@@ -926,6 +927,12 @@ const InitialAssessment = () => {
   // const [significantRecentLosses, setSignificantRecentLosses] = useState({});
 
   const [additionalNotes, setAdditionalNotes] = useState("");
+
+
+  //gresedent gaudent name and information
+  const [residentGuardianName, setResidentGuardianName] = useState("");
+  const [residentGauardianSignature, setResidentGauardianSignature] = useState("");
+  const [residentGuardianDate, setResidentGuardianDate] = useState("");
 
   // State variables for staffInformation
   const [staffName, setStaffName] = useState("");
@@ -1931,7 +1938,7 @@ const InitialAssessment = () => {
 
   return (
     <>
-      <div ref={componentRef} >
+      {/* <div ref={componentRef} style={{ width: "100%", margin: "auto" }}> */}
         <div className="backbutton">
           <IoArrowBackCircle
             style={{
@@ -6616,9 +6623,58 @@ const InitialAssessment = () => {
               </div>
 
               <hr style={{ border: "1px solid black", opacity: "0.7" }} />
+            {/* resident gaurdent name and signatutre */}
+            <div className="form-field-single-update">
+              <label >Resident/Guardian name:</label>
+              <input
+                type="text"
+                s
+                value={residentGuardianName}
+                placeholder="Enter text"
+                required
+                onChange={(e) => setResidentGuardianName(e.target.value)}
+              />
+            </div>
+
+            {/* <div className="form-field">
+                <label htmlFor="">Enter Staff Title</label>
+                <input
+                  type="text"
+                  required
+                  value={staffTitle}
+                  onChange={(e) => setStaffTitle(e.target.value)}
+                />
+              </div> */}
+
+            <div class="file-upload-box hidePrint" >
+              <div className="file-upload-box-child">
+                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  SAVED AS DRAFT
+                </button>
+                <button className="upload-button" type="button" onClick={() => setSigInModel8(true)}>
+                  SAVED AND SIGNED
+                </button>
+              </div>
+              <div>
+                {
+                  residentGauardianSignature && (
+                    <p className="signature_name_print">Digitally Sign by {residentGauardianSignature} {residentGuardianDate}</p>
+                  )
+                }
+              </div>
+            </div>
+
+            {
+              signInModel8 && (<SingInUpdateModel
+                onClose={() => setSigInModel8(false)}
+                singin={residentGauardianSignature}
+                setSingIn={setResidentGauardianSignature}
+                setDateAndTime={setResidentGuardianDate}
+              />)
+            }
               {/* please care full write some think is change so api will work */}
               <div className="form-field-single-update">
-                <label >Resident/Guardian name:</label>
+              <label >Staff name, title:</label>
                 <input
                   type="text"
                   id="approvedby"
@@ -6784,7 +6840,7 @@ const InitialAssessment = () => {
         {
           draftModel && (<Draftinmodel onClose={() => setDraftModel(false)} />)
         }
-      </div>
+      {/* </div> */}
     </>
   );
 };

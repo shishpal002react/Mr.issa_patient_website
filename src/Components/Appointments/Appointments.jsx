@@ -16,15 +16,22 @@ import {
 } from "../../Api_Collection/Api";
 import Vital from "../VitalNew/Vital";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form'
 // import Vitals from "../Vitals/Vitals";
 
 
 const Appointments = () => {
+  //model 
+  const [modalShow, setModalShow] = useState(false);
+  //state
   const [appoinmentUpcoming, setAppoinmentUpcoming] = useState("");
   const [appoinmentPast, setAppoinmentPast] = useState("");
   const [patientId,setPatientId]=useState("")
   const [medication,setMedication]=useState("")
   const [script,setScript]=useState("")
+
 
   //view panel
   const [view,setView]=useState(false);
@@ -51,6 +58,40 @@ const Appointments = () => {
       anchor.click();
       document.body.removeChild(anchor);
   };
+
+  function MyVerticallyCenteredModal(props) {
+    const [addScript, setAddScript] = useState("");
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Add
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Select Script</Form.Label>
+            <Form.Control type="file" placeholder="select File" onChange={(e) => setAddScript(e.target.files[0])} />
+          </Form.Group>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Submit</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
   return (
     <div className="appointmentcontainer">
@@ -138,6 +179,7 @@ const Appointments = () => {
       </div> */}
       <div className="appointmentcontent">
         <p>View your script</p>
+        <p onClick={() => setModalShow(true)}>Add</p>
       </div>
             <div style={{display:"flex" ,gap:"20px" ,alignItems:"center",}}>
       {/* {
@@ -151,6 +193,12 @@ const Appointments = () => {
           <img src={upload} alt="" onClick={()=>downloadPdf(script?.document)} style={{cursor:"pointer"}} />
         </div>
    </div>
+
+      {/* model section */}
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
      
     </div>
   );

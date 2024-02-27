@@ -280,7 +280,7 @@ const FaceSheet = () => {
           onClick={() => navigate("/intake")}
         />
       </div>
-      <div className="form-container">
+        <div className="Boss">
         <div className="formheading1">
           <div className="formsheading2">
             <h1>FACE SHEET</h1>

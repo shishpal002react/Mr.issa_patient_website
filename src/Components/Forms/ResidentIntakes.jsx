@@ -830,7 +830,7 @@ const ResidentIntakes = () => {
       </div>
 
       {/* ======================================================== */}
-      <div className="form-container">
+        <div className="Boss">
         <div className="formheading1">
           <div className="formsheading2">
             <h1>RESIDENT INTAKES</h1>
@@ -1007,9 +1007,9 @@ const ResidentIntakes = () => {
               value={residentName}
               onChange={(e) => setResidentName(e.target.value)}
             /> */}
-              <label htmlFor="" className="label-review-resitent">
+                  {/* <label htmlFor="" className="label-review-resitent">
                 Resident Signature
-              </label>
+              </label> */}
 
               <div class="file-upload-box"> 
                 <div className="file-upload-box-child">
@@ -1094,12 +1094,11 @@ const ResidentIntakes = () => {
               >
                 Guardian/Representative Details
               </h2>
-              <div className="form-field">
+                  <div className="form-field-single-update">
                 <label
-                  htmlFor="admissionDate"
-                  className="label-review-resitent"
+
                 >
-                  Guardian/Representative Full Name
+                      Guardian/Representative Full Name:
                 </label>
                 <input
                   type="text"
@@ -1112,9 +1111,9 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  {/* <label htmlFor="" className="label-review-resitent">
                 Guardian / Representative Signature
-              </label>
+              </label> */}
               <div class="file-upload-box"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
@@ -1178,8 +1177,8 @@ const ResidentIntakes = () => {
               >
                 Staff Details
               </h2>
-              <div className="form-field">
-                <label className="label-review-resitent">Staff Full Name</label>
+                  <div className="form-field-single-update">
+                    <label >Staff Full Name:</label>
                 <input
                   type="text"
                   value={staffName}
@@ -1188,9 +1187,7 @@ const ResidentIntakes = () => {
                   onChange={(e) => setStaffName(e.target.value)}
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
-                Staff Signature
-              </label>
+
               
               <div class="file-upload-box">
               
@@ -1319,9 +1316,9 @@ const ResidentIntakes = () => {
                 </span>
               </p>
 
-              <div className="safetyplandiv">
-                <div className="form-field">
-                  <label htmlFor="AHCCCS">Name of Person</label>
+                  <div className="form-field-update">
+                    <div className="form-field-child">
+                      <label htmlFor="AHCCCS">Name of Person:</label>
                   <input
                     type="text"
                     id="AHCCCS"
@@ -1330,8 +1327,8 @@ const ResidentIntakes = () => {
                     onChange={(e) => setInternalName(e.target.value)}
                   />
                 </div>
-                <div className="form-field">
-                  <label htmlFor="AHCCCS">Relationship</label>
+                    <div className="form-field-child">
+                      <label htmlFor="AHCCCS">Relationship:</label>
                   <input
                     type="text"
                     id="AHCCCS"
@@ -1340,8 +1337,8 @@ const ResidentIntakes = () => {
                     onChange={(e) => setInternalRelationship(e.target.value)}
                   />
                 </div>
-                <div className="form-field">
-                  <label htmlFor="AHCCCS">Contact</label>
+                    <div className="form-field-child">
+                      <label htmlFor="AHCCCS">Contact:</label>
                   <input
                     type="text"
                     id="AHCCCS"
@@ -1350,7 +1347,9 @@ const ResidentIntakes = () => {
                     onChange={(e) => setInternalContect(e.target.value)}
                   />
                 </div>
-                <div className="form-actions">
+
+                  </div>
+                  <div className="form-actions">
                   <button
                     type="button"
                     className="safetybutton"
@@ -1358,8 +1357,7 @@ const ResidentIntakes = () => {
                   >
                     SAVE
                   </button>
-                </div>
-              </div>
+                  </div>
               <div className="needs-interventions-container">
                 <div className="needs-interventions-column3">
                   {internalDisclosureList.length > 0 && (
@@ -1448,9 +1446,9 @@ const ResidentIntakes = () => {
                 }
               /> */}
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  {/* <label htmlFor="" className="label-review-resitent">
                 Resident Signature
-              </label>
+              </label> */}
                    <div class="file-upload-box"> 
                    <div className="file-upload-box-child">
                    <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
@@ -1497,9 +1495,9 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
       
-              <div className="form-field">
-                <label className="label-review-resitent">
-                  Guardian/Representative Full Name
+                  <div className="form-field-single-update">
+                    <label >
+                      Guardian/Representative Full Name:
                 </label>
                 <input
                   type="text"
@@ -1514,8 +1512,8 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
-                Guardian / Representative Signature
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }} >
+                    Guardian / Representative Signature:
               </label>
                    <div class="file-upload-box"> 
                    <div className="file-upload-box-child">
@@ -1576,8 +1574,8 @@ const ResidentIntakes = () => {
                 setInternalDisclosureListStaffName(e.target.value)
               }
             /> */}
-              <label htmlFor="" className="label-review-resitent">
-                Staff Signature
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
+                    Staff Signature:
               </label>
                      <div class="file-upload-box"> 
                      <div className="file-upload-box-child">
@@ -1834,8 +1832,8 @@ const ResidentIntakes = () => {
                   protecting, or exercising the resident’s right
                 </p>
               </div>
-              <label htmlFor="" className="label-review-resitent">
-                Resident Signature
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
+                    Resident Signature:
               </label>
                      <div class="file-upload-box"> 
                      <div className="file-upload-box-child">
@@ -1865,8 +1863,9 @@ const ResidentIntakes = () => {
                  }
            
         
-              <label htmlFor="" className="label-review-resitent">
-                Guardian/Representative Name
+                  <div className="form-field-single-update">
+                    <label >
+                      Guardian/Representative Name:
               </label>
               <input
                 type="text"
@@ -1874,8 +1873,11 @@ const ResidentIntakes = () => {
                 placeholder="Name"
                 onChange={(e) => setResidentRightsResidentName(e.target.value)}
               />
-              <label htmlFor="" className="label-review-resitent">
-                Guardian/Representative Signature
+                  </div>
+
+
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
+                    Guardian/Representative Signature:
               </label>
                  <div class="file-upload-box">
               

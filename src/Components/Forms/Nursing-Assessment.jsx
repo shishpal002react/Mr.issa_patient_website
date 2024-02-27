@@ -345,7 +345,7 @@ const NursingAssessment = () => {
           onClick={() => navigate("/intake")}
         />
       </div>
-      <div className="form-container">
+        <div className="Boss">
         <div className="formheading1">
           <div className="formsheading2">
               {/* <h1>Initial Nursing Assessment</h1> */}
@@ -353,14 +353,13 @@ const NursingAssessment = () => {
           </div>
         </div>
         <form onSubmit={handlePost}>
-          <div className="form-section">
+            <div className="form-section" style={{ marginTop: "1rem" }}>
             <h2>Resident’s Details</h2>
 
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label htmlFor="dateOfBirth">Today’s Date:</label>
-              <input
-
+                  <input
                 type="date"
                 id="dateOfBirth"
                 value={todayDate}

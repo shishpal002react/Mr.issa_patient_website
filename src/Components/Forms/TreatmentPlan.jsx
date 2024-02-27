@@ -1365,7 +1365,7 @@ const TreatmentPlan = () => {
             onClick={() => navigate("/intake")}
           />
         </div>
-        <div className="form-container">
+        <div className="Boss">
           <div className="formheading1">
             <div className="formsheading2">
               <h1>TREATMENT PLAN</h1>
@@ -2963,24 +2963,10 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              {/* {option1Boolean && (
-                <div className="form-field">
-                  <label>Comment:</label>
-                  <textarea
-                    value={option1Other}
-                    placeholder="Enter text"
-                    rows={2}
-                    cols={82}
-                    required
-                    onChange={(e) => setoption1Other(e.target.value)}
-                  />
-                </div>
-              )} */}
-
-              <div className="form-field">
-                <label>Admission Messure</label>
-                <input
-                  style={{ color: "#1A9FB2" }}
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
+                  <input
                   type="text"
                   value={admissionMeasure1}
                   placeholder="Admission Messure"
@@ -2988,10 +2974,11 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure1(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure1}
                   placeholder="Enter Previous Messure"
@@ -2999,10 +2986,11 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure1(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure1}
                   placeholder="Enter Current Messure"
@@ -3010,10 +2998,11 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure1(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion1}
                   placeholder="Enter Estimete Date of complition"
@@ -3023,7 +3012,9 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments1}
@@ -3055,10 +3046,11 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure2}
                   placeholder="Admission Messure"
@@ -3066,10 +3058,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure2(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure2}
                   placeholder="Enter Previous Messure"
@@ -3077,10 +3069,11 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure2(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure2}
                   placeholder="Enter Current Messure"
@@ -3088,10 +3081,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure2(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion2}
                   placeholder="Enter Estimete Date of complition"
@@ -3101,7 +3094,12 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments2}
@@ -3133,10 +3131,11 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure3}
                   placeholder="Admission Messure"
@@ -3144,10 +3143,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure3(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure3}
                   placeholder="Enter Previous Messure"
@@ -3155,10 +3154,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure3(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure3}
                   placeholder="Enter Current Messure"
@@ -3166,10 +3165,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure3(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion3}
                   placeholder="Enter Estimete Date of complition"
@@ -3179,7 +3178,12 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments3}
@@ -3210,11 +3214,11 @@ const TreatmentPlan = () => {
                   onKeyDown={handleKeyOption4}
                 />
               </div>
-
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure4}
                   placeholder="Admission Messure"
@@ -3223,9 +3227,9 @@ const TreatmentPlan = () => {
                 />
               </div>
               <div className="form-field">
-                <label>Previous Messure</label>
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure4}
                   placeholder="Enter Previous Messure"
@@ -3233,10 +3237,11 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure4(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure4}
                   placeholder="Enter Current Messure"
@@ -3244,10 +3249,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure4(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion4}
                   placeholder="Enter Estimete Date of complition"
@@ -3257,7 +3262,12 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments4}
@@ -3289,10 +3299,11 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure5}
                   placeholder="Admission Messure"
@@ -3300,10 +3311,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure5(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure5}
                   placeholder="Enter Previous Messure"
@@ -3311,10 +3322,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure5(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure5}
                   placeholder="Enter Current Messure"
@@ -3322,10 +3333,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure5(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion5}
                   placeholder="Enter Estimete Date of complition"
@@ -3335,7 +3346,12 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments5}
@@ -3367,10 +3383,11 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure6}
                   placeholder="Admission Messure"
@@ -3378,10 +3395,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure6(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure6}
                   placeholder="Enter Previous Messure"
@@ -3389,10 +3406,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure6(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure6}
                   placeholder="Enter Current Messure"
@@ -3400,10 +3417,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure6(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion6}
                   placeholder="Enter Estimete Date of complition"
@@ -3413,7 +3430,12 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments6}
@@ -3445,10 +3467,11 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure7}
                   placeholder="Admission Messure"
@@ -3456,10 +3479,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure7(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure7}
                   placeholder="Enter Previous Messure"
@@ -3467,10 +3490,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure7(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure7}
                   placeholder="Enter Current Messure"
@@ -3478,10 +3501,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure7(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion7}
                   placeholder="Enter Estimete Date of complition"
@@ -3491,7 +3514,13 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments7}
@@ -3523,10 +3552,11 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Admission Messure</label>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label>Admission Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={admissionMeasure8}
                   placeholder="Admission Messure"
@@ -3534,10 +3564,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure8(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Previous Messure</label>
+                <div className="form-field-child">
+                  <label>Previous Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={previousMeasure8}
                   placeholder="Enter Previous Messure"
@@ -3545,10 +3575,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPreviousMeasure8(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Current Messure</label>
+                <div className="form-field-child">
+                  <label>Current Messure:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="text"
                   value={currentMeasure8}
                   placeholder="Enter Current Messure"
@@ -3556,10 +3586,10 @@ const TreatmentPlan = () => {
                   onChange={(e) => setCurrentMeasure8(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label>Estimete Date of complition</label>
+                <div className="form-field-child">
+                  <label>Estimete Date of complition:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={estimatedDateOfCompletion8}
                   placeholder="Enter Estimete Date of complition"
@@ -3569,7 +3599,12 @@ const TreatmentPlan = () => {
                   }
                 />
               </div>
-              <div className="form-field">
+              </div>
+
+
+
+
+              <div className="form-field-single-update-bold">
                 <label>Comment:</label>
                 <textarea
                   value={comments8}

@@ -6,7 +6,6 @@
 
 .formsheading2 {
   text-align: center;
-
   padding: 20px;
   width: inherit;
   margin-bottom: 20px;
@@ -20,6 +19,7 @@
   justify-content: center;
   text-align: center;
   gap: 1rem;
+
 }
 
 .checkboxitem125555 {
@@ -72,5 +72,12 @@
     font-size: 20px;
     font-weight: 500;
     color: #000000;
+  }
+
+  .checkboxitem125555 label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+
   }
 }

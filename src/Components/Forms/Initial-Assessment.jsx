@@ -1938,21 +1938,22 @@ const InitialAssessment = () => {
 
   return (
     <>
-      {/* <div ref={componentRef} style={{ width: "100%", margin: "auto" }}> */}
-        <div className="backbutton">
+      <div ref={componentRef} style={{ width: "100%", margin: "auto" }}>
+        <div style={{ width: "20px" }} className="backbutton">
           <IoArrowBackCircle
             style={{
               color: "#1A9FB2",
               width: "40px",
               height: "40px",
               cursor: "pointer",
+
             }}
             onClick={() => navigate("/intake")}
           />
         </div>
-        <div className="form-container">
+        <div className="Boss" >
           <FormUpper />
-          <p>
+          <p style={{ marginTop: "1rem" }}>
 
             <span>
 
@@ -2001,7 +2002,7 @@ const InitialAssessment = () => {
               <h2 style={{ marginTop: "1rem" }}>Basic Details</h2>
 
               <div className="form-field-update">
-                <div className="form-field-child">
+                <div className="form-field-child-gender">
                   <label htmlFor="residentFullName">Resident Full Name:</label>
                   <input
                     type="text"
@@ -2015,8 +2016,9 @@ const InitialAssessment = () => {
                     onChange={(e) => setResidentName(e.target.value)}
                   />
                 </div>
-                <div className="form-field-child">
-                  <label htmlFor="residentFullName">Gender:</label>
+
+                <div className="form-field-child-name">
+                  <label >Gender:</label>
 
                   <div className="genderdiv">
                     <div className="genderbox">
@@ -2057,7 +2059,6 @@ const InitialAssessment = () => {
                 <div className="form-field-child">
                   <label htmlFor="dateOfBirth">Date of Birth:</label>
                   <input
-                    style={{ color: "#1A9FB2" }}
                     type="date"
                     id="dateOfBirth"
                     className="borderless_input"
@@ -2136,7 +2137,7 @@ const InitialAssessment = () => {
               <div className="form-field-single-update">
                 <label
                   htmlFor="programlocation&address"
-                  style={{ display: "flex", justifyContent: "space-between" }}
+
                 >
                   Program Location & Address:{" "}
                   {/* <img
@@ -3653,7 +3654,7 @@ const InitialAssessment = () => {
 
 
 
-              <div style={{ display: "flex", gap: "10px" }}>
+              <div className="yeschechbox-parent">
                 <div className="yeschechbox235" style={{ marginTop: "1.5rem" }}>
                   <label style={{ fontWeight: "bold" }}>Substance Abuse history:</label>
 
@@ -5101,7 +5102,7 @@ const InitialAssessment = () => {
                 </div>
               </div>
               <div className="yeschechbox">
-                <div style={{ display: "flex", gap: "90px" }}>
+                <div style={{ display: "flex", gap: "60px" }}>
                   <label style={{ fontWeight: "bold" }}>Ability to concentration:</label>
 
                   <div className="checkboxitem">
@@ -5710,7 +5711,7 @@ const InitialAssessment = () => {
                       <label htmlFor="suicidalIdeationUrgency">Yes</label>
                     </div>
                     <div
-                      style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "30px" }}
+                      className="increasingClassInternal-child-no" 
                     >
                       <input
                         type="checkbox"
@@ -5737,7 +5738,7 @@ const InitialAssessment = () => {
                       <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
                     </div>
                     <div
-                      style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "30px" }}
+                      className="increasingClassInternal-child-no" 
                     >
                       <input
                         type="checkbox"
@@ -6840,7 +6841,7 @@ const InitialAssessment = () => {
         {
           draftModel && (<Draftinmodel onClose={() => setDraftModel(false)} />)
         }
-      {/* </div> */}
+      </div>
     </>
   );
 };

@@ -60,23 +60,20 @@
 }
 
 .closeButton {
-
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 10px;
+  font-size: 50px;
   display: none;
-  /* Show the icon on small screens */
   cursor: pointer;
   color: #ffff;
-
 }
 
 @media screen and (max-width:480px) {
   .closeButton {
     display: block !important;
     position: absolute;
-    top: 10px;
+    top: -5px;
     right: 10px;
     font-size: 30px;
     display: flex;

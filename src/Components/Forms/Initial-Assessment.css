@@ -3,10 +3,11 @@
   font-family: 'Quicksand', sans-serif;
 }
 
-.form-container {
+.form-container1 {
   width: 80%;
-
   margin: auto;
+  border: 1px solid red;
+  padding: 0 15px;
 }
 
 .form-container p:nth-child(1) {
@@ -35,6 +36,20 @@
 }
 
 /* update css  new*/
+
+.Boss {
+  width: 80%;
+  margin: auto;
+
+
+  @media screen and (max-width: 480px) {
+    width: 90%;
+    max-width: 480px;
+    margin: auto;
+    padding: 10px;
+  }
+}
+
 .form-field-update {
   display: flex;
   grid-gap: 20px;
@@ -46,9 +61,49 @@
 .form-field-child {
   margin-top: 1rem;
   display: flex;
-
   align-items: center;
+}
 
+.form-field-child-name {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-field-update-name label {
+  font-weight: bold;
+}
+
+.form-field-child-name input {
+  border: none;
+  width: auto;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
+}
+
+.form-field-child-gender {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-field-update-gender label {
+  font-weight: bold;
+}
+
+.form-field-child-gender input {
+  border: none;
+  width: auto;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  margin-left: 1rem;
 }
 
 .form-field-update label {
@@ -86,7 +141,7 @@
 .form-field-single-update {
   display: flex;
   margin-top: 1rem;
-  align-items: ceter;
+  align-items: center;
 }
 
 
@@ -221,9 +276,11 @@ select {
   padding-bottom: 8px;
 }
 
+
 .backbutton {
   margin-left: 20px;
   margin-top: 20px;
+  width: 80%;
 }
 
 /* Overall container styling */
@@ -331,6 +388,11 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
+.yeschechbox235-parent {
+  display: flex;
+  gap: 10px
+}
+
 .yeschechbox23 {
   display: flex;
   justify-content: space-between;
@@ -338,6 +400,7 @@ input[type="checkbox"] {
   padding-left: 10%;
   margin-bottom: 20px;
 }
+
 
 .yeschechbox235 {
   display: flex;
@@ -411,6 +474,16 @@ input[type="checkbox"] {
   }
 }
 
+@media (max-width: 568px) {
+  .form-container1 {
+    width: 350px
+  }
+
+  .initalsubmit {
+    width: 200px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .checkboxitem {
     width: 100%;
@@ -439,18 +512,7 @@ input[type="checkbox"] {
 
 
 
-@media (max-width: 568px) {
-  .form-container {
-    width: 90%;
-    margin: auto;
-  }
 
-  .check1 {}
-
-  .initalsubmit {
-    width: 200px;
-  }
-}
 
 .file-upload-box {
   display: flex;
@@ -767,6 +829,7 @@ input[type="checkbox"] {
 .genderdiv {
   display: flex;
   gap: 10px;
+  padding-right: 20px;
 }
 
 .genderbox {
@@ -988,6 +1051,14 @@ input[type="checkbox"] {
   justify-content: space-between;
 }
 
+
+
+.increasingClassInternal-child-no {
+  display: flex;
+  gap: 10px;
+  margin-left: 30px;
+}
+
 .safetyRiskLast {
   width: 40%;
   display: flex;
@@ -1189,7 +1260,7 @@ input[type="checkbox"] {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
 
   .genderdiv {
     display: block;
@@ -1220,6 +1291,9 @@ input[type="checkbox"] {
     font-size: 1.7rem;
   }
 
+
+  /* hjgfkdhfhilfjidjfidf */
+
   .yeschechbox-review {
     display: grid;
     grid-gap: 0.5rem;
@@ -1235,6 +1309,121 @@ input[type="checkbox"] {
     align-items: center;
     width: 50%;
   }
+
+  .yeschechboxOrientation {
+    display: block;
+  }
+
+  .yeschechbox {
+    display: block;
+    width: 100%;
+  }
+
+  .employment-Aligmant-location {
+    width: 90%;
+    display: block;
+    gap: 50px;
+
+  }
+
+  .file-upload-box-child {
+    flex-wrap: wrap;
+  }
+
+  .file-upload-box-child div {
+    margin-top: 1rem;
+  }
+
+  .yeschechbox_select-4 {
+    display: block;
+  }
+
+  .yeschechbox-significant {
+    display: block;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .Significant-losses {
+    display: flex;
+    width: 15%;
+  }
+
+  .checkbox654 {
+    display: flex;
+    gap: 20px;
+    justify-content: start;
+    margin-top: 1.5rem;
+  }
+
+  .form-field-update {
+    display: block;
+  }
+
+
+  .form-field-child {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .yeschechboxFall-risk {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  .increasingClassInternal-child-no {
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+    align-items: center;
+  }
+
+  .form-field-child-name {
+    margin-top: 1rem;
+    display: block;
+    align-items: center;
+  }
+
+  .form-field-child-gender {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .genderdiv {
+    display: flex;
+    gap: 10px;
+    padding-right: 0px;
+  }
+
+  .yeschechbox235-parent {
+    display: flex;
+  }
+
+  .yeschechbox23 {
+    display: flex;
+    justify-content: start;
+    width: auto;
+    padding-left: 10%;
+    margin-bottom: 20px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .yeschechbox235 {
+    display: flex;
+    justify-content: start;
+    width: auto;
+    margin-bottom: 20px;
+    gap: 10px;
+    align-items: center;
+  }
+
+
 }
 
 /* treatment form */

@@ -23,10 +23,30 @@ const NursingAssessment = () => {
   const [showSingInOne, setShowSingInOne] = useState(false);
   const [showSingInTwo, setShowSingInTwo] = useState(false);
   const [draftModel,setDraftModel]=useState(false)
+
   const componentRef = React.useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  const handlePrint2 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+
+    // Trigger the print action
+    handlePrint();
+
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
 
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState("");
@@ -561,7 +581,7 @@ const NursingAssessment = () => {
             />
           </div>
 
-              <div className="form-field-child">
+              <div className="form-field-child-result-nursing">
                 <div>
                   <label htmlFor="" >Results: </label>
                 </div>
@@ -2679,23 +2699,6 @@ const NursingAssessment = () => {
             </div>
             </div>
 
-            {/* <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
-            <div>
-            <label >Nutrition Special Diet Order :</label>
-            </div>
-            <div>
-            <span>
-                      <AutosizeInput
-                      type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="___________"
-                        value={nutritionSpecialDietOrder}
-                        onChange={(e) => setNutritionSpecialDietOrder(e.target.value)}
-                      />
-                    </span>
-                    </div>
-            </div> */}
-          
             <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
             <div>
             <label htmlFor="" >Fluid restrictions?</label>
@@ -2719,6 +2722,7 @@ const NursingAssessment = () => {
               <label htmlFor="nutritionFluidRestrictionsno">No</label>
             </div>
           </div>
+
           </div>
 
 
@@ -2958,7 +2962,7 @@ const NursingAssessment = () => {
           /> */}
 
 
-            <div class="file-upload-box"> 
+            <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -2996,7 +3000,7 @@ const NursingAssessment = () => {
             />
             </div>
 
-          <div class="file-upload-box">
+            <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -3010,7 +3014,7 @@ const NursingAssessment = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint} className="upload-button" type="button" >
+                  <button onClick={handlePrint2} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>

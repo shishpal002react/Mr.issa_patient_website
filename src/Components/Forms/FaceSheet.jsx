@@ -20,6 +20,24 @@ const FaceSheet = () => {
     content: () => componentRef.current,
   });
 
+  const handlePrint2 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+
+    // Trigger the print action
+    handlePrint();
+
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
 
   const [patientName, setPatientName] = useState("");
   const [userDetail, setUserDetail] = useState("");
@@ -639,7 +657,7 @@ const FaceSheet = () => {
 
 
 
-<div className="form-actions">
+              <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -763,7 +781,7 @@ const FaceSheet = () => {
 
 
 
-            <div className="form-actions">
+              <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -948,7 +966,7 @@ const FaceSheet = () => {
               </div>
             </div> */}
           </div>
-          <div class="file-upload-box">
+            <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -962,7 +980,7 @@ const FaceSheet = () => {
                 </button>
                 </div>
                 <div>
-                <button className="upload-button" type="button" onClick={handlePrint}>
+                  <button className="upload-button" type="button" onClick={handlePrint2}>
                   PRINT THIS FORM
                 </button>
                 </div>

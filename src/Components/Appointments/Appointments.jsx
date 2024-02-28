@@ -12,7 +12,7 @@ import scheduling2 from '../../img/sheduling1 (2).png'
 import scheduling3 from '../../img/sheduling1 (3).png'
 import {
   appointment_Upcoming,
-  appointment_get,medication_get,user_detail,getAllPatientMedication
+  appointment_get, medication_get, user_detail, getAllPatientMedication, show_notification
 } from "../../Api_Collection/Api";
 import Vital from "../VitalNew/Vital";
 import { Link } from "react-router-dom";
@@ -37,6 +37,9 @@ const Appointments = () => {
   const [view,setView]=useState(false);
   const [view1,setView1]=useState(false);
 
+  //add script 
+  const [addScript, setAddScript] = useState("");
+
   // useEffect(()=>{
   //   medication_get(setMedication);
   // },[patientId])
@@ -58,6 +61,26 @@ const Appointments = () => {
       anchor.click();
       document.body.removeChild(anchor);
   };
+
+  const handleFileSelect = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+
+
+    input.onchange = (event) => {
+      const file = event.target.files[0];
+      setAddScript(file);
+    };
+
+    input.click(); // Trigger a click event to open the file dialog
+  };
+
+  useEffect(() => {
+    if (addScript) {
+      show_notification("Success !", "Document Upload Successfully", "success");
+    }
+  }, [addScript]);
+
 
   function MyVerticallyCenteredModal(props) {
     const [addScript, setAddScript] = useState("");
@@ -179,7 +202,8 @@ const Appointments = () => {
       </div> */}
       <div className="appointmentcontent">
         <p>View your script</p>
-        <p onClick={() => setModalShow(true)}>Add</p>
+        {/* <p onClick={() => setModalShow(true)}>Add</p> */}
+
       </div>
             <div style={{display:"flex" ,gap:"20px" ,alignItems:"center",}}>
       {/* {
@@ -189,9 +213,12 @@ const Appointments = () => {
         </div>
         ))
       } */}
-      <div style={{ width: "249px", height: "128px" }}>
+        {/* display: "none"  */}
+        <div style={{ width: "249px", height: "128px", }}>
           <img src={upload} alt="" onClick={()=>downloadPdf(script?.document)} style={{cursor:"pointer"}} />
         </div>
+
+        <button onClick={handleFileSelect} style={{ backgroundColor: "#0066ff", cursor: "pointer", width: "150px", height: "40px", borderRadius: "20px", outline: "none", border: "none", color: "white" }}>Upload</button>
    </div>
 
       {/* model section */}

@@ -17,6 +17,25 @@ const SafetyPlan = () => {
     content: () => componentRef.current,
   });
 
+  const handlePrint2 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+
+    // Trigger the print action
+    handlePrint();
+
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
   //singIn model state
   const [showSingIn, setShowSingIn] = useState(false);
   const [userDetail, setUserDetail] = useState("");
@@ -226,7 +245,7 @@ const SafetyPlan = () => {
               <textarea
                 id="programlocation&address"
                 value={warning}
-                rows={5}
+                  rows={2}
                 cols={130}
                 placeholder="Type Here......"
                 required
@@ -254,7 +273,7 @@ const SafetyPlan = () => {
               <textarea
                 id="programlocation&address"
                 value={internalCopy}
-                rows={5}
+                  rows={2}
                 cols={130}
                 placeholder="Type Here......"
                 required
@@ -311,7 +330,7 @@ const SafetyPlan = () => {
 
               </div>
 
-              <div className="form-actions">
+              <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -420,7 +439,7 @@ const SafetyPlan = () => {
 
               </div>
 
-              <div className="form-actions">
+              <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -645,11 +664,10 @@ const SafetyPlan = () => {
               isMulti
               options={enviromentAdressOptions}
               value={enviromentAdress}
-              onChange={enviromentAdresshandler}
-              
+                  onChange={enviromentAdresshandler}
               />
             </div>
-            <div class="file-upload-box">
+              <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -663,7 +681,7 @@ const SafetyPlan = () => {
                 </button>
                 </div>
                 <div>
-                <button className="upload-button" type="button" onClick={handlePrint}>
+                    <button className="upload-button" type="button" onClick={handlePrint2}>
                   PRINT THIS FORM
                 </button>
                 </div>

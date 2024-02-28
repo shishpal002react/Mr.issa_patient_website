@@ -3654,7 +3654,7 @@ const InitialAssessment = () => {
 
 
 
-              <div className="yeschechbox-parent">
+              <div className="yeschechbox235-parent">
                 <div className="yeschechbox235" style={{ marginTop: "1.5rem" }}>
                   <label style={{ fontWeight: "bold" }}>Substance Abuse history:</label>
 

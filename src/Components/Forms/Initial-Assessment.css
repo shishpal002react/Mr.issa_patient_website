@@ -213,6 +213,8 @@
 }
 
 
+/* treatment plan css update css head */
+
 
 
 
@@ -1134,6 +1136,12 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 
+.label-review-clinical {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .yeschechbox-review {
   display: grid;
   grid-gap: 0.5rem;
@@ -1270,14 +1278,14 @@ input[type="checkbox"] {
 
   .genderbox {
     align-items: center;
-    margin-top: 1rem;
     display: flex;
     padding-left: 10px;
-    width: 150px;
+    /* width: 100px; */
     height: 50px;
-    border: 2px solid #1e1e1e99;
+    /* border: 2px solid #1e1e1e99; */
     border-radius: 5px;
     transition: border-color 0.3s;
+
   }
 
   .parent-div-screening {
@@ -1369,6 +1377,12 @@ input[type="checkbox"] {
     align-items: center;
   }
 
+  .form-field-child-result-nursing {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
   .yeschechboxFall-risk {
     display: flex;
     justify-content: space-between;
@@ -1401,17 +1415,21 @@ input[type="checkbox"] {
   }
 
   .yeschechbox235-parent {
-    display: flex;
+    display: block;
   }
 
   .yeschechbox23 {
     display: flex;
     justify-content: start;
     width: auto;
-    padding-left: 10%;
+    padding-left: 0%;
     margin-bottom: 20px;
     gap: 10px;
     align-items: center;
+  }
+
+  .yeschechbox23 label {
+    font-weight: bold;
   }
 
   .yeschechbox235 {
@@ -1421,6 +1439,39 @@ input[type="checkbox"] {
     margin-bottom: 20px;
     gap: 10px;
     align-items: center;
+  }
+
+  /* nusrsing assestment form */
+  .form-field-child-result-nursing {
+    margin-top: 1rem;
+    display: block;
+    align-items: center;
+  }
+
+  .yeschechbox-review-Nutrition {
+    display: block;
+    width: 100%;
+    gap: 10%;
+    margin-top: 1.5rem;
+  }
+
+  /* treatmet plan */
+  .yeschechbox-review-treatment {
+    display: block;
+  }
+
+  .yeschechbox-review-treatment-child {
+    display: block;
+  }
+
+  .yeschechbox-review-treatment-progress {
+    display: block;
+  }
+
+  .label-review-clinical {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
   }
 
 

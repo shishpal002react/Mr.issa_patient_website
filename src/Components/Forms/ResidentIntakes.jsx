@@ -58,6 +58,137 @@ const ResidentIntakes = () => {
     content: () => componentRef9.current,
   });
 
+  //handle print data
+  const handlePrintUpdate1 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint1();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate2 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint2();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate3 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint3();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate4 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint4();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate5 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint5();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate6 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint6();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate7 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint7();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+  const handlePrintUpdate8 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+    handlePrint8();
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
+
+
+
   //page state
   const [page, setPage] = useState(1);
 
@@ -849,14 +980,15 @@ const ResidentIntakes = () => {
                     fontSize: "24px",
                     textAlign: "center",
                     marginBottom: "20px",
+                        marginTop: "10px"
                   }}
                 >
                   Consent for Treatment
                 </h6>
-                <p>
+                    {/* <p>
                   Please read the following Terms & Conditions properly &
                   provide all the necessary details
-                </p>
+                </p> */}
                 <h6>
                   I voluntarily apply for evaluation/behavioral health treatment
                   at
@@ -1007,11 +1139,11 @@ const ResidentIntakes = () => {
               value={residentName}
               onChange={(e) => setResidentName(e.target.value)}
             /> */}
-                  {/* <label htmlFor="" className="label-review-resitent">
-                Resident Signature
-              </label> */}
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
+                    Resident Signature:
+                  </label>
 
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -1114,7 +1246,7 @@ const ResidentIntakes = () => {
                   {/* <label htmlFor="" className="label-review-resitent">
                 Guardian / Representative Signature
               </label> */}
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -1189,7 +1321,7 @@ const ResidentIntakes = () => {
               </div>
 
               
-              <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -1203,7 +1335,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint1} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate1} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -1228,7 +1360,7 @@ const ResidentIntakes = () => {
             }
 
        
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -1349,13 +1481,12 @@ const ResidentIntakes = () => {
                 </div>
 
                   </div>
-                  <div className="form-actions">
+                  <div className="form-actions hidePrint">
                   <button
                     type="button"
                     className="safetybutton"
                     onClick={handleinternalData}
-                  >
-                    SAVE
+                    >ADD
                   </button>
                   </div>
               <div className="needs-interventions-container">
@@ -1449,7 +1580,7 @@ const ResidentIntakes = () => {
                   {/* <label htmlFor="" className="label-review-resitent">
                 Resident Signature
               </label> */}
-                   <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                    <div className="file-upload-box-child">
                    <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                      SAVED AS DRAFT
@@ -1515,7 +1646,7 @@ const ResidentIntakes = () => {
                   <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }} >
                     Guardian / Representative Signature:
               </label>
-                   <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                    <div className="file-upload-box-child">
                    <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                      SAVED AS DRAFT
@@ -1577,7 +1708,7 @@ const ResidentIntakes = () => {
                   <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                     Staff Signature:
               </label>
-                     <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -1835,7 +1966,7 @@ const ResidentIntakes = () => {
                   <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                     Resident Signature:
               </label>
-                     <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint" > 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -1879,7 +2010,7 @@ const ResidentIntakes = () => {
                   <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                     Guardian/Representative Signature:
               </label>
-                 <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint">
               
                  <div className="file-upload-box-child">
                   <div >
@@ -1893,7 +2024,7 @@ const ResidentIntakes = () => {
                    </button>
                    </div>
                    <div>
-                   <button onClick={handlePrint2} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate2} className="upload-button" type="button" >
                      PRINT THIS FORM
                    </button>
                    </div>
@@ -1918,7 +2049,7 @@ const ResidentIntakes = () => {
                   }
         
           
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -1967,8 +2098,9 @@ const ResidentIntakes = () => {
                 Consent to appear in photographs and videotapes. Internal use
                 only.
               </p>
-              <div className="form-field">
-                <label className="label-review-resitent">Resident Name:</label>
+                  <div className="form-field-update">
+                    <div className="form-field-child">
+                      <label >Resident Name:</label>
                 <input
                   type="text"
                   id="AHCCCS"
@@ -1980,10 +2112,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Date of Birth</label>
+                    <div className="form-field-child">
+                      <label >Date of Birth:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={photoVideoConsentDateOfBirth}
                   placeholder="DD/MM/YYYY"
@@ -1993,10 +2125,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Admission Date:</label>
+                    <div className="form-field-child">
+                      <label >Admission Date:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+
                   type="date"
                   value={photoVideoConsentAdmissionDate}
                   placeholder="DD/MM/YYYY"
@@ -2006,6 +2138,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
+                  </div>
+
+
+
               <p style={{ color: "#000000" }}>
                 Agree to give{" "}
                 <span>
@@ -2139,8 +2275,8 @@ const ResidentIntakes = () => {
                   }
                 />
               </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">
+                  <div className="form-field-single-update">
+                    <label>
                   Guardian/Representative Name:
                 </label>
                 <input
@@ -2155,10 +2291,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
-                Guardian/Representative Signature 
+                  <label style={{ fontWeight: "bold" }} className="label-review-resitent">
+                    Guardian/Representative Signature: 
               </label>
-              <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -2172,7 +2308,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint3} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate3} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -2215,7 +2351,7 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
        
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -2271,8 +2407,11 @@ const ResidentIntakes = () => {
                 THIS FORM MUST BE COMPLETED AND PROMINENTLY DISPLAYED IN THE
                 MEMBER MEDICAL RECORD
               </h6>
-              <div className="form-field">
-                <label className="label-review-resitent">Resident Name:</label>
+
+
+                  <div className="form-field-update">
+                    <div className="form-field-child">
+                      <label >Resident Name:</label>
                 <input
                   type="text"
                   value={advanceDirectivesResidentName}
@@ -2283,8 +2422,8 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Select Gender</label>
+                    <div className="form-field-child">
+                      <label >Select Gender:</label>
                 <div className="genderdiv">
                   <div className="genderbox">
                     <input
@@ -2316,8 +2455,8 @@ const ResidentIntakes = () => {
                   </div>
                 </div>
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Date of Birth</label>
+                    <div className="form-field-child">
+                      <label >Date of Birth:</label>
                 <input
                   style={{ color: "#1A9FB2" }}
                   type="date"
@@ -2329,8 +2468,12 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Address</label>
+
+                  </div>
+
+                  <div className="form-field-update">
+                    <div className="form-field-child">
+                      <label className="label-review-resitent">Address:</label>
                 <input
                   type="text"
                   value={advanceDirectivesResidentAddress}
@@ -2340,24 +2483,9 @@ const ResidentIntakes = () => {
                     setAdvanceDirectivesResidentAddress(e.target.value)
                   }
                 />
-              </div>
-
-              {/* <div className="form-field">
-              <label htmlFor="dateOfadress">Address</label>
-              <input
-                style={{ color: "#1A9FB2" }}
-                type="text"
-                id="dateOfadress"
-                value={advanceDirectivesResidentAddress}
-                placeholder="Address"
-                required
-                onChange={(e) =>
-                  setAdvanceDirectivesResidentAddress(e.target.value)
-                }
-              />
-            </div> */}
-              <div className="form-field">
-                <label className="label-review-resitent">Date</label>
+                    </div>
+                    <div className="form-field-child">
+                      <label className="label-review-resitent">Date:</label>
                 <input
                   style={{ color: "#1A9FB2" }}
                   type="date"
@@ -2369,6 +2497,11 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
+                  </div>
+
+
+
+
               <div className="formsheading">
                 <h6>Advance Directives Information</h6>
                 <p>
@@ -2457,7 +2590,7 @@ const ResidentIntakes = () => {
                     checked={advanceDirectivesDeveloped === "yes"}
                     onChange={() => setAdvanceDirectivesDeveloped("yes")}
                   />
-                  <span htmlFor="yesRadio">Yes</span>
+                      <span htmlFor="yesRadio" style={{ marginBottom: "5px" }}>Yes</span>
                 </div>
                 <div
                   style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -2470,7 +2603,7 @@ const ResidentIntakes = () => {
                     checked={advanceDirectivesDeveloped === "no"}
                     onChange={() => setAdvanceDirectivesDeveloped("no")}
                   />
-                  <span htmlFor="noRadio">No</span>
+                      <span htmlFor="noRadio" style={{ marginBottom: "5px" }}>No</span>
                 </div>
               </div>
               {advanceDirectivesDeveloped === "no" && (
@@ -2749,7 +2882,7 @@ const ResidentIntakes = () => {
                   )}
                 </div>
               </div>
-              <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint" >
               
               <div className="file-upload-box-child">
                <div >
@@ -2759,13 +2892,13 @@ const ResidentIntakes = () => {
                 </div>
              
                 <div>
-                <button onClick={handlePrint4} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate4} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
-                </div>  
-
-              <div className="form-actions-next">
+                    </div>  
+                  </div>
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -2791,11 +2924,7 @@ const ResidentIntakes = () => {
                       </button>
                     </div>
                   )}
-              </div>
-
-            
-                 
-            </div>
+                  </div>
             </div>
             </>
           )}
@@ -2837,10 +2966,10 @@ const ResidentIntakes = () => {
               Bureau of Residential Facilities Licensing Team
               </label>
               <p style={{ color: "#000000" }}>
-                Arizone Department of Health Services 150 North 18th Avenue, Suite 420, Phonenix, AZ 85007
+                    Arizone Department of Health Services 150 North 18th Avenue, Suite 420, Phonenix, AZ 85007 Phone: 602-364-2639.
               </p>
               <p style={{ color: "#000000" }}>
-                <a href="www.azdhs.gov/residentialfacilities">www.azdhs.gov/residentialfacilities</a>
+                    <a target="_blank" href="https://issa-website-website.vercel.app/">https://issa-website-website.vercel.app/</a>
               </p>
               <p style={{ color: "#000000" }}>
                 By signing below, resident acknowledge to have been informed of
@@ -2865,10 +2994,10 @@ const ResidentIntakes = () => {
                 setComplaintProcessAcknowledgementResidentName(e.target.value)
               }
             /> */}
-              <label htmlFor="" className="label-review-resitent">
-                Resident Signature
+                  <label className="label-review-resitent" style={{ fontWeight: "bold" }}>
+                    Resident Signature:
               </label>
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -2914,8 +3043,8 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
        
-              <div className="form-field">
-                <label className="label-review-resitent">
+                  <div className="form-field-single-update">
+                    <label >
                   Guardian/Representative Name:
                 </label>
                 <input
@@ -2932,10 +3061,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  <label className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Guardian/Representative Signature:
               </label>
-              <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -2949,7 +3078,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint5} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate5} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -2991,7 +3120,7 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
         
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -3077,10 +3206,10 @@ const ResidentIntakes = () => {
                 </select> */}
                
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Resident Signature:
               </label>
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -3127,8 +3256,8 @@ const ResidentIntakes = () => {
               </div>
             </div> */}
       
-              <div className="form-field">
-                <label className="label-review-resitent">
+                  <div className="form-field-single-update">
+                    <label >
                   Guardian/Representative Name:
                 </label>
                 <input
@@ -3143,10 +3272,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  <label className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Guardian/Representative Signature:
               </label>
-              <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -3160,7 +3289,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint6} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate6} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -3183,7 +3312,7 @@ const ResidentIntakes = () => {
                    />)
                }
 
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -3228,8 +3357,8 @@ const ResidentIntakes = () => {
               >
                 Resident Lock Box Key Issue and Return Optional
               </h6>
-              <div className="form-field">
-                <label className="label-review-resitent">Resident’s Name</label>
+                  <div className="form-field-single-update">
+                    <label >Resident’s Name:</label>
                 <input
                   type="text"
                   value={promotionTalkStrategicApproach}
@@ -3240,8 +3369,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div>
-                <label className="label-review-resitent">
+
+                  <div className="form-field-update">
+                    <div className="form-field-child">
+                      <label >
                   Date Key Issued:
                 </label>
                 <input
@@ -3254,10 +3385,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">
+                    <div className="form-field-child">
+                      <label >
                   Date Key Returned:
-                </label>
+                      </label>
                 <input
                   type="date"
                   value={lockBoxKeyIssueReturnDateKeyReturned}
@@ -3268,12 +3399,16 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">Address</label>
+
+                  </div>
+
+
+                  <div className="form-field-single-update">
+                    <label >Address:</label>
                 <input
                   type="text"
                   value={lockBoxKeyIssueReturnAddress}
-                  placeholder="Enter Name"
+                      placeholder="Enter address"
                   required
                   onChange={(e) =>
                     setLockBoxKeyIssueReturnAddress(e.target.value)
@@ -3344,10 +3479,10 @@ const ResidentIntakes = () => {
                 setLockBoxKeyIssueReturnResidentName(e.target.value)
               }
             /> */}
-              <label htmlFor="" className="label-review-resitent">
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Resident Signature:
               </label>
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -3375,8 +3510,8 @@ const ResidentIntakes = () => {
                  }
         
 
-              <div className="form-field">
-                <label className="label-review-resitent">
+                  <div className="form-field-single-update">
+                    <label >
                   Guardian/Representative Name:
                 </label>
                 <input
@@ -3391,10 +3526,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Guardian/Representative Signature:
               </label>
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -3422,8 +3557,8 @@ const ResidentIntakes = () => {
                  }
         
         
-              <div className="form-field">
-                <label className="label-review-resitent">Staff Witness</label>
+                  <div className="form-field-single-update">
+                    <label >Staff Witness:</label>
                 <input
                   type="text"
                   value={lockBoxKeyIssueReturnStaffName}
@@ -3434,11 +3569,11 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review-resitent">
-                  Signature Witness
+                  <div className="form-field-single-update-bold">
+                    <label >
+                      Signature Witness:
                 </label>
-                <div class="file-upload-box">
+                    <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -3452,7 +3587,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint7} className="upload-button" type="button" >
+                          <button onClick={handlePrintUpdate7} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -3477,7 +3612,7 @@ const ResidentIntakes = () => {
            
               </div>
           
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button
@@ -3523,7 +3658,7 @@ const ResidentIntakes = () => {
                 INSURANCE INFORMATION
               </h6>
               <div className="Residentrights">
-                <p>Primary Insurance:</p>
+                    <p style={{ fontWeight: "bold" }}>Primary Insurance:</p>
                 <p>
                   Name of Policyholder{" "}
                   <span>
@@ -4058,15 +4193,13 @@ const ResidentIntakes = () => {
                 </p>
                 <p>
                   ASSIGNMENT OF BENEFITS: I hereby authorize this facility to
-                  release the minimum medical
-                </p>
-                <p>
-                  information necessary to process my insurance claims. I
+                      release the minimum medical information necessary to process my insurance claims. I
                   further authorize the above insurance company(s) to make
                   payment directly to the provider for the benefits herein and
                   otherwise payable to me.
                 </p>
-              </div>
+
+                  </div>
               {/* <div className="form-field">
               <label className="label-review-resitent">Guardian/Representative Name:</label>
               <input
@@ -4080,10 +4213,10 @@ const ResidentIntakes = () => {
                 }
               />
             </div> */}
-              <label htmlFor="" className="label-review-resitent">
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Resident Signature:
               </label>
-              <div class="file-upload-box"> 
+                  <div class="file-upload-box hidePrint"> 
                      <div className="file-upload-box-child">
                      <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                        SAVED AS DRAFT
@@ -4111,8 +4244,8 @@ const ResidentIntakes = () => {
                  }
           
           
-              <div className="form-field">
-                <label className="label-review-resitent">
+                  <div className="form-field-single-update">
+                    <label >
                   Guardian/Representative Name:
                 </label>
                 <input
@@ -4127,10 +4260,10 @@ const ResidentIntakes = () => {
                   }
                 />
               </div>
-              <label htmlFor="" className="label-review-resitent">
+                  <label htmlFor="" className="label-review-resitent" style={{ fontWeight: "bold" }}>
                 Guardian/Representative Signature:
               </label>
-              <div class="file-upload-box">
+                  <div class="file-upload-box hidePrint">
               
               <div className="file-upload-box-child">
                <div >
@@ -4144,7 +4277,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                <button onClick={handlePrint8} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate8} className="upload-button" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -4173,7 +4306,7 @@ const ResidentIntakes = () => {
                }
        
 
-              <div className="form-actions-next">
+                  <div className="form-actions-next hidePrint">
                 {page !== 1 && (
                   <div>
                     <button

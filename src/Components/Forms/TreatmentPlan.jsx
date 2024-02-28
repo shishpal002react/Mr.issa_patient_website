@@ -15,6 +15,25 @@ const TreatmentPlan = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  const handlePrint2 = () => {
+    var elements = document.getElementsByClassName("hidePrint");
+
+    // Iterate through each element with the specified class
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+
+    // Trigger the print action
+    handlePrint();
+
+    // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
+    setTimeout(() => {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+      }
+    }, 1000);
+  };
   // model data
   const [draftModel, setDraftModel] = useState(false);
   const [signatureModel1, setSignatureModel1] = useState(false);
@@ -1786,8 +1805,8 @@ const TreatmentPlan = () => {
                   onChange={(e) => setBtext(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review">Primary Care Provider:</label>
+              <div className="form-field-single-update">
+                <label >Primary Care Provider:</label>
                 <input
                   type="text"
                   placeholder="Enter text."
@@ -1796,8 +1815,8 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPrimaryCare(e.target.value)}
                 />
               </div>
-              <div className="form-field">
-                <label className="label-review">Psychiatric Provider:</label>
+              <div className="form-field-single-update">
+                <label >Psychiatric Provider:</label>
                 <input
                   type="text"
                   placeholder="Enter text."
@@ -1805,49 +1824,45 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setPsychiatricProvider(e.target.value)}
                 />
-
-                <p style={{ marginTop: "1rem" }}>
+              </div>
+              <p style={{ marginTop: "1rem" }}>
                   Resident to receive treatment services from above provider(s)
                   every 1 to 2 months or earlier as needed. Specialty providers
                   are to be managed and referred per primary care medical
                   provider.
                 </p>
-              </div>
-              <div className="formsheading">
-                <label className="label-review">Resident Goals:</label>
-                <textarea
+              <div className="form-field-single-update">
+                <label >Resident Goals:</label>
+                <input
                   type="text"
                   placeholder="Enter text."
                   value={residentGoal}
-                  rows={2}
-                  cols={130}
                   required
                   onChange={(e) => setResidentGoal(e.target.value)}
                 />
+
               </div>
-              <div className="form-field">
-                <label className="label-review">Allergies:</label>
-                <textarea
+              <div className="form-field-single-update">
+                <label >Allergies:</label>
+                <input
                   type="text"
                   placeholder="Enter text."
                   value={allergies}
-                  rows={2}
-                  cols={130}
                   required
                   onChange={(e) => setAllergies(e.target.value)}
                 />
+
               </div>
-              <div className="form-field">
-                <label className="label-review">Triggers:</label>
-                <textarea
+              <div className="form-field-single-update">
+                <label >Triggers:</label>
+                <input
                   type="text"
-                  placeholder="Enter text."
+                  placeholder="Enter text"
                   value={Triggers}
-                  rows={2}
-                  cols={130}
                   required
                   onChange={(e) => setTriggers(e.target.value)}
                 />
+
               </div>
 
               <div className="form-field">
@@ -2933,7 +2948,7 @@ const TreatmentPlan = () => {
               </div>
             </div> */}
               <div className="formsheading">
-                <h6>
+                <h6 style={{ fontWeight: "bold" }}>
                   Goals for Changes in the Resident Phychorial Interaction or
                   Behaviour{" "}
                 </h6>
@@ -3215,7 +3230,7 @@ const TreatmentPlan = () => {
                 />
               </div>
               <div className="form-field-update">
-                <div className="form-field">
+                <div className="form-field-child">
                   <label>Admission Messure:</label>
                 <input
 
@@ -3226,7 +3241,7 @@ const TreatmentPlan = () => {
                   onChange={(e) => setAdmissionMeasure4(e.target.value)}
                 />
               </div>
-              <div className="form-field">
+                <div className="form-field-child">
                   <label>Previous Messure:</label>
                 <input
 
@@ -4534,7 +4549,7 @@ const TreatmentPlan = () => {
               </div>
 
               <div className="formsheading">
-                <label className="label-review">
+                <label className="label-review-clinical">
                   Clinical Summary /Recommendations/Intervention:
                 </label>
               </div>
@@ -4758,7 +4773,7 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              <div class="file-upload-box">
+              <div class="file-upload-box hidePrint">
                 <div className="file-upload-box-child">
                   <button
                     className="upload-button1"
@@ -4838,7 +4853,7 @@ const TreatmentPlan = () => {
 
 
 
-            <div class="file-upload-box">
+            <div class="file-upload-box hidePrint">
               <div className="file-upload-box-child">
                 <button
                   className="upload-button1"
@@ -4892,7 +4907,7 @@ const TreatmentPlan = () => {
               </h6>
             </div>
 
-            <div className="form-field-update">
+            <div className="form-field-update ">
               <div className="form-field-child">
                 <label htmlFor="AHCCCS">First and Last Name:</label>
               <input
@@ -4915,7 +4930,7 @@ const TreatmentPlan = () => {
             </div>
             </div>
 
-            <div class="file-upload-box">
+            <div class="file-upload-box hidePrint">
               <div className="file-upload-box-child">
                 <div>
                   <button
@@ -4939,7 +4954,7 @@ const TreatmentPlan = () => {
                   <button
                     className="upload-button"
                     type="button"
-                    onClick={handlePrint}
+                    onClick={handlePrint2}
                   >
                     PRINT THIS FORM
                   </button>

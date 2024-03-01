@@ -23,7 +23,7 @@ import chatting1 from "../../img/chatting1.png";
 import { RiSearchLine } from "react-icons/ri";
 import { IoSearchSharp } from "react-icons/io5";
 import intake from "../../img/Mask group.png";
-import { user_detail, show_notification,notification_get } from "../../Api_Collection/Api";
+import { user_detail, show_notification, notification_get } from "../../Api_Collection/Api";
 
 
 
@@ -36,7 +36,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
   const [modalShow, setModalShow] = React.useState(false);
 
   //notification
-  const [notification,setNotification]=useState([]);
+  const [notification, setNotification] = useState([]);
   const [todayData, setTodayData] = useState([]);
   const [otherData, setOtherData] = useState([]);
 
@@ -74,8 +74,8 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
     sortAndSeparateData();
   }, [notification]);
 
- console.log(todayData,"today data");
- console.log(otherData,"other data");
+  console.log(todayData, "today data");
+  console.log(otherData, "other data");
 
   useEffect(() => {
     user_detail(setUser);
@@ -122,7 +122,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
       <div className="navbar1">
         <div className="left-section">
           <span>
-            <MdOutlineSegment onClick={toggleMenu} />
+            <MdOutlineSegment onClick={toggleMenu} color="#1A9FB2" size={25} />
           </span>
           <span>Welcome,</span>
           <h6>{user?.fullName}</h6>
@@ -130,8 +130,8 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
         </div>
         <div className="right-section">
           <img src={profile} alt="" onClick={openProfileModal} />
-          <RiMessage2Line className="icons" onClick={openChattingModal} />
-          <FaBell className="icons" onClick={openNotificationModal} />
+          <RiMessage2Line className="icons" onClick={openChattingModal} color="#1A9FB2" size={30} />
+          <FaBell className="icons" onClick={openNotificationModal} color="#1A9FB2" size={30} />
         </div>
       </div>
       {/* Modal */}
@@ -164,8 +164,8 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
               </button>
               <button
                 className="profilemodalbutton"
-                style={{ cursor: "pointer",marginTop:"1rem" }}        
-                  onClick={() => navigate("/update-profile")}           
+                style={{ cursor: "pointer", marginTop: "1rem" }}
+                onClick={() => navigate("/update-profile")}
               >
                 Edit ProFile
               </button>
@@ -204,34 +204,34 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
             <h5>NOTIFICATIONS</h5>
             <hr />
             {
-  todayData.length>0 && (
-    <>
-      <p>Today</p>
-      {todayData.map((item, i) => (
-        <div className="notificationcontent" style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}>
-          <img src={item?.patientId?.profilePic ? item?.patientId?.profilePic : notification1} alt="" style={{ borderRadius: "50%" }} />
-          <span>{item?.title}</span>
-        </div>
-      ))}
-    </>
-  )
-}
-            {
-              otherData.length >0 && (
+              todayData.length > 0 && (
                 <>
-                  <p style={{ color: "#1E1E1E99" }}>Previous</p>
-            {
-              otherData?.map((item,i)=>(
-                <div className="notificationcontent" style={{display:"flex" ,alignItems:"center",marginTop:"1rem"}}>
-              <img src={item?.patientId?.profilePic?item?.patientId?.profilePic:notification1} alt="" style={{borderRadius:"50%"}}/>
-              <span >{item?.title}</span>
-            </div>
-              ))
-            }
+                  <p>Today</p>
+                  {todayData.map((item, i) => (
+                    <div className="notificationcontent" style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}>
+                      <img src={item?.patientId?.profilePic ? item?.patientId?.profilePic : notification1} alt="" style={{ borderRadius: "50%" }} />
+                      <span>{item?.title}</span>
+                    </div>
+                  ))}
                 </>
               )
             }
-          
+            {
+              otherData.length > 0 && (
+                <>
+                  <p style={{ color: "#1E1E1E99" }}>Previous</p>
+                  {
+                    otherData?.map((item, i) => (
+                      <div className="notificationcontent" style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}>
+                        <img src={item?.patientId?.profilePic ? item?.patientId?.profilePic : notification1} alt="" style={{ borderRadius: "50%" }} />
+                        <span >{item?.title}</span>
+                      </div>
+                    ))
+                  }
+                </>
+              )
+            }
+
             {/* <div className="notificationcontent">
               <img src={notification1} alt="" />
               <span>Your Intake Documents have been Uploaded Succesfully!</span>
@@ -258,7 +258,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
       {/* Chatting Modal */}
       {ischattingModalOpen && (
         <ChattingModal onClose={closeChattingModal}>
-       
+
         </ChattingModal>
       )}
 
@@ -277,7 +277,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
           </div>
         </CompleteIntake>
       )} */}
-    
+
     </>
   );
 };

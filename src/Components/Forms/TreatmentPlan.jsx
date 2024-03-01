@@ -615,6 +615,35 @@ const TreatmentPlan = () => {
     { label: "Social Withdrawals", value: "Social Withdrawals" },
     { label: "Changes in Eating habits", value: "Changes in Eating habits" },
     { label: "Feeling of anger", value: "Feeling of anger" },
+    { label: "Negative thoughts", value: "Negative thoughts" },
+    { label: "Confused thinking ", value: "Confused thinking " },
+    { label: "Irritability", value: "Irritability" },
+    { label: "Loss of interest", value: "Loss of interest" },
+    { label: "Fatigue or low energy", value: "Fatigue or low energy" },
+    { label: "Difficulty concentrating ", value: "Difficulty concentrating" },
+    { label: "Delusions", value: "Delusions" },
+    { label: "Hallucinations", value: "Hallucinations" },
+    { label: "Substance use", value: "Substance use" },
+    { label: "Stress", value: "Stress" },
+    { label: "Trouble coping", value: "Trouble coping" },
+    { label: "Feelings of fear", value: "Feelings of fear" },
+    { label: "Grief/Loss", value: "Grief/Loss" },
+    { label: "Eating Disorder", value: "Eating Disorder" },
+    { label: "Danger to self", value: "Danger to self" },
+    { label: "Danger to others", value: "Danger to others" },
+    { label: "Lack of self care", value: "Lack of self care" },
+    { label: "Inability to maintain safety", value: "Inability to maintain safety" },
+    { label: "Autism Spectrum Disorder", value: "Autism Spectrum Disorder" },
+    { label: "Bipolar Disorder", value: "Bipolar Disorder" },
+    { label: "Inability to maintain self care", value: "Inability to maintain self care" },
+    { label: "Inability to self administer medication", value: "Inability to self administer medication" },
+    { label: "Conduct Disorder", value: "Conduct Disorder" },
+    { label: "Inappropriate Sexual Behavior", value: "Inappropriate Sexual Behavior" },
+    { label: "Schizophrenia Disorder", value: "Schizophrenia Disorder" },
+    { label: "Major Depressive Disorder", value: "Major Depressive Disorder" },
+    { label: "Obsessive Disorder", value: "Obsessive Disorder" },
+    { label: "Psychosis", value: "Psychosis" },
+
   ];
 
   const handleKeyPresentingPrice = (event) => {
@@ -1433,7 +1462,7 @@ const TreatmentPlan = () => {
                 <input
                     type="text"
                   value={residentName}
-                  placeholder="Enter age"
+                    placeholder="Enter name"
                   required
                   onChange={(e) => setResidentName(e.target.value)}
                 />

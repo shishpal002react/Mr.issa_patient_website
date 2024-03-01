@@ -51,7 +51,7 @@ const SingInUpdateModel = ({ onClose, singin, setSingIn,setDateAndTime }) => {
    
         <div className="input_singin_button">
        {signatureData ? <p style={{ color: "white" }}>Digitally Sign by {signatureData}</p> : <p style={{ color: "white" }}>Digitally Sign by Employee Name</p> } 
-          <p style={{ color: "white" }}>Date: {date} Time: {time} </p>
+          <p style={{ color: "white", }}>Date: {date} Time: {time} </p>
           {/* <p style={{ color: "white" }}>{time}</p> */}
           
           <input

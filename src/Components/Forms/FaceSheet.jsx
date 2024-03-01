@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
 import {
   user_detail,
-  faceSheet_form,
-  Nurssing_form,
+  faceSheet_form
 } from "../../Api_Collection/Api";
 import Draftinmodel from "../Modal/Draftinmodel";
 import { useReactToPrint } from "react-to-print";
@@ -71,7 +70,7 @@ const FaceSheet = () => {
   const [
     primaryCareProviderOtherSpecialists,
     setPrimaryCareProviderOtherSpecialists,
-  ] = useState("");
+  ] = useState(""); 
   const [primaryCareProviderArray,setPrimaryCareProviderArray]=useState([])
 
   const handlePrimaryCareArray=()=>{
@@ -206,7 +205,7 @@ const FaceSheet = () => {
   };
 
   const handleData = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const data = {
       patientId,
       residentName,
@@ -251,7 +250,7 @@ const FaceSheet = () => {
       medicalDiagnosesHistory,
       pastSurgeries,
     };
-    Nurssing_form(data);
+    faceSheet_form(data);
     initial_Value();
     navigate("/intake");
   };
@@ -304,7 +303,7 @@ const FaceSheet = () => {
             <h1>FACE SHEET</h1>
           </div>
         </div>
-        <form onSubmit={handleData}>
+          <form >
           <div className="form-section">
 
               <div className="form-field-update">
@@ -970,7 +969,7 @@ const FaceSheet = () => {
               
               <div className="file-upload-box-child">
                <div >
-                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                  <button className="upload-button1" type="button" onClick={() => { setDraftModel(true); handleData() }}>
                   SAVED AS DRAFT
                 </button>
                 </div>
@@ -1004,11 +1003,11 @@ const FaceSheet = () => {
                 />)
             }
     
-          {/* <div className="form-actions">
-            <button type="submit" className="initalsubmit">
+            {/* <div className="form-actions">
+              <button type="submit" id="submit_button" style={{ display: "none" }}>
               SUBMIT DETAILS
             </button>
-          </div> */}
+            </div> */}
         </form>
       </div>
       {

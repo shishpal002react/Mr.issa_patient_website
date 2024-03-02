@@ -50,22 +50,35 @@
   }
 }
 
+.box-image-container {
+  border: 1px solid black;
+  /* padding: 10px; */
+  margin-top: 1rem;
+}
+
+.border-bootom-line {
+  width: 100%;
+  border-bottom: 1px solid black;
+  margin-top: 5px;
+}
+
 .form-field-update {
   display: flex;
   grid-gap: 20px;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 0px 10px
 }
 
 
 .form-field-child {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
 }
 
 .form-field-child-name {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   display: flex;
   align-items: center;
 }
@@ -86,7 +99,7 @@
 }
 
 .form-field-child-gender {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   display: flex;
   align-items: center;
 }
@@ -140,10 +153,10 @@
 
 .form-field-single-update {
   display: flex;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   align-items: center;
+  padding: 10px;
 }
-
 
 .form-field-single-update label {
   font-weight: bold;
@@ -162,7 +175,7 @@
 
 .form-field-single-update-notBold {
   display: flex;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   align-items: ceter;
 }
 
@@ -178,7 +191,8 @@
 }
 
 .form-field-single-update-bold {
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
+  padding: 10px;
 }
 
 .form-field-single-update-bold label {
@@ -212,8 +226,56 @@
   outline: none;
 }
 
+.checkboxitem-update {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  /* width: calc(2% - 10px); */
+
+  gap: 10px
+}
+
 
 /* treatment plan css update css head */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

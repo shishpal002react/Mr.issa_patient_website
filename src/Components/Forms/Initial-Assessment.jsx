@@ -402,6 +402,26 @@ const InitialAssessment = () => {
   const [substanceAbuseHistoryDataTypesBoolean, setSubstanceAbuseHistoryDataTypesBoolean] = useState(false);
   const [substanceAbuseHistoryDataTypesType, setSubstanceAbuseHistoryDataTypesType] = useState("");
 
+  //type of service
+  const [typeOfServiceArray, setTypeOfServicesArray] = useState([])
+  const handleTypeOfService = () => {
+    if (mentalHealthTreatmentHistoryDiagnosisReason && mentalHealthTreatmentHistoryDates && mentalHealthTreatmentHistoryWhere && mentalHealthTreatmentHistoryTypeOfService) {
+      const data = {
+        mentalHealthTreatmentHistoryDiagnosisReason,
+        mentalHealthTreatmentHistoryDates,
+        mentalHealthTreatmentHistoryWhere,
+        mentalHealthTreatmentHistoryTypeOfService
+      }
+      setTypeOfServicesArray((prev) => [...prev, data]);
+      setMentalHealthTreatmentHistoryTypeOfService([]);
+      setMentalHealthTreatmentHistoryWhere("");
+      setMentalHealthTreatmentHistoryDates("");
+      setMentalHealthTreatmentHistoryDiagnosisReason([]);
+    }
+
+  }
+
+
   useEffect(() => {
 
     for (let i = 0; i < substanceAbuseHistoryDataTypes.length; i++) {
@@ -431,6 +451,30 @@ const InitialAssessment = () => {
     substanceAbuseHistoryDataLengthOfSobriety,
     setSubstanceAbuseHistoryDataLengthOfSobriety,
   ] = useState("");
+
+  // arrthe value in array
+  const [typeArray, setTypeArray] = useState([])
+
+  const handleTypeOfArray = () => {
+    if (substanceAbuseHistoryDataTypes && substanceAbuseHistoryDataAgeOfFirstUse && substanceAbuseHistoryDataLastUse && substanceAbuseHistoryDataFrequency && substanceAbuseHistoryDataLengthOfSobriety) {
+      const data = {
+        substanceAbuseHistoryDataTypes,
+        substanceAbuseHistoryDataAgeOfFirstUse,
+        substanceAbuseHistoryDataLastUse,
+        substanceAbuseHistoryDataFrequency,
+        substanceAbuseHistoryDataLengthOfSobriety,
+      }
+      setTypeArray((prev) => [...prev, data]);
+      setSubstanceAbuseHistoryDataTypes([]);
+      setSubstanceAbuseHistoryDataAgeOfFirstUse("");
+      setSubstanceAbuseHistoryDataLastUse([]);
+      setSubstanceAbuseHistoryDataFrequency([]);
+      setSubstanceAbuseHistoryDataLengthOfSobriety([]);
+
+    }
+
+  }
+
   const [substanceAbuseHistoryData, setSubstanceAbuseHistoryData] = useState(
     []
   );
@@ -1653,11 +1697,14 @@ const InitialAssessment = () => {
     { label: "Arrested for bad checks", value: "Arrested for bad checks" },
     { label: "Arrested for shop lifting", value: "Arrested for shop lifting" },
     { label: "Arrested for attempted murder", value: "Arrested for attempted murder" },
+    { label: "Arrested for drug", value: "Arrested for drug" },
     { label: "Arrested for alcohol", value: "Arrested for alcohol" },
     { label: "Arrested for disorderly conduct", value: "Arrested for disorderly conduct" },
     { label: "Arrested for identity theft/ forgery", value: "Arrested for identity theft/ forgery" },
     { label: "Arrested for sex offense", value: "Arrested for sex offense" },
-    { label: "Probation/parole, custody", value: "Probation/parole, custody" },
+    { label: "Arrested for _______,", value: "Arrested for _______," },
+    { label: "Probation/parole", value: "Probation/parole" },
+    { label: "custody", value: "custody" },
     { label: "Pending litigation", value: "Pending litigation" },
     { label: "Sentencing dates", value: "Sentencing dates" },
     { label: "Needs Legal Aid", value: "Needs Legal Aid" },
@@ -2001,9 +2048,10 @@ const InitialAssessment = () => {
             <div className="form-section">
               <h2 style={{ marginTop: "1rem" }}>Basic Details</h2>
 
+              <div className="box-image-container">
               <div className="form-field-update">
                 <div className="form-field-child-gender">
-                  <label htmlFor="residentFullName">Resident Full Name:</label>
+                    <label htmlFor="residentFullName">Resident's Full Name:</label>
                   <input
                     type="text"
                     id="residentFullName"
@@ -2053,8 +2101,8 @@ const InitialAssessment = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-
+                </div>
+                <div className="border-bootom-line"></div>
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label htmlFor="dateOfBirth">Date of Birth:</label>
@@ -2081,7 +2129,7 @@ const InitialAssessment = () => {
                 </div>
 
               </div>
-
+                <div className="border-bootom-line"></div>
 
               <div className="form-field-single-update">
                 <label htmlFor="AHCCCS">AHCCCS :</label>
@@ -2094,7 +2142,7 @@ const InitialAssessment = () => {
                   onChange={(e) => setAhcccsNumber(e.target.value)}
                 />
               </div>
-
+                <div className="border-bootom-line"></div>
 
               <div className="form-field-update">
 
@@ -2119,11 +2167,10 @@ const InitialAssessment = () => {
                 </div>
 
               </div>
+                <div className="border-bootom-line"></div>
 
-
-
-              <div className="form-field">
-                <label style={{ fontWeight: "bold" }}>Admission Status:</label>
+                <div className="form-field-single-update-bold">
+                  <label >Admission Status:</label>
 
                 <Select
                   isMulti
@@ -2134,17 +2181,14 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownAdmissionStatus}
                 />
               </div>
+                <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
                 <label
                   htmlFor="programlocation&address"
 
                 >
                   Program Location & Address:{" "}
-                  {/* <img
-                  src={locate}
-                  alt=""
-                  style={{ width: "92px", height: "29px" }}
-                /> */}
+
                 </label>
                 <input
                   type="text"
@@ -2152,18 +2196,14 @@ const InitialAssessment = () => {
                   value={programLocation}
                   onChange={(e) => setProgramLocation(e.target.value)}
                 />
-                {/* <textarea
-                id="programlocation&address"
-                type="text"
-                value={programLocation}
-                rows={2}
-                cols={130}
-                placeholder="Enter Full Address"
-                required
-                onChange={(e) => setProgramLocation(e.target.value)}
-              /> */}
+
               </div>
 
+              </div>
+
+
+
+              <div className="box-image-container">
               <div className="form-field-update">
 
                 <div className="form-field-child">
@@ -2214,7 +2254,7 @@ const InitialAssessment = () => {
 
               </div>
 
-
+                <div className="border-bootom-line"></div>
               {/* <div className="form-field">
               <label htmlFor="guardianship">Guardianship:</label>
 
@@ -2239,6 +2279,7 @@ const InitialAssessment = () => {
                   onChange={(e) => setTodayDate(e.target.value)}
                 />
               </div>
+                <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
                 <label htmlFor="fidname">Guardianship/POA/PUB FID Name:</label>
                 <input
@@ -2250,6 +2291,7 @@ const InitialAssessment = () => {
                   onChange={(e) => setGuardianshipPoaPubFidName(e.target.value)}
                 />
               </div>
+                <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
                 <label htmlFor="approvedby">Approved By:</label>
                 <input
@@ -2261,10 +2303,13 @@ const InitialAssessment = () => {
                   onChange={(e) => setApprovedBy(e.target.value)}
                 />
               </div>
-              <h2 style={{ marginTop: "1.5rem", fontWeight: "bold" }}>Other Details:</h2>
-              <div className="form-field">
+              </div>
+              {/* <h2 style={{ marginTop: "1.5rem", fontWeight: "bold" }}>Other Details:</h2> */}
 
-                <label style={{ fontWeight: "bold" }}>
+              <div className="box-image-container">
+                <div className="form-field-single-update-bold">
+
+                  <label >
                   Reason for Admission to Services:
                 </label>
                 <Select
@@ -2277,7 +2322,9 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownReasionForAdmission}
                 />
               </div>
+              </div>
 
+              <div className="box-image-container">
               <div className="form-field-single-update">
                 <label >Resident’s Goals:</label>
                 <input
@@ -2299,8 +2346,11 @@ const InitialAssessment = () => {
                 onChange={(e) => setResidentGoals(e.target.value)}
               /> */}
               </div>
-              <div className="form-field">
-                <label style={{ fontWeight: "bold" }}>Resident’s Strength:</label>
+              </div>
+
+              <div className="box-image-container">
+                <div className="form-field-single-update-bold">
+                  <label >Resident’s Strength:</label>
                 <Select
                   isMulti
                   value={residentStrengths}
@@ -2310,11 +2360,10 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownResidentStrength}
                 />
               </div>
-
-
+                <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
                 <label >
-                  Resident’s Barriers
+                    Resident’s Barriers:
                 </label>
                 <input
                   type="text"
@@ -2324,20 +2373,16 @@ const InitialAssessment = () => {
                   required
                   onChange={(e) => setResidentLimitations(e.target.value)}
                 />
-                {/* <textarea
-                id="programlocation&address"
-                value={residentLimitations}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-                onChange={(e) => setResidentLimitations(e.target.value)}
-              /> */}
+
+                </div>
               </div>
 
 
-              {/* need and tarhgating */}
-              {/* <div className="form-field-single-update">
+
+
+              <div className="box-image-container">
+
+                <div className="form-field-single-update">
                 <label >
                   Current Behavioral Issues / Symptoms Reported by the Resident:
                 </label>
@@ -2348,9 +2393,11 @@ const InitialAssessment = () => {
                   placeholder="Enter text"
                   onChange={(e) => setCurrentBehavioralIssues(e.target.value)}
                 />
-
-
+                </div>
               </div>
+
+
+              { /*
               <label className="label-review">
                 Identified Needs/targeted Behaviors Intervention(s) to Meet
                 Objectives
@@ -2643,7 +2690,7 @@ const InitialAssessment = () => {
                   A. Currently prescribed medications are attached on a separate
                   page.
                 </p>
-                <p>B. Current and Past Medical/Psychiatric Conditions.</p>
+                <p style={{ fontWeight: "bold" }}>B. Current and Past Medical/Psychiatric Conditions.</p>
                 <h6 style={{ fontSize: "25px", marginTop: "2.5rem" }}>Conditions</h6>
               </div>
 
@@ -3011,7 +3058,7 @@ const InitialAssessment = () => {
                 />
               </div>
               <div className="yeschechbox">
-                <label htmlFor="" style={{ fontSize: "20px", marginTop: "1.5rem" }}>Injury:</label>
+                <label htmlFor="" style={{ fontSize: "20px", marginTop: "1.5rem" }}>History of head trauma/traumatic brain injury:</label>
                 <div className="checkbox654">
                   <div className="checkBox-aligment">
                     <input
@@ -3455,7 +3502,8 @@ const InitialAssessment = () => {
                 />
               </div>
               <div className="yeschechbox">
-                <label htmlFor="">Phobias</label>
+                <label style={{ fontSize: "20px", marginTop: "1.5rem" }}>Phobias:</label>
+
                 <div className="checkbox654">
                   <div className="checkBox-aligment">
                     <input
@@ -3562,9 +3610,9 @@ const InitialAssessment = () => {
               </div>
 
 
-
+              <div className="box-image-container">
               <div className="form-field-single-update-bold">
-                <label htmlFor="reasonadmission">
+                  <label >
                   Significant Family Medical/Psychiatric History:
                 </label>
 
@@ -3578,14 +3626,15 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeySignificantFamilyMedicalPsychiatricHistory}
                 />
               </div>
-
+              </div>
               <div className="formsheading">
-                <h6 style={{ marginTop: "2rem" }}>
+                <h6 style={{ marginTop: "1.5rem" }}>
                   Mental Health Treatment History (in Resident hospitalization,
                   partial hospitalization, out Resident, etc)
                 </h6>
               </div>
 
+              <div className="box-image-container hidePrint"> 
               <div className="form-field-single-update-bold">
                 <div >
                   <label >Type of Service:</label>
@@ -3598,10 +3647,10 @@ const InitialAssessment = () => {
                   options={mentalHealthTreatmentHistoryTypeOfServiceOption}
                   isCreatable={true}
                   onKeyDown={handleKeyMentalHealthTreatmentHistoryTypeOfService}
-                /></div>
-
-
+                  /></div>
               </div>
+
+                <div className="border-bootom-line"></div>
 
               <div className="form-field-update">
                 <div className="form-field-child">
@@ -3634,7 +3683,7 @@ const InitialAssessment = () => {
 
               </div>
 
-
+                <div className="border-bootom-line"></div>
 
               <div className="form-field-single-update-bold">
                 <label htmlFor="reasonadmission">
@@ -3652,7 +3701,47 @@ const InitialAssessment = () => {
                 />
               </div>
 
+              </div>
+              <div className="form-actions  hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleTypeOfService}
+                >
+                  Add
+                </button>
+              </div>
 
+              <div className="needs-interventions-container2">
+                <div className="needs-interventions-column2">
+                  {typeOfServiceArray.length > 0 && (
+                    <table>
+                      <thead>
+                        <th>Type of Services</th>
+                        <th>Where</th>
+                        <th>Dates</th>
+                        <th>Diagnosis/Reason for Treatment  </th>
+
+
+                      </thead>
+                      <tbody>
+                        {typeOfServiceArray?.map((i) => (
+                          <tr>
+                            <td>{i?.mentalHealthTreatmentHistoryTypeOfService?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                            <td>{`${i?.mentalHealthTreatmentHistoryWhere}`} </td>
+                            <td>{`${i?.mentalHealthTreatmentHistoryDates}`}</td>
+                            <td>{i?.mentalHealthTreatmentHistoryDiagnosisReason?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
+              </div>
 
               <div className="yeschechbox235-parent">
                 <div className="yeschechbox235" style={{ marginTop: "1.5rem" }}>
@@ -3690,6 +3779,12 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
+
+
+
+
+              <div className="box-image-container hidePrint">
+
               <div className="form-field-single-update-bold">
                 <label htmlFor="reasonadmission">Type:</label>
                 <Select
@@ -3703,7 +3798,7 @@ const InitialAssessment = () => {
                 />
               </div>
 
-
+                <div className="border-bootom-line"></div>
 
 
               <div className="form-field-single-update-bold">
@@ -3713,12 +3808,14 @@ const InitialAssessment = () => {
                   id=""
                   value={substanceAbuseHistoryDataAgeOfFirstUse}
                   placeholder="Enter age"
-                  required
+
                   onChange={(e) =>
                     setSubstanceAbuseHistoryDataAgeOfFirstUse(e.target.value)
                   }
                 />
               </div>
+                <div className="border-bootom-line"></div>
+
               <div className="form-field-single-update-bold">
                 <label htmlFor="">Last Use:</label>
 
@@ -3731,6 +3828,9 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
                 />
               </div>
+
+                <div className="border-bootom-line"></div>
+
               <div className="form-field-single-update-bold">
                 <label htmlFor="">Frequency:</label>
                 <Select
@@ -3742,6 +3842,9 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
                 />
               </div>
+
+                <div className="border-bootom-line"></div>
+
               <div className="form-field-single-update-bold">
                 <label htmlFor="reasonadmission">Length of Sobriety:</label>
                 <Select
@@ -3753,6 +3856,54 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
                 />
               </div>
+              </div>
+
+              <div className="form-actions  hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleTypeOfArray}
+                >
+                  Add
+                </button>
+              </div>
+
+              <div className="needs-interventions-container2">
+                <div className="needs-interventions-column2">
+                  {typeArray.length > 0 && (
+                    <table>
+                      <thead>
+                        <th>Type</th>
+                        <th>Age of First use</th>
+                        <th>Last Use</th>
+                        <th>Frequency </th>
+                        <th>Length of Sobriety</th>
+
+                      </thead>
+                      <tbody>
+                        {typeArray?.map((i) => (
+                          <tr>
+                            <td>{i?.substanceAbuseHistoryDataTypes?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                            <td>{`${i.substanceAbuseHistoryDataAgeOfFirstUse}`} </td>
+                            <td>{i?.substanceAbuseHistoryDataLastUse?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                            <td>{i?.substanceAbuseHistoryDataFrequency?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                            <td>{i?.substanceAbuseHistoryDataLengthOfSobriety?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
+              </div>
+
 
               <div class="checkbox-container">
                 <label style={{ fontWeight: "bold" }}>Active Withdrawal Symptoms:</label>
@@ -4008,7 +4159,7 @@ const InitialAssessment = () => {
 
 
               <div className="formsheading">
-                <h6>Mental Status Exam/Behavioral Observations:</h6>
+                <h6 style={{ fontWeight: "bold" }}>Mental Status Exam/Behavioral Observations:</h6>
                 <h6 style={{ fontWeight: "bold" }}>General Appearance:</h6>
               </div>
 
@@ -5144,6 +5295,8 @@ const InitialAssessment = () => {
                   Significant Social/Developmental History:
                 </label> 
               </div>
+
+              <div className="box-image-container">
               <div className="form-field-single-update">
 
                 <label>Childhood (include parents, siblings, family):</label>
@@ -5156,10 +5309,11 @@ const InitialAssessment = () => {
                   onChange={(e) => setSignificantSocialDevelopmentalHistory(e.target.value)}
                 />
               </div>
+              </div>
 
-              <div className="form-field-update">
-                <div className="form-field-child">
-                  <label htmlFor="approvedby">Educational history:</label>
+
+              <div className="form-field-single-update" style={{ merginLeft: "10px" }}>
+                <label >Educational history:</label>
                   <input
                     type="text"
                     id="approvedby"
@@ -5170,24 +5324,23 @@ const InitialAssessment = () => {
                   />
                 </div>
 
+              <div className="form-field-update">
                 <div className="form-field-child">
-                  <label htmlFor="approvedby">Highest level of education:</label>
+                  <label >Highest level of education:</label>
                   <input
                     type="text"
-                    id="approvedby"
+
                     value={highestEducation}
                     placeholder="Enter education"
                     required
                     onChange={(e) => setHighestEducation(e.target.value)}
                   />
                 </div>
-              </div>
 
-
-              <div className="yeschechbox">
+                <div className="form-field-child">
                 <label htmlFor="" style={{ marginTop: "1rem", fontWeight: "bold" }}>Special education:</label>
                 <div className="employment-Aligmant" style={{ marginTop: "1rem" }}>
-                  <div className="checkboxitem" >
+                    <div className="checkboxitem-update" >
                     <input
                       type="checkbox"
                       name=""
@@ -5197,7 +5350,7 @@ const InitialAssessment = () => {
                     />
                     <label>Yes</label>
                   </div>
-                  <div className="checkboxitem">
+                    <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       name=""
@@ -5209,10 +5362,14 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-              <div className="yeschechbox">
+
+              </div>
+
+              <div className="form-field-update">
+                <div className="form-field-child">
                 <label style={{ fontWeight: "bold" }}>Currently a student?</label>
                 <div className="employment-Aligmant">
-                  <div className="checkboxitem">
+                    <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       name=""
@@ -5222,11 +5379,10 @@ const InitialAssessment = () => {
                     />
                     <label>Yes</label>
                   </div>
-                  <div className="checkboxitem">
+                    <div className="checkboxitem-update">
                     <input
                       type="checkbox"
-                      name=""
-                      id=""
+
                       checked={currentStudent === false}
                       onChange={() => setCurrentStudent(false)}
                     />
@@ -5234,24 +5390,27 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-              <div className="form-field-single-update">
-                <label htmlFor="approvedby">If yes, where?</label>
+                <div className="form-field-child">
+                  <label >If yes, where?</label>
                 <input
                   type="text"
-                  id="approvedby"
+
                   value={ifYesWhere}
                   placeholder="Enter text"
                   required
                   onChange={(e) => setIfYesWhere(e.target.value)}
                 />
               </div>
+              </div>
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Employment history:</h6>
               </div>
-              <div className="yeschechbox">
+
+              <div className="form-field-update">
+                <div className="form-field-child">
                 <label style={{ fontWeight: "bold" }}>Currently employed:</label>
                 <div className="employment-Aligmant">
-                  <div className="checkboxitem">
+                    <div className="checkboxitem-update">
                     <input
                       type="checkbox"
 
@@ -5261,7 +5420,7 @@ const InitialAssessment = () => {
                     />
                     <label htmlFor="currentlyEmployed">Yes</label>
                   </div>
-                  <div className="checkboxitem">
+                    <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       id="currentlyEmployedno"
@@ -5272,7 +5431,7 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-              <div className="yeschechbox">
+                {/* <div className="yeschechbox">
                 <label style={{ fontWeight: "bold" }}>Fully time employed:</label>
                 <div className="employment-Aligmant">
                   <div className="checkboxitem">
@@ -5295,8 +5454,8 @@ const InitialAssessment = () => {
                     <label htmlFor="fullTimeno">No</label>
                   </div>
                 </div>
-              </div>
-              <div className="form-field-single-update">
+              </div> */}
+                <div className="form-field-child">
                 <label htmlFor="approvedby">If employed, where? FT or PT?:</label>
                 <input
                   type="text"
@@ -5307,32 +5466,30 @@ const InitialAssessment = () => {
                   onChange={(e) => setEmploymentLocation(e.target.value)}
                 />
               </div>
+              </div>
+
+              <div className="box-image-container">
               <div className="form-field-single-update">
-                <label htmlFor="programlocation&address">
+                  <label >
                   Work History (and barriers to employment):
                 </label>
                 <input
                   type="text"
-                  id="militaryService"
-                  placeholder="Enter text"
-                  value={workHistory}
-                  onChange={(e) => setWorkHistory(e.target.value)}
 
-                />
-                {/* <textarea
-                  id="programlocation&address"
-                  value={workHistory}
                   placeholder="Enter text"
-                  rows={2}
-                  cols={82}
-                  required
-                  onChange={(e) => setWorkHistory(e.target.value)}
-                /> */}
+                  value={workHistory}
+                    onChange={(e) => setWorkHistory(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className="yeschechbox-update">
+
+
+              <div className="box-image-container">
+                <div className="form-field-update">
+                  <div className="form-field-child">
                 <label style={{ fontWeight: "bold" }}>Military History:</label>
                 <div className="yesNoAligment">
-                  <div className="checkboxitem">
+                      <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       id="militaryService"
@@ -5342,7 +5499,7 @@ const InitialAssessment = () => {
                     />
                     <label htmlFor="militaryService">Yes</label>
                   </div>
-                  <div className="checkboxitem">
+                      <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       id="militaryServiceno"
@@ -5354,10 +5511,10 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-              <div className="yeschechbox">
+                  <div className="form-field-child">
                 <label style={{ fontWeight: "bold" }}>Currently on active duty?</label>
                 <div className="yesNoAligment">
-                  <div className="checkboxitem">
+                      <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       id="activeDuty"
@@ -5366,7 +5523,7 @@ const InitialAssessment = () => {
                     />
                     <label htmlFor="activeDuty">Yes</label>
                   </div>
-                  <div className="checkboxitem">
+                      <div className="checkboxitem-update">
                     <input
                       type="checkbox"
                       id="activeDutyno"
@@ -5377,6 +5534,8 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
+                </div>
+                <div className="border-bootom-line"></div>
               <div className="form-field-single-update-bold">
                 <label >
                   Criminal Justice Legal History:
@@ -5390,10 +5549,13 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownSelectedValue}
                 />
 
+                </div>
               </div>
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Current Independent Living Skills:</h6>
               </div>
+
+              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
               <div className="form-field">
                 <label >Type of Activity</label>
                 <Select
@@ -5465,7 +5627,7 @@ const InitialAssessment = () => {
                 />
 
               </div>
-
+              </div>
               <div className="form-actions  hidePrint">
                 <button
                   type="button"
@@ -5511,6 +5673,7 @@ const InitialAssessment = () => {
                 </div>
               </div>
               {/* start working  */}
+              <div className="box-image-container">
               <div className="form-field-single-update ">
                 <label>Triggers:</label>
                 <input
@@ -5521,7 +5684,7 @@ const InitialAssessment = () => {
                   onChange={(e) => setTriggers(e.target.value)}
                 />
               </div>
-              <div className="yeschechboxFall-risk" style={{ marginTop: "1rem" }}>
+                <div className="yeschechboxFall-risk" style={{ marginTop: "1rem", marginLeft: "10px" }}>
                 <label htmlFor="">Fall risk:</label>
                 <div
                   style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -5585,22 +5748,9 @@ const InitialAssessment = () => {
                 />
               </div>
 
-              {/* {
-  selectedValueMedicalBoolean && (
-    <div className="form-field">
-    <label htmlFor="programlocation&address" style={{fontSize:"14px"}}>Comments</label>
-    <textarea
-      value={selectedValueMedicalType}
-      onChange={(e)=>setselectedValueMedicalType(e.target.value)}
-      placeholder="Enter text"
-      rows={2}
-      cols={82}
-      required
-    />
-  </div>
-  )
+              </div>
 
-} */}
+              <div className="box-image-container">
               <div className="form-field-single-update-bold ">
                 <label htmlFor="reasonadmission">Special Precautions:</label>
                 <Select
@@ -5612,11 +5762,12 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeySelectedValueSpecialPrecautions}
                 />
               </div>
+              </div>
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Safety and Risk Assessment</h6>
               </div>
               <div className="yeschechbox1">
-                <label htmlFor="">
+                <label style={{ fontWeight: "bold" }}>
                   Are you currently thinking about harming yourself or committing
                   suicide?
                 </label>
@@ -5644,7 +5795,7 @@ const InitialAssessment = () => {
 
 
               <div className="yeschechbox1">
-                <label htmlFor="">Ideation</label>
+                <label style={{ fontWeight: "bold" }}>Ideation</label>
                 {/* <input
                 style={{ marginRight: "1rem" }}
                 required
@@ -5660,7 +5811,7 @@ const InitialAssessment = () => {
                     // checked={bathingShoweringNeedAssist===true}
                     // onChange={()=>setBathingShoweringNeedAssist(true)}
                     />
-                    <label>Fleeting</label>
+                    <label >Fleeting</label>
                   </div>
                   <div style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}>
                     <input
@@ -5692,7 +5843,7 @@ const InitialAssessment = () => {
 
               {/* api add some time */}
               <div className="increasingClass" >
-                <label htmlFor="">Increasing in:</label>
+                <label style={{ fontWeight: "bold" }}>Increasing in:</label>
 
                 <div className="increasingClassInternal">
                   <div className="yeschechbox1">
@@ -5755,7 +5906,7 @@ const InitialAssessment = () => {
 
 
               <div className="yeschechbox1">
-                <label htmlFor="">
+                <label style={{ fontWeight: "bold" }}>
                   Are you currently thinking about harming others or have
                   homicidal thoughts?
                 </label>
@@ -5788,8 +5939,10 @@ const InitialAssessment = () => {
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Risk Factors:</h6>
               </div>
-              <div className="form-field">
-                <label htmlFor="reasonadmission">
+
+              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
+                <div className="form-field-single-update-bold">
+                  <label >
                   Select risk factors that apply:
                 </label>
                 <Select
@@ -5821,14 +5974,8 @@ const InitialAssessment = () => {
                   value={riskComment}
                   onChange={(e) => setRiskComment(e.target.value)}
                 />
-                {/* <textarea
-                  id="programlocation&address"
-                  value={riskComment}
-                  placeholder="Enter text"
-                  rows={2}
-                  cols={82}
-                  onChange={(e) => setRiskComment(e.target.value)}
-                /> */}
+
+                </div>
               </div>
 
               <div className="form-actions hidePrint">
@@ -5873,7 +6020,8 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
-              <div className="form-field">
+              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
+                <div className="form-field-single-update-bold">
                 <label >
                   Protective factors that apply:
                 </label>
@@ -5905,16 +6053,9 @@ const InitialAssessment = () => {
                   type="text"
                   value={protectiveComment}
                   onChange={(e) => setprotectiveComment(e.target.value)}
-                />
-                {/* <textarea
-                  id="programlocation&address"
-                  value={protectiveComment}
-                  placeholder="Enter text"
-                  rows={2}
-                  cols={82}
+                  />
 
-                  onChange={(e) => setprotectiveComment(e.target.value)}
-                /> */}
+                </div>
               </div>
 
               <div className="form-actions hidePrint">
@@ -6017,12 +6158,10 @@ const InitialAssessment = () => {
                 <h6 style={{ fontWeight: 'bold' }}>Diagnoses:</h6>
               </div>
               <div className="formsheading">
-                <h6 style={{ fontWeight: 'bold' }}>Psychiatric Diagnoses</h6>
+                <h6 style={{ fontWeight: 'bold' }}>Psychiatric Diagnoses:</h6>
               </div>
 
-
-
-
+              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label >Psychiatric Diagnoses:</label>
@@ -6055,7 +6194,7 @@ const InitialAssessment = () => {
                   />
                 </div>
               </div>
-
+              </div>
 
               {/* <div className="form-field">
               <label htmlFor="primary">Primary:</label>
@@ -6144,9 +6283,9 @@ const InitialAssessment = () => {
 
 
               <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses</h6>
+                <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses:</h6>
               </div>
-
+              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label htmlFor="icdCode">Medical Diagnoses:</label>
@@ -6180,6 +6319,7 @@ const InitialAssessment = () => {
                   />
                 </div>
 
+              </div>
               </div>
 
               {/* <div className="form-field">
@@ -6572,8 +6712,8 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
-
-              <div className="form-field-single-update-bold">
+              <div className="box-image-container">
+                <div className="form-field-single-update">
                 <label >Additional Notes:</label>
                 <input
                   type="text"
@@ -6584,6 +6724,7 @@ const InitialAssessment = () => {
                   onChange={(e) => setAdditionalNotes(e.target.value)}
                 />
 
+              </div>
               </div>
 
               <div class="checkbox-container1">
@@ -6623,13 +6764,14 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
-              <hr style={{ border: "1px solid black", opacity: "0.7" }} />
+
             {/* resident gaurdent name and signatutre */}
+              <div className="box-image-container" style={{ paddingBottom: "10px" }}>
             <div className="form-field-single-update">
               <label >Resident/Guardian name:</label>
               <input
                 type="text"
-                s
+
                 value={residentGuardianName}
                 placeholder="Enter text"
                 required
@@ -6637,17 +6779,7 @@ const InitialAssessment = () => {
               />
             </div>
 
-            {/* <div className="form-field">
-                <label htmlFor="">Enter Staff Title</label>
-                <input
-                  type="text"
-                  required
-                  value={staffTitle}
-                  onChange={(e) => setStaffTitle(e.target.value)}
-                />
-              </div> */}
-
-            <div class="file-upload-box hidePrint" >
+                <div class="file-upload-box hidePrint" style={{ marginLeft: "10px" }}>
               <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -6686,17 +6818,9 @@ const InitialAssessment = () => {
                 />
               </div>
 
-              {/* <div className="form-field">
-                <label htmlFor="">Enter Staff Title</label>
-                <input
-                  type="text"
-                  required
-                  value={staffTitle}
-                  onChange={(e) => setStaffTitle(e.target.value)}
-                />
-              </div> */}
 
-              <div class="file-upload-box hidePrint" >
+
+                <div class="file-upload-box hidePrint" style={{ marginLeft: "10px" }}>
                 <div className="file-upload-box-child">
                   <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                     SAVED AS DRAFT
@@ -6722,31 +6846,12 @@ const InitialAssessment = () => {
                   setDateAndTime={setStaffDate}
                 />)
               }
-              {/* <div className="form-field">
-              <label htmlFor="">Enter Signature</label>
-              <input
-                type="text"
-                required
-                value={staffSignature}
-                onChange={(e) => setStaffSignature(e.target.vaue)}
-              />
-            </div> */}
 
 
-              {/* <div className="form-field">
-              <label htmlFor="todaydate">Date</label>
-              <input
-                type="date"
-                id="todaydate"
-                value={staffDate}
-                placeholder="DD/MM/YYYY"
-                required
-                onChange={(e) => setStaffDate(e.target.value)}
-              />
-            </div> */}
+
               <div className="form-field-update">
                 <div className="form-field-child">
-                  <label htmlFor="approvedby">BHP Name</label>
+                    <label htmlFor="approvedby">BHP Name:</label>
                   <input
                     type="text"
                     id="approvedby"
@@ -6757,7 +6862,7 @@ const InitialAssessment = () => {
                   />
                 </div>
                 <div className="form-field-child">
-                  <label htmlFor="bhpCredentials">Enter BHP Credentials</label>
+                    <label htmlFor="bhpCredentials">Enter BHP Credentials:</label>
                   <input
                     type="text"
                     required
@@ -6768,7 +6873,7 @@ const InitialAssessment = () => {
               </div>
 
 
-              <div class="file-upload-box hidePrint" >
+                <div class="file-upload-box hidePrint" style={{ marginLeft: "10px" }} >
 
                 <div className="file-upload-box-child">
                   <div >
@@ -6805,27 +6910,11 @@ const InitialAssessment = () => {
                   setDateAndTime={setBhpDate}
                 />)
               }
-              {/* <div className="form-field">
-              <label htmlFor="bhpSignature">Enter Signature</label>
-              <input
-                type="text"
-                required
-                value={bhpSignature}
-                onChange={(e) => setBhpSignature(e.target.vaue)}
-              />
-            </div> */}
 
-              {/* <div className="form-field">
-              <label htmlFor="todaydate">Date</label>
-              <input
-                type="date"
-                id="todaydate"
-                value={bhpDate}
-                placeholder="DD/MM/YYYY"
-                required
-                onChange={(e) => setBhpDate(e.target.value)}
-              />
-            </div> */}
+              </div>
+
+
+
             </div>
 
             {/* <div className="form-actions">

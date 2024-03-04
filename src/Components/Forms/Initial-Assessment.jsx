@@ -242,7 +242,7 @@ const InitialAssessment = () => {
   //Chronic painChronic pain
   const [Chronic, setChronic] = useState("")
   const [yesChronic, setYesChronic] = useState();
-  const [noChronic, setNoChronic] = useState(false);
+  const [chronicCommit, setChronicCommit] = useState("");
 
   // Allergies (food, environment, medications)
   const [AllergiesYes, setAllergiesYes] = useState();
@@ -1278,6 +1278,38 @@ const InitialAssessment = () => {
     { label: "Hypothyroidism", value: "Hypothyroidism" },
     { label: "Hyperthyroidism", value: "Hyperthyroidism" },
   ];
+
+  const handleKeyThyroidDisorder = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = thyroidOptions.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...thyroidOptions,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setThyroidDisorder(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...thyroidDisorder,
+          { value: inputValue, label: inputValue }
+        ];
+        setThyroidDisorder(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  }
   const thyroiddisorderhnadler = (selectedOptions) => {
     setThyroidDisorder(selectedOptions);
   };
@@ -2691,12 +2723,907 @@ const InitialAssessment = () => {
                   page.
                 </p>
                 <p style={{ fontWeight: "bold" }}>B. Current and Past Medical/Psychiatric Conditions.</p>
-                <h6 style={{ fontSize: "25px", marginTop: "2.5rem" }}>Conditions</h6>
+
+              </div>
+
+              <div className="needs-interventions-container-condition">
+                <div className="needs-interventions-column-condition">
+
+                  <table>
+                    <thead>
+                      <th>Conditions</th>
+                      <th>Yes</th>
+                      <th>No</th>
+                      <th>Comments</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Diabetes</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="diabetes"
+                            checked={diabetes === true}
+                            onChange={() => setDiabetes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="diabetesno"
+                            checked={diabetes === false}
+                            onChange={() => setDiabetes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none", width: "50%" }}
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Heart disease / heart attack</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesHeart"
+                            checked={yesHeart === true}
+                            onChange={() => setYesHeart(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesHeartno"
+                            checked={yesHeart === false}
+                            onChange={() => setYesHeart(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentHeart.split("\n").length, 1)}
+                            value={commentHeart}
+                            placeholder="___________"
+                            onChange={(e) => setCommentHeart(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentHeart((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>History of stroke</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesHistory"
+                            checked={yesHistory === true}
+                            onChange={() => setYesHistory(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesHistoryno"
+                            checked={yesHistory === false}
+                            onChange={() => setYesHistory(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentHistory.split("\n").length, 1)}
+                            value={commentHistory}
+                            placeholder="___________"
+                            onChange={(e) => setCommentHistory(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentHistory((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>High Blood Pressure</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesHigh"
+                            checked={yesHigh === true}
+                            onChange={() => setYesHigh(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesHighno"
+                            checked={yesHigh === false}
+                            onChange={() => setYesHigh(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentHigh.split("\n").length, 1)}
+                            value={commentHigh}
+                            placeholder="___________"
+                            onChange={(e) => setCommentHigh(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentHigh((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Lung disease (ie asthma, COPD, emphysema)</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesLung"
+                            checked={yesLung === true}
+                            onChange={() => setYesLung(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesLungno"
+                            checked={yesLung === false}
+                            onChange={() => setYesLung(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentLung.split("\n").length, 1)}
+                            value={commentLung}
+                            placeholder="___________"
+                            onChange={(e) => setCommentLung(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentLung((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Seizures</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="diabetes"
+                            checked={yesSeizures === true}
+                            onChange={() => setDiabetes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesSeizuresno"
+                            checked={yesSeizures === false}
+                            onChange={() => setYesSeizures(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentSeizures.split("\n").length, 1)}
+                            value={commentSeizures}
+                            placeholder="___________"
+                            onChange={(e) => setCommentSeizures(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentSeizures((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Cancer</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesCancer"
+                            checked={yesCancer === true}
+                            onChange={() => setYesCancer(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesCancerno"
+                            checked={yesCancer === false}
+                            onChange={() => setYesCancer(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentCancer.split("\n").length, 1)}
+                            value={commentCancer}
+                            placeholder="___________"
+                            onChange={(e) => setCommentCancer(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentCancer((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Liver/kidney disease</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesLiver"
+                            checked={yesLiver === true}
+                            onChange={() => setYesLiver(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesLiverno"
+                            checked={yesLiver === false}
+                            onChange={() => setYesLiver(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentLiver.split("\n").length, 1)}
+                            value={commentLiver}
+                            placeholder="___________"
+                            onChange={(e) => setCommentLiver(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentLiver((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Thyroid disorder</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesThyroid"
+                            checked={yesThyroid === true}
+                            onChange={() => setYesThyroid(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="setYesThyroidno"
+                            checked={yesThyroid === false}
+                            onChange={() => setYesThyroid(false)}
+                          />
+                        </td>
+                        <td>
+                          <Select
+                            isMulti
+                            value={thyroidDisorder}
+                            onChange={thyroiddisorderhnadler}
+                            options={thyroidOptions}
+                            isCreatable={true}
+                            onKeyDown={handleKeyThyroidDisorder}
+                          />
+                        </td>
+                      </tr>
+                      {/* <tr>
+                        <td>History of head trauma/traumatic brain</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesbrain"
+                            checked={yesbrain === true}
+                            onChange={() => setYesBrain(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+
+                            type="checkbox"
+                            id="yesbrainno"
+                            checked={yesbrain === false}
+                            onChange={() => setYesBrain(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentbrain.split("\n").length, 1)}
+                            value={commentbrain}
+                            placeholder="___________"
+                            onChange={(e) => setbrain(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setbrain((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr> */}
+                      <tr>
+                        <td>History of head trauma/traumatic brain injury</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesInjury"
+                            checked={yesInjury === true}
+                            onChange={() => setYesInjury(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="yesInjuryno"
+                            checked={yesInjury === false}
+                            onChange={() => setYesInjury(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(commentInjury.split("\n").length, 1)}
+                            value={commentInjury}
+                            placeholder="___________"
+                            onChange={(e) => setCommentInjury(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentInjury((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Chronic pain</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="Chronic"
+                            checked={yesChronic === true}
+                            onChange={() => setYesChronic(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="Chronicno"
+                            checked={yesChronic === false}
+                            onChange={() => setYesChronic(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(chronicCommit.split("\n").length, 1)}
+                            value={chronicCommit}
+                            placeholder="___________"
+                            onChange={(e) => setChronicCommit(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setChronicCommit((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Allergies (food, environment, medications)</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="AllergiesYes"
+                            checked={AllergiesYes === true}
+                            onChange={() => setAllergiesYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="AllergiesYesno"
+                            checked={AllergiesYes === false}
+                            onChange={() => setAllergiesYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(AllergiesComment.split("\n").length, 1)}
+                            value={AllergiesComment}
+                            placeholder="___________"
+                            onChange={(e) => setAllergiesComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setAllergiesComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Surgeries</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="SurgeriesYes"
+                            checked={SurgeriesYes === true}
+                            onChange={() => setSurgeriessYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="SurgeriesYesno"
+                            checked={SurgeriesYes === false}
+                            onChange={() => setSurgeriessYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(SurgeriesComment.split("\n").length, 1)}
+                            value={SurgeriesComment}
+                            placeholder="___________"
+                            onChange={(e) => setSurgeriesComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setSurgeriesComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Number of pregnancies / births</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="pregnanciesYes"
+                            checked={pregnanciesYes === true}
+                            onChange={() => setPregnanciesYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="pregnanciesYesno"
+                            checked={pregnanciesYes === false}
+                            onChange={() => setPregnanciesYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(pregnanciesComment.split("\n").length, 1)}
+                            value={pregnanciesComment}
+                            placeholder="___________"
+                            onChange={(e) => setPregnanciesComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setPregnanciesComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Substance use disorder (please specify)</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="SubstanceYes"
+                            checked={SubstanceYes === true}
+                            onChange={() => setSubstanceYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="SubstanceYesno"
+                            checked={SubstanceYes === false}
+                            onChange={() => setSubstanceYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(SubstanceComment.split("\n").length, 1)}
+                            value={SubstanceComment}
+                            placeholder="___________"
+                            onChange={(e) => setSubstanceComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setSubstanceComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Depression</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="DepressionYes"
+                            checked={DepressionYes === true}
+                            onChange={() => setDepressionYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="DepressionYesno"
+                            checked={DepressionYes === false}
+                            onChange={() => setDepressionYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(DepressionComment.split("\n").length, 1)}
+                            value={DepressionComment}
+                            placeholder="___________"
+                            onChange={(e) => setDepressionComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setDepressionComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Anxiety/panic attacks</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="AnxietyYes"
+                            checked={AnxietyYes === true}
+                            onChange={() => setAnxietyYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="AnxietyYesno"
+                            checked={AnxietyYes === false}
+                            onChange={() => setAnxietyYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(AnxietyComment.split("\n").length, 1)}
+                            value={AnxietyComment}
+                            placeholder="___________"
+                            onChange={(e) => setAnxietyComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setAnxietyComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Insomnia</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="InsomniaYes"
+                            checked={InsomniaYes === true}
+                            onChange={() => setInsomniaYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="InsomniaYesno"
+                            checked={InsomniaYes === false}
+                            onChange={() => setInsomniaYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(healthConditionsYesComment.split("\n").length, 1)}
+                            value={healthConditionsYesComment}
+                            placeholder="___________"
+                            onChange={(e) => sethealthConditionsYesComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                sethealthConditionsYesComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Bipolar disorder</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="BipolarYes"
+                            checked={BipolarYes === true}
+                            onChange={() => setBipolarYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="BipolarYesno"
+                            checked={BipolarYes === false}
+                            onChange={() => setBipolarYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(BipolarComment.split("\n").length, 1)}
+                            value={BipolarComment}
+                            placeholder="___________"
+                            onChange={(e) => setBipolarComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setBipolarComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Schizophrenia</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="SchizophreniaYes"
+                            checked={SchizophreniaYes === true}
+                            onChange={() => setSchizophreniaYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="SchizophreniaYesno"
+                            checked={SchizophreniaYes === false}
+                            onChange={() => setSchizophreniaYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(SchizophreniaComment.split("\n").length, 1)}
+                            value={SchizophreniaComment}
+                            placeholder="___________"
+                            onChange={(e) => setSchizophreniaComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setSchizophreniaComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Obsessive compulsive disorder</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="ObsessiveYes"
+                            checked={ObsessiveYes === true}
+                            onChange={() => setObsessiveYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="ObsessiveYesno"
+                            checked={ObsessiveYes === false}
+                            onChange={() => setObsessiveYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(ObsessiveComment.split("\n").length, 1)}
+                            value={ObsessiveComment}
+                            placeholder="___________"
+                            onChange={(e) => setObsessiveComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setObsessiveComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Personality disorder (please specify)</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="PersonalityYes"
+                            checked={PersonalityYes === true}
+                            onChange={() => setPersonalityYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="PersonalityYesno"
+                            checked={PersonalityYes === false}
+                            onChange={() => setPersonalityYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(PersonalityComment.split("\n").length, 1)}
+                            value={PersonalityComment}
+                            placeholder="___________"
+                            onChange={(e) => setPersonalityComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setPersonalityComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Phobias</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="PhobiasYes"
+                            checked={PhobiasYes === true}
+                            onChange={() => setPhobiasYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="PhobiasYesno"
+                            checked={PhobiasYes === false}
+                            onChange={() => setPhobiasYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(PhobiasComment.split("\n").length, 1)}
+                            value={PhobiasComment}
+                            placeholder="___________"
+                            onChange={(e) => setPhobiasComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setPhobiasComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Any other health conditions</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="healthConditionsYes"
+                            checked={healthConditionsYes === true}
+                            onChange={() => setHealthConditionsYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="healthConditionsYesno"
+                            checked={healthConditionsYes === false}
+                            onChange={() => setHealthConditionsYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{ border: "none", outline: "none", resize: "none" }}
+                            rows={Math.max(healthConditionsYesComment.split("\n").length, 1)}
+                            value={healthConditionsYesComment}
+                            placeholder="___________"
+                            onChange={(e) => sethealthConditionsYesComment(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                sethealthConditionsYesComment((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Infection or Diseases</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="InfectionYes"
+                            checked={InfectionYes === true}
+                            onChange={() => setInfectionYes(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="InfectionYesno"
+                            checked={InfectionYes === false}
+                            onChange={() => setInfectionYes(false)}
+                          />
+                        </td>
+                        <td>
+                          <Select
+                            isMulti
+                            placeholder="Select Multiple Type"
+                            value={infectionDiseases}
+                            onChange={infectionDiseasesHandler}
+                            options={infectionDiseasesOptions}
+                            isCreatable={true}
+                            onKeyDown={handleKeyInfectionDiseases}
+                          />
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
               </div>
 
 
 
-              <div className="yeschechbox">
+              {/* <div className="yeschechbox">
                 <label htmlFor="" style={{ fontSize: "20px", marginTop: "1.5rem" }}>Diabetes:</label>
                 <div className="checkbox654">
                   <div className="checkBox-aligment">
@@ -2760,9 +3687,9 @@ const InitialAssessment = () => {
               </div>
 
               <div className="form-field">
-                <label htmlFor="programlocation&address" style={{ fontSize: "14px" }}>Comments</label>
+                <label style={{ fontSize: "14px" }}>Comments</label>
                 <textarea
-                  id="programlocation&address"
+
                   value={commentHeart}
                   placeholder="Enter text"
                   rows={2}
@@ -3010,11 +3937,7 @@ const InitialAssessment = () => {
                 <label htmlFor="programlocation&address" style={{ fontSize: "20px", marginTop: "1.5rem" }}>
                   Select thyroid disorder:{" "}
                 </label>
-                {/* <select name="" id="">
-                <option value="">Select any one</option>
-                <option value="">Hypothyroidism</option>
-                <option value="">Hyperthyroidism</option>
-              </select> */}
+
                 <Select
                   isMulti
                   value={thyroidDisorder}
@@ -3117,8 +4040,8 @@ const InitialAssessment = () => {
               <div className="form-field">
                 <label htmlFor="programlocation&address" style={{ fontSize: "14px" }}>Comments</label>
                 <textarea
-                  value={noChronic}
-                  onChange={(e) => setNoChronic(e.target.value)}
+                  value={chronicCommit}
+                  onChange={(e) => setChronicCommit(e.target.value)}
                   placeholder="Enter text"
                   rows={2}
                   cols={82}
@@ -3607,7 +4530,7 @@ const InitialAssessment = () => {
                   isCreatable={true}
                   onKeyDown={handleKeyInfectionDiseases}
                 />
-              </div>
+              </div> */}
 
 
               <div className="box-image-container">

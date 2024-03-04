@@ -235,6 +235,44 @@
   gap: 10px
 }
 
+/* initial assessment condition */
+.needs-interventions-container-condition {
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  margin: 20px 0;
+  width: 100%;
+}
+
+.needs-interventions-column-condition {
+  width: 100%;
+}
+
+.needs-interventions-column-condition table {
+  width: 100%;
+  /* Equal width for both columns */
+  border: 1px solid black;
+}
+
+.needs-interventions-column-condition table tr {
+  border: 1px solid black;
+
+}
+
+.needs-interventions-column-condition table tr td {
+  padding: 5px 10px;
+  border: 1px solid black;
+  font-weight: bold;
+
+}
+
+.needs-interventions-column-condition table thead th {
+  border: 1px solid black;
+  padding: 5px 10px;
+  font-weight: bold;
+}
 
 /* treatment plan css update css head */
 

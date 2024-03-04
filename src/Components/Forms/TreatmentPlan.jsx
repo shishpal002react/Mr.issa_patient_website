@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-
+import { AiFillDelete } from "react-icons/ai";
 import { user_detail, patient_form } from "../../Api_Collection/Api";
 import SingInModel from "../Modal/SingInModel";
 import Select from "react-select";
@@ -324,6 +324,49 @@ const TreatmentPlan = () => {
   const [estimatedDateOfCompletion8, setEstimatedDateOfCompletion8] =
     useState("");
   const [comments8, setComment8] = useState("");
+
+  //goal other
+  const [optionOther, setOptionOther] = useState("");
+  const [admissionMeasureOther, setAdmissionMeasureOther] = useState("");
+  const [currentMeasureOther, setCurrentMeasureOther] = useState("");
+  const [estimatedDateOfCompletionOther, setEstimatedDateOfCompletionOther] = useState("");
+  const [commentsOther, setCommentOther] = useState("");
+  //other array add add on array
+  const [otherArray, setOtherArray] = useState([]);
+  const [showOther, setShowOther] = useState(false);
+
+  const handleAddButtonClick = () => {
+    // Create a new object with the form values
+    setShowOther(true);
+
+    if (optionOther || admissionMeasureOther || currentMeasureOther || estimatedDateOfCompletionOther || commentsOther) {
+      const newData = {
+        optionOther,
+        admissionMeasureOther,
+        currentMeasureOther,
+        estimatedDateOfCompletionOther,
+        commentsOther
+      };
+
+      // Update the array state with the new data
+      setOtherArray((prevDataArray) => [...prevDataArray, newData]);
+
+      // Clear the form values for the next entry
+      setOptionOther("");
+      setAdmissionMeasureOther("");
+      setCurrentMeasureOther("");
+      setEstimatedDateOfCompletionOther("");
+      setCommentOther("");
+    }
+
+  };
+
+  // Event handler for removing an item from the array
+  const handleRemoveItem = (index) => {
+    const updatedArray = [...otherArray];
+    updatedArray.splice(index, 1);
+    setOtherArray(updatedArray);
+  };
 
   //Resident overall participation in treatment:
   const [residentParticipation, setResidentParticipation] = useState("");
@@ -3020,18 +3063,6 @@ const TreatmentPlan = () => {
               </div>
 
                 <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
-
-                  type="text"
-                  value={previousMeasure1}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure1(e.target.value)}
-                />
-              </div>
-
-                <div className="form-field-child">
                   <label>Current Messure:</label>
                 <input
 
@@ -3044,7 +3075,7 @@ const TreatmentPlan = () => {
               </div>
 
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3101,18 +3132,8 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAdmissionMeasure2(e.target.value)}
                 />
-              </div>
-                <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
+                </div>
 
-                  type="text"
-                  value={previousMeasure2}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure2(e.target.value)}
-                />
-              </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
@@ -3126,7 +3147,7 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3186,18 +3207,8 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAdmissionMeasure3(e.target.value)}
                 />
-              </div>
-                <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
+                </div>
 
-                  type="text"
-                  value={previousMeasure3}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure3(e.target.value)}
-                />
-              </div>
                 <div className="form-field-child">
                   <label>Current Messure:</label>
                 <input
@@ -3210,7 +3221,7 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3269,18 +3280,8 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAdmissionMeasure4(e.target.value)}
                 />
-              </div>
-                <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
+                </div>
 
-                  type="text"
-                  value={previousMeasure4}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure4(e.target.value)}
-                />
-              </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
@@ -3294,7 +3295,7 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3354,18 +3355,8 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAdmissionMeasure5(e.target.value)}
                 />
-              </div>
-                <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
+                </div>
 
-                  type="text"
-                  value={previousMeasure5}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure5(e.target.value)}
-                />
-              </div>
                 <div className="form-field-child">
                   <label>Current Messure:</label>
                 <input
@@ -3378,7 +3369,7 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3440,17 +3431,6 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
-
-                  type="text"
-                  value={previousMeasure6}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure6(e.target.value)}
-                />
-              </div>
-                <div className="form-field-child">
                   <label>Current Messure:</label>
                 <input
 
@@ -3462,7 +3442,7 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3522,18 +3502,8 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAdmissionMeasure7(e.target.value)}
                 />
-              </div>
-                <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
+                </div>
 
-                  type="text"
-                  value={previousMeasure7}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure7(e.target.value)}
-                />
-              </div>
                 <div className="form-field-child">
                   <label>Current Messure:</label>
                 <input
@@ -3546,7 +3516,7 @@ const TreatmentPlan = () => {
                 />
               </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
+                  <label>Estimete Date of Goal complition:</label>
                 <input
 
                   type="date"
@@ -3607,42 +3577,32 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAdmissionMeasure8(e.target.value)}
                 />
-              </div>
-                <div className="form-field-child">
-                  <label>Previous Messure:</label>
-                <input
+                </div>
 
-                  type="text"
-                  value={previousMeasure8}
-                  placeholder="Enter Previous Messure"
-                  required
-                  onChange={(e) => setPreviousMeasure8(e.target.value)}
-                />
-              </div>
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
+                  <input
 
-                  type="text"
-                  value={currentMeasure8}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure8(e.target.value)}
-                />
-              </div>
+                    type="text"
+                    value={currentMeasure8}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure8(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
-                  <label>Estimete Date of complition:</label>
-                <input
+                  <label>Estimete Date of Goal complition:</label>
+                  <input
 
-                  type="date"
-                  value={estimatedDateOfCompletion8}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion8(e.target.value)
-                  }
-                />
-              </div>
+                    type="date"
+                    value={estimatedDateOfCompletion8}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion8(e.target.value)
+                    }
+                  />
+                </div>
               </div>
 
 
@@ -3660,12 +3620,137 @@ const TreatmentPlan = () => {
                 />
               </div>
 
+              {
+                showOther && (
+                  <div className="hidePrint">
+                    <div className="form-field">
+                      <label
+                        style={{
+                          fontWeight: "600",
+                          fontSize: "20px",
+                          marginBottom: "20px",
+                          marginTop: "20px",
+                        }}
+                      >
+                        9. Other
+                      </label>
+                      <input
+                        type="text"
+                        value={optionOther}
+
+
+                        onChange={(e) => setOptionOther(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-field-update">
+                      <div className="form-field-child">
+                        <label>Admission Messure:</label>
+                        <input
+
+                          type="number"
+                          value={admissionMeasureOther}
+
+
+                          onChange={(e) => setAdmissionMeasureOther(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="form-field-child">
+                        <label>Current Messure:</label>
+                        <input
+
+                          type="number"
+                          value={currentMeasureOther}
+
+
+                          onChange={(e) => setCurrentMeasureOther(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-field-child">
+                        <label>Estimete Date of Goal complition:</label>
+                        <input
+
+                          type="date"
+                          value={estimatedDateOfCompletionOther}
+
+
+                          onChange={(e) =>
+                            setEstimatedDateOfCompletionOther(e.target.value)
+                          }
+                        />
+                      </div>
+                    </div>
+
+                    <div className="form-field-single-update-bold">
+                      <label>Comment:</label>
+                      <textarea
+                        value={commentsOther}
+                        placeholder="Enter text"
+                        rows={2}
+                        cols={82}
+
+                        onChange={(e) => setCommentOther(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                )
+              }
+
+              <div className="form-actions  hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleAddButtonClick}
+                >
+                  ADD
+                </button>
+              </div>
+
+
+              <div className="needs-interventions-container2">
+                <div className="needs-interventions-column2">
+                  {
+                    otherArray.length > 0 && (
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Treatment Goals</th>
+                            <th>Admission Measure</th>
+                            <th>Current Measure</th>
+                            <th>Estimated Date of Goal Completion</th>
+                            <th>Comments</th>
+                            <th className="hidePrint">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {otherArray.map((data, index) => (
+                            <tr key={index}>
+                              <td>{data?.optionOther}</td>
+                              <td>{data?.admissionMeasureOther}</td>
+                              <td>{data?.currentMeasureOther}</td>
+                              <td>{data?.estimatedDateOfCompletionOther}</td>
+                              <td>{data?.commentsOther}</td>
+                              <td className="hidePrint">
+                                <AiFillDelete onClick={() => handleRemoveItem(index)} style={{ cursor: "pointer", fontSize: "22px" }} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )
+                  }
+
+                </div>
+              </div>
+
               <div className="yeschechbox-review-treatment">
                 <div>
                   <label style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
                     Resident overall participation in treatment:{" "}
                   </label>
                 </div>
+
                 <div className="yeschechbox-review-treatment-child">
                   <div className="checkbox-style-data">
                     <input
@@ -4705,7 +4790,7 @@ const TreatmentPlan = () => {
               </div>
 
               <label htmlFor="" className="label-review">
-                Resident / Representative
+                Resident / Representative:
               </label>
               <div className="yeschechbox-review-yes-no">
                 <div>
@@ -4769,8 +4854,7 @@ const TreatmentPlan = () => {
 
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>
-                  signatures Resident participation and informed consent for
-                  treatment services:
+                  Signature indicates participation and informed consent for treatment services.
                 </h6>
               </div>
 
@@ -4849,12 +4933,12 @@ const TreatmentPlan = () => {
             </div> */}
             </div>
             {/*   "signaturesFacilityRep": */}
-            <div className="formsheading">
+            {/* <div className="formsheading">
               <h6 style={{ fontWeight: "bold" }}>
                 signatures Facility Representative participation and informed
                 consent for treatment services:
               </h6>
-            </div>
+            </div> */}
 
             <div className="form-field-update" >
               <div className="form-field-child">
@@ -4929,12 +5013,12 @@ const TreatmentPlan = () => {
             />
           </div> */}
 
-            <div className="formsheading">
+            {/* <div className="formsheading">
               <h6 style={{ fontWeight: "bold" }}>
                 Signatures BHP participation and informed consent for treatment
                 services:
               </h6>
-            </div>
+            </div> */}
 
             <div className="form-field-update ">
               <div className="form-field-child">

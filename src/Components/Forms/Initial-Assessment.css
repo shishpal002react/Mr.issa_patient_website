@@ -1477,11 +1477,11 @@ input[type="checkbox"] {
     align-items: center;
   }
 
-  .form-field-child-result-nursing {
+  /* .form-field-child-result-nursing {
     margin-top: 1rem;
     display: flex;
     align-items: center;
-  }
+  } */
 
   .yeschechboxFall-risk {
     display: flex;
@@ -1542,11 +1542,11 @@ input[type="checkbox"] {
   }
 
   /* nusrsing assestment form */
-  .form-field-child-result-nursing {
+  /* .form-field-child-result-nursing {
     margin-top: 1rem;
-    display: block;
+    display: flex;
     align-items: center;
-  }
+  } */
 
   .yeschechbox-review-Nutrition {
     display: block;

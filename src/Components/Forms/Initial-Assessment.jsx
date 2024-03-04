@@ -1178,6 +1178,7 @@ const InitialAssessment = () => {
 
   // resion for admission
   const option_value_ReasonForAdmission = [
+    { label: "Anxiety", value: "Anxiety" },
     { label: "Depression", value: "Depression" },
     { label: "Mood changes", value: "Mood changes" },
     {
@@ -1185,6 +1186,7 @@ const InitialAssessment = () => {
       value: "Trouble falling or staying asleep",
     },
     { label: "Mood swings", value: "Mood swings" },
+    { label: "Irritability", value: "Irritability" },
     { label: "Social withdrawal", value: "Social withdrawal" },
     { label: "Changes in eating habits", value: "Changes in eating habits" },
     { label: "Feelings of anger", value: "Feelings of anger" },
@@ -1381,6 +1383,7 @@ const InitialAssessment = () => {
     { label: "Aunt", value: "Aunt" },
     { label: "Uncle", value: "Uncle" },
     { label: "Grandfather", value: "Grandfather" },
+    { label: "GrandMother", value: "GrandMother" },
   ];
 
   const handleKeySignificantFamilyMedicalPsychiatricHistory = (event) => {
@@ -1678,12 +1681,14 @@ const InitialAssessment = () => {
   const substanceAbuseHistoryDataLengthOfSobrietyOption = [
     { label: "One week", value: "One week" },
     { label: "A few days ago, One month", value: "A few days ago, One month" },
+    { label: "One month", value: "One month" },
     { label: "Two months", value: "Two months" },
     { label: "Three months", value: "Three months" },
     { label: "Four months", value: "Four months" },
     { label: "Five to Six months", value: "Five to Six months" },
     { label: "One year", value: "One year" },
     { label: "Two years", value: "Two years" },
+    { label: "Many years", value: "Many years" },
   ];
 
   const handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety = (event) => {
@@ -6877,7 +6882,7 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeySelectedValueRiskFactors}
                 />
               </div>
-              <div className="yeschechbox">
+                <div className="yeschechbox" style={{ marginLeft: "10px" }}>
                 <div className="safetyRiskFactor">
                   <div className="safetyRiskFactor-child">
                     <input type="checkbox" id="riskYesNo" checked={riskYesNo === true} onChange={() => setRiskYesNo(true)} />
@@ -6889,7 +6894,7 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-              <div className="form-field-single-update-notBold">
+                <div className="form-field-single-update-notBold" style={{ marginLeft: "10px" }}>
                 <label >Comments:</label>
                 <input
                   type="text"
@@ -6958,7 +6963,7 @@ const InitialAssessment = () => {
                 />
 
               </div>
-              <div className="yeschechbox">
+                <div className="yeschechbox" style={{ marginLeft: "10px" }}>
                 <div className="safetyRiskFactor">
                   <div className="safetyRiskFactor-child">
                     <input type="checkbox" id="protectiveYesNo" checked={protectiveYesNo === true} onChange={() => setProtectiveYesNo(true)} />
@@ -6970,7 +6975,7 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-              <div className="form-field-single-update-notBold">
+                <div className="form-field-single-update-notBold" style={{ marginLeft: "10px" }}>
                 <label >Comments:</label>
                 <input
                   type="text"

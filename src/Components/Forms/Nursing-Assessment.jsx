@@ -369,7 +369,7 @@ const NursingAssessment = () => {
         <div className="formheading1">
           <div className="formsheading2">
               {/* <h1>Initial Nursing Assessment</h1> */}
-              <h1> Nursing Assessment</h1>
+              <h1 style={{ fontWeight: "bold" }}> Nursing Assessment</h1>
           </div>
         </div>
         <form onSubmit={handlePost}>
@@ -406,7 +406,7 @@ const NursingAssessment = () => {
 
             <div className="form-field-update">
               <div className="form-field-child">
-                <label htmlFor="admissionDate">Full Name:</label>
+                <label htmlFor="admissionDate">Resident’s Full Name:</label>
             <input
 
               type="text"
@@ -573,15 +573,15 @@ const NursingAssessment = () => {
               <div className="form-field-child">
                 <label >Date of Last TB Screening:</label>
                 <input
-                  type="date"
+                  type="text"
               value={lastTBScreeningDate}
-              placeholder="DD/MM/YYYY"
+                  placeholder="MM/DD/YYYY"
               required
               onChange={(e) => setLastTBScreeningDate(e.target.value)}
             />
           </div>
 
-              <div className="form-field-child-result-nursing">
+              <div className="form-field-child">
                 <div>
                   <label htmlFor="" >Results: </label>
                 </div>
@@ -1103,7 +1103,7 @@ const NursingAssessment = () => {
 
 
           <div className="formsheading">
-            <h6>Review Of Systems</h6>
+              <h6 style={{ fontWeight: "bold" }}>Review Of Systems</h6>
           </div>
           <label htmlFor="" className="label-review" style={{fontWeight:"bold"}}>Constitutional:</label>
 
@@ -2417,12 +2417,12 @@ const NursingAssessment = () => {
             </div> 
 
 
-            <div className="form-field-update">
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <div className="form-field-child">
                 <label htmlFor="" className="label-review" style={{ fontSize: "20px" }}>Suicidal Risk Assessment:</label>
               </div>
 
-              <div className="form-field-child">
+              <div className="form-field-child" style={{ marginTop: "2rem" }}>
               <input
                 type="checkbox"
                 id="suicidalRiskAssessmentDeniesSymptomsBellow"
@@ -2658,7 +2658,7 @@ const NursingAssessment = () => {
 
           
           <div className="yeschechbox-review-Current">
-            <div><label htmlFor="" >Current Medications:</label></div>
+              <div><label style={{ fontWeight: "bold" }} >Current Medications:</label></div>
           
             <div  style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
@@ -2677,7 +2677,7 @@ const NursingAssessment = () => {
           <div className="yeschechbox-review-Nutrition">
             <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
             <div>
-              <label htmlFor="" >Nutrition: Diet: </label>
+                  <label style={{ fontWeight: "bold" }} >Nutrition: Diet: </label>
             </div>
             <div style={{display:'flex',gap:"10px",alignItems:"center"}}>
               <input
@@ -2695,7 +2695,14 @@ const NursingAssessment = () => {
                 checked={nutritionDiet === "Special diet"}
                 onChange={() => setNutritionDiet("Special diet")}
               />
-              <label htmlFor="Special diet">Special diet ordered</label>
+                  <label htmlFor="Special diet">Special diet ordered:</label>
+                  <AutosizeInput
+                    type="text"
+                    inputStyle={{ border: "none", outline: "none" }}
+                    placeholder="________"
+                    value={nutritionSpecialDietOrder}
+                    onChange={(e) => setNutritionSpecialDietOrder(e.target.value)}
+                  />
             </div>
             </div>
 
@@ -2741,16 +2748,16 @@ const NursingAssessment = () => {
             </div>
           </div> */}
 
-          <div className="form-field">
+            {/* <div className="form-field">
             <label >Nutrition Special Diet Order :</label>
             <input
               type="text"
-             
+
               required
               value={nutritionSpecialDietOrder}
               onChange={(e) => setNutritionSpecialDietOrder(e.target.value)}
             />
-          </div>
+          </div> */}
 
 
         
@@ -2758,6 +2765,7 @@ const NursingAssessment = () => {
           <label htmlFor="" className="yeschechbox2">
               Skin Check - Areas requiring treatment marked and labeled:
             </label>
+
             <div>
               <input
                 type="checkbox"

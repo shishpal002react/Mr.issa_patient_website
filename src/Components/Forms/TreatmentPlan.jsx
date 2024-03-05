@@ -329,7 +329,8 @@ const TreatmentPlan = () => {
   const [optionOther, setOptionOther] = useState("");
   const [admissionMeasureOther, setAdmissionMeasureOther] = useState("");
   const [currentMeasureOther, setCurrentMeasureOther] = useState("");
-  const [estimatedDateOfCompletionOther, setEstimatedDateOfCompletionOther] = useState("");
+  const [estimatedDateOfCompletionOther, setEstimatedDateOfCompletionOther] =
+    useState("");
   const [commentsOther, setCommentOther] = useState("");
   //other array add add on array
   const [otherArray, setOtherArray] = useState([]);
@@ -339,13 +340,19 @@ const TreatmentPlan = () => {
     // Create a new object with the form values
     setShowOther(true);
 
-    if (optionOther || admissionMeasureOther || currentMeasureOther || estimatedDateOfCompletionOther || commentsOther) {
+    if (
+      optionOther ||
+      admissionMeasureOther ||
+      currentMeasureOther ||
+      estimatedDateOfCompletionOther ||
+      commentsOther
+    ) {
       const newData = {
         optionOther,
         admissionMeasureOther,
         currentMeasureOther,
         estimatedDateOfCompletionOther,
-        commentsOther
+        commentsOther,
       };
 
       // Update the array state with the new data
@@ -358,7 +365,6 @@ const TreatmentPlan = () => {
       setEstimatedDateOfCompletionOther("");
       setCommentOther("");
     }
-
   };
 
   // Event handler for removing an item from the array
@@ -675,18 +681,29 @@ const TreatmentPlan = () => {
     { label: "Danger to self", value: "Danger to self" },
     { label: "Danger to others", value: "Danger to others" },
     { label: "Lack of self care", value: "Lack of self care" },
-    { label: "Inability to maintain safety", value: "Inability to maintain safety" },
+    {
+      label: "Inability to maintain safety",
+      value: "Inability to maintain safety",
+    },
     { label: "Autism Spectrum Disorder", value: "Autism Spectrum Disorder" },
     { label: "Bipolar Disorder", value: "Bipolar Disorder" },
-    { label: "Inability to maintain self care", value: "Inability to maintain self care" },
-    { label: "Inability to self administer medication", value: "Inability to self administer medication" },
+    {
+      label: "Inability to maintain self care",
+      value: "Inability to maintain self care",
+    },
+    {
+      label: "Inability to self administer medication",
+      value: "Inability to self administer medication",
+    },
     { label: "Conduct Disorder", value: "Conduct Disorder" },
-    { label: "Inappropriate Sexual Behavior", value: "Inappropriate Sexual Behavior" },
+    {
+      label: "Inappropriate Sexual Behavior",
+      value: "Inappropriate Sexual Behavior",
+    },
     { label: "Schizophrenia Disorder", value: "Schizophrenia Disorder" },
     { label: "Major Depressive Disorder", value: "Major Depressive Disorder" },
     { label: "Obsessive Disorder", value: "Obsessive Disorder" },
     { label: "Psychosis", value: "Psychosis" },
-
   ];
 
   const handleKeyPresentingPrice = (event) => {
@@ -738,11 +755,10 @@ const TreatmentPlan = () => {
     { label: "Coloring", value: "Coloring" },
     { label: "Decision Making", value: "Decision Making" },
     { label: "Team Work", value: "Team Work" },
-
   ];
 
   const handleKeyStrengths = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -754,7 +770,7 @@ const TreatmentPlan = () => {
       if (!optionExists) {
         const newOptions = [
           ...strengthsOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -763,7 +779,7 @@ const TreatmentPlan = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...strengths,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setStrengths(newSelectedValues);
       }
@@ -797,11 +813,10 @@ const TreatmentPlan = () => {
       label: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
       value: "Risk Assessment / Warning Signs & Symptoms of Suicidal Ideations",
     },
-
   ];
 
   const handleKeyBarriers = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -813,7 +828,7 @@ const TreatmentPlan = () => {
       if (!optionExists) {
         const newOptions = [
           ...BarriersOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -822,7 +837,7 @@ const TreatmentPlan = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...Barriers,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setBarriers(newSelectedValues);
       }
@@ -1460,90 +1475,52 @@ const TreatmentPlan = () => {
           <div className="formheading1">
             <div className="formsheading2">
               <h1>TREATMENT PLAN</h1>
-
             </div>
           </div>
           <form onSubmit={handlePost}>
             <div className="form-section">
-              {/* <div className="form-field">
-                <label htmlFor="admissionDate">Name:</label>
-                <input
-                  type="text"
-                  id="admissionDate"
-                  value={name}
-                  placeholder="Enter name"
-                  required
-                />
-              </div>
-              <div className="form-field">
-                <label htmlFor="AHCCCS">Address:</label>
-                <input
-                  type="text"
-                  id="AHCCCS"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Enter address"
-                  required
-                />
-              </div>
-              <div className="form-field">
-                <label htmlFor="admissionDate">Number</label>
-                <input
-                  type="text"
-                  id="admissionDate"
-                  value={number}
-                  placeholder="Enter number"
-                  required
-                  onChange={(e) => setNumber(e.target.value)}
-                />
-              </div> */}
-
+         
+<div className="box-image-container">
               <div className="form-field-update">
-
                 <div className="form-field-child">
-                  <label >Resident Name:</label>
-                <input
+                  <label>Resident Name:</label>
+                  <input
                     type="text"
-                  value={residentName}
+                    value={residentName}
                     placeholder="Enter name"
-                  required
-                  onChange={(e) => setResidentName(e.target.value)}
-                />
-              </div>
-
+                    required
+                    onChange={(e) => setResidentName(e.target.value)}
+                  />
+                </div>
 
                 <div className="form-field-child">
-                  <label >Date:</label>
-                <input
-
-                  type="date"
-
-                  value={dob}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) => setDof(e.target.value)}
+                  <label>Date:</label>
+                  <input
+                    type="date"
+                    value={dob}
+                    placeholder="DD/MM/YYYY"
+                    required
+                    onChange={(e) => setDof(e.target.value)}
                   />
                 </div>
               </div>
 
               <div className="form-field-update">
                 <div className="form-field-child">
-                <label htmlFor="dateOfBirth">DOB:</label>
-                <input
-
-                  type="date"
-                  id="dateOfBirth"
-                  value={date}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) => setDate(e.target.value)}
-                />
-              </div>
+                  <label htmlFor="dateOfBirth">DOB:</label>
+                  <input
+                    type="date"
+                    id="dateOfBirth"
+                    value={date}
+                    placeholder="DD/MM/YYYY"
+                    required
+                    onChange={(e) => setDate(e.target.value)}
+                  />
+                </div>
 
                 <div className="form-field-child">
                   <label htmlFor="dateOfBirth">Admit Date:</label>
                   <input
-
                     type="date"
                     id="dateOfBirth"
                     value={admitDate}
@@ -1552,30 +1529,23 @@ const TreatmentPlan = () => {
                     onChange={(e) => setAdminDate(e.target.value)}
                   />
                 </div>
-
               </div>
 
-
-
-
-
               <div className="form-field-update">
-                <div className="form-field-child"> <label >Care:</label></div>
-
+                <div className="form-field-child">
+                  {" "}
+                  <label>Care:</label>
+                </div>
 
                 <div className="form-field-child">
-                    <input
-                      type="checkbox"
-                      checked={physicalService}
-                      onChange={() => setPhysicalService(!physicalService)}
-                      id="behavioralCheckbox"
-                    />
-                    <label
-
-                    >
-                      Physical Services
-                    </label>
-                  </div>
+                  <input
+                    type="checkbox"
+                    checked={physicalService}
+                    onChange={() => setPhysicalService(!physicalService)}
+                    id="behavioralCheckbox"
+                  />
+                  <label>Physical Services</label>
+                </div>
                 <div className="form-field-child">
                   <input
                     type="checkbox"
@@ -1583,47 +1553,42 @@ const TreatmentPlan = () => {
                     onChange={() => setBehavior(!behavior)}
                     id="behavioralCheckbox"
                   />
-                  <label
-
-                  >
-                    Behavioral Services
-                  </label>
+                  <label>Behavioral Services</label>
                 </div>
               </div>
 
               {/* state is duplicated again make the state */}
               <div>
-                <label style={{ fontSize: "16px", fontWeight: "bold", marginTop: "1.5rem" }}>Medication Services:</label>
-                <div className="form-field-update">
+                <label
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    marginTop: "1.5rem",
+                    marginLeft:"10px"
+                  }}
+                >
+                  Medication Services:
+                </label>
+                <div className="form-field-update ">
                   <div className="form-field-child">
                     <input
                       type="checkbox"
-
                       onChange={() => setBehavior(!behavior)}
-
                     />
-                    <label
-
-                    >
-                      Medication Administration
-                    </label>
+                    <label>Medication Administration</label>
                   </div>
                   <div className="form-field-child">
-                    <input
-                      type="checkbox"
-
-
-                    />
-                    <label
-
-                    >
+                    <input type="checkbox" />
+                    <label>
                       Assistance in the self-Administration of medication
                     </label>
                   </div>
                 </div>
               </div>
-              <div className="form-field-single-update-bold">
-                <label >Presenting Problems:</label>
+
+              </div>
+              <div className="form-field-single-update-bold box-image-container">
+                <label>Presenting Problems:</label>
 
                 <Select
                   isMulti
@@ -1800,7 +1765,9 @@ const TreatmentPlan = () => {
                     checked={adls === "independent"}
                     onChange={() => setAdls("independent")}
                   />
-                  <label htmlFor="independent">Is independent with all ADLS</label>
+                  <label htmlFor="independent">
+                    Is independent with all ADLS
+                  </label>
                 </div>
                 <div>
                   <input
@@ -1809,7 +1776,10 @@ const TreatmentPlan = () => {
                     checked={adls === "personalCareLevel"}
                     onChange={() => setAdls("personalCareLevel")}
                   />
-                  <label htmlFor="personalCareLevel">Personal care level – See Attached personal care treatment plan</label>
+                  <label htmlFor="personalCareLevel">
+                    Personal care level – See Attached personal care treatment
+                    plan
+                  </label>
                 </div>
               </div>
               <div className="form-field">
@@ -1877,8 +1847,9 @@ const TreatmentPlan = () => {
                   onChange={(e) => setBtext(e.target.value)}
                 />
               </div>
+              <div className="box-image-container">
               <div className="form-field-single-update">
-                <label >Primary Care Provider:</label>
+                <label>Primary Care Provider:</label>
                 <input
                   type="text"
                   placeholder="Enter text."
@@ -1887,8 +1858,9 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPrimaryCare(e.target.value)}
                 />
               </div>
+              <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
-                <label >Psychiatric Provider:</label>
+                <label>Psychiatric Provider:</label>
                 <input
                   type="text"
                   placeholder="Enter text."
@@ -1897,14 +1869,16 @@ const TreatmentPlan = () => {
                   onChange={(e) => setPsychiatricProvider(e.target.value)}
                 />
               </div>
+              </div>
               <p style={{ marginTop: "1rem" }}>
-                  Resident to receive treatment services from above provider(s)
-                  every 1 to 2 months or earlier as needed. Specialty providers
-                  are to be managed and referred per primary care medical
-                  provider.
-                </p>
+                Resident to receive treatment services from above provider(s)
+                every 1 to 2 months or earlier as needed. Specialty providers
+                are to be managed and referred per primary care medical
+                provider.
+              </p>
+              <div className="box-image-container">
               <div className="form-field-single-update">
-                <label >Resident Goals:</label>
+                <label>Resident Goals:</label>
                 <input
                   type="text"
                   placeholder="Enter text."
@@ -1912,10 +1886,10 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setResidentGoal(e.target.value)}
                 />
-
               </div>
+              <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
-                <label >Allergies:</label>
+                <label>Allergies:</label>
                 <input
                   type="text"
                   placeholder="Enter text."
@@ -1923,10 +1897,10 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setAllergies(e.target.value)}
                 />
-
               </div>
+              <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
-                <label >Triggers:</label>
+                <label>Triggers:</label>
                 <input
                   type="text"
                   placeholder="Enter text"
@@ -1934,8 +1908,10 @@ const TreatmentPlan = () => {
                   required
                   onChange={(e) => setTriggers(e.target.value)}
                 />
-
               </div>
+              </div>
+
+
 
               <div className="form-field">
                 <label htmlFor="" className="label-review">
@@ -2493,7 +2469,7 @@ const TreatmentPlan = () => {
                     />
                   )}
                 </div>
-              </div>             
+              </div>
               {/* 
             {
               psychosocialSymptomsBoolean && (
@@ -2525,32 +2501,38 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Psychiatric services"
-                    checked={interventionsImplemented.includes("Psychiatric services")}
+                    checked={interventionsImplemented.includes(
+                      "Psychiatric services"
+                    )}
                     onChange={() =>
                       handleCheckboxChange("Psychiatric services")
                     }
                   />
-                  <label htmlFor="Psychiatric services">Psychiatric services</label>
+                  <label htmlFor="Psychiatric services">
+                    Psychiatric services
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Communication Skills"
-                    checked={interventionsImplemented.includes("Communication Skills")}
+                    checked={interventionsImplemented.includes(
+                      "Communication Skills"
+                    )}
                     onChange={() =>
                       handleCheckboxChange("Communication Skills")
                     }
                   />
-                  <label htmlFor="Communication Skills">Communication Skills</label>
+                  <label htmlFor="Communication Skills">
+                    Communication Skills
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Verbal Prompt"
                     checked={interventionsImplemented.includes("Verbal Prompt")}
-                    onChange={() =>
-                      handleCheckboxChange("Verbal Prompt")
-                    }
+                    onChange={() => handleCheckboxChange("Verbal Prompt")}
                   />
                   <label htmlFor="Verbal Prompt">Verbal Prompt</label>
                 </div>
@@ -2558,19 +2540,23 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Interactive Feedback"
-                    checked={interventionsImplemented.includes("Interactive Feedback")}
-                    onChange={() => handleCheckboxChange("Interactive Feedback")}
+                    checked={interventionsImplemented.includes(
+                      "Interactive Feedback"
+                    )}
+                    onChange={() =>
+                      handleCheckboxChange("Interactive Feedback")
+                    }
                   />
-                  <label htmlFor="Interactive Feedback">Interactive Feedback</label>
+                  <label htmlFor="Interactive Feedback">
+                    Interactive Feedback
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Encouragement"
                     checked={interventionsImplemented.includes("Encouragement")}
-                    onChange={() =>
-                      handleCheckboxChange("Encouragement")
-                    }
+                    onChange={() => handleCheckboxChange("Encouragement")}
                   />
                   <label htmlFor="Encouragement">Encouragement</label>
                 </div>
@@ -2579,9 +2565,7 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="Role-Play"
                     checked={interventionsImplemented.includes("Role-Play")}
-                    onChange={() =>
-                      handleCheckboxChange("Role-Play")
-                    }
+                    onChange={() => handleCheckboxChange("Role-Play")}
                   />
                   <label htmlFor="Role-Play">Role-Play</label>
                 </div>
@@ -2589,32 +2573,38 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Review of Treatment Plan"
-                    checked={interventionsImplemented.includes("Review of Treatment Plan")}
+                    checked={interventionsImplemented.includes(
+                      "Review of Treatment Plan"
+                    )}
                     onChange={() =>
                       handleCheckboxChange("Review of Treatment Plan")
                     }
                   />
-                  <label htmlFor="Review of Treatment Plan">Review of Treatment Plan</label>
+                  <label htmlFor="Review of Treatment Plan">
+                    Review of Treatment Plan
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Relaxation techniques"
-                    checked={interventionsImplemented.includes("Relaxation techniques")}
+                    checked={interventionsImplemented.includes(
+                      "Relaxation techniques"
+                    )}
                     onChange={() =>
                       handleCheckboxChange("Relaxation techniques")
                     }
                   />
-                  <label htmlFor="Relaxation techniques">Relaxation techniques</label>
+                  <label htmlFor="Relaxation techniques">
+                    Relaxation techniques
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Reframing"
                     checked={interventionsImplemented.includes("Reframing")}
-                    onChange={() =>
-                      handleCheckboxChange("Reframing")
-                    }
+                    onChange={() => handleCheckboxChange("Reframing")}
                   />
                   <label htmlFor="Reframing">Reframing</label>
                 </div>
@@ -2622,43 +2612,55 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Conflict resolution"
-                    checked={interventionsImplemented.includes("Conflict resolution")}
-                    onChange={() =>
-                      handleCheckboxChange("Conflict resolution")
-                    }
+                    checked={interventionsImplemented.includes(
+                      "Conflict resolution"
+                    )}
+                    onChange={() => handleCheckboxChange("Conflict resolution")}
                   />
-                  <label htmlFor="Conflict resolution">Conflict resolution</label>
+                  <label htmlFor="Conflict resolution">
+                    Conflict resolution
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Rehearsal, Spiritual exploration"
-                    checked={interventionsImplemented.includes("Rehearsal, Spiritual exploration")}
+                    checked={interventionsImplemented.includes(
+                      "Rehearsal, Spiritual exploration"
+                    )}
                     onChange={() =>
                       handleCheckboxChange("Rehearsal, Spiritual exploration")
                     }
                   />
-                  <label htmlFor="Rehearsal, Spiritual exploration">Rehearsal, Spiritual exploration</label>
+                  <label htmlFor="Rehearsal, Spiritual exploration">
+                    Rehearsal, Spiritual exploration
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Values clarification, Psycho-education"
-                    checked={interventionsImplemented.includes("Values clarification, Psycho-education")}
+                    checked={interventionsImplemented.includes(
+                      "Values clarification, Psycho-education"
+                    )}
                     onChange={() =>
-                      handleCheckboxChange("Values clarification, Psycho-education")
+                      handleCheckboxChange(
+                        "Values clarification, Psycho-education"
+                      )
                     }
                   />
-                  <label htmlFor="Values clarification, Psycho-education">Values clarification, Psycho-education</label>
+                  <label htmlFor="Values clarification, Psycho-education">
+                    Values clarification, Psycho-education
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Exploring feelings"
-                    checked={interventionsImplemented.includes("Exploring feelings")}
-                    onChange={() =>
-                      handleCheckboxChange("Exploring feelings")
-                    }
+                    checked={interventionsImplemented.includes(
+                      "Exploring feelings"
+                    )}
+                    onChange={() => handleCheckboxChange("Exploring feelings")}
                   />
                   <label htmlFor="Exploring feelings">Exploring feelings</label>
                 </div>
@@ -2667,9 +2669,7 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="Distraction"
                     checked={interventionsImplemented.includes("Distraction")}
-                    onChange={() =>
-                      handleCheckboxChange("Distraction")
-                    }
+                    onChange={() => handleCheckboxChange("Distraction")}
                   />
                   <label htmlFor="Distraction">Distraction</label>
                 </div>
@@ -2678,9 +2678,7 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="Redirection"
                     checked={interventionsImplemented.includes("Redirection")}
-                    onChange={() =>
-                      handleCheckboxChange("Redirection")
-                    }
+                    onChange={() => handleCheckboxChange("Redirection")}
                   />
                   <label htmlFor="Redirection">Redirection</label>
                 </div>
@@ -2689,9 +2687,7 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="None reported"
                     checked={interventionsImplemented.includes("None reported")}
-                    onChange={() =>
-                      handleCheckboxChange("None reported")
-                    }
+                    onChange={() => handleCheckboxChange("None reported")}
                   />
                   <label htmlFor="None reported">None reported</label>
                 </div>
@@ -2770,7 +2766,6 @@ const TreatmentPlan = () => {
                 </div>
               )} */}
 
-
               <label className="label-review">Counseling and Frequency:</label>
               <div className="formsheading">
                 <p className="inLine_box_style">
@@ -2809,9 +2804,7 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="Group"
                     checked={counselingOptions.includes("Group")}
-                    onChange={() =>
-                      handleCheckboxChangeCounsiling("Group")
-                    }
+                    onChange={() => handleCheckboxChangeCounsiling("Group")}
                   />
                   <label htmlFor="Group">Group</label>
                 </div>
@@ -2841,54 +2834,86 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Individual Counseling: Minimum 1 hour session per week"
-                    checked={counselingOptions.includes("Individual Counseling: Minimum 1 hour session per week")}
-                    onChange={() => handleCheckboxChangeCounsiling("Individual Counseling: Minimum 1 hour session per week")}
+                    checked={counselingOptions.includes(
+                      "Individual Counseling: Minimum 1 hour session per week"
+                    )}
+                    onChange={() =>
+                      handleCheckboxChangeCounsiling(
+                        "Individual Counseling: Minimum 1 hour session per week"
+                      )
+                    }
                   />
-                  <label htmlFor="Individual Counseling: Minimum 1 hour session per week">Individual Counseling: Minimum 1 hour session per week</label>
+                  <label htmlFor="Individual Counseling: Minimum 1 hour session per week">
+                    Individual Counseling: Minimum 1 hour session per week
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Individual Counseling: Minimum 1 hour session every 2 weeks"
-                    checked={counselingOptions.includes("Individual Counseling: Minimum 1 hour session every 2 weeks")}
+                    checked={counselingOptions.includes(
+                      "Individual Counseling: Minimum 1 hour session every 2 weeks"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangeCounsiling("Individual Counseling: Minimum 1 hour session every 2 weeks")
+                      handleCheckboxChangeCounsiling(
+                        "Individual Counseling: Minimum 1 hour session every 2 weeks"
+                      )
                     }
                   />
-                  <label htmlFor="Individual Counseling: Minimum 1 hour session every 2 weeks">Individual Counseling: Minimum 1 hour session every 2 weeks</label>
+                  <label htmlFor="Individual Counseling: Minimum 1 hour session every 2 weeks">
+                    Individual Counseling: Minimum 1 hour session every 2 weeks
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Individual Therapy: As needed"
-                    checked={counselingOptions.includes("Individual Therapy: As needed")}
+                    checked={counselingOptions.includes(
+                      "Individual Therapy: As needed"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangeCounsiling("Individual Therapy: As needed")
+                      handleCheckboxChangeCounsiling(
+                        "Individual Therapy: As needed"
+                      )
                     }
                   />
-                  <label htmlFor="Individual Therapy: As needed">Individual Therapy: As needed</label>
+                  <label htmlFor="Individual Therapy: As needed">
+                    Individual Therapy: As needed
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Individual Therapy: Please Specify"
-                    checked={counselingOptions.includes("Individual Therapy: Please Specify")}
+                    checked={counselingOptions.includes(
+                      "Individual Therapy: Please Specify"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangeCounsiling("Individual Therapy: Please Specify")
+                      handleCheckboxChangeCounsiling(
+                        "Individual Therapy: Please Specify"
+                      )
                     }
                   />
-                  <label htmlFor="Individual Therapy: Please Specify">Individual Therapy: Please Specify</label>
+                  <label htmlFor="Individual Therapy: Please Specify">
+                    Individual Therapy: Please Specify
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Nonereported"
-                    checked={counselingOptions.includes("Resident decline individual therapy services")}
+                    checked={counselingOptions.includes(
+                      "Resident decline individual therapy services"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangeCounsiling("Resident decline individual therapy services")
+                      handleCheckboxChangeCounsiling(
+                        "Resident decline individual therapy services"
+                      )
                     }
                   />
-                  <label htmlFor="Resident decline individual therapy services">Resident decline individual therapy services</label>
+                  <label htmlFor="Resident decline individual therapy services">
+                    Resident decline individual therapy services
+                  </label>
                 </div>
                 <div>
                   <input
@@ -2906,9 +2931,7 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="NA"
                     checked={counselingOptions.includes("NA")}
-                    onChange={() =>
-                      handleCheckboxChangeCounsiling("NA")
-                    }
+                    onChange={() => handleCheckboxChangeCounsiling("NA")}
                   />
                   <label htmlFor="NA">NA</label>
                 </div>
@@ -2927,23 +2950,35 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Month ART Meeting/Staffing"
-                    checked={counselingOptions.includes("Month ART Meeting/Staffing")}
+                    checked={counselingOptions.includes(
+                      "Month ART Meeting/Staffing"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangeCounsiling("Month ART Meeting/Staffing")
+                      handleCheckboxChangeCounsiling(
+                        "Month ART Meeting/Staffing"
+                      )
                     }
                   />
-                  <label htmlFor="Month ART Meeting/Staffing">Month ART Meeting/Staffing</label>
+                  <label htmlFor="Month ART Meeting/Staffing">
+                    Month ART Meeting/Staffing
+                  </label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
                     id="Weekly ART Meeting/Staffing"
-                    checked={counselingOptions.includes("Weekly ART Meeting/Staffing")}
+                    checked={counselingOptions.includes(
+                      "Weekly ART Meeting/Staffing"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangeCounsiling("Weekly ART Meeting/Staffing")
+                      handleCheckboxChangeCounsiling(
+                        "Weekly ART Meeting/Staffing"
+                      )
                     }
                   />
-                  <label htmlFor="Weekly ART Meeting/Staffing">Weekly ART Meeting/Staffing</label>
+                  <label htmlFor="Weekly ART Meeting/Staffing">
+                    Weekly ART Meeting/Staffing
+                  </label>
                 </div>
                 <div>
                   <input
@@ -3019,17 +3054,8 @@ const TreatmentPlan = () => {
                 <span>As needed</span>
               </div>
             </div> */}
-              <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>
-                  Goals for Changes in the Resident Phychorial Interaction or
-                  Behaviour{" "}
-                </h6>
-                <p>
-                  Fill the following information for the respective ‘Current
-                  Treatment Goals’
-                </p>
-              </div>
-              <div className="form-field">
+             
+              {/* <div className="form-field">
                 <label
                   style={{
                     fontWeight: "600",
@@ -3054,39 +3080,38 @@ const TreatmentPlan = () => {
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
                   <input
-                  type="text"
-                  value={admissionMeasure1}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure1(e.target.value)}
-                />
-              </div>
+
+                    type="text"
+                    value={admissionMeasure1}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure1(e.target.value)}
+                  />
+                </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure1}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure1(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure1}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure1(e.target.value)}
+                  />
+                </div>
 
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion1}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion1(e.target.value)
-                  }
-                />
-              </div>
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion1}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion1(e.target.value)
+                    }
+                  />
+                </div>
               </div>
 
               <div className="form-field-single-update-bold">
@@ -3124,45 +3149,38 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure2}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure2(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    value={admissionMeasure2}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure2(e.target.value)}
+                  />
                 </div>
-
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure2}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure2(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure2}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure2(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion2}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion2(e.target.value)
-                  }
-                />
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion2}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      estimatedDateOfCompletion2(e.target.value)
+                    }
+                  />
+                </div>
               </div>
-              </div>
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3199,44 +3217,38 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure3}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure3(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    value={admissionMeasure3}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure3(e.target.value)}
+                  />
                 </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure3}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure3(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure3}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure3(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion3}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion3(e.target.value)
-                  }
-                />
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion3}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion3(e.target.value)
+                    }
+                  />
+                </div>
               </div>
-              </div>
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3272,45 +3284,38 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure4}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure4(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    value={admissionMeasure4}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure4(e.target.value)}
+                  />
                 </div>
-
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure4}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure4(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure4}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure4(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion4}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion4(e.target.value)
-                  }
-                />
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion4}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion4(e.target.value)
+                    }
+                  />
+                </div>
               </div>
-              </div>
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3347,44 +3352,38 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure5}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure5(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    value={admissionMeasure5}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure5(e.target.value)}
+                  />
                 </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure5}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure5(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure5}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure5(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion5}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion5(e.target.value)
-                  }
-                />
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion5}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion5(e.target.value)
+                    }
+                  />
+                </div>
               </div>
-              </div>
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3421,43 +3420,37 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure6}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure6(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={admissionMeasure6}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure6(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure6}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure6(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure6}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure6(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion6}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion6(e.target.value)
-                  }
-                />
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion6}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion6(e.target.value)
+                    }
+                  />
+                </div>
               </div>
-              </div>
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3494,45 +3487,38 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure7}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure7(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    value={admissionMeasure7}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure7(e.target.value)}
+                  />
                 </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
-                <input
-
-                  type="text"
-                  value={currentMeasure7}
-                  placeholder="Enter Current Messure"
-                  required
-                  onChange={(e) => setCurrentMeasure7(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={currentMeasure7}
+                    placeholder="Enter Current Messure"
+                    required
+                    onChange={(e) => setCurrentMeasure7(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
-                <input
-
-                  type="date"
-                  value={estimatedDateOfCompletion7}
-                  placeholder="Enter Estimete Date of complition"
-                  required
-                  onChange={(e) =>
-                    setEstimatedDateOfCompletion7(e.target.value)
-                  }
-                />
+                  <input
+                    type="date"
+                    value={estimatedDateOfCompletion7}
+                    placeholder="Enter Estimete Date of complition"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion7(e.target.value)
+                    }
+                  />
+                </div>
               </div>
-              </div>
-
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3569,20 +3555,18 @@ const TreatmentPlan = () => {
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Admission Messure:</label>
-                <input
-
-                  type="text"
-                  value={admissionMeasure8}
-                  placeholder="Admission Messure"
-                  required
-                  onChange={(e) => setAdmissionMeasure8(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    value={admissionMeasure8}
+                    placeholder="Admission Messure"
+                    required
+                    onChange={(e) => setAdmissionMeasure8(e.target.value)}
+                  />
                 </div>
 
                 <div className="form-field-child">
                   <label>Current Messure:</label>
                   <input
-
                     type="text"
                     value={currentMeasure8}
                     placeholder="Enter Current Messure"
@@ -3593,7 +3577,6 @@ const TreatmentPlan = () => {
                 <div className="form-field-child">
                   <label>Estimete Date of Goal complition:</label>
                   <input
-
                     type="date"
                     value={estimatedDateOfCompletion8}
                     placeholder="Enter Estimete Date of complition"
@@ -3604,9 +3587,6 @@ const TreatmentPlan = () => {
                   />
                 </div>
               </div>
-
-
-
 
               <div className="form-field-single-update-bold">
                 <label>Comment:</label>
@@ -3620,82 +3600,649 @@ const TreatmentPlan = () => {
                 />
               </div>
 
-              {
-                showOther && (
-                  <div className="hidePrint">
-                    <div className="form-field">
-                      <label
-                        style={{
-                          fontWeight: "600",
-                          fontSize: "20px",
-                          marginBottom: "20px",
-                          marginTop: "20px",
-                        }}
-                      >
-                        9. Other
-                      </label>
+              {showOther && (
+                <div className="hidePrint">
+                  <div className="form-field">
+                    <label
+                      style={{
+                        fontWeight: "600",
+                        fontSize: "20px",
+                        marginBottom: "20px",
+                        marginTop: "20px",
+                      }}
+                    >
+                      9. Other
+                    </label>
+                    <input
+                      type="text"
+                      value={optionOther}
+                      onChange={(e) => setOptionOther(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-field-update">
+                    <div className="form-field-child">
+                      <label>Admission Messure:</label>
                       <input
-                        type="text"
-                        value={optionOther}
-
-
-                        onChange={(e) => setOptionOther(e.target.value)}
+                        type="number"
+                        value={admissionMeasureOther}
+                        onChange={(e) =>
+                          setAdmissionMeasureOther(e.target.value)
+                        }
                       />
                     </div>
 
-                    <div className="form-field-update">
-                      <div className="form-field-child">
-                        <label>Admission Messure:</label>
-                        <input
-
-                          type="number"
-                          value={admissionMeasureOther}
-
-
-                          onChange={(e) => setAdmissionMeasureOther(e.target.value)}
-                        />
-                      </div>
-
-                      <div className="form-field-child">
-                        <label>Current Messure:</label>
-                        <input
-
-                          type="number"
-                          value={currentMeasureOther}
-
-
-                          onChange={(e) => setCurrentMeasureOther(e.target.value)}
-                        />
-                      </div>
-                      <div className="form-field-child">
-                        <label>Estimete Date of Goal complition:</label>
-                        <input
-
-                          type="date"
-                          value={estimatedDateOfCompletionOther}
-
-
-                          onChange={(e) =>
-                            setEstimatedDateOfCompletionOther(e.target.value)
-                          }
-                        />
-                      </div>
+                    <div className="form-field-child">
+                      <label>Current Messure:</label>
+                      <input
+                        type="number"
+                        value={currentMeasureOther}
+                        onChange={(e) => setCurrentMeasureOther(e.target.value)}
+                      />
                     </div>
-
-                    <div className="form-field-single-update-bold">
-                      <label>Comment:</label>
-                      <textarea
-                        value={commentsOther}
-                        placeholder="Enter text"
-                        rows={2}
-                        cols={82}
-
-                        onChange={(e) => setCommentOther(e.target.value)}
+                    <div className="form-field-child">
+                      <label>Estimete Date of Goal complition:</label>
+                      <input
+                        type="date"
+                        value={estimatedDateOfCompletionOther}
+                        onChange={(e) =>
+                          setEstimatedDateOfCompletionOther(e.target.value)
+                        }
                       />
                     </div>
                   </div>
-                )
-              }
+
+                  <div className="form-field-single-update-bold">
+                    <label>Comment:</label>
+                    <textarea
+                      value={commentsOther}
+                      placeholder="Enter text"
+                      rows={2}
+                      cols={82}
+                      onChange={(e) => setCommentOther(e.target.value)}
+                    />
+                  </div>
+                </div>
+              )} */}
+
+<div className="formsheading">
+                <h6 style={{ fontWeight: "bold" }}>
+                  Goals for Changes in the Resident Phychorial Interaction or
+                  Behaviour :
+                </h6>
+               
+              </div>
+
+              <div className="needs-interventions-container2 table-respnosive">
+                <div className="needs-interventions-column2">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Treatment Goals</th>
+                        <th>Admission Measure</th>
+                        <th>Current Measure</th>
+                        <th>Estimated Date of Goal Completion</th>
+                        <th>Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>1: Maintain sobriety:</p>
+                          <Select
+                            isMulti
+                            options={option1Option}
+                            value={option1}
+                            onChange={option1Handler}
+                            isCreatable={true}
+                            onKeyDown={handleKeyOption1}
+                          />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure1}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure1(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure1}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure1(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion1}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion1(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments1.split("\n").length, 1)}
+                            value={comments1}
+                            placeholder="___________"
+                            onChange={(e) => setComment1(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment1((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>2: Independent Living Skills:</p>
+                          <Select
+                  isMulti
+                  options={option2Option}
+                  value={option2}
+                  onChange={option2Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption2}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure2}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure2(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure2}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure2(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion2}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      estimatedDateOfCompletion2(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments2.split("\n").length, 1)}
+                            value={comments2}
+                            placeholder="___________"
+                            onChange={(e) => setComment2(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment2((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>3: Employment:</p>
+                          <Select
+                  isMulti
+                  options={option3Option}
+                  value={option3}
+                  onChange={option3Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption3}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure3}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure3(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure3}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure3(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion3}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion3(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments3.split("\n").length, 1)}
+                            value={comments3}
+                            placeholder="___________"
+                            onChange={(e) => setComment3(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment3((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>4: ADLS:</p>
+                          <Select
+                  isMulti
+                  options={option4Option}
+                  value={option4}
+                  onChange={option4Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption4}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure4}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure4(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure4}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure4(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion4}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion4(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments4.split("\n").length, 1)}
+                            value={comments4}
+                            placeholder="___________"
+                            onChange={(e) => setComment4(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment4((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>5: Safety:</p>
+                          <Select
+                  isMulti
+                  options={option5Option}
+                  value={option5}
+                  onChange={option5Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption5}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure5}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure5(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure5}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure5(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion5}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion5(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments5.split("\n").length, 1)}
+                            value={comments5}
+                            placeholder="___________"
+                            onChange={(e) => setComment5(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment5((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>6: Medication Education:</p>
+                          <Select
+                  isMulti
+                  options={option6Option}
+                  value={option6}
+                  onChange={option6Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption6}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure6}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure6(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure6}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure6(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion6}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion6(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments6.split("\n").length, 1)}
+                            value={comments6}
+                            placeholder="___________"
+                            onChange={(e) => setComment6(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment6((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>7: Managing Mental Health:</p>
+                          <Select
+                  isMulti
+                  options={option7Option}
+                  value={option7}
+                  onChange={option7Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption7}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure7}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure7(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure7}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure7(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion7}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion7(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments7.split("\n").length, 1)}
+                            value={comments7}
+                            placeholder="___________"
+                            onChange={(e) => setComment7(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment7((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {" "}
+                          <p>8: Legal:</p>
+                          <Select
+                  isMulti
+                  options={option8Option}
+                  value={option8}
+                  onChange={option8Handler}
+                  isCreatable={true}
+                  onKeyDown={handleKeyOption8}
+                />
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasure8}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasure8(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasure8}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasure8(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletion8}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletion8(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(comments8.split("\n").length, 1)}
+                            value={comments8}
+                            placeholder="___________"
+                            onChange={(e) => setComment8(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setComment8((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      
+                      {otherArray.length > 0 &&
+                        otherArray.map((data, index) => (
+                          <tr key={index}>
+                            <td><p>{9+index}: Other:</p>
+                              {data?.optionOther}</td>
+                            <td>{data?.admissionMeasureOther}</td>
+                            <td>{data?.currentMeasureOther}</td>
+                            <td>{data?.estimatedDateOfCompletionOther}</td>
+                            <td>{data?.commentsOther}</td>
+                            
+                          </tr>
+                        ))}
+
+{
+                        showOther && (
+                          <tr>
+                        <td>
+                          {" "}
+                          <p>{otherArray.length+9}: Other:</p>
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(optionOther.split("\n").length, 1)}
+                            value={optionOther}
+                            placeholder="___________"
+                            onChange={(e) => setOptionOther(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setOptionOther((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                       
+                        </td>
+                        <td>  
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={admissionMeasureOther}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setAdmissionMeasureOther(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                        className="treatment_plan_table"
+                    type="text"
+                    value={currentMeasureOther}
+                    placeholder="___________"
+                    required
+                    onChange={(e) => setCurrentMeasureOther(e.target.value)}
+                  /></td>
+                        <td>
+                        <input
+                    type="date"
+                    value={estimatedDateOfCompletionOther}
+                    className="treatment_plan_table"
+                    required
+                    onChange={(e) =>
+                      setEstimatedDateOfCompletionOther(e.target.value)
+                    }
+                  />
+                        </td>
+                        <td>
+                        <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentsOther.split("\n").length, 1)}
+                            value={commentsOther}
+                            placeholder="___________"
+                            onChange={(e) => setCommentOther(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentOther((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                        )
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
               <div className="form-actions  hidePrint">
                 <button
@@ -3705,43 +4252,6 @@ const TreatmentPlan = () => {
                 >
                   ADD
                 </button>
-              </div>
-
-
-              <div className="needs-interventions-container2">
-                <div className="needs-interventions-column2">
-                  {
-                    otherArray.length > 0 && (
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Treatment Goals</th>
-                            <th>Admission Measure</th>
-                            <th>Current Measure</th>
-                            <th>Estimated Date of Goal Completion</th>
-                            <th>Comments</th>
-                            <th className="hidePrint">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {otherArray.map((data, index) => (
-                            <tr key={index}>
-                              <td>{data?.optionOther}</td>
-                              <td>{data?.admissionMeasureOther}</td>
-                              <td>{data?.currentMeasureOther}</td>
-                              <td>{data?.estimatedDateOfCompletionOther}</td>
-                              <td>{data?.commentsOther}</td>
-                              <td className="hidePrint">
-                                <AiFillDelete onClick={() => handleRemoveItem(index)} style={{ cursor: "pointer", fontSize: "22px" }} />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )
-                  }
-
-                </div>
               </div>
 
               <div className="yeschechbox-review-treatment">
@@ -3875,7 +4385,13 @@ const TreatmentPlan = () => {
 
               <div className="yeschechbox-review-treatment">
                 <div>
-                  <label style={{ fontSize: "1.2rem", marginTop: "0.5rem", fontWeight: "bold" }}>
+                  <label
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "0.5rem",
+                      fontWeight: "bold",
+                    }}
+                  >
                     Resident progress:
                   </label>
                 </div>
@@ -3941,15 +4457,12 @@ const TreatmentPlan = () => {
               </label>
 
               <div className="yeschechbox-review">
-
                 <div>
                   <input
                     type="checkbox"
                     id="Family"
                     checked={supportSystem.includes("Family")}
-                    onChange={() =>
-                      handleCheckboxChangeSupportSystem("Family")
-                    }
+                    onChange={() => handleCheckboxChangeSupportSystem("Family")}
                   />
                   <label htmlFor="Family">Family</label>
                 </div>
@@ -3969,7 +4482,9 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="BHRF staff"
                     checked={supportSystem.includes("BHRF staff")}
-                    onChange={() => handleCheckboxChangeSupportSystem("BHRF staff")}
+                    onChange={() =>
+                      handleCheckboxChangeSupportSystem("BHRF staff")
+                    }
                   />
                   <label htmlFor="BHRF staff">BHRF staff</label>
                 </div>
@@ -4073,7 +4588,6 @@ const TreatmentPlan = () => {
                 <input
                   placeholder="Type number"
                   type="number"
-
                   value={supportSystemPhone}
                   required
                   onChange={(e) => setSupportSystemPhone(e.target.value)}
@@ -4081,12 +4595,9 @@ const TreatmentPlan = () => {
               </div>
 
               <div className="form-field-single-update">
-                <label >
-                  Current List of medication:{" "}
-                </label>
+                <label>Current List of medication: </label>
                 <input
                   type="text"
-
                   value={currentMedications}
                   placeholder="Enter medication"
                   required
@@ -4425,14 +4936,15 @@ const TreatmentPlan = () => {
               </label>
 
               <div className="yeschechbox-review">
-
                 <div>
                   <input
                     type="checkbox"
                     id="PHP"
                     checked={recommendationsForFurtherPrograms.includes("PHP")}
                     onChange={() =>
-                      handleCheckboxChangerecommendationsForFurtherPrograms("PHP")
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "PHP"
+                      )
                     }
                   />
                   <label htmlFor="PHP">PHP</label>
@@ -4444,7 +4956,9 @@ const TreatmentPlan = () => {
                     id="IOP"
                     checked={recommendationsForFurtherPrograms.includes("IOP")}
                     onChange={() =>
-                      handleCheckboxChangerecommendationsForFurtherPrograms("IOP")
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "IOP"
+                      )
                     }
                   />
                   <label htmlFor="IOP">IOP</label>
@@ -4453,9 +4967,13 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Sober living"
-                    checked={recommendationsForFurtherPrograms.includes("Sober living")}
+                    checked={recommendationsForFurtherPrograms.includes(
+                      "Sober living"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangerecommendationsForFurtherPrograms("Sober living")
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "Sober living"
+                      )
                     }
                   />
                   <label htmlFor="Sober living">Sober living</label>
@@ -4465,7 +4983,11 @@ const TreatmentPlan = () => {
                     type="checkbox"
                     id="Home"
                     checked={recommendationsForFurtherPrograms.includes("Home")}
-                    onChange={() => handleCheckboxChangerecommendationsForFurtherPrograms("Home")}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "Home"
+                      )
+                    }
                   />
                   <label htmlFor="Home">Home</label>
                 </div>
@@ -4473,9 +4995,13 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Flex Care 23.9"
-                    checked={recommendationsForFurtherPrograms.includes("Flex Care 23.9")}
+                    checked={recommendationsForFurtherPrograms.includes(
+                      "Flex Care 23.9"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangerecommendationsForFurtherPrograms("Flex Care 23.9")
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "Flex Care 23.9"
+                      )
                     }
                   />
                   <label htmlFor="Flex Care 23.9">Flex Care 23.9</label>
@@ -4484,9 +5010,13 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Flex Care 16"
-                    checked={recommendationsForFurtherPrograms.includes("Flex Care 16")}
+                    checked={recommendationsForFurtherPrograms.includes(
+                      "Flex Care 16"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangerecommendationsForFurtherPrograms("Flex Care 16")
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "Flex Care 16"
+                      )
                     }
                   />
                   <label htmlFor="Flex Care 16">Flex Care 16</label>
@@ -4495,9 +5025,13 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="Flex Care 8"
-                    checked={recommendationsForFurtherPrograms.includes("Flex Care 8")}
+                    checked={recommendationsForFurtherPrograms.includes(
+                      "Flex Care 8"
+                    )}
                     onChange={() =>
-                      handleCheckboxChangerecommendationsForFurtherPrograms("Flex Care 8")
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "Flex Care 8"
+                      )
                     }
                   />
                   <label htmlFor="Flex Care 8">Flex Care 8</label>
@@ -4506,8 +5040,14 @@ const TreatmentPlan = () => {
                   <input
                     type="checkbox"
                     id="OtherpsychosocialSymptoms"
-                    checked={recommendationsForFurtherPrograms.includes("Other")}
-                    onChange={() => handleCheckboxChangerecommendationsForFurtherPrograms("Other")}
+                    checked={recommendationsForFurtherPrograms.includes(
+                      "Other"
+                    )}
+                    onChange={() =>
+                      handleCheckboxChangerecommendationsForFurtherPrograms(
+                        "Other"
+                      )
+                    }
                   />
                   <label htmlFor="OtherpsychosocialSymptoms">Other</label>
                   {recommendationsForFurtherProgramsBoolean && (
@@ -4517,7 +5057,9 @@ const TreatmentPlan = () => {
                       placeholder="________"
                       value={recommendationsForFurtherProgramsOther}
                       onChange={(e) =>
-                        setRecommendationsForFurtherProgramsOther(e.target.value)
+                        setRecommendationsForFurtherProgramsOther(
+                          e.target.value
+                        )
                       }
                     />
                   )}
@@ -4688,18 +5230,16 @@ const TreatmentPlan = () => {
             </div> */}
               <div className="form-field-update">
                 <div className="form-field-child">
-                  <label >
-                    Treatment plan review date:
-                </label>
-                <input
-                  type="text"
-                  onChange={(e) => setTreatmentPlanReviewDate(e.target.value)}
-                  value={treatmentPlanReviewDate}
+                  <label>Treatment plan review date:</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setTreatmentPlanReviewDate(e.target.value)}
+                    value={treatmentPlanReviewDate}
                     placeholder="Enter text"
                   />
-              </div>
+                </div>
                 <div className="form-field-child">
-                  <label >Discharge Plan Date:</label>
+                  <label>Discharge Plan Date:</label>
                   <input
                     type="date"
                     onChange={(e) => setDischargePlanDate(e.target.value)}
@@ -4707,7 +5247,6 @@ const TreatmentPlan = () => {
                     placeholder="Enter text"
                   />
                 </div>
-
               </div>
 
               <p
@@ -4724,69 +5263,66 @@ const TreatmentPlan = () => {
               </p>
 
               <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Individual Participating in Developing the Service Plan:</h6>
+                <h6 style={{ fontWeight: "bold" }}>
+                  Individual Participating in Developing the Service Plan:
+                </h6>
               </div>
 
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label>Resident:</label>
-                <input
-
-                  type="text"
-                  value={resident}
-                  placeholder="Enter name"
-                  required
-                  onChange={(e) => setResident(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={resident}
+                    placeholder="Enter name"
+                    required
+                    onChange={(e) => setResident(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Guardian:</label>
-                <input
-
-                  type="text"
-                  value={guardian}
-                  placeholder="Enter name"
-                  required
-                  onChange={(e) => setGuardian(e.target.value)}
-                />
-              </div>
+                  <input
+                    type="text"
+                    value={guardian}
+                    placeholder="Enter name"
+                    required
+                    onChange={(e) => setGuardian(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>Staff:</label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="text"
-                  value={staff}
-                  placeholder="Enter name"
-                  required
-                  onChange={(e) => setStaff(e.target.value)}
-                />
-              </div>
+                  <input
+                    style={{ color: "#1A9FB2" }}
+                    type="text"
+                    value={staff}
+                    placeholder="Enter name"
+                    required
+                    onChange={(e) => setStaff(e.target.value)}
+                  />
+                </div>
                 <div className="form-field-child">
                   <label>BHP:</label>
-                <input
-                  style={{ color: "#1A9FB2" }}
-                  type="text"
-                  value={bpn}
-                  placeholder="Enter name"
-                  required
-                  onChange={(e) => setBph(e.target.value)}
-                />
-              </div>
-
+                  <input
+                    style={{ color: "#1A9FB2" }}
+                    type="text"
+                    value={bpn}
+                    placeholder="Enter name"
+                    required
+                    onChange={(e) => setBph(e.target.value)}
+                  />
+                </div>
               </div>
 
               <div className="form-field-single-update">
-                <label >Comment:</label>
+                <label>Comment:</label>
 
                 <input
-
                   type="text"
                   value={commentIndividual}
                   placeholder="Enter comment"
                   required
                   onChange={(e) => setCommentIndividual(e.target.value)}
                 />
-
               </div>
 
               <label htmlFor="" className="label-review">
@@ -4854,10 +5390,10 @@ const TreatmentPlan = () => {
 
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>
-                  Signature indicates participation and informed consent for treatment services.
+                  Signature indicates participation and informed consent for
+                  treatment services.
                 </h6>
               </div>
-
 
               <div className="form-field-single-update">
                 <label>First and Last Name:</label>
@@ -4875,7 +5411,8 @@ const TreatmentPlan = () => {
                   <span style={{ fontSize: "15px", color: "gray" }}>
                     (By signing this document, I acknowledge that I was asked,
                     encouraged to participate in the assessment)
-                  </span>:
+                  </span>
+                  :
                 </label>
                 <input
                   type="text"
@@ -4932,39 +5469,31 @@ const TreatmentPlan = () => {
               />
             </div> */}
             </div>
-            {/*   "signaturesFacilityRep": */}
-            {/* <div className="formsheading">
-              <h6 style={{ fontWeight: "bold" }}>
-                signatures Facility Representative participation and informed
-                consent for treatment services:
-              </h6>
-            </div> */}
+         
 
-            <div className="form-field-update" >
+            <div className="form-field-update">
               <div className="form-field-child">
                 <label>First and Last Name:</label>
-              <input
-                type="text"
-                value={nameFacilityRep}
+                <input
+                  type="text"
+                  value={nameFacilityRep}
                   placeholder="Enter text"
-                required
-                onChange={(e) => setNameFacilityRep(e.target.value)}
-              />
-            </div>
+                  required
+                  onChange={(e) => setNameFacilityRep(e.target.value)}
+                />
+              </div>
 
               <div className="form-field-child">
                 <label>Facility Representative:</label>
-              <input
-                type="text"
-                value={credentialsFacilityRep}
+                <input
+                  type="text"
+                  value={credentialsFacilityRep}
                   placeholder="Enter text"
-                required
-                onChange={(e) => setCredentialsFacilityRep(e.target.value)}
-              />
+                  required
+                  onChange={(e) => setCredentialsFacilityRep(e.target.value)}
+                />
+              </div>
             </div>
-            </div>
-
-
 
             <div class="file-upload-box hidePrint">
               <div className="file-upload-box-child">
@@ -5001,28 +5530,27 @@ const TreatmentPlan = () => {
               />
             )}
 
-
             <div className="form-field-update ">
               <div className="form-field-child">
                 <label htmlFor="AHCCCS">First and Last Name:</label>
-              <input
+                <input
                   type="text"
-                value={nameBhp}
+                  value={nameBhp}
                   placeholder="Enter text"
-                required
-                onChange={(e) => setNameBhp(e.target.value)}
-              />
-            </div>
+                  required
+                  onChange={(e) => setNameBhp(e.target.value)}
+                />
+              </div>
               <div className="form-field-child">
                 <label>Behavioral Health Professional:</label>
-              <input
-                type="text"
-                value={credentialsBhp}
+                <input
+                  type="text"
+                  value={credentialsBhp}
                   placeholder="Enter text"
-                required
-                onChange={(e) => setCredentialsBhp(e.target.value)}
-              />
-            </div>
+                  required
+                  onChange={(e) => setCredentialsBhp(e.target.value)}
+                />
+              </div>
             </div>
 
             <div class="file-upload-box hidePrint">

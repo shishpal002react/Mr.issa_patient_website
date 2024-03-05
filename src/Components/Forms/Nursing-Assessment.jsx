@@ -338,14 +338,14 @@ const NursingAssessment = () => {
 
   // status code
   const handleCodeStatusChange = (status) => {
-    // Check if the status is already selected
+
     if (codeStatus.includes(status)) {
       // If selected, remove it from the array
       setCodeStatus((prevStatus) =>
         prevStatus.filter((item) => item !== status)
       );
     } else {
-      // If not selected, add it to the array
+
       setCodeStatus((prevStatus) => [...prevStatus, status]);
     }
   };
@@ -368,14 +368,12 @@ const NursingAssessment = () => {
         <div className="Boss">
         <div className="formheading1">
           <div className="formsheading2">
-              {/* <h1>Initial Nursing Assessment</h1> */}
+    
               <h1 style={{ fontWeight: "bold" }}> Nursing Assessment</h1>
           </div>
         </div>
         <form onSubmit={handlePost}>
-            <div className="form-section" style={{ marginTop: "1rem" }}>
-            <h2>Resident’s Details</h2>
-
+        <div className="box-image-container">
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label htmlFor="dateOfBirth">Today’s Date:</label>
@@ -401,9 +399,7 @@ const NursingAssessment = () => {
               />
                 </div>
               </div>
-            </div>
-
-
+          
             <div className="form-field-update">
               <div className="form-field-child">
                 <label htmlFor="admissionDate">Resident’s Full Name:</label>
@@ -469,67 +465,6 @@ const NursingAssessment = () => {
 
 
 
-            {/* <div className="form-field">
-            <label htmlFor="gender">Select Gender</label>
-            <select
-              type="select"
-              id="gender"
-              value={sex}
-              required
-              onChange={(e) => setSex(e.target.value)}
-            >
-              <option>Select Gender</option>
-              <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
-          </div> */}
-          {/* <div className="form-field">
-                            <label htmlFor="AHCCCS">Resident Full Name</label>
-                            <input
-                                type="text"
-                                id="AHCCCS"
-                                value={admissionDiagnoses}
-                                placeholder='Enter full name'
-                                required
-                                onChange={(e)=>setAdmissionDiagnoses(e.target.value)}
-                            />
-                        </div> */}
-          {/* <div className="form-field">
-                            <label htmlFor="admissionDate">Date of Birth</label>
-                            <input
-                                style={{ color: '#1A9FB2' }}
-                                type="date"
-                                id="dateOfBirth"
-                                value={lastTBScreeningDate}
-                                placeholder="DD/MM/YYYY"
-                                required
-                                onChange={(e)=>setLastTBScreeningDate(e.target.value)}
-                            />
-                        </div> */}
-          {/* <div className="form-field">
-                            <label htmlFor="AHCCCS">Age</label>
-                            <input
-                                type="text"
-                                id="AHCCCS"
-                                value=''
-                                placeholder='Enter age'
-                                required
-                            />
-                        </div> */}
-          {/* <div className="form-field">
-                            <label htmlFor="AHCCCS">Select Gender</label>
-                            <div className='genderdiv'>
-                                <div className='genderbox'>
-                                    <input type="radio" id="maleRadio" name="gender" className="custom-radio" />
-                                    <label htmlFor="maleRadio">Male</label>
-                                </div>
-                                <div className='genderbox'>
-                                    <input type="radio" id="femaleRadio" name="gender" className="custom-radio" />
-                                    <label htmlFor="femaleRadio">Female</label>
-                                </div>
-                            </div>
-                        </div> */}
             <div className="form-field-single-update">
               <label htmlFor="AHCCCS">Admission Diagnosis: </label>
               <input
@@ -581,7 +516,7 @@ const NursingAssessment = () => {
             />
           </div>
 
-              <div className="form-field-child">
+              <div className="form-field-child-result">
                 <div>
                   <label htmlFor="" >Results: </label>
                 </div>
@@ -615,20 +550,7 @@ const NursingAssessment = () => {
               </div>
 
             </div>
-            {/*
-          <div className="form-field">
-            <label htmlFor="gender">Results of TB Screening</label>
-            <select
-              id="gender"
-              value={tbScreeningResults}
-              required
-              onChange={(e) => setTbScreeningResults(e.target.value)}
-            >
-              <option value="Negative">Negative</option>
-              <option value="Positive">Positive</option>
-              <option value="Pending">Pending</option>
-            </select>
-          </div> */}
+  
 
             <div className="form-field-single-update">
               <div>
@@ -651,6 +573,7 @@ const NursingAssessment = () => {
                 />
                 <label >Behavioral Health Services</label>
               </div>
+            </div>
             </div>
             {/* <div className="form-field">
             <label htmlFor="gender">Care to be provided at Devine Care</label>
@@ -684,6 +607,7 @@ const NursingAssessment = () => {
           </div> */}
             <h2 style={{ marginTop: "1rem", fontWeight: "bold" }}>Vitals:</h2>
 
+          <div className="box-image-container">
             <div className="form-field-update">
 
               <div className="form-field-child ">
@@ -788,14 +712,15 @@ const NursingAssessment = () => {
               onChange={(e) => setAllergies(e.target.value)}
             />
           </div>
+          </div>
 
-          <div className="formsheading">
+          {/* <div className="formsheading">
               <h6>Covid-19 Screening:Regardless of your vaccination status, have you experienced any of
                 the symptoms bellow in the past 48 hours?</h6>
 
-          </div>
+          </div> */}
 
-<div className="parent-div-screening">
+{/* <div className="parent-div-screening">
           <div>
           <div className="yeschechbox-screening">
             <label htmlFor="">New onset of fever or chills?</label>
@@ -1099,7 +1024,7 @@ const NursingAssessment = () => {
 
           </div>
 
-          </div>
+          </div> */}
 
 
           <div className="formsheading">
@@ -2937,7 +2862,7 @@ const NursingAssessment = () => {
             </div>
           </div>
 
-            <div className="form-field-single-update">
+            <div className="form-field-single-update box-image-container">
               <label >Comment:</label>
 
               <input
@@ -2950,7 +2875,7 @@ const NursingAssessment = () => {
 
           </div>
 
-
+           <div className="box-image-container" style={{marginBottom:"2rem"}}>
             <div className="form-field-single-update">
             <label htmlFor="AHCCCS">BHT Name:</label>
             <input
@@ -2963,14 +2888,8 @@ const NursingAssessment = () => {
             />
           </div>
 
-          {/* <input
-            type="text"
-            value={bhtSignature}
-            onChange={(e) => setBhtSignature(e.target.value)}
-          /> */}
-
-
-            <div class="file-upload-box hidePrint"> 
+       
+            <div class="file-upload-box hidePrint" style={{marginLeft:"10px"}}> 
                 <div className="file-upload-box-child">
                 <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
                   SAVED AS DRAFT
@@ -3008,7 +2927,7 @@ const NursingAssessment = () => {
             />
             </div>
 
-            <div class="file-upload-box hidePrint">
+            <div class="file-upload-box hidePrint" style={{marginLeft:"10px",paddingBottom:"1rem"}}>
               
               <div className="file-upload-box-child">
                <div >
@@ -3045,51 +2964,12 @@ const NursingAssessment = () => {
                 setDateAndTime={setrnDate}
                 />)
             }
+            </div>
 
         </form>
       </div>
-      {/* {
-        draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
-      }
-      {showSingInOne && (
-        <SingInModel onClose={() => setShowSingInOne(false)}>
-          <div className="input_singin_button">
-            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
-            <input
-              type="text"
-              placeholder="Enter Sing in Signature"
-              value={bhtSignature}
-              onChange={(e) => setBhtSignature(e.target.value)}
-            />
-          </div>
-
-          <div className="sing_in_submit_button">
-            <button type="button"  onClick={() => setShowSingInOne(false)}>
-              Submit
-            </button>
-          </div>
-        </SingInModel>
-      )} */}
-           {/* {showSingInTwo && (
-        <SingInModel onClose={() => setShowSingInTwo(false)}>
-          <div className="input_singin_button">
-            <p style={{ color: "white" }}>Digitally Sign by employee name</p>
-            <input
-              type="text"
-              placeholder="Enter Sing in Signature"
-              value={rnSignature}
-            onChange={(e) => setRnSignature(e.target.value)}
-            />
-          </div>
-
-          <div className="sing_in_submit_button">
-            <button type="button" onClick={() => setShowSingInTwo(false)}>
-              Submit
-            </button>
-          </div>
-        </SingInModel>
-      )} */}
-
+      
+      
 {
         draftModel && (<Draftinmodel onClose={() => setDraftModel(false)}/>)
       }

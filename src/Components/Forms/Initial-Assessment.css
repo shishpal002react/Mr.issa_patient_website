@@ -36,7 +36,7 @@
 }
 
 /* update css  new*/
-
+/* hidgijgfjgofjgojkogfgogjkofdgkfogkfgk */
 .Boss {
   width: 80%;
   margin: auto;
@@ -72,6 +72,12 @@
 
 
 .form-field-child {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-field-child-result{
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
@@ -276,10 +282,15 @@
 
 /* treatment plan css update css head */
 
+.treatment_plan_table{
+  border: none;
+  outline: none;
+  border-bottom: auto;
+}
 
-
-
-
+.table-respnosive{
+  overflow-x: auto;
+}
 
 
 
@@ -1159,6 +1170,7 @@ input[type="checkbox"] {
   display: flex;
   gap: 10px;
   margin-left: 30px;
+  align-items: center;
 }
 
 .safetyRiskLast {
@@ -1474,6 +1486,12 @@ input[type="checkbox"] {
   .form-field-child {
     margin-top: 1rem;
     display: flex;
+    align-items: center;
+  }
+
+  .form-field-child-result {
+    margin-top: 1rem;
+    display: block;
     align-items: center;
   }
 

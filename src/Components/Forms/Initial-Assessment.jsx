@@ -2174,9 +2174,9 @@ const InitialAssessment = () => {
             onSubmit={handleSubmit}
             style={{ marginTop: "2rem" }}
           >
-            <h5>Section - 1</h5>
+            <h5 style={{textAlign:"center",fontWeight:"bold"}}>Section I</h5>
             <div className="form-section">
-              <h2 style={{ marginTop: "1rem" }}>Basic Details</h2>
+         
 
               <div className="box-image-container">
               <div className="form-field-update">
@@ -7434,7 +7434,7 @@ const InitialAssessment = () => {
                 <h6 style={{ fontWeight: 'bold' }}>Psychiatric Diagnoses:</h6>
               </div>
 
-              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
+              {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label >Psychiatric Diagnoses:</label>
@@ -7467,51 +7467,9 @@ const InitialAssessment = () => {
                   />
                 </div>
               </div>
-              </div>
+              </div> */}
 
-              {/* <div className="form-field">
-              <label htmlFor="primary">Primary:</label>
-              <input
-                type="text"
-                required
-                id="primary"
-                value={primary}
-                onChange={(e) => setPrimary(e.target.value)}
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="secondary">Secondary:</label>
-              <input
-                type="text"
-                required
-                id="secondary"
-                value={secondary}
-                onChange={(e) => setSecondary(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="tertiary">Tertiary:</label>
-              <input
-                type="text"
-                required
-                id="tertiary"
-                value={tertiary}
-                onChange={(e) => setTertiary(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="additional">Additional:</label>
-              <input
-                type="text"
-                required
-                id="additional"
-                value={additional}
-                onChange={(e) => setAdditional(e.target.value)}
-              />
-            </div> */}
-
-              <div className="form-actions hidePrint">
+              {/* <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -7519,43 +7477,122 @@ const InitialAssessment = () => {
                 >
                   Add
                 </button>
-              </div>
+              </div> */}
 
               <div className="needs-interventions-container2">
                 <div className="needs-interventions-column2">
-                  {psychiatricDiagnoses.length > 0 && (
+
                     <table>
                       <thead>
                         <th>Psychiatric Diagnoses</th>
                         <th>ICD Code</th>
                         <th>Description</th>
-                        {/* <th>Primary</th>
-                      <th>Secondary</th>
-                      <th>Tertiary</th>
-                      <th>Additional</th> */}
                       </thead>
                       <tbody>
-                        {psychiatricDiagnoses?.map((i, index) => (
                           <tr>
-                            <td>{`${i.psychiatricOption}`} </td>
-                            <td>{`${i.icdCode}`} </td>
-                            <td>{`${i.description}`} </td>
-                            {/* <td>{`${i.primary}`} </td>
-                          <td>{`${i.seco}`}</td>
-                          <td>{`${i.tertiary}`} </td>
-                          <td>{`${i.additional}`} </td> */}
+                           <td>Primary*</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
                           </tr>
-                        ))}
+                          <tr>
+                           <td>Secondary</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          <tr>
+                           <td>Tertiary</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          <tr>
+                           <td>Additional</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          
+                      
                       </tbody>
                     </table>
-                  )}
+        
                 </div>
               </div>
 
 
 
 
-              <div className="formsheading">
+              {/* <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses:</h6>
               </div>
               <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
@@ -7593,51 +7630,11 @@ const InitialAssessment = () => {
                 </div>
 
               </div>
-              </div>
+              </div> */}
 
-              {/* <div className="form-field">
-              <label htmlFor="primary">Primary:</label>
-              <input
-                type="text"
-                required
-                id="primary"
-                value={primaryMedicalDiagnoses}
-                onChange={(e) => setPrimaryMedicalDiagnoses(e.target.value)}
-              />
-            </div>
+       
 
-            <div className="form-field">
-              <label htmlFor="secondary">Secondary:</label>
-              <input
-                type="text"
-                required
-                id="secondary"
-                value={secondaryMedicalDiagnoses}
-                onChange={(e) => setSecondaryMedicalDiagnoses(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="tertiary">Tertiary:</label>
-              <input
-                type="text"
-                required
-                id="tertiary"
-                value={tertiaryMedicalDiagnoses}
-                onChange={(e) => setTertiaryMedicalDiagnoses(e.target.value)}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="additional">Additional:</label>
-              <input
-                type="text"
-                required
-                id="additional"
-                value={additionalMedicalDiagnoses}
-                onChange={(e) => setAdditionalMedicalDiagnoses(e.target.value)}
-              />
-            </div> */}
-
-              <div className="form-actions hidePrint">
+              {/* <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -7645,37 +7642,142 @@ const InitialAssessment = () => {
                 >
                   Add
                 </button>
+              </div> */}
+
+<div className="formsheading">
+                <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses:</h6>
               </div>
 
-
-              <div className="needs-interventions-container2">
+<div className="needs-interventions-container2">
                 <div className="needs-interventions-column2">
-                  {medicalDiagnoses.length > 0 && (
+
                     <table>
                       <thead>
                         <th>Medical Diagnoses</th>
                         <th>ICD Code</th>
                         <th>Description</th>
-                        {/* <th>Primary</th>
-                      <th>Secondary</th>
-                      <th>Tertiary</th>
-                      <th>Additional</th> */}
                       </thead>
                       <tbody>
-                        {medicalDiagnoses?.map((i, index) => (
                           <tr>
-                            <td>{`${i.MedicalOption}`} </td>
-                            <td>{`${i.icdCodeMedicalDiagnoses}`} </td>
-                            <td>{`${i.descriptionMedicalDiagnoses}`} </td>
-                            {/* <td>{`${i.primaryMedicalDiagnoses}`} </td>
-                          <td>{`${i.secondaryMedicalDiagnoses}`} </td>
-                          <td>{`${i.tertiaryMedicalDiagnoses}`} </td>
-                          <td>{`${i.additionalMedicalDiagnoses}`} </td> */}
+                           <td>Primary*</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
                           </tr>
-                        ))}
+                          <tr>
+                           <td>Secondary</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          <tr>
+                           <td>Tertiary</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          <tr>
+                           <td>Additional</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          <tr>
+                           <td>Additional</td>
+                           <td>
+                            <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            />
+                           </td>
+                           <td>  <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          /></td>
+                          </tr>
+                          
+                      
                       </tbody>
                     </table>
-                  )}
+        
                 </div>
               </div>
 

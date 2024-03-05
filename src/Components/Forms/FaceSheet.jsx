@@ -306,6 +306,7 @@ const FaceSheet = () => {
           <form >
           <div className="form-section">
 
+            <div className="box-image-container">
               <div className="form-field-update">
                 <div className="form-field-child">
               <label htmlFor="residentFullName">Resident Name:</label>
@@ -495,26 +496,7 @@ const FaceSheet = () => {
                 <label htmlFor="courtOrderedTreatmentno">No</label>
               </div>
             </div>
-
-
               </div>
-
-
-
-
-            {/* <div className="form-field">
-              <label htmlFor="AHCCCS">Facility Emergency Contact Number:</label>
-              <input
-                type="text"
-                id="AHCCCS"
-                value={familyGuardianEmergencyContact}
-                placeholder="Type Here....."
-                required
-                onChange={(e) =>
-                  setFamilyGuardianEmergencyContact(e.target.value)
-                }
-              />
-            </div> */}
 
               <div className="form-field-single-update">
                 <label>
@@ -564,6 +546,9 @@ const FaceSheet = () => {
                 onChange={(e) => setOtherAllergies(e.target.value)}
               />
             </div>
+            </div>
+
+
             <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Primary Care Provider:</h6>
               </div>

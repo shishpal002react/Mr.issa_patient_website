@@ -818,6 +818,10 @@ const InitialAssessment = () => {
   const [riskComment, setRiskComment] = useState("");
   const [riskFactorArray, setRiskFactoeArray] = useState([])
 
+  // drop down
+  const [behaviorcuesDropDown, setBehaviorcuesDropDown] = useState([])
+  const [symptomsOfPsychosisDropDown, setSymptomsOfPsychosisDropDown] = useState([])
+
   const handleRiskFactor = () => {
     const newData = {
       selectedValueRiskFactors,
@@ -1972,6 +1976,95 @@ const InitialAssessment = () => {
   };
   const selectedValueRiskFactorsHandler = (optionValue) => {
     setSelectedValueRiskFactors(optionValue)
+  }
+
+  //Select risk factors that apply dropdown 1
+  const selectedValueRiskFactorsOption1 = [
+    { label: "isolation", value: "isolation" },
+    { label: "impulsivity", value: "impulsivity" },
+    { label: "withdrawn", value: "withdrawn" },
+    { label: "anger", value: "anger" },
+    { label: "agitation", value: "agitation" },
+    { label: "verbal aggression", value: "verbal aggression" },
+    { label: "slamming door", value: "slamming door" },
+    { label: "physical aggression", value: "physical aggression" },
+  ]
+
+  const handleKeySelectedValueRiskFactorsBehavior = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueRiskFactorsOption.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueRiskFactorsOption,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setBehaviorcuesDropDown(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...behaviorcuesDropDown,
+          { value: inputValue, label: inputValue }
+        ];
+        setBehaviorcuesDropDown(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+  const selectedValueRiskFactorsHandlerBehaviorcues = (optionValue) => {
+    setBehaviorcuesDropDown(optionValue)
+  }
+
+  const selectedValueRiskFactorsOption2 = [
+    { label: "Auditory Hallucination", value: "Auditory Hallucination" },
+    { label: "Visual Hallucination", value: "Visual Hallucination" },
+    { label: "Tactile Hallucination", value: "Tactile Hallucination" },
+    { label: "Olfactory Hallucination", value: "Olfactory Hallucination" },
+  ]
+
+  const handleKeySelectedValueRiskFactorsSymptoms = (event) => {
+    if (event.key === 'Enter' && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = selectedValueRiskFactorsOption2.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...selectedValueRiskFactorsOption2,
+          { value: inputValue, label: inputValue }
+        ];
+
+        // Update the state with the new options
+        setSymptomsOfPsychosisDropDown(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...symptomsOfPsychosisDropDown,
+          { value: inputValue, label: inputValue }
+        ];
+        setSymptomsOfPsychosisDropDown(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+  const selectedValueRiskFactorsHandlerSymptoms = (optionValue) => {
+    setSymptomsOfPsychosisDropDown(optionValue)
   }
 
   //Protective factors that apply:
@@ -6868,7 +6961,258 @@ const InitialAssessment = () => {
                 <h6 style={{ fontWeight: "bold" }}>Risk Factors:</h6>
               </div>
 
-              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
+
+              <div className="needs-interventions-container">
+                <div className="needs-interventions-column3">
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Select risk factors that apply</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                        <th>Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Current suicidal ideation </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Prior suicide attempt</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Access to means (i.e. weapon)</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Substance abuse</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Other self-abusing behavior</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Recent losses/lack of support</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Behavior cues</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          {/* setBehaviorcuesDropDown */}
+                          <Select
+                            value={behaviorcuesDropDown}
+                            isMulti
+                            options={selectedValueRiskFactorsOption1}
+                            onChange={selectedValueRiskFactorsHandlerBehaviorcues}
+                            isCreatable={true}
+                            onKeyDown={handleKeySelectedValueRiskFactorsBehavior}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Symptoms of psychosis </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          {/* setSymptomsOfPsychosisDropDown */}
+                          <Select
+                            value={symptomsOfPsychosisDropDown}
+                            isMulti
+                            options={selectedValueRiskFactorsOption2}
+                            onChange={selectedValueRiskFactorsHandlerSymptoms}
+                            isCreatable={true}
+                            onKeyDown={handleKeySelectedValueRiskFactorsSymptoms}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Family history of suicide</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Terminal physical illness</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Current stressors (specify)</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+
+
+              {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
                 <div className="form-field-single-update-bold">
                   <label >
                   Select risk factors that apply:
@@ -6904,9 +7248,9 @@ const InitialAssessment = () => {
                 />
 
                 </div>
-              </div>
+              </div> */}
 
-              <div className="form-actions hidePrint">
+              {/* <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -6914,9 +7258,9 @@ const InitialAssessment = () => {
                 >
                   Add
                 </button>
-              </div>
+              </div> */}
 
-
+              {/*
               <div className="needs-interventions-container">
                 <div className="needs-interventions-column3">
                   {riskFactorArray.length > 0 && (
@@ -6946,7 +7290,8 @@ const InitialAssessment = () => {
                     </table>
                   )}
                 </div>
-              </div>
+              </div> */}
+
 
               <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
                 <div className="form-field-single-update-bold">
@@ -7681,8 +8026,7 @@ const InitialAssessment = () => {
                     />
                     <span style={{ paddingLeft: "10px" }}>
                       No, I (Resident/guardian) disagree with the types and/or
-                      levels of some or all of the services included in my
-                      behavioral health treatment plan. By checking this box, I
+                      levels of some or all of the services. By checking this box, I
                       (Resident/guardian) will receive the services that I have
                       agreed to receive and may appeal the treatment team’s
                       decision to not include all the types and/ or levels of

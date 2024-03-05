@@ -5000,25 +5000,7 @@ const TreatmentPlan = () => {
                 setDateAndTime={setDateFacilityRep}
               />
             )}
-            {/* <div className="form-field">
-            <label htmlFor="dateOfBirth">Date:</label>
-            <input
-              style={{ color: "#1A9FB2" }}
-              type="date"
-              id="dateOfBirth"
-              value={dateFacilityRep}
-              placeholder="DD/MM/YYYY"
-              required
-              onChange={(e) => setDateFacilityRep(e.target.value)}
-            />
-          </div> */}
 
-            {/* <div className="formsheading">
-              <h6 style={{ fontWeight: "bold" }}>
-                Signatures BHP participation and informed consent for treatment
-                services:
-              </h6>
-            </div> */}
 
             <div className="form-field-update ">
               <div className="form-field-child">

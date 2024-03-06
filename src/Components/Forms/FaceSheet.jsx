@@ -300,7 +300,7 @@ const FaceSheet = () => {
         <div className="Boss">
         <div className="formheading1">
           <div className="formsheading2">
-            <h1>FACE SHEET</h1>
+            <h1>Face sheet/Resident Emergency Information</h1>
           </div>
         </div>
           <form >
@@ -347,7 +347,7 @@ const FaceSheet = () => {
               />
             </div>
               </div>
-
+              <div className="border-bootom-line"></div>
               <div className="form-field-update">
                 <div className="form-field-child">
               <label htmlFor="AHCCCS">Facility Address:</label>
@@ -375,6 +375,7 @@ const FaceSheet = () => {
 
               </div>
 
+              <div className="border-bootom-line"></div>
               <div className="form-field-update">
                 <div className="form-field-child">
               <label htmlFor="AHCCCS">Place of Birth:</label>
@@ -410,7 +411,7 @@ const FaceSheet = () => {
               />
             </div>
               </div>
-
+              <div className="border-bootom-line"></div>
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label >Height:</label>
@@ -447,7 +448,7 @@ const FaceSheet = () => {
               />
             </div>
               </div>
-
+              <div className="border-bootom-line"></div>
               <div className="form-field-update">
                 <div className="form-field-child">
               <label htmlFor="AHCCCS">Identifiable Marks:</label>
@@ -497,7 +498,7 @@ const FaceSheet = () => {
               </div>
             </div>
               </div>
-
+              <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
                 <label>
                   Family/Guardian Emergency Name and Contact Number:
@@ -522,6 +523,7 @@ const FaceSheet = () => {
                 onChange={(e) => setFacilityEmergencyContact(e.target.value)}
               />
             </div>
+            <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
                 <label >MEDICATION Allergies:</label>
               <input
@@ -810,7 +812,7 @@ const FaceSheet = () => {
 </div>
 
 
-
+<div className="box-image-container">
               <div className="form-field-update">
                 <div className="form-field-child">
                   <label >Case Manager:</label>
@@ -846,6 +848,8 @@ const FaceSheet = () => {
               />
                 </div>
               </div>
+
+              <div className="border-bootom-line"></div>
 
               <div className="form-field-update ">
 
@@ -892,10 +896,7 @@ const FaceSheet = () => {
             </div>
               </div>
 
-
-
-
-
+              <div className="border-bootom-line"></div>
 
               <div className="form-field-single-update">
                 <label >Mental Health Diagnoses:</label>
@@ -929,6 +930,8 @@ const FaceSheet = () => {
                 required
                 onChange={(e) => setPastSurgeries(e.target.value)}
               />
+            </div>
+
             </div>
             {/* signature is not add now */}
             {/* <div class="file-upload-box">
@@ -964,7 +967,7 @@ const FaceSheet = () => {
                 </button>
                 </div>
                 <div>
-                  <button className="upload-button" type="button" onClick={handlePrint2}>
+                  <button className="upload-button signature_shift_margin" type="button" onClick={handlePrint2} >
                   PRINT THIS FORM
                 </button>
                 </div>

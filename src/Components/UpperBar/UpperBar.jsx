@@ -122,7 +122,7 @@ const UpperBar = ({ isMenuOpen, toggleMenu }) => {
       <div className="navbar1">
         <div className="left-section">
           <span>
-            <MdOutlineSegment onClick={toggleMenu} color="#1A9FB2" size={25} />
+            <MdOutlineSegment onClick={toggleMenu} color="#1A9FB2" size={25} style={{cursor:"pointer"}}/>
           </span>
           <span>Welcome,</span>
           <h6>{user?.fullName}</h6>

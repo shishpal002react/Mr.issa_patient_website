@@ -5,6 +5,7 @@ import "./Initial-Assessment.css";
 import FormUpper from "./FormsUpperbar";
 import formupload from "../../img/formupload.png";
 import Chechkbox from "../chechkbox";
+import { AiFillDelete } from "react-icons/ai";
 import locate from "../../img/locate.png";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +24,8 @@ const InitialAssessment = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+
   const handlePrint2 = () => {
     var elements = document.getElementsByClassName("hidePrint");
 
@@ -33,7 +36,7 @@ const InitialAssessment = () => {
 
     // Trigger the print action
     handlePrint();
-
+ 
     // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
     setTimeout(() => {
       for (var i = 0; i < elements.length; i++) {
@@ -418,8 +421,14 @@ const InitialAssessment = () => {
       setMentalHealthTreatmentHistoryDates("");
       setMentalHealthTreatmentHistoryDiagnosisReason([]);
     }
-
   }
+
+    // Event handler for removing an item from the array
+    const handleRemoveItem = (index) => {
+      const updatedArray = [...typeOfServiceArray];
+      updatedArray.splice(index, 1);
+      setTypeOfServicesArray(updatedArray);
+    };
 
 
   useEffect(() => {
@@ -456,7 +465,7 @@ const InitialAssessment = () => {
   const [typeArray, setTypeArray] = useState([])
 
   const handleTypeOfArray = () => {
-    if (substanceAbuseHistoryDataTypes && substanceAbuseHistoryDataAgeOfFirstUse && substanceAbuseHistoryDataLastUse && substanceAbuseHistoryDataFrequency && substanceAbuseHistoryDataLengthOfSobriety) {
+    if (substanceAbuseHistoryDataTypes || substanceAbuseHistoryDataAgeOfFirstUse || substanceAbuseHistoryDataLastUse || substanceAbuseHistoryDataFrequency || substanceAbuseHistoryDataLengthOfSobriety) {
       const data = {
         substanceAbuseHistoryDataTypes,
         substanceAbuseHistoryDataAgeOfFirstUse,
@@ -2174,7 +2183,7 @@ const InitialAssessment = () => {
             onSubmit={handleSubmit}
             style={{ marginTop: "2rem" }}
           >
-            <h5 style={{textAlign:"center",fontWeight:"bold"}}>Section I</h5>
+            <h5 style={{textAlign:"center",fontWeight:"bold"}}>SECTION I</h5>
             <div className="form-section">
          
 
@@ -2262,7 +2271,7 @@ const InitialAssessment = () => {
                 <div className="border-bootom-line"></div>
 
               <div className="form-field-single-update">
-                <label htmlFor="AHCCCS">AHCCCS :</label>
+                <label htmlFor="AHCCCS">AHCCCS# :</label>
                 <input
                   type="text"
                   id="AHCCCS"
@@ -2814,7 +2823,7 @@ const InitialAssessment = () => {
                 />)
               } */}
 
-              <h5 style={{ marginTop: "1.5rem" }}>Section - 2</h5>
+              <h5 style={{ marginTop: "1.5rem",fontWeight:"bold",textAlign:"center" }}>SECTION II</h5>
               <div className="formsheading">
                 <p>
                   A. Currently prescribed medications are attached on a separate
@@ -4651,7 +4660,7 @@ const InitialAssessment = () => {
               <div className="formsheading">
                 <h6 style={{ marginTop: "1.5rem" }}>
                   Mental Health Treatment History (in Resident hospitalization,
-                  partial hospitalization, out Resident, etc)
+                  partial hospitalization, out Resident, etc):
                 </h6>
               </div>
 
@@ -4742,11 +4751,12 @@ const InitialAssessment = () => {
                         <th>Where</th>
                         <th>Dates</th>
                         <th>Diagnosis/Reason for Treatment  </th>
-
-
+                   
+                        <th className="hidePrint">Action</th>
+                        
                       </thead>
                       <tbody>
-                        {typeOfServiceArray?.map((i) => (
+                        {typeOfServiceArray?.map((i,index) => (
                           <tr>
                             <td>{i?.mentalHealthTreatmentHistoryTypeOfService?.map((item) => (
                               <p key={item?.value}>{item?.value}</p>
@@ -4756,6 +4766,7 @@ const InitialAssessment = () => {
                             <td>{i?.mentalHealthTreatmentHistoryDiagnosisReason?.map((item) => (
                               <p key={item?.value}>{item?.value}</p>
                             ))}</td>
+                            <td className="hidePrint"><AiFillDelete  onClick={()=>handleRemoveItem(index)} style={{fontSize:"1.5rem"}}/> </td>
                           </tr>
                         ))}
                       </tbody>
@@ -4804,7 +4815,7 @@ const InitialAssessment = () => {
 
 
 
-              <div className="box-image-container hidePrint">
+              {/* <div className="box-image-container hidePrint">
 
               <div className="form-field-single-update-bold">
                 <label htmlFor="reasonadmission">Type:</label>
@@ -4877,19 +4888,9 @@ const InitialAssessment = () => {
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
                 />
               </div>
-              </div>
+              </div> */}
 
-              <div className="form-actions  hidePrint">
-                <button
-                  type="button"
-                  className="safetybutton"
-                  onClick={handleTypeOfArray}
-                >
-                  Add
-                </button>
-              </div>
-
-              <div className="needs-interventions-container2">
+{/* <div className="needs-interventions-container2">
                 <div className="needs-interventions-column2">
                   {typeArray.length > 0 && (
                     <table>
@@ -4899,7 +4900,6 @@ const InitialAssessment = () => {
                         <th>Last Use</th>
                         <th>Frequency </th>
                         <th>Length of Sobriety</th>
-
                       </thead>
                       <tbody>
                         {typeArray?.map((i) => (
@@ -4923,8 +4923,666 @@ const InitialAssessment = () => {
                     </table>
                   )}
                 </div>
+              </div> */}
+
+<div   className="needs-interventions-container2 table-respnosive">
+                <div className="needs-interventions-column2">
+            
+                    <table>
+                      <thead>
+                        <th style={{fontWeight:"bold"}}>Type</th>
+                        <th style={{fontWeight:"bold",width:"180px"}}>Age of First use</th>
+                        <th style={{fontWeight:"bold"}}>Last Use</th>
+                        <th style={{fontWeight:"bold"}}>Frequency </th>
+                        <th style={{fontWeight:"bold"}}>Length of Sobriety</th>
+
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td>Alcohol</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Alcohol</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Benzodiazepines</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Cocaine</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Crack</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Hallucinogens
+                            (LSD,mescaline,etc.)
+</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Heroin</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Inhalants</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Marijuana </td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Methamphetamine </td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Methadone</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>MDMA (ecstasy)</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>PCP (angel dust)</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Prescription medicine</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>OTC medicine</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+                        
+                        {typeArray?.map((i) => (
+                          <tr>
+                            <td>other:</td>
+                            <td>{`${i.substanceAbuseHistoryDataAgeOfFirstUse}`} </td>
+                            <td>{i?.substanceAbuseHistoryDataLastUse?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                            <td>{i?.substanceAbuseHistoryDataFrequency?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                            <td>{i?.substanceAbuseHistoryDataLengthOfSobriety?.map((item) => (
+                              <p key={item?.value}>{item?.value}</p>
+                            ))}</td>
+                          </tr>
+                        ))}
+
+<tr>
+                          <td>Other</td>
+                          <td><input
+                          type="text"
+                          className="treatment_plan_table"
+                          placeholder="_________"
+                          /></td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  isMulti
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                />
+                          </td>
+                          <td>
+                          <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  isMulti
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                />
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                    </table>
+     
+                </div>
               </div>
 
+              <div className="form-actions  hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleTypeOfArray}
+                >
+                  Add
+                </button>
+              </div>
 
               <div class="checkbox-container">
                 <label style={{ fontWeight: "bold" }}>Active Withdrawal Symptoms:</label>
@@ -6205,7 +6863,10 @@ const InitialAssessment = () => {
               </div>
 
               <div className="yeschechbox">
+              
                 <label style={{ fontWeight: "bold" }}>Circumstances:</label>
+                
+                
                 <div className="yesNoAligment">
                   <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                     <input type="checkbox" id="circumstances" checked={circumstances === true} onChange={() => setCircumstances(true)} />
@@ -6576,7 +7237,7 @@ const InitialAssessment = () => {
                 <h6 style={{ fontWeight: "bold" }}>Current Independent Living Skills:</h6>
               </div>
 
-              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
+              {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
               <div className="form-field">
                 <label >Type of Activity</label>
                 <Select
@@ -6648,7 +7309,324 @@ const InitialAssessment = () => {
                 />
 
               </div>
+              </div> */}
+
+<div className="needs-interventions-container table-respnosive">
+                <div className="needs-interventions-column3">
+         
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Type of Activity</th>
+                          <th>Good</th>
+                          <th>Fair</th>
+                          <th>Not so good</th>
+                          <th>Need assist</th>
+                          <th>Comments</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Bathing/Showering</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Grooming/hygiene</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Mobility</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Housework</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Shopping</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Managing money/budget</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Preparing food</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Eating</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Toileting</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                        
+
+                        {handleRiskFactorActivityArray?.map((i, index) => (
+                          <tr key={index}>
+                            {/* <td>
+                              {i?.bathingShoweringGood?.map((item) => (
+                                <p key={item?.value}>{item?.value}</p>
+                              ))}
+
+                            </td> */}
+                             <td>
+                             Other (specify)
+
+                            </td>
+                            {/* <td>{`${i.bathingShoweringFair === true ? "Yes" : "No"}`} </td>
+                            <td>{`${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td>
+                            <td>{`${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td> */}
+                            <td><input type="checkbox" checked={i.bathingShoweringFair === true} onChange={()=>setBathingShoweringFair(!bathingShoweringFair)}/></td>
+                            <td><input type="checkbox" checked={i.bathingShoweringFair === false} onChange={()=>setBathingShoweringFair(!bathingShoweringFair)}/></td>
+                            <td><input type="checkbox" checked={i.bathingShoweringFair === true} onChange={()=>setBathingShoweringFair(!bathingShoweringFair)}/></td>
+                            <td>{` ${i.bathingShoweringNeedAssist === true ? "Yes" : "No"}`} </td>
+                            <td> {i.bathingShoweringComments} </td>
+                          </tr>
+                          
+                        ))}
+                        <tr>
+                          <td>Other (specify)</td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td><input type="checkbox"/></td>
+                          <td>
+                            <select>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </td>
+                          <td>
+                          <textarea
+                            className="treatment_plan_table"
+                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            // value={commentDiabety}
+                            placeholder="___________"
+                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                              }
+                            }}
+                          />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+         
+                </div>
               </div>
+
               <div className="form-actions  hidePrint">
                 <button
                   type="button"
@@ -6659,7 +7637,7 @@ const InitialAssessment = () => {
                 </button>
               </div>
 
-              <div className="needs-interventions-container">
+              {/* <div className="needs-interventions-container">
                 <div className="needs-interventions-column3">
                   {handleRiskFactorActivityArray.length > 0 && (
                     <table>
@@ -6692,7 +7670,9 @@ const InitialAssessment = () => {
                     </table>
                   )}
                 </div>
-              </div>
+              </div> */}
+
+
               {/* start working  */}
               <div className="box-image-container">
               <div className="form-field-single-update ">
@@ -7203,6 +8183,26 @@ const InitialAssessment = () => {
                           />
                         </td>
                       </tr>
+                      <tr>
+                        <td>Chronic pain</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            style={{ border: "none", outline: "none" }}
+                            type="text"
+                            placeholder="____________"
+                          />
+                        </td>
+                      </tr>
 
 
                     </tbody>
@@ -7293,7 +8293,7 @@ const InitialAssessment = () => {
               </div> */}
 
 
-              <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
+              {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
                 <div className="form-field-single-update-bold">
                 <label >
                   Protective factors that apply:
@@ -7329,9 +8329,120 @@ const InitialAssessment = () => {
                   />
 
                 </div>
+              </div> */}
+
+              
+<div className="formsheading">
+                <h6 style={{ fontWeight: "bold" }}>Protective factors:</h6>
               </div>
 
-              <div className="form-actions hidePrint">
+<div className="needs-interventions-container2">
+                <div className="needs-interventions-column2">
+              
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Protective factors that apply</th>
+                          <th>Yes</th>
+                          <th>No</th>
+                          <th>Comments</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Supports available (family friends)</td>
+                          <td>
+                            <input type="checkbox"/>
+                          </td>
+                          <td>
+                          <input type="checkbox"/>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Spiritual / religious support</td>
+                          <td>
+                            <input type="checkbox"/>
+                          </td>
+                          <td>
+                          <input type="checkbox"/>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Religious/cultural prohibitions</td>
+                          <td>
+                            <input type="checkbox"/>
+                          </td>
+                          <td>
+                          <input type="checkbox"/>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Fear of consequences</td>
+                          <td>
+                            <input type="checkbox"/>
+                          </td>
+                          <td>
+                          <input type="checkbox"/>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Able to be engaged in intervention</td>
+                          <td>
+                            <input type="checkbox"/>
+                          </td>
+                          <td>
+                          <input type="checkbox"/>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Willing to commit to keeping self safe</td>
+                          <td>
+                            <input type="checkbox"/>
+                          </td>
+                          <td>
+                          <input type="checkbox"/>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
+                          </td>
+                        </tr>
+                        {/* {protectiveFactorsArray?.map((i, index) => (
+                          <tr key={index}>
+                            <td>
+
+                              {i?.selectedValueProtectiveFactors?.map((item) => (
+                                <p key={item?.value}>{item?.value}</p>
+                              ))}
+
+                            </td>
+                            <td>{` ${i.protectiveYesNo === true ? "YES" : "NO"}`} </td>
+                            <td>{` ${i.protectiveYesNo === true ? "NO" : "YES"}`} </td>
+                            <td>{` ${i.protectiveComment}`} </td>
+                          </tr>
+                        ))} */}
+                      </tbody>
+                    </table>
+    
+                </div>
+              </div>
+
+
+              {/* <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -7339,9 +8450,9 @@ const InitialAssessment = () => {
                 >
                   Add
                 </button>
-              </div>
+              </div> */}
 
-              <div className="needs-interventions-container">
+              {/* <div className="needs-interventions-container">
                 <div className="needs-interventions-column3">
                   {protectiveFactorsArray.length > 0 && (
                     <table>
@@ -7372,7 +8483,7 @@ const InitialAssessment = () => {
                     </table>
                   )}
                 </div>
-              </div>
+              </div> */}
 
 
 
@@ -8261,7 +9372,7 @@ const InitialAssessment = () => {
                     </button>
                   </div>
                   <div>
-                    <button className="upload-button" type="button" onClick={handlePrint2}>
+                    <button className="upload-button signature_shift_margin" type="button" onClick={handlePrint2} >
                       PRINT THIS FORM
                     </button>
                   </div>

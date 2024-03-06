@@ -2941,7 +2941,7 @@ const NursingAssessment = () => {
                 </button>
                 </div>
                 <div>
-                  <button onClick={handlePrint2} className="upload-button" type="button" >
+                  <button onClick={handlePrint2} className="upload-button signature_shift_margin" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>

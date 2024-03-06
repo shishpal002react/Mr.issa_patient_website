@@ -681,7 +681,7 @@ const SafetyPlan = () => {
                 </button>
                 </div>
                 <div>
-                    <button className="upload-button" type="button" onClick={handlePrint2}>
+                    <button className="upload-button signature_shift_margin" type="button" onClick={handlePrint2} >
                   PRINT THIS FORM
                 </button>
                 </div>

@@ -1335,7 +1335,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                        <button onClick={handlePrintUpdate1} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate1} className="upload-button signature_shift_margin" type="button">
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -2024,7 +2024,7 @@ const ResidentIntakes = () => {
                    </button>
                    </div>
                    <div>
-                        <button onClick={handlePrintUpdate2} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate2} className="upload-button signature_shift_margin" type="button" >
                      PRINT THIS FORM
                    </button>
                    </div>
@@ -2308,7 +2308,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                        <button onClick={handlePrintUpdate3} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate3} className="upload-button signature_shift_margin"  type="button"  >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -2892,7 +2892,7 @@ const ResidentIntakes = () => {
                 </div>
              
                 <div>
-                        <button onClick={handlePrintUpdate4} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate4} className="upload-button signature_shift_margin" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -3078,7 +3078,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                        <button onClick={handlePrintUpdate5} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate5} className="upload-button signature_shift_margin" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -3289,7 +3289,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                        <button onClick={handlePrintUpdate6} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate6} className="upload-button signature_shift_margin" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -3587,7 +3587,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                          <button onClick={handlePrintUpdate7} className="upload-button" type="button" >
+                          <button onClick={handlePrintUpdate7} className="upload-button signature_shift_margin" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -4277,7 +4277,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                        <button onClick={handlePrintUpdate8} className="upload-button" type="button" >
+                        <button onClick={handlePrintUpdate8} className="upload-button signature_shift_margin" type="button" >
                   PRINT THIS FORM
                 </button>
                 </div>

@@ -5576,9 +5576,10 @@ const TreatmentPlan = () => {
                 </div>
                 <div>
                   <button
-                    className="upload-button"
+                    className="upload-button signature_shift_margin"
                     type="button"
                     onClick={handlePrint2}
+                   
                   >
                     PRINT THIS FORM
                   </button>

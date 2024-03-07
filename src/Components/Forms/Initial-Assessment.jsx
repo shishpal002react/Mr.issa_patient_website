@@ -13,10 +13,10 @@ import { user_detail, initialAssestment_form } from "../../Api_Collection/Api";
 import Select from "react-select";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
-import AutosizeInput from 'react-input-autosize';
-
+import AutosizeInput from "react-input-autosize";
 
 import { useReactToPrint } from "react-to-print";
+import { Form } from "react-bootstrap";
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ const InitialAssessment = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-
 
   const handlePrint2 = () => {
     var elements = document.getElementsByClassName("hidePrint");
@@ -36,7 +35,7 @@ const InitialAssessment = () => {
 
     // Trigger the print action
     handlePrint();
- 
+
     // Use setTimeout to show the elements after a delay (adjust the timeout as needed)
     setTimeout(() => {
       for (var i = 0; i < elements.length; i++) {
@@ -45,10 +44,8 @@ const InitialAssessment = () => {
     }, 1000);
   };
 
-
-
   //singin model
-  const [draftModel, setDraftModel] = useState(false)
+  const [draftModel, setDraftModel] = useState(false);
   //  all model
   const [signInModel1, setSigInModel1] = useState(false);
   const [signInModel2, setSigInModel2] = useState(false);
@@ -85,8 +82,9 @@ const InitialAssessment = () => {
     useState("");
   const [approvedBy, setApprovedBy] = useState("");
   const [reasonForAdmission, setReasonForAdmission] = useState([]);
-  const [reasonForAdmissionBoolean, setReasonForAdmissionBoolean] = useState(false)
-  const [reasonForAdmissionOther, setReasonForAdmissionOther] = useState("")
+  const [reasonForAdmissionBoolean, setReasonForAdmissionBoolean] =
+    useState(false);
+  const [reasonForAdmissionOther, setReasonForAdmissionOther] = useState("");
   const [residentGoals, setResidentGoals] = useState("");
 
   useEffect(() => {
@@ -97,15 +95,15 @@ const InitialAssessment = () => {
         break;
       } else {
         setReasonForAdmissionBoolean(false);
-
       }
     }
   }, [reasonForAdmission]);
 
   // Resident Strengths (Array)
   const [residentStrengths, setResidentStrengths] = useState([]);
-  const [residentStrengthsOther, setResidentStrengthsOther] = useState("")
-  const [residentStrengthsBoolean, setResidentStrengthsBoolean] = useState(false)
+  const [residentStrengthsOther, setResidentStrengthsOther] = useState("");
+  const [residentStrengthsBoolean, setResidentStrengthsBoolean] =
+    useState(false);
 
   useEffect(() => {
     // setTypeOfOtherBoolean()
@@ -177,83 +175,83 @@ const InitialAssessment = () => {
 
   // Medical Conditions (Array of Objects) array
   // diabetes
-  const [diabetes, setDiabetes] = useState("")
+  const [diabetes, setDiabetes] = useState("");
   const [yesDiabetes, setYesDiabetes] = useState();
   const [noDiabetes, setNoDiabetes] = useState(false);
-  const [commentDiabety, setCommentDeabetes] = useState("")
+  const [commentDiabety, setCommentDeabetes] = useState("");
 
   //Heart disease / heart attack
-  const [heart, setHeart] = useState("")
+  const [heart, setHeart] = useState("");
   const [yesHeart, setYesHeart] = useState();
   const [noHeart, setNoHeart] = useState(false);
-  const [commentHeart, setCommentHeart] = useState("")
+  const [commentHeart, setCommentHeart] = useState("");
 
-  //History 
-  const [history, setHistory] = useState("")
+  //History
+  const [history, setHistory] = useState("");
   const [yesHistory, setYesHistory] = useState();
   const [noHistory, setNoHistory] = useState(false);
-  const [commentHistory, setCommentHistory] = useState("")
+  const [commentHistory, setCommentHistory] = useState("");
 
   //High Blood Pressure
-  const [High, setHigh] = useState("")
+  const [High, setHigh] = useState("");
   const [yesHigh, setYesHigh] = useState();
   const [noHigh, setNoHigh] = useState(false);
-  const [commentHigh, setCommentHigh] = useState("")
+  const [commentHigh, setCommentHigh] = useState("");
 
   //Lung disease (ie asthma, COPD, emphysema)
-  const [Lung, setLung] = useState("")
+  const [Lung, setLung] = useState("");
   const [yesLung, setYesLung] = useState();
   const [noLung, setNoLung] = useState(false);
-  const [commentLung, setCommentLung] = useState("")
+  const [commentLung, setCommentLung] = useState("");
 
   //Seizures
-  const [SeizuresMental, setSeizuresMental] = useState("")
+  const [SeizuresMental, setSeizuresMental] = useState("");
   const [yesSeizures, setYesSeizures] = useState();
   const [noSeizures, setNoSeizures] = useState(false);
-  const [commentSeizures, setCommentSeizures] = useState("")
+  const [commentSeizures, setCommentSeizures] = useState("");
 
   //Cancer
-  const [Cancer, setCancer] = useState("")
+  const [Cancer, setCancer] = useState("");
   const [yesCancer, setYesCancer] = useState();
   const [noCancer, setNoCancer] = useState(false);
-  const [commentCancer, setCommentCancer] = useState("")
+  const [commentCancer, setCommentCancer] = useState("");
 
   // Liver/kidney disease
-  const [Liver, setLiver] = useState("")
+  const [Liver, setLiver] = useState("");
   const [yesLiver, setYesLiver] = useState();
   const [noLiver, setNoLiver] = useState(false);
-  const [commentLiver, setCommentLiver] = useState("")
+  const [commentLiver, setCommentLiver] = useState("");
 
   //Thyroid disorder
-  const [Thyroid, setThyroid] = useState("")
+  const [Thyroid, setThyroid] = useState("");
   const [yesThyroid, setYesThyroid] = useState();
   const [noThyroid, setNoThyroid] = useState(false);
   //dropdown
 
   // History of head trauma/traumatic brain injury
-  const [brain, setBrain] = useState("")
+  const [brain, setBrain] = useState("");
   const [yesbrain, setYesBrain] = useState();
   const [nobrain, setNoBrain] = useState(false);
-  const [commentbrain, setbrain] = useState("")
+  const [commentbrain, setbrain] = useState("");
 
   // injury
   // const [injury,setInjury] =useState("")
   const [yesInjury, setYesInjury] = useState();
   const [noInjury, setNoInjury] = useState(false);
-  const [commentInjury, setCommentInjury] = useState("")
+  const [commentInjury, setCommentInjury] = useState("");
 
   //Chronic painChronic pain
-  const [Chronic, setChronic] = useState("")
+  const [Chronic, setChronic] = useState("");
   const [yesChronic, setYesChronic] = useState();
   const [chronicCommit, setChronicCommit] = useState("");
 
   // Allergies (food, environment, medications)
   const [AllergiesYes, setAllergiesYes] = useState();
-  const [AllergiesComment, setAllergiesComment] = useState("")
+  const [AllergiesComment, setAllergiesComment] = useState("");
 
   // Surgeries
   const [SurgeriesYes, setSurgeriessYes] = useState();
-  const [SurgeriesComment, setSurgeriesComment] = useState("")
+  const [SurgeriesComment, setSurgeriesComment] = useState("");
 
   //Number of pregnancies / births
   const [pregnanciesYes, setPregnanciesYes] = useState();
@@ -261,50 +259,52 @@ const InitialAssessment = () => {
 
   // Substance use disorder (please specify)
   const [SubstanceYes, setSubstanceYes] = useState();
-  const [SubstanceComment, setSubstanceComment] = useState("")
+  const [SubstanceComment, setSubstanceComment] = useState("");
 
-  // Depression 
+  // Depression
   const [DepressionYes, setDepressionYes] = useState();
-  const [DepressionComment, setDepressionComment] = useState("")
+  const [DepressionComment, setDepressionComment] = useState("");
 
   // Anxiety/panic attacks
-  const [AnxietyYes, setAnxietyYes] = useState()
+  const [AnxietyYes, setAnxietyYes] = useState();
   const [AnxietyComment, setAnxietyComment] = useState("");
 
-  // Insomnia 
-  const [InsomniaYes, setInsomniaYes] = useState()
-  const [InsomniaComment, setInsomniaComment] = useState("")
+  // Insomnia
+  const [InsomniaYes, setInsomniaYes] = useState();
+  const [InsomniaComment, setInsomniaComment] = useState("");
 
   // Bipolar disorder
   const [BipolarYes, setBipolarYes] = useState();
   const [BipolarComment, setBipolarComment] = useState("");
 
-  // Schizophrenia 
-  const [SchizophreniaYes, setSchizophreniaYes] = useState()
-  const [SchizophreniaComment, setSchizophreniaComment] = useState("")
+  // Schizophrenia
+  const [SchizophreniaYes, setSchizophreniaYes] = useState();
+  const [SchizophreniaComment, setSchizophreniaComment] = useState("");
 
   // Obsessive compulsive disorder
-  const [ObsessiveYes, setObsessiveYes] = useState()
+  const [ObsessiveYes, setObsessiveYes] = useState();
   const [ObsessiveComment, setObsessiveComment] = useState("");
 
   // Personality disorder (please specify
   const [PersonalityYes, setPersonalityYes] = useState();
-  const [PersonalityComment, setPersonalityComment] = useState("")
+  const [PersonalityComment, setPersonalityComment] = useState("");
 
-  // Phobias 
-  const [PhobiasYes, setPhobiasYes] = useState()
-  const [PhobiasComment, setPhobiasComment] = useState("")
+  // Phobias
+  const [PhobiasYes, setPhobiasYes] = useState();
+  const [PhobiasComment, setPhobiasComment] = useState("");
 
   // Any other health conditions
-  const [healthConditionsYes, setHealthConditionsYes] = useState()
-  const [healthConditionsYesComment, sethealthConditionsYesComment] = useState("")
+  const [healthConditionsYes, setHealthConditionsYes] = useState();
+  const [healthConditionsYesComment, sethealthConditionsYesComment] =
+    useState("");
 
   // Infection or Diseases
   const [InfectionYes, setInfectionYes] = useState();
   // drop down c
   const [infectionDiseases, setInfectionDiseases] = useState([]);
-  const [infectionDiseasesBoolean, setInfectionDiseasesBoolean] = useState(false)
-  const [infectionDiseasesOther, setInfectionDiseasesOther] = useState("")
+  const [infectionDiseasesBoolean, setInfectionDiseasesBoolean] =
+    useState(false);
+  const [infectionDiseasesOther, setInfectionDiseasesOther] = useState("");
 
   useEffect(() => {
     // setTypeOfOtherBoolean()
@@ -319,7 +319,6 @@ const InitialAssessment = () => {
     }
   }, [infectionDiseases]);
 
-
   const [medicalConditions, setMedicalConditions] = useState([]);
 
   // miss the value between the 79 to 99
@@ -327,12 +326,21 @@ const InitialAssessment = () => {
     SignificantFamilyMedicalPsychiatricHistory,
     setSignificantFamilyMedicalPsychiatricHistory,
   ] = useState([]);
-  const [significantFamilyMedicalPsychiatricHistoryBoolean, setSignificantFamilyMedicalPsychiatricHistoryBoolean] = useState(false);
-  const [SignificantFamilyMedicalPsychiatricHistoryType, setSignificantFamilyMedicalPsychiatricHistoryType] = useState("")
+  const [
+    significantFamilyMedicalPsychiatricHistoryBoolean,
+    setSignificantFamilyMedicalPsychiatricHistoryBoolean,
+  ] = useState(false);
+  const [
+    SignificantFamilyMedicalPsychiatricHistoryType,
+    setSignificantFamilyMedicalPsychiatricHistoryType,
+  ] = useState("");
 
   useEffect(() => {
-
-    for (let i = 0; i < SignificantFamilyMedicalPsychiatricHistory.length; i++) {
+    for (
+      let i = 0;
+      i < SignificantFamilyMedicalPsychiatricHistory.length;
+      i++
+    ) {
       if (SignificantFamilyMedicalPsychiatricHistory[i].value === "Other") {
         setSignificantFamilyMedicalPsychiatricHistoryBoolean(true);
         break;
@@ -343,16 +351,20 @@ const InitialAssessment = () => {
     }
   }, [SignificantFamilyMedicalPsychiatricHistory]);
 
-
   const [
     mentalHealthTreatmentHistoryTypeOfService,
     setMentalHealthTreatmentHistoryTypeOfService,
   ] = useState([]);
-  const [mentalHealthTreatmentHistoryTypeOfServiceType, setMentalHealthTreatmentHistoryTypeOfServiceType] = useState("")
-  const [mentalHealthTreatmentHistoryTypeOfServiceBoolean, setMentalHealthTreatmentHistoryTypeOfServiceBoolean] = useState(false)
+  const [
+    mentalHealthTreatmentHistoryTypeOfServiceType,
+    setMentalHealthTreatmentHistoryTypeOfServiceType,
+  ] = useState("");
+  const [
+    mentalHealthTreatmentHistoryTypeOfServiceBoolean,
+    setMentalHealthTreatmentHistoryTypeOfServiceBoolean,
+  ] = useState(false);
 
   useEffect(() => {
-
     for (let i = 0; i < mentalHealthTreatmentHistoryTypeOfService.length; i++) {
       if (mentalHealthTreatmentHistoryTypeOfService[i].value === "Other") {
         setMentalHealthTreatmentHistoryTypeOfServiceBoolean(true);
@@ -363,7 +375,6 @@ const InitialAssessment = () => {
       }
     }
   }, [mentalHealthTreatmentHistoryTypeOfService]);
-
 
   const [
     mentalHealthTreatmentHistoryWhere,
@@ -377,13 +388,25 @@ const InitialAssessment = () => {
     mentalHealthTreatmentHistoryDiagnosisReason,
     setMentalHealthTreatmentHistoryDiagnosisReason,
   ] = useState([]);
-  const [mentalHealthTreatmentHistoryDiagnosisReasonBoolean, setMentalHealthTreatmentHistoryDiagnosisReasonBoolean] = useState(false)
-  const [mentalHealthTreatmentHistoryDiagnosisReasonType, setMentalHealthTreatmentHistoryDiagnosisReasonType] = useState("")
+  const [
+    mentalHealthTreatmentHistoryDiagnosisReasonBoolean,
+    setMentalHealthTreatmentHistoryDiagnosisReasonBoolean,
+  ] = useState(false);
+  const [
+    mentalHealthTreatmentHistoryDiagnosisReasonType,
+    setMentalHealthTreatmentHistoryDiagnosisReasonType,
+  ] = useState("");
 
   useEffect(() => {
-
-    for (let i = 0; i < mentalHealthTreatmentHistoryDiagnosisReason.length; i++) {
-      if (mentalHealthTreatmentHistoryDiagnosisReason[i].value === "DTS/DTO Other (Please specify)") {
+    for (
+      let i = 0;
+      i < mentalHealthTreatmentHistoryDiagnosisReason.length;
+      i++
+    ) {
+      if (
+        mentalHealthTreatmentHistoryDiagnosisReason[i].value ===
+        "DTS/DTO Other (Please specify)"
+      ) {
         setMentalHealthTreatmentHistoryDiagnosisReasonBoolean(true);
         break;
       } else {
@@ -393,7 +416,6 @@ const InitialAssessment = () => {
     }
   }, [mentalHealthTreatmentHistoryDiagnosisReason]);
 
-
   // const [mentalHealthTreatmentHistory, setMentalHealthTreatmentHistory] =
   //   useState([]);
 
@@ -402,91 +424,283 @@ const InitialAssessment = () => {
   // substanceAbuseHistoryData array
   const [substanceAbuseHistoryDataTypes, setSubstanceAbuseHistoryDataTypes] =
     useState([]);
-  const [substanceAbuseHistoryDataTypesBoolean, setSubstanceAbuseHistoryDataTypesBoolean] = useState(false);
-  const [substanceAbuseHistoryDataTypesType, setSubstanceAbuseHistoryDataTypesType] = useState("");
+  const [
+    substanceAbuseHistoryDataTypesBoolean,
+    setSubstanceAbuseHistoryDataTypesBoolean,
+  ] = useState(false);
+  const [
+    substanceAbuseHistoryDataTypesType,
+    setSubstanceAbuseHistoryDataTypesType,
+  ] = useState("");
 
   //type of service
-  const [typeOfServiceArray, setTypeOfServicesArray] = useState([])
+  const [typeOfServiceArray, setTypeOfServicesArray] = useState([]);
   const handleTypeOfService = () => {
-    if (mentalHealthTreatmentHistoryDiagnosisReason && mentalHealthTreatmentHistoryDates && mentalHealthTreatmentHistoryWhere && mentalHealthTreatmentHistoryTypeOfService) {
+    if (
+      mentalHealthTreatmentHistoryDiagnosisReason &&
+      mentalHealthTreatmentHistoryDates &&
+      mentalHealthTreatmentHistoryWhere &&
+      mentalHealthTreatmentHistoryTypeOfService
+    ) {
       const data = {
         mentalHealthTreatmentHistoryDiagnosisReason,
         mentalHealthTreatmentHistoryDates,
         mentalHealthTreatmentHistoryWhere,
-        mentalHealthTreatmentHistoryTypeOfService
-      }
+        mentalHealthTreatmentHistoryTypeOfService,
+      };
       setTypeOfServicesArray((prev) => [...prev, data]);
       setMentalHealthTreatmentHistoryTypeOfService([]);
       setMentalHealthTreatmentHistoryWhere("");
       setMentalHealthTreatmentHistoryDates("");
       setMentalHealthTreatmentHistoryDiagnosisReason([]);
     }
-  }
+  };
 
-    // Event handler for removing an item from the array
-    const handleRemoveItem = (index) => {
-      const updatedArray = [...typeOfServiceArray];
-      updatedArray.splice(index, 1);
-      setTypeOfServicesArray(updatedArray);
-    };
+  // Event handler for removing an item from the array
+  const handleRemoveItem = (index) => {
+    const updatedArray = [...typeOfServiceArray];
+    updatedArray.splice(index, 1);
+    setTypeOfServicesArray(updatedArray);
+  };
 
-
-  useEffect(() => {
-
-    for (let i = 0; i < substanceAbuseHistoryDataTypes.length; i++) {
-      if (substanceAbuseHistoryDataTypes[i].value === "Other") {
-        setSubstanceAbuseHistoryDataTypesBoolean(true);
-        break;
-      } else {
-        setSubstanceAbuseHistoryDataTypesBoolean(false);
-
-      }
-    }
-  }, [substanceAbuseHistoryDataTypes]);
-
+  // type of age, frequancy,last use, length of soberty
+  //Alcohol
   const [
-    substanceAbuseHistoryDataAgeOfFirstUse,
-    setSubstanceAbuseHistoryDataAgeOfFirstUse,
+    substanceAbuseHistoryDataAgeOfFirstUseAlcohol,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseAlcohol,
   ] = useState("");
   const [
-    substanceAbuseHistoryDataLastUse,
-    setSubstanceAbuseHistoryDataLastUse,
-  ] = useState([]);
-  const [
-    substanceAbuseHistoryDataFrequency,
-    setSubstanceAbuseHistoryDataFrequency,
+    substanceAbuseHistoryDataLastUseAlcohol,
+    setSubstanceAbuseHistoryDataLastUseAlcohol,
   ] = useState("");
   const [
-    substanceAbuseHistoryDataLengthOfSobriety,
-    setSubstanceAbuseHistoryDataLengthOfSobriety,
+    substanceAbuseHistoryDataFrequencyAlcohol,
+    setSubstanceAbuseHistoryDataFrequencyAlcohol,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyAlcohol,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyAlcohol,
+  ] = useState("");
+  //Benzodiazepines
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseBenzodiazepines,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseBenzodiazepines,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseBenzodiazepines,
+    setSubstanceAbuseHistoryDataLastUseBenzodiazepines,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyBenzodiazepines,
+    setSubstanceAbuseHistoryDataFrequencyBenzodiazepines,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyBenzodiazepines,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyBenzodiazepines,
+  ] = useState("");
+  //Crack
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseCrack,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseCrack,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseCrack,
+    setSubstanceAbuseHistoryDataLastUseCrack,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyCrack,
+    setSubstanceAbuseHistoryDataFrequencyCrack,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyCrack,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyCrack,
+  ] = useState("");
+  //Heroin
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseHeroin,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseHeroin,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseHeroin,
+    setSubstanceAbuseHistoryDataLastUseHeroin,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyHeroin,
+    setSubstanceAbuseHistoryDataFrequencyHeroin,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyHeroin,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyHeroin,
+  ] = useState("");
+  //Inhalants
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseInhalants,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseInhalants,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseInhalants,
+    setSubstanceAbuseHistoryDataLastUseInhalants,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyInhalants,
+    setSubstanceAbuseHistoryDataFrequencyInhalants,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyInhalants,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyInhalants,
+  ] = useState("");
+  //Marijuana
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseMarijuana,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseMarijuana,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseMarijuana,
+    setSubstanceAbuseHistoryDataLastUseMarijuana,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyMarijuana,
+    setSubstanceAbuseHistoryDataFrequencyMarijuana,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyMarijuana,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyMarijuana,
+  ] = useState("");
+  //Methamphetamine
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseMethamphetamine,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseMethamphetamine,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseMethamphetamine,
+    setSubstanceAbuseHistoryDataLastUseMethamphetamine,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyMethamphetamine,
+    setSubstanceAbuseHistoryDataFrequencyMethamphetamine,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyMethamphetamine,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyMethamphetamine,
+  ] = useState("");
+  //Methadone
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseMethadone,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseMethadone,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseMethadone,
+    setSubstanceAbuseHistoryDataLastUseMethadone,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyMethadone,
+    setSubstanceAbuseHistoryDataFrequencyMethadone,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyMethadone,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyMethadone,
+  ] = useState("");
+  //MDMA
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseMDMA,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseMDMA,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseMDMA,
+    setSubstanceAbuseHistoryDataLastUseMDMA,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyMDMA,
+    setSubstanceAbuseHistoryDataFrequencyMDMA,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyMDMA,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyMDMA,
+  ] = useState("");
+  //PCP
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUsePCP,
+    setSubstanceAbuseHistoryDataAgeOfFirstUsePCP,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUsePCP,
+    setSubstanceAbuseHistoryDataLastUsePCP,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyPCP,
+    setSubstanceAbuseHistoryDataFrequencyPCP,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyPCP,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyPCP,
+  ] = useState("");
+  //Prescription
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUsePrescription,
+    setSubstanceAbuseHistoryDataAgeOfFirstUsePrescription,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUsePrescription,
+    setSubstanceAbuseHistoryDataLastUsePrescription,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyPrescription,
+    setSubstanceAbuseHistoryDataFrequencyPrescription,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyPrescription,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyPrescription,
+  ] = useState("");
+  //OTC
+  const [
+    substanceAbuseHistoryDataAgeOfFirstUseOTC,
+    setSubstanceAbuseHistoryDataAgeOfFirstUseOTC,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLastUseOTC,
+    setSubstanceAbuseHistoryDataLastUseOTC,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataFrequencyOTC,
+    setSubstanceAbuseHistoryDataFrequencyOTC,
+  ] = useState("");
+  const [
+    substanceAbuseHistoryDataLengthOfSobrietyOTC,
+    setSubstanceAbuseHistoryDataLengthOfSobrietyOTC,
   ] = useState("");
 
   // arrthe value in array
-  const [typeArray, setTypeArray] = useState([])
+  const [typeArray, setTypeArray] = useState([]);
+  // other array
+  const [otherTypeOther, setOtherTypeOther] = useState("");
+  const [otherAgeOfFirstUse, setOtherAgeOfFirstUse] = useState("");
+  const [otherLastUse, setOtherLastUse] = useState("");
+  const [otherFrequancy, setOtherFrequancy] = useState("");
+  const [OtherlengthOfSobrifty, setOtherLengthOfSobirty] = useState("");
 
   const handleTypeOfArray = () => {
-    if (substanceAbuseHistoryDataTypes || substanceAbuseHistoryDataAgeOfFirstUse || substanceAbuseHistoryDataLastUse || substanceAbuseHistoryDataFrequency || substanceAbuseHistoryDataLengthOfSobriety) {
+    if (
+      otherTypeOther ||
+      otherAgeOfFirstUse ||
+      otherLastUse ||
+      otherFrequancy ||
+      OtherlengthOfSobrifty
+    ) {
       const data = {
-        substanceAbuseHistoryDataTypes,
-        substanceAbuseHistoryDataAgeOfFirstUse,
-        substanceAbuseHistoryDataLastUse,
-        substanceAbuseHistoryDataFrequency,
-        substanceAbuseHistoryDataLengthOfSobriety,
-      }
+        otherTypeOther,
+        otherAgeOfFirstUse,
+        otherLastUse,
+        otherFrequancy,
+        OtherlengthOfSobrifty,
+      };
       setTypeArray((prev) => [...prev, data]);
-      setSubstanceAbuseHistoryDataTypes([]);
-      setSubstanceAbuseHistoryDataAgeOfFirstUse("");
-      setSubstanceAbuseHistoryDataLastUse([]);
-      setSubstanceAbuseHistoryDataFrequency([]);
-      setSubstanceAbuseHistoryDataLengthOfSobriety([]);
-
+      setOtherAgeOfFirstUse("");
+      setOtherLastUse("");
+      setOtherFrequancy("");
+      setOtherLengthOfSobirty("");
+      setOtherTypeOther("");
     }
-
-  }
-
-  const [substanceAbuseHistoryData, setSubstanceAbuseHistoryData] = useState(
-    []
-  );
+  };
 
   // Active Withdrawal Symptoms
   const [noneReportedOrObserved, setNoneReportedOrObserved] = useState(false);
@@ -498,8 +712,10 @@ const InitialAssessment = () => {
   const [Anxiety, setAnxiety] = useState(false);
   const [Tremors, setTremors] = useState(false);
   const [VisualDisturbances, setVisualDisturbances] = useState(false);
-  const [VisualDisturbancesOtherBoolean, setVisualDisturbancesOtherBoolean] = useState(false)
-  const [VisualDisturbancesOtherType, setVisualDisturbancesOtherType] = useState()
+  const [VisualDisturbancesOtherBoolean, setVisualDisturbancesOtherBoolean] =
+    useState(false);
+  const [VisualDisturbancesOtherType, setVisualDisturbancesOtherType] =
+    useState();
   // const [AuditoryDisturbances, setAuditoryDisturbances] = useState(false);
   const [Sweats, setSweats] = useState(false);
   const [Paranoia, setParanoia] = useState(false);
@@ -510,8 +726,12 @@ const InitialAssessment = () => {
   const [Seizures, setSeizures] = useState(false);
   const [LossofMuscleCoordination, setLossofMuscleCoordination] =
     useState(false);
-  const [LossofMuscleCoordinationOtherBoolean, setLossofMuscleCoordinationBoolean] = useState(false)
-  const [LossofMuscleCoordinationOtherType, setLossofMuscleCoordinationType] = useState("")
+  const [
+    LossofMuscleCoordinationOtherBoolean,
+    setLossofMuscleCoordinationBoolean,
+  ] = useState(false);
+  const [LossofMuscleCoordinationOtherType, setLossofMuscleCoordinationType] =
+    useState("");
 
   const [activeWithdrawalSymptoms, setActiveWithdrawalSymptoms] = useState({});
 
@@ -564,7 +784,7 @@ const InitialAssessment = () => {
   const [labile, setLabile] = useState(false);
   const [constricted, setConstricted] = useState(false);
   const [other, setOther] = useState(false);
-  const [otherText, setOtherText] = useState("")
+  const [otherText, setOtherText] = useState("");
 
   //EyeContact
   const [appropriate, setAppropriate] = useState(false);
@@ -573,7 +793,8 @@ const InitialAssessment = () => {
   const [adequateEyeContact, setAdequateEyeContact] = useState(false);
 
   const [EyeContactOtherBoolean, setEyeContactOtherBoolean] = useState(false);
-  const [EyeContactOtherBooleanType, setEyeContactOtherBooleanType] = useState("");
+  const [EyeContactOtherBooleanType, setEyeContactOtherBooleanType] =
+    useState("");
 
   //Cooperation
   const [appropriateCooperation, setAppropriateCooperation] = useState(false);
@@ -583,9 +804,10 @@ const InitialAssessment = () => {
   const [indifferent, setIndifferent] = useState(false);
 
   const [CooperationOtherBoolean, setCooperationOtherBoolean] = useState(false);
-  const [CooperationOtherBooleanType, setCooperationOtherBooleanType] = useState("");
+  const [CooperationOtherBooleanType, setCooperationOtherBooleanType] =
+    useState("");
 
-  //Speech section 3 
+  //Speech section 3
 
   //Articulation
   const [normalArticulation, setNormalArticulation] = useState(false);
@@ -594,41 +816,49 @@ const InitialAssessment = () => {
   const [slurred, setSlurred] = useState(false);
   const [stuttered, setStuttered] = useState(false);
 
-  const [ArticulationOtherBoolean, setArticulationOtherBoolean] = useState(false)
-  const [ArticulationOtherBooleanOther, setArticulationOtherBooleanOther] = useState("")
-  //Tone 
+  const [ArticulationOtherBoolean, setArticulationOtherBoolean] =
+    useState(false);
+  const [ArticulationOtherBooleanOther, setArticulationOtherBooleanOther] =
+    useState("");
+  //Tone
   const [normalTone, setNormalTone] = useState(false);
   const [soft, setSoft] = useState(false);
   const [loud, setLoud] = useState(false);
   const [pressured, setPressured] = useState(false);
 
-  const [ToneOtherBoolean, setToneOtherBoolean] = useState(false)
-  const [ToneOtherBooleanOther, setToneOtherBooleanOther] = useState("")
+  const [ToneOtherBoolean, setToneOtherBoolean] = useState(false);
+  const [ToneOtherBooleanOther, setToneOtherBooleanOther] = useState("");
   //Rate
   const [normalRate, setNormalRate] = useState(false);
   const [slow, setSlow] = useState(false);
   const [fast, setFast] = useState(false);
 
-  const [RateOtherBoolean, setRateOtherBoolean] = useState(false)
-  const [RateOtherBooleanOther, setRateOtherBooleanOther] = useState("")
+  const [RateOtherBoolean, setRateOtherBoolean] = useState(false);
+  const [RateOtherBooleanOther, setRateOtherBooleanOther] = useState("");
 
   //Quantity
   const [normalQuantity, setNormalQuantity] = useState(false);
   const [verbose, setVerbose] = useState(false);
   const [mutism, setMutism] = useState(false);
-  const [QuantityOtherBoolean, setQuantityOtherBoolean] = useState(false)
-  const [QuantityOtherBooleanOther, setQuantityOtherBooleanOther] = useState("")
+  const [QuantityOtherBoolean, setQuantityOtherBoolean] = useState(false);
+  const [QuantityOtherBooleanOther, setQuantityOtherBooleanOther] =
+    useState("");
 
   //responseLatency
   const [normalresponseLatency, setNormalresponseLatency] = useState(false);
   const [delayed, setDelayed] = useState(false);
   const [shortened, setShortened] = useState(false);
-  const [responseLatencyOtherBoolean, setresponseLatencyOtherBoolean] = useState(false)
-  const [responseLatencyOtherBooleanOther, setresponseLatencyOtherBooleanOther] = useState("")
+  const [responseLatencyOtherBoolean, setresponseLatencyOtherBoolean] =
+    useState(false);
+  const [
+    responseLatencyOtherBooleanOther,
+    setresponseLatencyOtherBooleanOther,
+  ] = useState("");
 
   // sesion 3 Cognition
   // thoughtContent
-  const [unremarkablethoughtContent, setUnremarkablethoughtContent] = useState(false);
+  const [unremarkablethoughtContent, setUnremarkablethoughtContent] =
+    useState(false);
   const [suspicious, setSuspicious] = useState(false);
   const [negative, setNegative] = useState(false);
   const [concrete, setConcrete] = useState(false);
@@ -644,15 +874,19 @@ const InitialAssessment = () => {
   const [yesPersecutory, setYesPersecutory] = useState(false);
   const [yesSomatic, setYesSomatic] = useState(false);
   const [yesGrandiose, setYesGrandiose] = useState(false);
-  const [yesOtherDelusionsBoolean, setYesOtherDelusionsBoolean] = useState(false);
-  const [yesOtherDelusionsText, setYesOtherDelusionsText] = useState("")
+  const [yesOtherDelusionsBoolean, setYesOtherDelusionsBoolean] =
+    useState(false);
+  const [yesOtherDelusionsText, setYesOtherDelusionsText] = useState("");
   //Hallucinations
-  const [unremarkableHallucinations, setUnremarkableHallucinations] = useState(false);
+  const [unremarkableHallucinations, setUnremarkableHallucinations] =
+    useState(false);
   const [visualHallucinations, setVisualHallucinations] = useState(false);
   const [auditoryHallucinations, setAuditoryHallucinations] = useState(false);
   const [tactileHallucinations, setTactileHallucinations] = useState(false);
-  const [yesOtherHallucinationsBoolean, setYesOtherHallucinationsBoolean] = useState(false);
-  const [yesOtherHallucinationsText, setYesOtherHallucinationsText] = useState("")
+  const [yesOtherHallucinationsBoolean, setYesOtherHallucinationsBoolean] =
+    useState(false);
+  const [yesOtherHallucinationsText, setYesOtherHallucinationsText] =
+    useState("");
   // Motor activity
   //Gait
   const [normalGait, setNormalGait] = useState(false);
@@ -704,14 +938,17 @@ const InitialAssessment = () => {
   const [poorMemory, setPoorMemory] = useState(false);
 
   //AbilityToConcentration
-  const [intactAbilityToConcentration, setIntactAbilityToConcentration] = useState(false);
-  const [intactAbilityToConcentrationOtherBoolean, setIntactAbilityToConcentrationOtherBoolean] = useState(false)
+  const [intactAbilityToConcentration, setIntactAbilityToConcentration] =
+    useState(false);
+  const [
+    intactAbilityToConcentrationOtherBoolean,
+    setIntactAbilityToConcentrationOtherBoolean,
+  ] = useState(false);
 
-
-  const [otherAbilityToConcentration, setOtherAbilityToConcentration] = useState('');
+  const [otherAbilityToConcentration, setOtherAbilityToConcentration] =
+    useState("");
 
   const [mentalStatusExam, setMentalStatusExam] = useState();
-
 
   // Significant Social Developmental History
   const [
@@ -726,7 +963,7 @@ const InitialAssessment = () => {
   const [currentStudentLocation, setCurrentStudentLocation] = useState("");
   const [personalInformation, setPersonalInformation] = useState({});
 
-  const [ifYesWhere, setIfYesWhere] = useState("")
+  const [ifYesWhere, setIfYesWhere] = useState("");
   // Employment History (Nested Object)
   const [currentlyEmployed, setCurrentlyEmployed] = useState();
   const [employmentLocation, setEmploymentLocation] = useState("");
@@ -737,17 +974,15 @@ const InitialAssessment = () => {
 
   // Military History (Nested Object)
   const [militaryService, setMilitaryService] = useState();
-  const [activeDuty, setActiveDuty] = useState("")
+  const [activeDuty, setActiveDuty] = useState("");
   const [militaryHistory, setMilitaryHistory] = useState({});
 
   // Arrested History (Multiple Fields)
   const [selectedValue, setSelectedValue] = useState([]);
 
-
-
   // Activities of Daily Living (ADLs)
   const [bathingShoweringGood, setBathingShoweringGood] = useState([]);
-  const [typesOfActivityOther, setTypesOfActivityOther] = useState("")
+  const [typesOfActivityOther, setTypesOfActivityOther] = useState("");
   //implment type of other activity
   const [typeOfOtherBoolean, setTypeOfOtherBoolean] = useState(false);
   useEffect(() => {
@@ -762,28 +997,40 @@ const InitialAssessment = () => {
     }
   }, [bathingShoweringGood]);
 
+  // const [bathingShoweringFair, setBathingShoweringFair] = useState();
+  // const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
+    // useState();
 
-  const [bathingShoweringFair, setBathingShoweringFair] = useState();
-  const [bathingShoweringNeedAssist, setBathingShoweringNeedAssist] =
-    useState();
-  const [bathingShoweringComments, setBathingShoweringComments] = useState("");
+    // Current Independent Living Skills:
+    const [otherCurrentOther,setOtherCurrentOther]=useState("");
+    const [otherCurrentGood,setOtherCurrentGood]=useState(false);
+    const [otherCurrentFair,setOtherCurrentFair]=useState(false);
+    const [otherCurrentNotSoGood,setOtherCurrentNotSoGood]=useState(false);
+    const [otherCurrentNeed,setOtherCurrentNeed]=useState("");
+    const [otherCurrentComment,setOtherCurrentComment]=useState("");
 
-  const [handleRiskFactorActivityArray, setHandleRiskFactorActivityArray] = useState([]);
+
+
+  const [handleRiskFactorActivityArray, setHandleRiskFactorActivityArray] =
+    useState([]);
 
   const handleRiskFactorActivity = () => {
     const newData = {
-      bathingShoweringGood,
-      bathingShoweringFair,
-      bathingShoweringNeedAssist,
-      bathingShoweringComments
-    }
+      otherCurrentOther,
+      otherCurrentGood,
+      otherCurrentFair,
+      otherCurrentNotSoGood,
+      otherCurrentNeed,
+      otherCurrentComment
+    };
     setHandleRiskFactorActivityArray((prev) => [...prev, newData]);
-    setBathingShoweringGood([]);
-    setBathingShoweringFair();
-    setBathingShoweringNeedAssist();
-    setBathingShoweringComments("");
-  }
-
+    setOtherCurrentOther("");
+    setOtherCurrentGood("");
+    setOtherCurrentFair("");
+    setOtherCurrentNotSoGood("");
+    setOtherCurrentNeed("");
+    setOtherCurrentComment("");
+  };
 
   const [triggers, setTriggers] = useState("");
   const [fallRisk, setFallRisk] = useState("");
@@ -793,8 +1040,9 @@ const InitialAssessment = () => {
 
   // Medical Equipment
   const [selectedValueMedical, setSelectedValueMedical] = useState([]);
-  const [selectedValueMedicalBoolean, setselectedValueMedicalBoolean] = useState(false)
-  const [selectedValueMedicalType, setselectedValueMedicalType] = useState("")
+  const [selectedValueMedicalBoolean, setselectedValueMedicalBoolean] =
+    useState(false);
+  const [selectedValueMedicalType, setselectedValueMedicalType] = useState("");
 
   useEffect(() => {
     // setTypeOfOtherBoolean()
@@ -820,28 +1068,33 @@ const InitialAssessment = () => {
   const [currentThoughtsOfHarmingOthers, setCurrentThoughtsOfHarmingOthers] =
     useState();
 
-
   // Risk Factors (Nested Object)
   const [selectedValueRiskFactors, setSelectedValueRiskFactors] = useState([]);
   const [riskYesNo, setRiskYesNo] = useState();
   const [riskComment, setRiskComment] = useState("");
-  const [riskFactorArray, setRiskFactoeArray] = useState([])
+  const [riskFactorArray, setRiskFactoeArray] = useState([]);
 
   // drop down
-  const [behaviorcuesDropDown, setBehaviorcuesDropDown] = useState([])
-  const [symptomsOfPsychosisDropDown, setSymptomsOfPsychosisDropDown] = useState([])
+  const [behaviorcuesDropDown, setBehaviorcuesDropDown] = useState([]);
+  const [symptomsOfPsychosisDropDown, setSymptomsOfPsychosisDropDown] =
+    useState([]);
+
+    //risk factor other
+    const [otherRiskOther,setOtherRiskOther ]=useState("")
+    const [otherRiskYesOrNot,setOtherRiskOtherYesOrNot ]=useState()
+    const [otherRiskComment,setOtherRiskComment ]=useState("")
 
   const handleRiskFactor = () => {
     const newData = {
-      selectedValueRiskFactors,
-      riskYesNo,
-      riskComment
-    }
+      otherRiskOther,
+      otherRiskYesOrNot,
+      otherRiskComment,
+    };
     setRiskFactoeArray((prev) => [...prev, newData]);
-    setSelectedValueRiskFactors([]);
-    setRiskYesNo();
-    setRiskComment("");
-  }
+    setOtherRiskOther("");
+    setOtherRiskOtherYesOrNot();
+    setOtherRiskComment("");
+  };
   const [riskFactors, setRiskFactors] = useState({});
 
   // State variables for protectiveFactors
@@ -849,19 +1102,25 @@ const InitialAssessment = () => {
     useState([]);
   const [protectiveYesNo, setProtectiveYesNo] = useState();
   const [protectiveComment, setprotectiveComment] = useState("");
+
+
+  // protectiveFactors other
+  const [otherProtectiveFactorsApply,setOtherProtectiveFactorsApply]=useState("")
+  const [otherProtectiveFactorsYesNo,setOtherProtectiveFactorsYesNO]=useState()
+  const [otherProtectiveFactorsDescription,setOtherProtectiveFactorsDescription]=useState("")
   const [protectiveFactorsArray, setProtectiveFactorsArray] = useState([]);
 
   const handleProtectiveFactors = () => {
     const newData = {
-      selectedValueProtectiveFactors,
-      protectiveYesNo,
-      protectiveComment
-    }
+      otherProtectiveFactorsApply,
+      otherProtectiveFactorsYesNo,
+      otherProtectiveFactorsDescription,
+    };
     setProtectiveFactorsArray((prev) => [...prev, newData]);
-    setSelectedValueProtectiveFactors([]);
-    setProtectiveYesNo();
-    setprotectiveComment("");
-  }
+    setOtherProtectiveFactorsApply("");
+    setOtherProtectiveFactorsYesNO("");
+    setOtherProtectiveFactorsDescription("");
+  };
 
   const [protectiveFactors, setProtectiveFactors] = useState({});
 
@@ -869,34 +1128,36 @@ const InitialAssessment = () => {
   const [riskLevel, setRiskLevel] = useState("");
 
   // State variables for psychiatricDiagnoses
-  const [psychiatricOption, setPsychiatricOption] = useState("")
+  const [psychiatricOption, setPsychiatricOption] = useState("");
   const [icdCode, setIcdCode] = useState("");
   const [description, setDescription] = useState("");
   // const [primary, setPrimary] = useState("");
   // const [secondary, setSecondary] = useState("");
   // const [tertiary, setTertiary] = useState("");
   // const [additional, setAdditional] = useState("");
-  const [psychiatricDiagnoses, setPsychiatricDiagnoses] = useState([]);
 
+
+//psychiatricDiagnoses state 
+const [otherPsychiatricOption,setOtherPsychiatricOption]=useState("")
+const [othericdCode, setOtherIcdCode] = useState("");
+  const [otherdescription, setOtherDescription] = useState("");
+
+  const [psychiatricDiagnosesArray, setPsychiatricDiagnosesArray] = useState([]);
 
   const handlePsychiatricDiagnoses = () => {
-    setPsychiatricDiagnoses((prev) => [...prev, {
-      icdCode,
-      description,
-      psychiatricOption
-      // primary,
-      // secondary,
-      // tertiary,
-      // additional
-    }])
-    setIcdCode("")
-    setDescription("")
-    setPsychiatricOption("")
-    // setPrimary("")
-    // setSecondary("")
-    // setTertiary("")
-    // setAdditional("")
-  }
+    setPsychiatricDiagnosesArray((prev) => [
+      ...prev,
+      {
+        otherPsychiatricOption,
+        othericdCode,
+        otherdescription,
+      },
+    ]);
+    setOtherPsychiatricOption("");
+    setOtherIcdCode("");
+    setOtherDescription("");
+
+  };
 
   // State variables for medicalDiagnoses
   const [MedicalOption, setMedicalOption] = useState("");
@@ -909,27 +1170,29 @@ const InitialAssessment = () => {
   const [tertiaryMedicalDiagnoses, setTertiaryMedicalDiagnoses] = useState("");
   const [additionalMedicalDiagnoses, setAdditionalMedicalDiagnoses] =
     useState("");
-  const [medicalDiagnoses, setMedicalDiagnoses] = useState([]);
 
+    //  medicalDiagnoses Other
+    const [OtherMedicalOption, setOtherMedicalOption] = useState("");
+    const [OthericdCodeMedicalDiagnoses, setOtherIcdCodeMedicalDiagnoses] = useState("");
+    const [OtherdescriptionMedicalDiagnoses, setOtherDescriptionMedicalDiagnoses] =
+      useState("");
+  const [medicalDiagnosesArray, setMedicalDiagnosesArray] = useState([]);
 
   const handleMedicalDiagnoses = () => {
-    setMedicalDiagnoses((prev) => [...prev, {
-      icdCodeMedicalDiagnoses,
-      descriptionMedicalDiagnoses,
-      MedicalOption
-      // primaryMedicalDiagnoses,
-      // secondaryMedicalDiagnoses,
-      // tertiaryMedicalDiagnoses,
-      // additionalMedicalDiagnoses
-    }])
-    setIcdCodeMedicalDiagnoses("")
-    setDescriptionMedicalDiagnoses("")
-    setMedicalOption("")
-    // setPrimaryMedicalDiagnoses("")
-    // setSecondaryMedicalDiagnoses("")
-    // setTertiaryMedicalDiagnoses("")
-    // setAdditionalMedicalDiagnoses("")
-  }
+    setMedicalDiagnosesArray((prev) => [
+      ...prev,
+      {
+        OtherMedicalOption,
+        OthericdCodeMedicalDiagnoses,
+        OtherdescriptionMedicalDiagnoses,
+
+      },
+    ]);
+    setOtherMedicalOption("");
+    setOtherIcdCodeMedicalDiagnoses("");
+    setOtherDescriptionMedicalDiagnoses("");
+
+  };
 
   // State variable for additionalDiagnoses
   const [additionalDiagnoses, setAdditionalDiagnoses] = useState("");
@@ -979,16 +1242,18 @@ const InitialAssessment = () => {
   const [accidentInjury, setAccidentInjury] = useState(false);
   const [otherSignificantRecentLosses, setOtherSignificantRecentLosses] =
     useState(false);
-  const [otherSignificantRecentLossesType, setOtherSignificantRecentLossesType] =
-    useState("");
+  const [
+    otherSignificantRecentLossesType,
+    setOtherSignificantRecentLossesType,
+  ] = useState("");
   // const [significantRecentLosses, setSignificantRecentLosses] = useState({});
 
   const [additionalNotes, setAdditionalNotes] = useState("");
 
-
   //gresedent gaudent name and information
   const [residentGuardianName, setResidentGuardianName] = useState("");
-  const [residentGauardianSignature, setResidentGauardianSignature] = useState("");
+  const [residentGauardianSignature, setResidentGauardianSignature] =
+    useState("");
   const [residentGuardianDate, setResidentGuardianDate] = useState("");
 
   // State variables for staffInformation
@@ -1031,11 +1296,10 @@ const InitialAssessment = () => {
     { label: "Writing", value: "Writing" },
     { label: "Coloring", value: "Coloring" },
     { label: "Art", value: "Art" },
-
   ];
 
   const handleKeyDownResidentStrength = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1047,7 +1311,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...qualitiesOptions,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1056,7 +1320,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...residentStrengths,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setResidentStrengths(newSelectedValues);
       }
@@ -1064,7 +1328,7 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
 
   const handleSelectChange = (selectedOptions) => {
     setResidentStrengths(selectedOptions);
@@ -1154,7 +1418,7 @@ const InitialAssessment = () => {
   ];
 
   const handleKeyDownAdmissionStatus = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1166,7 +1430,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...option_value_Admission,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1175,7 +1439,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...admissionStatus,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setAdmissionStatus(newSelectedValues);
       }
@@ -1244,13 +1508,10 @@ const InitialAssessment = () => {
     { label: "Psychosis", value: "Psychosis" },
     { label: "Abused", value: "Abused" },
     { label: "Assaulted", value: "Assaulted" },
-
   ];
 
-
-
   const handleKeyDownReasionForAdmission = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1262,7 +1523,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...option_value_ReasonForAdmission,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1271,7 +1532,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...reasonForAdmission,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setReasonForAdmission(newSelectedValues);
       }
@@ -1280,7 +1541,6 @@ const InitialAssessment = () => {
       event.target.value = "";
     }
   };
-
 
   const handleSelectChangeAdmissionReasonForAdmission = (selectedOption) => {
     setReasonForAdmission(selectedOption);
@@ -1295,7 +1555,7 @@ const InitialAssessment = () => {
   ];
 
   const handleKeyThyroidDisorder = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1307,7 +1567,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...thyroidOptions,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1316,7 +1576,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...thyroidDisorder,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setThyroidDisorder(newSelectedValues);
       }
@@ -1324,7 +1584,7 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
   const thyroiddisorderhnadler = (selectedOptions) => {
     setThyroidDisorder(selectedOptions);
   };
@@ -1345,11 +1605,10 @@ const InitialAssessment = () => {
     { label: "Mumps", value: "Mumps" },
     { label: "Signs of active TB", value: "Signs of active TB" },
     { label: "Scabies", value: "Scabies" },
-
   ];
 
   const handleKeyInfectionDiseases = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1361,7 +1620,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...infectionDiseasesOptions,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1370,7 +1629,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...infectionDiseases,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setInfectionDiseases(newSelectedValues);
       }
@@ -1378,7 +1637,7 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
 
   const infectionDiseasesHandler = (selectedOptions) => {
     setInfectionDiseases(selectedOptions);
@@ -1400,19 +1659,20 @@ const InitialAssessment = () => {
   ];
 
   const handleKeySignificantFamilyMedicalPsychiatricHistory = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
-      const optionExists = SignificantFamilyMedicalPsychiatricHistoryOptions.some(
-        (option) => option.value === inputValue
-      );
+      const optionExists =
+        SignificantFamilyMedicalPsychiatricHistoryOptions.some(
+          (option) => option.value === inputValue
+        );
 
       // If the input value doesn't exist, add it to the array
       if (!optionExists) {
         const newOptions = [
           ...SignificantFamilyMedicalPsychiatricHistoryOptions,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1421,7 +1681,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...SignificantFamilyMedicalPsychiatricHistory,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSignificantFamilyMedicalPsychiatricHistory(newSelectedValues);
       }
@@ -1429,7 +1689,7 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
 
   const SignificantFamilyMedicalPsychiatricHistoryHandler = (
     selectedOptions
@@ -1444,11 +1704,10 @@ const InitialAssessment = () => {
     { label: "OP", value: "OP" },
     { label: "PHP", value: "PHP" },
     { label: "IOP", value: "IOP" },
-
   ];
 
   const handleKeyMentalHealthTreatmentHistoryTypeOfService = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1460,7 +1719,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...mentalHealthTreatmentHistoryTypeOfServiceOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1469,7 +1728,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...mentalHealthTreatmentHistoryTypeOfService,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setMentalHealthTreatmentHistoryTypeOfService(newSelectedValues);
       }
@@ -1477,7 +1736,7 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
 
   const mentalHealthTreatmentHistoryTypeOfServiceHandler = (
     selectedOptions
@@ -1498,19 +1757,20 @@ const InitialAssessment = () => {
   ];
 
   const handleKeyDownMentalHealthTreatmentHistoryDiagnosisReason = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
-      const optionExists = mentalHealthTreatmentHistoryDiagnosisReasonOption.some(
-        (option) => option.value === inputValue
-      );
+      const optionExists =
+        mentalHealthTreatmentHistoryDiagnosisReasonOption.some(
+          (option) => option.value === inputValue
+        );
 
       // If the input value doesn't exist, add it to the array
       if (!optionExists) {
         const newOptions = [
           ...mentalHealthTreatmentHistoryDiagnosisReasonOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1519,7 +1779,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...mentalHealthTreatmentHistoryDiagnosisReason,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setMentalHealthTreatmentHistoryDiagnosisReason(newSelectedValues);
       }
@@ -1536,209 +1796,184 @@ const InitialAssessment = () => {
   };
 
   // Type of services drop down
-  const substanceAbuseHistoryDataTypesOption = [
-    { label: "Alcohol", value: "Alcohol" },
-    { label: "Benzodiazepines", value: "Benzodiazepines" },
-    { label: "Cocaine", value: "Cocaine" },
-    { label: "Crack", value: "Crack" },
-    {
-      label: "Hallucinogens (LSD,mescaline,etc.)",
-      value: "Hallucinogens (LSD,mescaline,etc.)",
-    },
-    { label: "Heroin", value: "Heroin" },
-    { label: "Crack", value: "Crack" },
-    { label: "Inhalants", value: "Inhalants" },
-    { label: "Marijuana", value: "Marijuana" },
-    { label: "Methamphetamine", value: "Methamphetamine" },
-    { label: "Methadone", value: "Methadone" },
-    { label: "MDMA (ecstasy)", value: "MDMA (ecstasy)" },
-    { label: "PCP (angel dust)", value: "PCP (angel dust)" },
-    { label: "Prescription medicine", value: "Prescription medicine" },
-    { label: "OTC medicine", value: "OTC medicine" },
+  // const substanceAbuseHistoryDataTypesOption = [
+  //   { label: "Alcohol", value: "Alcohol" },
+  //   { label: "Benzodiazepines", value: "Benzodiazepines" },
+  //   { label: "Cocaine", value: "Cocaine" },
+  //   { label: "Crack", value: "Crack" },
+  //   {
+  //     label: "Hallucinogens (LSD,mescaline,etc.)",
+  //     value: "Hallucinogens (LSD,mescaline,etc.)",
+  //   },
+  //   { label: "Heroin", value: "Heroin" },
+  //   { label: "Crack", value: "Crack" },
+  //   { label: "Inhalants", value: "Inhalants" },
+  //   { label: "Marijuana", value: "Marijuana" },
+  //   { label: "Methamphetamine", value: "Methamphetamine" },
+  //   { label: "Methadone", value: "Methadone" },
+  //   { label: "MDMA (ecstasy)", value: "MDMA (ecstasy)" },
+  //   { label: "PCP (angel dust)", value: "PCP (angel dust)" },
+  //   { label: "Prescription medicine", value: "Prescription medicine" },
+  //   { label: "OTC medicine", value: "OTC medicine" },
 
-  ];
+  // ];
 
+  // const handleKeySubstanceAbuseHistoryDataTypes = (event) => {
+  //   if (event.key === 'Enter' && event.target.value) {
+  //     const inputValue = event.target.value.trim();
 
-  const handleKeySubstanceAbuseHistoryDataTypes = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
-      const inputValue = event.target.value.trim();
+  //     const optionExists = substanceAbuseHistoryDataTypesOption.some(
+  //       (option) => option.value === inputValue
+  //     );
 
-      // Check if the input value already exists in the options array
-      const optionExists = substanceAbuseHistoryDataTypesOption.some(
-        (option) => option.value === inputValue
-      );
+  //     if (!optionExists) {
+  //       const newOptions = [
+  //         ...substanceAbuseHistoryDataTypesOption,
+  //         { value: inputValue, label: inputValue }
+  //       ];
 
-      // If the input value doesn't exist, add it to the array
-      if (!optionExists) {
-        const newOptions = [
-          ...substanceAbuseHistoryDataTypesOption,
-          { value: inputValue, label: inputValue }
-        ];
+  //       setSubstanceAbuseHistoryDataTypes(newOptions);
 
-        // Update the state with the new options
-        setSubstanceAbuseHistoryDataTypes(newOptions);
+  //       const newSelectedValues = [
+  //         ...substanceAbuseHistoryDataTypes,
+  //         { value: inputValue, label: inputValue }
+  //       ];
+  //       setSubstanceAbuseHistoryDataTypes(newSelectedValues);
+  //     }
 
-        // Update the selected values to include the newly created option
-        const newSelectedValues = [
-          ...substanceAbuseHistoryDataTypes,
-          { value: inputValue, label: inputValue }
-        ];
-        setSubstanceAbuseHistoryDataTypes(newSelectedValues);
-      }
+  //     event.target.value = "";
+  //   }
+  // }
 
-      // Clear the input value after adding the option
-      event.target.value = "";
-    }
-  }
+  // const substanceAbuseHistoryDataTypesHandler = (selectedOptions) => {
+  //   setSubstanceAbuseHistoryDataTypes(selectedOptions);
+  // };
 
-  const substanceAbuseHistoryDataTypesHandler = (selectedOptions) => {
-    setSubstanceAbuseHistoryDataTypes(selectedOptions);
-  };
+  // //// Type of services Last use
+  // const substanceAbuseHistoryDataLastUseOption = [
+  //   { label: "Weeks ago", value: "Weeks ago" },
+  //   { label: "Days ago", value: "Days ago" },
+  //   { label: "Yesterday", value: "Yesterday" },
+  //   { label: "Months ago", value: "Months ago" },
+  //   { label: "Few hours ago", value: "Few hours ago" },
+  //   { label: "Unsure", value: "Unsure" },
+  // ];
 
-  //// Type of services Last use
-  const substanceAbuseHistoryDataLastUseOption = [
-    { label: "Weeks ago", value: "Weeks ago" },
-    { label: "Days ago", value: "Days ago" },
-    { label: "Yesterday", value: "Yesterday" },
-    { label: "Months ago", value: "Months ago" },
-    { label: "Few hours ago", value: "Few hours ago" },
-    { label: "Unsure", value: "Unsure" },
-  ];
+  // const handleKeyDownSubstanceAbuseHistoryDataLastUse = (event) => {
+  //   if (event.key === 'Enter' && event.target.value) {
+  //     const inputValue = event.target.value.trim();
 
+  //     const optionExists = substanceAbuseHistoryDataLastUseOption.some(
+  //       (option) => option.value === inputValue
+  //     );
 
-  const handleKeyDownSubstanceAbuseHistoryDataLastUse = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
-      const inputValue = event.target.value.trim();
+  //     if (!optionExists) {
+  //       const newOptions = [
+  //         ...substanceAbuseHistoryDataLastUseOption,
+  //         { value: inputValue, label: inputValue }
+  //       ];
 
-      // Check if the input value already exists in the options array
-      const optionExists = substanceAbuseHistoryDataLastUseOption.some(
-        (option) => option.value === inputValue
-      );
+  //       setSubstanceAbuseHistoryDataLastUse(newOptions);
 
-      // If the input value doesn't exist, add it to the array
-      if (!optionExists) {
-        const newOptions = [
-          ...substanceAbuseHistoryDataLastUseOption,
-          { value: inputValue, label: inputValue }
-        ];
+  //       const newSelectedValues = [
+  //         ...substanceAbuseHistoryDataLastUse,
+  //         { value: inputValue, label: inputValue }
+  //       ];
+  //       setSubstanceAbuseHistoryDataLastUse(newSelectedValues);
+  //     }
 
-        // Update the state with the new options
-        setSubstanceAbuseHistoryDataLastUse(newOptions);
+  //     event.target.value = "";
+  //   }
+  // };
+  // const substanceAbuseHistoryDataLastUseHandler = (selectedOptions) => {
+  //   setSubstanceAbuseHistoryDataLastUse(selectedOptions);
+  // };
 
-        // Update the selected values to include the newly created option
-        const newSelectedValues = [
-          ...substanceAbuseHistoryDataLastUse,
-          { value: inputValue, label: inputValue }
-        ];
-        setSubstanceAbuseHistoryDataLastUse(newSelectedValues);
-      }
+  // const substanceAbuseHistoryDataFrequencyOption = [
+  //   { label: "Daily", value: "Daily" },
+  //   { label: "Two to four times weekly", value: "Two to four times weekly" },
+  //   { label: "Multiple times a day", value: "Multiple times a day" },
+  //   { label: "Chronic", value: "Chronic" },
+  //   { label: "Intermittent", value: "Intermittent" },
+  //   { label: "Only on social events", value: "Only on social events" },
+  //   { label: "Only on weekends", value: "Only on weekends" },
+  //   { label: "Few times a month", value: "Few times a month" },
+  // ];
 
-      // Clear the input value after adding the option
-      event.target.value = "";
-    }
-  };
-  const substanceAbuseHistoryDataLastUseHandler = (selectedOptions) => {
-    setSubstanceAbuseHistoryDataLastUse(selectedOptions);
-  };
+  // const handleKeyDownSubstanceAbuseHistoryDataFrequency = (event) => {
+  //   if (event.key === 'Enter' && event.target.value) {
+  //     const inputValue = event.target.value.trim();
 
-  //// Type of services frequency
-  const substanceAbuseHistoryDataFrequencyOption = [
-    { label: "Daily", value: "Daily" },
-    { label: "Two to four times weekly", value: "Two to four times weekly" },
-    { label: "Multiple times a day", value: "Multiple times a day" },
-    { label: "Chronic", value: "Chronic" },
-    { label: "Intermittent", value: "Intermittent" },
-    { label: "Only on social events", value: "Only on social events" },
-    { label: "Only on weekends", value: "Only on weekends" },
-    { label: "Few times a month", value: "Few times a month" },
-  ];
+  //     const optionExists = substanceAbuseHistoryDataFrequencyOption.some(
+  //       (option) => option.value === inputValue
+  //     );
 
-  const handleKeyDownSubstanceAbuseHistoryDataFrequency = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
-      const inputValue = event.target.value.trim();
+  //     if (!optionExists) {
+  //       const newOptions = [
+  //         ...substanceAbuseHistoryDataFrequency,
+  //         { value: inputValue, label: inputValue }
+  //       ];
 
-      // Check if the input value already exists in the options array
-      const optionExists = substanceAbuseHistoryDataFrequencyOption.some(
-        (option) => option.value === inputValue
-      );
+  //       setSubstanceAbuseHistoryDataFrequency(newOptions);
 
-      // If the input value doesn't exist, add it to the array
-      if (!optionExists) {
-        const newOptions = [
-          ...substanceAbuseHistoryDataFrequency,
-          { value: inputValue, label: inputValue }
-        ];
+  //       const newSelectedValues = [
+  //         ...substanceAbuseHistoryDataFrequency,
+  //         { value: inputValue, label: inputValue }
+  //       ];
+  //       setSubstanceAbuseHistoryDataFrequency(newSelectedValues);
+  //     }
 
-        // Update the state with the new options
-        setSubstanceAbuseHistoryDataFrequency(newOptions);
+  //     event.target.value = "";
+  //   }
+  // };
 
-        // Update the selected values to include the newly created option
-        const newSelectedValues = [
-          ...substanceAbuseHistoryDataFrequency,
-          { value: inputValue, label: inputValue }
-        ];
-        setSubstanceAbuseHistoryDataFrequency(newSelectedValues);
-      }
+  // const substanceAbuseHistoryDataFrequencyHandler = (selectedOptions) => {
+  //   setSubstanceAbuseHistoryDataFrequency(selectedOptions);
+  // };
 
-      // Clear the input value after adding the option
-      event.target.value = "";
-    }
-  };
+  // const substanceAbuseHistoryDataLengthOfSobrietyOption = [
+  //   { label: "One week", value: "One week" },
+  //   { label: "A few days ago, One month", value: "A few days ago, One month" },
+  //   { label: "One month", value: "One month" },
+  //   { label: "Two months", value: "Two months" },
+  //   { label: "Three months", value: "Three months" },
+  //   { label: "Four months", value: "Four months" },
+  //   { label: "Five to Six months", value: "Five to Six months" },
+  //   { label: "One year", value: "One year" },
+  //   { label: "Two years", value: "Two years" },
+  //   { label: "Many years", value: "Many years" },
+  // ];
 
+  // const handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety = (event) => {
+  //   if (event.key === 'Enter' && event.target.value) {
+  //     const inputValue = event.target.value.trim();
 
-  const substanceAbuseHistoryDataFrequencyHandler = (selectedOptions) => {
-    setSubstanceAbuseHistoryDataFrequency(selectedOptions);
-  };
+  //     const optionExists = substanceAbuseHistoryDataLengthOfSobrietyOption.some(
+  //       (option) => option.value === inputValue
+  //     );
 
-  //// Type of services length of Sobriety
-  const substanceAbuseHistoryDataLengthOfSobrietyOption = [
-    { label: "One week", value: "One week" },
-    { label: "A few days ago, One month", value: "A few days ago, One month" },
-    { label: "One month", value: "One month" },
-    { label: "Two months", value: "Two months" },
-    { label: "Three months", value: "Three months" },
-    { label: "Four months", value: "Four months" },
-    { label: "Five to Six months", value: "Five to Six months" },
-    { label: "One year", value: "One year" },
-    { label: "Two years", value: "Two years" },
-    { label: "Many years", value: "Many years" },
-  ];
+  //     if (!optionExists) {
+  //       const newOptions = [
+  //         ...substanceAbuseHistoryDataLengthOfSobrietyOption,
+  //         { value: inputValue, label: inputValue }
+  //       ];
 
-  const handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
-      const inputValue = event.target.value.trim();
+  //       setSubstanceAbuseHistoryDataLengthOfSobriety(newOptions);
 
-      // Check if the input value already exists in the options array
-      const optionExists = substanceAbuseHistoryDataLengthOfSobrietyOption.some(
-        (option) => option.value === inputValue
-      );
+  //       const newSelectedValues = [
+  //         ...substanceAbuseHistoryDataLengthOfSobriety,
+  //         { value: inputValue, label: inputValue }
+  //       ];
+  //       setSubstanceAbuseHistoryDataLengthOfSobriety(newSelectedValues);
+  //     }
 
-      // If the input value doesn't exist, add it to the array
-      if (!optionExists) {
-        const newOptions = [
-          ...substanceAbuseHistoryDataLengthOfSobrietyOption,
-          { value: inputValue, label: inputValue }
-        ];
+  //     event.target.value = "";
+  //   }
+  // };
 
-        // Update the state with the new options
-        setSubstanceAbuseHistoryDataLengthOfSobriety(newOptions);
-
-        // Update the selected values to include the newly created option
-        const newSelectedValues = [
-          ...substanceAbuseHistoryDataLengthOfSobriety,
-          { value: inputValue, label: inputValue }
-        ];
-        setSubstanceAbuseHistoryDataLengthOfSobriety(newSelectedValues);
-      }
-
-      // Clear the input value after adding the option
-      event.target.value = "";
-    }
-  };
-
-  const substanceAbuseHistoryDataLengthOfSobrietyHandler = (selectedOptions) => {
-    setSubstanceAbuseHistoryDataLengthOfSobriety(selectedOptions);
-  };
+  // const substanceAbuseHistoryDataLengthOfSobrietyHandler = (selectedOptions) => {
+  //   setSubstanceAbuseHistoryDataLengthOfSobriety(selectedOptions);
+  // };
 
   //Criminal Justice Legal History
   const selectedValueOption = [
@@ -1746,11 +1981,20 @@ const InitialAssessment = () => {
     { label: "Arrested for assault", value: "Arrested for assault" },
     { label: "Arrested for bad checks", value: "Arrested for bad checks" },
     { label: "Arrested for shop lifting", value: "Arrested for shop lifting" },
-    { label: "Arrested for attempted murder", value: "Arrested for attempted murder" },
+    {
+      label: "Arrested for attempted murder",
+      value: "Arrested for attempted murder",
+    },
     { label: "Arrested for drug", value: "Arrested for drug" },
     { label: "Arrested for alcohol", value: "Arrested for alcohol" },
-    { label: "Arrested for disorderly conduct", value: "Arrested for disorderly conduct" },
-    { label: "Arrested for identity theft/ forgery", value: "Arrested for identity theft/ forgery" },
+    {
+      label: "Arrested for disorderly conduct",
+      value: "Arrested for disorderly conduct",
+    },
+    {
+      label: "Arrested for identity theft/ forgery",
+      value: "Arrested for identity theft/ forgery",
+    },
     { label: "Arrested for sex offense", value: "Arrested for sex offense" },
     { label: "Arrested for _______,", value: "Arrested for _______," },
     { label: "Probation/parole", value: "Probation/parole" },
@@ -1759,10 +2003,10 @@ const InitialAssessment = () => {
     { label: "Sentencing dates", value: "Sentencing dates" },
     { label: "Needs Legal Aid", value: "Needs Legal Aid" },
     { label: "Incarcerated", value: "Incarcerated" },
-  ]
+  ];
 
   const handleKeyDownSelectedValue = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1774,7 +2018,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1783,7 +2027,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...selectedValue,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSelectedValue(newSelectedValues);
       }
@@ -1809,10 +2053,10 @@ const InitialAssessment = () => {
     { label: "Preparing food", value: "Preparing food" },
     { label: "Eating", value: "Eating" },
     { label: "Toileting", value: "Toileting" },
-  ]
+  ];
 
   const handleKeyBathingShoweringGood = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1824,7 +2068,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...bathingShoweringGoodOptions,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1833,7 +2077,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...bathingShoweringGood,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setBathingShoweringGood(newSelectedValues);
       }
@@ -1841,11 +2085,11 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
 
   const bathingShoweringGoodJHandler = (optionValue) => {
     setBathingShoweringGood(optionValue);
-  }
+  };
 
   //Medical Equipment:
   const selectedValueMedicalOption = [
@@ -1854,11 +2098,10 @@ const InitialAssessment = () => {
     { label: "CPAP Machine", value: "CPAP Machine" },
     { label: "Shower chair", value: "Shower chair" },
     { label: "None", value: "None" },
-
-  ]
+  ];
 
   const handleKeySelectedValueMedical = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1870,7 +2113,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueMedicalOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1879,7 +2122,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...selectedValueMedical,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSelectedValueMedical(newSelectedValues);
       }
@@ -1887,24 +2130,27 @@ const InitialAssessment = () => {
       // Clear the input value after adding the option
       event.target.value = "";
     }
-  }
+  };
 
   const selectedValueMedicalHandler = (optionValue) => {
     setSelectedValueMedical(optionValue);
-  }
+  };
 
   const selectedValueSpecialPrecautionsOption = [
     { label: "Yes Seizure", value: "Yes Seizure" },
     { label: "Elopement/Awol", value: "Elopement/Awol" },
     { label: "Physical Aggression", value: "Physical Aggression" },
     { label: "Withdrawal", value: "Withdrawal" },
-    { label: "Inappropriate Sexual Behaviors", value: "Inappropriate Sexual Behaviors" },
+    {
+      label: "Inappropriate Sexual Behaviors",
+      value: "Inappropriate Sexual Behaviors",
+    },
     { label: "Substance use", value: "Substance use" },
     { label: "None", value: "None" },
-  ]
+  ];
 
   const handleKeySelectedValueSpecialPrecautions = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1916,7 +2162,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueSpecialPrecautionsOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1925,7 +2171,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...selectedValueSpecialPrecautions,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSelectedValueSpecialPrecautions(newSelectedValues);
       }
@@ -1935,25 +2181,37 @@ const InitialAssessment = () => {
     }
   };
   const selectedValueSpecialPrecautionsHandler = (optionValue) => {
-    setSelectedValueSpecialPrecautions(optionValue)
-  }
+    setSelectedValueSpecialPrecautions(optionValue);
+  };
 
   //Select risk factors that apply
   const selectedValueRiskFactorsOption = [
     { label: "Current suicidal ideation", value: "Current suicidal ideation" },
     { label: "Prior suicide attempt", value: "Prior suicide attempt" },
-    { label: "Access to means (i.e. weapon)", value: "Access to means (i.e. weapon)" },
-    { label: "Other self-abusing behavior", value: "Other self-abusing behavior" },
-    { label: "Recent losses/lack of support", value: "Recent losses/lack of support" },
+    {
+      label: "Access to means (i.e. weapon)",
+      value: "Access to means (i.e. weapon)",
+    },
+    {
+      label: "Other self-abusing behavior",
+      value: "Other self-abusing behavior",
+    },
+    {
+      label: "Recent losses/lack of support",
+      value: "Recent losses/lack of support",
+    },
     { label: "Symptoms of psychosis", value: "Symptoms of psychosis" },
     { label: "Family history of suicide", value: "Family history of suicide" },
     { label: "Terminal physical illness", value: "Terminal physical illness" },
-    { label: "Current stressors (specify)", value: "Current stressors (specify)" },
+    {
+      label: "Current stressors (specify)",
+      value: "Current stressors (specify)",
+    },
     { label: "Chronic pain", value: "Chronic pain" },
-  ]
+  ];
 
   const handleKeySelectedValueRiskFactors = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -1965,7 +2223,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueRiskFactorsOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -1974,7 +2232,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...selectedValueRiskFactors,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSelectedValueRiskFactors(newSelectedValues);
       }
@@ -1984,8 +2242,8 @@ const InitialAssessment = () => {
     }
   };
   const selectedValueRiskFactorsHandler = (optionValue) => {
-    setSelectedValueRiskFactors(optionValue)
-  }
+    setSelectedValueRiskFactors(optionValue);
+  };
 
   //Select risk factors that apply dropdown 1
   const selectedValueRiskFactorsOption1 = [
@@ -1997,10 +2255,10 @@ const InitialAssessment = () => {
     { label: "verbal aggression", value: "verbal aggression" },
     { label: "slamming door", value: "slamming door" },
     { label: "physical aggression", value: "physical aggression" },
-  ]
+  ];
 
   const handleKeySelectedValueRiskFactorsBehavior = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -2012,7 +2270,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueRiskFactorsOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -2021,7 +2279,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...behaviorcuesDropDown,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setBehaviorcuesDropDown(newSelectedValues);
       }
@@ -2031,18 +2289,18 @@ const InitialAssessment = () => {
     }
   };
   const selectedValueRiskFactorsHandlerBehaviorcues = (optionValue) => {
-    setBehaviorcuesDropDown(optionValue)
-  }
+    setBehaviorcuesDropDown(optionValue);
+  };
 
   const selectedValueRiskFactorsOption2 = [
     { label: "Auditory Hallucination", value: "Auditory Hallucination" },
     { label: "Visual Hallucination", value: "Visual Hallucination" },
     { label: "Tactile Hallucination", value: "Tactile Hallucination" },
     { label: "Olfactory Hallucination", value: "Olfactory Hallucination" },
-  ]
+  ];
 
   const handleKeySelectedValueRiskFactorsSymptoms = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -2054,7 +2312,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueRiskFactorsOption2,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -2063,7 +2321,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...symptomsOfPsychosisDropDown,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSymptomsOfPsychosisDropDown(newSelectedValues);
       }
@@ -2073,22 +2331,36 @@ const InitialAssessment = () => {
     }
   };
   const selectedValueRiskFactorsHandlerSymptoms = (optionValue) => {
-    setSymptomsOfPsychosisDropDown(optionValue)
-  }
+    setSymptomsOfPsychosisDropDown(optionValue);
+  };
 
   //Protective factors that apply:
   const selectedValueProtectiveFactorsOption = [
-    { label: "Supports available (family friends)", value: "Supports available (family friends)" },
-    { label: "Spiritual / religious support", value: "Spiritual / religious support" },
-    { label: "Religious/cultural prohibitions", value: "Religious/cultural prohibitions" },
+    {
+      label: "Supports available (family friends)",
+      value: "Supports available (family friends)",
+    },
+    {
+      label: "Spiritual / religious support",
+      value: "Spiritual / religious support",
+    },
+    {
+      label: "Religious/cultural prohibitions",
+      value: "Religious/cultural prohibitions",
+    },
     { label: " Fear of consequences", value: " Fear of consequences" },
-    { label: " Able to be engaged in intervention", value: " Able to be engaged in intervention" },
-    { label: "Willing to commit to keeping self safe", value: "Willing to commit to keeping self safe" },
-
-  ]
+    {
+      label: " Able to be engaged in intervention",
+      value: " Able to be engaged in intervention",
+    },
+    {
+      label: "Willing to commit to keeping self safe",
+      value: "Willing to commit to keeping self safe",
+    },
+  ];
 
   const handleKeySelectedValueProtectiveFactors = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
+    if (event.key === "Enter" && event.target.value) {
       const inputValue = event.target.value.trim();
 
       // Check if the input value already exists in the options array
@@ -2100,7 +2372,7 @@ const InitialAssessment = () => {
       if (!optionExists) {
         const newOptions = [
           ...selectedValueProtectiveFactorsOption,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
 
         // Update the state with the new options
@@ -2109,7 +2381,7 @@ const InitialAssessment = () => {
         // Update the selected values to include the newly created option
         const newSelectedValues = [
           ...selectedValueProtectiveFactors,
-          { value: inputValue, label: inputValue }
+          { value: inputValue, label: inputValue },
         ];
         setSelectedValueProtectiveFactors(newSelectedValues);
       }
@@ -2119,8 +2391,8 @@ const InitialAssessment = () => {
     }
   };
   const selectedValueProtectiveFactorsHandler = (optionValue) => {
-    setSelectedValueProtectiveFactors(optionValue)
-  }
+    setSelectedValueProtectiveFactors(optionValue);
+  };
 
   return (
     <>
@@ -2132,30 +2404,23 @@ const InitialAssessment = () => {
               width: "40px",
               height: "40px",
               cursor: "pointer",
-
             }}
             onClick={() => navigate("/intake")}
           />
         </div>
-        <div className="Boss" >
+        <div className="Boss">
           <FormUpper />
           <p style={{ marginTop: "1rem" }}>
-
             <span>
-
               <AutosizeInput
                 type="text"
-
                 placeholder="Company name"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
               />
             </span>
-
             <span style={{ paddingLeft: "10px" }}>has notified</span>
-
             <span>
-
               <AutosizeInput
                 type="text"
                 inputStyle={{ border: "none", outline: "none" }}
@@ -2164,11 +2429,9 @@ const InitialAssessment = () => {
                 onChange={(e) => setHasNotified(e.target.value)}
               />
             </span>
-            to participate in his/her Service Treatment Plan/Initial
-            Assessment on
-
+            to participate in his/her Service Treatment Plan/Initial Assessment
+            on
             <span>
-
               <AutosizeInput
                 type="text"
                 inputStyle={{ border: "none", outline: "none" }}
@@ -2177,185 +2440,173 @@ const InitialAssessment = () => {
                 onChange={(e) => setAssessmentOn(e.target.value)}
               />
             </span>
-
           </p>
-          <form
-            onSubmit={handleSubmit}
-            style={{ marginTop: "2rem" }}
-          >
-            <h5 style={{textAlign:"center",fontWeight:"bold"}}>SECTION I</h5>
+          <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
+            <h5 style={{ textAlign: "center", fontWeight: "bold" }}>
+              SECTION I
+            </h5>
             <div className="form-section">
-         
-
               <div className="box-image-container">
-              <div className="form-field-update">
-                <div className="form-field-child-gender">
-                    <label htmlFor="residentFullName">Resident's Full Name:</label>
-                  <input
-                    type="text"
-                    id="residentFullName"
-                  // value={user}
-                    className="borderless_input"
-                    value={residentName}
-                    // placeholder="Enter full name"
-                    required
-                    // onChange={(e) => setUser(e.target.value)}
-                    onChange={(e) => setResidentName(e.target.value)}
-                  />
-                </div>
+                <div className="form-field-update">
+                  <div className="form-field-child-gender">
+                    <label htmlFor="residentFullName">
+                      Resident's Full Name:
+                    </label>
+                    <input
+                      type="text"
+                      id="residentFullName"
+                      // value={user}
+                      className="borderless_input"
+                      value={residentName}
+                      // placeholder="Enter full name"
+                      required
+                      // onChange={(e) => setUser(e.target.value)}
+                      onChange={(e) => setResidentName(e.target.value)}
+                    />
+                  </div>
 
-                <div className="form-field-child-name">
-                  <label >Gender:</label>
+                  <div className="form-field-child-name">
+                    <label>Gender:</label>
 
-                  <div className="genderdiv">
-                    <div className="genderbox">
-                      <input
-                        type="radio"
-                        id="maleRadio"
-                        checked={sex === "Male"}
-                        onChange={() => setSex("Male")}
-                        className="custom-radio"
-                      />
-                      <label htmlFor="maleRadio">Male</label>
-                    </div>
-                    <div className="genderbox">
-                      <input
-                        type="radio"
-                        id="femaleRadio"
-                        checked={sex === "Female"}
-                        onChange={() => setSex("Female")}
-                        className="custom-radio"
-                      />
-                      <label htmlFor="femaleRadio">Female</label>
-                    </div>
-                    <div className="genderbox">
-                      <input
-                        type="radio"
-                        id="femaleRadio"
-                        checked={sex === "Other"}
-                        onChange={() => setSex("Other")}
-                        className="custom-radio"
-                      />
-                      <label htmlFor="femaleRadio">Other</label>
+                    <div className="genderdiv">
+                      <div className="genderbox">
+                        <input
+                          type="radio"
+                          id="maleRadio"
+                          checked={sex === "Male"}
+                          onChange={() => setSex("Male")}
+                          className="custom-radio"
+                        />
+                        <label htmlFor="maleRadio">Male</label>
+                      </div>
+                      <div className="genderbox">
+                        <input
+                          type="radio"
+                          id="femaleRadio"
+                          checked={sex === "Female"}
+                          onChange={() => setSex("Female")}
+                          className="custom-radio"
+                        />
+                        <label htmlFor="femaleRadio">Female</label>
+                      </div>
+                      <div className="genderbox">
+                        <input
+                          type="radio"
+                          id="femaleRadio"
+                          checked={sex === "Other"}
+                          onChange={() => setSex("Other")}
+                          className="custom-radio"
+                        />
+                        <label htmlFor="femaleRadio">Other</label>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div className="border-bootom-line"></div>
+                <div className="form-field-update">
+                  <div className="form-field-child">
+                    <label htmlFor="dateOfBirth">Date of Birth:</label>
+                    <input
+                      type="date"
+                      id="dateOfBirth"
+                      className="borderless_input"
+                      value={dob}
+                      placeholder="DD/MM/YYYY"
+                      required
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-field-child">
+                    <label htmlFor="admissionDate">Admission Date:</label>
+                    <input
+                      type="date"
+                      id="admissionDate"
+                      value={dateOfAssessment}
+                      placeholder="Enter Date"
+                      required
+                      onChange={(e) => setDateOfAssessment(e.target.value)}
+                    />
+                  </div>
                 </div>
                 <div className="border-bootom-line"></div>
-              <div className="form-field-update">
-                <div className="form-field-child">
-                  <label htmlFor="dateOfBirth">Date of Birth:</label>
-                  <input
-                    type="date"
-                    id="dateOfBirth"
-                    className="borderless_input"
-                    value={dob}
-                    placeholder="DD/MM/YYYY"
-                    required
-                    onChange={(e) => setDob(e.target.value)}
-                  />
-                </div>
-                <div className="form-field-child">
-                  <label htmlFor="admissionDate">Admission Date:</label>
-                  <input
-                    type="date"
-                    id="admissionDate"
-                    value={dateOfAssessment}
-                    placeholder="Enter Date"
-                    required
-                    onChange={(e) => setDateOfAssessment(e.target.value)}
-                  />
-                </div>
 
-              </div>
-                <div className="border-bootom-line"></div>
-
-              <div className="form-field-single-update">
-                <label htmlFor="AHCCCS">AHCCCS# :</label>
-                <input
-                  type="text"
-                  id="AHCCCS"
-                  value={ahcccsNumber}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setAhcccsNumber(e.target.value)}
-                />
-              </div>
-                <div className="border-bootom-line"></div>
-
-              <div className="form-field-update">
-
-                <div className="form-field-child">
-                  <label htmlFor="preferredlanguage">Preferred Language:</label>
+                <div className="form-field-single-update">
+                  <label htmlFor="AHCCCS">AHCCCS# :</label>
                   <input
                     type="text"
+                    id="AHCCCS"
+                    value={ahcccsNumber}
+                    placeholder="Enter text"
                     required
-                    value={preferredLanguage}
-                    onChange={(e) => setPreferredLanguage(e.target.value)}
+                    onChange={(e) => setAhcccsNumber(e.target.value)}
                   />
                 </div>
+                <div className="border-bootom-line"></div>
 
-                <div className="form-field-child">
-                  <label htmlFor="ethnicity">Ethnicity: </label>
-                  <input
-                    type="text"
-                    required
-                    value={ethnicity}
-                    onChange={(e) => setEthnicity(e.target.value)}
-                  />
+                <div className="form-field-update">
+                  <div className="form-field-child">
+                    <label htmlFor="preferredlanguage">
+                      Preferred Language:
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={preferredLanguage}
+                      onChange={(e) => setPreferredLanguage(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-field-child">
+                    <label htmlFor="ethnicity">Ethnicity: </label>
+                    <input
+                      type="text"
+                      required
+                      value={ethnicity}
+                      onChange={(e) => setEthnicity(e.target.value)}
+                    />
+                  </div>
                 </div>
-
-              </div>
                 <div className="border-bootom-line"></div>
 
                 <div className="form-field-single-update-bold">
-                  <label >Admission Status:</label>
+                  <label>Admission Status:</label>
 
-                <Select
-                  isMulti
-                  value={admissionStatus}
-                  onChange={handleSelectChangeAdmission}
-                  options={option_value_Admission}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownAdmissionStatus}
-                />
-              </div>
+                  <Select
+                    isMulti
+                    value={admissionStatus}
+                    onChange={handleSelectChangeAdmission}
+                    options={option_value_Admission}
+                    isCreatable={true}
+                    onKeyDown={handleKeyDownAdmissionStatus}
+                  />
+                </div>
                 <div className="border-bootom-line"></div>
-              <div className="form-field-single-update">
-                <label
-                  htmlFor="programlocation&address"
-
-                >
-                  Program Location & Address:{" "}
-
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={programLocation}
-                  onChange={(e) => setProgramLocation(e.target.value)}
-                />
-
-              </div>
-
-              </div>
-
-
-
-              <div className="box-image-container">
-              <div className="form-field-update">
-
-                <div className="form-field-child">
-                  <label htmlFor="">Guardianship:</label>
+                <div className="form-field-single-update">
+                  <label htmlFor="programlocation&address">
+                    Program Location & Address:{" "}
+                  </label>
                   <input
                     type="text"
-                    id="attorneystatus"
-                    value={guardianship}
-                    placeholder="Enter text"
                     required
-                    onChange={(e) => setGuardianship(e.target.value)}
+                    value={programLocation}
+                    onChange={(e) => setProgramLocation(e.target.value)}
                   />
-                  {/* <div className="yesNoAligment">
+                </div>
+              </div>
+
+              <div className="box-image-container">
+                <div className="form-field-update">
+                  <div className="form-field-child">
+                    <label htmlFor="">Guardianship:</label>
+                    <input
+                      type="text"
+                      id="attorneystatus"
+                      value={guardianship}
+                      placeholder="Enter text"
+                      required
+                      onChange={(e) => setGuardianship(e.target.value)}
+                    />
+                    {/* <div className="yesNoAligment">
               <div className="checkboxitem">
                 <input
                   type="checkbox"
@@ -2377,24 +2628,25 @@ const InitialAssessment = () => {
                <label htmlFor="guardianshipno">No</label>
               </div>
               </div> */}
-                </div>
+                  </div>
 
-                <div className="form-field-child">
-                  <label htmlFor="attorneystatus">Power of Attorney Status:</label>
-                  <input
-                    type="text"
-                    id="attorneystatus"
-                    value={powerOfAttorneyStatus}
-                    placeholder="Enter text"
-                    required
-                    onChange={(e) => setPowerOfAttorneyStatus(e.target.value)}
-                  />
+                  <div className="form-field-child">
+                    <label htmlFor="attorneystatus">
+                      Power of Attorney Status:
+                    </label>
+                    <input
+                      type="text"
+                      id="attorneystatus"
+                      value={powerOfAttorneyStatus}
+                      placeholder="Enter text"
+                      required
+                      onChange={(e) => setPowerOfAttorneyStatus(e.target.value)}
+                    />
+                  </div>
                 </div>
-
-              </div>
 
                 <div className="border-bootom-line"></div>
-              {/* <div className="form-field">
+                {/* <div className="form-field">
               <label htmlFor="guardianship">Guardianship:</label>
 
               <input
@@ -2407,74 +2659,74 @@ const InitialAssessment = () => {
               />
             </div> */}
 
-              <div className="form-field-single-update">
-                <label htmlFor="todaydate">Today’s Date:</label>
-                <input
-                  type="date"
-                  id="todaydate"
-                  value={todayDate}
-                  placeholder="DD/MM/YYYY"
-                  required
-                  onChange={(e) => setTodayDate(e.target.value)}
-                />
-              </div>
+                <div className="form-field-single-update">
+                  <label htmlFor="todaydate">Today’s Date:</label>
+                  <input
+                    type="date"
+                    id="todaydate"
+                    value={todayDate}
+                    placeholder="DD/MM/YYYY"
+                    required
+                    onChange={(e) => setTodayDate(e.target.value)}
+                  />
+                </div>
                 <div className="border-bootom-line"></div>
-              <div className="form-field-single-update">
-                <label htmlFor="fidname">Guardianship/POA/PUB FID Name:</label>
-                <input
-                  type="text"
-                  id="fidname"
-                  value={guardianshipPoaPubFidName}
-                  placeholder="Enter name"
-                  required
-                  onChange={(e) => setGuardianshipPoaPubFidName(e.target.value)}
-                />
-              </div>
+                <div className="form-field-single-update">
+                  <label htmlFor="fidname">
+                    Guardianship/POA/PUB FID Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="fidname"
+                    value={guardianshipPoaPubFidName}
+                    placeholder="Enter name"
+                    required
+                    onChange={(e) =>
+                      setGuardianshipPoaPubFidName(e.target.value)
+                    }
+                  />
+                </div>
                 <div className="border-bootom-line"></div>
-              <div className="form-field-single-update">
-                <label htmlFor="approvedby">Approved By:</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={approvedBy}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setApprovedBy(e.target.value)}
-                />
-              </div>
+                <div className="form-field-single-update">
+                  <label htmlFor="approvedby">Approved By:</label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={approvedBy}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setApprovedBy(e.target.value)}
+                  />
+                </div>
               </div>
               {/* <h2 style={{ marginTop: "1.5rem", fontWeight: "bold" }}>Other Details:</h2> */}
 
               <div className="box-image-container">
                 <div className="form-field-single-update-bold">
-
-                  <label >
-                  Reason for Admission to Services:
-                </label>
-                <Select
-                  isMulti
-
-                  value={reasonForAdmission}
-                  onChange={handleSelectChangeAdmissionReasonForAdmission}
-                  options={option_value_ReasonForAdmission}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownReasionForAdmission}
-                />
-              </div>
+                  <label>Reason for Admission to Services:</label>
+                  <Select
+                    isMulti
+                    value={reasonForAdmission}
+                    onChange={handleSelectChangeAdmissionReasonForAdmission}
+                    options={option_value_ReasonForAdmission}
+                    isCreatable={true}
+                    onKeyDown={handleKeyDownReasionForAdmission}
+                  />
+                </div>
               </div>
 
               <div className="box-image-container">
-              <div className="form-field-single-update">
-                <label >Resident’s Goals:</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={residentGoals}
-                  placeholder="Enter goal"
-                  required
-                  onChange={(e) => setResidentGoals(e.target.value)}
-                />
-                {/* <textarea
+                <div className="form-field-single-update">
+                  <label>Resident’s Goals:</label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={residentGoals}
+                    placeholder="Enter goal"
+                    required
+                    onChange={(e) => setResidentGoals(e.target.value)}
+                  />
+                  {/* <textarea
                 id="programlocation&address"
                 type="text"
                 value={residentGoals}
@@ -2484,59 +2736,51 @@ const InitialAssessment = () => {
                 required
                 onChange={(e) => setResidentGoals(e.target.value)}
               /> */}
-              </div>
+                </div>
               </div>
 
               <div className="box-image-container">
                 <div className="form-field-single-update-bold">
-                  <label >Resident’s Strength:</label>
-                <Select
-                  isMulti
-                  value={residentStrengths}
-                  onChange={handleSelectChange}
-                  options={qualitiesOptions}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownResidentStrength}
-                />
-              </div>
+                  <label>Resident’s Strength:</label>
+                  <Select
+                    isMulti
+                    value={residentStrengths}
+                    onChange={handleSelectChange}
+                    options={qualitiesOptions}
+                    isCreatable={true}
+                    onKeyDown={handleKeyDownResidentStrength}
+                  />
+                </div>
                 <div className="border-bootom-line"></div>
-              <div className="form-field-single-update">
-                <label >
-                    Resident’s Barriers:
-                </label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={residentLimitations}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setResidentLimitations(e.target.value)}
-                />
-
+                <div className="form-field-single-update">
+                  <label>Resident’s Barriers:</label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={residentLimitations}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setResidentLimitations(e.target.value)}
+                  />
                 </div>
               </div>
-
-
-
 
               <div className="box-image-container">
-
                 <div className="form-field-single-update">
-                <label >
-                  Current Behavioral Issues / Symptoms Reported by the Resident:
-                </label>
-                <input
-                  type="text"
-
-                  value={currentBehavioralIssues}
-                  placeholder="Enter text"
-                  onChange={(e) => setCurrentBehavioralIssues(e.target.value)}
-                />
+                  <label>
+                    Current Behavioral Issues / Symptoms Reported by the
+                    Resident:
+                  </label>
+                  <input
+                    type="text"
+                    value={currentBehavioralIssues}
+                    placeholder="Enter text"
+                    onChange={(e) => setCurrentBehavioralIssues(e.target.value)}
+                  />
                 </div>
               </div>
 
-
-              { /*
+              {/*
               <label className="label-review">
                 Identified Needs/targeted Behaviors Intervention(s) to Meet
                 Objectives
@@ -2696,7 +2940,6 @@ const InitialAssessment = () => {
                 />)
               } */}
 
-
               {/* <div className="form-field">
                 <label htmlFor="approvedby">Staff Name, Title :</label>
                 <input
@@ -2823,19 +3066,27 @@ const InitialAssessment = () => {
                 />)
               } */}
 
-              <h5 style={{ marginTop: "1.5rem",fontWeight:"bold",textAlign:"center" }}>SECTION II</h5>
+              <h5
+                style={{
+                  marginTop: "1.5rem",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                SECTION II
+              </h5>
               <div className="formsheading">
                 <p>
                   A. Currently prescribed medications are attached on a separate
                   page.
                 </p>
-                <p style={{ fontWeight: "bold" }}>B. Current and Past Medical/Psychiatric Conditions.</p>
-
+                <p style={{ fontWeight: "bold" }}>
+                  B. Current and Past Medical/Psychiatric Conditions.
+                </p>
               </div>
 
-              <div className="needs-interventions-container-condition">
+              <div className="needs-interventions-container-condition table-respnosive">
                 <div className="needs-interventions-column-condition">
-
                   <table>
                     <thead>
                       <th>Conditions</th>
@@ -2864,15 +3115,25 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none", width: "50%" }}
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                              width: "50%",
+                            }}
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
                             value={commentDiabety}
                             placeholder="___________"
                             onChange={(e) => setCommentDeabetes(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -2898,7 +3159,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(commentHeart.split("\n").length, 1)}
                             value={commentHeart}
                             placeholder="___________"
@@ -2906,7 +3171,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentHeart((prevComment) => prevComment + "\n");
+                                setCommentHeart(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -2932,15 +3199,24 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(commentHistory.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              commentHistory.split("\n").length,
+                              1
+                            )}
                             value={commentHistory}
                             placeholder="___________"
                             onChange={(e) => setCommentHistory(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentHistory((prevComment) => prevComment + "\n");
+                                setCommentHistory(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -2966,7 +3242,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(commentHigh.split("\n").length, 1)}
                             value={commentHigh}
                             placeholder="___________"
@@ -2974,7 +3254,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentHigh((prevComment) => prevComment + "\n");
+                                setCommentHigh(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3000,7 +3282,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(commentLung.split("\n").length, 1)}
                             value={commentLung}
                             placeholder="___________"
@@ -3008,7 +3294,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentLung((prevComment) => prevComment + "\n");
+                                setCommentLung(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3034,15 +3322,24 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(commentSeizures.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              commentSeizures.split("\n").length,
+                              1
+                            )}
                             value={commentSeizures}
                             placeholder="___________"
                             onChange={(e) => setCommentSeizures(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentSeizures((prevComment) => prevComment + "\n");
+                                setCommentSeizures(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3069,7 +3366,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(commentCancer.split("\n").length, 1)}
                             value={commentCancer}
                             placeholder="___________"
@@ -3077,7 +3378,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentCancer((prevComment) => prevComment + "\n");
+                                setCommentCancer(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3103,7 +3406,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(commentLiver.split("\n").length, 1)}
                             value={commentLiver}
                             placeholder="___________"
@@ -3111,7 +3418,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentLiver((prevComment) => prevComment + "\n");
+                                setCommentLiver(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3201,7 +3510,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(commentInjury.split("\n").length, 1)}
                             value={commentInjury}
                             placeholder="___________"
@@ -3209,7 +3522,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentInjury((prevComment) => prevComment + "\n");
+                                setCommentInjury(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3235,7 +3550,11 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
                             rows={Math.max(chronicCommit.split("\n").length, 1)}
                             value={chronicCommit}
                             placeholder="___________"
@@ -3243,7 +3562,9 @@ const InitialAssessment = () => {
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setChronicCommit((prevComment) => prevComment + "\n");
+                                setChronicCommit(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3269,15 +3590,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(AllergiesComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              AllergiesComment.split("\n").length,
+                              1
+                            )}
                             value={AllergiesComment}
                             placeholder="___________"
-                            onChange={(e) => setAllergiesComment(e.target.value)}
+                            onChange={(e) =>
+                              setAllergiesComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setAllergiesComment((prevComment) => prevComment + "\n");
+                                setAllergiesComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3303,15 +3635,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(SurgeriesComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              SurgeriesComment.split("\n").length,
+                              1
+                            )}
                             value={SurgeriesComment}
                             placeholder="___________"
-                            onChange={(e) => setSurgeriesComment(e.target.value)}
+                            onChange={(e) =>
+                              setSurgeriesComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setSurgeriesComment((prevComment) => prevComment + "\n");
+                                setSurgeriesComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3337,15 +3680,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(pregnanciesComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              pregnanciesComment.split("\n").length,
+                              1
+                            )}
                             value={pregnanciesComment}
                             placeholder="___________"
-                            onChange={(e) => setPregnanciesComment(e.target.value)}
+                            onChange={(e) =>
+                              setPregnanciesComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setPregnanciesComment((prevComment) => prevComment + "\n");
+                                setPregnanciesComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3371,15 +3725,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(SubstanceComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              SubstanceComment.split("\n").length,
+                              1
+                            )}
                             value={SubstanceComment}
                             placeholder="___________"
-                            onChange={(e) => setSubstanceComment(e.target.value)}
+                            onChange={(e) =>
+                              setSubstanceComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setSubstanceComment((prevComment) => prevComment + "\n");
+                                setSubstanceComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3405,15 +3770,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(DepressionComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              DepressionComment.split("\n").length,
+                              1
+                            )}
                             value={DepressionComment}
                             placeholder="___________"
-                            onChange={(e) => setDepressionComment(e.target.value)}
+                            onChange={(e) =>
+                              setDepressionComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setDepressionComment((prevComment) => prevComment + "\n");
+                                setDepressionComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3439,15 +3815,24 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(AnxietyComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              AnxietyComment.split("\n").length,
+                              1
+                            )}
                             value={AnxietyComment}
                             placeholder="___________"
                             onChange={(e) => setAnxietyComment(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setAnxietyComment((prevComment) => prevComment + "\n");
+                                setAnxietyComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3473,15 +3858,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(healthConditionsYesComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              healthConditionsYesComment.split("\n").length,
+                              1
+                            )}
                             value={healthConditionsYesComment}
                             placeholder="___________"
-                            onChange={(e) => sethealthConditionsYesComment(e.target.value)}
+                            onChange={(e) =>
+                              sethealthConditionsYesComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                sethealthConditionsYesComment((prevComment) => prevComment + "\n");
+                                sethealthConditionsYesComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3507,15 +3903,24 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(BipolarComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              BipolarComment.split("\n").length,
+                              1
+                            )}
                             value={BipolarComment}
                             placeholder="___________"
                             onChange={(e) => setBipolarComment(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setBipolarComment((prevComment) => prevComment + "\n");
+                                setBipolarComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3541,15 +3946,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(SchizophreniaComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              SchizophreniaComment.split("\n").length,
+                              1
+                            )}
                             value={SchizophreniaComment}
                             placeholder="___________"
-                            onChange={(e) => setSchizophreniaComment(e.target.value)}
+                            onChange={(e) =>
+                              setSchizophreniaComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setSchizophreniaComment((prevComment) => prevComment + "\n");
+                                setSchizophreniaComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3575,15 +3991,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(ObsessiveComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              ObsessiveComment.split("\n").length,
+                              1
+                            )}
                             value={ObsessiveComment}
                             placeholder="___________"
-                            onChange={(e) => setObsessiveComment(e.target.value)}
+                            onChange={(e) =>
+                              setObsessiveComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setObsessiveComment((prevComment) => prevComment + "\n");
+                                setObsessiveComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3609,15 +4036,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(PersonalityComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              PersonalityComment.split("\n").length,
+                              1
+                            )}
                             value={PersonalityComment}
                             placeholder="___________"
-                            onChange={(e) => setPersonalityComment(e.target.value)}
+                            onChange={(e) =>
+                              setPersonalityComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setPersonalityComment((prevComment) => prevComment + "\n");
+                                setPersonalityComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3643,15 +4081,24 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(PhobiasComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              PhobiasComment.split("\n").length,
+                              1
+                            )}
                             value={PhobiasComment}
                             placeholder="___________"
                             onChange={(e) => setPhobiasComment(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setPhobiasComment((prevComment) => prevComment + "\n");
+                                setPhobiasComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3677,15 +4124,26 @@ const InitialAssessment = () => {
                         </td>
                         <td>
                           <textarea
-                            style={{ border: "none", outline: "none", resize: "none" }}
-                            rows={Math.max(healthConditionsYesComment.split("\n").length, 1)}
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              healthConditionsYesComment.split("\n").length,
+                              1
+                            )}
                             value={healthConditionsYesComment}
                             placeholder="___________"
-                            onChange={(e) => sethealthConditionsYesComment(e.target.value)}
+                            onChange={(e) =>
+                              sethealthConditionsYesComment(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                sethealthConditionsYesComment((prevComment) => prevComment + "\n");
+                                sethealthConditionsYesComment(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
                           />
@@ -3721,14 +4179,10 @@ const InitialAssessment = () => {
                           />
                         </td>
                       </tr>
-
                     </tbody>
                   </table>
-
                 </div>
               </div>
-
-
 
               {/* <div className="yeschechbox">
                 <label htmlFor="" style={{ fontSize: "20px", marginTop: "1.5rem" }}>Diabetes:</label>
@@ -4639,23 +5093,21 @@ const InitialAssessment = () => {
                 />
               </div> */}
 
-
               <div className="box-image-container">
-              <div className="form-field-single-update-bold">
-                  <label >
-                  Significant Family Medical/Psychiatric History:
-                </label>
+                <div className="form-field-single-update-bold">
+                  <label>Significant Family Medical/Psychiatric History:</label>
 
-                <Select
-                  isMulti
-
-                  value={SignificantFamilyMedicalPsychiatricHistory}
-                  onChange={SignificantFamilyMedicalPsychiatricHistoryHandler}
-                  options={SignificantFamilyMedicalPsychiatricHistoryOptions}
-                  isCreatable={true}
-                  onKeyDown={handleKeySignificantFamilyMedicalPsychiatricHistory}
-                />
-              </div>
+                  <Select
+                    isMulti
+                    value={SignificantFamilyMedicalPsychiatricHistory}
+                    onChange={SignificantFamilyMedicalPsychiatricHistoryHandler}
+                    options={SignificantFamilyMedicalPsychiatricHistoryOptions}
+                    isCreatable={true}
+                    onKeyDown={
+                      handleKeySignificantFamilyMedicalPsychiatricHistory
+                    }
+                  />
+                </div>
               </div>
               <div className="formsheading">
                 <h6 style={{ marginTop: "1.5rem" }}>
@@ -4664,73 +5116,82 @@ const InitialAssessment = () => {
                 </h6>
               </div>
 
-              <div className="box-image-container hidePrint"> 
-              <div className="form-field-single-update-bold">
-                <div >
-                  <label >Type of Service:</label>
+              <div className="box-image-container hidePrint">
+                <div className="form-field-single-update-bold">
+                  <div>
+                    <label>Type of Service:</label>
+                  </div>
+                  <div>
+                    {" "}
+                    <Select
+                      isMulti
+                      style={{ border: "none", outline: "none" }}
+                      value={mentalHealthTreatmentHistoryTypeOfService}
+                      onChange={
+                        mentalHealthTreatmentHistoryTypeOfServiceHandler
+                      }
+                      options={mentalHealthTreatmentHistoryTypeOfServiceOption}
+                      isCreatable={true}
+                      onKeyDown={
+                        handleKeyMentalHealthTreatmentHistoryTypeOfService
+                      }
+                    />
+                  </div>
                 </div>
-                <div >  <Select
-                  isMulti
-                  style={{ border: "none", outline: "none" }}
-                  value={mentalHealthTreatmentHistoryTypeOfService}
-                  onChange={mentalHealthTreatmentHistoryTypeOfServiceHandler}
-                  options={mentalHealthTreatmentHistoryTypeOfServiceOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyMentalHealthTreatmentHistoryTypeOfService}
-                  /></div>
-              </div>
 
                 <div className="border-bootom-line"></div>
 
-              <div className="form-field-update">
-                <div className="form-field-child">
-                  <label >Where:</label>
-                  <input
-                    type="text"
-                    id="approvedby"
-                    value={mentalHealthTreatmentHistoryWhere}
-                    placeholder="Enter text"
-                    required
-                    onChange={(e) =>
-                      setMentalHealthTreatmentHistoryWhere(e.target.value)
-                    }
-                  />
-                </div>
+                <div className="form-field-update">
+                  <div className="form-field-child">
+                    <label>Where:</label>
+                    <input
+                      type="text"
+                      id="approvedby"
+                      value={mentalHealthTreatmentHistoryWhere}
+                      placeholder="Enter text"
+                      required
+                      onChange={(e) =>
+                        setMentalHealthTreatmentHistoryWhere(e.target.value)
+                      }
+                    />
+                  </div>
 
-                <div className="form-field-child">
-                  <label >Dates:</label>
-                  <input
-                    type="date"
-                    id="approvedby"
-                    value={mentalHealthTreatmentHistoryDates}
-                    placeholder="Enter text"
-                    required
-                    onChange={(e) =>
-                      setMentalHealthTreatmentHistoryDates(e.target.value)
-                    }
-                  />
+                  <div className="form-field-child">
+                    <label>Dates:</label>
+                    <input
+                      type="date"
+                      id="approvedby"
+                      value={mentalHealthTreatmentHistoryDates}
+                      placeholder="Enter text"
+                      required
+                      onChange={(e) =>
+                        setMentalHealthTreatmentHistoryDates(e.target.value)
+                      }
+                    />
+                  </div>
                 </div>
-
-              </div>
 
                 <div className="border-bootom-line"></div>
 
-              <div className="form-field-single-update-bold">
-                <label htmlFor="reasonadmission">
-                  Diagnosis/Reason for Treatment:
-                </label>
+                <div className="form-field-single-update-bold">
+                  <label htmlFor="reasonadmission">
+                    Diagnosis/Reason for Treatment:
+                  </label>
 
-                <Select
-                  isMulti
-                  placeholder="Select Multiple Type"
-                  value={mentalHealthTreatmentHistoryDiagnosisReason}
-                  onChange={mentalHealthTreatmentHistoryDiagnosisReasonHandler}
-                  options={mentalHealthTreatmentHistoryDiagnosisReasonOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownMentalHealthTreatmentHistoryDiagnosisReason}
-                />
-              </div>
-
+                  <Select
+                    isMulti
+                    placeholder="Select Multiple Type"
+                    value={mentalHealthTreatmentHistoryDiagnosisReason}
+                    onChange={
+                      mentalHealthTreatmentHistoryDiagnosisReasonHandler
+                    }
+                    options={mentalHealthTreatmentHistoryDiagnosisReasonOption}
+                    isCreatable={true}
+                    onKeyDown={
+                      handleKeyDownMentalHealthTreatmentHistoryDiagnosisReason
+                    }
+                  />
+                </div>
               </div>
               <div className="form-actions  hidePrint">
                 <button
@@ -4750,23 +5211,40 @@ const InitialAssessment = () => {
                         <th>Type of Services</th>
                         <th>Where</th>
                         <th>Dates</th>
-                        <th>Diagnosis/Reason for Treatment  </th>
-                   
+                        <th>Diagnosis/Reason for Treatment </th>
+
                         <th className="hidePrint">Action</th>
-                        
                       </thead>
                       <tbody>
-                        {typeOfServiceArray?.map((i,index) => (
+                        {typeOfServiceArray?.map((i, index) => (
                           <tr>
-                            <td>{i?.mentalHealthTreatmentHistoryTypeOfService?.map((item) => (
-                              <p key={item?.value}>{item?.value}</p>
-                            ))}</td>
-                            <td>{`${i?.mentalHealthTreatmentHistoryWhere}`} </td>
+                            <td>
+                              {i?.mentalHealthTreatmentHistoryTypeOfService?.map(
+                                (item) => (
+                                  <p key={item?.value}>{item?.value}</p>
+                                )
+                              )}
+                            </td>
+                            <td>
+                              {`${i?.mentalHealthTreatmentHistoryWhere}`}{" "}
+                            </td>
                             <td>{`${i?.mentalHealthTreatmentHistoryDates}`}</td>
-                            <td>{i?.mentalHealthTreatmentHistoryDiagnosisReason?.map((item) => (
-                              <p key={item?.value}>{item?.value}</p>
-                            ))}</td>
-                            <td className="hidePrint"><AiFillDelete  onClick={()=>handleRemoveItem(index)} style={{fontSize:"1.5rem"}}/> </td>
+                            <td>
+                              {i?.mentalHealthTreatmentHistoryDiagnosisReason?.map(
+                                (item) => (
+                                  <p key={item?.value}>{item?.value}</p>
+                                )
+                              )}
+                            </td>
+                            <td className="hidePrint">
+                              <AiFillDelete
+                                onClick={() => handleRemoveItem(index)}
+                                style={{
+                                  fontSize: "1.5rem",
+                                  cursor: "pointer",
+                                }}
+                              />{" "}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
@@ -4777,10 +5255,16 @@ const InitialAssessment = () => {
 
               <div className="yeschechbox235-parent">
                 <div className="yeschechbox235" style={{ marginTop: "1.5rem" }}>
-                  <label style={{ fontWeight: "bold" }}>Substance Abuse history:</label>
+                  <label style={{ fontWeight: "bold" }}>
+                    Substance Abuse history:
+                  </label>
 
                   <div
-                    style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
                   >
                     <input
                       type="checkbox"
@@ -4791,13 +5275,16 @@ const InitialAssessment = () => {
                       }
                     />
                   </div>
-
                 </div>
 
                 <div className="yeschechbox23" style={{ marginTop: "1.5rem" }}>
-                  <label htmlFor="" >Denies: </label>
+                  <label htmlFor="">Denies: </label>
                   <div
-                    style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
                   >
                     <input
                       type="checkbox"
@@ -4810,10 +5297,6 @@ const InitialAssessment = () => {
                   </div>
                 </div>
               </div>
-
-
-
-
 
               {/* <div className="box-image-container hidePrint">
 
@@ -4890,7 +5373,7 @@ const InitialAssessment = () => {
               </div>
               </div> */}
 
-{/* <div className="needs-interventions-container2">
+              {/* <div className="needs-interventions-container2">
                 <div className="needs-interventions-column2">
                   {typeArray.length > 0 && (
                     <table>
@@ -4925,652 +5408,1567 @@ const InitialAssessment = () => {
                 </div>
               </div> */}
 
-<div   className="needs-interventions-container2 table-respnosive">
+              <div className="needs-interventions-container2 table-respnosive">
                 <div className="needs-interventions-column2">
-            
-                    <table>
-                      <thead>
-                        <th style={{fontWeight:"bold"}}>Type</th>
-                        <th style={{fontWeight:"bold",width:"180px"}}>Age of First use</th>
-                        <th style={{fontWeight:"bold"}}>Last Use</th>
-                        <th style={{fontWeight:"bold"}}>Frequency </th>
-                        <th style={{fontWeight:"bold"}}>Length of Sobriety</th>
+                  <table>
+                    <thead>
+                      <th style={{ fontWeight: "bold" }}>Type</th>
+                      <th style={{ fontWeight: "bold" }}>Age of First use</th>
+                      <th style={{ fontWeight: "bold" }}>Last Use</th>
+                      <th style={{ fontWeight: "bold" }}>Frequency </th>
+                      <th style={{ fontWeight: "bold" }}>Length of Sobriety</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Alcohol</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUseAlcohol
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseAlcohol(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseAlcohol}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseAlcohol(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
 
-                      </thead>
-                      <tbody>
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyAlcohol}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyAlcohol(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
 
-                        <tr>
-                          <td>Alcohol</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Alcohol</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Benzodiazepines</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Cocaine</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Crack</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Hallucinogens
-                            (LSD,mescaline,etc.)
-</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Heroin</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Inhalants</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Marijuana </td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Methamphetamine </td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Methadone</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>MDMA (ecstasy)</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>PCP (angel dust)</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Prescription medicine</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>OTC medicine</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataLastUse}
-                  onChange={substanceAbuseHistoryDataLastUseHandler}
-                  options={substanceAbuseHistoryDataLastUseOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
-                  value={substanceAbuseHistoryDataFrequency}
-                  onChange={substanceAbuseHistoryDataFrequencyHandler}
-                  options={substanceAbuseHistoryDataFrequencyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
-                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
-                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
-                        </tr>
-                        
-                        {typeArray?.map((i) => (
-                          <tr>
-                            <td>other:</td>
-                            <td>{`${i.substanceAbuseHistoryDataAgeOfFirstUse}`} </td>
-                            <td>{i?.substanceAbuseHistoryDataLastUse?.map((item) => (
-                              <p key={item?.value}>{item?.value}</p>
-                            ))}</td>
-                            <td>{i?.substanceAbuseHistoryDataFrequency?.map((item) => (
-                              <p key={item?.value}>{item?.value}</p>
-                            ))}</td>
-                            <td>{i?.substanceAbuseHistoryDataLengthOfSobriety?.map((item) => (
-                              <p key={item?.value}>{item?.value}</p>
-                            ))}</td>
-                          </tr>
-                        ))}
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyAlcohol
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyAlcohol(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
 
-<tr>
-                          <td>Other</td>
-                          <td><input
-                          type="text"
-                          className="treatment_plan_table"
-                          placeholder="_________"
-                          /></td>
-                          <td>
-                          <Select
-                  isMulti
+                      <tr>
+                        <td>Benzodiazepines</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUseBenzodiazepines
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseBenzodiazepines(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
                   value={substanceAbuseHistoryDataLastUse}
                   onChange={substanceAbuseHistoryDataLastUseHandler}
                   options={substanceAbuseHistoryDataLastUseOption}
                   isCreatable={true}
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
-                />
-                          </td>
-                          <td>
-                          <Select
-                  isMulti
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={
+                              substanceAbuseHistoryDataLastUseBenzodiazepines
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseBenzodiazepines(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
                   value={substanceAbuseHistoryDataFrequency}
                   onChange={substanceAbuseHistoryDataFrequencyHandler}
                   options={substanceAbuseHistoryDataFrequencyOption}
                   isCreatable={true}
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
-                />
-                          </td>
-                          <td>
-                          <Select
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataFrequencyBenzodiazepines
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyBenzodiazepines(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
                   value={substanceAbuseHistoryDataLengthOfSobriety}
-                  isMulti
+                  
                   onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
                   options={substanceAbuseHistoryDataLengthOfSobrietyOption}
                   isCreatable={true}
                   onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
-                />
-                          </td>
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyBenzodiazepines
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyBenzodiazepines(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Crack</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={substanceAbuseHistoryDataAgeOfFirstUseCrack}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseCrack(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseCrack}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseCrack(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyCrack}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyCrack(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyCrack
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyCrack(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Heroin</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={substanceAbuseHistoryDataAgeOfFirstUseHeroin}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseHeroin(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseHeroin}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseHeroin(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyHeroin}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyHeroin(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyHeroin
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyHeroin(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Inhalants</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUseInhalants
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseInhalants(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseInhalants}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseInhalants(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyInhalants}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyInhalants(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyInhalants
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyInhalants(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Marijuana </td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUseMarijuana
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseMarijuana(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseMarijuana}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseMarijuana(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyMarijuana}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyMarijuana(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyMarijuana
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyMarijuana(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Methamphetamine </td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUseMethamphetamine
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseMethamphetamine(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={
+                              substanceAbuseHistoryDataLastUseMethamphetamine
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseMethamphetamine(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataFrequencyMethamphetamine
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyMethamphetamine(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyMethamphetamine
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyMethamphetamine(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Methadone</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUseMethadone
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseMethadone(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseMethadone}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseMethadone(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyMethadone}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyMethadone(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyMethadone
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyMethadone(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>MDMA (ecstasy)</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={substanceAbuseHistoryDataAgeOfFirstUseMDMA}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseMDMA(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseMDMA}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseMDMA(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyMDMA}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyMDMA(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyMDMA
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyMDMA(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>PCP (angel dust)</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={substanceAbuseHistoryDataAgeOfFirstUsePCP}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUsePCP(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUsePCP}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUsePCP(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyPCP}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyPCP(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataLengthOfSobrietyPCP}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyPCP(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Prescription medicine</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={
+                              substanceAbuseHistoryDataAgeOfFirstUsePrescription
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUsePrescription(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUsePrescription}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUsePrescription(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataFrequencyPrescription
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyPrescription(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={
+                              substanceAbuseHistoryDataLengthOfSobrietyPrescription
+                            }
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyPrescription(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>OTC medicine</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={substanceAbuseHistoryDataAgeOfFirstUseOTC}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataAgeOfFirstUseOTC(
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataLastUse}
+                  onChange={substanceAbuseHistoryDataLastUseHandler}
+                  options={substanceAbuseHistoryDataLastUseOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLastUse}
+                /> */}
+                          <Form.Select
+                            as="select"
+                            value={substanceAbuseHistoryDataLastUseOTC}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLastUseOTC(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  
+                  value={substanceAbuseHistoryDataFrequency}
+                  onChange={substanceAbuseHistoryDataFrequencyHandler}
+                  options={substanceAbuseHistoryDataFrequencyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataFrequency}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataFrequencyOTC}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataFrequencyOTC(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          {/* <Select
+                  value={substanceAbuseHistoryDataLengthOfSobriety}
+                  
+                  onChange={substanceAbuseHistoryDataLengthOfSobrietyHandler}
+                  options={substanceAbuseHistoryDataLengthOfSobrietyOption}
+                  isCreatable={true}
+                  onKeyDown={handleKeyDownSubstanceAbuseHistoryDataLengthOfSobriety}
+                /> */}
+
+                          <Form.Select
+                            value={substanceAbuseHistoryDataLengthOfSobrietyOTC}
+                            onChange={(e) =>
+                              setSubstanceAbuseHistoryDataLengthOfSobrietyOTC(
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+
+                      {typeArray?.map((i) => (
+                        <tr>
+                          <td>Other: {i.otherTypeOther}</td>
+                          <td>{i.otherAgeOfFirstUse} </td>
+                          <td>{i.otherLastUse} </td>
+                          <td>{i.otherFrequancy} </td>
+                          <td>{i.OtherlengthOfSobrifty} </td>
                         </tr>
+                      ))}
 
-
-                      </tbody>
-                    </table>
-     
+                      <tr>
+                        <td>
+                          Other:
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={otherTypeOther}
+                            onChange={(e) => setOtherTypeOther(e.target.value)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            className="treatment_plan_table"
+                            placeholder="_________"
+                            value={otherAgeOfFirstUse}
+                            onChange={(e) =>
+                              setOtherAgeOfFirstUse(e.target.value)
+                            }
+                          />
+                        </td>
+                        <td>
+                          <Form.Select
+                            as="select"
+                            value={otherLastUse}
+                            onChange={(e) => setOtherLastUse(e.target.value)}
+                          >
+                            <option>Select</option>
+                            <option value="Weeks ago">Weeks ago</option>
+                            <option value="Days ago">Days ago</option>
+                            <option value="Yesterday">Yesterday</option>
+                            <option value="Months ago">Months ago</option>
+                            <option value="Few hours ago">Few hours ago</option>
+                            <option value="Unsure">Unsure</option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          <Form.Select
+                            value={otherFrequancy}
+                            onChange={(e) => setOtherFrequancy(e.target.value)}
+                          >
+                            <option>Select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Two to four times weekly">
+                              Two to four times weekly
+                            </option>
+                            <option value="Multiple times a day">
+                              Multiple times a day
+                            </option>
+                            <option value="Chronic">Chronic</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Only on social events">
+                              Only on social events
+                            </option>
+                            <option value="Only on weekends">
+                              Only on weekends
+                            </option>
+                            <option value="Few times a month">
+                              Few times a month
+                            </option>
+                          </Form.Select>
+                        </td>
+                        <td>
+                          <Form.Select
+                            value={OtherlengthOfSobrifty}
+                            onChange={(e) =>
+                              setOtherLengthOfSobirty(e.target.value)
+                            }
+                          >
+                            <option>Select</option>
+                            <option value="One week">One week</option>
+                            <option value="A few days ago">
+                              A few days ago
+                            </option>
+                            <option value="One month">One month</option>
+                            <option value="Two months">Two months</option>
+                            <option value="Three months">Three months</option>
+                            <option value="Four months">Four months</option>
+                            <option value="Five to Six months">
+                              Five to Six months
+                            </option>
+                            <option value="One year">One year</option>
+                            <option value="Two years">Two years</option>
+                            <option value="Many years">Many years</option>
+                          </Form.Select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
@@ -5585,7 +6983,9 @@ const InitialAssessment = () => {
               </div>
 
               <div class="checkbox-container">
-                <label style={{ fontWeight: "bold" }}>Active Withdrawal Symptoms:</label>
+                <label style={{ fontWeight: "bold" }}>
+                  Active Withdrawal Symptoms:
+                </label>
                 <div class="chechbox12-aligment411">
                   <div class="checkoptions">
                     <div class="checkboxitem">
@@ -5599,7 +6999,9 @@ const InitialAssessment = () => {
                           setNoneReportedOrObserved(!noneReportedOrObserved)
                         }
                       />
-                      <label htmlFor="noneReportedOrObserved">None reported observed</label>
+                      <label htmlFor="noneReportedOrObserved">
+                        None reported observed
+                      </label>
                     </div>
                     <div class="checkboxitem">
                       <input
@@ -5649,7 +7051,6 @@ const InitialAssessment = () => {
                         id="Tremors"
                         value={Tremors}
                         checked={Tremors}
-
                         onChange={() => setTremors(!Tremors)}
                       />
                       <label htmlFor="Tremors">Tremors</label>
@@ -5676,7 +7077,9 @@ const InitialAssessment = () => {
                           setTactileDisturbances(!TactileDisturbances)
                         }
                       />
-                      <label htmlFor="TactileDisturbances">Tactile Disturbances</label>
+                      <label htmlFor="TactileDisturbances">
+                        Tactile Disturbances
+                      </label>
                     </div>
                     <div class="checkboxitem">
                       <input
@@ -5688,10 +7091,10 @@ const InitialAssessment = () => {
                           setVisualDisturbances(!VisualDisturbances)
                         }
                       />
-                      <label htmlFor="VisualDisturbances">Visual Disturbances</label>
+                      <label htmlFor="VisualDisturbances">
+                        Visual Disturbances
+                      </label>
                     </div>
-
-
 
                     <div class="checkboxitem">
                       <input
@@ -5700,30 +7103,32 @@ const InitialAssessment = () => {
                         value={VisualDisturbances}
                         checked={VisualDisturbancesOtherBoolean}
                         onChange={() =>
-                          setVisualDisturbancesOtherBoolean(!VisualDisturbancesOtherBoolean)
+                          setVisualDisturbancesOtherBoolean(
+                            !VisualDisturbancesOtherBoolean
+                          )
                         }
                       />
                       <label htmlFor="VisualDisturbances">Other</label>
-                      {
-                        VisualDisturbancesOtherBoolean && <AutosizeInput
+                      {VisualDisturbancesOtherBoolean && (
+                        <AutosizeInput
                           type="text"
                           inputStyle={{ border: "none", outline: "none" }}
                           placeholder="______________"
                           value={VisualDisturbancesOtherType}
-                          onChange={(e) => setVisualDisturbancesOtherType(e.target.value)}
+                          onChange={(e) =>
+                            setVisualDisturbancesOtherType(e.target.value)
+                          }
                         />
-                      }
-
+                      )}
                     </div>
-
                   </div>
                 </div>
               </div>
 
-
-
               <div class="checkbox-container">
-                <label style={{ fontWeight: "bold" }}>Auditory Disturbances:</label>
+                <label style={{ fontWeight: "bold" }}>
+                  Auditory Disturbances:
+                </label>
                 <div class="chechbox12">
                   <div class="checkoptions">
                     <div class="checkboxitem">
@@ -5808,7 +7213,9 @@ const InitialAssessment = () => {
                           setLossofMuscleCoordination(!LossofMuscleCoordination)
                         }
                       />
-                      <label htmlFor="LossofMuscleCoordination">Loss of muscle coordination</label>
+                      <label htmlFor="LossofMuscleCoordination">
+                        Loss of muscle coordination
+                      </label>
                     </div>
                     <div class="checkboxitem">
                       <input
@@ -5817,432 +7224,673 @@ const InitialAssessment = () => {
                         value={LossofMuscleCoordinationOtherBoolean}
                         checked={LossofMuscleCoordinationOtherBoolean}
                         onChange={() =>
-                          setLossofMuscleCoordinationBoolean(!LossofMuscleCoordinationOtherBoolean)
+                          setLossofMuscleCoordinationBoolean(
+                            !LossofMuscleCoordinationOtherBoolean
+                          )
                         }
                       />
                       <label htmlFor="LossofMuscleCoordination">Other</label>
-                      {
-                        LossofMuscleCoordinationOtherBoolean && <AutosizeInput
+                      {LossofMuscleCoordinationOtherBoolean && (
+                        <AutosizeInput
                           type="text"
                           inputStyle={{ border: "none", outline: "none" }}
                           placeholder="______________"
                           value={LossofMuscleCoordinationOtherType}
-                          onChange={(e) => setLossofMuscleCoordinationType(e.target.value)}
+                          onChange={(e) =>
+                            setLossofMuscleCoordinationType(e.target.value)
+                          }
                         />
-                      }
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
 
-
-
               <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Mental Status Exam/Behavioral Observations:</h6>
+                <h6 style={{ fontWeight: "bold" }}>
+                  Mental Status Exam/Behavioral Observations:
+                </h6>
                 <h6 style={{ fontWeight: "bold" }}>General Appearance:</h6>
               </div>
 
-              <div class="checkbox-container">
-                <div class="chechbox12">
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Apparent age</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Height</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Weight</label>
-                    </div>
-                    <div class="checkboxitem">
-                      <label>Attire</label>
-                    </div>
-                    <div class="checkboxitem">
-                      <label>Grooming</label>
-                    </div>
+              <div className="box-image-container">
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Apparent age</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="consistent"
+                      checked={consistent}
+                      onChange={() => setConsistent(!consistent)}
+                    />
+                    <label htmlFor="consistent">Consistent</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="Younger"
+                      checked={younger}
+                      onChange={() => setYounger(!younger)}
+                    />
+                    <label htmlFor="Younger">Younger</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="older"
+                      checked={older}
+                      onChange={() => setOlder(!older)}
+                    />
+                    <label htmlFor="older">Older</label>
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
 
-                    {/* api implementation */}
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="consistent" checked={consistent} onChange={() => setConsistent(!consistent)} />
-                      <label htmlFor="consistent">Consistent</label>
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="averageHeight" checked={averageHeight} onChange={() => setAverageHeight(!averageHeight)} />
-                      <label htmlFor="averageHeight">Average</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="averageWeight" checked={averageWeight} onChange={() => setAverageWeight(!averageHeight)} />
-                      <label htmlFor="averageWeight">Average</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="casual" checked={casual} onChange={() => setCasual(!casual)} />
-                      <label htmlFor="casual">Casual</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="casual" checked={wellGroomed} onChange={() => setWellGroomed(!wellGroomed)} />
-                      <label htmlFor="wellGroomed">Well-groomed</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="Younger" checked={younger} onChange={() => setYounger(!younger)} />
-                      <label htmlFor="Younger">Younger</label>
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="short" checked={short} onChange={() => setShort(!short)} />
-                      <label htmlFor="short">Short</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="obese" checked={obese} onChange={() => setObese(!obese)} />
-                      <label htmlFor="obese">Obese</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="neat" checked={neat} onChange={() => setNeat(!neat)} />
-                      <label htmlFor="neat">Neat</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="adequateGrooming" checked={adequateGrooming} onChange={() => setAdequateGrooming(!adequateGrooming)} />
-                      <label htmlFor="adequateGrooming">Adequate</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="older" checked={older} onChange={() => setOlder(!older)} />
-                      <label htmlFor="older">Older</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="tall" checked={tall} onChange={() => setTall(!tall)} />
-                      <label htmlFor="tall">Tall</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="overweight" checked={overweight} onChange={() => setOverweight(!overweight)} />
-                      <label htmlFor="overweight">Overweight</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="tattered" checked={tattered} onChange={() => setTattered(!tattered)} />
-                      <label htmlFor="tattered">Tattered</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="unkempt" checked={unkempt} onChange={() => setUnkempt(!unkempt)} />
-                      <label htmlFor="unkempt">Unkempt</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Older</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Tall</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="thin" checked={thin} onChange={() => setThin(!thin)} />
-                      <label htmlFor="thin">Thin</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="dirty" checked={dirty} onChange={() => setDirty(!dirty)} />
-                      <label htmlFor="dirty">Dirty</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="disheveled" checked={disheveled} onChange={() => setDisheveled(!disheveled)} />
-                      <label htmlFor="disheveled">Disheveled</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Older</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Tall</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="emaciated" checked={emaciated} onChange={() => setEmaciated(!emaciated)} />
-                      <label htmlFor="emaciated">Emaciated</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Dirty</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Disheveled</span> */}
-                    </div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Heigth</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="averageHeight"
+                      checked={averageHeight}
+                      onChange={() => setAverageHeight(!averageHeight)}
+                    />
+                    <label htmlFor="averageHeight">Average</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="short"
+                      checked={short}
+                      onChange={() => setShort(!short)}
+                    />
+                    <label htmlFor="short">Short</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="tall"
+                      checked={tall}
+                      onChange={() => setTall(!tall)}
+                    />
+                    <label htmlFor="tall">Tall</label>
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Weight</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="averageWeight"
+                      checked={averageWeight}
+                      onChange={() => setAverageWeight(!averageHeight)}
+                    />
+                    <label htmlFor="averageWeight">Average</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="obese"
+                      checked={obese}
+                      onChange={() => setObese(!obese)}
+                    />
+                    <label htmlFor="obese">Obese</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="overweight"
+                      checked={overweight}
+                      onChange={() => setOverweight(!overweight)}
+                    />
+                    <label htmlFor="overweight">Overweight</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="thin"
+                      checked={thin}
+                      onChange={() => setThin(!thin)}
+                    />
+                    <label htmlFor="thin">Thin</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="emaciated"
+                      checked={emaciated}
+                      onChange={() => setEmaciated(!emaciated)}
+                    />
+                    <label htmlFor="emaciated">Emaciated</label>
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Attire</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="casual"
+                      checked={casual}
+                      onChange={() => setCasual(!casual)}
+                    />
+                    <label htmlFor="casual">Casual</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="neat"
+                      checked={neat}
+                      onChange={() => setNeat(!neat)}
+                    />
+                    <label htmlFor="neat">Neat</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="tattered"
+                      checked={tattered}
+                      onChange={() => setTattered(!tattered)}
+                    />
+                    <label htmlFor="tattered">Tattered</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="dirty"
+                      checked={dirty}
+                      onChange={() => setDirty(!dirty)}
+                    />
+                    <label htmlFor="dirty">Dirty</label>
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Grooming</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="casual"
+                      checked={wellGroomed}
+                      onChange={() => setWellGroomed(!wellGroomed)}
+                    />
+                    <label htmlFor="wellGroomed">Well-groomed</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="adequateGrooming"
+                      checked={adequateGrooming}
+                      onChange={() => setAdequateGrooming(!adequateGrooming)}
+                    />
+                    <label htmlFor="adequateGrooming">Adequate</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="unkempt"
+                      checked={unkempt}
+                      onChange={() => setUnkempt(!unkempt)}
+                    />
+                    <label htmlFor="unkempt">Unkempt</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="disheveled"
+                      checked={disheveled}
+                      onChange={() => setDisheveled(!disheveled)}
+                    />
+                    <label htmlFor="disheveled">Disheveled</label>
                   </div>
                 </div>
               </div>
+
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Demeanor / Interaction:</h6>
               </div>
-              <div class="checkbox-container">
-                <div class="chechbox12-aligment4">
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Mood</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Affect</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Eye Contact</label>
-                    </div>
-                    <div class="checkboxitem">
-                      <label>Cooperation</label>
-                    </div>
-                  </div>
-                  {/* state is start */}
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="euthymic" checked={euthymic} onChange={() => setEuthymic(!euthymic)} />
-                      <label htmlFor="euthymic">Euthymic</label>
 
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="normalRange" checked={normalRange} onChange={() => setNormalRange(!normalRange)} />
-                      <label htmlFor="normalRange">Normal range</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="appropriate" checked={appropriate} onChange={() => setAppropriate(!appropriate)} />
-                      <label htmlFor="appropriate">Appropriate</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="appropriateCooperation" checked={appropriateCooperation} onChange={() => setAppropriateCooperation(!appropriateCooperation)} />
-                      <label htmlFor="appropriateCooperation">Appropriate</label>
-
-                    </div>
+              <div className="box-image-container">
+                <div className=" checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Mood</label>
                   </div>
 
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="irritable" checked={irritable} onChange={() => setIrritable(!irritable)} />
-                      <label htmlFor="irritable">Irritable</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="depressedAffect" checked={depressedAffect} onChange={() => setDepressedAffect(!depressedAffect)} />
-                      <label htmlFor="depressedAffect">Depressed</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="minimal" checked={minimal} onChange={() => setMinimal(!minimal)} />
-                      <label htmlFor="minimal">Minimal</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="hostile" checked={hostile} onChange={() => setHostile(!hostile)} />
-                      <label htmlFor="hostile">Hostile</label>
-
-                    </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="euthymic"
+                      checked={euthymic}
+                      onChange={() => setEuthymic(!euthymic)}
+                    />
+                    <label htmlFor="euthymic">Euthymic</label>
                   </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="elevated" checked={elevated} onChange={() => setElevated(!elevated)} />
-                      <label htmlFor="elevated">Elevated</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="labile" checked={labile} onChange={() => setLabile(!labile)} />
-                      <label htmlFor="labile">Labile</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="poor" checked={poor} onChange={() => setPoor(!poor)} />
-                      <label htmlFor="poor">Poor</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="evasive" checked={evasive} onChange={() => setEvasive(!evasive)} />
-                      <label htmlFor="evasive">Evasive</label>
-
-                    </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="irritable"
+                      checked={irritable}
+                      onChange={() => setIrritable(!irritable)}
+                    />
+                    <label htmlFor="irritable">Irritable</label>
                   </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="depressedMood" checked={depressedMood} onChange={() => setDepressedMood(!depressedMood)} />
-                      <label htmlFor="depressedMood">Depressed</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="constricted" checked={constricted} onChange={() => setConstricted(!constricted)} />
-                      <label htmlFor="constricted">Constricted</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="adequateEyeContact" checked={adequateEyeContact} onChange={() => setAdequateEyeContact(!adequateEyeContact)} />
-                      <label htmlFor="adequateEyeContact">Adequate</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="defensive" checked={defensive} onChange={() => setDefensive(!defensive)} />
-                      <label htmlFor="defensive">Defensive</label>
-
-                    </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="elevated"
+                      checked={elevated}
+                      onChange={() => setElevated(!elevated)}
+                    />
+                    <label htmlFor="elevated">Elevated</label>
                   </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="anxious" checked={anxious} onChange={() => setAnxious(!anxious)} />
-                      <label htmlFor="anxious">Anxious</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="other" checked={other} onChange={() => setOther(!other)} />
-                      <label htmlFor="other">Other</label>
-                      {
-                        other && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={otherText}
-                          onChange={(e) => setOtherText(e.target.value)}
-                        />
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="depressedMood"
+                      checked={depressedMood}
+                      onChange={() => setDepressedMood(!depressedMood)}
+                    />
+                    <label htmlFor="depressedMood">Depressed</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="anxious"
+                      checked={anxious}
+                      onChange={() => setAnxious(!anxious)}
+                    />
+                    <label htmlFor="anxious">Anxious</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="euthymicOtherBoolean"
+                      checked={euthymicOtherBoolean}
+                      onChange={() =>
+                        seteuthymicOtherBoolean(!euthymicOtherBoolean)
                       }
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="other" checked={EyeContactOtherBoolean} onChange={() => setEyeContactOtherBoolean(!EyeContactOtherBoolean)} />
-                      <label htmlFor="other">Other</label>
-                      {
-                        EyeContactOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={EyeContactOtherBooleanType}
-                          onChange={(e) => setEyeContactOtherBooleanType(e.target.value)}
-                        />
-                      }
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="indifferent" checked={indifferent} onChange={() => setIndifferent(!indifferent)} />
-                      <label htmlFor="indifferent">Indifferent</label>
-
-                    </div>
+                    />
+                    <label htmlFor="euthymicOtherBoolean">Other</label>
+                    {euthymicOtherBoolean && (
+                      <AutosizeInput
+                        type="text"
+                        inputStyle={{ border: "none", outline: "none" }}
+                        placeholder="________"
+                        value={euthymicOtherBooleanType}
+                        onChange={(e) =>
+                          seteuthymicOtherBooleanType(e.target.value)
+                        }
+                      />
+                    )}
                   </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="euthymicOtherBoolean" checked={euthymicOtherBoolean} onChange={() => seteuthymicOtherBoolean(!euthymicOtherBoolean)} />
-                      <label htmlFor="euthymicOtherBoolean">Other</label>
-                      {
-                        euthymicOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={euthymicOtherBooleanType}
-                          onChange={(e) => seteuthymicOtherBooleanType(e.target.value)}
-                        />
-                      }
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" id="other" checked={other} onChange={()=>setOther(!other)}/>
-                    <label htmlFor="other">Other</label> */}
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Affect</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="normalRange"
+                      checked={normalRange}
+                      onChange={() => setNormalRange(!normalRange)}
+                    />
+                    <label htmlFor="normalRange">Normal range</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="depressedAffect"
+                      checked={depressedAffect}
+                      onChange={() => setDepressedAffect(!depressedAffect)}
+                    />
+                    <label htmlFor="depressedAffect">Depressed</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="labile"
+                      checked={labile}
+                      onChange={() => setLabile(!labile)}
+                    />
+                    <label htmlFor="labile">Labile</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="constricted"
+                      checked={constricted}
+                      onChange={() => setConstricted(!constricted)}
+                    />
+                    <label htmlFor="constricted">Constricted</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="other"
+                      checked={other}
+                      onChange={() => setOther(!other)}
+                    />
+                    <label htmlFor="other">Other</label>
+                    {other && (
+                      <AutosizeInput
+                        type="text"
+                        inputStyle={{ border: "none", outline: "none" }}
+                        placeholder="________"
+                        value={otherText}
+                        onChange={(e) => setOtherText(e.target.value)}
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Eye Contact</label>
+                  </div>
 
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Adequate</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="other" checked={CooperationOtherBoolean} onChange={() => setCooperationOtherBoolean(!CooperationOtherBoolean)} />
-                      <label htmlFor="other">Other</label>
-                      {
-                        CooperationOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={CooperationOtherBooleanType}
-                          onChange={(e) => setCooperationOtherBooleanType(e.target.value)}
-                        />
-                      }
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="appropriate"
+                      checked={appropriate}
+                      onChange={() => setAppropriate(!appropriate)}
+                    />
+                    <label htmlFor="appropriate">Appropriate</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="minimal"
+                      checked={minimal}
+                      onChange={() => setMinimal(!minimal)}
+                    />
+                    <label htmlFor="minimal">Minimal</label>
+                  </div>
 
-                    </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="poor"
+                      checked={poor}
+                      onChange={() => setPoor(!poor)}
+                    />
+                    <label htmlFor="poor">Poor</label>
+                  </div>
+
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="adequateEyeContact"
+                      checked={adequateEyeContact}
+                      onChange={() =>
+                        setAdequateEyeContact(!adequateEyeContact)
+                      }
+                    />
+                    <label htmlFor="adequateEyeContact">Adequate</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="other"
+                      checked={EyeContactOtherBoolean}
+                      onChange={() =>
+                        setEyeContactOtherBoolean(!EyeContactOtherBoolean)
+                      }
+                    />
+                    <label htmlFor="other">Other</label>
+                    {EyeContactOtherBoolean && (
+                      <AutosizeInput
+                        type="text"
+                        inputStyle={{ border: "none", outline: "none" }}
+                        placeholder="________"
+                        value={EyeContactOtherBooleanType}
+                        onChange={(e) =>
+                          setEyeContactOtherBooleanType(e.target.value)
+                        }
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Cooperation</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="appropriateCooperation"
+                      checked={appropriateCooperation}
+                      onChange={() =>
+                        setAppropriateCooperation(!appropriateCooperation)
+                      }
+                    />
+                    <label htmlFor="appropriateCooperation">Appropriate</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="hostile"
+                      checked={hostile}
+                      onChange={() => setHostile(!hostile)}
+                    />
+                    <label htmlFor="hostile">Hostile</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="evasive"
+                      checked={evasive}
+                      onChange={() => setEvasive(!evasive)}
+                    />
+                    <label htmlFor="evasive">Evasive</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="defensive"
+                      checked={defensive}
+                      onChange={() => setDefensive(!defensive)}
+                    />
+                    <label htmlFor="defensive">Defensive</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="indifferent"
+                      checked={indifferent}
+                      onChange={() => setIndifferent(!indifferent)}
+                    />
+                    <label htmlFor="indifferent">Indifferent</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="other"
+                      checked={CooperationOtherBoolean}
+                      onChange={() =>
+                        setCooperationOtherBoolean(!CooperationOtherBoolean)
+                      }
+                    />
+                    <label htmlFor="other">Other</label>
+                    {CooperationOtherBoolean && (
+                      <AutosizeInput
+                        type="text"
+                        inputStyle={{ border: "none", outline: "none" }}
+                        placeholder="________"
+                        value={CooperationOtherBooleanType}
+                        onChange={(e) =>
+                          setCooperationOtherBooleanType(e.target.value)
+                        }
+                      />
+                    )}
                   </div>
                 </div>
               </div>
-
-
-
-
 
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Speech:</h6>
               </div>
 
-              <div class="checkbox-container">
-                <div class="chechbox12">
-                  <div class="checkoptions">
+              <div className="box-image-container">
+                <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                    <label>Articulation</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="normalArticulation"
+                      checked={normalArticulation}
+                      onChange={() =>
+                        setNormalArticulation(!normalArticulation)
+                      }
+                    />
+                    <label htmlFor="normalArticulation">Normal</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="unintelligible"
+                      checked={unintelligible}
+                      onChange={() => setUnintelligible(!unintelligible)}
+                    />
+                    <label htmlFor="unintelligible">Unintelligible</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="mumbled"
+                      checked={mumbled}
+                      onChange={() => setMumbled(!mumbled)}
+                    />
+                    <label htmlFor="mumbled">Mumbled</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="slurred"
+                      checked={slurred}
+                      onChange={() => setSlurred(!slurred)}
+                    />
+                    <label htmlFor="slurred">Slurred</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="stuttered"
+                      checked={stuttered}
+                      onChange={() => setStuttered(!stuttered)}
+                    />
+                    <label htmlFor="stuttered">Stuttered</label>
+                  </div>
+                  <div class="checkboxitem">
+                    <input
+                      type="checkbox"
+                      id="ArticulationOtherBoolean"
+                      checked={ArticulationOtherBoolean}
+                      onChange={() =>
+                        setArticulationOtherBoolean(!ArticulationOtherBoolean)
+                      }
+                    />
+                    <label htmlFor="ArticulationOtherBoolean">Other</label>
+                    {ArticulationOtherBoolean && (
+                      <AutosizeInput
+                        type="text"
+                        inputStyle={{ border: "none", outline: "none" }}
+                        placeholder="________"
+                        value={ArticulationOtherBooleanOther}
+                        onChange={(e) =>
+                          setArticulationOtherBooleanOther(e.target.value)
+                        }
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                  <div className="checkbox-table-parent">
                     <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Articulation</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
                       <label>Tone</label>
                     </div>
                     <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Rate</label>
+                      <input
+                        type="checkbox"
+                        id="normalTone"
+                        checked={normalRate}
+                        onChange={() => setNormalRate(!normalRate)}
+                      />
+                      <label htmlFor="normalRate">Normal</label>
                     </div>
                     <div class="checkboxitem">
-                      <label>Quantity</label>
+                      <input
+                        type="checkbox"
+                        id="soft"
+                        checked={soft}
+                        onChange={() => setSoft(!soft)}
+                      />
+                      <label htmlFor="soft">Soft</label>
                     </div>
                     <div class="checkboxitem">
-                      <label>Response latency</label>
+                      <input
+                        type="checkbox"
+                        id="loud"
+                        checked={loud}
+                        onChange={() => setLoud(!loud)}
+                      />
+                      <label htmlFor="loud">Loud</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="pressured"
+                        checked={pressured}
+                        onChange={() => setPressured(!pressured)}
+                      />
+                      <label htmlFor="pressured">Pressured</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="ToneOtherBoolean"
+                        checked={ToneOtherBoolean}
+                        onChange={() => setToneOtherBoolean(!ToneOtherBoolean)}
+                      />
+                      <label htmlFor="ToneOtherBoolean">Other</label>
+                      {ToneOtherBoolean && (
+                        <AutosizeInput
+                          type="text"
+                          inputStyle={{ border: "none", outline: "none" }}
+                          placeholder="________"
+                          value={ToneOtherBooleanOther}
+                          onChange={(e) =>
+                            setToneOtherBooleanOther(e.target.value)
+                          }
+                        />
+                      )}
                     </div>
                   </div>
-                  {/* api is starting */}
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="normalArticulation" checked={normalArticulation} onChange={() => setNormalArticulation(!normalArticulation)} />
-                      <label htmlFor="normalArticulation">Normal</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="normalTone" checked={normalRate} onChange={() => setNormalRate(!normalRate)} />
-                      <label htmlFor="normalRate">Normal</label>
-
-                    </div>
-                    <div class="checkboxitem">
+                  <div className="border-bootom-line"></div>
+                  <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                   
+                   <label>Rate</label>
+                 </div>
+                 <div class="checkboxitem">
                       <input type="checkbox" id="normalTone" checked={normalTone} onChange={() => setNormalTone(!normalTone)} />
                       <label htmlFor="normalTone">Normal</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="normalQuantity" checked={normalQuantity} onChange={() => setNormalQuantity(!normalQuantity)} />
-                      <label htmlFor="normalQuantity">Normal</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="normalresponseLatency" checked={normalresponseLatency} onChange={() => setNormalresponseLatency(!normalresponseLatency)} />
-                      <label htmlFor="normalresponseLatency">Normal</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="unintelligible" checked={unintelligible} onChange={() => setUnintelligible(!unintelligible)} />
-                      <label htmlFor="unintelligible">Unintelligible</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="soft" checked={soft} onChange={() => setSoft(!soft)} />
-                      <label htmlFor="soft">Soft</label>
 
                     </div>
                     <div class="checkboxitem">
@@ -6251,52 +7899,8 @@ const InitialAssessment = () => {
 
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="verbose" checked={verbose} onChange={() => setVerbose(!verbose)} />
-                      <label htmlFor="verbose">Verbose</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="delayed" checked={delayed} onChange={() => setDelayed(!delayed)} />
-                      <label htmlFor="delayed">Delayed</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="mumbled" checked={mumbled} onChange={() => setMumbled(!mumbled)} />
-                      <label htmlFor="mumbled">Mumbled</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="loud" checked={loud} onChange={() => setLoud(!loud)} />
-                      <label htmlFor="loud">Loud</label>
-
-                    </div>
-                    <div class="checkboxitem">
                       <input type="checkbox" id="fast" checked={fast} onChange={() => setFast(!fast)} />
                       <label htmlFor="fast">Fast</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="mutism" checked={mutism} onChange={() => setMutism(!mutism)} />
-                      <label htmlFor="mutism">Mutism</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="shortened" checked={shortened} onChange={() => setShortened(!shortened)} />
-                      <label htmlFor="shortened">Shortened</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="slurred" checked={slurred} onChange={() => setSlurred(!slurred)} />
-                      <label htmlFor="slurred">Slurred</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="pressured" checked={pressured} onChange={() => setPressured(!pressured)} />
-                      <label htmlFor="pressured">Pressured</label>
 
                     </div>
                     <div class="checkboxitem">
@@ -6313,6 +7917,28 @@ const InitialAssessment = () => {
                       }
 
                     </div>
+
+                  </div>
+                  <div className="border-bootom-line "></div>
+                    <div className="checkbox-table-parent">
+                    <div class="checkboxitem">
+                      <label>Quantity</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input type="checkbox" id="normalQuantity" checked={normalQuantity} onChange={() => setNormalQuantity(!normalQuantity)} />
+                      <label htmlFor="normalQuantity">Normal</label>
+
+                    </div>
+                    <div class="checkboxitem">
+                      <input type="checkbox" id="verbose" checked={verbose} onChange={() => setVerbose(!verbose)} />
+                      <label htmlFor="verbose">Verbose</label>
+
+                    </div>
+                    <div class="checkboxitem">
+                      <input type="checkbox" id="mutism" checked={mutism} onChange={() => setMutism(!mutism)} />
+                      <label htmlFor="mutism">Mutism</label>
+
+                    </div>
                     <div class="checkboxitem">
                       <input type="checkbox" id="QuantityOtherBoolean" checked={QuantityOtherBoolean} onChange={() => setQuantityOtherBoolean(!QuantityOtherBoolean)} />
                       <label htmlFor="QuantityOtherBoolean">Other</label>
@@ -6325,6 +7951,27 @@ const InitialAssessment = () => {
                           onChange={(e) => setQuantityOtherBooleanOther(e.target.value)}
                         />
                       }
+                    </div>
+                  </div>
+                  <div className="border-bootom-line"></div>
+                  <div className="checkbox-table-parent">
+                  <div class="checkboxitem">
+                      <label>Response latency</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input type="checkbox" id="normalresponseLatency" checked={normalresponseLatency} onChange={() => setNormalresponseLatency(!normalresponseLatency)} />
+                      <label htmlFor="normalresponseLatency">Normal</label>
+
+                    </div>
+                    <div class="checkboxitem">
+                      <input type="checkbox" id="delayed" checked={delayed} onChange={() => setDelayed(!delayed)} />
+                      <label htmlFor="delayed">Delayed</label>
+
+                    </div>
+                    <div class="checkboxitem">
+                      <input type="checkbox" id="shortened" checked={shortened} onChange={() => setShortened(!shortened)} />
+                      <label htmlFor="shortened">Shortened</label>
+
                     </div>
                     <div class="checkboxitem">
                       <input type="checkbox" id="responseLatencyOtherBoolean" checked={responseLatencyOtherBoolean} onChange={() => setresponseLatencyOtherBoolean(!responseLatencyOtherBoolean)} />
@@ -6340,512 +7987,806 @@ const InitialAssessment = () => {
                       }
                     </div>
                   </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="stuttered" checked={stuttered} onChange={() => setStuttered(!stuttered)} />
-                      <label htmlFor="stuttered">Stuttered</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="ToneOtherBoolean" checked={ToneOtherBoolean} onChange={() => setToneOtherBoolean(!ToneOtherBoolean)} />
-                      <label htmlFor="ToneOtherBoolean">Other</label>
-                      {
-                        ToneOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={ToneOtherBooleanOther}
-                          onChange={(e) => setToneOtherBooleanOther(e.target.value)}
-                        />
-                      }
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Adequate</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Indifferent</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Indifferent</span> */}
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="ArticulationOtherBoolean" checked={ArticulationOtherBoolean} onChange={() => setArticulationOtherBoolean(!ArticulationOtherBoolean)} />
-                      <label htmlFor="ArticulationOtherBoolean">Other</label>
-                      {
-                        ArticulationOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={ArticulationOtherBooleanOther}
-                          onChange={(e) => setArticulationOtherBooleanOther(e.target.value)}
-                        />
-                      }
-
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" id="pressured" checked={pressured} onChange={()=>setPressured(!pressured)}/>
-                    <label htmlFor="pressured">Other</label> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Adequate</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Indifferent</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Indifferent</span> */}
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              {/* {
-            ArticulationOtherBoolean && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>Articulation Comments</label>
-              <textarea
-                value={ArticulationOtherBooleanOther}
-                onChange={(e)=>setArticulationOtherBooleanOther(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
-
-              {/* {
-            ToneOtherBoolean && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>Tone Comments</label>
-              <textarea
-                value={ToneOtherBooleanOther}
-                onChange={(e)=>setToneOtherBooleanOther(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
-
-              {/* {
-            RateOtherBoolean && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>Rate Comments</label>
-              <textarea
-                value={RateOtherBooleanOther}
-                onChange={(e)=>setRateOtherBooleanOther(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
-
-              {/* {
-            QuantityOtherBoolean && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>Quantity Comments</label>
-              <textarea
-                value={QuantityOtherBooleanOther}
-                onChange={(e)=>setQuantityOtherBooleanOther(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
-
-              {/* {
-            responseLatencyOtherBoolean && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>ResponseLatency Comments</label>
-              <textarea
-                value={responseLatencyOtherBoolean}
-                onChange={(e)=>responseLatencyOtherBooleanOther(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
-
-
-
-
-
-
-
-
-
-
-
 
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Cognition:</h6>
               </div>
-              <div class="checkbox-container">
-                <div class="chechbox12-aligment411">
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Thought content</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Thought processes</label>
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
-                      <label>Delusions</label>
-                    </div>
-                    <div class="checkboxitem">
-                      <label>Hallucinations</label>
-                    </div>
+
+              <div className="box-image-container">
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+                    
+                    <label>Thought content</label>
                   </div>
-                  {/* api  */}
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="unremarkablethoughtContent" checked={unremarkablethoughtContent} onChange={() => setUnremarkablethoughtContent(!unremarkablethoughtContent)} />
-                      <label htmlFor="unremarkablethoughtContent">Unremarkable</label>
-
+                  <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="unremarkablethoughtContent"
+                        checked={unremarkablethoughtContent}
+                        onChange={() =>
+                          setUnremarkablethoughtContent(
+                            !unremarkablethoughtContent
+                          )
+                        }
+                      />
+                      <label htmlFor="unremarkablethoughtContent">
+                        Unremarkable
+                      </label>
                     </div>
                     <div class="checkboxitem">
-
-                      <input type="checkbox" id="logicalCoherent" checked={logicalCoherent} onChange={() => setLogicalCoherent(!logicalCoherent)} />
-                      <label htmlFor="logicalCoherent">Logical/Coherent</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="noDelusions" checked={noDelusions} onChange={() => setNoDelusions(!noDelusions)} />
-                      <label htmlFor="noDelusions">No</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="unremarkableHallucinations" checked={unremarkableHallucinations} onChange={() => setUnremarkableHallucinations(!unremarkableHallucinations)} />
-                      <label htmlFor="unremarkableHallucinations">Unremarkable</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="suspicious" checked={suspicious} onChange={() => setSuspicious(!suspicious)} />
+                      <input
+                        type="checkbox"
+                        id="suspicious"
+                        checked={suspicious}
+                        onChange={() => setSuspicious(!suspicious)}
+                      />
                       <label htmlFor="suspicious">Suspicious</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="tangential" checked={tangential} onChange={() => setTangential(!tangential)} />
-                      <label htmlFor="tangential">Tangential</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="yesPersecutory" checked={yesPersecutory} onChange={() => setYesPersecutory(!yesPersecutory)} />
-                      <label htmlFor="yesPersecutory">Yes, persecutory</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="visualHallucinations" checked={visualHallucinations} onChange={() => setVisualHallucinations(!visualHallucinations)} />
-                      <label htmlFor="visualHallucinations">Visual hallucinations</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="negative" checked={negative} onChange={() => setNegative(!negative)} />
+                      <input
+                        type="checkbox"
+                        id="negative"
+                        checked={negative}
+                        onChange={() => setNegative(!negative)}
+                      />
                       <label htmlFor="negative">Negative</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="circumstantial" checked={circumstantial} onChange={() => setCircumstantial(!circumstantial)} />
-                      <label htmlFor="circumstantial">Circumstantial</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="yesSomatic" checked={yesSomatic} onChange={() => setYesSomatic(!yesSomatic)} />
-                      <label htmlFor="yesSomatic">Yes, somatic</label>
-
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="auditoryHallucinations" checked={auditoryHallucinations} onChange={() => setAuditoryHallucinations(!auditoryHallucinations)} />
-                      <label htmlFor="auditoryHallucinations">Auditory hallucinations</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="concrete" checked={concrete} onChange={() => setConcrete(!concrete)} />
+                      <input
+                        type="checkbox"
+                        id="concrete"
+                        checked={concrete}
+                        onChange={() => setConcrete(!concrete)}
+                      />
                       <label htmlFor="concrete">Concrete</label>
+                    </div>
 
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+                 
+                 <label>Thought processes</label>
+               </div>
+               <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="logicalCoherent"
+                        checked={logicalCoherent}
+                        onChange={() => setLogicalCoherent(!logicalCoherent)}
+                      />
+                      <label htmlFor="logicalCoherent">Logical /Coherent</label>
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="vague" checked={vague} onChange={() => setVague(!vague)} />
+                      <input
+                        type="checkbox"
+                        id="tangential"
+                        checked={tangential}
+                        onChange={() => setTangential(!tangential)}
+                      />
+                      <label htmlFor="tangential">Tangential</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="circumstantial"
+                        checked={circumstantial}
+                        onChange={() => setCircumstantial(!circumstantial)}
+                      />
+                      <label htmlFor="circumstantial">Circumstantial</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="vague"
+                        checked={vague}
+                        onChange={() => setVague(!vague)}
+                      />
                       <label htmlFor="vague">Vague</label>
-
+                    </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+                
+                <label>Delusions</label>
+              </div>
+              <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="noDelusions"
+                        checked={noDelusions}
+                        onChange={() => setNoDelusions(!noDelusions)}
+                      />
+                      <label htmlFor="noDelusions">No</label>
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="yesGrandiose" checked={yesGrandiose} onChange={() => setYesGrandiose(!yesGrandiose)} />
+                      <input
+                        type="checkbox"
+                        id="yesPersecutory"
+                        checked={yesPersecutory}
+                        onChange={() => setYesPersecutory(!yesPersecutory)}
+                      />
+                      <label htmlFor="yesPersecutory">Yes, persecutory</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="yesSomatic"
+                        checked={yesSomatic}
+                        onChange={() => setYesSomatic(!yesSomatic)}
+                      />
+                      <label htmlFor="yesSomatic">Yes, somatic</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="yesGrandiose"
+                        checked={yesGrandiose}
+                        onChange={() => setYesGrandiose(!yesGrandiose)}
+                      />
                       <label htmlFor="yesGrandiose">Yes, grandiose</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="tactileHallucinations" checked={tactileHallucinations} onChange={() => setTactileHallucinations(!tactileHallucinations)} />
-                      <label htmlFor="tactileHallucinations">Yes, Tactile hallucinations</label>
-
-                    </div>
-                  </div>
-                  <div class="checkoptions">
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Stuttered</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      {/* <input type="checkbox" />
-                                        <span>Other</span> */}
-                    </div>
-                    <div class="checkboxitem">
-                      <input type="checkbox" id="yesOtherDelusions" checked={yesOtherDelusionsBoolean} onChange={() => setYesOtherDelusionsBoolean(!yesOtherDelusionsBoolean)} />
+                      <input
+                        type="checkbox"
+                        id="yesOtherDelusions"
+                        checked={yesOtherDelusionsBoolean}
+                        onChange={() =>
+                          setYesOtherDelusionsBoolean(!yesOtherDelusionsBoolean)
+                        }
+                      />
                       <label htmlFor="yesOtherDelusions">Yes, other</label>
-                      {
-                        yesOtherDelusionsBoolean && <AutosizeInput
+                      {yesOtherDelusionsBoolean && (
+                        <AutosizeInput
                           type="text"
                           inputStyle={{ border: "none", outline: "none" }}
                           placeholder="________"
                           value={yesOtherDelusionsText}
-                          onChange={(e) => setYesOtherDelusionsText(e.target.value)}
+                          onChange={(e) =>
+                            setYesOtherDelusionsText(e.target.value)
+                          }
                         />
-                      }
+                      )}
+                    </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+                      <label>Hallucinations</label>
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="yesOtherHallucinations" checked={yesOtherHallucinationsBoolean} onChange={() => setYesOtherHallucinationsBoolean(!yesOtherHallucinationsBoolean)} />
+                      <input
+                        type="checkbox"
+                        id="unremarkableHallucinations"
+                        checked={unremarkableHallucinations}
+                        onChange={() =>
+                          setUnremarkableHallucinations(
+                            !unremarkableHallucinations
+                          )
+                        }
+                      />
+                      <label htmlFor="unremarkableHallucinations">
+                        Unremarkable
+                      </label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="visualHallucinations"
+                        checked={visualHallucinations}
+                        onChange={() =>
+                          setVisualHallucinations(!visualHallucinations)
+                        }
+                      />
+                      <label htmlFor="visualHallucinations">
+                        Visual hallucinations
+                      </label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="auditoryHallucinations"
+                        checked={auditoryHallucinations}
+                        onChange={() =>
+                          setAuditoryHallucinations(!auditoryHallucinations)
+                        }
+                      />
+                      <label htmlFor="auditoryHallucinations">
+                        Auditory hallucinations
+                      </label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="tactileHallucinations"
+                        checked={tactileHallucinations}
+                        onChange={() =>
+                          setTactileHallucinations(!tactileHallucinations)
+                        }
+                      />
+                      <label htmlFor="tactileHallucinations">
+                        Tactile hallucinations
+                      </label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="yesOtherHallucinations"
+                        checked={yesOtherHallucinationsBoolean}
+                        onChange={() =>
+                          setYesOtherHallucinationsBoolean(
+                            !yesOtherHallucinationsBoolean
+                          )
+                        }
+                      />
                       <label htmlFor="yesOtherHallucinations">Yes, other</label>
-                      {
-                        yesOtherHallucinationsBoolean && <AutosizeInput
+                      {yesOtherHallucinationsBoolean && (
+                        <AutosizeInput
                           type="text"
                           inputStyle={{ border: "none", outline: "none" }}
                           placeholder="________"
                           value={yesOtherHallucinationsText}
-                          onChange={(e) => setYesOtherHallucinationsText(e.target.value)}
+                          onChange={(e) =>
+                            setYesOtherHallucinationsText(e.target.value)
+                          }
                         />
-                      }
+                      )}
                     </div>
-                  </div>
                 </div>
               </div>
-
-              {/* {
-            yesOtherDelusions && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>Delusions Comments</label>
-              <textarea
-                value={yesOtherDelusionsText}
-                onChange={(e)=>setYesOtherDelusionsText(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
-              {/*
-            {
-            yesOtherHallucinations && (
-              <div className="form-field">
-              <label  style={{fontSize:"16px"}}>Hallucinations Comments</label>
-              <textarea
-                value={yesOtherHallucinationsText}
-                onChange={(e)=>setYesOtherHallucinationsText(e.target.value)}
-                placeholder="Enter text"
-                rows={2}
-                cols={82}
-                required
-              />
-            </div>
-            )
-            } */}
+                  
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Motor activity:</h6>
               </div>
-              <div class="checkbox-container">
+
+              <div className="box-image-container">
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+          
+          <label>Gait</label>
+        </div>
+        <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="normalGait"
+                        checked={normalGait}
+                        onChange={() => setNormalGait(!normalGait)}
+                      />
+                      <label htmlFor="normalGait">Normal</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="staggering"
+                        checked={staggering}
+                        onChange={() => setStaggering(!staggering)}
+                      />
+                      <label htmlFor="staggering">Staggering</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="shuffling"
+                        checked={shuffling}
+                        onChange={() => setShuffling(!shuffling)}
+                      />
+                      <label htmlFor="shuffling">Shuffling</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="slowGait"
+                        checked={slowGait}
+                        onChange={() => setSlowGait(!slowGait)}
+                      />
+                      <label htmlFor="slowGait">Slow</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="awkward"
+                        checked={awkward}
+                        onChange={() => setAwkward(!awkward)}
+                      />
+                      <label htmlFor="awkward">Awkward</label>
+                    </div>
+
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+           
+           <label>Posture</label>
+         </div>
+         <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="normalPosture"
+                        checked={normalPosture}
+                        onChange={() => setNormalPosture(!normalPosture)}
+                      />
+                      <label htmlFor="normalPosture">Normal</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="relaxed"
+                        checked={relaxed}
+                        onChange={() => setRelaxed(!relaxed)}
+                      />
+                      <label htmlFor="relaxed">Relaxed</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="rigid"
+                        checked={rigid}
+                        onChange={() => setRigid(!rigid)}
+                      />
+                      <label htmlFor="rigid">Rigid</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="tense"
+                        checked={tense}
+                        onChange={() => setTense(!tense)}
+                      />
+                      <label htmlFor="tense">Tense</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="slouched"
+                        checked={slouched}
+                        onChange={() => setSlouched(!slouched)}
+                      />
+                      <label htmlFor="slouched">Slouched</label>
+                    </div>
+                </div>
+                <div className="border-bootom-line "></div>
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+        
+        <label>Psychomotor Activity</label>
+      </div>
+      <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="withinNormalLimits"
+                        checked={withinNormalLimits}
+                        onChange={() =>
+                          setWithinNormalLimits(!withinNormalLimits)
+                        }
+                      />
+                      <label htmlFor="withinNormalLimits">
+                        Within normal limits
+                      </label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="calm"
+                        checked={calm}
+                        onChange={() => setCalm(!calm)}
+                      />
+                      <label htmlFor="calm">Calm</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="hyperactive"
+                        checked={hyperactive}
+                        onChange={() => setHyperactive(!hyperactive)}
+                      />
+                      <label htmlFor="hyperactive">Hyperactive</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="agitated"
+                        checked={agitated}
+                        onChange={() => setAgitated(!agitated)}
+                      />
+                      <label htmlFor="agitated">Agitated</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="hypoactive"
+                        checked={hypoactive}
+                        onChange={() => setHypoactive(!hypoactive)}
+                      />
+                      <label htmlFor="hypoactive">Hypoactive</label>
+                    </div>
+                </div>
+                <div className="border-bootom-line"></div>
+                <div className="checkbox-table-parent">
+                <div class="checkboxitem">
+                      <label>Mannerisms</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="none"
+                        checked={none}
+                        onChange={() => setNone(!none)}
+                      />
+                      <label htmlFor="none">None</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="tics"
+                        checked={tics}
+                        onChange={() => setTics(!tics)}
+                      />
+                      <label htmlFor="tics">Tics</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="tremorsMannerisms"
+                        checked={tremorsMannerisms}
+                        onChange={() =>
+                          setTremorsMannerisms(!tremorsMannerisms)
+                        }
+                      />
+                      <label htmlFor="tremorsMannerisms">Tremors</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="rocking"
+                        checked={rocking}
+                        onChange={() => setRocking(!rocking)}
+                      />
+                      <label htmlFor="rocking">Rocking</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="picking"
+                        checked={picking}
+                        onChange={() => setPicking(!picking)}
+                      />
+                      <label htmlFor="picking">Picking</label>
+                    </div>
+                </div>
+              </div>
+              {/* <div class="checkbox-container">
                 <div class="chechbox12-aligment411">
                   <div class="checkoptions">
                     <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
+          
                       <label>Gait</label>
                     </div>
                     <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
+           
                       <label>Posture</label>
                     </div>
                     <div class="checkboxitem">
-                      {/* <input type="checkbox" /> */}
+        
                       <label>Psychomotor Activity</label>
                     </div>
                     <div class="checkboxitem">
                       <label>Mannerisms</label>
                     </div>
-                    {/* api */}
+         
                   </div>
+                  111111111
                   <div class="checkoptions">
                     <div class="checkboxitem">
-                      <input type="checkbox" id="normalGait" checked={normalGait} onChange={() => setNormalGait(!normalGait)} />
+                      <input
+                        type="checkbox"
+                        id="normalGait"
+                        checked={normalGait}
+                        onChange={() => setNormalGait(!normalGait)}
+                      />
                       <label htmlFor="normalGait">Normal</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="normalPosture" checked={normalPosture} onChange={() => setNormalPosture(!normalPosture)} />
+                      <input
+                        type="checkbox"
+                        id="normalPosture"
+                        checked={normalPosture}
+                        onChange={() => setNormalPosture(!normalPosture)}
+                      />
                       <label htmlFor="normalPosture">Normal</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="withinNormalLimits" checked={withinNormalLimits} onChange={() => setWithinNormalLimits(!withinNormalLimits)} />
-                      <label htmlFor="withinNormalLimits">Within normal limits</label>
-
+                      <input
+                        type="checkbox"
+                        id="withinNormalLimits"
+                        checked={withinNormalLimits}
+                        onChange={() =>
+                          setWithinNormalLimits(!withinNormalLimits)
+                        }
+                      />
+                      <label htmlFor="withinNormalLimits">
+                        Within normal limits
+                      </label>
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="none" checked={none} onChange={() => setNone(!none)} />
+                      <input
+                        type="checkbox"
+                        id="none"
+                        checked={none}
+                        onChange={() => setNone(!none)}
+                      />
                       <label htmlFor="none">None</label>
-
                     </div>
                   </div>
+                  222222222
                   <div class="checkoptions">
                     <div class="checkboxitem">
-                      <input type="checkbox" id="staggering" checked={staggering} onChange={() => setStaggering(!staggering)} />
+                      <input
+                        type="checkbox"
+                        id="staggering"
+                        checked={staggering}
+                        onChange={() => setStaggering(!staggering)}
+                      />
                       <label htmlFor="staggering">Staggering</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="relaxed" checked={relaxed} onChange={() => setRelaxed(!relaxed)} />
+                      <input
+                        type="checkbox"
+                        id="relaxed"
+                        checked={relaxed}
+                        onChange={() => setRelaxed(!relaxed)}
+                      />
                       <label htmlFor="relaxed">Relaxed</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="calm" checked={calm} onChange={() => setCalm(!calm)} />
+                      <input
+                        type="checkbox"
+                        id="calm"
+                        checked={calm}
+                        onChange={() => setCalm(!calm)}
+                      />
                       <label htmlFor="calm">Calm</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="tics" checked={tics} onChange={() => setTics(!tics)} />
+                      <input
+                        type="checkbox"
+                        id="tics"
+                        checked={tics}
+                        onChange={() => setTics(!tics)}
+                      />
                       <label htmlFor="tics">Tics</label>
-
                     </div>
                   </div>
+                  3333333333
                   <div class="checkoptions">
                     <div class="checkboxitem">
-                      <input type="checkbox" id="shuffling" checked={shuffling} onChange={() => setShuffling(!shuffling)} />
+                      <input
+                        type="checkbox"
+                        id="shuffling"
+                        checked={shuffling}
+                        onChange={() => setShuffling(!shuffling)}
+                      />
                       <label htmlFor="shuffling">Shuffling</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="rigid" checked={rigid} onChange={() => setRigid(!rigid)} />
+                      <input
+                        type="checkbox"
+                        id="rigid"
+                        checked={rigid}
+                        onChange={() => setRigid(!rigid)}
+                      />
                       <label htmlFor="rigid">Rigid</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="hyperactive" checked={hyperactive} onChange={() => setHyperactive(!hyperactive)} />
+                      <input
+                        type="checkbox"
+                        id="hyperactive"
+                        checked={hyperactive}
+                        onChange={() => setHyperactive(!hyperactive)}
+                      />
                       <label htmlFor="hyperactive">Hyperactive</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="tremorsMannerisms" checked={tremorsMannerisms} onChange={() => setTremorsMannerisms(!tremorsMannerisms)} />
+                      <input
+                        type="checkbox"
+                        id="tremorsMannerisms"
+                        checked={tremorsMannerisms}
+                        onChange={() =>
+                          setTremorsMannerisms(!tremorsMannerisms)
+                        }
+                      />
                       <label htmlFor="tremorsMannerisms">Tremors</label>
-
                     </div>
                   </div>
+                  444444444
                   <div class="checkoptions">
                     <div class="checkboxitem">
-                      <input type="checkbox" id="slowGait" checked={slowGait} onChange={() => setSlowGait(!slowGait)} />
+                      <input
+                        type="checkbox"
+                        id="slowGait"
+                        checked={slowGait}
+                        onChange={() => setSlowGait(!slowGait)}
+                      />
                       <label htmlFor="slowGait">Slow</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="tense" checked={tense} onChange={() => setTense(!tense)} />
+                      <input
+                        type="checkbox"
+                        id="tense"
+                        checked={tense}
+                        onChange={() => setTense(!tense)}
+                      />
                       <label htmlFor="tense">Tense</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="agitated" checked={agitated} onChange={() => setAgitated(!agitated)} />
+                      <input
+                        type="checkbox"
+                        id="agitated"
+                        checked={agitated}
+                        onChange={() => setAgitated(!agitated)}
+                      />
                       <label htmlFor="agitated">Agitated</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="rocking" checked={rocking} onChange={() => setRocking(!rocking)} />
+                      <input
+                        type="checkbox"
+                        id="rocking"
+                        checked={rocking}
+                        onChange={() => setRocking(!rocking)}
+                      />
                       <label htmlFor="rocking">Rocking</label>
-
                     </div>
                   </div>
+                  55555555
                   <div class="checkoptions">
                     <div class="checkboxitem">
-                      <input type="checkbox" id="awkward" checked={awkward} onChange={() => setAwkward(!awkward)} />
+                      <input
+                        type="checkbox"
+                        id="awkward"
+                        checked={awkward}
+                        onChange={() => setAwkward(!awkward)}
+                      />
                       <label htmlFor="awkward">Awkward</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="slouched" checked={slouched} onChange={() => setSlouched(!slouched)} />
+                      <input
+                        type="checkbox"
+                        id="slouched"
+                        checked={slouched}
+                        onChange={() => setSlouched(!slouched)}
+                      />
                       <label htmlFor="slouched">Slouched</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="hypoactive" checked={hypoactive} onChange={() => setHypoactive(!hypoactive)} />
+                      <input
+                        type="checkbox"
+                        id="hypoactive"
+                        checked={hypoactive}
+                        onChange={() => setHypoactive(!hypoactive)}
+                      />
                       <label htmlFor="hypoactive">Hypoactive</label>
-
                     </div>
                     <div class="checkboxitem">
-                      <input type="checkbox" id="picking" checked={picking} onChange={() => setPicking(!picking)} />
+                      <input
+                        type="checkbox"
+                        id="picking"
+                        checked={picking}
+                        onChange={() => setPicking(!picking)}
+                      />
                       <label htmlFor="picking">Picking</label>
-
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="yeschechboxOrientation" style={{ marginTop: "1.5rem" }}>
-                <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                  <label style={{ fontWeight: "bold" }}>Orientation to Person:</label>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="person" checked={person === true} onChange={() => setPerson(true)} />
+              </div> */}
+              <div
+                className="yeschechboxOrientation"
+                style={{ marginTop: "1.5rem" }}
+              >
+                <div
+                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                >
+                  <label style={{ fontWeight: "bold" }}>
+                    Orientation to Person:
+                  </label>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="person"
+                      checked={person === true}
+                      onChange={() => setPerson(true)}
+                    />
                     <label htmlFor="person">Yes</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="personno" checked={person === false} onChange={() => setPerson(false)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="personno"
+                      checked={person === false}
+                      onChange={() => setPerson(false)}
+                    />
                     <label htmlFor="personno">No</label>
                   </div>
                 </div>
-                <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                  <label >Place:</label>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="place" checked={place === true} onChange={() => setPlace(true)} />
+                <div
+                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                >
+                  <label>Place:</label>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="place"
+                      checked={place === true}
+                      onChange={() => setPlace(true)}
+                    />
                     <label htmlFor="place">Yes</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="placeno" checked={place === false} onChange={() => setPlace(false)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="placeno"
+                      checked={place === false}
+                      onChange={() => setPlace(false)}
+                    />
                     <label htmlFor="placeno">No</label>
                   </div>
                 </div>
-                <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                <div
+                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                >
                   <label htmlFor="">Time:</label>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="placeno" checked={time === true} onChange={() => setTime(true)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="placeno"
+                      checked={time === true}
+                      onChange={() => setTime(true)}
+                    />
                     <label htmlFor="placeno">Yes</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="timeno" checked={time === false} onChange={() => setTime(false)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="timeno"
+                      checked={time === false}
+                      onChange={() => setTime(false)}
+                    />
                     <label htmlFor="timeno">No</label>
                   </div>
                 </div>
@@ -6863,39 +8804,88 @@ const InitialAssessment = () => {
               </div>
 
               <div className="yeschechbox">
-              
                 <label style={{ fontWeight: "bold" }}>Circumstances:</label>
-                
-                
+
                 <div className="yesNoAligment">
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="circumstances" checked={circumstances === true} onChange={() => setCircumstances(true)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="circumstances"
+                      checked={circumstances === true}
+                      onChange={() => setCircumstances(true)}
+                    />
                     <label htmlFor="circumstances">Yes</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="circumstancesno" checked={circumstances === false} onChange={() => setCircumstances(false)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="circumstancesno"
+                      checked={circumstances === false}
+                      onChange={() => setCircumstances(false)}
+                    />
                     <label htmlFor="circumstancesno">No</label>
-
                   </div>
-
                 </div>
               </div>
-
 
               <div className="yeschechbox">
                 <label style={{ fontWeight: "bold" }}>Judgment:</label>
                 <div className="yesNoAligment">
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="goodJudgment" checked={goodJudgment} onChange={() => setGoodJudgment(!goodJudgment)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="goodJudgment"
+                      checked={goodJudgment}
+                      onChange={() => setGoodJudgment(!goodJudgment)}
+                    />
                     <label htmlFor="goodJudgment">Good</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="fairJudgment" checked={fairJudgment} onChange={() => setFairJudgment(!fairJudgment)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="fairJudgment"
+                      checked={fairJudgment}
+                      onChange={() => setFairJudgment(!fairJudgment)}
+                    />
                     <label htmlFor="fairJudgment">Fair</label>
-
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="poorJudgment" checked={poorJudgment} onChange={() => setPoorJudgment(!poorJudgment)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="poorJudgment"
+                      checked={poorJudgment}
+                      onChange={() => setPoorJudgment(!poorJudgment)}
+                    />
                     <label htmlFor="poorJudgment">Poor</label>
                   </div>
                 </div>
@@ -6903,16 +8893,49 @@ const InitialAssessment = () => {
               <div className="yeschechbox">
                 <label style={{ fontWeight: "bold" }}>Insight:</label>
                 <div className="yesNoAligment">
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="goodInsight" checked={goodInsight} onChange={() => setGoodInsight(!goodInsight)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="goodInsight"
+                      checked={goodInsight}
+                      onChange={() => setGoodInsight(!goodInsight)}
+                    />
                     <label htmlFor="goodInsight">Good</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="fairInsight" checked={fairInsight} onChange={() => setFairInsight(!fairInsight)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="fairInsight"
+                      checked={fairInsight}
+                      onChange={() => setFairInsight(!fairInsight)}
+                    />
                     <label htmlFor="fairInsight">Fair</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="poorInsight" checked={poorInsight} onChange={() => setPoorInsight(!poorInsight)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="poorInsight"
+                      checked={poorInsight}
+                      onChange={() => setPoorInsight(!poorInsight)}
+                    />
                     <label htmlFor="poorInsight">Poor</label>
                   </div>
                 </div>
@@ -6920,30 +8943,69 @@ const InitialAssessment = () => {
               <div className="yeschechbox">
                 <label style={{ fontWeight: "bold" }}>Memory:</label>
                 <div className="yesNoAligment">
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="goodMemory" checked={goodMemory} onChange={() => setGoodMemory(!goodMemory)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="goodMemory"
+                      checked={goodMemory}
+                      onChange={() => setGoodMemory(!goodMemory)}
+                    />
                     <label htmlFor="goodMemory">Good</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="fairMemory" checked={fairMemory} onChange={() => setFairMemory(!fairMemory)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="fairMemory"
+                      checked={fairMemory}
+                      onChange={() => setFairMemory(!fairMemory)}
+                    />
                     <label htmlFor="fairMemory">Fair</label>
                   </div>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input type="checkbox" id="poorMemory" checked={poorMemory} onChange={() => setPoorMemory(!poorMemory)} />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="poorMemory"
+                      checked={poorMemory}
+                      onChange={() => setPoorMemory(!poorMemory)}
+                    />
                     <label htmlFor="poorMemory">Poor</label>
                   </div>
                 </div>
               </div>
               <div className="yeschechbox">
-                <div style={{ display: "flex", gap: "60px" }}>
-                  <label style={{ fontWeight: "bold" }}>Ability to concentration:</label>
+                <div style={{ display: "flex", gap: "20px" }}>
+                  <label style={{ fontWeight: "bold" }}>
+                    Ability to concentration:
+                  </label>
 
                   <div className="checkboxitem">
                     <input
                       type="checkbox"
                       id="intact"
                       checked={intactAbilityToConcentration}
-                      onChange={() => setIntactAbilityToConcentration(!intactAbilityToConcentration)}
+                      onChange={() =>
+                        setIntactAbilityToConcentration(
+                          !intactAbilityToConcentration
+                        )
+                      }
                     />
                     <label htmlFor="intact">Intact</label>
                   </div>
@@ -6952,66 +9014,70 @@ const InitialAssessment = () => {
                       type="checkbox"
                       id="intact"
                       checked={intactAbilityToConcentrationOtherBoolean}
-                      onChange={() => setIntactAbilityToConcentrationOtherBoolean(!intactAbilityToConcentrationOtherBoolean)}
+                      onChange={() =>
+                        setIntactAbilityToConcentrationOtherBoolean(
+                          !intactAbilityToConcentrationOtherBoolean
+                        )
+                      }
                     />
                     <label htmlFor="intact">Other</label>
-                    {
-                      intactAbilityToConcentrationOtherBoolean && <AutosizeInput
+                    {intactAbilityToConcentrationOtherBoolean && (
+                      <AutosizeInput
                         type="text"
                         inputStyle={{ border: "none", outline: "none" }}
                         placeholder="________"
                         value={otherAbilityToConcentration}
-                        onChange={(e) => setOtherAbilityToConcentration(e.target.value)}
+                        onChange={(e) =>
+                          setOtherAbilityToConcentration(e.target.value)
+                        }
                       />
-                    }
+                    )}
                   </div>
                 </div>
               </div>
 
-
-
-
-
               <div className="form-field">
                 <label style={{ fontWeight: "bold" }}>
                   Significant Social/Developmental History:
-                </label> 
+                </label>
               </div>
 
               <div className="box-image-container">
-              <div className="form-field-single-update">
-
-                <label>Childhood (include parents, siblings, family):</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={significantSocialDevelopmentalHistory}
-                  placeholder="Enter "
-                  required
-                  onChange={(e) => setSignificantSocialDevelopmentalHistory(e.target.value)}
-                />
-              </div>
-              </div>
-
-
-              <div className="form-field-single-update" style={{ merginLeft: "10px" }}>
-                <label >Educational history:</label>
+                <div className="form-field-single-update">
+                  <label>Childhood (include parents, siblings, family):</label>
                   <input
                     type="text"
                     id="approvedby"
-                    value={currentStudentLocation}
+                    value={significantSocialDevelopmentalHistory}
                     placeholder="Enter "
                     required
-                    onChange={(e) => setCurrentStudentLocation(e.target.value)}
+                    onChange={(e) =>
+                      setSignificantSocialDevelopmentalHistory(e.target.value)
+                    }
                   />
                 </div>
+              </div>
+
+              <div
+                className="form-field-single-update"
+                style={{ merginLeft: "10px" }}
+              >
+                <label>Educational history:</label>
+                <input
+                  type="text"
+                  id="approvedby"
+                  value={currentStudentLocation}
+                  placeholder="Enter "
+                  required
+                  onChange={(e) => setCurrentStudentLocation(e.target.value)}
+                />
+              </div>
 
               <div className="form-field-update">
                 <div className="form-field-child">
-                  <label >Highest level of education:</label>
+                  <label>Highest level of education:</label>
                   <input
                     type="text"
-
                     value={highestEducation}
                     placeholder="Enter education"
                     required
@@ -7020,69 +9086,76 @@ const InitialAssessment = () => {
                 </div>
 
                 <div className="form-field-child">
-                <label htmlFor="" style={{ marginTop: "1rem", fontWeight: "bold" }}>Special education:</label>
-                <div className="employment-Aligmant" style={{ marginTop: "1rem" }}>
-                    <div className="checkboxitem-update" >
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      checked={specialEducation === true}
-                      onChange={() => setSpecialEducation(true)}
-                    />
-                    <label>Yes</label>
-                  </div>
+                  <label
+                    htmlFor=""
+                    style={{ marginTop: "1rem", fontWeight: "bold" }}
+                  >
+                    Special education:
+                  </label>
+                  <div
+                    className="employment-Aligmant"
+                    style={{ marginTop: "1rem" }}
+                  >
                     <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      checked={specialEducation === true}
-                      onChange={() => setSpecialEducation(true)}
-                    />
-                    <label>No</label>
+                      <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        checked={specialEducation === true}
+                        onChange={() => setSpecialEducation(true)}
+                      />
+                      <label>Yes</label>
+                    </div>
+                    <div className="checkboxitem-update">
+                      <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        checked={specialEducation === true}
+                        onChange={() => setSpecialEducation(true)}
+                      />
+                      <label>No</label>
+                    </div>
                   </div>
                 </div>
-              </div>
-
               </div>
 
               <div className="form-field-update">
                 <div className="form-field-child">
-                <label style={{ fontWeight: "bold" }}>Currently a student?</label>
-                <div className="employment-Aligmant">
+                  <label style={{ fontWeight: "bold" }}>
+                    Currently a student?
+                  </label>
+                  <div className="employment-Aligmant">
                     <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      checked={currentStudent === true}
-                      onChange={() => setCurrentStudent(true)}
-                    />
-                    <label>Yes</label>
-                  </div>
+                      <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        checked={currentStudent === true}
+                        onChange={() => setCurrentStudent(true)}
+                      />
+                      <label>Yes</label>
+                    </div>
                     <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-
-                      checked={currentStudent === false}
-                      onChange={() => setCurrentStudent(false)}
-                    />
-                    <label>No</label>
+                      <input
+                        type="checkbox"
+                        checked={currentStudent === false}
+                        onChange={() => setCurrentStudent(false)}
+                      />
+                      <label>No</label>
+                    </div>
                   </div>
                 </div>
-              </div>
                 <div className="form-field-child">
-                  <label >If yes, where?</label>
-                <input
-                  type="text"
-
-                  value={ifYesWhere}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setIfYesWhere(e.target.value)}
-                />
-              </div>
+                  <label>If yes, where?</label>
+                  <input
+                    type="text"
+                    value={ifYesWhere}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setIfYesWhere(e.target.value)}
+                  />
+                </div>
               </div>
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Employment history:</h6>
@@ -7090,29 +9163,30 @@ const InitialAssessment = () => {
 
               <div className="form-field-update">
                 <div className="form-field-child">
-                <label style={{ fontWeight: "bold" }}>Currently employed:</label>
-                <div className="employment-Aligmant">
+                  <label style={{ fontWeight: "bold" }}>
+                    Currently employed:
+                  </label>
+                  <div className="employment-Aligmant">
                     <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-
-                      id="currentlyEmployed"
-                      checked={currentlyEmployed === true}
-                      onChange={() => setCurrentlyEmployed(true)}
-                    />
-                    <label htmlFor="currentlyEmployed">Yes</label>
-                  </div>
+                      <input
+                        type="checkbox"
+                        id="currentlyEmployed"
+                        checked={currentlyEmployed === true}
+                        onChange={() => setCurrentlyEmployed(true)}
+                      />
+                      <label htmlFor="currentlyEmployed">Yes</label>
+                    </div>
                     <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      id="currentlyEmployedno"
-                      checked={currentlyEmployed === false}
-                      onChange={() => setCurrentlyEmployed(false)}
-                    />
-                    <label htmlFor="currentlyEmployedno">No</label>
+                      <input
+                        type="checkbox"
+                        id="currentlyEmployedno"
+                        checked={currentlyEmployed === false}
+                        onChange={() => setCurrentlyEmployed(false)}
+                      />
+                      <label htmlFor="currentlyEmployedno">No</label>
+                    </div>
                   </div>
                 </div>
-              </div>
                 {/* <div className="yeschechbox">
                 <label style={{ fontWeight: "bold" }}>Fully time employed:</label>
                 <div className="employment-Aligmant">
@@ -7138,103 +9212,102 @@ const InitialAssessment = () => {
                 </div>
               </div> */}
                 <div className="form-field-child">
-                <label htmlFor="approvedby">If employed, where? FT or PT?:</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={employmentLocation}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setEmploymentLocation(e.target.value)}
-                />
-              </div>
+                  <label htmlFor="approvedby">
+                    If employed, where? FT or PT?:
+                  </label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={employmentLocation}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setEmploymentLocation(e.target.value)}
+                  />
+                </div>
               </div>
 
               <div className="box-image-container">
-              <div className="form-field-single-update">
-                  <label >
-                  Work History (and barriers to employment):
-                </label>
-                <input
-                  type="text"
-
-                  placeholder="Enter text"
-                  value={workHistory}
+                <div className="form-field-single-update">
+                  <label>Work History (and barriers to employment):</label>
+                  <input
+                    type="text"
+                    placeholder="Enter text"
+                    value={workHistory}
                     onChange={(e) => setWorkHistory(e.target.value)}
                   />
                 </div>
               </div>
 
-
               <div className="box-image-container">
                 <div className="form-field-update">
                   <div className="form-field-child">
-                <label style={{ fontWeight: "bold" }}>Military History:</label>
-                <div className="yesNoAligment">
+                    <label style={{ fontWeight: "bold" }}>
+                      Military History:
+                    </label>
+                    <div className="yesNoAligment">
                       <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      id="militaryService"
-                      checked={militaryService === true}
-                      onChange={() => setMilitaryService(true)}
-
-                    />
-                    <label htmlFor="militaryService">Yes</label>
-                  </div>
+                        <input
+                          type="checkbox"
+                          id="militaryService"
+                          checked={militaryService === true}
+                          onChange={() => setMilitaryService(true)}
+                        />
+                        <label htmlFor="militaryService">Yes</label>
+                      </div>
                       <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      id="militaryServiceno"
-                      checked={militaryService === false}
-                      onChange={() => setMilitaryService(false)}
-
-                    />
-                    <label htmlFor="militaryServiceno">No</label>
+                        <input
+                          type="checkbox"
+                          id="militaryServiceno"
+                          checked={militaryService === false}
+                          onChange={() => setMilitaryService(false)}
+                        />
+                        <label htmlFor="militaryServiceno">No</label>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
                   <div className="form-field-child">
-                <label style={{ fontWeight: "bold" }}>Currently on active duty?</label>
-                <div className="yesNoAligment">
+                    <label style={{ fontWeight: "bold" }}>
+                      Currently on active duty?
+                    </label>
+                    <div className="yesNoAligment">
                       <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      id="activeDuty"
-                      checked={activeDuty === true}
-                      onChange={() => setActiveDuty(true)}
-                    />
-                    <label htmlFor="activeDuty">Yes</label>
-                  </div>
+                        <input
+                          type="checkbox"
+                          id="activeDuty"
+                          checked={activeDuty === true}
+                          onChange={() => setActiveDuty(true)}
+                        />
+                        <label htmlFor="activeDuty">Yes</label>
+                      </div>
                       <div className="checkboxitem-update">
-                    <input
-                      type="checkbox"
-                      id="activeDutyno"
-                      checked={activeDuty === false}
-                      onChange={() => setActiveDuty(false)}
-                    />
-                    <label htmlFor="activeDutyno">No</label>
+                        <input
+                          type="checkbox"
+                          id="activeDutyno"
+                          checked={activeDuty === false}
+                          onChange={() => setActiveDuty(false)}
+                        />
+                        <label htmlFor="activeDutyno">No</label>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
                 </div>
                 <div className="border-bootom-line"></div>
-              <div className="form-field-single-update-bold">
-                <label >
-                  Criminal Justice Legal History:
-                </label>
-                <Select
-                  isMulti
-                  value={selectedValue}
-                  onChange={selectedValueHandler}
-                  options={selectedValueOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeyDownSelectedValue}
-                />
-
+                <div className="form-field-single-update-bold">
+                  <label>Criminal Justice Legal History:</label>
+                  <Select
+                    isMulti
+                    value={selectedValue}
+                    onChange={selectedValueHandler}
+                    options={selectedValueOption}
+                    isCreatable={true}
+                    onKeyDown={handleKeyDownSelectedValue}
+                  />
                 </div>
               </div>
               <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Current Independent Living Skills:</h6>
+                <h6 style={{ fontWeight: "bold" }}>
+                  Current Independent Living Skills:
+                </h6>
               </div>
 
               {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
@@ -7311,33 +9384,38 @@ const InitialAssessment = () => {
               </div>
               </div> */}
 
-<div className="needs-interventions-container table-respnosive">
+              <div className="needs-interventions-container table-respnosive">
                 <div className="needs-interventions-column3">
-         
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Type of Activity</th>
-                          <th>Good</th>
-                          <th>Fair</th>
-                          <th>Not so good</th>
-                          <th>Need assist</th>
-                          <th>Comments</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Bathing/Showering</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Type of Activity</th>
+                        <th>Good</th>
+                        <th>Fair</th>
+                        <th>Not so good</th>
+                        <th>Need assist</th>
+                        <th>Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Bathing/Showering</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7351,20 +9429,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Grooming/hygiene</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Grooming/hygiene</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7378,20 +9462,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Mobility</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Mobility</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7405,20 +9495,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Housework</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Housework</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7432,20 +9528,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Shopping</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Shopping</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7459,20 +9561,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Managing money/budget</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Managing money/budget</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7486,20 +9594,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Preparing food</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Preparing food</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7513,20 +9627,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Eating</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Eating</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7540,20 +9660,26 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Toileting</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
-                          </td>
-                          <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Toileting</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <select>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
                             // rows={Math.max(commentDiabety.split("\n").length, 1)}
@@ -7567,63 +9693,86 @@ const InitialAssessment = () => {
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                        
+                        </td>
+                      </tr>
 
-                        {handleRiskFactorActivityArray?.map((i, index) => (
-                          <tr key={index}>
-                            {/* <td>
-                              {i?.bathingShoweringGood?.map((item) => (
-                                <p key={item?.value}>{item?.value}</p>
-                              ))}
-
-                            </td> */}
-                             <td>
-                             Other (specify)
-
-                            </td>
-                            {/* <td>{`${i.bathingShoweringFair === true ? "Yes" : "No"}`} </td>
-                            <td>{`${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td>
-                            <td>{`${i.bathingShoweringFair !== true ? "Yes" : "No"}`} </td> */}
-                            <td><input type="checkbox" checked={i.bathingShoweringFair === true} onChange={()=>setBathingShoweringFair(!bathingShoweringFair)}/></td>
-                            <td><input type="checkbox" checked={i.bathingShoweringFair === false} onChange={()=>setBathingShoweringFair(!bathingShoweringFair)}/></td>
-                            <td><input type="checkbox" checked={i.bathingShoweringFair === true} onChange={()=>setBathingShoweringFair(!bathingShoweringFair)}/></td>
-                            <td>{` ${i.bathingShoweringNeedAssist === true ? "Yes" : "No"}`} </td>
-                            <td> {i.bathingShoweringComments} </td>
-                          </tr>
-                          
-                        ))}
-                        <tr>
-                          <td>Other (specify)</td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
-                          <td><input type="checkbox"/></td>
+                      {handleRiskFactorActivityArray?.map((i, index) => (
+                        <tr key={index}>
+                      
+                          <td>Other:{" "}
+                        {i?.otherCurrentOther}
+                          </td>
+                         
                           <td>
-                            <select>
-                              <option value="Yes">Yes</option>
-                              <option value="No">No</option>
-                            </select>
+                            <input
+                              type="checkbox"
+                              checked={i.otherCurrentGood === true}
+                            
+                            />
                           </td>
                           <td>
+                            <input
+                              type="checkbox"
+                              checked={i.otherCurrentFair === true}
+                            
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="checkbox"
+                              checked={i.otherCurrentNotSoGood === true}
+                             
+                            />
+                          </td>
+                          <td>
+                            {` ${
+                              i.otherCurrentNeed === "Yes"
+                                ? "Yes"
+                                : "No"
+                            }`}{" "}
+                          </td>
+                          <td> {i.otherCurrentComment} </td>
+                        </tr>
+                      ))}
+                      <tr>
+                        <td>Other: <input type="text"
+                        className="treatment_plan_table"
+                        value={otherCurrentOther}
+                        onChange={(e)=>setOtherCurrentOther(e.target.value)}/></td>
+                        <td>
+                          <input type="checkbox" checked={otherCurrentGood} onChange={(e)=>setOtherCurrentGood(!otherCurrentGood)}/>
+                        </td>
+                        <td>
+                          <input type="checkbox" checked={otherCurrentFair} onChange={(e)=>setOtherCurrentFair(!otherCurrentFair)}/>
+                        </td>
+                        <td>
+                          <input type="checkbox" checked={otherCurrentNotSoGood} onChange={(e)=>setOtherCurrentNotSoGood(!otherCurrentNotSoGood)}/>
+                        </td>
+                        <td>
+                          <select value={otherCurrentNeed} onChange={(e)=>setOtherCurrentNeed(e.target.value)}>
+                          <option >Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                          </select>
+                        </td>
+                        <td>
                           <textarea
                             className="treatment_plan_table"
-                            // rows={Math.max(commentDiabety.split("\n").length, 1)}
-                            // value={commentDiabety}
+                            rows={Math.max(otherCurrentComment.split("\n").length, 1)}
+                            value={otherCurrentComment}
                             placeholder="___________"
-                            // onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setOtherCurrentComment(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                // setCommentDeabetes((prevComment) => prevComment + "\n");
+                                setOtherCurrentComment((prevComment) => prevComment + "\n");
                               }
                             }}
                           />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-         
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
@@ -7672,107 +9821,122 @@ const InitialAssessment = () => {
                 </div>
               </div> */}
 
-
               {/* start working  */}
               <div className="box-image-container">
-              <div className="form-field-single-update ">
-                <label>Triggers:</label>
-                <input
-                  type="text"
-                  placeholder="Enter text"
-                  required
-                  value={triggers}
-                  onChange={(e) => setTriggers(e.target.value)}
-                />
-              </div>
-                <div className="yeschechboxFall-risk" style={{ marginTop: "1rem", marginLeft: "10px" }}>
-                <label htmlFor="">Fall risk:</label>
-                <div
-                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
-                >
+                <div className="form-field-single-update ">
+                  <label>Triggers:</label>
                   <input
-                    type="checkbox"
-                    id="fallRisk"
-                    checked={fallRisk === true}
-                    onChange={() => setFallRisk(true)}
+                    type="text"
+                    placeholder="Enter text"
+                    required
+                    value={triggers}
+                    onChange={(e) => setTriggers(e.target.value)}
                   />
-                  <label htmlFor="fallRisk">Yes</label>
                 </div>
                 <div
-                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                  className="yeschechboxFall-risk"
+                  style={{ marginTop: "1rem", marginLeft: "10px" }}
                 >
-                  <input
-                    type="checkbox"
-                    id="fallRiskno"
-                    checked={fallRisk === false}
-                    onChange={() => setFallRisk(false)}
-                  />
-                  <label htmlFor="fallRiskno">No</label>
+                  <label htmlFor="">Fall risk:</label>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="fallRisk"
+                      checked={fallRisk === true}
+                      onChange={() => setFallRisk(true)}
+                    />
+                    <label htmlFor="fallRisk">Yes</label>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="fallRiskno"
+                      checked={fallRisk === false}
+                      onChange={() => setFallRisk(false)}
+                    />
+                    <label htmlFor="fallRiskno">No</label>
+                  </div>
                 </div>
-              </div>
-              <div className="form-field-single-update">
-                <label >If yes please explain:</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={fallRiskExplanation}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setFallRiskExplanation(e.target.value)}
-                />
-              </div>
-              <div className="form-field-single-update">
-                <label htmlFor="programlocation&address">
-                  Hobbies/Leisure Activities:
-                </label>
+                <div className="form-field-single-update">
+                  <label>If yes please explain:</label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={fallRiskExplanation}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setFallRiskExplanation(e.target.value)}
+                  />
+                </div>
+                <div className="form-field-single-update">
+                  <label htmlFor="programlocation&address">
+                    Hobbies/Leisure Activities:
+                  </label>
 
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={hobbiesLeisureActivities}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setHobbiesLeisureActivities(e.target.value)}
-                />
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={hobbiesLeisureActivities}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) =>
+                      setHobbiesLeisureActivities(e.target.value)
+                    }
+                  />
+                </div>
+                <div className="form-field-single-update-bold ">
+                  <label>Medical Equipment:</label>
 
-              </div>
-              <div className="form-field-single-update-bold ">
-                <label >Medical Equipment:</label>
-
-                <Select
-                  value={selectedValueMedical}
-                  isMulti
-                  onChange={selectedValueMedicalHandler}
-                  options={selectedValueMedicalOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeySelectedValueMedical}
-                />
-              </div>
-
+                  <Select
+                    value={selectedValueMedical}
+                    isMulti
+                    onChange={selectedValueMedicalHandler}
+                    options={selectedValueMedicalOption}
+                    isCreatable={true}
+                    onKeyDown={handleKeySelectedValueMedical}
+                  />
+                </div>
               </div>
 
               <div className="box-image-container">
-              <div className="form-field-single-update-bold ">
-                <label htmlFor="reasonadmission">Special Precautions:</label>
-                <Select
-                  value={selectedValueSpecialPrecautions}
-                  isMulti
-                  onChange={selectedValueSpecialPrecautionsHandler}
-                  options={selectedValueSpecialPrecautionsOption}
-                  isCreatable={true}
-                  onKeyDown={handleKeySelectedValueSpecialPrecautions}
-                />
-              </div>
+                <div className="form-field-single-update-bold ">
+                  <label htmlFor="reasonadmission">Special Precautions:</label>
+                  <Select
+                    value={selectedValueSpecialPrecautions}
+                    isMulti
+                    onChange={selectedValueSpecialPrecautionsHandler}
+                    options={selectedValueSpecialPrecautionsOption}
+                    isCreatable={true}
+                    onKeyDown={handleKeySelectedValueSpecialPrecautions}
+                  />
+                </div>
               </div>
               <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Safety and Risk Assessment</h6>
+                <h6 style={{ fontWeight: "bold" }}>
+                  Safety and Risk Assessment
+                </h6>
               </div>
               <div className="yeschechbox1">
                 <label style={{ fontWeight: "bold" }}>
-                  Are you currently thinking about harming yourself or committing
-                  suicide?
+                  Are you currently thinking about harming yourself or
+                  committing suicide?
                 </label>
-                <div className="riskAndSafityAligment" style={{ paddingLeft: "15px" }}>
+                <div
+                  className="riskAndSafityAligment"
+                  style={{ paddingLeft: "15px" }}
+                >
                   <div className="checkBox-aligment">
                     <input
                       type="checkbox"
@@ -7794,7 +9958,6 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
-
               <div className="yeschechbox1">
                 <label style={{ fontWeight: "bold" }}>Ideation</label>
                 {/* <input
@@ -7806,44 +9969,71 @@ const InitialAssessment = () => {
               /> */}
 
                 <div className="employment-Aligmant-location">
-                  <div style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "7px",
+                      alignItems: "center",
+                      marginLeft: "10px",
+                    }}
+                  >
                     <input
                       type="checkbox"
-                    // checked={bathingShoweringNeedAssist===true}
-                    // onChange={()=>setBathingShoweringNeedAssist(true)}
+                      // checked={bathingShoweringNeedAssist===true}
+                      // onChange={()=>setBathingShoweringNeedAssist(true)}
                     />
-                    <label >Fleeting</label>
+                    <label>Fleeting</label>
                   </div>
-                  <div style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "7px",
+                      alignItems: "center",
+                      marginLeft: "10px",
+                    }}
+                  >
                     <input
                       type="checkbox"
-                    // checked={bathingShoweringNeedAssist===false}
-                    // onChange={()=>setBathingShoweringNeedAssist(false)}
+                      // checked={bathingShoweringNeedAssist===false}
+                      // onChange={()=>setBathingShoweringNeedAssist(false)}
                     />
                     <label>Periodic</label>
                   </div>
-                  <div style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "7px",
+                      alignItems: "center",
+                      marginLeft: "10px",
+                    }}
+                  >
                     <input
                       type="checkbox"
-                    // checked={bathingShoweringNeedAssist===false}
-                    // onChange={()=>setBathingShoweringNeedAssist(false)}
+                      // checked={bathingShoweringNeedAssist===false}
+                      // onChange={()=>setBathingShoweringNeedAssist(false)}
                     />
                     <label>Constant</label>
                   </div>
-                  <div style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "7px",
+                      alignItems: "center",
+                      marginLeft: "10px",
+                    }}
+                  >
                     <input
                       type="checkbox"
-                    // checked={bathingShoweringNeedAssist===false}
-                    // onChange={()=>setBathingShoweringNeedAssist(false)}
+                      // checked={bathingShoweringNeedAssist===false}
+                      // onChange={()=>setBathingShoweringNeedAssist(false)}
                     />
                     <label>N/A</label>
                   </div>
                 </div>
-
               </div>
 
               {/* api add some time */}
-              <div className="increasingClass" >
+              <div className="increasingClass">
                 <label style={{ fontWeight: "bold" }}>Increasing in:</label>
 
                 <div className="increasingClassInternal">
@@ -7852,7 +10042,12 @@ const InitialAssessment = () => {
                       <label>Urgency:</label>
                     </div>
                     <div
-                      style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}
+                      style={{
+                        display: "flex",
+                        gap: "7px",
+                        alignItems: "center",
+                        marginLeft: "10px",
+                      }}
                     >
                       <input
                         type="checkbox"
@@ -7862,9 +10057,7 @@ const InitialAssessment = () => {
                       />
                       <label htmlFor="suicidalIdeationUrgency">Yes</label>
                     </div>
-                    <div
-                      className="increasingClassInternal-child-no" 
-                    >
+                    <div className="increasingClassInternal-child-no">
                       <input
                         type="checkbox"
                         id="suicidalIdeationUrgencyno"
@@ -7875,11 +10068,15 @@ const InitialAssessment = () => {
                     </div>
                   </div>
 
-
                   <div className="yeschechbox1" style={{ marginLeft: "3rem" }}>
                     <label>Severity:</label>
                     <div
-                      style={{ display: "flex", gap: "7px", alignItems: "center", marginLeft: "10px" }}
+                      style={{
+                        display: "flex",
+                        gap: "7px",
+                        alignItems: "center",
+                        marginLeft: "10px",
+                      }}
                     >
                       <input
                         type="checkbox"
@@ -7889,9 +10086,7 @@ const InitialAssessment = () => {
                       />
                       <label htmlFor="currentThoughtsOfHarmingSelf">Yes</label>
                     </div>
-                    <div
-                      className="increasingClassInternal-child-no" 
-                    >
+                    <div className="increasingClassInternal-child-no">
                       <input
                         type="checkbox"
                         id="suicidalIdeationSeverityno"
@@ -7902,9 +10097,7 @@ const InitialAssessment = () => {
                     </div>
                   </div>
                 </div>
-
               </div>
-
 
               <div className="yeschechbox1">
                 <label style={{ fontWeight: "bold" }}>
@@ -7913,7 +10106,13 @@ const InitialAssessment = () => {
                 </label>
 
                 <div className="safetyRiskLast">
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
                     <input
                       type="checkbox"
                       id="currentThoughtsOfHarmingOthers"
@@ -7923,7 +10122,11 @@ const InitialAssessment = () => {
                     <label htmlFor="currentThoughtsOfHarmingOthers">Yes</label>
                   </div>
                   <div
-                    style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
                   >
                     <input
                       type="checkbox"
@@ -7936,15 +10139,12 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
-
               <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Risk Factors:</h6>
               </div>
 
-
               <div className="needs-interventions-container">
                 <div className="needs-interventions-column3">
-
                   <table>
                     <thead>
                       <tr>
@@ -7958,14 +10158,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Current suicidal ideation </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -7978,14 +10174,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Prior suicide attempt</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -7998,14 +10190,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Access to means (i.e. weapon)</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8018,14 +10206,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Substance abuse</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8038,14 +10222,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Other self-abusing behavior</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8058,14 +10238,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Recent losses/lack of support</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8078,14 +10254,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Behavior cues</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           {/* setBehaviorcuesDropDown */}
@@ -8093,23 +10265,23 @@ const InitialAssessment = () => {
                             value={behaviorcuesDropDown}
                             isMulti
                             options={selectedValueRiskFactorsOption1}
-                            onChange={selectedValueRiskFactorsHandlerBehaviorcues}
+                            onChange={
+                              selectedValueRiskFactorsHandlerBehaviorcues
+                            }
                             isCreatable={true}
-                            onKeyDown={handleKeySelectedValueRiskFactorsBehavior}
+                            onKeyDown={
+                              handleKeySelectedValueRiskFactorsBehavior
+                            }
                           />
                         </td>
                       </tr>
                       <tr>
                         <td>Symptoms of psychosis </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           {/* setSymptomsOfPsychosisDropDown */}
@@ -8119,21 +10291,19 @@ const InitialAssessment = () => {
                             options={selectedValueRiskFactorsOption2}
                             onChange={selectedValueRiskFactorsHandlerSymptoms}
                             isCreatable={true}
-                            onKeyDown={handleKeySelectedValueRiskFactorsSymptoms}
+                            onKeyDown={
+                              handleKeySelectedValueRiskFactorsSymptoms
+                            }
                           />
                         </td>
                       </tr>
                       <tr>
                         <td>Family history of suicide</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8146,14 +10316,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Terminal physical illness</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8166,14 +10332,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Current stressors (specify)</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8186,14 +10348,10 @@ const InitialAssessment = () => {
                       <tr>
                         <td>Chronic pain</td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
-                          <input
-                            type="checkbox"
-                          />
+                          <input type="checkbox" />
                         </td>
                         <td>
                           <input
@@ -8203,14 +10361,58 @@ const InitialAssessment = () => {
                           />
                         </td>
                       </tr>
-
-
+                      {riskFactorArray.length > 0 && (
+                  
+                        riskFactorArray?.map((i, index) => (
+                          <tr key={index}>
+                            <td>
+                              Other : {i.otherRiskOther}
+                            </td>
+                            <td><input type="checkbox" checked={i.otherRiskYesOrNot===true}/></td>
+                            <td><input type="checkbox" checked={i.otherRiskYesOrNot===false}/></td>
+                            <td>{` ${i.otherRiskComment}`} </td>
+                          </tr>
+                        ))
+                   
+                  )}
+                      <tr>
+                        <td>Other: 
+                          <input
+                          type="text"
+                          value={otherRiskOther}
+                          placeholder="__________"
+                          className="treatment_plan_table"
+                          onChange={(e)=>setOtherRiskOther(e.target.value)}/> </td>
+                        <td>
+                          <input type="checkbox" checked={otherRiskYesOrNot===true} onChange={()=>setOtherRiskOtherYesOrNot(true)}/>
+                        </td>
+                        <td>
+                          <input type="checkbox" checked={otherRiskYesOrNot===false} onChange={()=>setOtherRiskOtherYesOrNot(false)} />
+                        </td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="____________"
+                            value={otherRiskComment}
+                            onChange={(e)=>setOtherRiskComment(e.target.value)}
+                          />
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
-
                 </div>
               </div>
 
+                 <div className="form-actions hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleRiskFactor}
+                >
+                  Add
+                </button>
+              </div>
 
               {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
                 <div className="form-field-single-update-bold">
@@ -8250,15 +10452,7 @@ const InitialAssessment = () => {
                 </div>
               </div> */}
 
-              {/* <div className="form-actions hidePrint">
-                <button
-                  type="button"
-                  className="safetybutton"
-                  onClick={handleRiskFactor}
-                >
-                  Add
-                </button>
-              </div> */}
+           
 
               {/*
               <div className="needs-interventions-container">
@@ -8291,7 +10485,6 @@ const InitialAssessment = () => {
                   )}
                 </div>
               </div> */}
-
 
               {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
                 <div className="form-field-single-update-bold">
@@ -8331,118 +10524,155 @@ const InitialAssessment = () => {
                 </div>
               </div> */}
 
-              
-<div className="formsheading">
+              <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Protective factors:</h6>
               </div>
 
-<div className="needs-interventions-container2">
+              <div className="needs-interventions-container2 table-respnosive">
                 <div className="needs-interventions-column2">
-              
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Protective factors that apply</th>
-                          <th>Yes</th>
-                          <th>No</th>
-                          <th>Comments</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Supports available (family friends)</td>
-                          <td>
-                            <input type="checkbox"/>
-                          </td>
-                          <td>
-                          <input type="checkbox"/>
-                          </td>
-                          <td>
-                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Spiritual / religious support</td>
-                          <td>
-                            <input type="checkbox"/>
-                          </td>
-                          <td>
-                          <input type="checkbox"/>
-                          </td>
-                          <td>
-                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Religious/cultural prohibitions</td>
-                          <td>
-                            <input type="checkbox"/>
-                          </td>
-                          <td>
-                          <input type="checkbox"/>
-                          </td>
-                          <td>
-                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Fear of consequences</td>
-                          <td>
-                            <input type="checkbox"/>
-                          </td>
-                          <td>
-                          <input type="checkbox"/>
-                          </td>
-                          <td>
-                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Able to be engaged in intervention</td>
-                          <td>
-                            <input type="checkbox"/>
-                          </td>
-                          <td>
-                          <input type="checkbox"/>
-                          </td>
-                          <td>
-                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Willing to commit to keeping self safe</td>
-                          <td>
-                            <input type="checkbox"/>
-                          </td>
-                          <td>
-                          <input type="checkbox"/>
-                          </td>
-                          <td>
-                            <input type="text" placeholder="__________" className="treatment_plan_table"/>
-                          </td>
-                        </tr>
-                        {/* {protectiveFactorsArray?.map((i, index) => (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Protective factors that apply</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                        <th>Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Supports available (family friends)</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Spiritual / religious support</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Religious/cultural prohibitions</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Fear of consequences</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Able to be engaged in intervention</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Willing to commit to keeping self safe</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                          />
+                        </td>
+                      </tr>
+                       {protectiveFactorsArray?.map((i, index) => (
                           <tr key={index}>
                             <td>
-
-                              {i?.selectedValueProtectiveFactors?.map((item) => (
-                                <p key={item?.value}>{item?.value}</p>
-                              ))}
-
+                              Other: {i?.otherProtectiveFactorsApply}
                             </td>
-                            <td>{` ${i.protectiveYesNo === true ? "YES" : "NO"}`} </td>
-                            <td>{` ${i.protectiveYesNo === true ? "NO" : "YES"}`} </td>
-                            <td>{` ${i.protectiveComment}`} </td>
+                           <td><input type="checkbox" checked={i.otherProtectiveFactorsYesNo===true}/></td>
+                           <td><input type="checkbox" checked={i.otherProtectiveFactorsYesNo===false}/></td>
+                            <td>{` ${i.otherProtectiveFactorsDescription}`} </td>
                           </tr>
-                        ))} */}
-                      </tbody>
-                    </table>
-    
+                        ))} 
+                           <tr>
+                        <td>Other: <input type="text" 
+                        className="treatment_plan_table"
+                        placeholder="__________"
+                        value={otherProtectiveFactorsApply} onChange={(e)=>setOtherProtectiveFactorsApply(e.target.value)}/></td>
+                        <td>
+                          <input type="checkbox" checked={otherProtectiveFactorsYesNo===true} onChange={()=>setOtherProtectiveFactorsYesNO(true)}/>
+                        </td>
+                        <td>
+                          <input type="checkbox"  checked={otherProtectiveFactorsYesNo===false} onChange={()=>setOtherProtectiveFactorsYesNO(false)}/>
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="__________"
+                            className="treatment_plan_table"
+                            value={otherProtectiveFactorsDescription}
+                            onChange={(e)=>setOtherProtectiveFactorsDescription(e.target.value)}
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
-
-              {/* <div className="form-actions hidePrint">
+              <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -8450,7 +10680,7 @@ const InitialAssessment = () => {
                 >
                   Add
                 </button>
-              </div> */}
+              </div>
 
               {/* <div className="needs-interventions-container">
                 <div className="needs-interventions-column3">
@@ -8485,15 +10715,13 @@ const InitialAssessment = () => {
                 </div>
               </div> */}
 
-
-
               <div className="formsheading">
                 <p>
                   Considering the responses to the above risk factors in
                   combination with all the other information you know about the
-                  person (gender, age, diagnosis, balancing factors-resiliency and
-                  supports, would you rate the level of risk for this person for
-                  danger to self (DTS) as:
+                  person (gender, age, diagnosis, balancing factors-resiliency
+                  and supports, would you rate the level of risk for this person
+                  for danger to self (DTS) as:
                 </p>
               </div>
               <div className="yeschechbox_select-4">
@@ -8539,10 +10767,10 @@ const InitialAssessment = () => {
                 </div>
               </div>
               <div className="formsheading">
-                <h6 style={{ fontWeight: 'bold' }}>Diagnoses:</h6>
+                <h6 style={{ fontWeight: "bold" }}>Diagnoses:</h6>
               </div>
               <div className="formsheading">
-                <h6 style={{ fontWeight: 'bold' }}>Psychiatric Diagnoses:</h6>
+                <h6 style={{ fontWeight: "bold" }}>Psychiatric Diagnoses:</h6>
               </div>
 
               {/* <div className="box-image-container hidePrint" style={{ padding: "10px" }}>
@@ -8592,116 +10820,201 @@ const InitialAssessment = () => {
 
               <div className="needs-interventions-container2">
                 <div className="needs-interventions-column2">
-
-                    <table>
-                      <thead>
-                        <th>Psychiatric Diagnoses</th>
-                        <th>ICD Code</th>
-                        <th>Description</th>
-                      </thead>
-                      <tbody>
-                          <tr>
-                           <td>Primary*</td>
-                           <td>
-                            <input
+                  <table>
+                    <thead>
+                      <th>Psychiatric Diagnoses</th>
+                      <th>ICD Code</th>
+                      <th>Description</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Primary*</td>
+                        <td>
+                          <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
                             className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
                             value={commentDiabety}
                             placeholder="___________"
                             onChange={(e) => setCommentDeabetes(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Secondary</td>
-                           <td>
-                            <input
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Secondary</td>
+                        <td>
+                          <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
                             className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
                             value={commentDiabety}
                             placeholder="___________"
                             onChange={(e) => setCommentDeabetes(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Tertiary</td>
-                           <td>
-                            <input
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tertiary</td>
+                        <td>
+                          <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
                             className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
                             value={commentDiabety}
                             placeholder="___________"
                             onChange={(e) => setCommentDeabetes(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Additional</td>
-                           <td>
-                            <input
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Additional</td>
+                        <td>
+                          <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
                             className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
                             value={commentDiabety}
                             placeholder="___________"
                             onChange={(e) => setCommentDeabetes(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
                               }
                             }}
-                          /></td>
-                          </tr>
-                          
-                      
-                      </tbody>
-                    </table>
-        
+                          />
+                        </td>
+                      </tr>
+                     
+                        {
+                          psychiatricDiagnosesArray.map((i)=>
+                          <tr>
+                            <td>Other: {i?.otherPsychiatricOption}</td>
+                            <td>{i?.othericdCode}</td>
+                            <td>{i?.otherdescription}</td>
+                            
+                          </tr>)
+                        }
+                  
+                      <tr>
+                        <td>Other: <input
+                        className="treatment_plan_table"
+                        type="text"
+                        value={otherPsychiatricOption}
+                        placeholder="__________"
+                        onChange={(e)=>setOtherPsychiatricOption(e.target.value)}
+                        /></td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            value={othericdCode}
+                            onChange={(e)=>setOtherIcdCode(e.target.value)}
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              otherdescription.split("\n").length,
+                              1
+                            )}
+                            value={otherdescription}
+                            placeholder="___________"
+                            onChange={(e) => setOtherDescription(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setOtherDescription(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
-
-
+                <div className="form-actions hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handlePsychiatricDiagnoses}
+                >
+                  Add
+                </button>
+              </div>
 
               {/* <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses:</h6>
@@ -8743,9 +11056,231 @@ const InitialAssessment = () => {
               </div>
               </div> */}
 
-       
+           
 
-              {/* <div className="form-actions hidePrint">
+              <div className="formsheading">
+                <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses:</h6>
+              </div>
+
+              <div className="needs-interventions-container2">
+                <div className="needs-interventions-column2">
+                  <table>
+                    <thead>
+                      <th>Medical Diagnoses</th>
+                      <th>ICD Code</th>
+                      <th>Description</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Primary*</td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Secondary</td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tertiary</td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Additional</td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Additional</td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              commentDiabety.split("\n").length,
+                              1
+                            )}
+                            value={commentDiabety}
+                            placeholder="___________"
+                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setCommentDeabetes(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                      {
+                          medicalDiagnosesArray.map((i)=>
+                          <tr>
+                            <td>Other: {i?.OtherMedicalOption}</td>
+                            <td>{i?.OthericdCodeMedicalDiagnoses}</td>
+                            <td>{i?.OtherdescriptionMedicalDiagnoses}</td>
+                            
+                          </tr>)
+                        }
+                  
+                      <tr>
+                        <td>Other: <input
+                        className="treatment_plan_table"
+                        type="text"
+                        value={OtherMedicalOption}
+                        placeholder="__________"
+                        onChange={(e)=>setOtherMedicalOption(e.target.value)}
+                        /></td>
+                        <td>
+                          <input
+                            className="treatment_plan_table"
+                            type="text"
+                            placeholder="___________"
+                            value={OthericdCodeMedicalDiagnoses}
+                            onChange={(e)=>setOtherIcdCodeMedicalDiagnoses(e.target.value)}
+                          />
+                        </td>
+                        <td>
+                          {" "}
+                          <textarea
+                            className="treatment_plan_table"
+                            rows={Math.max(
+                              OtherdescriptionMedicalDiagnoses.split("\n").length,
+                              1
+                            )}
+                            value={OtherdescriptionMedicalDiagnoses}
+                            placeholder="___________"
+                            onChange={(e) => setOtherDescriptionMedicalDiagnoses(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setOtherDescriptionMedicalDiagnoses(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+                 <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -8753,148 +11288,15 @@ const InitialAssessment = () => {
                 >
                   Add
                 </button>
-              </div> */}
-
-<div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Medical Diagnoses:</h6>
-              </div>
-
-<div className="needs-interventions-container2">
-                <div className="needs-interventions-column2">
-
-                    <table>
-                      <thead>
-                        <th>Medical Diagnoses</th>
-                        <th>ICD Code</th>
-                        <th>Description</th>
-                      </thead>
-                      <tbody>
-                          <tr>
-                           <td>Primary*</td>
-                           <td>
-                            <input
-                            className="treatment_plan_table"
-                            type="text"
-                            placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
-                            className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
-                            value={commentDiabety}
-                            placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
-                              }
-                            }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Secondary</td>
-                           <td>
-                            <input
-                            className="treatment_plan_table"
-                            type="text"
-                            placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
-                            className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
-                            value={commentDiabety}
-                            placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
-                              }
-                            }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Tertiary</td>
-                           <td>
-                            <input
-                            className="treatment_plan_table"
-                            type="text"
-                            placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
-                            className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
-                            value={commentDiabety}
-                            placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
-                              }
-                            }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Additional</td>
-                           <td>
-                            <input
-                            className="treatment_plan_table"
-                            type="text"
-                            placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
-                            className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
-                            value={commentDiabety}
-                            placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
-                              }
-                            }}
-                          /></td>
-                          </tr>
-                          <tr>
-                           <td>Additional</td>
-                           <td>
-                            <input
-                            className="treatment_plan_table"
-                            type="text"
-                            placeholder="___________"
-                            />
-                           </td>
-                           <td>  <textarea
-                            className="treatment_plan_table"
-                            rows={Math.max(commentDiabety.split("\n").length, 1)}
-                            value={commentDiabety}
-                            placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                setCommentDeabetes((prevComment) => prevComment + "\n");
-                              }
-                            }}
-                          /></td>
-                          </tr>
-                          
-                      
-                      </tbody>
-                    </table>
-        
-                </div>
               </div>
 
               <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Psychosocial or Environmental Stressors</h6>
-                <h6 style={{ fontWeight: "bold" }}>Problems with / related to:</h6>
+                <h6 style={{ fontWeight: "bold" }}>
+                  Psychosocial or Environmental Stressors
+                </h6>
+                <h6 style={{ fontWeight: "bold" }}>
+                  Problems with / related to:
+                </h6>
               </div>
               <div class="checkbox-container">
                 <div class="chechbox12-aligment4">
@@ -8989,16 +11391,16 @@ const InitialAssessment = () => {
                         checked={otherBoolean}
                         onChange={() => setOtherBoolean(!otherBoolean)}
                       />
-                      <label htmlFor="otherBoolean">Other (please specify)</label>
+                      <label htmlFor="otherBoolean">
+                        Other (please specify)
+                      </label>
                       {otherBoolean && (
                         <AutosizeInput
                           type="text"
                           inputStyle={{ border: "none", outline: "none" }}
                           placeholder="________"
                           value={otherStressors}
-                          onChange={(e) =>
-                            setOtherStressors(e.target.value)
-                          }
+                          onChange={(e) => setOtherStressors(e.target.value)}
                         />
                       )}
                     </div>
@@ -9046,12 +11448,11 @@ const InitialAssessment = () => {
                 </div>
               </div>
 
-
               <div className="yeschechbox-significant">
-                <label style={{ fontWeight: "bold" }}>Significant recent losses:</label>
-                <div
-                  className="Significant-losses"
-                >
+                <label style={{ fontWeight: "bold" }}>
+                  Significant recent losses:
+                </label>
+                <div className="Significant-losses">
                   <input
                     type="checkbox"
                     id="setSetNoAndYes"
@@ -9070,9 +11471,10 @@ const InitialAssessment = () => {
                     onChange={() => setSetNoAndYes(false)}
                   />
                   <label htmlFor="setSetNoAndYesno">No</label>
-                  <label style={{ paddingLeft: "10px", marginBottom: "6px" }}>If yes, please check applicable loss(es):</label>
+                  <label style={{ paddingLeft: "10px", marginBottom: "6px" }}>
+                    If yes, please check applicable loss(es):
+                  </label>
                 </div>
-
               </div>
               <div className="formsheading">
                 {/* <h6>If yes, please check applicable loss(es):</h6> */}
@@ -9105,7 +11507,9 @@ const InitialAssessment = () => {
                         checked={medicalSurgical}
                         onChange={() => setMedicalSurgical(!medicalSurgical)}
                       />
-                      <label htmlFor="medicalSurgical">Medical/ surgical </label>
+                      <label htmlFor="medicalSurgical">
+                        Medical/ surgical{" "}
+                      </label>
                     </div>
                   </div>
                   <div class="checkoptions">
@@ -9123,7 +11527,9 @@ const InitialAssessment = () => {
                         type="checkbox"
                         id="divorceSeparation"
                         checked={divorceSeparation}
-                        onChange={() => setDivorceSeparation(!divorceSeparation)}
+                        onChange={() =>
+                          setDivorceSeparation(!divorceSeparation)
+                        }
                       />
                       <label htmlFor="divorceSeparation">
                         Divorce / separation{" "}
@@ -9200,22 +11606,20 @@ const InitialAssessment = () => {
 
               <div className="box-image-container">
                 <div className="form-field-single-update">
-                <label >Additional Notes:</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={additionalNotes}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setAdditionalNotes(e.target.value)}
-                />
-
-              </div>
+                  <label>Additional Notes:</label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={additionalNotes}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setAdditionalNotes(e.target.value)}
+                  />
+                </div>
               </div>
 
               <div class="checkbox-container1">
                 <div class="checkoptions1" style={{ marginTop: "1.2rem" }}>
-
                   <div class="checkboxitem1">
                     <input
                       type="checkbox"
@@ -9228,10 +11632,7 @@ const InitialAssessment = () => {
                       and levels of services included in my behavior plan.
                     </span>
                   </div>
-                  <div
-                    class="checkboxitem12"
-                    style={{ display: "flex" }}
-                  >
+                  <div class="checkboxitem12" style={{ display: "flex" }}>
                     <input
                       type="checkbox"
                       checked={agreementWithPlan === false}
@@ -9239,167 +11640,197 @@ const InitialAssessment = () => {
                     />
                     <span style={{ paddingLeft: "10px" }}>
                       No, I (Resident/guardian) disagree with the types and/or
-                      levels of some or all of the services. By checking this box, I
-                      (Resident/guardian) will receive the services that I have
-                      agreed to receive and may appeal the treatment team’s
-                      decision to not include all the types and/ or levels of
-                      services that I have requested. *
+                      levels of some or all of the services. By checking this
+                      box, I (Resident/guardian) will receive the services that
+                      I have agreed to receive and may appeal the treatment
+                      team’s decision to not include all the types and/ or
+                      levels of services that I have requested. *
                     </span>
                   </div>
                 </div>
               </div>
 
-
-            {/* resident gaurdent name and signatutre */}
-              <div className="box-image-container" style={{ paddingBottom: "10px" }}>
-            <div className="form-field-single-update">
-              <label >Resident/Guardian name:</label>
-              <input
-                type="text"
-
-                value={residentGuardianName}
-                placeholder="Enter text"
-                required
-                onChange={(e) => setResidentGuardianName(e.target.value)}
-              />
-            </div>
-
-                <div class="file-upload-box hidePrint" style={{ marginLeft: "10px" }}>
-              <div className="file-upload-box-child">
-                <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
-                  SAVED AS DRAFT
-                </button>
-                <button className="upload-button" type="button" onClick={() => setSigInModel8(true)}>
-                  SAVED AND SIGNED
-                </button>
-              </div>
-              <div>
-                {
-                  residentGauardianSignature && (
-                    <p className="signature_name_print">Digitally Sign by {residentGauardianSignature} {residentGuardianDate}</p>
-                  )
-                }
-              </div>
-            </div>
-
-            {
-              signInModel8 && (<SingInUpdateModel
-                onClose={() => setSigInModel8(false)}
-                singin={residentGauardianSignature}
-                setSingIn={setResidentGauardianSignature}
-                setDateAndTime={setResidentGuardianDate}
-              />)
-            }
-              {/* please care full write some think is change so api will work */}
-              <div className="form-field-single-update">
-              <label >Staff name, title:</label>
-                <input
-                  type="text"
-                  id="approvedby"
-                  value={staffName}
-                  placeholder="Enter text"
-                  required
-                  onChange={(e) => setStaffName(e.target.value)}
-                />
-              </div>
-
-
-
-                <div class="file-upload-box hidePrint" style={{ marginLeft: "10px" }}>
-                <div className="file-upload-box-child">
-                  <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
-                    SAVED AS DRAFT
-                  </button>
-                  <button className="upload-button" type="button" onClick={() => setSigInModel6(true)}>
-                    SAVED AND SIGNED
-                  </button>
-                </div>
-                <div>
-                  {
-                    staffSignature && (
-                      <p className="signature_name_print">Digitally Sign by {staffSignature} {staffDate}</p>
-                    )
-                  }
-                </div>
-              </div>
-
-              {
-                signInModel6 && (<SingInUpdateModel
-                  onClose={() => setSigInModel6(false)}
-                  singin={staffSignature}
-                  setSingIn={setStaffSignature}
-                  setDateAndTime={setStaffDate}
-                />)
-              }
-
-
-
-              <div className="form-field-update">
-                <div className="form-field-child">
-                    <label htmlFor="approvedby">BHP Name:</label>
+              {/* resident gaurdent name and signatutre */}
+              <div
+                className="box-image-container"
+                style={{ paddingBottom: "10px" }}
+              >
+                <div className="form-field-single-update">
+                  <label>Resident/Guardian name:</label>
                   <input
                     type="text"
-                    id="approvedby"
-                    value={bhpName}
+                    value={residentGuardianName}
                     placeholder="Enter text"
                     required
-                    onChange={(e) => setBhpName(e.target.value)}
+                    onChange={(e) => setResidentGuardianName(e.target.value)}
                   />
                 </div>
-                <div className="form-field-child">
-                    <label htmlFor="bhpCredentials">Enter BHP Credentials:</label>
-                  <input
-                    type="text"
-                    required
-                    value={bhpCredentials}
-                    onChange={(e) => setBhpCredentials(e.target.vaue)}
-                  />
-                </div>
-              </div>
 
-
-                <div class="file-upload-box hidePrint" style={{ marginLeft: "10px" }} >
-
-                <div className="file-upload-box-child">
-                  <div >
-                    <button className="upload-button1" type="button" onClick={() => setDraftModel(true)}>
+                <div
+                  class="file-upload-box hidePrint"
+                  style={{ marginLeft: "10px" }}
+                >
+                  <div className="file-upload-box-child">
+                    <button
+                      className="upload-button1"
+                      type="button"
+                      onClick={() => setDraftModel(true)}
+                    >
                       SAVED AS DRAFT
                     </button>
-                  </div>
-                  <div>
-                    <button className="upload-button" type="button" onClick={() => setSigInModel7(true)}>
+                    <button
+                      className="upload-button"
+                      type="button"
+                      onClick={() => setSigInModel8(true)}
+                    >
                       SAVED AND SIGNED
                     </button>
                   </div>
                   <div>
-                    <button className="upload-button signature_shift_margin" type="button" onClick={handlePrint2} >
-                      PRINT THIS FORM
-                    </button>
+                    {residentGauardianSignature && (
+                      <p className="signature_name_print">
+                        Digitally Sign by {residentGauardianSignature}{" "}
+                        {residentGuardianDate}
+                      </p>
+                    )}
                   </div>
                 </div>
-                <div>
-                  {
-                    bhpSignature && (
-                      <p className="signature_name_print">Digitally Sign by {bhpSignature} {bhpDate}</p>
-                    )
-                  }
+
+                {signInModel8 && (
+                  <SingInUpdateModel
+                    onClose={() => setSigInModel8(false)}
+                    singin={residentGauardianSignature}
+                    setSingIn={setResidentGauardianSignature}
+                    setDateAndTime={setResidentGuardianDate}
+                  />
+                )}
+                {/* please care full write some think is change so api will work */}
+                <div className="form-field-single-update">
+                  <label>Staff name, title:</label>
+                  <input
+                    type="text"
+                    id="approvedby"
+                    value={staffName}
+                    placeholder="Enter text"
+                    required
+                    onChange={(e) => setStaffName(e.target.value)}
+                  />
                 </div>
 
+                <div
+                  class="file-upload-box hidePrint"
+                  style={{ marginLeft: "10px" }}
+                >
+                  <div className="file-upload-box-child">
+                    <button
+                      className="upload-button1"
+                      type="button"
+                      onClick={() => setDraftModel(true)}
+                    >
+                      SAVED AS DRAFT
+                    </button>
+                    <button
+                      className="upload-button"
+                      type="button"
+                      onClick={() => setSigInModel6(true)}
+                    >
+                      SAVED AND SIGNED
+                    </button>
+                  </div>
+                  <div>
+                    {staffSignature && (
+                      <p className="signature_name_print">
+                        Digitally Sign by {staffSignature} {staffDate}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {signInModel6 && (
+                  <SingInUpdateModel
+                    onClose={() => setSigInModel6(false)}
+                    singin={staffSignature}
+                    setSingIn={setStaffSignature}
+                    setDateAndTime={setStaffDate}
+                  />
+                )}
+
+                <div className="form-field-update">
+                  <div className="form-field-child">
+                    <label htmlFor="approvedby">BHP Name:</label>
+                    <input
+                      type="text"
+                      id="approvedby"
+                      value={bhpName}
+                      placeholder="Enter text"
+                      required
+                      onChange={(e) => setBhpName(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-field-child">
+                    <label htmlFor="bhpCredentials">
+                      Enter BHP Credentials:
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={bhpCredentials}
+                      onChange={(e) => setBhpCredentials(e.target.vaue)}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="file-upload-box hidePrint"
+                  style={{ marginLeft: "10px" }}
+                >
+                  <div className="file-upload-box-child">
+                    <div>
+                      <button
+                        className="upload-button1"
+                        type="button"
+                        onClick={() => setDraftModel(true)}
+                      >
+                        SAVED AS DRAFT
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className="upload-button"
+                        type="button"
+                        onClick={() => setSigInModel7(true)}
+                      >
+                        SAVED AND SIGNED
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className="upload-button signature_shift_margin"
+                        type="button"
+                        onClick={handlePrint2}
+                      >
+                        PRINT THIS FORM
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    {bhpSignature && (
+                      <p className="signature_name_print">
+                        Digitally Sign by {bhpSignature} {bhpDate}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {signInModel7 && (
+                  <SingInUpdateModel
+                    onClose={() => setSigInModel7(false)}
+                    singin={bhpSignature}
+                    setSingIn={setBhpSignature}
+                    setDateAndTime={setBhpDate}
+                  />
+                )}
               </div>
-
-              {
-                signInModel7 && (<SingInUpdateModel
-                  onClose={() => setSigInModel7(false)}
-                  singin={bhpSignature}
-                  setSingIn={setBhpSignature}
-                  setDateAndTime={setBhpDate}
-                />)
-              }
-
-              </div>
-
-
-
             </div>
 
             {/* <div className="form-actions">
@@ -9412,9 +11843,7 @@ const InitialAssessment = () => {
           </div> */}
           </form>
         </div>
-        {
-          draftModel && (<Draftinmodel onClose={() => setDraftModel(false)} />)
-        }
+        {draftModel && <Draftinmodel onClose={() => setDraftModel(false)} />}
       </div>
     </>
   );

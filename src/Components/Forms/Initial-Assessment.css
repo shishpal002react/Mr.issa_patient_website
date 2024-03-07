@@ -50,6 +50,9 @@
   }
 }
 
+/* checkbox-table-parent */
+
+
 .box-image-container {
   border: 1px solid black;
   /* padding: 10px; */
@@ -296,7 +299,13 @@
   margin-left: 1rem;
 }
 
-
+.checkbox-table-parent{
+  display: flex;
+  gap:1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0px 10px;
+}
 
 
 
@@ -416,7 +425,7 @@ select {
   display: flex;
   align-items: center;
   align-content: center;
-  /* width: calc(20% - 10px); */
+  width: calc(13% - 10px);
   margin-bottom: 10px;
   gap: 10px
 }
@@ -478,13 +487,14 @@ input[type="checkbox"] {
   margin-right: 5px;
   width: auto;
   transform: scale(1.5);
+  font-weight: bold;
   /* Adjust the scale factor as needed */
 }
 
 .yeschechbox {
   display: flex;
-  /* justify-content: space-between; */
-  /* width: 25%; */
+  /* justify-content: space-between;
+  width: 25%; */
 
   margin-bottom: 20px;
 }
@@ -1596,6 +1606,13 @@ input[type="checkbox"] {
     margin-left: 0rem;
   }
   
+  .checkbox-table-parent{
+    display: block;
+    gap:1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0px 10px;
+  }
 
 }
 

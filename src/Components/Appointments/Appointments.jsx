@@ -214,9 +214,9 @@ const Appointments = () => {
         ))
       } */}
         {/* display: "none"  */}
-        <div style={{ width: "249px", height: "128px", }}>
+        {/* <div style={{ width: "249px", height: "128px", }}>
           <img src={upload} alt="" onClick={()=>downloadPdf(script?.document)} style={{cursor:"pointer"}} />
-        </div>
+        </div> */}
 
         <button onClick={handleFileSelect} style={{ backgroundColor: "#0066ff", cursor: "pointer", width: "150px", height: "40px", borderRadius: "20px", outline: "none", border: "none", color: "white" }}>Upload</button>
    </div>

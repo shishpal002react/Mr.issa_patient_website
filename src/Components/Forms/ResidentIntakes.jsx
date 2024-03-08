@@ -8,6 +8,7 @@ import AutosizeInput from "react-input-autosize";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
 import { useReactToPrint } from "react-to-print";
+import { AiFillDelete } from "react-icons/ai";
 import Select from "react-select";
 
 const ResidentIntakes = () => {
@@ -72,7 +73,7 @@ const ResidentIntakes = () => {
       for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = "block";
       }
-    }, 1000);
+    }, 500);
   };
 
   const handlePrintUpdate2 = () => {
@@ -435,7 +436,7 @@ const ResidentIntakes = () => {
 
   const [ORIENTATIONDropDown,setORIENTATIONDropDown]=useState("")
   const [orientationToAgencyResidentName, setOrientationToAgencyResidentName] =
-    useState("");
+    useState([]);
   const [
     orientationToAgencyResidentSignature,
     setOrientationToAgencyResidentSignature,
@@ -668,14 +669,23 @@ const ResidentIntakes = () => {
 
   // handle internal list
   const handleinternalData = () => {
-    setInternalDisclosureList((prev) => [
-      ...prev,
-      { internalContect, internalName, internalRelationship },
-    ]);
-    setInternalContect("");
-    setInternalRelationship("");
-    setInternalName("");
+    if(internalContect || internalName || internalRelationship){
+      setInternalDisclosureList((prev) => [
+        ...prev,
+        { internalContect, internalName, internalRelationship },
+      ]);
+      setInternalContect("");
+      setInternalRelationship("");
+      setInternalName("");
+    }
+   
   };
+
+
+  // handle delete array
+  const handleDeleteArrayInternalDisclosure=(index)=>{
+    setInternalDisclosureList((prev)=>[...prev.filter((_,i)=>i!==index)]);
+  }
 
   const initializeValues = () => {
     setUser("");
@@ -934,6 +944,39 @@ const ResidentIntakes = () => {
 
   ];
 
+  const handleKeyDownORIENTATIONDropDown = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = optionValue.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...optionValue,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setORIENTATIONDropDown(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...ORIENTATIONDropDown,
+          { value: inputValue, label: inputValue },
+        ];
+        setORIENTATIONDropDown(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
+
+
   const optionHandler = (optionValue) => {
     setORIENTATIONDropDown(optionValue);
   };
@@ -964,7 +1007,7 @@ const ResidentIntakes = () => {
         <div className="Boss">
         <div className="formheading1">
           <div className="formsheading2">
-            <h1>RESIDENT INTAKES</h1>
+            <h1>Consent for Treatment</h1>
           </div>
         </div>
 
@@ -974,7 +1017,7 @@ const ResidentIntakes = () => {
             <>
             <div ref={componentRef1} style={{width:"95%",margin:"auto"}}>
               <div className="residentdiv">
-                <h6
+                {/* <h6
                   style={{
                     fontWeight: "500",
                     fontSize: "24px",
@@ -984,12 +1027,12 @@ const ResidentIntakes = () => {
                   }}
                 >
                   Consent for Treatment
-                </h6>
+                </h6> */}
                     {/* <p>
                   Please read the following Terms & Conditions properly &
                   provide all the necessary details
                 </p> */}
-                <h6>
+                <h6 >
                   I voluntarily apply for evaluation/behavioral health treatment
                   at
                   <span>
@@ -1230,7 +1273,7 @@ const ResidentIntakes = () => {
                 <label
 
                 >
-                      Guardian/Representative Full Name:
+                      Guardian/Representative Name:
                 </label>
                 <input
                   type="text"
@@ -1310,7 +1353,7 @@ const ResidentIntakes = () => {
                 Staff Details
               </h2>
                   <div className="form-field-single-update">
-                    <label >Staff Full Name:</label>
+                    <label >Staff Name:</label>
                 <input
                   type="text"
                   value={staffName}
@@ -1448,7 +1491,7 @@ const ResidentIntakes = () => {
                 </span>
               </p>
 
-                  <div className="form-field-update">
+                  <div className="form-field-update hidePrint">
                     <div className="form-field-child">
                       <label htmlFor="AHCCCS">Name of Person:</label>
                   <input
@@ -1472,10 +1515,10 @@ const ResidentIntakes = () => {
                     <div className="form-field-child">
                       <label htmlFor="AHCCCS">Contact:</label>
                   <input
-                    type="text"
+                    type="number"
                     id="AHCCCS"
                     value={internalContect}
-                    placeholder="Enter text"
+                    placeholder="Enter Number"
                     onChange={(e) => setInternalContect(e.target.value)}
                   />
                 </div>
@@ -1497,6 +1540,7 @@ const ResidentIntakes = () => {
                         <th>Name of Person</th>
                         <th>Relationship</th>
                         <th>Contact</th>
+                        <th className="hidePrint">Action</th>
                       </thead>
                       <tbody>
                         {internalDisclosureList?.map((i, index) => (
@@ -1506,6 +1550,7 @@ const ResidentIntakes = () => {
                               {` ${i.internalRelationship}`}{" "}
                             </td>
                             <td>{` ${i.internalContect}`} </td>
+                            <td className="hidePrint">{<AiFillDelete style={{fontSize:"1.5rem", cursor:"pointer"}} onClick={()=>handleDeleteArrayInternalDisclosure(index)}/>} </td>
                           </tr>
                         ))}
                       </tbody>
@@ -1628,7 +1673,7 @@ const ResidentIntakes = () => {
       
                   <div className="form-field-single-update">
                     <label >
-                      Guardian/Representative Full Name:
+                      Guardian/Representative Name:
                 </label>
                 <input
                   type="text"
@@ -2212,8 +2257,8 @@ const ResidentIntakes = () => {
               }
             /> */}
 
-              <label htmlFor="" className="label-review-resitent">
-                Resident Signature
+              <label  className="label-review-resitent" style={{fontWeight:"bold"}}>
+                Resident Signature:
               </label>
               <div class="file-upload-box"> 
                      <div className="file-upload-box-child">
@@ -2408,7 +2453,7 @@ const ResidentIntakes = () => {
                 MEMBER MEDICAL RECORD
               </h6>
 
-
+                <div className="box-image-container">
                   <div className="form-field-update">
                     <div className="form-field-child">
                       <label >Resident Name:</label>
@@ -2458,7 +2503,7 @@ const ResidentIntakes = () => {
                     <div className="form-field-child">
                       <label >Date of Birth:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+              
                   type="date"
                   value={advanceDirectivesResidentDateOfBirth}
                   placeholder="DD/MM/YYYY"
@@ -2470,14 +2515,14 @@ const ResidentIntakes = () => {
               </div>
 
                   </div>
-
+<div className="border-bootom-line"></div>
                   <div className="form-field-update">
                     <div className="form-field-child">
                       <label className="label-review-resitent">Address:</label>
                 <input
                   type="text"
                   value={advanceDirectivesResidentAddress}
-                  placeholder="Enter Name"
+                  placeholder="Enter Address"
                   required
                   onChange={(e) =>
                     setAdvanceDirectivesResidentAddress(e.target.value)
@@ -2487,7 +2532,7 @@ const ResidentIntakes = () => {
                     <div className="form-field-child">
                       <label className="label-review-resitent">Date:</label>
                 <input
-                  style={{ color: "#1A9FB2" }}
+            
                   type="date"
                   value={advanceDirectivesResidentDate}
                   placeholder="DD/MM/YYYY"
@@ -2499,7 +2544,7 @@ const ResidentIntakes = () => {
               </div>
                   </div>
 
-
+                  </div>
 
 
               <div className="formsheading">
@@ -2962,11 +3007,9 @@ const ResidentIntakes = () => {
                 Arizona Department of Residential Licensing when complaint can
                 not be resolved with the facility.
               </p>
-              <label htmlFor="" className="label-review-resitent">
-              Bureau of Residential Facilities Licensing Team
-              </label>
+         
               <p style={{ color: "#000000" }}>
-                    Arizone Department of Health Services 150 North 18th Avenue, Suite 420, Phonenix, AZ 85007 Phone: 602-364-2639.
+                    Arizone Department of Health Services: 150 North 18th Avenue, Suite 420, Phonenix, AZ 85007 Phone: 602-364-2639.
               </p>
               <p style={{ color: "#000000" }}>
                     <a target="_blank" href="https://issa-website-website.vercel.app/">https://issa-website-website.vercel.app/</a>
@@ -3189,6 +3232,8 @@ const ResidentIntakes = () => {
                       options={optionValue}
                       value={ORIENTATIONDropDown}
                       onChange={optionHandler}
+                      isCreatable={true}
+                      onKeyDown={handleKeyDownORIENTATIONDropDown}
                     />
                     {/* <select  value={ORIENTATIONDropDown} onChange={(e)=>setORIENTATIONDropDown(e.target.value)}>
                   <option value="">Select</option>
@@ -3289,7 +3334,7 @@ const ResidentIntakes = () => {
                 </button>
                 </div>
                 <div>
-                        <button onClick={handlePrintUpdate6} className="upload-button signature_shift_margin" >
+                        <button type="button" onClick={handlePrintUpdate6} className="upload-button signature_shift_margin" >
                   PRINT THIS FORM
                 </button>
                 </div>
@@ -3358,9 +3403,13 @@ const ResidentIntakes = () => {
                 Resident Lock Box Key Issue and Return Optional
               </h6>
                   <div className="form-field-single-update">
-                    <label >Resident’s Name:</label>
+            
+                    <label  >Resident’s Name:</label>
+              
+                    
                 <input
                   type="text"
+             
                   value={promotionTalkStrategicApproach}
                   placeholder="Enter Name"
                   required

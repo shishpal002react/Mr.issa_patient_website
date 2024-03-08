@@ -9,6 +9,7 @@ import Select from "react-select";
 import Draftinmodel from "../Modal/Draftinmodel";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import { useReactToPrint } from "react-to-print";
+import { AiFillDelete } from "react-icons/ai";
 
 const SafetyPlan = () => {
   const [draftModel,setDraftModel]=useState(false);
@@ -65,7 +66,7 @@ const SafetyPlan = () => {
   const [crisisArray, setCrisisArray] = useState([]);
   const [localEmergencyNumber,setLocalEmergencyNumber]=useState("")
   //environmentSafetyMedications
-  const [enviromentAdress, setEnviromentAdress] = useState();
+  const [enviromentAdress, setEnviromentAdress] = useState([]);
   //singin
   const [singin, setSingIn] = useState("");
   const [signInDate,setSignInDate]=useState("");
@@ -142,19 +143,24 @@ const SafetyPlan = () => {
     setSocialRelationship("");
   };
   const handleHelpArray = () => {
-
-    const newContact = {
-      name: helpName,
-      phone: helpPhone,
-      relationship: helpRelationship,
+    if(helpName || helpPhone || helpRelationship){
+      const newContact = {
+        name: helpName,
+        phone: helpPhone,
+        relationship: helpRelationship,
+      };
+      setHelpArray((prev) => [...prev, newContact]);
+      setHelpName("");
+      setHelpPhone("");
+      setHelpRelationship("");
     };
-    setHelpArray((prev) => [...prev, newContact]);
+    }
     
-  
-    setHelpName("");
-    setHelpPhone("");
-    setHelpRelationship("");
-  };
+
+  //handle delete array
+  const handleDeleteArray=(index)=>{
+    setHelpArray((prev)=>[...prev.filter((_,i)=>i!==index)]);
+  }
 
 
   const handleCrisisArray = () => {
@@ -177,7 +183,38 @@ const SafetyPlan = () => {
     {label  :"No drugs or alcohol" , value:"No drugs or alcohol"},
     {label  :"No long strings or rope allowed" , value:"No long strings or rope allowed"},
   ]
-  
+
+  const handleKeySelectedValueSpecialPrecautions = (event) => {
+    if (event.key === "Enter" && event.target.value) {
+      const inputValue = event.target.value.trim();
+
+      // Check if the input value already exists in the options array
+      const optionExists = enviromentAdressOptions.some(
+        (option) => option.value === inputValue
+      );
+
+      // If the input value doesn't exist, add it to the array
+      if (!optionExists) {
+        const newOptions = [
+          ...enviromentAdressOptions,
+          { value: inputValue, label: inputValue },
+        ];
+
+        // Update the state with the new options
+        setEnviromentAdress(newOptions);
+
+        // Update the selected values to include the newly created option
+        const newSelectedValues = [
+          ...enviromentAdress,
+          { value: inputValue, label: inputValue },
+        ];
+        setEnviromentAdress(newSelectedValues);
+      }
+
+      // Clear the input value after adding the option
+      event.target.value = "";
+    }
+  };
   const enviromentAdresshandler=(optionValue)=>{
     setEnviromentAdress(optionValue)
   }
@@ -234,14 +271,51 @@ const SafetyPlan = () => {
               style={{ fontWeight: "700", fontSize: "20px", color: "#000000" ,marginTop:"1.5rem"}}
             >
               {" "}
-              <span style={{ color: "#0C5C75" }}>STEP 1 :</span> Warning SIgns{" "}
+              <span style={{ color: "#0C5C75" }}>STEP 1 :</span> Warning Signs{" "}
               <span style={{ color: "#000000B2" }}>
                 ( thoughts, images, mood, situation, behavior )
               </span>{" "}
                 that a crisis may be developing{" "}:
             </h5>
 
-            <div className="form-field">
+            <div className="form-field-single-update">
+                <label >
+                 1.
+              </label>
+                <input
+                style={{width:"100%"}}
+                value={warning}
+                
+                required
+                onChange={(e) => setWarning(e?.target?.value)}
+              />
+            </div>
+            <div className="form-field-single-update">
+                <label >
+                 2.
+              </label>
+                <input
+             style={{width:"100%"}}
+                value={warning}
+                
+                required
+                onChange={(e) => setWarning(e?.target?.value)}
+              />
+            </div>
+            <div className="form-field-single-update">
+                <label >
+                 3.
+              </label>
+                <input
+                style={{width:"100%"}}
+                value={warning}
+                
+                required
+                onChange={(e) => setWarning(e?.target?.value)}
+              />
+            </div>
+
+            {/* <div className="form-field">
               <textarea
                 id="programlocation&address"
                 value={warning}
@@ -251,7 +325,7 @@ const SafetyPlan = () => {
                 required
                 onChange={(e) => setWarning(e?.target?.value)}
               />
-            </div>
+            </div> */}
             <h5
               style={{
                 fontWeight: "700",
@@ -269,7 +343,43 @@ const SafetyPlan = () => {
               Things I can do to take my mind off my problems without contacting
                 other:
             </p>
-            <div className="form-field">
+            <div className="form-field-single-update">
+                <label >
+                 1.
+              </label>
+                <input
+                style={{width:"100%"}}
+                value={internalCopy}
+                
+                required
+                onChange={(e) => setInernalCopy(e.target.value)}
+              />
+            </div>
+            <div className="form-field-single-update">
+                <label >
+                 2.
+              </label>
+                <input
+                style={{width:"100%"}}
+                value={internalCopy}
+                
+                required
+                onChange={(e) => setInernalCopy(e.target.value)}
+              />
+            </div>
+            <div className="form-field-single-update">
+                <label >
+                 3.
+              </label>
+                <input
+                style={{width:"100%"}}
+                value={internalCopy}
+                
+                required
+                onChange={(e) => setInernalCopy(e.target.value)}
+              />
+            </div>
+            {/* <div className="form-field">
               <textarea
                 id="programlocation&address"
                 value={internalCopy}
@@ -279,7 +389,7 @@ const SafetyPlan = () => {
                 required
                 onChange={(e) => setInernalCopy(e.target.value)}
               />
-            </div>
+            </div> */}
             <h5
               style={{
                 fontWeight: "700",
@@ -329,8 +439,70 @@ const SafetyPlan = () => {
               </div>
 
               </div>
+              <div className="form-field-update">
+                <div className="form-field-child">
+                  <label >Name:</label>
+                <input
+                  type="text"
 
-              <div className="form-actions hidePrint">
+                  value={socialName}
+                  placeholder="Enter name"
+                  
+                  onChange={(e) => setSocialName(e.target.value)}
+                />
+              </div>
+                <div className="form-field-child">
+                  <label >Phone Number:</label>
+                <input
+                  type="text"
+
+                  value={socialPhone}
+                  placeholder="Enter number"
+                  
+                  onChange={(e) => setSocialPhone(e.target.value)}
+                />
+              </div>
+                <div className="form-field-child">
+                  <label >Relationship:</label>
+                <input
+                  type="text"
+
+                  value={socialRelationship}
+                  placeholder="Enter text"
+                  
+                  onChange={(e) => setSocialRelationship(e.target.value)}
+                />
+              </div>
+
+              </div>
+
+              <div className="form-field-single-update">
+                <label >
+                 place :
+              </label>
+                <input
+                style={{width:"80%"}}
+                  value={address}
+                  placeholder="Enter Address"
+                required
+                onChange={(e) => setAdress(e.target.value)}
+              />
+            </div>
+              <div className="form-field-single-update">
+                <label >
+                 Plane :
+              </label>
+                <input
+
+                value={place}
+                style={{width:"80%"}}
+                  placeholder="Enter Address"
+                required
+                onChange={(e) => setPlace(e.target.value)}
+              />
+            </div>
+
+              {/* <div className="form-actions hidePrint">
                 <button
                   type="button"
                   className="safetybutton"
@@ -338,9 +510,9 @@ const SafetyPlan = () => {
                 >
                   Add
                 </button>
-              </div>
+              </div> */}
 
-            <div className="needs-interventions-container">
+            {/* <div className="needs-interventions-container">
               <div className="needs-interventions-column3">
                 {socialArray.length > 0 && (
                   <table>
@@ -361,32 +533,9 @@ const SafetyPlan = () => {
                   </table>
                 )}
               </div>
-            </div>
+            </div> */}
             
-              <div className="form-field-single-update">
-                <label >
-                Destination place :
-              </label>
-                <input
-                  value={address}
-                  placeholder="Enter Address"
-                required
-                onChange={(e) => setAdress(e.target.value)}
-              />
-            </div>
-              <div className="form-field-single-update">
-                <label >
-                Destination Plane :
-              </label>
-                <input
-
-                value={place}
-
-                  placeholder="Enter Address"
-                required
-                onChange={(e) => setPlace(e.target.value)}
-              />
-            </div>
+           
 
             {/* enter data */}
             <h5
@@ -417,7 +566,7 @@ const SafetyPlan = () => {
                 <div className="form-field-child">
                   <label htmlFor="AHCCCS">Phone Number:</label>
                 <input
-                  type="text"
+                  type="number"
                   id="AHCCCS"
                   value={helpPhone}
                   placeholder="Enter number"
@@ -457,6 +606,7 @@ const SafetyPlan = () => {
                       <th>Name</th>
                       <th>Phone</th>
                       <th>Relationship</th>
+                      <th className="hidePrint">Action</th>
                     </thead>
                     <tbody>
                       {helpArray?.map((i, index) => (
@@ -464,6 +614,7 @@ const SafetyPlan = () => {
                           <td>{` ${i.name}`} </td>
                           <td>{` ${i.phone}`} </td>
                           <td>{` ${i.relationship}`} </td>
+                          <td className="hidePrint"><AiFillDelete style={{cursor:"pointer",fontSize:"1.5rem"}} onClick={()=>handleDeleteArray(index)}/></td>
                         </tr>
                       ))}
                     </tbody>
@@ -651,20 +802,14 @@ const SafetyPlan = () => {
                 <label >
                 Making the Environment Safe :
               </label>
-              {/* <textarea
-                id="programlocation&address"
-                value={enviromentAdress}
-                rows={5}
-                cols={130}
-                placeholder="Enter Full Address"
-                required
-                onChange={(e) => setEnviromentAdress(e?.target?.value)}
-              /> */}
+
               <Select
               isMulti
               options={enviromentAdressOptions}
               value={enviromentAdress}
                   onChange={enviromentAdresshandler}
+                       isCreatable={true}
+                  onKeyDown={handleKeySelectedValueSpecialPrecautions}
               />
             </div>
               <div class="file-upload-box hidePrint">

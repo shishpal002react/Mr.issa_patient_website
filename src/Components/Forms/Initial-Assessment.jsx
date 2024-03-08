@@ -306,6 +306,27 @@ const InitialAssessment = () => {
     useState(false);
   const [infectionDiseasesOther, setInfectionDiseasesOther] = useState("");
 
+  //section 2 condition other array
+ const [OtherConditionOther,setOtherConditionOther]=useState("")
+ const [otherConditionYesNO,setOtherConditionYesNo]=useState();
+ const [otherConditionDiscription,setOtherConditionDiscription]=useState("")
+
+ const [otherConditionArray,setOtherConditionArray]=useState([]);
+  const handleAddCondition=()=>{
+    if(OtherConditionOther || otherConditionYesNO || otherConditionDiscription ){
+      const data={
+        OtherConditionOther,
+        otherConditionYesNO,
+        otherConditionDiscription
+      }
+      setOtherConditionArray((prev)=>[...prev,data]);
+      setOtherConditionOther("");
+      setOtherConditionYesNo();
+      setOtherConditionDiscription("");
+    }
+  }
+
+
   useEffect(() => {
     // setTypeOfOtherBoolean()
     for (let i = 0; i < infectionDiseases.length; i++) {
@@ -743,11 +764,14 @@ const InitialAssessment = () => {
   const [consistent, setConsistent] = useState(false);
   const [younger, setYounger] = useState(false);
   const [older, setOlder] = useState(false);
-
+  const [olderOtherBoolean,setOlderOtherBoolean]=useState(false)
+  const [olderOther,setOlderOther]=useState("")
   //height
   const [averageHeight, setAverageHeight] = useState(false);
   const [short, setShort] = useState(false);
   const [tall, setTall] = useState(false);
+  const [heigthBoolean,setHeigthBoolean]=useState(false)
+  const [heigthOther,setHeigthOther]=useState("")
 
   //Weight
   const [averageWeight, setAverageWeight] = useState(false);
@@ -755,19 +779,22 @@ const InitialAssessment = () => {
   const [overweight, setOverweight] = useState(false);
   const [thin, setThin] = useState(false);
   const [emaciated, setEmaciated] = useState(false);
-
+  const [WeightBoolean,setWeightBoolean]=useState(false);
+  const [WeightOther,setWeightOther]=useState("")
   //attire
   const [casual, setCasual] = useState(false);
   const [neat, setNeat] = useState(false);
   const [tattered, setTattered] = useState(false);
   const [dirty, setDirty] = useState(false);
-
+  const [attireBoolean,setAttireBoolaen]=useState(false);
+  const [attireOther,setAttireOther]=useState("")
   //Grooming
   const [wellGroomed, setWellGroomed] = useState(false);
   const [adequateGrooming, setAdequateGrooming] = useState(false);
   const [unkempt, setUnkempt] = useState(false);
   const [disheveled, setDisheveled] = useState(false);
-
+  const [GroomingBoolean,setGroomingBoolean]=useState(false);
+  const [GroomingOther,setGroomingOther]=useState("")
   // <h6>Demeanor / Interaction</h6>
   //Mood
   const [euthymic, setEuthymic] = useState(false);
@@ -862,12 +889,15 @@ const InitialAssessment = () => {
   const [suspicious, setSuspicious] = useState(false);
   const [negative, setNegative] = useState(false);
   const [concrete, setConcrete] = useState(false);
-
+  const [thoughtContentBoolaen,setthoughtContentBoolean]=useState(false);
+  const [thoughtContentOther,setThoughtContentOther]=useState("")
   //thoughtProcesses
   const [logicalCoherent, setLogicalCoherent] = useState(false);
   const [tangential, setTangential] = useState(false);
   const [circumstantial, setCircumstantial] = useState(false);
   const [vague, setVague] = useState(false);
+  const [thoughtProcessesBoolean,setThoughtProcessesBoolaen]=useState(false)
+  const [thoughtProcessesOther,setThoughtProcessesOther]=useState("")
 
   //Delusions
   const [noDelusions, setNoDelusions] = useState(false);
@@ -1128,16 +1158,18 @@ const InitialAssessment = () => {
   const [riskLevel, setRiskLevel] = useState("");
 
   // State variables for psychiatricDiagnoses
-  const [psychiatricOption, setPsychiatricOption] = useState("");
-  const [icdCode, setIcdCode] = useState("");
-  const [description, setDescription] = useState("");
-  // const [primary, setPrimary] = useState("");
-  // const [secondary, setSecondary] = useState("");
-  // const [tertiary, setTertiary] = useState("");
-  // const [additional, setAdditional] = useState("");
+const [psychiatricPrimaryIcdCode,setPsychiatricPrimaryIcdCode]=useState("")
+const [psychiatricPrimaryDescription,setPsychiatricPrimaryDescription]=useState("")
+const [psychiatricSecondaryicdCode,setPsychiatricSecondaryIcdCode]=useState("");
+const [psychiatricSecondaryDescription,setPsychiatricSecondaryDescription]=useState("");
+const [psychiatricTertiaryIcdCode,setPsychiatricTertiaryIcdCode]=useState("")
+const [psychiatricTertiaryDescription,setPsychiatricTertiaryDescription]=useState("")
+const [psychiatricAdditionalicdCode,setPsychiatricAdditionalIcdCode]=useState("");
+const [psychiatricAdditionalDescription,setPsychiatricAdditionalDescription]=useState("");
 
 
-//psychiatricDiagnoses state 
+
+//psychiatricDiagnoses state other
 const [otherPsychiatricOption,setOtherPsychiatricOption]=useState("")
 const [othericdCode, setOtherIcdCode] = useState("");
   const [otherdescription, setOtherDescription] = useState("");
@@ -1160,16 +1192,18 @@ const [othericdCode, setOtherIcdCode] = useState("");
   };
 
   // State variables for medicalDiagnoses
-  const [MedicalOption, setMedicalOption] = useState("");
-  const [icdCodeMedicalDiagnoses, setIcdCodeMedicalDiagnoses] = useState("");
-  const [descriptionMedicalDiagnoses, setDescriptionMedicalDiagnoses] =
-    useState("");
-  const [primaryMedicalDiagnoses, setPrimaryMedicalDiagnoses] = useState("");
-  const [secondaryMedicalDiagnoses, setSecondaryMedicalDiagnoses] =
-    useState("");
-  const [tertiaryMedicalDiagnoses, setTertiaryMedicalDiagnoses] = useState("");
-  const [additionalMedicalDiagnoses, setAdditionalMedicalDiagnoses] =
-    useState("");
+const [primaryIcdCode,setPrimaryIcdCode]=useState("")
+const [primaryDescription,setPrimaryDescription]=useState("")
+const [secondaryicdCode,setSecondaryIcdCode]=useState("");
+const [secondaryDescription,setSecondaryDescription]=useState("");
+const [TertiaryIcdCode,setTertiaryIcdCode]=useState("")
+const [TertiaryDescription,setTertiaryDescription]=useState("")
+const [Additional1icdCode,setAdditional1IcdCode]=useState("");
+const [Additional1Description,setAdditional1Description]=useState("");
+const [Additional2icdCode,setAdditional2IcdCode]=useState("");
+const [Additional2Description,setAdditional2Description]=useState("");
+
+
 
     //  medicalDiagnoses Other
     const [OtherMedicalOption, setOtherMedicalOption] = useState("");
@@ -2767,7 +2801,7 @@ const [othericdCode, setOtherIcdCode] = useState("");
 
               <div className="box-image-container">
                 <div className="form-field-single-update">
-                  <label>
+                  <label style={{whiteSpace:"wrap"}}>
                     Current Behavioral Issues / Symptoms Reported by the
                     Resident:
                   </label>
@@ -4179,10 +4213,78 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           />
                         </td>
                       </tr>
+                      {
+                        
+                          otherConditionArray.map((i)=><tr>
+                            <td>Other: {i.OtherConditionOther}</td>
+                           <td><input type="checkbox" checked={i.otherConditionYesNO===true} /></td>
+                           <td><input type="checkbox" checked={i.otherConditionYesNO===false} /></td>
+                            <td>{i.otherConditionDiscription}</td>
+                          </tr>)
+                        
+                      }
+                      <tr>
+                        <td>Other: <input type="text" className="treatment_plan_table"
+                        value={OtherConditionOther} onChange={(e)=>setOtherConditionOther(e.target.value)} placeholder="___________"/></td>
+                        <td>
+                          <input
+                            type="checkbox"
+                          
+                            checked={otherConditionYesNO === true}
+                            onChange={() => setOtherConditionYesNo(true)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                   
+                            checked={otherConditionYesNO === false}
+                            onChange={() => setOtherConditionYesNo(false)}
+                          />
+                        </td>
+                        <td>
+                          <textarea
+                            style={{
+                              border: "none",
+                              outline: "none",
+                              resize: "none",
+                            }}
+                            rows={Math.max(
+                              otherConditionDiscription.split("\n").length,
+                              1
+                            )}
+                            value={otherConditionDiscription}
+                            placeholder="___________"
+                            onChange={(e) => setOtherConditionDiscription(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                setOtherConditionDiscription(
+                                  (prevComment) => prevComment + "\n"
+                                );
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    
+                      
                     </tbody>
                   </table>
                 </div>
               </div>
+
+              <div className="form-actions  hidePrint">
+                <button
+                  type="button"
+                  className="safetybutton"
+                  onClick={handleAddCondition}
+                >
+                  Add
+                </button>
+              </div>
+
+
 
               {/* <div className="yeschechbox">
                 <label htmlFor="" style={{ fontSize: "20px", marginTop: "1.5rem" }}>Diabetes:</label>
@@ -7285,6 +7387,35 @@ const [othericdCode, setOtherIcdCode] = useState("");
                     />
                     <label htmlFor="older">Older</label>
                   </div>
+                 
+                  <div className="checkboxitem">
+                    <div style={{display:"flex", alignItems:"center",gap:"10px"}}> 
+                    <input
+                      type="checkbox"
+                      
+                      checked={olderOtherBoolean}
+                      onChange={() =>
+                        setOlderOtherBoolean(!olderOtherBoolean)
+                      }
+                    />
+                    <label >Other</label>
+                    </div>
+
+                    {
+                      olderOtherBoolean &&  <div>
+                      <input
+                      type="text"
+                      style={{width:"auto"}}
+                      className="treatment_plan_table"
+                      placeholder="____________"
+                      checked={olderOther}
+                      onChange={() =>
+                        setOlderOther(!olderOther)
+                      }/>
+                      </div>
+                    }
+                     
+                  </div>
                 </div>
                 <div className="border-bootom-line"></div>
 
@@ -7318,6 +7449,34 @@ const [othericdCode, setOtherIcdCode] = useState("");
                       onChange={() => setTall(!tall)}
                     />
                     <label htmlFor="tall">Tall</label>
+                  </div>
+                  <div className="checkboxitem">
+                    <div style={{display:"flex", alignItems:"center",gap:"10px"}}> 
+                    <input
+                      type="checkbox"
+                      
+                      checked={heigthBoolean}
+                      onChange={() =>
+                        setHeigthBoolean(!heigthBoolean)
+                      }
+                    />
+                    <label >Other</label>
+                    </div>
+
+                    {
+                      heigthBoolean &&  <div>
+                      <input
+                      type="text"
+                      style={{width:"auto"}}
+                      className="treatment_plan_table"
+                      placeholder="____________"
+                      checked={heigthOther}
+                      onChange={(e) =>
+                        setHeigthOther(e.target.value)
+                      }/>
+                      </div>
+                    }
+                     
                   </div>
                 </div>
                 <div className="border-bootom-line"></div>
@@ -7370,6 +7529,34 @@ const [othericdCode, setOtherIcdCode] = useState("");
                     />
                     <label htmlFor="emaciated">Emaciated</label>
                   </div>
+                   <div className="checkboxitem">
+                    <div style={{display:"flex", alignItems:"center",gap:"10px"}}> 
+                    <input
+                      type="checkbox"
+                      
+                      checked={WeightBoolean}
+                      onChange={() =>
+                        setWeightBoolean(!WeightBoolean)
+                      }
+                    />
+                    <label >Other</label>
+                    </div>
+
+                    {
+                      WeightBoolean &&  <div>
+                      <input
+                      type="text"
+                      style={{width:"auto"}}
+                      className="treatment_plan_table"
+                      placeholder="____________"
+                      checked={WeightOther}
+                      onChange={(e) =>
+                        setWeightOther(e.target.value)
+                      }/>
+                      </div>
+                    }
+                     
+                  </div>
                 </div>
                 <div className="border-bootom-line"></div>
                 <div className="checkbox-table-parent">
@@ -7412,6 +7599,34 @@ const [othericdCode, setOtherIcdCode] = useState("");
                     />
                     <label htmlFor="dirty">Dirty</label>
                   </div>
+                  <div className="checkboxitem">
+                    <div style={{display:"flex", alignItems:"center",gap:"10px"}}> 
+                    <input
+                      type="checkbox"
+                      
+                      checked={attireBoolean}
+                      onChange={() =>
+                        setAttireBoolaen(!attireBoolean)
+                      }
+                    />
+                    <label >Other</label>
+                    </div>
+
+                    {
+                      attireBoolean &&  <div>
+                      <input
+                      type="text"
+                      style={{width:"auto"}}
+                      className="treatment_plan_table"
+                      placeholder="____________"
+                      checked={attireOther}
+                      onChange={(e) =>
+                        setAttireOther(e.target.value)
+                      }/>
+                      </div>
+                    }
+                     
+                  </div>
                 </div>
                 <div className="border-bootom-line"></div>
                 <div className="checkbox-table-parent">
@@ -7453,6 +7668,34 @@ const [othericdCode, setOtherIcdCode] = useState("");
                       onChange={() => setDisheveled(!disheveled)}
                     />
                     <label htmlFor="disheveled">Disheveled</label>
+                  </div>
+                  <div className="checkboxitem">
+                    <div style={{display:"flex", alignItems:"center",gap:"10px"}}> 
+                    <input
+                      type="checkbox"
+                      
+                      checked={GroomingBoolean}
+                      onChange={() =>
+                        setGroomingBoolean(!GroomingBoolean)
+                      }
+                    />
+                    <label >Other</label>
+                    </div>
+
+                    {
+                      GroomingBoolean &&  <div>
+                      <input
+                      type="text"
+                      style={{width:"auto"}}
+                      className="treatment_plan_table"
+                      placeholder="____________"
+                      checked={GroomingOther}
+                      onChange={(e) =>
+                        setGroomingOther(e.target.value)
+                      }/>
+                      </div>
+                    }
+                     
                   </div>
                 </div>
               </div>
@@ -7644,13 +7887,13 @@ const [othericdCode, setOtherIcdCode] = useState("");
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
-                      id="other"
+                     
                       checked={EyeContactOtherBoolean}
                       onChange={() =>
                         setEyeContactOtherBoolean(!EyeContactOtherBoolean)
                       }
                     />
-                    <label htmlFor="other">Other</label>
+                    <label >Other</label>
                     {EyeContactOtherBoolean && (
                       <AutosizeInput
                         type="text"
@@ -7719,13 +7962,13 @@ const [othericdCode, setOtherIcdCode] = useState("");
                   <div class="checkboxitem">
                     <input
                       type="checkbox"
-                      id="other"
+                     
                       checked={CooperationOtherBoolean}
                       onChange={() =>
                         setCooperationOtherBoolean(!CooperationOtherBoolean)
                       }
                     />
-                    <label htmlFor="other">Other</label>
+                    <label >Other</label>
                     {CooperationOtherBoolean && (
                       <AutosizeInput
                         type="text"
@@ -8042,6 +8285,29 @@ const [othericdCode, setOtherIcdCode] = useState("");
                       <label htmlFor="concrete">Concrete</label>
                     </div>
 
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="yesOtherDelusions"
+                        checked={thoughtContentBoolaen}
+                        onChange={() =>
+                          setthoughtContentBoolean(!thoughtContentBoolaen)
+                        }
+                      />
+                      <label htmlFor="yesOtherDelusions">Yes, other</label>
+                      {thoughtContentBoolaen && (
+                        <AutosizeInput
+                          type="text"
+                          inputStyle={{ border: "none", outline: "none" }}
+                          placeholder="________"
+                          value={thoughtContentOther}
+                          onChange={(e) =>
+                            setThoughtContentOther(e.target.value)
+                          }
+                        />
+                      )}
+                    </div>
+
                 </div>
                 <div className="border-bootom-line"></div>
                 <div className="checkbox-table-parent">
@@ -8084,6 +8350,28 @@ const [othericdCode, setOtherIcdCode] = useState("");
                         onChange={() => setVague(!vague)}
                       />
                       <label htmlFor="vague">Vague</label>
+                    </div>
+                    <div class="checkboxitem">
+                      <input
+                        type="checkbox"
+                        id="yesOtherDelusions"
+                        checked={thoughtProcessesBoolean}
+                        onChange={() =>
+                          setThoughtProcessesBoolaen(!thoughtProcessesBoolean)
+                        }
+                      />
+                      <label htmlFor="yesOtherDelusions">Yes, other</label>
+                      {thoughtProcessesBoolean && (
+                        <AutosizeInput
+                          type="text"
+                          inputStyle={{ border: "none", outline: "none" }}
+                          placeholder="________"
+                          value={thoughtProcessesOther}
+                          onChange={(e) =>
+                            setThoughtProcessesOther(e.target.value)
+                          }
+                        />
+                      )}
                     </div>
                 </div>
                 <div className="border-bootom-line"></div>
@@ -10830,10 +11118,12 @@ const [othericdCode, setOtherIcdCode] = useState("");
                       <tr>
                         <td>Primary*</td>
                         <td>
-                          <input
+                        <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={psychiatricPrimaryIcdCode}
+                            onChange={(e)=>setPsychiatricPrimaryIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -10841,16 +11131,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              psychiatricPrimaryDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={psychiatricPrimaryDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setPsychiatricPrimaryDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setPsychiatricPrimaryDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -10861,10 +11151,12 @@ const [othericdCode, setOtherIcdCode] = useState("");
                       <tr>
                         <td>Secondary</td>
                         <td>
-                          <input
+                        <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={psychiatricSecondaryicdCode}
+                            onChange={(e)=>setPsychiatricSecondaryIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -10872,16 +11164,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              psychiatricSecondaryDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={psychiatricSecondaryDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setPsychiatricSecondaryDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setPsychiatricSecondaryDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -10892,10 +11184,12 @@ const [othericdCode, setOtherIcdCode] = useState("");
                       <tr>
                         <td>Tertiary</td>
                         <td>
-                          <input
+                        <input
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={psychiatricTertiaryIcdCode}
+                            onChange={(e)=>setPsychiatricTertiaryIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -10903,16 +11197,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              psychiatricTertiaryDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={psychiatricTertiaryDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setPsychiatricTertiaryDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setPsychiatricTertiaryDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -10927,6 +11221,8 @@ const [othericdCode, setOtherIcdCode] = useState("");
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={psychiatricAdditionalicdCode}
+                            onChange={(e)=>setPsychiatricAdditionalIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -10934,16 +11230,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              psychiatricAdditionalDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={psychiatricAdditionalDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setPsychiatricAdditionalDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setPsychiatricAdditionalDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -11078,6 +11374,8 @@ const [othericdCode, setOtherIcdCode] = useState("");
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={primaryIcdCode}
+                            onChange={(e)=>setPrimaryIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -11085,16 +11383,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              primaryDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={primaryDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setPrimaryDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setPrimaryDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -11109,6 +11407,8 @@ const [othericdCode, setOtherIcdCode] = useState("");
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={secondaryicdCode}
+                            onChange={(e)=>setSecondaryIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -11116,16 +11416,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              secondaryDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={secondaryDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setSecondaryDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setSecondaryDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -11140,6 +11440,8 @@ const [othericdCode, setOtherIcdCode] = useState("");
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={TertiaryIcdCode}
+                            onChange={(e)=>setTertiaryIcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -11147,16 +11449,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              TertiaryDescription.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={TertiaryDescription}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setTertiaryDescription(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setTertiaryDescription(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -11171,6 +11473,8 @@ const [othericdCode, setOtherIcdCode] = useState("");
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={Additional1icdCode}
+                            onChange={(e)=>setAdditional1IcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -11178,16 +11482,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              Additional1Description.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={Additional1Description}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setAdditional1Description(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setAdditional1Description(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }
@@ -11202,6 +11506,8 @@ const [othericdCode, setOtherIcdCode] = useState("");
                             className="treatment_plan_table"
                             type="text"
                             placeholder="___________"
+                            value={Additional2icdCode}
+                            onChange={(e)=>setAdditional2IcdCode(e.target.value)}
                           />
                         </td>
                         <td>
@@ -11209,16 +11515,16 @@ const [othericdCode, setOtherIcdCode] = useState("");
                           <textarea
                             className="treatment_plan_table"
                             rows={Math.max(
-                              commentDiabety.split("\n").length,
+                              Additional2Description.split("\n").length,
                               1
                             )}
-                            value={commentDiabety}
+                            value={Additional2Description}
                             placeholder="___________"
-                            onChange={(e) => setCommentDeabetes(e.target.value)}
+                            onChange={(e) => setAdditional2Description(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                setCommentDeabetes(
+                                setAdditional2Description(
                                   (prevComment) => prevComment + "\n"
                                 );
                               }

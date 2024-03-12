@@ -37,7 +37,7 @@ const Intake = () => {
                 <div className="small-card">
                     <img src={intake3} alt="Icon" className="card-icon" />
                     <p>Treatment Plan</p>
-                    <Link to={'/treatmentplan'}>
+                    <Link to={'/treatmentplanUpdate'}>
                     <span><MdOutlineFileUpload /> upload</span>
                     </Link>
                 </div>

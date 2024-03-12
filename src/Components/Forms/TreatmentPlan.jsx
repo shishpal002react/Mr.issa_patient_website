@@ -1471,6 +1471,7 @@ const TreatmentPlan = () => {
             onClick={() => navigate("/intake")}
           />
         </div>
+      
         <div className="Boss">
           <div className="formheading1">
             <div className="formsheading2">
@@ -1621,8 +1622,16 @@ const TreatmentPlan = () => {
                 </div>
               )}
 
-              <div className="formsheading">
-                <h5 style={{ fontWeight: "bold" }}>Diagonsis:</h5>
+              <div className="form-field-single-update">
+              <label >Diagnoses:</label>
+              <input
+
+                type="text"
+               
+                
+                required
+                
+              />
               </div>
               <label
                 htmlFor=""

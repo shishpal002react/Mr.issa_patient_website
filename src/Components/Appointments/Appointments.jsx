@@ -19,10 +19,13 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
+import { useNavigate } from "react-router-dom";
 // import Vitals from "../Vitals/Vitals";
 
 
 const Appointments = () => {
+  //navigate
+  const navigate=useNavigate();
   //model 
   const [modalShow, setModalShow] = useState(false);
   //state
@@ -52,27 +55,14 @@ const Appointments = () => {
     getAllPatientMedication(setScript);
     medication_get(setMedication);
   }, []);
+  
   const downloadPdf = async (blobUrl) => {
-
       const anchor = document.createElement('a');
       anchor.href = blobUrl;
       anchor.download = 'medication.pdf';
       document.body.appendChild(anchor);
       anchor.click();
       document.body.removeChild(anchor);
-  };
-
-  const handleFileSelect = () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-
-
-    input.onchange = (event) => {
-      const file = event.target.files[0];
-      setAddScript(file);
-    };
-
-    input.click(); // Trigger a click event to open the file dialog
   };
 
   useEffect(() => {
@@ -201,7 +191,7 @@ const Appointments = () => {
 
       </div> */}
       <div className="appointmentcontent">
-        <p>View your script</p>
+        <p>Upload your script</p>
         {/* <p onClick={() => setModalShow(true)}>Add</p> */}
 
       </div>
@@ -218,7 +208,7 @@ const Appointments = () => {
           <img src={upload} alt="" onClick={()=>downloadPdf(script?.document)} style={{cursor:"pointer"}} />
         </div> */}
 
-        <button onClick={handleFileSelect} style={{ backgroundColor: "#0066ff", cursor: "pointer", width: "150px", height: "40px", borderRadius: "20px", outline: "none", border: "none", color: "white" }}>Upload</button>
+        <button onClick={()=>navigate("/patient_Upload_script")} style={{ backgroundColor: "#0066ff", cursor: "pointer", width: "150px", height: "40px", borderRadius: "20px", outline: "none", border: "none", color: "white" }}>Upload</button>
    </div>
 
       {/* model section */}

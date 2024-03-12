@@ -500,7 +500,7 @@ const FaceSheet = () => {
               </div>
               <div className="border-bootom-line"></div>
               <div className="form-field-single-update">
-                <label>
+                <label >
                   Family/Guardian Emergency Name and Contact Number:
                 </label>
                 <input
@@ -550,12 +550,184 @@ const FaceSheet = () => {
             </div>
             </div>
 
-
-            <div className="formsheading">
-                <h6 style={{ fontWeight: "bold" }}>Primary Care Provider:</h6>
+            <div className="box-image-container face_sheet_table" >
+                <div className="face_sheet_table_child_left">
+                <div className="formsheading">
+                <h6 style={{ fontWeight: "bold",padding:"10px" }}>Primary Care Provider:</h6>
               </div>
 
-              <div className="form-field-update">
+              <div className="form-field-child-face-sheet-table table_inner_padding" >
+                  <label >Name:</label>
+              <input
+                    type="text"
+                value={primaryCareProviderName}
+                placeholder="Type Here....."
+                
+                onChange={(e) => setPrimaryCareProviderName(e.target.value)}
+              />
+            </div>
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Phone Number:</label>
+              <input
+                type="number"
+
+                value={primaryCareProviderPhone}
+                placeholder="Type number....."
+                
+                onChange={(e) => setPrimaryCareProviderPhone(e.target.value)}
+              />
+            </div>
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Address:</label>
+              <input
+                type="text"
+
+                value={primaryCareProviderAddress}
+                placeholder="Type Here....."
+                
+                onChange={(e) => setPrimaryCareProviderAddress(e.target.value)}
+              />
+            </div>
+            <div className="border-bootom-line"></div>
+
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label>Other Specialist - please specify:</label>
+                  <input
+                    type="text"
+
+                    value={primaryCareProviderOtherSpecialists}
+                    placeholder="Type Here....."
+
+                    onChange={(e) => setPrimaryCareProviderOtherSpecialists(e.target.value)}
+                  />
+                </div>
+                <div className="border-bootom-line "></div>
+                <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Preferred Hospital:</label>
+                  <input
+                    type="text"
+
+                    value={preferredHospitalName}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setPreferredHospitalName(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Phone Number:</label>
+                  <input
+                    type="number"
+
+                    value={preferredHospitalPhone}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setPreferredHospitalPhone(e.target.value)}
+                  />
+                </div>
+              
+                <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Preferred Hospital Address:</label>
+                  <input
+                    type="text"
+
+                    value={preferredHospitalAddress}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setPreferredHospitalAddress(e.target.value)}
+                  />
+                </div>
+                </div>
+                <div className="face_sheet_table_child_right">
+                <div className="formsheading">
+                <h6 style={{ fontWeight: "bold",padding:"10px" }}>Psychiatric Provider:</h6>
+              </div> 
+              <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Name:</label>
+              <input
+                type="text"
+
+                value={psychiatricProviderName}
+                placeholder="Type Here....."
+                
+                onChange={(e) => setPsychiatricProviderName(e.target.value)}
+              />
+            </div>
+
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Phone Number:</label>
+              <input
+                type="number"
+
+                value={psychiatricProviderPhone}
+                placeholder="Type number....."
+                
+                onChange={(e) => setPsychiatricProviderPhone(e.target.value)}
+              />
+            </div>
+
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Address:</label>
+              <input
+                type="text"
+
+                value={psychiatricProviderAddress}
+                placeholder="Type Here....."
+                
+                onChange={(e) => setPsychiatricProviderAddress(e.target.value)}
+              />
+            </div>
+
+            <div className="border-bootom-line"></div>
+
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Other Specialist - please specify:</label>
+              <input
+                type="text"
+
+                value={psychiatricProviderOtherSpecialists}
+                placeholder="Type Here....."
+                
+                onChange={(e)=>setPsychiatricProviderOtherSpecialists(e.target.value)}
+              />
+            </div>
+
+            <div className="border-bootom-line"></div>
+
+            <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >Health Plan:</label>
+                  <input
+                    type="text"
+
+                    value={healthPlan}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setHealthPlan(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-field-child-face-sheet-table table_inner_padding">
+                  <label >ID #:</label>
+                  <input
+                    type="text"
+
+                    value={healthPlanId}
+                    placeholder="Type Here....."
+                    required
+                    onChange={(e) => setHealthPlanId(e.target.value)}
+                  />
+                </div>
+
+
+                </div>
+            </div>
+
+
+            {/* <div className="formsheading">
+                <h6 style={{ fontWeight: "bold" }}>Primary Care Provider:</h6>
+              </div> */}
+
+              {/* <div className="form-field-update">
                 <div className="form-field-child">
                   <label >Name:</label>
               <input
@@ -639,11 +811,11 @@ const FaceSheet = () => {
 
 
 
-              </div>
+              </div> */}
 
 
 
-              <div className="form-actions hidePrint">
+              {/* <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -651,9 +823,9 @@ const FaceSheet = () => {
               >
                 Add
               </button>
-            </div>
+            </div> */}
 
-            <div className="needs-interventions-container">
+            {/* <div className="needs-interventions-container">
   <div className="needs-interventions-column3">
     {primaryCareProviderArray.length > 0 && (
       <table>
@@ -687,13 +859,13 @@ const FaceSheet = () => {
       </table>
     )}
   </div>
-</div>
+</div> */}
             
-            <div className="formsheading">
+            {/* <div className="formsheading">
                 <h6 style={{ fontWeight: "bold" }}>Psychiatric Provider:</h6>
-              </div>
+              </div> */}
 
-              <div className="form-field-update">
+              {/* <div className="form-field-update">
                 <div className="form-field-child">
                   <label >Name:</label>
               <input
@@ -763,11 +935,11 @@ const FaceSheet = () => {
                   />
                 </div>
 
-              </div>
+              </div> */}
 
 
 
-              <div className="form-actions hidePrint">
+              {/* <div className="form-actions hidePrint">
               <button
                 type="button"
                 className="safetybutton"
@@ -775,10 +947,10 @@ const FaceSheet = () => {
               >
                 Add
               </button>
-            </div>
+            </div> */}
 
 
-            <div className="needs-interventions-container">
+            {/* <div className="needs-interventions-container">
   <div className="needs-interventions-column3">
     {psychiatricArray.length > 0 && (
       <table>
@@ -809,7 +981,7 @@ const FaceSheet = () => {
       </table>
     )}
   </div>
-</div>
+</div> */}
 
 
 <div className="box-image-container">

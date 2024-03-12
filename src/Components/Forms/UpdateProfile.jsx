@@ -98,7 +98,7 @@ const UpdateProfile = () => {
                 />
               </div>
               <div className="form-field">
-                <label htmlFor="AHCCCS">Email Number</label>
+                <label htmlFor="AHCCCS">Email Id</label>
                 <input
                   type="email"
                   id="AHCCCS"

@@ -69,7 +69,16 @@ const NursingAssessment = () => {
   //   careProvidedBehavioralHealthServices,
   //   setCareProvidedBehavioralHealthServices,
   // ] = useState();
-  const [vitalsBloodPressure, setVitalsBloodPressure] = useState();
+  const [vitalsBloodPressure, setVitalsBloodPressure] = useState('');
+  const [ value , setvalue] = useState("")
+
+  useEffect(() => {
+    if(vitalsBloodPressure){
+      setvalue(`${vitalsBloodPressure} BP`)
+    }
+  },[vitalsBloodPressure])
+
+
   const [vitalsPulse, setVitalsPulse] = useState();
   const [vitalsRespiratoryRate, setVitalsRespiratoryRate] = useState();
   const [vitalsOxygenLevel, setVitalsOxygenLevel] = useState();
@@ -552,7 +561,7 @@ const NursingAssessment = () => {
             </div>
   
 
-            <div className="form-field-single-update">
+            <div className="form-field-single-update-care">
               <div>
                 <label >Care to be provided at Devine Care: </label>
               </div>
@@ -612,15 +621,20 @@ const NursingAssessment = () => {
 
               <div className="form-field-child ">
                 <label htmlFor="AHCCCS">Blood Pressure:</label>
-                <input
+              
+               <input
                   type="tel"
                   pattern="{0-9}"
-                  placeholder="BP "
                   value={vitalsBloodPressure}
                   required
-
                   onChange={(e) => setVitalsBloodPressure(e.target.value)}
                 />
+                  <input
+                  type="tel"
+                  value={"BP"}
+                  style={{width : "20px",marginLeft:"0"}}
+                />
+            
               </div>
 
               <div className="form-field-child">
@@ -629,10 +643,15 @@ const NursingAssessment = () => {
                   type="number"
                 
                   value={vitalsPulse}
-                  placeholder="BPM"
+                 
                   required
 
                   onChange={(e) => setVitalsPulse(e.target.value)}
+                />
+                <input
+                  type="tel"
+                  value={"BPM"}
+                  style={{width : "30px",marginLeft:"0px"}}
                 />
               </div>
 
@@ -640,11 +659,16 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Respiration Rate:</label>
                 <input
                   type="number"
-                  placeholder="BPM"
+                
                   value={vitalsRespiratoryRate}
                   required
 
                   onChange={(e) => setVitalsRespiratoryRate(e.target.value)}
+                />
+                   <input
+                  type="tel"
+                  value={"BPM"}
+                  style={{width : "30px",marginLeft:"0px"}}
                 />
               </div>
 
@@ -656,22 +680,32 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Body Temperature:</label>
                 <input
                   type="number"
-                  placeholder="F"
+                
                   value={vitalsTemperature}
                   required
 
                   onChange={(e) => setVitalsTemperature(e.target.value)}
+                />
+                  <input
+                  type="tel"
+                  value={"F"}
+                  style={{width : "10px",marginLeft:"0px"}}
                 />
               </div>
               <div className="form-field-child">
                 <label htmlFor="AHCCCS">Blood Oxygen:</label>
                 <input
                   type="number"
-                placeholder="O2%"
+               
                   value={vitalsOxygenLevel}
                   required
 
                   onChange={(e) => setVitalsOxygenLevel(e.target.value)}
+                />
+                   <input
+                  type="tel"
+                  value={"O2%"}
+                  style={{width : "30px",marginLeft:"0px"}}
                 />
               </div>
            
@@ -680,11 +714,16 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Weight:</label>
                 <input
                   type="number"
-              placeholder="Ibs"
+           
                   value={vitalsWeight}
                   required
 
                   onChange={(e) => setVitalsWeight(e.target.value)}
+                />
+                    <input
+                  type="tel"
+                  value={"IBS"}
+                  style={{width : "30px",marginLeft:"0px"}}
                 />
               </div>
             </div>
@@ -695,11 +734,16 @@ const NursingAssessment = () => {
                 <label htmlFor="AHCCCS">Height:</label>
                 <input
                   type="number"
-                placeholder="Ft/Inche"
+               
                   value={vitalsHeightFeet}
                   required
 
                   onChange={(e) => setVitalsHeightFeet(e.target.value)}
+                />
+                  <input
+                  type="tel"
+                  value={"Ft/Inche"}
+                  style={{width : "60px",marginLeft:"0px"}}
                 />
               </div>
             </div>
@@ -1221,7 +1265,41 @@ const NursingAssessment = () => {
               <label htmlFor="Irregular heartbeat">Irregular heartbeat</label>
             </div>
 
-            <div>
+                {/* state is make is pending */}
+            <div className="form-field-child-result">
+                <div>
+                  <label className="black_space" >Is your blood pressure under control? </label>
+                </div>
+                <div style={{ display: 'flex', gap: "5px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Negative"}
+                    onChange={() => setTbScreeningResults("Negative")}
+                  />
+                  <label >Yes</label>
+                </div>
+                <div style={{ display: 'flex', gap: "5px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Positive"}
+                    onChange={() => setTbScreeningResults("Positive")}
+                  />
+                  <label >No</label>
+                </div>
+                <div style={{ display: 'flex', gap: "5px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Pending"}
+                    onChange={() => setTbScreeningResults("Pending")}
+                  />
+                  <label >Unsure</label>
+                </div>
+              </div>
+
+            {/* <div>
             <input
                 type="checkbox"
                 id="itsgoodother"
@@ -1235,7 +1313,7 @@ const NursingAssessment = () => {
                 <label htmlFor="itsgoodother">
                   Is your blood pressure under control? Yes / No / Unsure
                 </label>
-              </div>
+              </div> */}
           </div>
         
             <div className="form-field">
@@ -1309,43 +1387,8 @@ const NursingAssessment = () => {
               />
               <label htmlFor="hairLoss">Hair loss</label>
             </div>
+
             <div>
-            <input
-                type="checkbox"
-                id="Dry skin Is resident’s blood sugar under control?"
-                checked={reviewOfSystemsEndocrine === "Dry skin Is resident’s blood sugar under control?"}
-                onChange={() => setReviewOfSystemsEndocrine("Dry skin Is resident’s blood sugar under control?")}
-              />
-                <label htmlFor="Dry skin Is resident’s blood sugar under control?">Dry skin Is resident’s blood sugar under control?</label>
-              </div>
-              <div>
-              <input
-                type="checkbox"
-                id="Yes"
-                checked={reviewOfSystemsEndocrine === "Yes"}
-                onChange={() => setReviewOfSystemsEndocrine("Yes")}
-              />
-                <label htmlFor="Yes">Yes</label>
-              </div>
-              <div>
-              <input
-                type="checkbox"
-                id="no"
-                checked={reviewOfSystemsEndocrine === "No"}
-                onChange={() => setReviewOfSystemsEndocrine("No")}
-              />
-                <label htmlFor="no">No</label>
-              </div>
-              <div>
-              <input
-                type="checkbox"
-                id="Unsure"
-                checked={reviewOfSystemsEndocrine === "Unsure"}
-                onChange={() => setReviewOfSystemsEndocrine("Unsure")}
-              />
-                <label htmlFor="Unsure">Unsure</label>
-              </div>
-              <div>
               <input
                 type="checkbox"
                 id="N/a"
@@ -1354,6 +1397,76 @@ const NursingAssessment = () => {
               />
                 <label htmlFor="N/a">N/a</label>
               </div>
+
+            <div className="form-field-child-result">
+                <div>
+                  <label className="black_space" >Dry skin Is resident’s blood sugar under control? </label>
+                </div>
+                <div style={{ display: 'flex', gap: "5px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Negative"}
+                    onChange={() => setTbScreeningResults("Negative")}
+                  />
+                  <label >Yes</label>
+                </div>
+                <div style={{ display: 'flex', gap: "5px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Positive"}
+                    onChange={() => setTbScreeningResults("Positive")}
+                  />
+                  <label >No</label>
+                </div>
+                <div style={{ display: 'flex', gap: "5px", alignItems: "center" }}>
+                  <input
+                    type="checkbox"
+
+                    checked={tbScreeningResults === "Pending"}
+                    onChange={() => setTbScreeningResults("Pending")}
+                  />
+                  <label >Unsure</label>
+                </div>
+              </div>
+            {/* <div>
+            <input
+                type="checkbox"
+                id="Dry skin Is resident’s blood sugar under control?"
+                checked={reviewOfSystemsEndocrine === "Dry skin Is resident’s blood sugar under control?"}
+                onChange={() => setReviewOfSystemsEndocrine("Dry skin Is resident’s blood sugar under control?")}
+              />
+                <label htmlFor="Dry skin Is resident’s blood sugar under control?">Dry skin Is resident’s blood sugar under control?</label>
+              </div> */}
+              {/* <div>
+              <input
+                type="checkbox"
+                id="Yes"
+                checked={reviewOfSystemsEndocrine === "Yes"}
+                onChange={() => setReviewOfSystemsEndocrine("Yes")}
+              />
+                <label htmlFor="Yes">Yes</label>
+              </div> */}
+              {/* <div>
+              <input
+                type="checkbox"
+                id="no"
+                checked={reviewOfSystemsEndocrine === "No"}
+                onChange={() => setReviewOfSystemsEndocrine("No")}
+              />
+                <label htmlFor="no">No</label>
+              </div> */}
+              {/* <div>
+              <input
+                type="checkbox"
+                id="Unsure"
+                checked={reviewOfSystemsEndocrine === "Unsure"}
+                onChange={() => setReviewOfSystemsEndocrine("Unsure")}
+              />
+                <label htmlFor="Unsure">Unsure</label>
+              </div> */}
+             
           </div>
           
           {/* <div className="yeschechbox-review">

@@ -25,6 +25,8 @@ import CancelAppointment from "./Components/Forms/CancelAppointment";
 import Login from "./Pages/Login";
 import UpdateProfile from "./Components/Forms/UpdateProfile";
 import { LoginForm } from "./Components/form/LoginForm";
+import FileUpload from "./Components/Appointments/FileUpload";
+import Treatmentplan_update from "./Components/Forms/TreatmentPlan_update";
 
 function App() {
   return (
@@ -35,6 +37,10 @@ function App() {
         <Route
           path="/patient_panel"
           element={<Home Wcomponenet={Appointments} />}
+        />
+          <Route
+          path="/patient_Upload_script"
+          element={<Home Wcomponenet={FileUpload} />}
         />
         <Route path="/intake" element={<Home Wcomponenet={Intake} />} />
         <Route
@@ -47,6 +53,8 @@ function App() {
         <Route path="/safetyplan" element={<SafetyPlan />} />
         <Route path="/nursing-assessment" element={<NursingAssessment />} />
         <Route path="/treatmentplan" element={<TreatmentPlan />} />
+        {/* Treatment plan update */}
+        <Route path="/treatmentplanUpdate" element={<Treatmentplan_update />} />
         <Route path="/Residentintakes" element={<ResidentIntakes />} />
         <Route path="/booknewappointment" element={<BookAppointment />} />
         <Route path="/appointmenthistory" element={<AppointmentHistory />} />

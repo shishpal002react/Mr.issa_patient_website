@@ -1395,7 +1395,7 @@ const NursingAssessment = () => {
                 checked={reviewOfSystemsEndocrine === "N/a"}
                 onChange={() => setReviewOfSystemsEndocrine("N/a")}
               />
-                <label htmlFor="N/a">N/a</label>
+                <label htmlFor="N/a">N/A</label>
               </div>
 
             <div className="form-field-child-result">
@@ -2610,7 +2610,7 @@ const NursingAssessment = () => {
                 }
               />
               <label htmlFor="helplessnessHopelessness">
-                  Helplessness  
+                  Helplessness/hopelessness    
               </label>
             </div>
             <div>

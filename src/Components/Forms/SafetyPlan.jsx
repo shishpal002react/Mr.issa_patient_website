@@ -44,12 +44,19 @@ const SafetyPlan = () => {
   const [user, setUser] = useState("");
   const [userId, setUserId] = useState("");
   const [date, setDate] = useState("");
-  const [warning, setWarning] = useState("");
-  const [internalCopy, setInernalCopy] = useState("");
+  const [warning1, setWarning1] = useState("");
+  const [warning2, setWarning2] = useState("");
+  const [warning3, setWarning3] = useState("");
+  const [internalCopy1, setInernalCopy1] = useState("");
+  const [internalCopy2, setInernalCopy2] = useState("");
+  const [internalCopy3, setInernalCopy3] = useState("");
   //People & Social settings that provide Distraction
   const [socialName, setSocialName] = useState("");
   const [socialPhone, setSocialPhone] = useState("");
   const [socialRelationship, setSocialRelationship] = useState("");
+  const [socialName1, setSocialName1] = useState("");
+  const [socialPhone1, setSocialPhone1] = useState("");
+  const [socialRelationship1, setSocialRelationship1] = useState("");
   const [socialArray, setSocialArray] = useState([]);
   //address and place
   const [address, setAdress] = useState("");
@@ -85,11 +92,18 @@ const SafetyPlan = () => {
     setUser("");
     setUserId("");
     setDate("");
-    setWarning("");
-    setInernalCopy("");
+    setWarning1("");
+    setWarning2("");
+    setWarning3("");
+    setInernalCopy1("");
+    setInernalCopy2("");
+    setInernalCopy3("");
     setSocialName("");
     setSocialPhone("");
     setSocialPhone("");
+    setSocialName1("");
+    setSocialPhone1("");
+    setSocialPhone1("");
     setSocialRelationship("");
     setSocialArray([]);
     setAdress("");
@@ -113,11 +127,32 @@ const SafetyPlan = () => {
     const data = {
       patientId: userId,
       date: date,
-      warningSigns: warning,
-      internalCopingStrategies: internalCopy,
-      internalCopyinternalCopy: socialArray,
+      warningSigns:[{
+        warning1,
+        warning2,
+        warning3
+      }] ,
+      internalCopingStrategies: [{
+        internalCopy1,
+        internalCopy2,
+        internalCopy3
+      }],
+      distractionsPeople :[
+        {
+          socialName,
+          socialPhone,
+          socialRelationship
+        },
+        {
+          socialName1,
+          socialPhone1,
+          socialRelationship1
+        }
+      ],
+      // internalCopyinternalCopy: socialArray,
       distractionsPlace: address,
       distractionsPlane: place,
+      // array add
       helpContactsPeople: helpArray,
       professionals: crisisArray,
       //penddig
@@ -230,6 +265,7 @@ const SafetyPlan = () => {
             height: "40px",
             cursor: "pointer",
           }}
+          className="hidePrint"
           onClick={() => navigate("/intake")}
         />
       </div>
@@ -284,10 +320,10 @@ const SafetyPlan = () => {
               </label>
                 <input
                 style={{width:"100%"}}
-                value={warning}
+                value={warning1}
                 
                 required
-                onChange={(e) => setWarning(e?.target?.value)}
+                onChange={(e) => setWarning1(e?.target?.value)}
               />
             </div>
             <div className="form-field-single-update">
@@ -296,10 +332,10 @@ const SafetyPlan = () => {
               </label>
                 <input
              style={{width:"100%"}}
-                value={warning}
+                value={warning2}
                 
                 required
-                onChange={(e) => setWarning(e?.target?.value)}
+                onChange={(e) => setWarning2(e?.target?.value)}
               />
             </div>
             <div className="form-field-single-update">
@@ -308,10 +344,10 @@ const SafetyPlan = () => {
               </label>
                 <input
                 style={{width:"100%"}}
-                value={warning}
+                value={warning3}
                 
                 required
-                onChange={(e) => setWarning(e?.target?.value)}
+                onChange={(e) => setWarning3(e?.target?.value)}
               />
             </div>
 
@@ -341,7 +377,7 @@ const SafetyPlan = () => {
             </h5>
             <p>
               Things I can do to take my mind off my problems without contacting
-                other:
+                other Person:
             </p>
             <div className="form-field-single-update">
                 <label >
@@ -349,10 +385,10 @@ const SafetyPlan = () => {
               </label>
                 <input
                 style={{width:"100%"}}
-                value={internalCopy}
+                value={internalCopy1}
                 
                 required
-                onChange={(e) => setInernalCopy(e.target.value)}
+                onChange={(e) => setInernalCopy1(e.target.value)}
               />
             </div>
             <div className="form-field-single-update">
@@ -361,10 +397,10 @@ const SafetyPlan = () => {
               </label>
                 <input
                 style={{width:"100%"}}
-                value={internalCopy}
+                value={internalCopy2}
                 
                 required
-                onChange={(e) => setInernalCopy(e.target.value)}
+                onChange={(e) => setInernalCopy2(e.target.value)}
               />
             </div>
             <div className="form-field-single-update">
@@ -373,10 +409,10 @@ const SafetyPlan = () => {
               </label>
                 <input
                 style={{width:"100%"}}
-                value={internalCopy}
+                value={internalCopy3}
                 
                 required
-                onChange={(e) => setInernalCopy(e.target.value)}
+                onChange={(e) => setInernalCopy3(e.target.value)}
               />
             </div>
             {/* <div className="form-field">
@@ -478,7 +514,7 @@ const SafetyPlan = () => {
 
               <div className="form-field-single-update">
                 <label >
-                 place :
+                 Place :
               </label>
                 <input
                 style={{width:"80%"}}
@@ -637,7 +673,7 @@ const SafetyPlan = () => {
             </h5>
               <div className="form-field-update">
                 <div className="form-field-child">
-                  <label >Clinic / Facility Name:</label>
+                  <label >Clinician/Facility Name:</label>
                 <input
                   type="text"
                  

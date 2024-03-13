@@ -169,6 +169,20 @@ export const faceSheet_form = async (payLoad) => {
   }
 };
 
+export const faceSheet_form_get = async (id,setGetApiData) => {
+  try {
+    const {data} = await axios.get(
+      `${BaseUrl}Patient/getFaceSheet/${id}`,
+      
+      Token
+    );
+    setGetApiData(data?.data);
+    return data;
+  } catch (e) {
+    // show_notification("fail !", `${e?.response?.data?.message}`, "danger");
+  }
+};
+
 export const appoinment_Booking = async (payLoad) => {
   try {
     const res = await axios.post(

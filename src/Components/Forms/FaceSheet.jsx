@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import formupload from "../../img/formupload.png";
 import {
   user_detail,
-  faceSheet_form
+  faceSheet_form,faceSheet_form_get
 } from "../../Api_Collection/Api";
 import Draftinmodel from "../Modal/Draftinmodel";
 import { useReactToPrint } from "react-to-print";
@@ -38,7 +38,9 @@ const FaceSheet = () => {
     }, 1000);
   };
 
-  const [patientName, setPatientName] = useState("");
+//  get data api
+  const [getApiData,setGetApiData]=useState("")
+
   const [userDetail, setUserDetail] = useState("");
   const navigate = useNavigate();
   const [patientId, setPatientId] = useState("");
@@ -63,6 +65,7 @@ const FaceSheet = () => {
   const [facilityEmergencyContact, setFacilityEmergencyContact] = useState("");
   const [medicationAllergies, setMedicationAllergies] = useState("");
   const [otherAllergies, setOtherAllergies] = useState("");
+  // primary care provider
   const [primaryCareProviderName, setPrimaryCareProviderName] = useState("");
   const [primaryCareProviderPhone, setPrimaryCareProviderPhone] = useState("");
   const [primaryCareProviderAddress, setPrimaryCareProviderAddress] =
@@ -71,27 +74,31 @@ const FaceSheet = () => {
     primaryCareProviderOtherSpecialists,
     setPrimaryCareProviderOtherSpecialists,
   ] = useState(""); 
-  const [primaryCareProviderArray,setPrimaryCareProviderArray]=useState([])
+  const [preferredHospitalName, setPreferredHospitalName] = useState("");
+  const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("");
+  const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("");
 
-  const handlePrimaryCareArray=()=>{
-    const newData={
-      primaryCareProviderOtherSpecialists,
-      primaryCareProviderName,
-      primaryCareProviderPhone,
-      primaryCareProviderAddress,
-      preferredHospitalName,
-      preferredHospitalPhone,
-      preferredHospitalAddress
-    }
-    setPrimaryCareProviderArray((prev)=> [...prev,newData]);
-    setPrimaryCareProviderOtherSpecialists("")
-    setPrimaryCareProviderName("");
-    setPrimaryCareProviderPhone("");
-    setPrimaryCareProviderAddress("");
-    setPreferredHospitalName("");
-    setPreferredHospitalPhone("");
-    setPreferredHospitalAddress("");
-  }
+
+  // const handlePrimaryCareArray=()=>{
+  //   const newData={
+  //     primaryCareProviderOtherSpecialists,
+  //     primaryCareProviderName,
+  //     primaryCareProviderPhone,
+  //     primaryCareProviderAddress,
+  //     preferredHospitalName,
+  //     preferredHospitalPhone,
+  //     preferredHospitalAddress
+  //   }
+  //   setPrimaryCareProviderArray((prev)=> [...prev,newData]);
+  //   setPrimaryCareProviderOtherSpecialists("")
+  //   setPrimaryCareProviderName("");
+  //   setPrimaryCareProviderPhone("");
+  //   setPrimaryCareProviderAddress("");
+  //   setPreferredHospitalName("");
+  //   setPreferredHospitalPhone("");
+  //   setPreferredHospitalAddress("");
+  // }
+  console.log("patientId face sheet",patientId );
 
 
 
@@ -103,32 +110,30 @@ const FaceSheet = () => {
     psychiatricProviderOtherSpecialists,
     setPsychiatricProviderOtherSpecialists,
   ] = useState("");
-
-  const [psychiatricArray,setPsychiatricArray]=useState([])
   
-  const handlePsychiatricArray=()=>{
-    const newData={
-      psychiatricProviderName,
-      psychiatricProviderPhone,
-      psychiatricProviderAddress,
-      psychiatricProviderOtherSpecialists,
-      healthPlan,
-      healthPlanId
-    }
-    setPsychiatricArray((prev)=> [...prev,newData]);
-    setPsychiatricProviderName("")
-    setPsychiatricProviderPhone("");
-    setPsychiatricProviderAddress("");
-    setPsychiatricProviderOtherSpecialists("");
-    setHealthPlan("");
-    setHealthPlanId("");
-  }
-
-  const [preferredHospitalName, setPreferredHospitalName] = useState("");
-  const [preferredHospitalPhone, setPreferredHospitalPhone] = useState("");
-  const [preferredHospitalAddress, setPreferredHospitalAddress] = useState("");
   const [healthPlan, setHealthPlan] = useState("");
   const [healthPlanId, setHealthPlanId] = useState("");
+
+
+  
+  // const handlePsychiatricArray=()=>{
+  //   const newData={
+  //     psychiatricProviderName,
+  //     psychiatricProviderPhone,
+  //     psychiatricProviderAddress,
+  //     psychiatricProviderOtherSpecialists,
+  //     healthPlan,
+  //     healthPlanId
+  //   }
+  //   setPsychiatricArray((prev)=> [...prev,newData]);
+  //   setPsychiatricProviderName("")
+  //   setPsychiatricProviderPhone("");
+  //   setPsychiatricProviderAddress("");
+  //   setPsychiatricProviderOtherSpecialists("");
+  //   setHealthPlan("");
+  //   setHealthPlanId("");
+  // }
+
   const [caseManagerName, setCaseManagerName] = useState("");
   const [caseManagerPhone, setCaseManagerPhone] = useState("");
   const [caseManagerEmail, setCaseManagerEmail] = useState("");
@@ -151,10 +156,108 @@ const FaceSheet = () => {
   //signature and also date
   const [signature,setSignature]=useState("");
   const [signatureDate,setSignatureDate]=useState("");
+  const [signatureTime,setSegnatureTime]=useState("");
+
+  useEffect(()=>{
+
+// date format
+const getApiDataDob = getApiData?.dob;
+const getApiDataAdmit = getApiData?.dateOfAdmit;
+
+const formatDate = (date) => {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = date.getFullYear();
+  
+  const formattedMonth = month < 10 ? '0' + month : month;
+  const formattedDay = day < 10 ? '0' + day : day;
+
+  return `${year}-${formattedMonth}-${formattedDay}`;
+};
+
+if (getApiDataDob) {
+  // Parse the date string into a Date object
+  const date1 = new Date(getApiDataDob);
+  
+  // Format the date as MM/DD/YYYY
+  const formattedDate1 = formatDate(date1);
+  
+  // Set the formatted date in the state
+  setDob(formattedDate1);
+}
+
+if (getApiDataAdmit) {
+  // Parse the date string into a Date object
+  const date2 = new Date(getApiDataAdmit);
+  
+  // Format the date as MM/DD/YYYY
+  const formattedDate2 = formatDate(date2);
+  
+  // Set the formatted date in the state
+  setDateOfAdmit(formattedDate2);
+}
+
+
+    setResidentName(getApiData?.residentName);
+    // setDob(getApiData?.dob);
+    // setDateOfAdmit(getApiData?.dateOfAdmit);
+    setFacilityAddress(getApiData?.facilityAddress);
+    setFacilityPhoneNumber(getApiData?.facilityPhoneNumber);
+    setPlaceOfBirth(getApiData?.placeOfBirth);
+    setEyeColor(getApiData?.eyeColor);
+    setRace(getApiData?.race);
+    setHeight(getApiData?.height);
+    setWeight(getApiData?.weight);
+    setHairColor(getApiData?.hairColor);
+    setIdentifiableMarks(getApiData?.identifiableMarks);
+    setPrimaryLanguage(getApiData?.primaryLanguage);
+    // true false value
+    setCourtOrderedTreatment(getApiData?.courtOrderedTreatment);
+    setFamilyGuardianEmergencyName(getApiData?.familyGuardianEmergencyName);
+    setFamilyGuardianEmergencyContact(getApiData?.familyGuardianEmergencyContact);
+    setFacilityEmergencyContact(getApiData?.facilityEmergencyContact);
+    setMedicationAllergies(getApiData?.medicationAllergies);
+    setOtherAllergies(getApiData?.otherAllergies);
+
+    // primary provider
+    setPrimaryCareProviderName(getApiData?.primaryCareProvider?.[0]?.name);
+    setPrimaryCareProviderPhone(getApiData?.primaryCareProvider?.[0]?.phone);
+    setPrimaryCareProviderAddress(getApiData?.primaryCareProvider?.[0]?.address);
+    setPrimaryCareProviderOtherSpecialists(getApiData?.primaryCareProvider?.[0]?.OtherSpecialists)
+    setPreferredHospitalName(getApiData?.primaryCareProvider?.[0]?.preferredHospitalName);
+    setPreferredHospitalPhone(getApiData?.primaryCareProvider?.[0]?.preferredHospitalPhone);
+    setPreferredHospitalAddress(getApiData?.primaryCareProvider?.[0]?.preferredHospitalAddress);
+  
+ //shycrometric provider
+    setPsychiatricProviderName(getApiData?.psychiatricProvider?.[0]?.name);
+    setPsychiatricProviderPhone(getApiData?.psychiatricProvider?.[0]?.phone);
+    setPsychiatricProviderAddress(getApiData?.psychiatricProvider?.[0]?.address);
+    setPsychiatricProviderOtherSpecialists(getApiData?.psychiatricProvider?.[0]?.OtherSpecialists);
+    // set data 2 state is pending
+    setHealthPlan(getApiData?.psychiatricProvider?.[0]?.name);
+    setHealthPlanId(getApiData?.psychiatricProvider?.[0]?.name);
+
+    setCaseManagerName(getApiData?.caseManagerName);
+    setCaseManagerPhone(getApiData?.caseManagerPhone);
+    setCaseManagerEmail(getApiData?.caseManagerEmail);
+    setSocialSecurityRepresentativePayeeName(getApiData?.socialSecurityRepresentativePayeeName);
+    setSocialSecurityRepresentativePayeePhone(getApiData?.socialSecurityRepresentativePayeePhone);
+    setSocialSecurityRepresentativePayeeEmail(getApiData?.socialSecurityRepresentativePayeeEmail);
+    setMentalHealthDiagnoses(getApiData?.mentalHealthDiagnoses);
+    setMedicalDiagnosesHistory(getApiData?.medicalDiagnosesHistory);
+    setPastSurgeries(getApiData?.pastSurgeries);
+    setSignature(getApiData?.bhpSignature);
+    setSignatureDate(getApiData?.residentName);
+    setSegnatureTime(getApiData?.time);
+  },[getApiData])
+
+  useEffect(()=>{
+    faceSheet_form_get(patientId,setGetApiData);
+  },[patientId])
+
 
   useEffect(() => {
     setPatientId(userDetail?._id);
-    setPatientName(userDetail?.fullName);
   }, [userDetail]);
 
   useEffect(() => {
@@ -169,6 +272,7 @@ const FaceSheet = () => {
     setFacilityPhoneNumber("");
     setPlaceOfBirth("");
     setEyeColor("");
+    setRace("");
     setHeight("");
     setWeight("");
     setHairColor("");
@@ -183,16 +287,22 @@ const FaceSheet = () => {
     setPrimaryCareProviderName("");
     setPrimaryCareProviderPhone("");
     setPrimaryCareProviderAddress("");
-    setPrimaryCareProviderOtherSpecialists([]);
-    setPsychiatricProviderName("");
-    setPsychiatricProviderPhone("");
-    setPsychiatricProviderAddress("");
-    setPsychiatricProviderOtherSpecialists([]);
+
+    setPrimaryCareProviderName("")
+    setPrimaryCareProviderPhone("")
+    setPrimaryCareProviderAddress("")
+    setPrimaryCareProviderOtherSpecialists("")
     setPreferredHospitalName("");
     setPreferredHospitalPhone("");
     setPreferredHospitalAddress("");
+  
+    setPsychiatricProviderName("");
+    setPsychiatricProviderPhone("");
+    setPsychiatricProviderAddress("");
+    setPsychiatricProviderOtherSpecialists("")
     setHealthPlan("");
     setHealthPlanId("");
+
     setCaseManagerName("");
     setCaseManagerPhone("");
     setCaseManagerEmail("");
@@ -202,6 +312,9 @@ const FaceSheet = () => {
     setMentalHealthDiagnoses("");
     setMedicalDiagnosesHistory("");
     setPastSurgeries("");
+    setSignature("");
+    setSignatureDate("");
+    setSegnatureTime("")
   };
 
   const handleData = (e) => {
@@ -227,19 +340,27 @@ const FaceSheet = () => {
       facilityEmergencyContact,
       medicationAllergies,
       otherAllergies,
-      primaryCareProviderName,
-      primaryCareProviderPhone,
-      primaryCareProviderAddress,
-      primaryCareProviderOtherSpecialists,
-      psychiatricProviderName,
-      psychiatricProviderPhone,
-      psychiatricProviderAddress,
-      psychiatricProviderOtherSpecialists,
-      preferredHospitalName,
-      preferredHospitalPhone,
-      preferredHospitalAddress,
-      healthPlan,
-      healthPlanId,
+      primaryCareProvider: [
+        {
+          name: primaryCareProviderName,
+          phone: primaryCareProviderPhone,
+          address: primaryCareProviderAddress,
+          OtherSpecialists: primaryCareProviderOtherSpecialists,
+          preferredHospitalName: preferredHospitalName,
+          preferredHospitalPhone: preferredHospitalPhone,
+          preferredHospitalAddress: preferredHospitalAddress
+        }
+      ],
+      psychiatricProvider:[
+        {
+          name: psychiatricProviderName,
+          phone: psychiatricProviderPhone,
+          address: psychiatricProviderAddress,
+          OtherSpecialists: psychiatricProviderOtherSpecialists,
+          preferredHospitalName: healthPlan,
+          preferredHospitalPhone: healthPlanId,
+        }
+      ],
       caseManagerName,
       caseManagerPhone,
       caseManagerEmail,
@@ -249,6 +370,9 @@ const FaceSheet = () => {
       mentalHealthDiagnoses,
       medicalDiagnosesHistory,
       pastSurgeries,
+      bhpSignature:signature,
+      bhpDate:signatureDate,
+      time:signatureTime
     };
     faceSheet_form(data);
     initial_Value();
@@ -303,7 +427,7 @@ const FaceSheet = () => {
             <h1>Face sheet/Resident Emergency Information</h1>
           </div>
         </div>
-          <form >
+          <form onSubmit={handleData}>
           <div className="form-section">
 
             <div className="box-image-container">
@@ -314,7 +438,7 @@ const FaceSheet = () => {
                 type="text"
                 id="residentFullName"
                 value={residentName}
-                placeholder="Type Here....."
+                placeholder="Type Here"
                 required
                 onChange={(e) => setResidentName(e.target.value)}
               />
@@ -326,8 +450,8 @@ const FaceSheet = () => {
 
                 type="date"
                 id="dateOfBirth"
-                value={dob}
-                placeholder="DD/MM/YYYY"
+                value={dob?.slice(0,10)}
+                placeholder={dob?.slice(0,10)}
                 required
                 onChange={(e) => setDob(e.target.value)}
               />
@@ -341,7 +465,7 @@ const FaceSheet = () => {
                 type="date"
                 id="dateOfBirth"
                 value={dateOfAdmit}
-                placeholder="DD/MM/YYYY"
+                placeholder="MM/DD/YYYY"
                 required
                 onChange={(e) => setDateOfAdmit(e.target.value)}
               />
@@ -562,7 +686,7 @@ const FaceSheet = () => {
                     type="text"
                 value={primaryCareProviderName}
                 placeholder="Type Here....."
-                
+                required
                 onChange={(e) => setPrimaryCareProviderName(e.target.value)}
               />
             </div>
@@ -570,7 +694,7 @@ const FaceSheet = () => {
                   <label >Phone Number:</label>
               <input
                 type="number"
-
+                required
                 value={primaryCareProviderPhone}
                 placeholder="Type number....."
                 
@@ -581,7 +705,7 @@ const FaceSheet = () => {
                   <label >Address:</label>
               <input
                 type="text"
-
+                required
                 value={primaryCareProviderAddress}
                 placeholder="Type Here....."
                 
@@ -594,7 +718,7 @@ const FaceSheet = () => {
                   <label>Other Specialist - please specify:</label>
                   <input
                     type="text"
-
+                    required
                     value={primaryCareProviderOtherSpecialists}
                     placeholder="Type Here....."
 
@@ -606,10 +730,10 @@ const FaceSheet = () => {
                   <label >Preferred Hospital:</label>
                   <input
                     type="text"
-
+                    required
                     value={preferredHospitalName}
                     placeholder="Type Here....."
-                    required
+                    
                     onChange={(e) => setPreferredHospitalName(e.target.value)}
                   />
                 </div>
@@ -630,10 +754,10 @@ const FaceSheet = () => {
                   <label >Preferred Hospital Address:</label>
                   <input
                     type="text"
-
+                    required
                     value={preferredHospitalAddress}
                     placeholder="Type Here....."
-                    required
+                    
                     onChange={(e) => setPreferredHospitalAddress(e.target.value)}
                   />
                 </div>
@@ -646,7 +770,7 @@ const FaceSheet = () => {
                   <label >Name:</label>
               <input
                 type="text"
-
+                required
                 value={psychiatricProviderName}
                 placeholder="Type Here....."
                 
@@ -658,7 +782,7 @@ const FaceSheet = () => {
                   <label >Phone Number:</label>
               <input
                 type="number"
-
+                required
                 value={psychiatricProviderPhone}
                 placeholder="Type number....."
                 
@@ -670,7 +794,7 @@ const FaceSheet = () => {
                   <label >Address:</label>
               <input
                 type="text"
-
+                required
                 value={psychiatricProviderAddress}
                 placeholder="Type Here....."
                 
@@ -684,7 +808,7 @@ const FaceSheet = () => {
                   <label >Other Specialist - please specify:</label>
               <input
                 type="text"
-
+                required
                 value={psychiatricProviderOtherSpecialists}
                 placeholder="Type Here....."
                 
@@ -1082,7 +1206,7 @@ const FaceSheet = () => {
               />
             </div>
               <div className="form-field-single-update">
-                <label >Medical Diagnoses Health:</label>
+                <label >Medical Diagnoses /History:</label>
               <input
                 type="text"
 
@@ -1129,7 +1253,7 @@ const FaceSheet = () => {
               
               <div className="file-upload-box-child">
                <div >
-                  <button className="upload-button1" type="button" onClick={() => { setDraftModel(true); handleData() }}>
+                  <button className="upload-button1" type="button" onClick={() => { setDraftModel(true) }}>
                   SAVED AS DRAFT
                 </button>
                 </div>
@@ -1147,7 +1271,7 @@ const FaceSheet = () => {
               <div>
                 {
                   signature && (
-                    <p className="signature_name_print">Digitally Sign by {signature} {signatureDate}</p>
+                    <p className="signature_name_print">Digitally Sign by {signature} {signatureDate} {signatureTime}</p>
                   )
                 }
               </div>
@@ -1160,14 +1284,15 @@ const FaceSheet = () => {
                 singin={signature}
                 setSingIn={setSignature}
                 setDateAndTime={setSignatureDate}
+                setSegnatureTime={setSegnatureTime}
                 />)
             }
     
-            {/* <div className="form-actions">
-              <button type="submit" id="submit_button" style={{ display: "none" }}>
+            <div className="form-actions">
+              <button type="submit" className="hidePrint" style={{padding:"5px 20px", border:"none",outline:"none",backgroundColor:"#1A9FB2",borderRadius:"5px",marginBottom:"2.5rem"}} >
               SUBMIT DETAILS
             </button>
-            </div> */}
+            </div>
         </form>
       </div>
       {

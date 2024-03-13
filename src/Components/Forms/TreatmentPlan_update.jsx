@@ -1561,6 +1561,7 @@ const Treatmentplan_update=()=>{
                 {/* state is duplicatedffdg again make the state */}
                 <div>
                   <label
+                  
                     style={{
                       fontSize: "16px",
                       fontWeight: "bold",

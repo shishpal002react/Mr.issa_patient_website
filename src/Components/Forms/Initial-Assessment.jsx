@@ -13,10 +13,10 @@ import { user_detail, initialAssestment_form } from "../../Api_Collection/Api";
 import Select from "react-select";
 import SingInUpdateModel from "../Modal/SingInUpdateModel";
 import Draftinmodel from "../Modal/Draftinmodel";
-import AutosizeInput from "react-input-autosize";
 
 import { useReactToPrint } from "react-to-print";
 import { Form } from "react-bootstrap";
+import AutoSize from "../AutoSize/AutoSize";
 
 const InitialAssessment = () => {
   const navigate = useNavigate();
@@ -2446,33 +2446,19 @@ const [Additional2Description,setAdditional2Description]=useState("");
           <FormUpper />
           <p style={{ marginTop: "1rem" }}>
             <span>
-              <AutosizeInput
-                type="text"
-                placeholder="Company name"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-              />
+            
+            <AutoSize value={companyName} setValue={setCompanyName} placeholder={"Company Name"}/>
             </span>
             <span style={{ paddingLeft: "10px" }}>has notified</span>
             <span>
-              <AutosizeInput
-                type="text"
-                inputStyle={{ border: "none", outline: "none" }}
-                placeholder="______________"
-                value={hasNotified}
-                onChange={(e) => setHasNotified(e.target.value)}
-              />
+             
+              <AutoSize value={hasNotified} setValue={setHasNotified} placeholder={"_______________"}/>
             </span>
             to participate in his/her Service Treatment Plan/Initial Assessment
             on
             <span>
-              <AutosizeInput
-                type="text"
-                inputStyle={{ border: "none", outline: "none" }}
-                placeholder="______________"
-                value={assessmentOn}
-                onChange={(e) => setAssessmentOn(e.target.value)}
-              />
+           
+               <AutoSize value={assessmentOn} setValue={setAssessmentOn} placeholder={"_______________"}/>
             </span>
           </p>
           <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
@@ -7212,15 +7198,7 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="VisualDisturbances">Other</label>
                       {VisualDisturbancesOtherBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="______________"
-                          value={VisualDisturbancesOtherType}
-                          onChange={(e) =>
-                            setVisualDisturbancesOtherType(e.target.value)
-                          }
-                        />
+                        <AutoSize value={VisualDisturbancesOtherType} setValue={setVisualDisturbancesOtherType} placeholder={"_______________"}/>
                       )}
                     </div>
                   </div>
@@ -7333,15 +7311,9 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="LossofMuscleCoordination">Other</label>
                       {LossofMuscleCoordinationOtherBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="______________"
-                          value={LossofMuscleCoordinationOtherType}
-                          onChange={(e) =>
-                            setLossofMuscleCoordinationType(e.target.value)
-                          }
-                        />
+                     
+                        <AutoSize value={LossofMuscleCoordinationOtherType} setValue={setLossofMuscleCoordinationType} placeholder={"_______________"}/>
+
                       )}
                     </div>
                   </div>
@@ -7766,15 +7738,7 @@ const [Additional2Description,setAdditional2Description]=useState("");
                     />
                     <label htmlFor="euthymicOtherBoolean">Other</label>
                     {euthymicOtherBoolean && (
-                      <AutosizeInput
-                        type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="________"
-                        value={euthymicOtherBooleanType}
-                        onChange={(e) =>
-                          seteuthymicOtherBooleanType(e.target.value)
-                        }
-                      />
+                      <AutoSize value={euthymicOtherBooleanType} setValue={seteuthymicOtherBooleanType} placeholder={"_______________"}/>
                     )}
                   </div>
                 </div>
@@ -7828,13 +7792,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                     />
                     <label htmlFor="other">Other</label>
                     {other && (
-                      <AutosizeInput
-                        type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="________"
-                        value={otherText}
-                        onChange={(e) => setOtherText(e.target.value)}
-                      />
+                  
+                      <AutoSize value={otherText} setValue={setOtherText} placeholder={"_______________"}/>
                     )}
                   </div>
                 </div>
@@ -7895,15 +7854,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                     />
                     <label >Other</label>
                     {EyeContactOtherBoolean && (
-                      <AutosizeInput
-                        type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="________"
-                        value={EyeContactOtherBooleanType}
-                        onChange={(e) =>
-                          setEyeContactOtherBooleanType(e.target.value)
-                        }
-                      />
+                  
+                      <AutoSize value={EyeContactOtherBooleanType} setValue={setEyeContactOtherBooleanType} placeholder={"_______________"}/>
                     )}
                   </div>
                 </div>
@@ -7970,15 +7922,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                     />
                     <label >Other</label>
                     {CooperationOtherBoolean && (
-                      <AutosizeInput
-                        type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="________"
-                        value={CooperationOtherBooleanType}
-                        onChange={(e) =>
-                          setCooperationOtherBooleanType(e.target.value)
-                        }
-                      />
+                 
+                      <AutoSize value={CooperationOtherBooleanType} setValue={setCooperationOtherBooleanType} placeholder={"_______________"}/>
                     )}
                   </div>
                 </div>
@@ -8051,15 +7996,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                     />
                     <label htmlFor="ArticulationOtherBoolean">Other</label>
                     {ArticulationOtherBoolean && (
-                      <AutosizeInput
-                        type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="________"
-                        value={ArticulationOtherBooleanOther}
-                        onChange={(e) =>
-                          setArticulationOtherBooleanOther(e.target.value)
-                        }
-                      />
+                  
+                      <AutoSize value={ArticulationOtherBooleanOther} setValue={setArticulationOtherBooleanOther} placeholder={"_______________"}/>
                     )}
                   </div>
                 </div>
@@ -8113,15 +8051,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="ToneOtherBoolean">Other</label>
                       {ToneOtherBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={ToneOtherBooleanOther}
-                          onChange={(e) =>
-                            setToneOtherBooleanOther(e.target.value)
-                          }
-                        />
+                  
+                        <AutoSize value={ToneOtherBooleanOther} setValue={setToneOtherBooleanOther} placeholder={"_______________"}/>
                       )}
                     </div>
                   </div>
@@ -8150,13 +8081,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       <input type="checkbox" id="RateOtherBoolean" checked={RateOtherBoolean} onChange={() => setRateOtherBoolean(!RateOtherBoolean)} />
                       <label htmlFor="RateOtherBoolean">Other</label>
                       {
-                        RateOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={RateOtherBooleanOther}
-                          onChange={(e) => setRateOtherBooleanOther(e.target.value)}
-                        />
+                        RateOtherBoolean && 
+                        <AutoSize value={RateOtherBooleanOther} setValue={setRateOtherBooleanOther} placeholder={"_______________"}/>
                       }
 
                     </div>
@@ -8186,13 +8112,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       <input type="checkbox" id="QuantityOtherBoolean" checked={QuantityOtherBoolean} onChange={() => setQuantityOtherBoolean(!QuantityOtherBoolean)} />
                       <label htmlFor="QuantityOtherBoolean">Other</label>
                       {
-                        QuantityOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={QuantityOtherBooleanOther}
-                          onChange={(e) => setQuantityOtherBooleanOther(e.target.value)}
-                        />
+                        QuantityOtherBoolean && 
+                        <AutoSize value={QuantityOtherBooleanOther} setValue={setQuantityOtherBooleanOther} placeholder={"_______________"}/>
                       }
                     </div>
                   </div>
@@ -8220,13 +8141,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       <input type="checkbox" id="responseLatencyOtherBoolean" checked={responseLatencyOtherBoolean} onChange={() => setresponseLatencyOtherBoolean(!responseLatencyOtherBoolean)} />
                       <label htmlFor="responseLatencyOtherBoolean">Other</label>
                       {
-                        responseLatencyOtherBoolean && <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={responseLatencyOtherBooleanOther}
-                          onChange={(e) => setresponseLatencyOtherBooleanOther(e.target.value)}
-                        />
+                        responseLatencyOtherBoolean && 
+                        <AutoSize value={responseLatencyOtherBooleanOther} setValue={setresponseLatencyOtherBooleanOther} placeholder={"_______________"}/>
                       }
                     </div>
                   </div>
@@ -8296,15 +8212,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="yesOtherDelusions">Yes, other</label>
                       {thoughtContentBoolaen && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={thoughtContentOther}
-                          onChange={(e) =>
-                            setThoughtContentOther(e.target.value)
-                          }
-                        />
+                       
+                        <AutoSize value={thoughtContentOther} setValue={setThoughtContentOther} placeholder={"_______________"}/>
                       )}
                     </div>
 
@@ -8362,15 +8271,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="yesOtherDelusions">Yes, other</label>
                       {thoughtProcessesBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={thoughtProcessesOther}
-                          onChange={(e) =>
-                            setThoughtProcessesOther(e.target.value)
-                          }
-                        />
+                     
+                        <AutoSize value={thoughtProcessesOther} setValue={setThoughtProcessesOther} placeholder={"_______________"}/>
                       )}
                     </div>
                 </div>
@@ -8427,15 +8329,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="yesOtherDelusions">Yes, other</label>
                       {yesOtherDelusionsBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={yesOtherDelusionsText}
-                          onChange={(e) =>
-                            setYesOtherDelusionsText(e.target.value)
-                          }
-                        />
+                      
+                        <AutoSize value={yesOtherDelusionsText} setValue={setYesOtherDelusionsText} placeholder={"_______________"}/>
                       )}
                     </div>
                 </div>
@@ -8511,15 +8406,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                       />
                       <label htmlFor="yesOtherHallucinations">Yes, other</label>
                       {yesOtherHallucinationsBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={yesOtherHallucinationsText}
-                          onChange={(e) =>
-                            setYesOtherHallucinationsText(e.target.value)
-                          }
-                        />
+                    
+                        <AutoSize value={yesOtherHallucinationsText} setValue={setYesOtherHallucinationsText} placeholder={"_______________"}/>
                       )}
                     </div>
                 </div>
@@ -9310,15 +9198,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                     />
                     <label htmlFor="intact">Other</label>
                     {intactAbilityToConcentrationOtherBoolean && (
-                      <AutosizeInput
-                        type="text"
-                        inputStyle={{ border: "none", outline: "none" }}
-                        placeholder="________"
-                        value={otherAbilityToConcentration}
-                        onChange={(e) =>
-                          setOtherAbilityToConcentration(e.target.value)
-                        }
-                      />
+                 
+                      <AutoSize value={otherAbilityToConcentration} setValue={setOtherAbilityToConcentration} placeholder={"_______________"}/>
                     )}
                   </div>
                 </div>
@@ -11701,13 +11582,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                         Other (please specify)
                       </label>
                       {otherBoolean && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={otherStressors}
-                          onChange={(e) => setOtherStressors(e.target.value)}
-                        />
+                    
+                        <AutoSize value={otherStressors} setValue={setOtherStressors} placeholder={"_______________"}/>
                       )}
                     </div>
                   </div>
@@ -11895,15 +11771,8 @@ const [Additional2Description,setAdditional2Description]=useState("");
                         Other (please specify)
                       </label>
                       {otherSignificantRecentLosses && (
-                        <AutosizeInput
-                          type="text"
-                          inputStyle={{ border: "none", outline: "none" }}
-                          placeholder="________"
-                          value={otherSignificantRecentLossesType}
-                          onChange={(e) =>
-                            setOtherSignificantRecentLossesType(e.target.value)
-                          }
-                        />
+                    
+                        <AutoSize value={otherSignificantRecentLossesType} setValue={setOtherSignificantRecentLossesType} placeholder={"_______________"}/>
                       )}
                     </div>
                   </div>
